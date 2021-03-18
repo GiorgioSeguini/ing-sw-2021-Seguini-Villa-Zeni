@@ -21,17 +21,7 @@ public class FaithTrack {
     /**
      * 
      */
-    private ArrayList<PopesFavorStates>[] PopesFavor;
-
-
-
-
-    /**
-     * 
-     */
-    public void Operation1() {
-        // TODO implement here
-    }
+    private ArrayList<PopesFavorStates> PopesFavor;
 
     /**
      * @return

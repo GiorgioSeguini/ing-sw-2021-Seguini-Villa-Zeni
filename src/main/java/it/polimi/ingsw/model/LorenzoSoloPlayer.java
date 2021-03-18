@@ -13,13 +13,9 @@ public class LorenzoSoloPlayer {
     public LorenzoSoloPlayer() {
     }
 
-    /**
-     * 
-     */
-    public void Attribute1;
+    private FaithTrack faithTrack;
 
-
-
+    private SoloActionTokens[] soloactiontokens = new SoloActionTokens[7]; //TODO
 
     /**
      * @return
@@ -29,4 +25,7 @@ public class LorenzoSoloPlayer {
         return null;
     }
 
+    public FaithTrack getFaithTrack() {
+        return faithTrack;
+    }
 }

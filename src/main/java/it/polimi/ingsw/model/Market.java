@@ -24,16 +24,6 @@ public class Market {
     private MarbleColor externalMarble;
 
 
-
-    /**
-     * @param int 
-     * @return
-     */
-    public NumberOfResources takeResources(void int) {
-        // TODO implement here
-        return null;
-    }
-
     /**
      * @return
      */
@@ -53,7 +43,7 @@ public class Market {
     /**
      * @return
      */
-    public MurbleColor[] buyRow() {
+    public MarbleColor[] buyRow() {
         // TODO implement here
         return null;
     }

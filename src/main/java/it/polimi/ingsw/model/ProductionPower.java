@@ -18,25 +18,22 @@ public class ProductionPower {
      */
     private int PointsFaithOut;
 
-
+    /**
+     *
+     */
+    private NumberOfResources outputRes;
 
     /**
      * 
      */
     private NumberOfResources inputRes;
 
-
-    /**
-     * 
-     */
-    private DevelopmentCard productionPower;
-
     /**
      * @return
      */
-    public void activateProduction() {
+    public int getPointsFaithOut() {
         // TODO implement here
-        return null;
+        return 0;
     }
 
     /**

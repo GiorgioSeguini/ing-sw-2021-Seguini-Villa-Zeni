@@ -13,9 +13,4 @@ public abstract class Ability {
     public Ability() {
     }
 
-    /**
-     * 
-     */
-    private LeaderCard ability;
-
 }

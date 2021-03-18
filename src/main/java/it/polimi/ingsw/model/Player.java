@@ -16,15 +16,12 @@ public class Player {
     /**
      * 
      */
-    private string userName;
-
+    private String userName;
 
     /**
      * 
      */
     private PersonalBoard personalBoard;
-
-
 
     /**
      * 
@@ -37,18 +34,9 @@ public class Player {
     private FaithTrack faithtrack;
 
     /**
-     * @param LeaderCard 
      * @return
      */
-    public boolean MatchRequirements(void LeaderCard) {
-        // TODO implement here
-        return false;
-    }
-
-    /**
-     * @return
-     */
-    public string getUserName() {
+    public String getUserName() {
         // TODO implement here
         return null;
     }

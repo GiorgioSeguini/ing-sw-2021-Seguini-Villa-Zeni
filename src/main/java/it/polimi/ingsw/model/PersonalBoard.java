@@ -14,81 +14,15 @@ public class PersonalBoard {
     }
 
     /**
-     * Favori  papali: sono 3 e ciascuno di esso può avere 3 diversi stati
+     * 
      */
-    private ArrayList<PopesFavorStates>[] PopesFavor;
+    private DevelopmentCard []OwnedDevCards = new DevelopmentCard[2];
 
     /**
      * 
      */
-    private bool[] PopesFavorValid;
+    private LeaderCard []OwnedLeaderCard = new LeaderCard[9];
 
-    /**
-     * 
-     */
-    private DevelopmentCard[] OwnedDevCards;
-
-    /**
-     * Forziere delle risorse
-     */
-    private ArrayList<ResourceType> StrongBox;
-
-    /**
-     * Deposito delle risorse: 3 nel primo layer, 2 nel secondo, 1 nel terzo
-     */
-    private PopesFavorStates[] WareHouseDepots;
-
-    /**
-     * 
-     */
-    private void OwnedLeaderCard[2];
-
-    /**
-     * 
-     */
-    public ProductionPower BasicProductionPower;
-
-    /**
-     * Intero che tiene traccia dei punti fede ottenuti
-     */
-    private int FaithPoints;
-
-
-
-    /**
-     * 
-     */
-    private Set<ProductionPower> basicProductionPower;
-
-    /**
-     * 
-     */
-    private DevelopmentCard OwnedDevCards[9];
-
-    /**
-     * 
-     */
-    private LeaderCard OwnedLeaderCard[2];
-
-
-
-
-    /**
-     * @param int 
-     * @return
-     */
-    public void activateProduction(void int) {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @return
-     */
-    public void manageDepots() {
-        // TODO implement here
-        return null;
-    }
 
     /**
      * @return
@@ -130,7 +64,6 @@ public class PersonalBoard {
      */
     public void addDevCard(DevelopmentCard card, int pos) {
         // TODO implement here
-        return null;
     }
 
 }

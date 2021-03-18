@@ -25,12 +25,10 @@ public class Game {
      */
     private boolean finalTurn;
 
-
-
     /**
      * 
      */
-    private Set<Player> players;
+    private ArrayList<Player> players;
 
     /**
      * 
@@ -86,7 +84,6 @@ public class Game {
      */
     public void start() {
         // TODO implement here
-        return null;
     }
 
     /**
@@ -97,4 +94,11 @@ public class Game {
         return null;
     }
 
+    public void setFinalTurn(boolean finalTurn) {
+        this.finalTurn = finalTurn;
+    }
+
+    public boolean isFinalTurn() {
+        return finalTurn;
+    }
 }

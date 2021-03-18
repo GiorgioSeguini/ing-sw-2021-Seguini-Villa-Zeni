@@ -23,12 +23,12 @@ public class DevelopmentCard extends Card {
      */
     private ColorDevCard CardColor;
 
+    /**
+     *
+     */
+    private NumberOfResources cost;
 
-
-
-
-
-
+    private ProductionPower productionPower;
 
     /**
      * @return

@@ -13,8 +13,7 @@ public class StrongBox {
     public StrongBox() {
     }
 
-
-
+    private NumberOfResources resources;
 
     /**
      * @return
@@ -30,7 +29,6 @@ public class StrongBox {
      */
     public void addResource(NumberOfResources input) {
         // TODO implement here
-        return null;
     }
 
     /**
@@ -39,7 +37,6 @@ public class StrongBox {
      */
     public void subResource(NumberOfResources required) {
         // TODO implement here
-        return null;
     }
 
 }

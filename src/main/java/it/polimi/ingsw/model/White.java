@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * 
  */
-private class White extends Ability {
+public class White extends Ability {
 
     /**
      * Default constructor
@@ -18,6 +18,7 @@ private class White extends Ability {
      */
     private ResourceType typeOfRes;
 
-
-
+    public ResourceType getTypeOfRes() {
+        return typeOfRes;
+    }
 }

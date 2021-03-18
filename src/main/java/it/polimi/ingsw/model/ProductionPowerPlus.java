@@ -18,6 +18,7 @@ public class ProductionPowerPlus extends Ability {
      */
     private ResourceType typeOfRes;
 
-
-
+    public ResourceType getTypeOfRes() {
+        return typeOfRes;
+    }
 }

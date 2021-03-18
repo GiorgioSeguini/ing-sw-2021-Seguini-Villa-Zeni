@@ -18,33 +18,9 @@ public class LeaderCard extends Card {
      */
     private LeaderStatus status;
 
+    private Requirements requirements;
 
-
-
-
-    /**
-     * @return
-     */
-    public void active() {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @return
-     */
-    public void discard() {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @return
-     */
-    public LeaderStatus getStatus() {
-        // TODO implement here
-        return null;
-    }
+    private Ability ability;
 
     /**
      * @return
@@ -60,7 +36,6 @@ public class LeaderCard extends Card {
      */
     public void setPlayed(Player owner) {
         // TODO implement here
-        return null;
     }
 
     /**
@@ -69,7 +44,6 @@ public class LeaderCard extends Card {
      */
     public void setDiscard(Player owner) {
         // TODO implement here
-        return null;
     }
 
 }

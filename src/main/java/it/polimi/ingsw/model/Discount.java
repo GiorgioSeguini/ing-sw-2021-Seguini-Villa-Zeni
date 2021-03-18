@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * 
  */
-public class Discount {
+public class Discount extends Ability{
 
     /**
      * Default constructor
@@ -21,6 +21,13 @@ public class Discount {
     /**
      * 
      */
-    private int discaount;
+    private int discount;
 
+    public ColorDevCard getDiscountCardColor() {
+        return cardColor;
+    }
+
+    public int getDiscountAmount() {
+        return discount;
+    }
 }

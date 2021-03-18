@@ -60,7 +60,6 @@ public class Shelf {
      */
     public void setResType(ResourceType type) {
         // TODO implement here
-        return null;
     }
 
     /**
@@ -69,7 +68,6 @@ public class Shelf {
      */
     public void add(int input) {
         // TODO implement here
-        return null;
     }
 
     /**
@@ -78,7 +76,6 @@ public class Shelf {
      */
     public void sub(int required) {
         // TODO implement here
-        return null;
     }
 
 }

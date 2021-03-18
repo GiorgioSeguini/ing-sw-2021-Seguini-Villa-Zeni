@@ -13,7 +13,7 @@ public class WareHouseDepots {
     public WareHouseDepots() {
     }
 
-
+    private Shelf[] shelves;
 
     /**
      * @return
@@ -29,7 +29,6 @@ public class WareHouseDepots {
      */
     public void addResource(NumberOfResources input) {
         // TODO implement here
-        return null;
     }
 
     /**
@@ -38,7 +37,6 @@ public class WareHouseDepots {
      */
     public void subResource(NumberOfResources required) {
         // TODO implement here
-        return null;
     }
 
     /**

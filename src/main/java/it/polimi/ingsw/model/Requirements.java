@@ -16,7 +16,7 @@ public class Requirements {
     /**
      * 
      */
-    private ArrayList<colors> resources;
+    private NumberOfResources numofres;
 
     /**
      * 
@@ -31,11 +31,7 @@ public class Requirements {
     /**
      * 
      */
-    private ArrayList<int> MinNumCardReq;
-
-
-
-
+    private ArrayList<Integer> MinNumCardReq;
 
     /**
      * @param color 

@@ -10,28 +10,8 @@ public class NumberOfResources {
     /**
      * Default constructor
      */
-    public NumberOfResouces() {
+    public NumberOfResources() {
     }
-
-    /**
-     * 
-     */
-    private int NumOfStones;
-
-    /**
-     * 
-     */
-    private int NumOfCoins;
-
-    /**
-     * 
-     */
-    private int NumOfServants;
-
-    /**
-     * 
-     */
-    private int NumOfShields;
 
     /**
      * 
@@ -41,18 +21,7 @@ public class NumberOfResources {
     /**
      * 
      */
-    private ArrayList<int> numOfRes;
-
-    /**
-     * 
-     */
-    private DevelopmentCard cost;
-
-
-
-
-
-
+    private ArrayList<Integer> numOfRes;
 
     /**
      * @param type 

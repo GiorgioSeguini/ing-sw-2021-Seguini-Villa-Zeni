@@ -12,21 +12,10 @@ public class Depots {
      */
     public Depots() {
     }
+    private StrongBox strongBox;
+    private WareHouseDepots wareHouseDepots;
 
 
-
-
-
-    /**
-     * 
-     */
-    public void MatchResorceMinimum() {
-        // TODO implement here
-    }
-
-    /**
-     * @return
-     */
     public NumberOfResources getResources() {
         // TODO implement here
         return null;
@@ -38,7 +27,6 @@ public class Depots {
      */
     public void addResource(NumberOfResources input) {
         // TODO implement here
-        return null;
     }
 
     /**
@@ -47,7 +35,6 @@ public class Depots {
      */
     public void subResource(NumberOfResources required) {
         // TODO implement here
-        return null;
     }
 
     /**

@@ -18,6 +18,7 @@ public class Deposit extends Ability {
      */
     private ResourceType typeOfRes;
 
-
-
+    public ResourceType getTypeOfRes() {
+        return typeOfRes;
+    }
 }
