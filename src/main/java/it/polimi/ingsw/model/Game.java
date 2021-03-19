@@ -94,7 +94,7 @@ public class Game {
         return null;
     }
 
-    public void setFinalTurn(boolean finalTurn) {
+    public void setFinalTurn() {
         this.finalTurn = finalTurn;
     }
 
