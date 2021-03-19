@@ -16,7 +16,7 @@ public class Dashboard {
     /**
      * 
      */
-    public ArrayList<DevelopmentCard>[] dashBoard;
+    private ArrayList<DevelopmentCard> [] dashBoard= new ArrayList[3];
 
     /**
      * @param color 

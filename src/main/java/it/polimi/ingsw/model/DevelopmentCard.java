@@ -21,7 +21,7 @@ public class DevelopmentCard extends Card {
     /**
      * 
      */
-    private ColorDevCard CardColor;
+    private ColorDevCard cardColor;
 
     /**
      *
@@ -34,32 +34,28 @@ public class DevelopmentCard extends Card {
      * @return
      */
     public NumberOfResources getCost() {
-        // TODO implement here
-        return null;
+        return cost;
     }
 
     /**
      * @return
      */
     public ProductionPower getProductionPower() {
-        // TODO implement here
-        return null;
+        return productionPower;
     }
 
     /**
      * @return
      */
     public Level getLevel() {
-        // TODO implement here
-        return null;
+        return level;
     }
 
     /**
      * @return
      */
     public ColorDevCard getColor() {
-        // TODO implement here
-        return null;
+        return cardColor;
     }
 
 }

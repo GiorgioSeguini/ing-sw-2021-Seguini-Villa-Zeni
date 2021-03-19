@@ -23,8 +23,7 @@ public class Card {
      * @return
      */
     public int getVictoryPoints() {
-        // TODO implement here
-        return 0;
+        return VictoryPoints;
     }
 
 }

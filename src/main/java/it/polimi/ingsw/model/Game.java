@@ -50,16 +50,14 @@ public class Game {
      * @return
      */
     public Player getPlayer(int index) {
-        // TODO implement here
-        return null;
+        return players.get(index);
     }
 
     /**
      * @return
      */
     public Player getCurrPlayer() {
-        // TODO implement here
-        return null;
+        return players.get(indexPlayingPlayer);
     }
 
     /**
@@ -67,16 +65,14 @@ public class Game {
      * @return
      */
     public int getPlayerIndex(Player player) {
-        // TODO implement here
-        return 0;
+        return players.indexOf(player);
     }
 
     /**
      * @return
      */
     public int getCurrIndex() {
-        // TODO implement here
-        return 0;
+        return indexPlayingPlayer;
     }
 
     /**
@@ -89,13 +85,34 @@ public class Game {
     /**
      * @return
      */
-    public Player getWinner() {
-        // TODO implement here
-        return null;
+    public Player getWinner() throws Exception{
+        //TODO check exception
+        if(!finalTurn || indexPlayingPlayer!=0){
+            throw new Exception();
+        }
+        Player winner;
+        if(sologame != null) {
+            //multiplayer
+            int max = players.get(0).getVictoryPoints();
+            winner = players.get(0);
+            for(Player p: players){
+                if(p.getVictoryPoints()>max){
+                    max = p.getVictoryPoints();
+                    winner = p;
+                }
+            }
+        }
+        else{
+            //single player
+            //TODO
+            winner=players.get(0);
+        }
+
+        return winner;
     }
 
-    public void setFinalTurn(boolean finalTurn) {
-        this.finalTurn = finalTurn;
+    public void setFinalTurn() {
+        this.finalTurn = true;
     }
 
     public boolean isFinalTurn() {

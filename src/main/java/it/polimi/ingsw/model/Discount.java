@@ -23,10 +23,18 @@ public class Discount extends Ability{
      */
     private int discount;
 
+    /**
+     *
+     * @return
+     */
     public ColorDevCard getDiscountCardColor() {
         return cardColor;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getDiscountAmount() {
         return discount;
     }
