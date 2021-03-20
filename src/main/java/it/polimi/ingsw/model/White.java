@@ -2,22 +2,15 @@ package it.polimi.ingsw.model;
 
 import java.util.*;
 
-/**
- * 
- */
 public class White extends Ability {
 
-    /**
-     * Default constructor
-     */
+    private ResourceType typeOfRes;
+
+    /*Default constructor*/
     private White() {
     }
 
-    /**
-     * 
-     */
-    private ResourceType typeOfRes;
-
+    /*Getter*/
     public ResourceType getTypeOfRes() {
         return this.typeOfRes;
     }

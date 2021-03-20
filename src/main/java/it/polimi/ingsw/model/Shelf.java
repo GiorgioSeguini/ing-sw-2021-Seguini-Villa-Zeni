@@ -2,7 +2,7 @@ package it.polimi.ingsw.model;
 
 import java.util.*;
 
-/**
+/*
  * This class represents the single shelf of my warehouse depots. This can have just a single type of resources and a limited size to store them;
  */
 public class Shelf {
@@ -15,10 +15,10 @@ public class Shelf {
         this.Used=0;
         this.MaxSize=0;
     }
-    /**default constructor*/
+    /*default constructor*/
 
 
-    /**Getter*/
+    /*Getter*/
     public ResourceType getResType() {
         return this.restype;
     }
@@ -31,7 +31,7 @@ public class Shelf {
         return this.Used;
     }
 
-    /**Setter*/
+    /*Setter*/
     public void setResType(ResourceType type) {
         this.restype=type;
     }
@@ -41,7 +41,7 @@ public class Shelf {
     }
 
 
-    /**Additional Methods*/
+    /*Additional Methods*/
     public void add(int input) {
         if(this.Used+input<=this.MaxSize){
             this.Used=this.Used+input;

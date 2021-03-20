@@ -2,60 +2,28 @@ package it.polimi.ingsw.model;
 
 import java.util.*;
 
-/**
- * 
- */
 public class Requirements {
 
-    /**
-     * Default constructor
-     */
+    private NumberOfResources numofres;
+    private ArrayList<ColorDevCard> ColorCardReq;
+    private ArrayList<Level> MinLevelReq;
+    private ArrayList<Integer> MinNumCardReq;
+
+    /*Default constructor*/
     public Requirements() {
     }
 
-    /**
-     * 
-     */
-    private NumberOfResources numofres;
-
-    /**
-     * 
-     */
-    private ArrayList<ColorDevCard> ColorCardReq;
-
-    /**
-     * 
-     */
-    private ArrayList<Level> MinLevelReq;
-
-    /**
-     * 
-     */
-    private ArrayList<Integer> MinNumCardReq;
-
-    /**
-     * @param color 
-     * @return
-     */
+    /*Getter*/
     public int getReq(ColorDevCard color) {
-        // TODO implement here
         return 0;
     }
 
-    /**
-     * @param color 
-     * @param level 
-     * @return
-     */
     public int getReq(ColorDevCard color, Level level) {
         // TODO implement here
         return 0;
     }
 
-    /**
-     * @param board 
-     * @return
-     */
+    /*Additional Methods*/
     public boolean match(PersonalBoard board) {
         // TODO implement here
         return false;

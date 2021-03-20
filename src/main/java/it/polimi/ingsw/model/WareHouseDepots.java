@@ -1,5 +1,7 @@
 package it.polimi.ingsw.model;
 
+import com.sun.org.apache.xpath.internal.objects.XNumber;
+
 import javax.swing.plaf.synth.SynthEditorPaneUI;
 import java.util.*;
 
@@ -8,7 +10,7 @@ public class WareHouseDepots {
 
     private Shelf[] shelfs= new Shelf[3];
 
-    /**Default constructor*/
+    /*Default constructor*/
     public WareHouseDepots() {
         for(int i=0; i<3; i++){
             shelfs[i]=new Shelf();
@@ -16,12 +18,12 @@ public class WareHouseDepots {
         }
     }
 
-    /**Getter*/
+    /*Getter*/
     public NumberOfResources getResources() {
         return null;
     }
 
-    /**Additional Methods*/
+    /*Additional Methods*/
     public void addResource(NumberOfResources input) {
         for(Shelf x: shelfs){
             if(input.getAmountOf(x.getResType())>0){
@@ -43,11 +45,12 @@ public class WareHouseDepots {
                 System.out.println("Type of resources not found.");
             }
         }
-    }
+    }/** This method add the resources to all the shelf if it found them. */
 
     public boolean canAdd(NumberOfResources input){
-
-        return false;
+        ResourceType list[]= ResourceType.values(); //ho creato un vettore che ha per valori ogni tipo di resource type
+        return true;
     }
+    //this method
 
 }
