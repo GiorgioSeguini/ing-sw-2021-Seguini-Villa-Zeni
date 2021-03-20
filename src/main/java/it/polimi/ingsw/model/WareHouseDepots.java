@@ -13,7 +13,7 @@ public class WareHouseDepots {
     public WareHouseDepots() {
     }
 
-    private Shelf[] shelves;
+    private Shelf shelfs;
 
     /**
      * @return

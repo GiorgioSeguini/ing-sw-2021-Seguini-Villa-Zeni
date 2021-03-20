@@ -3,79 +3,59 @@ package it.polimi.ingsw.model;
 import java.util.*;
 
 /**
- * 
+ * This class represents the single shelf of my warehouse depots. This can have a single type of resources and
  */
 public class Shelf {
 
-    /**
-     * Default constructor
-     */
-    public Shelf() {
-    }
-
-    /**
-     * 
-     */
-    private int MaxSize;
-
-    /**
-     * 
-     */
     private ResourceType restype;
-
-    /**
-     * 
-     */
+    private int MaxSize;
     private int Used;
 
+    public Shelf() {
+        this.Used=0;
+        this.MaxSize=0;
+    }
+    /**default constructor*/
 
 
-    /**
-     * @return
-     */
+    /**Getter*/
     public ResourceType getResType() {
-        // TODO implement here
-        return null;
+        return this.restype;
     }
 
-    /**
-     * @return
-     */
     public int getMaxSize() {
-        // TODO implement here
-        return 0;
+        return this.MaxSize;
     }
 
-    /**
-     * @return
-     */
     public int getUsed() {
-        // TODO implement here
-        return 0;
+        return this.Used;
     }
 
-    /**
-     * @param type 
-     * @return
-     */
+    /**Setter*/
     public void setResType(ResourceType type) {
-        // TODO implement here
+        this.restype=type;
     }
 
-    /**
-     * @param input 
-     * @return
-     */
+    public void setMaxSize(int size){
+        this.MaxSize=size;
+    }
+
+
+    /**Additional Methods*/
     public void add(int input) {
-        // TODO implement here
-    }
+        if(this.Used+input<=this.MaxSize){
+            this.Used=this.Used+input;
+        }else{
+            System.out.println("Operation not permitted");
+        }
+    }/** this method permits to add resources on the shelf only if the operation is permitted. There is no check about the res_type*/
 
-    /**
-     * @param required 
-     * @return
-     */
     public void sub(int required) {
-        // TODO implement here
+        if(this.Used-required>=0){
+            this.Used=this.Used-required;
+        }else{
+            System.out.println("Operation not permitted");
+        }
     }
-
+    /** this method permits to sub resources on the shelf only if the operation is permitted. There is no check about the res_type*/
 }

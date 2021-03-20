@@ -19,6 +19,6 @@ public class White extends Ability {
     private ResourceType typeOfRes;
 
     public ResourceType getTypeOfRes() {
-        return typeOfRes;
+        return this.typeOfRes;
     }
 }
