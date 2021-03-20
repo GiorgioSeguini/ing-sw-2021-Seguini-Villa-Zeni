@@ -3,7 +3,7 @@ package it.polimi.ingsw.model;
 import java.util.*;
 
 /**
- * This class represents the single shelf of my warehouse depots. This can have a single type of resources and
+ * This class represents the single shelf of my warehouse depots. This can have just a single type of resources and a limited size to store them;
  */
 public class Shelf {
 
