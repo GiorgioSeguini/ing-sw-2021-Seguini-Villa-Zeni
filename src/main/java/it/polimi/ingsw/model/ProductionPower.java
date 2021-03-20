@@ -2,54 +2,29 @@ package it.polimi.ingsw.model;
 
 import java.util.*;
 
-/**
- * Classe che descrive il potere di produzione
- */
 public class ProductionPower {
 
-    /**
-     * Default constructor
-     */
+    private int PointsFaithOut;
+    private NumberOfResources outputRes;
+    private NumberOfResources inputRes;
+
+    /*Default constructor*/
     public ProductionPower() {
     }
 
-    /**
-     * Punti fede acquisiti dalla produzione
-     */
-    private int PointsFaithOut;
-
-    /**
-     *
-     */
-    private NumberOfResources outputRes;
-
-    /**
-     * 
-     */
-    private NumberOfResources inputRes;
-
-    /**
-     * @return
-     */
+    /*Getter*/
     public int getPointsFaithOut() {
-        // TODO implement here
-        return 0;
+        return this.PointsFaithOut;
     }
 
-    /**
-     * @return
-     */
     public NumberOfResources getInputRes() {
-        // TODO implement here
-        return null;
+        return this.inputRes;
     }
 
-    /**
-     * @return
-     */
     public NumberOfResources getOutputRes() {
-        // TODO implement here
-        return null;
+        return this.outputRes;
     }
 
+    /*Setter*/
+    //TODO
 }

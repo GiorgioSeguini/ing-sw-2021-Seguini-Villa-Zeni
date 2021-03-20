@@ -14,4 +14,9 @@ public class White extends Ability {
     public ResourceType getTypeOfRes() {
         return this.typeOfRes;
     }
+
+    /*Abstract class to implement*/
+    public void RunAbility() {
+
+    }
 }
