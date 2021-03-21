@@ -5,7 +5,7 @@ import java.util.*;
 public abstract class SoloActionTokens{
 
     /*Default Constructor*/
-    public SoloActionTokens() {
+    SoloActionTokens() {
     }
 
     /*method that has to be implemented*/

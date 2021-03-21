@@ -2,75 +2,32 @@ package it.polimi.ingsw.model;
 
 import java.util.*;
 
-/**
- * 
- */
 public class Player {
 
-    /**
-     * Default constructor
-     */
+    private String userName;
+    private FaithTrack faithtrack;
+    private Depots depots;
+    private PersonalBoard personalBoard;
+
+    /*Default constructor*/
     public Player() {
     }
 
-    /**
-     * 
-     */
-    private String userName;
-
-    /**
-     * 
-     */
-    private PersonalBoard personalBoard;
-
-    /**
-     * 
-     */
-    private Depots depots;
-
-    /**
-     * 
-     */
-    private FaithTrack faithtrack;
-
-    /**
-     * @return
-     */
+    /*Getter*/
     public String getUserName() {
-        // TODO implement here
-        return null;
+        return this.userName;
     }
 
-    /**
-     * @return
-     */
     public PersonalBoard getPersonalBoard() {
-        // TODO implement here
-        return null;
+        return this.personalBoard;
     }
 
-    /**
-     * @return
-     */
     public Depots getDepots() {
-        // TODO implement here
-        return null;
+        return this.depots;
     }
 
-    /**
-     * @return
-     */
     public FaithTrack getFaithTrack() {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     *
-     */
-    public int getVictoryPoints(){
-        // TODO implement here
-        return 0;
+        return this.faithtrack;
     }
 
 }

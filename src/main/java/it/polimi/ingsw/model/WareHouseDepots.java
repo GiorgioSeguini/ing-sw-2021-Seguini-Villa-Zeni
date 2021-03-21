@@ -11,7 +11,7 @@ public class WareHouseDepots {
     private Shelf[] shelfs= new Shelf[3];
 
     /*Default constructor*/
-    public WareHouseDepots() {
+     WareHouseDepots() {
         for(int i=0; i<3; i++){
             shelfs[i]=new Shelf();
             shelfs[i].setMaxSize(i+1);
@@ -20,7 +20,12 @@ public class WareHouseDepots {
 
     /*Getter*/
     public NumberOfResources getResources() {
-        return null;
+        int[] x =new int[4];
+        for (Shelf layer: shelfs){
+            x[layer.getResType().getIndex()]= layer.getUsed();
+        }
+        NumberOfResources resources = new NumberOfResources(x[0],x[1],x[2],x[3]);
+        return resources;
     }
 
     /*Additional Methods*/
@@ -48,9 +53,55 @@ public class WareHouseDepots {
     }/** This method add the resources to all the shelf if it found them. */
 
     public boolean canAdd(NumberOfResources input){
-        ResourceType list[]= ResourceType.values(); //ho creato un vettore che ha per valori ogni tipo di resource type
+        if(check_shelf_type_Integrity() && check_NumberOfResources_Integrity_for_WareHouseDepots(input)){
+            for (ResourceType x: ResourceType.values()){
+                if(input.getAmountOf(x)!=0){
+                    int check=0;
+                    for (Shelf layer: shelfs){
+                        if(x==layer.getResType()){
+                            if(layer.getUsed()+input.getAmountOf(x)> layer.getMaxSize()){
+                                return false;
+                            }
+                        }else{
+                            check++;
+                        }
+                    }
+                    if(check==3){
+                        return false;
+                    }
+
+                }
+            }
+        }
+        return true;
+    }/**This method check this: if there is just one mismatch with the request to add, returns false*/
+
+    public boolean check_shelf_type_Integrity(){
+        for(int i=0; i<2;i++){
+            for(int j=i+1; j<3;j++){
+                if(shelfs[i].getResType()==shelfs[j].getResType()){
+                    return false;
+                }
+            }
+        }
         return true;
     }
-    //this method
+    /**This method check if all the shelfs have different types of resources*/
+
+    private boolean check_NumberOfResources_Integrity_for_WareHouseDepots(NumberOfResources input){
+        int check=0;
+        for (ResourceType x: ResourceType.values()){
+            if(input.getAmountOf(x)!=0){
+                check++;
+            }
+        }
+        if (check==4){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+    /**This method check that the number of resources is not asking to add 4 different types of resources */
 
 }

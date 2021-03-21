@@ -10,12 +10,11 @@ public class Requirements {
     private ArrayList<Integer> MinNumCardReq;
 
     /*Default constructor*/
-    public Requirements() {
+    Requirements() {
     }
 
     /*Getter*/
     public int getReq(ColorDevCard color) {
-        return 0;
     }
 
     public int getReq(ColorDevCard color, Level level) {

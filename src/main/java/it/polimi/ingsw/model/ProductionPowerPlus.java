@@ -7,7 +7,8 @@ public class ProductionPowerPlus extends Ability {
     private ResourceType typeOfRes;
 
     /* Default constructor*/
-    public ProductionPowerPlus() {
+    ProductionPowerPlus(ResourceType type) {
+        this.typeOfRes=type;
     }
 
     /*Getter*/

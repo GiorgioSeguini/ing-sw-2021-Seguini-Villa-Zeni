@@ -9,7 +9,14 @@ public class ProductionPower {
     private NumberOfResources inputRes;
 
     /*Default constructor*/
-    public ProductionPower() {
+    ProductionPower(int points, NumberOfResources outputRes, NumberOfResources inputRes) {
+        this.PointsFaithOut=points;
+        this.outputRes=outputRes;
+        this.inputRes=inputRes;
+    }
+    ProductionPower(NumberOfResources outputRes, NumberOfResources inputRes){
+        this.outputRes=outputRes;
+        this.inputRes=inputRes;
     }
 
     /*Getter*/
@@ -25,6 +32,4 @@ public class ProductionPower {
         return this.outputRes;
     }
 
-    /*Setter*/
-    //TODO
 }

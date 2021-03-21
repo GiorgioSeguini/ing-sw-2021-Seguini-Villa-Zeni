@@ -11,7 +11,7 @@ public class Shelf {
     private int MaxSize;
     private int Used;
 
-    public Shelf() {
+    Shelf() {
         this.Used=0;
         this.MaxSize=0;
     }
