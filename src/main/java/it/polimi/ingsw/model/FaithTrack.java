@@ -16,7 +16,12 @@ public class FaithTrack {
     /**
      * 
      */
-    private int FaithPoints;
+    private int faithPoints;
+
+    /**
+     *
+     */
+    private static ArrayList<Integer> victoryPoints;
 
     /**
      * 
@@ -27,8 +32,7 @@ public class FaithTrack {
      * @return
      */
     public int getFaithPoints() {
-        // TODO implement here
-        return 0;
+        return faithPoints;
     }
 
     /**

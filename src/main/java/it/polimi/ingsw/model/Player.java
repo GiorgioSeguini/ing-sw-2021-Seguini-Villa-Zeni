@@ -65,4 +65,12 @@ public class Player {
         return null;
     }
 
+    /**
+     *
+     */
+    public int getVictoryPoints(){
+        // TODO implement here
+        return 0;
+    }
+
 }

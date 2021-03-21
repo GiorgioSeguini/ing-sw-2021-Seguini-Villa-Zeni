@@ -23,8 +23,7 @@ public class Discard2 extends SoloActionTokens {
      * @return
      */
     public ColorDevCard getColor() {
-        // TODO implement here
-        return null;
+        return color;
     }
 
 }

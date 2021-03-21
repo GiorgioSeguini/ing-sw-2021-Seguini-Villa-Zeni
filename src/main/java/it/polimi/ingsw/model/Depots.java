@@ -15,18 +15,26 @@ public class Depots {
     private StrongBox strongBox;
     private WareHouseDepots wareHouseDepots;
 
-
+    /**
+     *
+     * @return
+     */
     public NumberOfResources getResources() {
-        // TODO implement here
-        return null;
+        NumberOfResources fromStrongBox = strongBox.getResources();
+        NumberOfResources fromWareHouse = wareHouseDepots.getResources();
+        return fromStrongBox.add(fromWareHouse);
     }
 
     /**
      * @param input 
      * @return
      */
-    public void addResource(NumberOfResources input) {
-        // TODO implement here
+    public void addResourceFromProduction(NumberOfResources input) {
+        strongBox.addResource(input);
+    }
+
+    public void addResourcesFromMarket(NumberOfResources input) throws Exception{
+        wareHouseDepots.addResource(input);
     }
 
     /**
@@ -34,7 +42,11 @@ public class Depots {
      * @return
      */
     public void subResource(NumberOfResources required) {
-        // TODO implement here
+        try {
+            wareHouseDepots.subResource(required);
+        }catch(IllegalArgumentException e){
+            //TODO
+        }
     }
 
     /**
@@ -42,8 +54,13 @@ public class Depots {
      * @return
      */
     public boolean match(NumberOfResources required) {
-        // TODO implement here
-        return false;
+        NumberOfResources currentResources = getResources();
+        try{
+            currentResources.sub(required);
+        }catch(IllegalArgumentException e){
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -51,8 +68,7 @@ public class Depots {
      * @return
      */
     public boolean canAddFromMarket(NumberOfResources input) {
-        // TODO implement here
-        return false;
+        return wareHouseDepots.canAdd(input);
     }
 
 }

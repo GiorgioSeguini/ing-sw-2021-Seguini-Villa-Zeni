@@ -42,11 +42,11 @@ public class NumberOfResources {
     }
 
     /**
-     * Throws IlligalArgumentsException
+     * Throws IlligalArgumentsException if the result is negative
      * @param other 
      * @return
      */
-    public NumberOfResources sub(NumberOfResources other) {
+    public NumberOfResources sub(NumberOfResources other) throws IllegalArgumentException{
         // TODO implement here
         return null;
     }
