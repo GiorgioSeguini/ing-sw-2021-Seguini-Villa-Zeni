@@ -31,25 +31,22 @@ public class ProductionPower {
     /**
      * @return
      */
-    public int getPointsFaithOut() {
-        // TODO implement here
-        return 0;
+    public int getFaithPointsOut() {
+        return this.PointsFaithOut;
     }
 
     /**
      * @return
      */
     public NumberOfResources getInputRes() {
-        // TODO implement here
-        return null;
+        return this.inputRes;
     }
 
     /**
      * @return
      */
     public NumberOfResources getOutputRes() {
-        // TODO implement here
-        return null;
+        return this.outputRes;
     }
 
 }

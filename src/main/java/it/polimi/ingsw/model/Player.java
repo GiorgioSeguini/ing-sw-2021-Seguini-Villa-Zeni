@@ -37,32 +37,28 @@ public class Player {
      * @return
      */
     public String getUserName() {
-        // TODO implement here
-        return null;
+        return this.userName;
     }
 
     /**
      * @return
      */
     public PersonalBoard getPersonalBoard() {
-        // TODO implement here
-        return null;
+        return this.personalBoard;
     }
 
     /**
      * @return
      */
     public Depots getDepots() {
-        // TODO implement here
-        return null;
+        return this.depots;
     }
 
     /**
      * @return
      */
     public FaithTrack getFaithTrack() {
-        // TODO implement here
-        return null;
+        return this.faithtrack;
     }
 
     /**

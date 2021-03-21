@@ -26,8 +26,19 @@ public class LeaderCard extends Card {
      * @return
      */
     public LeaderStatus getStatus() {
-        // TODO implement here
-        return null;
+        return status;
+    }
+
+    public Requirements getRequirements() {
+        return requirements;
+    }
+
+    public Ability getAbility() {
+        return ability;
+    }
+
+    public void setStatus(LeaderStatus status) {
+        this.status = status;
     }
 
     /**
