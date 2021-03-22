@@ -2,41 +2,27 @@ package it.polimi.ingsw.model;
 
 import java.util.*;
 
-/**
- * 
- */
 public class StrongBox {
-
-    /**
-     * Default constructor
-     */
-    public StrongBox() {
-    }
 
     private NumberOfResources resources;
 
-    /**
-     * @return
-     */
+    /* Default constructor*/
+    StrongBox() {
+        resources=new NumberOfResources(0,0,0,0);
+    }
+
+    /*Getter*/
     public NumberOfResources getResources() {
-        // TODO implement here
-        return null;
+        return resources;
     }
 
-    /**
-     * @param input 
-     * @return
-     */
+    /*Additional Methods*/
     public void addResource(NumberOfResources input) {
-        // TODO implement here
-    }
+        resources = resources.add(input);
+    }/**This method adds resources to the strongbox*/
 
-    /**
-     * @param required 
-     * @return
-     */
     public void subResource(NumberOfResources required) {
-        // TODO implement here
-    }
+        resources=resources.sub(required);
+    }/**This method subs resources to the strongbox*/
 
 }

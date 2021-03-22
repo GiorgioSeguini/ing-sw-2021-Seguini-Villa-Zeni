@@ -2,15 +2,13 @@ package it.polimi.ingsw.model;
 
 import java.util.*;
 
-/**
- * 
- */
 public class Move2 extends SoloActionTokens {
 
-    /**
-     * Default constructor
-     */
+    /*Default constructor*/
     public Move2() {
     }
 
+    /*Abstract class to implement*/
+    public void ActivateToken() {
+    }
 }

@@ -2,40 +2,27 @@ package it.polimi.ingsw.model;
 
 import java.util.*;
 
-/**
- * 
- */
 public class Discount extends Ability{
 
-    /**
-     * Default constructor
-     */
+    private ColorDevCard cardColor;
+    private int discount;
+
+    /*Default constructor*/
     public Discount() {
     }
 
-    /**
-     * 
-     */
-    private ColorDevCard cardColor;
-
-    /**
-     * 
-     */
-    private int discount;
-
-    /**
-     *
-     * @return
-     */
+    /*Getter*/
     public ColorDevCard getDiscountCardColor() {
         return cardColor;
     }
 
-    /**
-     *
-     * @return
-     */
     public int getDiscountAmount() {
         return discount;
     }
+
+    /*Abstract class to implement*/
+    public void RunAbility(){
+
+    }
+
 }

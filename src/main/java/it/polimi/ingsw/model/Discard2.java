@@ -2,28 +2,23 @@ package it.polimi.ingsw.model;
 
 import java.util.*;
 
-/**
- * 
- */
 public class Discard2 extends SoloActionTokens {
 
-    /**
-     * Default constructor
-     */
-    public Discard2() {
-    }
-
-    /**
-     * 
-     */
     private ColorDevCard color;
 
 
-    /**
-     * @return
-     */
+    /*Default constructor*/
+    public Discard2() {
+    }
+
+
+    /*Getter*/
     public ColorDevCard getColor() {
         return color;
     }
 
+    /*Abstract class to implement*/
+    public void ActivateToken() {
+
+    }
 }

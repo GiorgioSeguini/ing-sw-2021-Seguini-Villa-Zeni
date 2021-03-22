@@ -2,27 +2,20 @@ package it.polimi.ingsw.model;
 
 import java.util.*;
 
-/**
- * 
- */
 public class Deposit extends Ability {
 
-    /**
-     * Default constructor
-     */
+    private ResourceType typeOfRes;
+
+    /*Default constructor*/
     public Deposit() {
     }
 
-    /**
-     * 
-     */
-    private ResourceType typeOfRes;
-
-    /**
-     *
-     * @return
-     */
+    /*Getter*/
     public ResourceType getTypeOfRes() {
-        return typeOfRes;
+        return this.typeOfRes;
+    }
+
+    public void RunAbility(){
+
     }
 }
