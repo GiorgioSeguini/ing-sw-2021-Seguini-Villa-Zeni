@@ -16,7 +16,7 @@ public class White extends Ability {
     }
 
     /*Abstract class to implement*/
-    public void RunAbility() {
+    public void RunAbility(Player owner) {
 
     }
 }

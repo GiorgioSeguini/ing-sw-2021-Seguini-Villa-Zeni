@@ -1,32 +1,33 @@
 package it.polimi.ingsw.model;
 
 import java.util.*;
-
+/*Last Edit: Gio*/
 /**
  * 
  */
 public class FaithTrack {
+    private static final int NUM_OF_POP = 3;
+    private static final int MAX_POINTS = 20;
+
+    private static int[] victoryPoints = {0,0,0};   //TODO
+    private static int[] popesFavorPoints = {2,3,4};
+    private int faithPoints;
+    private ArrayList<PopesFavorStates> popesFavor;
 
     /**
      * Default constructor
      */
-    public FaithTrack() {
+    public FaithTrack(int initialFaithPoints) {
+        faithPoints=initialFaithPoints;
+        for(int i=0; i<NUM_OF_POP; i++) {
+            try {
+                popesFavor.add(PopesFavorStates.FaceDown);
+            }catch (NullPointerException e){
+                e.printStackTrace();
+            }
+        }
     }
 
-    /**
-     * 
-     */
-    private int faithPoints;
-
-    /**
-     *
-     */
-    private static ArrayList<Integer> victoryPoints;
-
-    /**
-     * 
-     */
-    private ArrayList<PopesFavorStates> PopesFavor;
 
     /**
      * @return
@@ -39,16 +40,27 @@ public class FaithTrack {
      * @return
      */
     public int getVictoryPoints() {
-        // TODO implement here
-        return 0;
+        int result = victoryPoints[faithPoints];
+        for(PopesFavorStates p : popesFavor){
+            if(p == PopesFavorStates.FaceUp){
+                result += popesFavorPoints[popesFavor.indexOf(p)];
+            }
+        }
+        return result;
     }
 
     /**
      * return true if you need to activate Pope's Inspection
      * @return
      */
-    public boolean addPoint() {
-        // TODO implement here
+    public boolean addPoint() throws IllegalArgumentException{
+        if(faithPoints >= MAX_POINTS)
+            throw new IllegalArgumentException();
+        faithPoints++;
+        if(faithPoints==0){
+            //TODO
+            return true;
+        }
         return false;
     }
 

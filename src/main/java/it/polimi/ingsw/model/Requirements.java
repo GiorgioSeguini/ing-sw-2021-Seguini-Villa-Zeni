@@ -1,10 +1,11 @@
 package it.polimi.ingsw.model;
 
 import java.util.*;
+/*Last Edit: Gio*/
 
 public class Requirements {
 
-    private NumberOfResources numofres;
+    private NumberOfResources numberOfResourceses;
     private ArrayList<ColorDevCard> ColorCardReq;
     private ArrayList<Level> MinLevelReq;
     private ArrayList<Integer> MinNumCardReq;
@@ -15,6 +16,7 @@ public class Requirements {
 
     /*Getter*/
     public int getReq(ColorDevCard color) {
+        //TODO
     }
 
     public int getReq(ColorDevCard color, Level level) {

@@ -1,6 +1,6 @@
 package it.polimi.ingsw.model;
 
-import java.util.*;
+/*Last Edit: Gio*/
 
 /**
  * 
@@ -33,7 +33,12 @@ public class Depots {
         strongBox.addResource(input);
     }
 
-    public void addResourcesFromMarket(NumberOfResources input) throws Exception{
+    /**
+     *
+     * @param input
+     * @throws IllegalArgumentException
+     */
+    public void addResourcesFromMarket(NumberOfResources input) throws IllegalArgumentException{
         wareHouseDepots.addResource(input);
     }
 
@@ -71,4 +76,11 @@ public class Depots {
         return wareHouseDepots.canAdd(input);
     }
 
+    /**
+     *
+     * @param s
+     */
+    public void addExtraShelf(Shelf s){
+        wareHouseDepots.addExtraShelf(s);
+    }
 }

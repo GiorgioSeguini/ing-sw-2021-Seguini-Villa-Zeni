@@ -1,6 +1,6 @@
 package it.polimi.ingsw.model;
 
-import java.util.*;
+/*Last Edit: Gio*/
 
 public class Discard2 extends SoloActionTokens {
 

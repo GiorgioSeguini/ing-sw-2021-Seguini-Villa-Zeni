@@ -1,6 +1,6 @@
 package it.polimi.ingsw.model;
 
-import java.util.*;
+/*Last Edit: Gio*/
 
 public class Discount extends Ability{
 
@@ -21,8 +21,8 @@ public class Discount extends Ability{
     }
 
     /*Abstract class to implement*/
-    public void RunAbility(){
-
+    public void RunAbility(Player owner){
+        //TODO
     }
 
 }

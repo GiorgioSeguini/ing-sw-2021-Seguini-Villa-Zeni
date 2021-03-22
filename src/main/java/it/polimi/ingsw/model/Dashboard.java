@@ -2,21 +2,19 @@ package it.polimi.ingsw.model;
 
 import java.util.*;
 
-/**
- * 
- */
+/*Last Edit: Gio*/
+
 public class Dashboard {
+
+    private ArrayList<DevelopmentCard> [][] dashBoard= new ArrayList[3][4]; //number of level * number of colors
 
     /**
      * Default constructor
      */
     public Dashboard() {
+        //TODO
     }
 
-    /**
-     * 
-     */
-    private ArrayList<DevelopmentCard> [] dashBoard= new ArrayList[3];
 
     /**
      * @param color 
@@ -24,8 +22,7 @@ public class Dashboard {
      * @return
      */
     public DevelopmentCard getTopDevCard(ColorDevCard color, Level level) {
-        // TODO implement here
-        return null;
+        return dashBoard[level.getIndex()][color.getIndex()].get(dashBoard[level.getIndex()][color.getIndex()].size() -1);
     }
 
     /**
@@ -34,8 +31,9 @@ public class Dashboard {
      * @return
      */
     public DevelopmentCard buyDevCard(ColorDevCard color, Level level) {
-        // TODO implement here
-        return null;
+        DevelopmentCard result = getTopDevCard(color, level);
+        dashBoard[level.getIndex()][color.getIndex()].remove(result);
+        return result;
     }
 
 }

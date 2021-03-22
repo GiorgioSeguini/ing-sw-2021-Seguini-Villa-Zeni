@@ -1,34 +1,26 @@
 package it.polimi.ingsw.model;
 
-import java.util.*;
+/*Last Edit: Gio*/
 
 /**
  * 
  */
 public class DevelopmentCard extends Card {
 
+    private Level level;
+    private ColorDevCard cardColor;
+    private NumberOfResources cost;
+    private ProductionPower productionPower;
+
     /**
      * Default constructor
      */
-    public DevelopmentCard() {
+    public DevelopmentCard(Level level, ColorDevCard cardColor, NumberOfResources cost, ProductionPower productionPower) {
+        this.level = level;
+        this.cardColor = cardColor;
+        this.cost = cost;
+        this.productionPower = productionPower;
     }
-
-    /**
-     * 
-     */
-    private Level level;
-
-    /**
-     * 
-     */
-    private ColorDevCard cardColor;
-
-    /**
-     *
-     */
-    private NumberOfResources cost;
-
-    private ProductionPower productionPower;
 
     /**
      * @return

@@ -1,23 +1,11 @@
 package it.polimi.ingsw.model;
 
-import java.util.*;
+/*Last Edit: Gio*/
 
-/**
- * 
- */
-public class Card {
 
-    /**
-     * Default constructor
-     */
-    public Card() {
-    }
+public abstract class Card {
 
-    /**
-     * 
-     */
     private int VictoryPoints;
-
 
     /**
      * @return

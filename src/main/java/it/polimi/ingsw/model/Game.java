@@ -1,11 +1,21 @@
 package it.polimi.ingsw.model;
 
 import java.util.*;
-
+/*Last Edit: Gio*/
 /**
  * Superclasse che gestisce tutto il gioco
  */
 public class Game {
+
+    //compositions
+    private ArrayList<Player> players;
+    private Market marketTray;
+    private Dashboard dashboard;
+    private LorenzoSoloPlayer soloGame;
+
+    //attribute
+    private int indexPlayingPlayer;
+    private boolean finalTurn;
 
     /**
      * Default constructor
@@ -13,37 +23,8 @@ public class Game {
     public Game() {
     }
 
-    /**
-     * Intero che descrive il giocatore in gioco da 0-3. Player0 è quello che ha il calamaio e inizia il gioco. 
-     * 
-     * (forse anche qui sarebbe meglio un enumerazione con id associati?)
-     */
-    private int indexPlayingPlayer;
 
-    /**
-     * booleano che mi indica se il turno è l'ultimo giocabile. Questo avviene perchè quando il gioco termina, ogni giocatore ha diritto di giocare il proprio turno. A fine di quel turno il gioco termina.
-     */
-    private boolean finalTurn;
 
-    /**
-     * 
-     */
-    private ArrayList<Player> players;
-
-    /**
-     * 
-     */
-    private Market marketTray;
-
-    /**
-     * 
-     */
-    private Dashboard dashboard;
-
-    /**
-     * 
-     */
-    private LorenzoSoloPlayer sologame;
 
     /**
      * @param index 
@@ -85,13 +66,13 @@ public class Game {
     /**
      * @return
      */
-    public Player getWinner() throws Exception{
+    public Player getWinner() throws IllegalArgumentException{
         //TODO check exception
         if(!finalTurn || indexPlayingPlayer!=0){
-            throw new Exception();
+            throw new IllegalArgumentException();
         }
         Player winner;
-        if(sologame != null) {
+        if(soloGame == null) {
             //multiplayer
             int max = players.get(0).getVictoryPoints();
             winner = players.get(0);
