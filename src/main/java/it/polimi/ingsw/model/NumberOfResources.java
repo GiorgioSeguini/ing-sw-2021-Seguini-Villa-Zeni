@@ -3,7 +3,7 @@ package it.polimi.ingsw.model;
 import java.util.*;
 
 public class NumberOfResources {
-    private int[]resources= new int[4];
+    private final int[]resources= new int[4]; //if issue attempt, make it in constructor
 
     NumberOfResources(int Servants, int Shields, int Coins, int Stones){
        resources[0]=Servants;
@@ -26,14 +26,14 @@ public class NumberOfResources {
         return new_resources;
     }
 
-    public NumberOfResources sub(NumberOfResources other){
+    public NumberOfResources sub(NumberOfResources other) throws IllegalArgumentException{
         int[] x= new int[4];
         for(ResourceType type: ResourceType.values()){
             if (resources[type.getIndex()]>=other.getAmountOf(type)){
                 x[type.getIndex()]=resources[type.getIndex()]- other.getAmountOf(type);
             }
             else{
-                //trow exceptions TODO
+                throw new IllegalArgumentException();
             }
         }
         NumberOfResources new_resources= new NumberOfResources(x[0],x[1],x[2],x[3]);

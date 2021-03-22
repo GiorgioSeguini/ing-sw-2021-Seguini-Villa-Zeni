@@ -8,12 +8,12 @@ import java.util.*;
 public class Shelf {
 
     private ResourceType restype;
-    private int MaxSize;
+    private final int MaxSize;
     private int Used;
 
-    Shelf() {
+    Shelf(int maxSize) {
         this.Used=0;
-        this.MaxSize=0;
+        this.MaxSize=maxSize;
     }
     /*default constructor*/
 
@@ -36,9 +36,6 @@ public class Shelf {
         this.restype=type;
     }
 
-    public void setMaxSize(int size){
-        this.MaxSize=size;
-    }
 
 
     /*Additional Methods*/
