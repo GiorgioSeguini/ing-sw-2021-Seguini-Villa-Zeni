@@ -1,6 +1,6 @@
 package it.polimi.ingsw.model;
 
-import java.util.*;
+/*Last Edit: William Zeni*/
 
 /*
  * This class represents the single shelf of my warehouse depots. This can have just a single type of resources and a limited size to store them;

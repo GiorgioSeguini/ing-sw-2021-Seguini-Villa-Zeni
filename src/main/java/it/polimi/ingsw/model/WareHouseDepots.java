@@ -1,5 +1,6 @@
 package it.polimi.ingsw.model;
 
+/*Last Edit: William Zeni*/
 public class WareHouseDepots {
 
     private final Shelf[] shelfs= new Shelf[3];
@@ -124,4 +125,5 @@ public class WareHouseDepots {
     }
     /**This method check that the number of resources is not asking to add 4 different types of resources */
 
+    /*Last Edit: William Zeni*/
 }

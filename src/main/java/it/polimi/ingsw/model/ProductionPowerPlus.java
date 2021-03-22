@@ -1,6 +1,5 @@
 package it.polimi.ingsw.model;
-
-import java.util.*;
+/*Last Edit: William Zeni*/
 
 public class ProductionPowerPlus extends Ability {
 
