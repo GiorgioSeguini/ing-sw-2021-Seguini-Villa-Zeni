@@ -76,6 +76,30 @@ public class WareHouseDepots {
         return true;
     }/**This method check this: if there is just one mismatch with the request to add, returns false*/
 
+    public boolean canSub(NumberOfResources input){
+        if(check_shelf_type_Integrity() && check_NumberOfResources_Integrity_for_WareHouseDepots(input)){
+            for (ResourceType x: ResourceType.values()){
+                if(input.getAmountOf(x)!=0){
+                    int check=0;
+                    for (Shelf layer: shelfs){
+                        if(x==layer.getResType()){
+                            if(layer.getUsed()-input.getAmountOf(x)<0){
+                                return false;
+                            }
+                        }else{
+                            check++;
+                        }
+                    }
+                    if(check==3){
+                        return false;
+                    }
+
+                }
+            }
+        }
+        return true;
+    }/**This method check this: if there is just one mismatch with the request to sub, returns false*/
+
     public boolean check_shelf_type_Integrity(){
         for(int i=0; i<2;i++){
             for(int j=i+1; j<3;j++){
