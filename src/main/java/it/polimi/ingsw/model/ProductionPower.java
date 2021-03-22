@@ -20,7 +20,7 @@ public class ProductionPower {
     }
 
     /*Getter*/
-    public int getPointsFaithOut() {
+    public int getFaithPointsOut() {
         return this.PointsFaithOut;
     }
 

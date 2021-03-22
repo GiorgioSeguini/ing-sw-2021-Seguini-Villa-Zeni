@@ -11,17 +11,20 @@ public class PersonalBoard {
      * Default constructor
      */
     public PersonalBoard() {
+        OwnedDevCards = new DevelopmentCard[9];
+        OwnedLeaderCard = new LeaderCard[2];
     }
 
+    //PER CARTE SVILUPPO E AZIONE NON SAREBBE MEGLIO UN ARRAYLIST?
     /**
      * 
      */
-    private DevelopmentCard []OwnedDevCards = new DevelopmentCard[2];
+    private DevelopmentCard[] OwnedDevCards;
 
     /**
      * 
      */
-    private LeaderCard []OwnedLeaderCard = new LeaderCard[9];
+    private LeaderCard[] OwnedLeaderCard;
 
 
     /**
@@ -51,7 +54,7 @@ public class PersonalBoard {
     /**
      * @return
      */
-    public int getFaithPoints() {
+    public int getVictoryPoints() {
         // TODO implement here
         return 0;
     }
