@@ -11,11 +11,17 @@ public class Shelf {
     private final int MaxSize;
     private int Used;
 
-    Shelf(int maxSize) {
+    /*default constructor*/
+    Shelf(ResourceType type, int maxSize) {
+        this.Used=0;
+        this.MaxSize=maxSize;
+        this.restype=type;
+    }
+
+    Shelf(int maxSize){
         this.Used=0;
         this.MaxSize=maxSize;
     }
-    /*default constructor*/
 
 
     /*Getter*/
@@ -35,11 +41,14 @@ public class Shelf {
     public void setResType(ResourceType type) {
         this.restype=type;
     }
+    public void SetUsed(int Used){
+        this.Used=Used;
+    }
 
 
 
     /*Additional Methods*/
-    public void add(int input) {
+    public void add_resources(int input) {
         if(this.Used+input<=this.MaxSize){
             this.Used=this.Used+input;
         }else{
@@ -47,7 +56,7 @@ public class Shelf {
         }
     }/** this method permits to add resources on the shelf only if the operation is permitted. There is no check about the res_type*/
 
-    public void sub(int required) {
+    public void sub_resources(int required) {
         if(this.Used-required>=0){
             this.Used=this.Used-required;
         }else{
