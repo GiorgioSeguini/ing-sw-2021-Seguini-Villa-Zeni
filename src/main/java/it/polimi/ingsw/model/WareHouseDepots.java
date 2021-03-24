@@ -1,14 +1,18 @@
 package it.polimi.ingsw.model;
 
+import java.util.ArrayList;
+
 /*Last Edit: William Zeni*/
 public class WareHouseDepots {
 
-    private final Shelf[] shelfs= new Shelf[3];
+    //private final Shelf[] shelfs= new Shelf[3];
+    private ArrayList<Shelf> shelfs= new ArrayList<Shelf>();
+    //private ArrayList<Shelf> extra_shelf;
 
     /*Default constructor*/
      WareHouseDepots() {
         for(int i=0; i<3; i++){
-            shelfs[i]=new Shelf(i+1);
+            shelfs.add(new Shelf(i+1));
         }
     }
 
@@ -22,108 +26,90 @@ public class WareHouseDepots {
         return resources;
     }
 
+    /*Additional Methods*/
     /** This method add the resources to all the shelf if it found them. */
     public void addResource(NumberOfResources input) {
-        for(Shelf x: shelfs){
-            if(input.getAmountOf(x.getResType())>0){
-                x.add(input.getAmountOf(x.getResType()));
-            }
-            else{
-                System.out.println("Type of resources not found.");
-            }
-        }
-
+        //TODO
     }
 
     /** This method add the resources to all the shelf if it found them. */
     public void subResource(NumberOfResources required) {
-        for(Shelf x: shelfs){
-            if(required.getAmountOf(x.getResType())>0){
-                x.sub(required.getAmountOf(x.getResType()));
-            }
-            else{
-                System.out.println("Type of resources not found.");
-            }
-        }
+      //TODO
     }
 
-    /*Additional Methods*/
+    /**This method checks if you can really add what do you want to add in WareHouseDepots*/
     public boolean canAdd(NumberOfResources input){
-        if(check_shelf_type_Integrity() && check_NumberOfResources_Integrity_for_WareHouseDepots(input)){
-            for (ResourceType x: ResourceType.values()){
-                if(input.getAmountOf(x)!=0){
-                    int check=0;
-                    for (Shelf layer: shelfs){
-                        if(x==layer.getResType()){
-                            if(layer.getUsed()+input.getAmountOf(x)> layer.getMaxSize()){
-                                return false;
-                            }
-                        }else{
-                            check++;
-                        }
-                    }
-                    if(check==3){
-                        return false;
-                    }
 
-                }
-            }
-        }
-        return true;
-    }/**This method check this: if there is just one mismatch with the request to add, returns false*/
-    //Svuoto mensole, creo NumberOfResources mia+aggiungere e poi vedo se riesco a sistemarla sugli scaffali
+        NumberOfResources my_resources= this.getResources();
+        my_resources=my_resources.add(input); //funza perchè number of resources l'abbiamo fatta immutabile, torna sempre una classe nuova
+        return fill_correctly(my_resources);
+    }
 
     public boolean canSub(NumberOfResources input){
-        if(check_shelf_type_Integrity() && check_NumberOfResources_Integrity_for_WareHouseDepots(input)){
-            for (ResourceType x: ResourceType.values()){
-                if(input.getAmountOf(x)!=0){
-                    int check=0;
-                    for (Shelf layer: shelfs){
-                        if(x==layer.getResType()){
-                            if(layer.getUsed()-input.getAmountOf(x)<0){
-                                return false;
-                            }
-                        }else{
-                            check++;
-                        }
-                    }
-                    if(check==3){
-                        return false;
-                    }
+        NumberOfResources my_resources= this.getResources();
+        my_resources=my_resources.sub(input); //funza perchè number of resources l'abbiamo fatta immutabile, torna sempre una classe nuova
+        return fill_correctly(my_resources);
+    }
 
-                }
-            }
-        }
-        return true;
-    }/**This method check this: if there is just one mismatch with the request to sub, returns false*/
-
-    public boolean check_shelf_type_Integrity(){
+    /**This method check if all the shelfs have different types of resources*/
+    public boolean check_3_shelf_type_Integrity(){
         for(int i=0; i<2;i++){
             for(int j=i+1; j<3;j++){
-                if(shelfs[i].getResType()==shelfs[j].getResType()){
+                if(shelfs.get(i).getResType()==shelfs.get(j).getResType()){
                     return false;
                 }
             }
         }
         return true;
     }
-    /**This method check if all the shelfs have different types of resources*/
 
-    private boolean check_NumberOfResources_Integrity_for_WareHouseDepots(NumberOfResources input){
-        int check=0;
+    /**This method is called by ability Deposit, and can be called 2 times. Add an extra shelf to WareHouseDepots*/
+    public void addExtraShelf(Shelf shelf){
+        this.shelfs.add(shelf);
+        shelf.SetIsExtra();
+    }
+
+    /**This method return true if with the current disposition of the shelf you can fill them with a Number of resources */
+    private boolean fill_correctly(NumberOfResources my_resources){
+        NumberOfResources to_sub;
+
         for (ResourceType x: ResourceType.values()){
-            if(input.getAmountOf(x)!=0){
-                check++;
+            if(my_resources.getAmountOf(x)!=0){
+                for (Shelf layer: shelfs){
+                    if(layer.getResType()==x){
+                        int new_resource_tosub;
+                        if(my_resources.getAmountOf(x)>layer.getMaxSize()){
+                            new_resource_tosub=my_resources.getAmountOf(x)-layer.getMaxSize();
+                        }
+                        else{
+                            new_resource_tosub= my_resources.getAmountOf(x);
+                        }
+                        switch (x.getIndex()){
+                            case 0: to_sub=new NumberOfResources(new_resource_tosub,0,0,0);
+                                my_resources=my_resources.sub(to_sub);
+                                break;
+                            case 1: to_sub=new NumberOfResources(0,new_resource_tosub,0,0);
+                                my_resources=my_resources.sub(to_sub);
+                                break;
+                            case 2: to_sub=new NumberOfResources(0,0,new_resource_tosub,0);
+                                my_resources=my_resources.sub(to_sub);
+                                break;
+                            case 3: to_sub=new NumberOfResources(0,0,0, new_resource_tosub);
+                                my_resources=my_resources.sub(to_sub);
+                                break;
+                        }
+                    }
+                }
             }
         }
-        if (check==4){
-            return false;
-        }
-        else{
+        if (my_resources.equals(new NumberOfResources(0,0,0,0))){
             return true;
         }
-    }
-    /**This method check that the number of resources is not asking to add 4 different types of resources */
+        else{
+            return false;
+        }
 
-    /*Last Edit: William Zeni*/
+    }
+
+
 }
