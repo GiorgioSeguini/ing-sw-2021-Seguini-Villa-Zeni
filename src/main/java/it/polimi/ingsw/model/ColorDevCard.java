@@ -2,20 +2,15 @@ package it.polimi.ingsw.model;
 
 /*Last Edit: Gio*/
 
+//removed functions getIndex, use ordinal instead
+
 public enum ColorDevCard {
-    Yellow(1),
-    Green(2),
-    Blue(3),
-    Purple(4);
+    Yellow,
+    Green,
+    Blue,
+    Purple;
 
-    private final int index;
-
-    ColorDevCard(int i) {
-        this.index=i;
-    }
-
-
-    public int getIndex() {
-        return index;
+    public static int size(){
+        return ColorDevCard.values().length;
     }
 }

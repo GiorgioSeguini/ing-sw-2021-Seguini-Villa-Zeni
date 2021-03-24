@@ -6,7 +6,7 @@ import java.util.*;
 
 public class Dashboard {
 
-    private ArrayList<DevelopmentCard> [][] dashBoard= new ArrayList[3][4]; //number of level * number of colors
+    private Stack<DevelopmentCard> [][] dashBoard= new Stack[ColorDevCard.size()][Level.size()]; //number of level * number of colors
 
     /**
      * Default constructor
@@ -22,7 +22,7 @@ public class Dashboard {
      * @return
      */
     public DevelopmentCard getTopDevCard(ColorDevCard color, Level level) {
-        return dashBoard[level.getIndex()][color.getIndex()].get(dashBoard[level.getIndex()][color.getIndex()].size() -1);
+        return dashBoard[level.ordinal()][color.ordinal()].get(dashBoard[level.ordinal()][color.ordinal()].size() -1);
     }
 
     /**
@@ -31,9 +31,12 @@ public class Dashboard {
      * @return
      */
     public DevelopmentCard buyDevCard(ColorDevCard color, Level level) {
-        DevelopmentCard result = getTopDevCard(color, level);
-        dashBoard[level.getIndex()][color.getIndex()].remove(result);
-        return result;
+        /*DevelopmentCard result = getTopDevCard(color, level);
+        dashBoard[level.ordinal()][color.ordinal()].remove(result);
+        return result;*
+
+         */
+        return dashBoard[level.ordinal()][color.ordinal()].pop();
     }
 
 }
