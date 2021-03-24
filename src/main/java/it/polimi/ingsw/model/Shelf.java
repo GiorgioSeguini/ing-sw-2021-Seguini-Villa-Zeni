@@ -10,17 +10,20 @@ public class Shelf {
     private ResourceType restype;
     private final int MaxSize;
     private int Used;
+    boolean is_extra_shelf;
 
     /*default constructor*/
     Shelf(ResourceType type, int maxSize) {
         this.Used=0;
         this.MaxSize=maxSize;
         this.restype=type;
+        this.is_extra_shelf=false;
     }
 
     Shelf(int maxSize){
         this.Used=0;
         this.MaxSize=maxSize;
+        this.is_extra_shelf=false;
     }
 
 
@@ -37,12 +40,19 @@ public class Shelf {
         return this.Used;
     }
 
+    public boolean getIsExtra(){return this.is_extra_shelf;}
+
     /*Setter*/
     public void setResType(ResourceType type) {
         this.restype=type;
     }
+
     public void SetUsed(int Used){
         this.Used=Used;
+    }
+
+    public void SetIsExtra(){
+        this.is_extra_shelf=true;
     }
 
 

@@ -17,6 +17,7 @@ public class Requirements {
     /*Getter*/
     public int getReq(ColorDevCard color) {
         //TODO
+        return 0;
     }
 
     public int getReq(ColorDevCard color, Level level) {

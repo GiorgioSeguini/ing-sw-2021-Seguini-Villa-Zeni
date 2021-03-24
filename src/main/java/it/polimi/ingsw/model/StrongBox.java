@@ -17,12 +17,14 @@ public class StrongBox {
     }
 
     /*Additional Methods*/
+    /**This method adds resources to the strongbox*/
     public void addResource(NumberOfResources input) {
         resources = resources.add(input);
-    }/**This method adds resources to the strongbox*/
+    }
 
+    /**This method subs resources to the strongbox*/
     public void subResource(NumberOfResources required) {
         resources=resources.sub(required);
-    }/**This method subs resources to the strongbox*/
+    }
 
 }

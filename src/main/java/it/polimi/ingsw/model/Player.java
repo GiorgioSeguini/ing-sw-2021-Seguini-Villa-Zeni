@@ -32,9 +32,6 @@ public class Player {
         return this.faithtrack;
     }
 
-    /**
-     *
-     */
     public int getVictoryPoints(){
         // TODO implement here
         return 0;

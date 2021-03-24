@@ -1,6 +1,6 @@
 package it.polimi.ingsw.model;
 
-import java.util.*;
+/*Last Edit: William Zeni*/
 
 public class NumberOfResources {
     private final int[]resources= new int[4]; //if issue attempt, make it in constructor
