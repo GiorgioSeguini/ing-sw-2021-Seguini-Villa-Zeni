@@ -1,34 +1,20 @@
 package it.polimi.ingsw.model;
 
 import java.util.*;
+/*Last Edit: Fabio*/
 
-/**
- * 
- */
 public class Market {
 
-    /**
-     * Default constructor
-     */
+    private MarbleColor[][] tray;
+    private MarbleColor externalMarble;
+
+    //default constructor
     public Market() {
         tray = new MarbleColor[3][4];
     }
 
-    /**
-     * 
-     */
-    private MarbleColor[][] tray;
-
-    /**
-     * 
-     */
-    private MarbleColor externalMarble;
-
-
-    /**
-     * @return
-     */
-    public MarbleColor[] getRow(int index) {                //TODO INSERIRE ECCEZIONI
+    //getter
+    public MarbleColor[] getRow(int index) throws IllegalArgumentException{
         MarbleColor[] trayRow = new MarbleColor[3];
         for(int i= 0; i<4; i++ ){
             trayRow[i] = tray[index][i];
@@ -36,10 +22,7 @@ public class Market {
         return trayRow;
     }
 
-    /**
-     * @return
-     */
-    public MarbleColor[] getColumn(int index) {             //TODO INSERIRE ECCEZIONI
+    public MarbleColor[] getColumn(int index) throws IllegalArgumentException{
         MarbleColor[] trayColumn = new MarbleColor[4];
         for(int i=0; i<3; i++){
             trayColumn[i] = tray[i][index];
@@ -50,7 +33,7 @@ public class Market {
     /**
      * @return
      */
-    public MarbleColor[] buyRow(int index) {                //TODO INSERIRE ECCEZIONI
+    public MarbleColor[] buyRow(int index) throws IllegalArgumentException {                //TODO INSERIRE ECCEZIONI
         MarbleColor[] buyedRow = new MarbleColor[4];
         for(int i=0; i<4; i++){
             buyedRow[i] = tray[index][i];               //COPIO LA RIGA DA COMPRARE IN BUYEDROW
@@ -67,7 +50,7 @@ public class Market {
     /**
      * @return
      */
-    public MarbleColor[] buyColumn(int index) {             //TODO INSERIRE ECCEZIONI
+    public MarbleColor[] buyColumn(int index) throws IllegalArgumentException {
         MarbleColor[] buyedColumn = new MarbleColor[3];
         for(int i=0; i<3; i++){
             buyedColumn[i] = tray[i][index];               //COPIO LA RIGA DA COMPRARE IN BUYEDROW
