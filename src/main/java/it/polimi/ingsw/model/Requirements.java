@@ -37,36 +37,36 @@ public class Requirements {
         //match for the resources
         NumberOfResources ownedRes = owner.getDepots().getResources();
         try{
-            numberOfResourceses.sub(ownedRes);
+            ownedRes.sub(numberOfResourceses);
         }catch(IllegalArgumentException e){
             return false;
         }
 
         //match for the development card
         PersonalBoard board = owner.getPersonalBoard();
-        ArrayList<DevelopmentCard> owned= board.getAllDevCard();
+        ArrayList<DevelopmentCard> ownedDevCard= board.getAllDevCard();
         boolean matched = true;
         for(ColorDevCard c : ColorDevCard.values()){
             for(Level l: Level.values()){
-                if(minNumber[c.ordinal()][l.ordinal()]>0){
+                int missing = minNumber[c.ordinal()][l.ordinal()];
+                if(missing>0){
                     //search for a match
-                    matched = false;
                     int increment =0;
-                    while(l.ordinal() + increment < Level.values().length) {
+                    while(l.ordinal() + increment < Level.values().length && missing>0) {
                         Level l1 = Level.values()[l.ordinal() + increment];
-                        for (DevelopmentCard dev : owned) {
+                        for (DevelopmentCard dev : ownedDevCard) {
                             if (dev.getColor().equals(c) && dev.getLevel().equals(l1)) {
-                                owned.remove(dev);
-                                matched = true;
-                                break;
+                                ownedDevCard.remove(dev);
+                                missing--;
+                                if(missing == 0) break;
                             }
                         }
-                        if (matched) break;
                     }
+                    if(missing>0) matched=false;
                 }
-                if(!matched) break;
+                if(!matched) break;     //optional
             }
-            if(!matched) break;
+            if(!matched) break;         //optional
         }
 
         return matched;
