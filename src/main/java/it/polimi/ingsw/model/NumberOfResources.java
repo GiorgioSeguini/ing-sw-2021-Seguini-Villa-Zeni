@@ -13,13 +13,13 @@ public class NumberOfResources {
     }
 
     public int getAmountOf(ResourceType type){
-        return resources[type.getIndex()];
+        return resources[type.ordinal()];
     }
 
     public NumberOfResources add(NumberOfResources other){
         int[] x= new int[4];
         for(ResourceType type: ResourceType.values()){
-            x[type.getIndex()]=resources[type.getIndex()]+ other.getAmountOf(type);
+            x[type.ordinal()]=resources[type.ordinal()]+ other.getAmountOf(type);
         }
         NumberOfResources new_resources= new NumberOfResources(x[0],x[1],x[2],x[3]);
 
@@ -29,8 +29,8 @@ public class NumberOfResources {
     public NumberOfResources sub(NumberOfResources other) throws IllegalArgumentException{
         int[] x= new int[4];
         for(ResourceType type: ResourceType.values()){
-            if (resources[type.getIndex()]>=other.getAmountOf(type)){
-                x[type.getIndex()]=resources[type.getIndex()]- other.getAmountOf(type);
+            if (resources[type.ordinal()]>=other.getAmountOf(type)){
+                x[type.ordinal()]=resources[type.ordinal()]- other.getAmountOf(type);
             }
             else{
                 throw new IllegalArgumentException();
@@ -39,6 +39,27 @@ public class NumberOfResources {
         NumberOfResources new_resources= new NumberOfResources(x[0],x[1],x[2],x[3]);
 
         return new_resources;
+    }
+
+    public ResourceType Max_Resource_Type(){
+        int max=resources[0];
+        int indexmax=0;
+        ResourceType out;
+
+        for (int i=1;i<resources.length;i++){
+            if(max<resources[i]){
+                max=resources[i];
+                indexmax=i;
+            }
+        }
+        switch (indexmax){
+            case 0: out = ResourceType.Servants; break;
+            case 1: out = ResourceType.Shields; break;
+            case 2: out = ResourceType.Coins; break;
+            case 3: out = ResourceType.Stones; break;
+            default: out = null;
+        }
+        return out;
     }
 
 
