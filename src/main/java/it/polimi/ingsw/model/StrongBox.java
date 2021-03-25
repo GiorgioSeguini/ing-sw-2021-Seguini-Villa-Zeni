@@ -23,8 +23,13 @@ public class StrongBox {
     }
 
     /**This method subs resources to the strongbox*/
-    public void subResource(NumberOfResources required) {
-        resources=resources.sub(required);
+    public void subResource(NumberOfResources required) throws IllegalArgumentException{
+        NumberOfResources old_resources= resources.MakeACopy();
+        try{
+            resources=resources.sub(required);
+        }catch (IllegalArgumentException error){
+            resources=old_resources;
+        }
     }
 
 }

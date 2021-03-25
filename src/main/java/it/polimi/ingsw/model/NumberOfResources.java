@@ -62,6 +62,10 @@ public class NumberOfResources {
         return out;
     }
 
+    public NumberOfResources MakeACopy(){
+        return new NumberOfResources(this.resources[0],this.resources[1],this.resources[2],this.resources[3]);
+    }
+
 
 
 }
