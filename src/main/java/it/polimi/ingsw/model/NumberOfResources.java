@@ -3,13 +3,13 @@ package it.polimi.ingsw.model;
 /*Last Edit: William Zeni*/
 
 public class NumberOfResources {
-    private final int[]resources= new int[4]; //if issue attempt, make it in constructor
+    private final int[] resources = new int[4]; //if issue attempt, make it in constructor
 
     NumberOfResources(int Servants, int Shields, int Coins, int Stones){
-       resources[0]=Servants;
-       resources[1]=Shields;
-       resources[2]=Coins;
-       resources[3]=Stones;
+        resources[0]=Servants;
+        resources[1]=Shields;
+        resources[2]=Coins;
+        resources[3]=Stones;
     }
 
     public int getAmountOf(ResourceType type){

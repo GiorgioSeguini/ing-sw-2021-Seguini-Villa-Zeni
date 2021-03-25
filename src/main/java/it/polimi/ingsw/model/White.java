@@ -7,7 +7,8 @@ public class White extends Ability {
     private ResourceType typeOfRes;
 
     /*Default constructor*/
-    White() {
+    White(ResourceType type) {
+        this.typeOfRes=type;
     }
 
     /*Getter*/

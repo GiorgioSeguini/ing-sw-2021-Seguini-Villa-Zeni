@@ -47,11 +47,11 @@ public class Shelf {
         this.restype=type;
     }
 
-    public void SetUsed(int Used){
+    public void setUsed(int Used){
         this.Used=Used;
     }
 
-    public void SetIsExtra(){
+    public void setIsExtra(){
         this.is_extra_shelf=true;
     }
 
