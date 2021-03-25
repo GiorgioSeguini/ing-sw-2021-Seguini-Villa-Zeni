@@ -9,7 +9,7 @@ public class WareHouseDepots {
 
     /*Default constructor*/
     WareHouseDepots(){
-        shelfs=new ArrayList<Shelf>();
+        shelfs=new ArrayList<>();
         for (int i=0; i<3; i++){
             shelfs.add(new Shelf(i+1));
         }
@@ -26,32 +26,35 @@ public class WareHouseDepots {
 
     /*Additional Methods*/
     /** This method add the resources to all the shelf if it found them. */
-    public void addResource (NumberOfResources input) {
+    public void addResource (NumberOfResources input) throws UnableToFillError {
         NumberOfResources old_resources=this.getResources();
         NumberOfResources new_resources=this.getResources();
         new_resources=new_resources.add(input);
 
-        CleanShelf();
         try{
+            CleanShelf();
             fill_correctly(new_resources);
         }
-        catch (Exception ImpossibleFill){
+        catch (UnableToFillError error){
+            CleanShelf();
             fill_correctly(old_resources);
         }
     }
 
     /** This method add the resources to all the shelf if it found them. */
-    public void subResource(NumberOfResources required) {
-      //TODO
-    }
+    public void subResource(NumberOfResources required) throws UnableToFillError{
+        NumberOfResources old_resources=this.getResources();
+        NumberOfResources new_resources=this.getResources();
+        new_resources=new_resources.sub(required);
 
-    /**This method checks if you can really add what do you want to add in WareHouseDepots*/
-    public boolean canAdd(NumberOfResources input){
-       return false;
-    }
-
-    public boolean canSub(NumberOfResources input){
-        return false;
+        try{
+            CleanShelf();
+            fill_correctly(new_resources);
+        }
+        catch (UnableToFillError error){
+            CleanShelf();
+            fill_correctly(old_resources);
+        }
     }
 
     /**This method check if all the shelfs have different types of resources*/
@@ -72,6 +75,8 @@ public class WareHouseDepots {
         shelf.setIsExtra();
     }
 
+    /**This method clean all the shelf from their items (the number is set to zero and the type is cancelled).
+     * For the extra shelf the type is preserved.*/
     public void CleanShelf(){
         for (Shelf x: shelfs){
             x.setUsed(0);
@@ -81,8 +86,65 @@ public class WareHouseDepots {
         }
     }
 
+    /**This method check that the number of resources is not asking to add 4 different types of resources */
+    private boolean check_NumberOfResources_Integrity_for_WareHouseDepots(NumberOfResources input){
+        int check=0;
+        for (ResourceType x: ResourceType.values()){
+            if(input.getAmountOf(x)!=0){
+                check++;
+            }
+        }
+        if (check==4){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
     /**This method return true if with the current disposition of the shelf you can fill them with a Number of resources */
-    private void fill_correctly(NumberOfResources my_resources){
+    private void fill_correctly(NumberOfResources my_resources)throws UnableToFillError{
+
+        /*This for checks just for the extra shelf*/
+        for(Shelf x: shelfs){
+            if(my_resources.getAmountOf(x.getResType())!=0 && x.getIsExtra()){
+                if(my_resources.getAmountOf(x.getResType()) > x.getMaxSize()){
+                    x.setUsed(x.getMaxSize());
+                }
+                else{
+                    x.setUsed(my_resources.getAmountOf(x.getResType()));
+                }
+                switch (x.getResType().ordinal()){
+                    case 0: my_resources=my_resources.sub(new NumberOfResources(x.getUsed(),0,0,0)); break;
+                    case 1: my_resources=my_resources.sub(new NumberOfResources(0,x.getUsed(),0,0)); break;
+                    case 2: my_resources=my_resources.sub(new NumberOfResources(0,0,x.getUsed(),0)); break;
+                    case 3: my_resources=my_resources.sub(new NumberOfResources(0,0,0,x.getUsed())); break;
+                }
+            }
+        }
+
+        /*This for checks the first three shelfs*/
+        if(check_NumberOfResources_Integrity_for_WareHouseDepots(my_resources)){
+            for (int i=2;i>=0;i--){
+                if(shelfs.get(i).getMaxSize()< my_resources.getAmountOf(my_resources.Max_Resource_Type())){
+                    throw new UnableToFillError();
+                }
+                else{
+                    shelfs.get(i).setUsed(my_resources.getAmountOf(my_resources.Max_Resource_Type()));
+                    shelfs.get(i).setResType(my_resources.Max_Resource_Type());
+                    switch (my_resources.Max_Resource_Type().ordinal()){
+                        case 0: my_resources=my_resources.sub(new NumberOfResources(shelfs.get(i).getUsed(),0,0,0)); break;
+                        case 1: my_resources=my_resources.sub(new NumberOfResources(0,shelfs.get(i).getUsed(),0,0)); break;
+                        case 2: my_resources=my_resources.sub(new NumberOfResources(0,0,shelfs.get(i).getUsed(),0)); break;
+                        case 3: my_resources=my_resources.sub(new NumberOfResources(0,0,0,shelfs.get(i).getUsed())); break;
+                    }
+                }
+            }
+        }
+        else{
+            throw new UnableToFillError();
+        }
+
 
     }
 

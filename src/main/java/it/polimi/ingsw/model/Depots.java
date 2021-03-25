@@ -38,7 +38,7 @@ public class Depots {
      * @param input
      * @throws IllegalArgumentException
      */
-    public void addResourcesFromMarket(NumberOfResources input) throws IllegalArgumentException{
+    public void addResourcesFromMarket(NumberOfResources input) throws UnableToFillError{
         wareHouseDepots.addResource(input);
     }
 
@@ -46,7 +46,7 @@ public class Depots {
      * @param required 
      * @return
      */
-    public void subResource(NumberOfResources required) {
+    public void subResource(NumberOfResources required) throws UnableToFillError {
         try {
             wareHouseDepots.subResource(required);
         }catch(IllegalArgumentException e){
@@ -72,10 +72,11 @@ public class Depots {
      * @param input 
      * @return
      */
+    /*
     public boolean canAddFromMarket(NumberOfResources input) {
         return wareHouseDepots.canAdd(input);
     }
-
+*/
     /**
      *
      * @param s
