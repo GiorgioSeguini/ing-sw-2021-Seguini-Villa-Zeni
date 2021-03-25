@@ -1,30 +1,24 @@
 package it.polimi.ingsw.model;
 
 import java.util.*;
+/*Last Edit: Fabio*/
 
-/**
- * 
- */
 public class LeaderCard extends Card {
 
-    /**
-     * Default constructor
-     */
-    public LeaderCard() {
-    }
-
-    /**
-     * 
-     */
     private LeaderStatus status;
 
     private Requirements requirements;
 
     private Ability ability;
 
-    /**
-     * @return
-     */
+    private int VictoryPoints;
+
+    //Default constructor
+    public LeaderCard() {
+    }
+
+
+    //getter
     public LeaderStatus getStatus() {
         return status;
     }
@@ -36,6 +30,7 @@ public class LeaderCard extends Card {
     public Ability getAbility() {
         return ability;
     }
+
 
     public void setStatus(LeaderStatus status) {
         this.status = status;

@@ -2,71 +2,81 @@ package it.polimi.ingsw.model;
 
 import java.util.*;
 
-/**
- * Classe che gestisce la plancia del giocatore
- */
+/*Last Edit: Fabio*/
+
 public class PersonalBoard {
 
-    /**
-     * Default constructor
-     */
-    public PersonalBoard() {
-        OwnedDevCards = new DevelopmentCard[9];
-        OwnedLeaderCard = new LeaderCard[2];
-    }
+    private ArrayList<DevelopmentCard>[] OwnedDevCards;
 
-    //PER CARTE SVILUPPO E AZIONE NON SAREBBE MEGLIO UN ARRAYLIST?
-    /**
-     * 
-     */
-    private DevelopmentCard[] OwnedDevCards;
-
-    /**
-     * 
-     */
     private LeaderCard[] OwnedLeaderCard;
 
+    //default constructor
+    public PersonalBoard() {
+        OwnedDevCards = new ArrayList[3]; //array di arraylist
+        OwnedLeaderCard = new LeaderCard[2];
+    }
 
     /**
      * @return
      */
     public LeaderCard[] getLeaderCards() {
-        // TODO implement here
-        return null;
+        return OwnedLeaderCard;
     }
 
     /**
      * @return
      */
-    public ArrayList<DevelopmentCard> getTopDevCard() {
-        // TODO implement here
-        return null;
+    public DevelopmentCard getTopDevCard(int index) throws IllegalArgumentException {
+        return OwnedDevCards[index].get(0);
+    }
+
+    public DevelopmentCard getMidDevCard(int index) throws IllegalArgumentException {
+        return OwnedDevCards[index].get(1);
+    }
+
+    public DevelopmentCard getLastDevCard(int index) throws IllegalArgumentException {
+        return OwnedDevCards[index].get(2);
     }
 
     /**
      * @return
      */
     public ArrayList<DevelopmentCard> getAllDevCard() {
-        // TODO implement here
-        return null;
+        ArrayList<DevelopmentCard> AllDevCard = new ArrayList<>();
+        for (int i = 0; i < 2; i++) {
+            AllDevCard.addAll((Collection<? extends DevelopmentCard>) OwnedDevCards[i].clone());    //DA RIVEDERE
+        }
+        return AllDevCard;
     }
 
     /**
      * @return
      */
     public int getVictoryPoints() {
-        // TODO implement here
-        return 0;
+        int victorypoints = 0;
+        for (DevelopmentCard developmentCard : getAllDevCard()) {
+            victorypoints += developmentCard.getVictoryPoints();
+        }
+        for (LeaderCard leaderCard : getLeaderCards()) {
+            victorypoints *= leaderCard.getVictoryPoints();
+        }
+        return victorypoints;
     }
 
     /**
      * throws invalid argument Exception
-     * @param card 
-     * @param pos 
+     *
+     * @param card
+     * @param pos
      * @return
      */
-    public void addDevCard(DevelopmentCard card, int pos) {
-        // TODO implement here
+    public void addDevCard(DevelopmentCard card, int pos) throws IllegalArgumentException {
+        if (OwnedDevCards[pos].isEmpty()) {
+            OwnedDevCards[pos].add(card);
+        } else
+        //if((OwnedDevCards[pos].get(0).getLevel() < card.getLevel()))           //TODO
+        {
+            OwnedDevCards[pos].add(0, card);
+        }
     }
-
 }
