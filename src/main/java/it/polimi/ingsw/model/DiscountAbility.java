@@ -2,13 +2,13 @@ package it.polimi.ingsw.model;
 
 /*Last Edit: Gio*/
 
-public class Discount extends Ability{
+public class DiscountAbility extends Ability{
 
     private ColorDevCard cardColor;
     private int discount;
 
     /*Default constructor*/
-    public Discount() {
+    public DiscountAbility() {
     }
 
     /*Getter*/

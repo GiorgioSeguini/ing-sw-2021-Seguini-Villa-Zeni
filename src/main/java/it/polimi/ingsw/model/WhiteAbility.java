@@ -2,12 +2,12 @@ package it.polimi.ingsw.model;
 
 /*Last Edit: William Zeni*/
 
-public class White extends Ability {
+public class WhiteAbility extends Ability {
 
     private ResourceType typeOfRes;
 
     /*Default constructor*/
-    White(ResourceType type) {
+    WhiteAbility(ResourceType type) {
         this.typeOfRes=type;
     }
 

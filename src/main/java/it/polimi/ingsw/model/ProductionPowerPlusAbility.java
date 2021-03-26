@@ -1,12 +1,12 @@
 package it.polimi.ingsw.model;
 /*Last Edit: William Zeni*/
 
-public class ProductionPowerPlus extends Ability {
+public class ProductionPowerPlusAbility extends Ability {
 
     private ResourceType typeOfRes;
 
     /* Default constructor*/
-    ProductionPowerPlus(ResourceType type) {
+    ProductionPowerPlusAbility(ResourceType type) {
         this.typeOfRes=type;
     }
 
