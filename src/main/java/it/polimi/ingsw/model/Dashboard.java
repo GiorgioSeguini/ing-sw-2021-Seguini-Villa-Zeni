@@ -39,4 +39,7 @@ public class Dashboard {
         return dashBoard[level.ordinal()][color.ordinal()].pop();
     }
 
+    //remove two devcard when discard2 token is activeted
+    public void removeCard(ColorDevCard color){}        //TODO
+
 }

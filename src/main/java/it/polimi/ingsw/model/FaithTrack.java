@@ -64,4 +64,16 @@ public class FaithTrack {
         return false;
     }
 
+    //add two faithpoints when move2 token is activated
+    public boolean addPoint(int point) throws IllegalArgumentException{
+        if(faithPoints >= MAX_POINTS)
+            throw new IllegalArgumentException();
+        faithPoints = faithPoints+point;
+        if(faithPoints==0){
+            //TODO
+            return true;
+        }
+        return false;
+    }
+
 }

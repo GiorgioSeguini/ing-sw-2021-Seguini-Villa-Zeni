@@ -20,22 +20,34 @@ public class PersonalBoard {
      * @return
      */
     public LeaderCard[] getLeaderCards() {
-        return OwnedLeaderCard;
+        return OwnedLeaderCard.clone();
     }
 
     /**
      * @return
      */
-    public DevelopmentCard getTopDevCard(int index) throws IllegalArgumentException {
-        return OwnedDevCards[index].get(0);
+    public DevelopmentCard getTopDevCard(int index) {
+        DevelopmentCard topdevcard = null;
+        if(goodindex(index)){
+            topdevcard = OwnedDevCards[index].get(0);
+        }
+        return topdevcard;
     }
 
-    public DevelopmentCard getMidDevCard(int index) throws IllegalArgumentException {
-        return OwnedDevCards[index].get(1);
+    public DevelopmentCard getMidDevCard(int index) {
+        DevelopmentCard midevcard = null;
+        if(goodindex(index)){
+            midevcard = OwnedDevCards[index].get(1);
+        }
+        return midevcard;
     }
 
-    public DevelopmentCard getLastDevCard(int index) throws IllegalArgumentException {
-        return OwnedDevCards[index].get(2);
+    public DevelopmentCard getLastDevCard(int index) {
+        DevelopmentCard lastdevcard = null;
+        if(goodindex(index)){
+        lastdevcard = OwnedDevCards[index].get(2);
+        }
+        return lastdevcard;
     }
 
     /**
@@ -70,13 +82,22 @@ public class PersonalBoard {
      * @param pos
      * @return
      */
-    public void addDevCard(DevelopmentCard card, int pos) throws IllegalArgumentException {
+    public void addDevCard(DevelopmentCard card, int pos) {
+        if(goodindex(pos)){
         if (OwnedDevCards[pos].isEmpty()) {
             OwnedDevCards[pos].add(card);
         } else
-        //if((OwnedDevCards[pos].get(0).getLevel() < card.getLevel()))           //TODO
+        if(OwnedDevCards[pos].get(0).getLevel().ordinal() < card.getLevel().ordinal())
         {
             OwnedDevCards[pos].add(0, card);
         }
+        }
+    }
+
+    private boolean goodindex(int index) throws IllegalArgumentException{
+        if(index>2 || index<0) {
+            throw new IllegalArgumentException();
+        }
+        return true;
     }
 }

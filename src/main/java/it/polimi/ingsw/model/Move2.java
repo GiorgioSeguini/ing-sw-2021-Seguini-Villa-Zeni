@@ -1,7 +1,5 @@
 package it.polimi.ingsw.model;
 
-import java.util.*;
-
 public class Move2 extends SoloActionTokens {
 
     /*Default constructor*/
@@ -9,6 +7,8 @@ public class Move2 extends SoloActionTokens {
     }
 
     /*Abstract class to implement*/
-    public void ActivateToken() {
+    public void ActivateToken(Game game) {
+        final int point=2;
+        game.getSoloGame().getFaithTrack().addPoint(point);
     }
 }

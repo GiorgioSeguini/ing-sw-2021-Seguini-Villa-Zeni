@@ -41,7 +41,10 @@ public class LeaderCard extends Card {
      * @return
      */
     public void setPlayed(Player owner) {
-        // TODO implement here
+        if(getStatus().ordinal()==0 && getRequirements().match(owner)) {
+                getAbility().RunAbility(owner);
+                setStatus(LeaderStatus.Played);
+        }
     }
 
     /**
@@ -49,7 +52,10 @@ public class LeaderCard extends Card {
      * @return
      */
     public void setDiscard(Player owner) {
-        // TODO implement here
+        if(getStatus().ordinal()==0){
+            setStatus(LeaderStatus.Dead);
+            owner.getFaithTrack().addPoint();
+        }
     }
 
 }

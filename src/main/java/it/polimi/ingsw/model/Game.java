@@ -56,6 +56,14 @@ public class Game {
         return indexPlayingPlayer;
     }
 
+    public Dashboard getDashboard() {
+        return dashboard;
+    }
+
+    public LorenzoSoloPlayer getSoloGame() {
+        return soloGame;
+    }
+
     /**
      * @return
      */
@@ -99,4 +107,5 @@ public class Game {
     public boolean isFinalTurn() {
         return finalTurn;
     }
+
 }

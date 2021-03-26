@@ -9,7 +9,7 @@ public abstract class SoloActionTokens{
     }
 
     /*method that has to be implemented*/
-    public abstract void ActivateToken();
+    public abstract void ActivateToken(Game game);
 
 
 }

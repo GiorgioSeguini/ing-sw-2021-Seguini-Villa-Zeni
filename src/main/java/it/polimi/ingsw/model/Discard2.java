@@ -11,14 +11,13 @@ public class Discard2 extends SoloActionTokens {
     public Discard2() {
     }
 
-
     /*Getter*/
     public ColorDevCard getColor() {
         return color;
     }
 
     /*Abstract class to implement*/
-    public void ActivateToken() {
-
+    public void ActivateToken(Game game) {
+        game.getDashboard().removeCard(color);
     }
 }
