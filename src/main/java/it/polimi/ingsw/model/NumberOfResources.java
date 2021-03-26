@@ -62,7 +62,7 @@ public class NumberOfResources {
         return out;
     }
 
-    public NumberOfResources MakeACopy(){
+    public NumberOfResources clone(){
         return new NumberOfResources(this.resources[0],this.resources[1],this.resources[2],this.resources[3]);
     }
 

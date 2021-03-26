@@ -141,12 +141,9 @@ public class WareHouseDepots {
                 }
             }
         }
-        else{
+        else {
             throw new UnableToFillError();
         }
-
-
     }
-
 
 }

@@ -37,5 +37,14 @@ public class Player {
         victorypoints= personalBoard.getVictoryPoints() + faithtrack.getVictoryPoints();  //TODO bisogna aggiungere anche i points del depots
         return victorypoints;
     }
+    public void ActivateLeaderCard(int index) throws IllegalArgumentException{
+        LeaderCard toactivate= getPersonalBoard().getLeaderCards()[index];
+        if (toactivate.getRequirements().match(this)){
+            toactivate.getAbility().RunAbility(this);
+        }
+        else{
+            throw new IllegalArgumentException();
+        }
+    }
 
 }
