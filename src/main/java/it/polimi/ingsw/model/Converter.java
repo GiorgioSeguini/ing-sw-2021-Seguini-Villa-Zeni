@@ -26,7 +26,7 @@ public class Converter {
     /*Questa classe converte tutte le risorse non bianche. Se trova qualcosa di bianco e l'abilità è attiva
     lancia un eccezione e ripone le risorse già convertite in inwait (che sono le risorse non bianche convertite). Sarà a cura del controllorer o
     del player gestire l'eccezione, creare una number of resources delle quantità bianche da convertire in base alla scelta
-    del giocatore e u
+    del giocatore e usare rescueConversion per terminare la conversione.
      */
     public NumberOfResources convertAll(ArrayList<MarbleColor> input) throws HaveToChooseException {
         ArrayList<MarbleColor>without_white=new ArrayList<>();
