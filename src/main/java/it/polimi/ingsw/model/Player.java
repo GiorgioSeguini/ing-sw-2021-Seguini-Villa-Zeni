@@ -39,12 +39,7 @@ public class Player {
     }
     public void ActivateLeaderCard(int index) throws IllegalArgumentException{
         LeaderCard toactivate= getPersonalBoard().getLeaderCards()[index];
-        if (toactivate.getRequirements().match(this)){
-            toactivate.getAbility().RunAbility(this);
-        }
-        else{
-            throw new IllegalArgumentException();
-        }
+        toactivate.setPlayed(this);
     }
 
 }

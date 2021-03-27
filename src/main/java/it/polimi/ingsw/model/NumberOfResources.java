@@ -2,9 +2,11 @@ package it.polimi.ingsw.model;
 
 /*Last Edit: William Zeni*/
 
+/**This class is unchangeable: it always returns a new address to it */
 public class NumberOfResources {
     private final int[] resources = new int[4]; //if issue attempt, make it in constructor
 
+    /*Default Constructor*/
     NumberOfResources(int Servants, int Shields, int Coins, int Stones){
         resources[0]=Servants;
         resources[1]=Shields;
@@ -12,10 +14,14 @@ public class NumberOfResources {
         resources[3]=Stones;
     }
 
+    /*Getter*/
+    /**It returns the type's item amount. */
     public int getAmountOf(ResourceType type){
         return resources[type.ordinal()];
     }
 
+    /*Additional methods*/
+    /**This method adds a NumberOfResources to the current one.*/
     public NumberOfResources add(NumberOfResources other){
         int[] x= new int[4];
         for(ResourceType type: ResourceType.values()){
@@ -26,6 +32,14 @@ public class NumberOfResources {
         return new_resources;
     }
 
+    /**This method adds just for a single type of resources.*/
+    public NumberOfResources add(ResourceType type, int toadd){
+        NumberOfResources new_resources= this.clone();
+        new_resources.resources[type.ordinal()]=new_resources.getAmountOf(type)+toadd;
+        return new_resources;
+    }
+
+    /**This method subs a NumberOfResources to the current one*/
     public NumberOfResources sub(NumberOfResources other) throws IllegalArgumentException{
         int[] x= new int[4];
         for(ResourceType type: ResourceType.values()){
@@ -40,6 +54,8 @@ public class NumberOfResources {
 
         return new_resources;
     }
+
+    /**This method subs just for a single type of resources.*/
     public NumberOfResources sub(ResourceType type, int tosub) throws IllegalArgumentException{
         if(this.getAmountOf(type)<tosub){
             throw new IllegalArgumentException();
@@ -51,6 +67,7 @@ public class NumberOfResources {
         }
     }
 
+    /**This method returns the resource type that has the bigger quantity. */
     public ResourceType Max_Resource_Type(){
         int max=resources[0];
         int indexmax=0;
@@ -72,6 +89,7 @@ public class NumberOfResources {
         return out;
     }
 
+    /**This simply clones a NumberOfResources*/
     public NumberOfResources clone(){
         return new NumberOfResources(this.resources[0],this.resources[1],this.resources[2],this.resources[3]);
     }
