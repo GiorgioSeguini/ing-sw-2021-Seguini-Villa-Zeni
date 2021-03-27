@@ -18,6 +18,6 @@ public class WhiteAbility extends Ability {
 
     /*Abstract class to implement*/
     public void RunAbility(Player owner) {
-
+        owner.getConverter().setWhiteAbility();
     }
 }

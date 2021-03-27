@@ -10,7 +10,7 @@ public class Player {
     private FaithTrack faithtrack;
     private Depots depots;
     private PersonalBoard personalBoard;
-
+    private Converter converter;
     /*Default constructor*/
     public Player() {
     }
@@ -30,6 +30,10 @@ public class Player {
 
     public FaithTrack getFaithTrack() {
         return this.faithtrack;
+    }
+
+    public Converter getConverter(){
+        return this.converter;
     }
 
     public int getVictoryPoints(){
