@@ -45,15 +45,19 @@ public class WareHouseDepots {
     public void subResource(NumberOfResources required) throws UnableToFillError{
         NumberOfResources old_resources=this.getResources();
         NumberOfResources new_resources=this.getResources();
-        new_resources=new_resources.sub(required);
-
         try{
-            CleanShelf();
-            fill_correctly(new_resources);
+            new_resources=new_resources.sub(required);
+            try{
+                CleanShelf();
+                fill_correctly(new_resources);
+            }
+            catch (UnableToFillError error){
+                CleanShelf();
+                fill_correctly(old_resources);
+            }
         }
-        catch (UnableToFillError error){
-            CleanShelf();
-            fill_correctly(old_resources);
+        catch (IllegalArgumentException error){
+            //TODO
         }
     }
 
