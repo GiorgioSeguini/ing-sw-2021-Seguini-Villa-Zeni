@@ -40,6 +40,16 @@ public class NumberOfResources {
 
         return new_resources;
     }
+    public NumberOfResources sub(ResourceType type, int tosub) throws IllegalArgumentException{
+        if(this.getAmountOf(type)<tosub){
+            throw new IllegalArgumentException();
+        }
+        else{
+            NumberOfResources new_resources= this.clone();
+            new_resources.resources[type.ordinal()]=new_resources.getAmountOf(type)-tosub;
+            return new_resources;
+        }
+    }
 
     public ResourceType Max_Resource_Type(){
         int max=resources[0];

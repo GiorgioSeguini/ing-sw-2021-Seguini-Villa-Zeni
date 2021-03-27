@@ -114,13 +114,9 @@ public class WareHouseDepots {
                 else{
                     x.setUsed(my_resources.getAmountOf(x.getResType()));
                 }
-                switch (x.getResType().ordinal()){
-                    case 0: my_resources=my_resources.sub(new NumberOfResources(x.getUsed(),0,0,0)); break;
-                    case 1: my_resources=my_resources.sub(new NumberOfResources(0,x.getUsed(),0,0)); break;
-                    case 2: my_resources=my_resources.sub(new NumberOfResources(0,0,x.getUsed(),0)); break;
-                    case 3: my_resources=my_resources.sub(new NumberOfResources(0,0,0,x.getUsed())); break;
-                }
+                my_resources=my_resources.sub(x.getResType(),x.getUsed());
             }
+
         }
 
         /*This for checks the first three shelfs*/
@@ -132,12 +128,7 @@ public class WareHouseDepots {
                 else{
                     shelfs.get(i).setUsed(my_resources.getAmountOf(my_resources.Max_Resource_Type()));
                     shelfs.get(i).setResType(my_resources.Max_Resource_Type());
-                    switch (my_resources.Max_Resource_Type().ordinal()){
-                        case 0: my_resources=my_resources.sub(new NumberOfResources(shelfs.get(i).getUsed(),0,0,0)); break;
-                        case 1: my_resources=my_resources.sub(new NumberOfResources(0,shelfs.get(i).getUsed(),0,0)); break;
-                        case 2: my_resources=my_resources.sub(new NumberOfResources(0,0,shelfs.get(i).getUsed(),0)); break;
-                        case 3: my_resources=my_resources.sub(new NumberOfResources(0,0,0,shelfs.get(i).getUsed())); break;
-                    }
+                    my_resources=my_resources.sub(shelfs.get(i).getResType(),shelfs.get(i).getUsed());
                 }
             }
         }
