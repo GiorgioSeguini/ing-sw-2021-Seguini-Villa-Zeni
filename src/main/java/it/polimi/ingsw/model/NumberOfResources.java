@@ -40,14 +40,14 @@ public class NumberOfResources {
     }
 
     /**This method subs a NumberOfResources to the current one*/
-    public NumberOfResources sub(NumberOfResources other) throws IllegalArgumentException{
+    public NumberOfResources sub(NumberOfResources other) throws ArithmeticException{
         int[] x= new int[4];
         for(ResourceType type: ResourceType.values()){
             if (resources[type.ordinal()]>=other.getAmountOf(type)){
                 x[type.ordinal()]=resources[type.ordinal()]- other.getAmountOf(type);
             }
             else{
-                throw new IllegalArgumentException();
+                throw new ArithmeticException();
             }
         }
         NumberOfResources new_resources= new NumberOfResources(x[0],x[1],x[2],x[3]);
@@ -56,9 +56,9 @@ public class NumberOfResources {
     }
 
     /**This method subs just for a single type of resources.*/
-    public NumberOfResources sub(ResourceType type, int tosub) throws IllegalArgumentException{
+    public NumberOfResources sub(ResourceType type, int tosub) throws ArithmeticException{
         if(this.getAmountOf(type)<tosub){
-            throw new IllegalArgumentException();
+            throw new ArithmeticException();
         }
         else{
             NumberOfResources new_resources= this.clone();
