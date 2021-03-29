@@ -13,12 +13,12 @@ public class LeaderCard extends Card {
 
     private int VictoryPoints;
 
-    //Default constructor
+    /*Default constructor*/
     public LeaderCard() {
     }
 
 
-    //getter
+    /*getter*/
     public LeaderStatus getStatus() {
         return status;
     }
@@ -31,15 +31,13 @@ public class LeaderCard extends Card {
         return ability;
     }
 
-
+    /*setter*/
     public void setStatus(LeaderStatus status) {
         this.status = status;
     }
 
-    /**
-     * @param owner 
-     * @return
-     */
+    /*Additional Methods*/
+    /** This set the LeaderCard status on "played"**/
     public void setPlayed(Player owner) {
         if(getStatus().ordinal()==0 && getRequirements().match(owner)) {
                 getAbility().RunAbility(owner);
@@ -47,10 +45,7 @@ public class LeaderCard extends Card {
         }
     }
 
-    /**
-     * @param owner 
-     * @return
-     */
+    /** This set the LeaderCard status on "Dead" and add one FaithPoint**/
     public void setDiscard(Player owner) {
         if(getStatus().ordinal()==0){
             setStatus(LeaderStatus.Dead);

@@ -9,16 +9,19 @@ public class LorenzoSoloPlayer {
     private Game game;
 
     private ArrayList<SoloActionTokens> soloActionTokens;
+    private ArrayList<SoloActionTokens> copyOfSoloActionTokens;
     private ArrayList<SoloActionTokens> soloActionTokensDiscarded;
 
     private SoloActionTokens soloActionTokensRevealed;
 
 
-    //default constructor
+    /*default constructor*/
     public LorenzoSoloPlayer() {
         soloActionTokens = new ArrayList<SoloActionTokens>(7);
+        copyOfSoloActionTokens = new ArrayList<SoloActionTokens>(7);
     }
 
+    /*Getter*/
     public FaithTrack getFaithTrack() {
         return faithTrack;
     }
@@ -31,9 +34,21 @@ public class LorenzoSoloPlayer {
         return soloActionTokens;
     }
 
-    /**
-     * @return
-     */
+    public ArrayList<SoloActionTokens> getSoloActionTokensDiscarded() {
+        return soloActionTokensDiscarded;
+    }
+
+    public ArrayList<SoloActionTokens> getCopyOfSoloActionTokensInit() {
+        return copyOfSoloActionTokens;
+    }
+
+    /*setter*/
+    public void setSoloActionTokens(ArrayList<SoloActionTokens> soloActionTokens) {
+        this.soloActionTokens = soloActionTokens;
+    }
+
+    /*Additional methods*/
+    /**this reveal first stack's token and  apply the effect**/
     public void revealdToken() {
 
         soloActionTokensRevealed = soloActionTokens.get(0);

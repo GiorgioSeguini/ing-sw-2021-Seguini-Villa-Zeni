@@ -1,18 +1,19 @@
 package it.polimi.ingsw.model;
 
-/*Last Edit: Fabio*/
-
 import java.util.*;
 
+/*Last Edit: Fabio*/
 public class Player {
 
     private String userName;
     private FaithTrack faithtrack;
     private Depots depots;
     private PersonalBoard personalBoard;
+    int victorypoints;
 
     /*Default constructor*/
     public Player() {
+        victorypoints=0;
     }
 
     /*Getter*/
@@ -33,7 +34,6 @@ public class Player {
     }
 
     public int getVictoryPoints(){
-        int victorypoints=0;
         victorypoints= personalBoard.getVictoryPoints() + faithtrack.getVictoryPoints();  //TODO bisogna aggiungere anche i points del depots
         return victorypoints;
     }
