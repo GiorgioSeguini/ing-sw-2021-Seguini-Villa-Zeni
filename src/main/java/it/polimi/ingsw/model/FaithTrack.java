@@ -1,7 +1,7 @@
 package it.polimi.ingsw.model;
 
 import java.util.*;
-/*Last Edit: Gio*/
+/*Last Edit: Fabio*/  //ho soltanto tolto il metodo che aggiungeva due punti fede
 /**
  * 
  */
@@ -57,18 +57,6 @@ public class FaithTrack {
         if(faithPoints >= MAX_POINTS)
             throw new IllegalArgumentException();
         faithPoints++;
-        if(faithPoints==0){
-            //TODO
-            return true;
-        }
-        return false;
-    }
-
-    //add two faithpoints when move2 token is activated
-    public boolean addPoint(int point) throws IllegalArgumentException{
-        if(faithPoints >= MAX_POINTS)
-            throw new IllegalArgumentException();
-        faithPoints = faithPoints+point;
         if(faithPoints==0){
             //TODO
             return true;

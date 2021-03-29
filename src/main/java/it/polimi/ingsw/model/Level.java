@@ -1,8 +1,7 @@
 package it.polimi.ingsw.model;
 
-/**
- * 
- */
+/*Last Edit: Fabio*/
+/* DevelopmentCard's level*/
 public enum Level {
     One,
     Two,

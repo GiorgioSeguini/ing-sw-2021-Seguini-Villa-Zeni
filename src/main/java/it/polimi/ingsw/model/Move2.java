@@ -1,14 +1,17 @@
 package it.polimi.ingsw.model;
 
+/*Last Edit: Fabio*/
 public class Move2 extends SoloActionTokens {
 
     /*Default constructor*/
     public Move2() {
     }
 
-    /*Abstract class to implement*/
+    /*Additional methods*/
+    /**This apply the effect of a Move2Token**/
     public void ActivateToken(Game game) {
-        final int point=2;
-        game.getSoloGame().getFaithTrack().addPoint(point);
+        for(int i=0; i<2; i++){
+        game.getSoloGame().getFaithTrack().addPoint();
+        }
     }
 }
