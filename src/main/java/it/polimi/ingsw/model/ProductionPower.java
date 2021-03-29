@@ -51,18 +51,10 @@ public class ProductionPower {
         return res;
     }
 
-    /**
-     *
-     * @param owner of the card, need to be already verified
-     */
-    public void active(Player owner) throws{        //TODO definire una eccezione e capire bene
-        owner.getDepots().subResource(this.inputRes);
-        owner.getDepots().addResourceFromProduction(this.outputRes);
-
-        for(int i=0; i< this.PointsFaithOut; i++)
-            owner.getFaithTrack().addPoint();
-        //TODO definire la convenzione per i controlli papali
-    }
+/* L'idea è che il controller sommi tutte le production power che il giocatore vuole attivare --> un solo controllo sul deposito,
+poi il controller chiama la active con un solo argomento, se va a buon fine è super felice,
+se torno l'eccezione della scelta( dobbiamo decidere il nome), il controllore interagisce con il giocatore e dopo chiama la funzione ative con 3 argomenti che fa quello che deve fare
+ */
 
     public void active(Player owner) throws{        //TODO definire una eccezione e capire bene
             active(owner, new NumberOfResources(), new NumberOfResources());
