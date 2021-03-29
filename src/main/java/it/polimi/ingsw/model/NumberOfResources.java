@@ -14,6 +14,13 @@ public class NumberOfResources {
         resources[3]=Stones;
     }
 
+    /**
+     * Empity constructor
+     */
+    NumberOfResources(){
+        for(int i: resources) i=0;
+    }
+
     /*Getter*/
     /**It returns the type's item amount. */
     public int getAmountOf(ResourceType type){
@@ -94,6 +101,17 @@ public class NumberOfResources {
         return new NumberOfResources(this.resources[0],this.resources[1],this.resources[2],this.resources[3]);
     }
 
+    /**
+     *
+     * @return the total ammount of any type of resources
+     */
+    public int size(){
+        int res=0;
+        for(ResourceType type : ResourceType.values()){
+            res+=getAmountOf(type);
+        }
+        return res;
+    }
 
 
 }
