@@ -2,11 +2,15 @@ package it.polimi.ingsw.model;
 
 import it.polimi.ingsw.model.enumeration.MarbleColor;
 
+import java.util.ArrayList;
+
 /*Last Edit: Fabio*/
 public class Market {
 
     private MarbleColor[][] tray;
     private MarbleColor externalMarble;
+    private ArrayList<MarbleColor> buyedMarbleRow = new ArrayList<MarbleColor>(4);
+    private ArrayList<MarbleColor> buyedMarbleColumn = new ArrayList<MarbleColor>(3);
 
     //default constructor
     public Market() {
@@ -32,7 +36,7 @@ public class Market {
 
     /*Additional methods*/
     /**This allow to buy a row from the market's tray**/
-    public MarbleColor[] buyRow(int index) {                //TODO INSERIRE ECCEZIONI (?)
+    public ArrayList<MarbleColor> buyRow(int index) {                //TODO INSERIRE ECCEZIONI (?)
         MarbleColor[] buyedRow = new MarbleColor[4];
         for(int i=0; i<4; i++){
             buyedRow[i] = tray[index][i];
@@ -43,11 +47,14 @@ public class Market {
             tray[index][i] = buyedRow[i+1];
         }
         tray[index][3] = oldExternalMarble;
-        return buyedRow;
+        for(int i=0; i<3; i++){
+            buyedMarbleRow.add(i,buyedRow[i]);
+        }
+        return buyedMarbleRow;
     }
 
     /**This allow to buy a column from the market's tray**/
-    public MarbleColor[] buyColumn(int index) {
+    public ArrayList<MarbleColor> buyColumn(int index) {
         MarbleColor[] buyedColumn = new MarbleColor[3];
         for(int i=0; i<3; i++){
             buyedColumn[i] = tray[i][index];
@@ -57,7 +64,10 @@ public class Market {
             tray[i][index] = buyedColumn[i+1];
         }
         tray[2][index] = oldExternalMarble;
-        return buyedColumn;
+        for(int i=0; i<2; i++){
+            buyedMarbleRow.add(i,buyedColumn[i]);
+        }
+        return buyedMarbleColumn;
     }
 
 }
