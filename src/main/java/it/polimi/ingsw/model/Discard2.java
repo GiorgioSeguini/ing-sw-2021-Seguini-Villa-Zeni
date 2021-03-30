@@ -18,6 +18,10 @@ public class Discard2 extends SoloActionTokens {
 
     /*Abstract class to implement*/
     public void ActivateToken(Game game) {
-        game.getDashboard().removeCard(color);
+        try {
+            game.getDashboard().removeCard(color, 2);
+        }catch(IllegalArgumentException e){
+            //TODO game ended, Lorenzo Il Magnifico wins
+        }
     }
 }
