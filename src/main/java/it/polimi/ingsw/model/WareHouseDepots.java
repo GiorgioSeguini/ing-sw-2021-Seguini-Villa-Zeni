@@ -29,7 +29,7 @@ public class WareHouseDepots {
 
     /*Additional Methods*/
     /** This method add the resources to all the shelf if it found them. */
-    public void addResource (NumberOfResources input) throws UnableToFillError,ArithmeticException{
+    public void addResource (NumberOfResources input) throws UnableToFillError{
         NumberOfResources old_resources=this.getResources();
         NumberOfResources new_resources=this.getResources();
         new_resources=new_resources.add(input);
@@ -40,27 +40,30 @@ public class WareHouseDepots {
         }
         catch (UnableToFillError error){
             CleanShelf();
-            fill_correctly(old_resources);
+            try {
+                fill_correctly(old_resources);
+            }catch (UnableToFillError error2){
+                //I don't expect to enter here
+            }
         }
     }
 
     /** This method add the resources to all the shelf if it found them. */
-    public void subResource(NumberOfResources required) {
+    public void subResource(NumberOfResources required) throws UnableToFillError{
         NumberOfResources old_resources=this.getResources();
         NumberOfResources new_resources=this.getResources();
+        new_resources=new_resources.sub(required);
         try{
-            new_resources=new_resources.sub(required);
-            try{
-                CleanShelf();
-                fill_correctly(new_resources);
-            }
-            catch (UnableToFillError error){
-                CleanShelf();
-                fill_correctly(old_resources);
-            }
+            CleanShelf();
+            fill_correctly(new_resources);
         }
-        catch (ArithmeticException error){
-            //TODO
+        catch (UnableToFillError error){
+            CleanShelf();
+            try{
+                fill_correctly(old_resources);
+            }catch (UnableToFillError error2){
+                //I don expect to enter here
+            }
         }
     }
 

@@ -56,7 +56,7 @@ public class Converter {
 
     public NumberOfResources rescueConversion(NumberOfResources whiteresources){
         whiteresources=whiteresources.add(inwait);
-        inwait=new NumberOfResources(0,0,0,0);
+        inwait=new NumberOfResources();
         return whiteresources;
     }
 
@@ -71,7 +71,7 @@ public class Converter {
     }
 
     private NumberOfResources convert_resources(ArrayList<MarbleColor> input){
-        NumberOfResources output=new NumberOfResources(0,0,0,0);
+        NumberOfResources output=new NumberOfResources();
         for(MarbleColor marble: input){
             if(marble.equals(MarbleColor.Red)){
                 owner.getFaithTrack().addPoint();

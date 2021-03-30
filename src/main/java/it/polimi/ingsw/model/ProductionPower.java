@@ -46,7 +46,7 @@ public class ProductionPower {
         res.outputRes = this.outputRes.add(other.outputRes);
         res.PointsFaithOut = this.PointsFaithOut + other.PointsFaithOut;
         res.OfYourChoiceInput = this.OfYourChoiceInput + other.OfYourChoiceInput;
-        res.OfYourChoiceOutput = this.OfYourChoiceOutput + other.OfYourChoiceOutput
+        res.OfYourChoiceOutput = this.OfYourChoiceOutput + other.OfYourChoiceOutput;
 
         return res;
     }

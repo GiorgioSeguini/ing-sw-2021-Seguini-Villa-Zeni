@@ -55,15 +55,15 @@ public class FaithTrack {
      * return true if you need to activate Pope's Inspection
      * @return
      */
-    void boolean addPoint() throws IllegalArgumentException{
+    public void addPoint() throws IllegalArgumentException{
         if(faithPoints >= MAX_POINTS)
             throw new IllegalArgumentException();
         faithPoints++;
         if(faithPoints==0){
             //TODO
-            return true;
+            //return true;
         }
-        return false;
+        //return false;
     }
 
 }

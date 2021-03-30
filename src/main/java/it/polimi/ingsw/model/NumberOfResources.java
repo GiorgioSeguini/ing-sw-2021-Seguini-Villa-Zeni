@@ -19,7 +19,7 @@ public class NumberOfResources {
     /**
      * Empity constructor
      */
-    NumberOfResources(){
+    public NumberOfResources(){
         for(int i: resources) i=0;
     }
 
@@ -49,7 +49,7 @@ public class NumberOfResources {
     }
 
     /**This method subs a NumberOfResources to the current one*/
-    public NumberOfResources sub(NumberOfResources other) throws ArithmeticException{
+    public NumberOfResources sub(NumberOfResources other){
         int[] x= new int[4];
         for(ResourceType type: ResourceType.values()){
             if (resources[type.ordinal()]>=other.getAmountOf(type)){
@@ -65,7 +65,7 @@ public class NumberOfResources {
     }
 
     /**This method subs just for a single type of resources.*/
-    public NumberOfResources sub(ResourceType type, int tosub) throws ArithmeticException{
+    public NumberOfResources sub(ResourceType type, int tosub){
         if(this.getAmountOf(type)<tosub){
             throw new ArithmeticException();
         }
