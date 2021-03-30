@@ -2,6 +2,8 @@ package it.polimi.ingsw.model;
 
 /*Last Edit: Gio*/
 
+import it.polimi.ingsw.model.enumeration.ColorDevCard;
+
 public class DiscountAbility extends Ability{
 
     private ColorDevCard cardColor;

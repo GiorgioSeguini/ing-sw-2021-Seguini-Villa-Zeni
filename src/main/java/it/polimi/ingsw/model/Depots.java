@@ -2,6 +2,9 @@ package it.polimi.ingsw.model;
 
 /*Last Edit: Gio*/
 
+import it.polimi.ingsw.model.enumeration.ResourceType;
+import it.polimi.ingsw.model.exception.UnableToFillError;
+
 /**
  * 
  */
@@ -38,7 +41,7 @@ public class Depots {
      * @param input
      * @throws IllegalArgumentException
      */
-    public void addResourcesFromMarket(NumberOfResources input) throws UnableToFillError{
+    public void addResourcesFromMarket(NumberOfResources input) throws UnableToFillError {
         wareHouseDepots.addResource(input);
     }
 

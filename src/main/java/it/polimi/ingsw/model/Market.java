@@ -1,6 +1,6 @@
 package it.polimi.ingsw.model;
 
-import java.util.*;
+import it.polimi.ingsw.model.enumeration.MarbleColor;
 
 /*Last Edit: Fabio*/
 public class Market {

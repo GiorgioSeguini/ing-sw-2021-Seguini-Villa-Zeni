@@ -2,6 +2,8 @@ package it.polimi.ingsw.model;
 
 /*Last Edit: William Zeni*/
 
+import it.polimi.ingsw.model.enumeration.ResourceType;
+
 /**This class is unchangeable: it always returns a new address to it */
 public class NumberOfResources {
     private final int[] resources = new int[4]; //if issue attempt, make it in constructor

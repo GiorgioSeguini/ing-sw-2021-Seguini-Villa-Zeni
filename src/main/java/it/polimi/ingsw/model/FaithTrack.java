@@ -1,5 +1,7 @@
 package it.polimi.ingsw.model;
 
+import it.polimi.ingsw.model.enumeration.PopesFavorStates;
+
 import java.util.*;
 /*Last Edit: Fabio*/  //ho soltanto tolto il metodo che aggiungeva due punti fede
 /**
@@ -53,7 +55,7 @@ public class FaithTrack {
      * return true if you need to activate Pope's Inspection
      * @return
      */
-    public boolean addPoint() throws IllegalArgumentException{
+    void boolean addPoint() throws IllegalArgumentException{
         if(faithPoints >= MAX_POINTS)
             throw new IllegalArgumentException();
         faithPoints++;

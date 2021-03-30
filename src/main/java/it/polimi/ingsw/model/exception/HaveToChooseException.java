@@ -1,7 +1,7 @@
-package it.polimi.ingsw.model;
+package it.polimi.ingsw.model.exception;
 
 public class HaveToChooseException extends Exception{
-    HaveToChooseException(){
+    public HaveToChooseException(){
         super("Player! Now you have to choose! I cannot handle it");
     }
 }

@@ -2,6 +2,9 @@ package it.polimi.ingsw.model;
 
 /*Last Edit: Gio*/
 
+import it.polimi.ingsw.model.enumeration.ColorDevCard;
+import it.polimi.ingsw.model.enumeration.Level;
+
 /**
  * 
  */

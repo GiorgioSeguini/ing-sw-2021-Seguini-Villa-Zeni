@@ -2,6 +2,8 @@ package it.polimi.ingsw.model;
 
 /*Last Edit: William Zeni*/
 
+import it.polimi.ingsw.model.enumeration.ResourceType;
+
 public class WhiteAbility extends Ability {
 
     private ResourceType typeOfRes;

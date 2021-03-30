@@ -1,6 +1,6 @@
 package it.polimi.ingsw.model;
 
-import java.util.*;
+import it.polimi.ingsw.model.enumeration.LeaderStatus;
 /*Last Edit: Fabio*/
 
 public class LeaderCard extends Card {

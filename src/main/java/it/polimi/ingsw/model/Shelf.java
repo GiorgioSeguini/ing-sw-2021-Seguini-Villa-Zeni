@@ -2,6 +2,8 @@ package it.polimi.ingsw.model;
 
 /*Last Edit: William Zeni*/
 
+import it.polimi.ingsw.model.enumeration.ResourceType;
+
 /*
  * This class represents the single shelf of my warehouse depots. This can have just a single type of resources and a limited size to store them;
  */

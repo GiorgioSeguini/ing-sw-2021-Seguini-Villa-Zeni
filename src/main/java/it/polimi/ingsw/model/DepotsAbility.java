@@ -2,6 +2,8 @@ package it.polimi.ingsw.model;
 
 /*Last Edit: Gio*/
 
+import it.polimi.ingsw.model.enumeration.ResourceType;
+
 public class DepotsAbility extends Ability {
 
     private ResourceType typeOfRes;

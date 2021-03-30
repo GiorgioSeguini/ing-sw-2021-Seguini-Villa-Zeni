@@ -2,6 +2,10 @@ package it.polimi.ingsw.model;
 
 /*Las Edit: William Zeni*/
 
+import it.polimi.ingsw.model.enumeration.MarbleColor;
+import it.polimi.ingsw.model.enumeration.ResourceType;
+import it.polimi.ingsw.model.exception.HaveToChooseException;
+
 import java.util.ArrayList;
 
 public class Converter {

@@ -2,6 +2,8 @@ package it.polimi.ingsw.model;
 
 /*Last Edit: Gio*/
 
+import it.polimi.ingsw.model.enumeration.ColorDevCard;
+
 public class Discard2 extends SoloActionTokens {
 
     private ColorDevCard color;

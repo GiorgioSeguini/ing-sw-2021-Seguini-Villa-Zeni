@@ -1,5 +1,8 @@
 package it.polimi.ingsw.model;
 
+import it.polimi.ingsw.model.enumeration.ColorDevCard;
+import it.polimi.ingsw.model.enumeration.Level;
+
 import java.util.*;
 
 /*Last Edit: Gio*/

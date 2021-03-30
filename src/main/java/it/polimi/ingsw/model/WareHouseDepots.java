@@ -1,5 +1,8 @@
 package it.polimi.ingsw.model;
 
+import it.polimi.ingsw.model.enumeration.ResourceType;
+import it.polimi.ingsw.model.exception.UnableToFillError;
+
 import java.util.ArrayList;
 
 /*Last Edit: William Zeni*/
@@ -42,7 +45,7 @@ public class WareHouseDepots {
     }
 
     /** This method add the resources to all the shelf if it found them. */
-    public void subResource(NumberOfResources required) throws UnableToFillError,ArithmeticException{
+    public void subResource(NumberOfResources required) {
         NumberOfResources old_resources=this.getResources();
         NumberOfResources new_resources=this.getResources();
         try{

@@ -1,6 +1,8 @@
 package it.polimi.ingsw.model;
 /*Last Edit: William Zeni*/
 
+import it.polimi.ingsw.model.enumeration.ResourceType;
+
 public class ProductionPowerPlusAbility extends Ability {
 
     private ResourceType typeOfRes;
