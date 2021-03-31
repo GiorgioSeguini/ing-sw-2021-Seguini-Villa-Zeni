@@ -9,8 +9,6 @@ public class Market {
 
     private MarbleColor[][] tray;
     private MarbleColor externalMarble;
-    private ArrayList<MarbleColor> buyedMarbleRow = new ArrayList<MarbleColor>(4);
-    private ArrayList<MarbleColor> buyedMarbleColumn = new ArrayList<MarbleColor>(3);
 
     //default constructor
     public Market() {
@@ -52,6 +50,21 @@ public class Market {
         }
         return buyedMarbleRow;
     }
+    /*
+    public ArrayList<MarbleColor> buyRow(int index) {
+        ArrayList<MarbleColor> buyedRow = new ArrayList<>();
+
+        for (MarbleColor x: tray[index]){
+            buyedRow.add(x);
+        }
+        tray[index][0]=externalMarble;
+        for (int i=1; i<tray[index].length;i++){
+            tray[index][i]=buyedRow.get(i-1);
+        }
+        externalMarble=buyedRow.get(buyedRow.size()-1);// or simply i-1, l'ultimo giro i=4
+        return buyedRow;
+    }
+    */
 
     /**This allow to buy a column from the market's tray**/
     public ArrayList<MarbleColor> buyColumn(int index) {
