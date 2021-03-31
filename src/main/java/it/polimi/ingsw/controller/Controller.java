@@ -1,12 +1,12 @@
 package it.polimi.ingsw.controller;
 
-import it.polimi.ingsw.model.Market;
-import it.polimi.ingsw.model.NumberOfResources;
-import it.polimi.ingsw.model.Player;
+import it.polimi.ingsw.model.*;
 import it.polimi.ingsw.model.Market;
 import it.polimi.ingsw.model.enumeration.MarbleColor;
 import it.polimi.ingsw.model.enumeration.ResourceType;
+import it.polimi.ingsw.model.exception.ChoseResourcesException;
 import it.polimi.ingsw.model.exception.HaveToChooseException;
+import it.polimi.ingsw.model.exception.OutOfResourcesException;
 import it.polimi.ingsw.model.exception.UnableToFillError;
 
 import java.util.ArrayList;
@@ -67,14 +67,34 @@ public class Controller {
         }
     }
 
-    /*
+
     public void mossa2 (  ){
         //compra carta sviluppo
     }
 
-    public void mossa3(  ) throws HaveToChooseException2 {
-        //attiva produzioni
+    public void activeProductions(ProductionPower[] toActive, Player player){
+        //check if current player really own the productionPowers that want to active
+        ArrayList<ProductionPower> productionOwned = player.getPersonalBoard().getProduction();
+
+        for(ProductionPower p : toActive)
+            if(!productionOwned.contains(p))
+                throw new IllegalArgumentException();
+
+        //sum all productionPower
+        ProductionPower total = new ProductionPower();
+        for(ProductionPower p : toActive)
+            total = total.add(p);
+
+        try {
+            total.active(player);
+        }catch(ChoseResourcesException e){
+            //TODO
+        }catch(OutOfResourcesException e){
+            //TODO something different
+        }
     }
+
+    /*
     public void mossaleader(  ){
 
     }

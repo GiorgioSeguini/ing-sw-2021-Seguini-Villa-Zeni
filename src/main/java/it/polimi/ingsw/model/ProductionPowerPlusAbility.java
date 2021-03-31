@@ -19,6 +19,8 @@ public class ProductionPowerPlusAbility extends Ability {
 
     /*Abstract class to implement*/
     public void RunAbility(Player owner) {
-
+        NumberOfResources input = new NumberOfResources();
+        input.add(typeOfRes, 1);
+        owner.getPersonalBoard().addExtraProduction(new ProductionPower(0, input, new NumberOfResources(), 1, 1));
     }
 }

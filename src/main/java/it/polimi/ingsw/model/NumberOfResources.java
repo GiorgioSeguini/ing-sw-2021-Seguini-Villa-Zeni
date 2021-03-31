@@ -3,6 +3,7 @@ package it.polimi.ingsw.model;
 /*Last Edit: William Zeni*/
 
 import it.polimi.ingsw.model.enumeration.ResourceType;
+import it.polimi.ingsw.model.exception.OutOfResourcesException;
 
 /**This class is unchangeable: it always returns a new address to it */
 public class NumberOfResources {
@@ -49,14 +50,14 @@ public class NumberOfResources {
     }
 
     /**This method subs a NumberOfResources to the current one*/
-    public NumberOfResources sub(NumberOfResources other){
+    public NumberOfResources sub(NumberOfResources other) throws OutOfResourcesException {
         int[] x= new int[4];
         for(ResourceType type: ResourceType.values()){
             if (resources[type.ordinal()]>=other.getAmountOf(type)){
                 x[type.ordinal()]=resources[type.ordinal()]- other.getAmountOf(type);
             }
             else{
-                throw new ArithmeticException();
+                throw new OutOfResourcesException();
             }
         }
         NumberOfResources new_resources= new NumberOfResources(x[0],x[1],x[2],x[3]);
@@ -65,9 +66,9 @@ public class NumberOfResources {
     }
 
     /**This method subs just for a single type of resources.*/
-    public NumberOfResources sub(ResourceType type, int tosub){
+    public NumberOfResources sub(ResourceType type, int tosub) throws OutOfResourcesException{
         if(this.getAmountOf(type)<tosub){
-            throw new ArithmeticException();
+            throw new OutOfResourcesException();
         }
         else{
             NumberOfResources new_resources= this.clone();

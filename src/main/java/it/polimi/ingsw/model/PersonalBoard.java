@@ -9,10 +9,14 @@ public class PersonalBoard {
 
     private LeaderCard[] OwnedLeaderCard;
 
+    private ArrayList<ProductionPower> extraProduction;
+
     /*Default Constructor*/
     public PersonalBoard() {
         OwnedDevCards = new ArrayList[3]; //array di arraylist
         OwnedLeaderCard = new LeaderCard[2];
+        extraProduction = new ArrayList<>();
+        extraProduction.add(new ProductionPower(0, new NumberOfResources(), new NumberOfResources(), 2, 1));
     }
 
     /*Getter*/
@@ -86,5 +90,19 @@ public class PersonalBoard {
             throw new IllegalArgumentException();
         }
         return true;
+    }
+
+    public void addExtraProduction(ProductionPower productionPower){
+        extraProduction.add(productionPower);
+    }
+
+    public ArrayList<ProductionPower> getProduction(){
+        ArrayList<ProductionPower> res = (ArrayList<ProductionPower>) extraProduction.clone();
+
+        for(int i=0; i<3; i++){
+            res.add(getTopDevCard(i).getProductionPower());
+        }
+
+        return res;
     }
 }

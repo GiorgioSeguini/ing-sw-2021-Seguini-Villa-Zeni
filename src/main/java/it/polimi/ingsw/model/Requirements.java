@@ -2,6 +2,7 @@ package it.polimi.ingsw.model;
 
 import it.polimi.ingsw.model.enumeration.ColorDevCard;
 import it.polimi.ingsw.model.enumeration.Level;
+import it.polimi.ingsw.model.exception.OutOfResourcesException;
 
 import java.util.*;
 /*Last Edit: Gio*/
@@ -41,14 +42,13 @@ public class Requirements {
         NumberOfResources ownedRes = owner.getDepots().getResources();
         try{
             ownedRes.sub(numberOfResourceses);
-        }catch(IllegalArgumentException e){
+        }catch(OutOfResourcesException e){
             return false;
         }
 
         //match for the development card
         PersonalBoard board = owner.getPersonalBoard();
         ArrayList<DevelopmentCard> ownedDevCard= board.getAllDevCard();
-        boolean matched = true;
         for(ColorDevCard c : ColorDevCard.values()){
             for(Level l: Level.values()){
                 int missing = minNumber[c.ordinal()][l.ordinal()];
@@ -65,14 +65,12 @@ public class Requirements {
                             }
                         }
                     }
-                    if(missing>0) matched=false;
+                    if(missing>0)  return false;
                 }
-                if(!matched) break;     //optional
             }
-            if(!matched) break;         //optional
         }
 
-        return matched;
+        return true;
     }
 
 }

@@ -1,6 +1,7 @@
 package it.polimi.ingsw.model;
 
 import it.polimi.ingsw.model.enumeration.ResourceType;
+import it.polimi.ingsw.model.exception.OutOfResourcesException;
 import it.polimi.ingsw.model.exception.UnableToFillError;
 
 import java.util.ArrayList;
@@ -45,11 +46,12 @@ public class WareHouseDepots {
             }catch (UnableToFillError error2){
                 //I don't expect to enter here
             }
+            throw new UnableToFillError();
         }
     }
 
     /** This method add the resources to all the shelf if it found them. */
-    public void subResource(NumberOfResources required) throws UnableToFillError{
+    public void subResource(NumberOfResources required) throws OutOfResourcesException{
         NumberOfResources old_resources=this.getResources();
         NumberOfResources new_resources=this.getResources();
         new_resources=new_resources.sub(required);
@@ -113,7 +115,7 @@ public class WareHouseDepots {
     }
 
     /**This method return true if with the current disposition of the shelf you can fill them with a Number of resources */
-    private void fill_correctly(NumberOfResources my_resources)throws UnableToFillError,ArithmeticException{
+    private void fill_correctly(NumberOfResources my_resources)throws UnableToFillError{
 
         /*This for checks just for the extra shelf*/
         for(Shelf x: shelfs){
@@ -127,7 +129,7 @@ public class WareHouseDepots {
                 try{
                     my_resources=my_resources.sub(x.getResType(),x.getUsed());
                 }
-                catch (ArithmeticException errorSub){
+                catch (OutOfResourcesException errorSub){
                     //I don't expect to enter here.
                 }
             }
@@ -146,7 +148,7 @@ public class WareHouseDepots {
                     try {
                         my_resources=my_resources.sub(shelfs.get(i).getResType(),shelfs.get(i).getUsed());
                     }
-                    catch (ArithmeticException errorSub){
+                    catch (OutOfResourcesException errorSub){
                         //I don't expect to enter here.
                     }
                 }

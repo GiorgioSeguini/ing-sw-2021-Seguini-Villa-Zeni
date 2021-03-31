@@ -3,6 +3,7 @@ package it.polimi.ingsw.model;
 /*Last Edit: Gio*/
 
 import it.polimi.ingsw.model.enumeration.ResourceType;
+import it.polimi.ingsw.model.exception.OutOfResourcesException;
 import it.polimi.ingsw.model.exception.UnableToFillError;
 
 /**
@@ -49,10 +50,10 @@ public class Depots {
      * @param required 
      * @return
      */
-    public void subResource(NumberOfResources required) throws UnableToFillError {
+    public void subResource(NumberOfResources required) throws OutOfResourcesException {
         try {
             wareHouseDepots.subResource(required);
-        }catch(IllegalArgumentException e){
+        }catch(OutOfResourcesException e){
             //remove as match resources possible from the warehouse depots
             NumberOfResources missing = required.clone();
             NumberOfResources subtracted = new NumberOfResources();
@@ -72,7 +73,7 @@ public class Depots {
                 subtracted = subtracted.add(type, toRemove);
                 missing = missing.sub(type, toRemove);
             }
-            strongBox.subResource(required);        //it can throwws an xception but in this case I just rethrow it, I can't do anything differently
+            strongBox.subResource(required);        //it can throws an exception but in this case I just rethrow it, I can't do anything differently
 
             //if no exception, i need to really update wareHouseDepots
             wareHouseDepots.subResource(subtracted);
@@ -88,7 +89,7 @@ public class Depots {
         NumberOfResources currentResources = getResources();
         try{
             currentResources.sub(required);
-        }catch(IllegalArgumentException e){
+        }catch(OutOfResourcesException e){
             return false;
         }
         return true;
