@@ -34,6 +34,10 @@ public class Game {
         return players.get(index);
     }
 
+    public ArrayList<Player> getPlayers(){
+        return this.players;
+    }
+
     /**
      * @return
      */

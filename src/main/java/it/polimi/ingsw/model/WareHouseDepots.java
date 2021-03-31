@@ -106,12 +106,7 @@ public class WareHouseDepots {
                 check++;
             }
         }
-        if (check==4){
-            return false;
-        }
-        else{
-            return true;
-        }
+        return check != 4;
     }
 
     /**This method return true if with the current disposition of the shelf you can fill them with a Number of resources */
