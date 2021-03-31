@@ -3,7 +3,6 @@ package it.polimi.ingsw.controller;
 import it.polimi.ingsw.model.*;
 import it.polimi.ingsw.model.Market;
 import it.polimi.ingsw.model.enumeration.MarbleColor;
-import it.polimi.ingsw.model.enumeration.ResourceType;
 import it.polimi.ingsw.model.exception.ChoseResourcesException;
 import it.polimi.ingsw.model.exception.HaveToChooseException;
 import it.polimi.ingsw.model.exception.OutOfResourcesException;
@@ -60,8 +59,19 @@ public class Controller {
                     acceptable = true;
                 } catch (UnableToFillError cannot) {
                     /*qui dobbiamo chiedere al player cosa scartare(sto ipotizzando che quello
-                     * che gli torni un numberofresources da scartare*/
-                    myresources = myresources.sub(tosub);
+                     * che gli torni sia un numberofresources da scartare tosub*/
+                    boolean acceptable2=false;
+                    while(!acceptable2){
+                        try{
+                            myresources = myresources.sub(tosub);
+                            acceptable2=true;
+                        }
+                        catch (OutOfResourcesException e){
+                            /*qui dobbiamo dire al player che sta provando a scartare più risorse di quello che ha.
+                            * Potremmo chiedergli se sta tentando di scartare tutto. Se si allora si pone tosub=myresources.
+                            * Se no bisogna fargli sistemare la tosub*/
+                        }
+                    }
                 }
             }
         }
