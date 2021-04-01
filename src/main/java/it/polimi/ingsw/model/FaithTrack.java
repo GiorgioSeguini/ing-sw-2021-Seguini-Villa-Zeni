@@ -58,11 +58,18 @@ public class FaithTrack {
      */
     public void addPoint() {
         if(faithPoints<MAX_POINTS) faithPoints++;
-        /*for(int i=0; i<NUM_OF_POP; i++){
-            if(faithPoints==popesFavorPosition[i] && popesFavor[i] == PopesFavorStates.FaceDown)
-                throw new PopesInspectionException(i);
-        }*/
+    }
 
+    /**
+     *
+     * @return -1 if no inspection is needed, otherwise return 0, 1 or 2 depending on the number of the inspection needed
+     */
+    public int inspectionNeed(){
+        for(int i=0; i<NUM_OF_POP; i++) {
+            if (faithPoints >= popesFavorPosition[i] && popesFavor[i] == PopesFavorStates.FaceDown)
+                return i;
+        }
+        return -1;
     }
 
     public void popeInspection(int index) throws FinalTurnException{

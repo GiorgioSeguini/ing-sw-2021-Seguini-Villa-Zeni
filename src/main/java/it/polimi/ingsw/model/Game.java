@@ -1,5 +1,7 @@
 package it.polimi.ingsw.model;
 
+import it.polimi.ingsw.model.exception.FinalTurnException;
+
 import java.util.*;
 /*Last Edit: Gio*/
 /**
@@ -112,6 +114,36 @@ public class Game {
         return finalTurn;
     }
 
-    public void popesIspection(){};
+    public void popesInspection(){
+        int index = -1;
+        if(players.size()==1){
+            int temp = soloGame.getFaithTrack().inspectionNeed();
+            if(temp>=0)
+                index = temp;
+        }
+        for(Player p : players){
+            int temp = p.getFaithTrack().inspectionNeed();
+            if(temp>=0)
+                index = temp;
+        }
+
+        if(index >=0){
+            if(players.size()==1){
+                try {
+                    soloGame.getFaithTrack().popeInspection(index);
+                }catch(FinalTurnException e){
+                    //TODO Lorenzo il maginfico wins the game!
+                }
+            }
+            for(Player p : players){
+                try{
+                    p.getFaithTrack().popeInspection(index);
+                }catch(FinalTurnException e){
+                    //TODO eventualmente si può rilanciare al chiamante
+                    setFinalTurn();
+                }
+            }
+        }
+    }
 
 }
