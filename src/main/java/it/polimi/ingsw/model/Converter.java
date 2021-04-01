@@ -5,6 +5,7 @@ package it.polimi.ingsw.model;
 import it.polimi.ingsw.model.enumeration.MarbleColor;
 import it.polimi.ingsw.model.enumeration.ResourceType;
 import it.polimi.ingsw.model.exception.HaveToChooseException;
+import it.polimi.ingsw.model.exception.PopesInspectionException;
 
 import java.util.ArrayList;
 
@@ -32,7 +33,7 @@ public class Converter {
     del player gestire l'eccezione, creare una number of resources delle quantità bianche da convertire in base alla scelta
     del giocatore e usare rescueConversion per terminare la conversione.
      */
-    public NumberOfResources convertAll(ArrayList<MarbleColor> input) throws HaveToChooseException {
+    public NumberOfResources convertAll(ArrayList<MarbleColor> input) throws HaveToChooseException, PopesInspectionException {
         ArrayList<MarbleColor>without_white=new ArrayList<>();
         boolean check_white_presence=false;
 
@@ -45,7 +46,7 @@ public class Converter {
             }
         }
         if (check_white_presence && WhiteAbilityActive){
-            inwait=convert_resources(without_white);
+            inwait=convert_resources(without_white); //TODO gestire eccezione
             throw new HaveToChooseException();
         }
         else{
@@ -70,11 +71,11 @@ public class Converter {
         }
     }
 
-    private NumberOfResources convert_resources(ArrayList<MarbleColor> input){
+    private NumberOfResources convert_resources(ArrayList<MarbleColor> input) throws PopesInspectionException {
         NumberOfResources output=new NumberOfResources();
         for(MarbleColor marble: input){
             if(marble.equals(MarbleColor.Red)){
-                owner.getFaithTrack().addPoint();
+                owner.getFaithTrack().addPoint(); //TODO gestire eccezione
             }
             else{
                 output=output.add(convert_single_marble(marble),1);
