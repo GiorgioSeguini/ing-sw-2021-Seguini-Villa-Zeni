@@ -74,8 +74,10 @@ public class Controller {
                 if (!tosub.IsEmpty()){
                     for(int i=0;i<tosub.size();i++){
                         for (Player x: game.getPlayers()){
+                          if (player!=x) {
                             x.getFaithTrack().addPoint();
-                            }
+                          }
+                        }
                         game.popesInspection();
                     }
                 }/**/
