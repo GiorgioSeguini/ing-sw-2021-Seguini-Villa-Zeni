@@ -11,13 +11,15 @@ import it.polimi.ingsw.model.exception.UnableToFillError;
  */
 public class Depots {
 
+    private static final int DIVIDER_VICTORY_POINTS = 5;
+    private StrongBox strongBox;
+    private WareHouseDepots wareHouseDepots;
     /**
      * Default constructor
      */
     public Depots() {
     }
-    private StrongBox strongBox;
-    private WareHouseDepots wareHouseDepots;
+
 
     /**
      *
@@ -113,6 +115,6 @@ public class Depots {
     }
 
     public int getVictoryPoints(){
-        return this.getResources().size()/5;
+        return this.getResources().size()/DIVIDER_VICTORY_POINTS;
     }
 }

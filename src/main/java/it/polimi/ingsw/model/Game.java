@@ -70,18 +70,12 @@ public class Game {
         return soloGame;
     }
 
-    /**
-     * @return
-     */
-    public void start() {
-        // TODO implement here
-    }
+
 
     /**
      * @return
      */
     public Player getWinner() throws IllegalArgumentException{
-        //TODO check exception
         if(!finalTurn || indexPlayingPlayer!=0){
             throw new IllegalArgumentException();
         }

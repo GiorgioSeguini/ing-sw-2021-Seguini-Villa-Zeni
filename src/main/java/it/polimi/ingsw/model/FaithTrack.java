@@ -2,7 +2,7 @@ package it.polimi.ingsw.model;
 
 import it.polimi.ingsw.model.enumeration.PopesFavorStates;
 import it.polimi.ingsw.model.exception.FinalTurnException;
-import it.polimi.ingsw.model.exception.PopesInspectionException;
+
 
 import java.lang.reflect.Array;
 import java.util.*;

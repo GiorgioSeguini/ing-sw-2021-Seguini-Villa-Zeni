@@ -4,7 +4,7 @@ package it.polimi.ingsw.model;
 
 import it.polimi.ingsw.model.exception.ChoseResourcesException;
 import it.polimi.ingsw.model.exception.OutOfResourcesException;
-import it.polimi.ingsw.model.exception.PopesInspectionException;
+
 
 public class ProductionPower {
 
@@ -60,11 +60,11 @@ poi il controller chiama la active con un solo argomento, se va a buon fine è s
 se torno l'eccezione della scelta( dobbiamo decidere il nome), il controllore interagisce con il giocatore e dopo chiama la funzione ative con 3 argomenti che fa quello che deve fare
  */
 
-    public void active(Player owner) throws OutOfResourcesException, ChoseResourcesException, PopesInspectionException {
+    public void active(Player owner) throws OutOfResourcesException, ChoseResourcesException{
             active(owner, new NumberOfResources(), new NumberOfResources());
     }
 
-    public void active(Player owner, NumberOfResources choiceInput, NumberOfResources choiceOutput) throws OutOfResourcesException, ChoseResourcesException, PopesInspectionException {
+    public void active(Player owner, NumberOfResources choiceInput, NumberOfResources choiceOutput) throws OutOfResourcesException, ChoseResourcesException{
         if(OfYourChoiceInput != choiceInput.size() || OfYourChoiceOutput !=choiceOutput.size()){
             throw new ChoseResourcesException(OfYourChoiceInput,OfYourChoiceOutput);
         }
@@ -72,16 +72,10 @@ se torno l'eccezione della scelta( dobbiamo decidere il nome), il controllore in
         owner.getDepots().subResource(this.inputRes.add(choiceInput));
         owner.getDepots().addResourceFromProduction(this.outputRes.add(choiceOutput));
 
-        PopesInspectionException temp = null;
         for(int i=0; i< this.PointsFaithOut; i++){
-            try{
-                owner.getFaithTrack().addPoint();
-            }catch(PopesInspectionException e){
-                temp = e;
-            }
+            owner.getFaithTrack().addPoint();
         }
 
-        if(temp != null) throw temp;
     }
 
 }

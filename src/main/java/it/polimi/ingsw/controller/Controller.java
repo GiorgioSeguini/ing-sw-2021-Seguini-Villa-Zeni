@@ -13,7 +13,7 @@ public class Controller {
     /*Quello che ho immaginato è che avendo 4 colonne e 3 righe indextobuy sia un numero da 0 a 6
      * dove da 0 a 3 sono esattamente le 4 colonne e da 4 a 6 siano le tre righe */
 
-    public void BuyFromMarket(int indextobuy, Game game, Market market, Player player) throws PopesInspectionException{
+    public void BuyFromMarket(int indextobuy, Game game, Market market, Player player){
         ArrayList<MarbleColor> buyedresources = new ArrayList<>();
         NumberOfResources myresources = new NumberOfResources();
         NumberOfResources whiteresources = new NumberOfResources();
@@ -76,7 +76,7 @@ public class Controller {
                         for (Player x: game.getPlayers()){
                             x.getFaithTrack().addPoint();
                             }
-                        game.popesIspection();
+                        game.popesInspection();
                     }
                 }/**/
             }
@@ -88,7 +88,7 @@ public class Controller {
         //compra carta sviluppo
     }
 
-    public void activeProductions(ProductionPower[] toActive, Player player)throws PopesInspectionException{
+    public void activeProductions(ProductionPower[] toActive, Player player, Game game){
         //check if current player really own the productionPowers that want to active
         ArrayList<ProductionPower> productionOwned = player.getPersonalBoard().getProduction();
 
@@ -108,13 +108,11 @@ public class Controller {
         }catch(OutOfResourcesException e){
             //TODO something different
         }
+        game.popesInspection();
     }
 
     /*
     public void mossaleader(  ){
-
-    }
-    public ispezionePapale(){
 
     }
 
