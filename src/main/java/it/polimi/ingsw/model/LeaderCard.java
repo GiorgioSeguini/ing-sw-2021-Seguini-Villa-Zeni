@@ -50,11 +50,7 @@ public class LeaderCard extends Card {
     public void setDiscard(Player owner) {
         if(getStatus().ordinal()==0){
             setStatus(LeaderStatus.Dead);
-            try {
-                owner.getFaithTrack().addPoint();
-            } catch (PopesInspectionException e) {
-                //TODO
-            }
+            owner.getFaithTrack().addPoint();
         }
     }
 
