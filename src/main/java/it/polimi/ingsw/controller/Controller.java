@@ -71,15 +71,14 @@ public class Controller {
                         }
                     }
                 }
-                if (!tosub.equals(new NumberOfResources())){
+                if (!tosub.IsEmpty()){
                     for(int i=0;i<tosub.size();i++){
                         for (Player x: game.getPlayers()){
                             x.getFaithTrack().addPoint();
                             }
                         game.popesIspection();
                     }
-                }
-                /* nel caso qui abbiamo un punto  converta in punti fede ogni risorsa scartata*/
+                }/**/
             }
         }
     }

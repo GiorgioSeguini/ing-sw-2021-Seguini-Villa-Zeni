@@ -2,13 +2,15 @@ package it.polimi.ingsw.model;
 
 /*Last Edit: William Zeni*/
 
+import it.polimi.ingsw.model.exception.OutOfResourcesException;
+
 public class StrongBox {
 
     private NumberOfResources resources;
 
     /* Default constructor*/
     StrongBox() {
-        resources=new NumberOfResources(0,0,0,0);
+        resources=new NumberOfResources();
     }
 
     /*Getter*/
@@ -23,11 +25,11 @@ public class StrongBox {
     }
 
     /**This method subs resources to the strongbox*/
-    public void subResource(NumberOfResources required) throws IllegalArgumentException{
+    public void subResource(NumberOfResources required) throws OutOfResourcesException {
         NumberOfResources old_resources= resources.clone();
         try{
             resources=resources.sub(required);
-        }catch (IllegalArgumentException error){
+        }catch (OutOfResourcesException e){
             resources=old_resources;
         }
     }

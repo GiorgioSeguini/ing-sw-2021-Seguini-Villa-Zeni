@@ -58,22 +58,4 @@ public class Shelf {
     }
 
 
-
-    /*Additional Methods*/
-    public void add_resources(int input) {
-        if(this.Used+input<=this.MaxSize){
-            this.Used=this.Used+input;
-        }else{
-            System.out.println("Operation not permitted");
-        }
-    }/** this method permits to add resources on the shelf only if the operation is permitted. There is no check about the res_type*/
-
-    public void sub_resources(int required) {
-        if(this.Used-required>=0){
-            this.Used=this.Used-required;
-        }else{
-            System.out.println("Operation not permitted");
-        }
-    }
-    /** this method permits to sub resources on the shelf only if the operation is permitted. There is no check about the res_type*/
 }

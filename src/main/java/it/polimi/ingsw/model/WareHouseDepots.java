@@ -12,7 +12,7 @@ public class WareHouseDepots {
     private final ArrayList<Shelf> shelfs;
 
     /*Default constructor*/
-    WareHouseDepots(){
+    public WareHouseDepots(){
         shelfs=new ArrayList<>();
         for (int i=0; i<3; i++){
             shelfs.add(new Shelf(i+1));
