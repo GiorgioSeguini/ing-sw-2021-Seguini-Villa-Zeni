@@ -13,7 +13,7 @@ public class Controller {
     /*Quello che ho immaginato è che avendo 4 colonne e 3 righe indextobuy sia un numero da 0 a 6
      * dove da 0 a 3 sono esattamente le 4 colonne e da 4 a 6 siano le tre righe */
 
-    public void BuyFromMarket(int indextobuy, Game game, Market market, Player player) throws PopesInspectionException {
+    public void BuyFromMarket(int indextobuy, Game game, Market market, Player player) throws PopesInspectionException{
         ArrayList<MarbleColor> buyedresources = new ArrayList<>();
         NumberOfResources myresources = new NumberOfResources();
         NumberOfResources whiteresources = new NumberOfResources();
@@ -72,15 +72,11 @@ public class Controller {
                     }
                 }
                 if (!tosub.equals(new NumberOfResources())){
-                    for (Player x: game.getPlayers()){
-                        for(int i=0;i<tosub.size();i++){
-                            try{
-                                x.getFaithTrack().addPoint();
+                    for(int i=0;i<tosub.size();i++){
+                        for (Player x: game.getPlayers()){
+                            x.getFaithTrack().addPoint();
                             }
-                            catch (PopesInspectionException e){
-                                //TODO
-                            }
-                        }
+                        game.popesIspection();
                     }
                 }
                 /* nel caso qui abbiamo un punto  converta in punti fede ogni risorsa scartata*/
@@ -93,7 +89,7 @@ public class Controller {
         //compra carta sviluppo
     }
 
-    public void activeProductions(ProductionPower[] toActive, Player player){
+    public void activeProductions(ProductionPower[] toActive, Player player)throws PopesInspectionException{
         //check if current player really own the productionPowers that want to active
         ArrayList<ProductionPower> productionOwned = player.getPersonalBoard().getProduction();
 

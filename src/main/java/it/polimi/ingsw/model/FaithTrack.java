@@ -14,10 +14,10 @@ public class FaithTrack {
     private static final int NUM_OF_POP = 3;
     private static final int MAX_POINTS = 20;
 
-    private static final int[] victoryPoints = {0,0,0};   //TODO
+    private static final int[] victoryPoints = {0,0,0, 1, 1,1,2,2,2,4,4,4,6,6,6,9,9,9,12,12,12,16,16,16,20};
     private static final int[] popesFavorPoints = {2,3,4};
-    private static final int[] popesFavorPosition = {8, 12, 16};
-    private static final int[] popesFavorInitialPosition = {3, 5, 7};
+    private static final int[] popesFavorPosition = {8, 16, 24};
+    private static final int[] popesFavorInitialPosition = {5, 12, 19};
     private int faithPoints;
     private final PopesFavorStates[] popesFavor;
 
@@ -25,7 +25,7 @@ public class FaithTrack {
      * Default constructor
      */
     public FaithTrack(int initialFaithPoints) {
-        popesFavor = new PopesFavorStates[3];
+        popesFavor = new PopesFavorStates[NUM_OF_POP];
         faithPoints=initialFaithPoints;
         for(int i=0; i<NUM_OF_POP; i++) {
                 popesFavor[i]=PopesFavorStates.FaceDown;
@@ -54,21 +54,22 @@ public class FaithTrack {
     }
 
     /**
-     *
+     *dopo ogni chiamata chiamate game.popesInspection!!!
      */
-    public void addPoint() throws PopesInspectionException {
+    public void addPoint() {
         if(faithPoints<MAX_POINTS) faithPoints++;
-        for(int i=0; i<NUM_OF_POP; i++){
+        /*for(int i=0; i<NUM_OF_POP; i++){
             if(faithPoints==popesFavorPosition[i] && popesFavor[i] == PopesFavorStates.FaceDown)
                 throw new PopesInspectionException(i);
-        }
+        }*/
+
     }
 
-    public void popeInspection(int index) throws FinalTurnException {
+    public void popeInspection(int index) throws FinalTurnException{
         if(faithPoints>=popesFavorInitialPosition[index])
             popesFavor[index]=PopesFavorStates.FaceUp;
         else{
-            popesFavor[index]=PopesFavorStates.FaceDown;
+            popesFavor[index]=PopesFavorStates.Discarded;
         }
         if(faithPoints==MAX_POINTS)
             throw new FinalTurnException();

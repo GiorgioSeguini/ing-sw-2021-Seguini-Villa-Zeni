@@ -112,4 +112,6 @@ public class Game {
         return finalTurn;
     }
 
+    public void popesIspection(){};
+
 }
