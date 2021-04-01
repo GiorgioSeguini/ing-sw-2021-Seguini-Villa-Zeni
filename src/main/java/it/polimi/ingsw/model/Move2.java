@@ -1,5 +1,7 @@
 package it.polimi.ingsw.model;
 
+import it.polimi.ingsw.model.exception.PopesInspectionException;
+
 /*Last Edit: Fabio*/
 public class Move2 extends SoloActionTokens {
 
@@ -11,7 +13,7 @@ public class Move2 extends SoloActionTokens {
     /**This apply the effect of a Move2Token**/
     public void ActivateToken(Game game) {
         for(int i=0; i<2; i++){
-        game.getSoloGame().getFaithTrack().addPoint();
+            game.getSoloGame().getFaithTrack().addPoint();
         }
         game.popesIspection();
     }

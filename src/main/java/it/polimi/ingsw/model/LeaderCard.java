@@ -1,6 +1,7 @@
 package it.polimi.ingsw.model;
 
 import it.polimi.ingsw.model.enumeration.LeaderStatus;
+import it.polimi.ingsw.model.exception.PopesInspectionException;
 /*Last Edit: Fabio*/
 
 public class LeaderCard extends Card {
@@ -49,7 +50,11 @@ public class LeaderCard extends Card {
     public void setDiscard(Player owner) {
         if(getStatus().ordinal()==0){
             setStatus(LeaderStatus.Dead);
-            owner.getFaithTrack().addPoint();
+            try {
+                owner.getFaithTrack().addPoint();
+            } catch (PopesInspectionException e) {
+                //TODO
+            }
         }
     }
 

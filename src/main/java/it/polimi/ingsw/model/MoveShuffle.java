@@ -1,4 +1,6 @@
 package it.polimi.ingsw.model;
+ import it.polimi.ingsw.model.exception.PopesInspectionException;
+
  import java.lang.Math;
 import java.util.ArrayList;
 
@@ -16,6 +18,8 @@ public class MoveShuffle extends SoloActionTokens {
     /**This apply the effect of a MoveShuffleToken**/
     public void ActivateToken(Game game) {
         game.getSoloGame().getFaithTrack().addPoint();
+        game.popesIspection();
+
         shuffledDeck = new ArrayList<>(7);
         shuffledDeck = Shuffle(game.getSoloGame().getCopyOfSoloActionTokensInit());
         game.getSoloGame().setSoloActionTokens(shuffledDeck);
