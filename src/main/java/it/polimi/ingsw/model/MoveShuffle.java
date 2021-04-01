@@ -1,7 +1,6 @@
 package it.polimi.ingsw.model;
- import it.polimi.ingsw.model.exception.PopesInspectionException;
 
- import java.lang.Math;
+import java.lang.Math;
 import java.util.ArrayList;
 
 /*Last Edit: Fabio*/

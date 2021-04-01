@@ -1,7 +1,5 @@
 package it.polimi.ingsw.model;
 
-import it.polimi.ingsw.model.exception.PopesInspectionException;
-
 /*Last Edit: Fabio*/
 public class Move2 extends SoloActionTokens {
 
