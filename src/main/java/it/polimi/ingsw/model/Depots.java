@@ -111,4 +111,8 @@ public class Depots {
     public void addExtraShelf(Shelf s){
         wareHouseDepots.addExtraShelf(s);
     }
+
+    public int getVictoryPoints(){
+        return this.getResources().size()/5;
+    }
 }

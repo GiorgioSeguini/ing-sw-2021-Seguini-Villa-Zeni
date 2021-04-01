@@ -39,7 +39,7 @@ public class Player {
     }
 
     public int getVictoryPoints(){
-        victorypoints= personalBoard.getVictoryPoints() + faithtrack.getVictoryPoints();  //TODO bisogna aggiungere anche i points del depots
+        victorypoints = personalBoard.getVictoryPoints() + faithtrack.getVictoryPoints() + depots.getVictoryPoints();
         return victorypoints;
     }
     public void ActivateLeaderCard(int index) throws IllegalArgumentException{
