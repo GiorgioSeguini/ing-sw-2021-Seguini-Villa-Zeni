@@ -75,11 +75,11 @@ public class Controller {
                     }
                 }
                 if (!tosub.equals(new NumberOfResources())){
-                    int sum=0;
+                    int sum=0;                      // perchè non usare tosub.size()
                     for(ResourceType x: ResourceType.values()){
                         sum=sum+tosub.getAmountOf(x);
                     }
-                    for (Player x: game.getPlayers()){
+                    for (Player x: game.getPlayers()){          //forse è meglio invertire questi due cicli for per il corretto funzionamento delle ispezioni papali
                         for(int i=0;i<sum;i++){
                             x.getFaithTrack().addPoint();
                         }
