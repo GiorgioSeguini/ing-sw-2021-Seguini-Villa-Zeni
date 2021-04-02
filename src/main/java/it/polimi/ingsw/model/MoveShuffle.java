@@ -17,7 +17,7 @@ public class MoveShuffle extends SoloActionTokens {
     /**This apply the effect of a MoveShuffleToken**/
     public void ActivateToken(Game game) {
         game.getSoloGame().getFaithTrack().addPoint();
-        game.popesIspection();
+        game.popesInspection();
 
         shuffledDeck = new ArrayList<>(7);
         shuffledDeck = Shuffle(game.getSoloGame().getCopyOfSoloActionTokensInit());

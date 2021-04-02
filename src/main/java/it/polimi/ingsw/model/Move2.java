@@ -13,6 +13,6 @@ public class Move2 extends SoloActionTokens {
         for(int i=0; i<2; i++){
             game.getSoloGame().getFaithTrack().addPoint();
         }
-        game.popesIspection();
+        game.popesInspection();
     }
 }

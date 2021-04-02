@@ -1,6 +1,7 @@
 package it.polimi.ingsw.model;
 
 import it.polimi.ingsw.model.enumeration.LeaderStatus;
+import it.polimi.ingsw.model.exception.FinalTurnException;
 /*Last Edit: Fabio*/
 
 public class LeaderCard extends Card {
@@ -46,7 +47,7 @@ public class LeaderCard extends Card {
     }
 
     /** This set the LeaderCard status on "Dead" and add one FaithPoint**/
-    public void setDiscard(Player owner) {
+    public void setDiscard(Player owner){
         if(getStatus().ordinal()==0){
             setStatus(LeaderStatus.Dead);
             owner.getFaithTrack().addPoint();

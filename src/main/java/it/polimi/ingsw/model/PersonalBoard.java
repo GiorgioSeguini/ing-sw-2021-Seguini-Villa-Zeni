@@ -24,6 +24,10 @@ public class PersonalBoard {
         return OwnedLeaderCard.clone();
     }
 
+    public ArrayList<DevelopmentCard>[] getOwnedDevCards() {
+        return OwnedDevCards.clone();
+    }
+
     /**Those methods allow to get top DevCard of the stacks on the player's personal board**/
     public DevelopmentCard getTopDevCard(int index) {
         DevelopmentCard topdevcard = null;
