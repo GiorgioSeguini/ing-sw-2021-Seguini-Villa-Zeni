@@ -1,7 +1,6 @@
 package it.polimi.ingsw.model;
 
 import it.polimi.ingsw.model.enumeration.LeaderStatus;
-import it.polimi.ingsw.model.exception.PopesInspectionException;
 /*Last Edit: Fabio*/
 
 public class LeaderCard extends Card {
