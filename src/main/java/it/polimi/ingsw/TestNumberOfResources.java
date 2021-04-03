@@ -6,7 +6,7 @@ import it.polimi.ingsw.model.exception.OutOfResourcesException;
 
 public class TestNumberOfResources {
     public static void main(String[] args) throws OutOfResourcesException {
-        NumberOfResources test= new NumberOfResources(5,1,4,1);
+        NumberOfResources test= new NumberOfResources(0,0,4,1);
 
         System.out.print("My NumberOfResouces: ");
         for (ResourceType x: ResourceType.values()){

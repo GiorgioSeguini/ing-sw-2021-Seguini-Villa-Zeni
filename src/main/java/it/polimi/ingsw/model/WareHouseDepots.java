@@ -78,7 +78,7 @@ public class WareHouseDepots {
     public boolean check_3_shelf_type_Integrity(){
         for(int i=0; i<2;i++){
             for(int j=i+1; j<3;j++){
-                if(shelfs.get(i).getResType()==shelfs.get(j).getResType()){
+                if(shelfs.get(i).getResType().equals(shelfs.get(j).getResType())){
                     return false;
                 }
             }

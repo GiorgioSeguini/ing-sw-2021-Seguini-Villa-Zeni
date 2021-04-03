@@ -12,17 +12,20 @@ public class TestWareHouseDepots {
     public static void main(String[] args){
         WareHouseDepots mywarehouse= new WareHouseDepots(ResourceType.values());
         System.out.print("My shelf: ");
-       try {
+
+        try {
             for (ResourceType x: ResourceType.values()){
                 System.out.print(mywarehouse.getResources().getAmountOf(x));
             }
-       }
+            System.out.println("\n3typeshlef diff: "+mywarehouse.check_3_shelf_type_Integrity());
+        }
        catch (NullPointerException e){
            System.out.print("Shelf vuote");
        }
 
         System.out.print("\nAddRes Test: ");
-        NumberOfResources test= new NumberOfResources(1,0,2,2);
+        NumberOfResources test= new NumberOfResources(0,1,4,1);
+        NumberOfResources test2= new NumberOfResources(0,4,1,1);
        try {
            mywarehouse.addResource(test);
            for (ResourceType x: ResourceType.values()){
@@ -37,5 +40,25 @@ public class TestWareHouseDepots {
            }
        }
         System.out.println("\n3typeshlef diff: "+mywarehouse.check_3_shelf_type_Integrity());
+
+        System.out.print("\nAddRes Test: ");
+        try {
+            mywarehouse.addResource(test2);
+            for (ResourceType x: ResourceType.values()){
+                System.out.print(mywarehouse.getResources().getAmountOf(x));
+            }
+
+        } catch (UnableToFillError e) {
+            System.out.print("Unable to fill error\n");
+            System.out.print("My shelf: ");
+            for (ResourceType x: ResourceType.values()){
+                System.out.print(mywarehouse.getResources().getAmountOf(x));
+            }
+        }
+
+       System.out.println("\n3typeshlef diff: "+mywarehouse.check_3_shelf_type_Integrity());
+       //la prima unable to fill non funziona, 3shelftype ritorna false no sense, gli atrli casi funzionano
+
+
     }
 }
