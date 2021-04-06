@@ -10,7 +10,7 @@ public class NumberOfResources {
     private final int[] resources = new int[4]; //if issue attempt, make it in constructor
 
     /*Default Constructor*/
-    NumberOfResources(int Servants, int Shields, int Coins, int Stones){
+    public NumberOfResources(int Servants, int Shields, int Coins, int Stones){
         resources[0]=Servants;
         resources[1]=Shields;
         resources[2]=Coins;

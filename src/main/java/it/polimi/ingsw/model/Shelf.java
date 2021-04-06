@@ -15,14 +15,14 @@ public class Shelf {
     boolean is_extra_shelf;
 
     /*default constructor*/
-    Shelf(ResourceType type, int maxSize) {
+    public Shelf(ResourceType type, int maxSize) {
         this.Used=0;
         this.MaxSize=maxSize;
         this.restype=type;
         this.is_extra_shelf=false;
     }
 
-    Shelf(int maxSize){
+    public Shelf(int maxSize){
         this.Used=0;
         this.MaxSize=maxSize;
         this.is_extra_shelf=false;

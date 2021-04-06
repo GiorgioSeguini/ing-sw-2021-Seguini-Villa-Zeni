@@ -9,11 +9,10 @@ import java.util.ArrayList;
 /*Last Edit: William Zeni*/
 public class WareHouseDepots {
 
-    private final ArrayList<Shelf> shelfs;
+    private final ArrayList<Shelf> shelfs=new ArrayList<>();
 
     /*Default constructor*/
     public WareHouseDepots(){
-        shelfs=new ArrayList<>();
         for (int i=0; i<3; i++){
             shelfs.add(new Shelf(i+1));
         }
@@ -22,8 +21,12 @@ public class WareHouseDepots {
     /*Getter*/
     public NumberOfResources getResources() {
         int[] x =new int[4];
-        for (Shelf layer: shelfs){
-            x[layer.getResType().ordinal()]= layer.getUsed();
+        for (int i=0; i<shelfs.size();i++){
+            try{
+                x[shelfs.get(i).getResType().ordinal()]+= shelfs.get(i).getUsed();
+            }catch (NullPointerException e){
+                x[i]=0;
+            }
         }
         return new NumberOfResources(x[0],x[1],x[2],x[3]);
     }
@@ -73,9 +76,11 @@ public class WareHouseDepots {
     public boolean check_3_shelf_type_Integrity(){
         for(int i=0; i<2;i++){
             for(int j=i+1; j<3;j++){
-                if(shelfs.get(i).getResType()==shelfs.get(j).getResType()){
-                    return false;
-                }
+                try{
+                    if(shelfs.get(i).getResType().equals(shelfs.get(j).getResType())){
+                        return false;
+                    }
+                }catch (NullPointerException e){}
             }
         }
         return true;
@@ -114,21 +119,20 @@ public class WareHouseDepots {
 
         /*This for checks just for the extra shelf*/
         for(Shelf x: shelfs){
-            if(my_resources.getAmountOf(x.getResType())!=0 && x.getIsExtra()){
-                if(my_resources.getAmountOf(x.getResType()) > x.getMaxSize()){
-                    x.setUsed(x.getMaxSize());
-                }
-                else{
-                    x.setUsed(my_resources.getAmountOf(x.getResType()));
-                }
-                try{
-                    my_resources=my_resources.sub(x.getResType(),x.getUsed());
-                }
-                catch (OutOfResourcesException errorSub){
-                    //I don't expect to enter here.
+            if(x.getIsExtra()) {
+                if (my_resources.getAmountOf(x.getResType()) != 0) {
+                    if (my_resources.getAmountOf(x.getResType()) > x.getMaxSize()) {
+                        x.setUsed(x.getMaxSize());
+                    } else {
+                        x.setUsed(my_resources.getAmountOf(x.getResType()));
+                    }
+                    try {
+                        my_resources = my_resources.sub(x.getResType(), x.getUsed());
+                    } catch (OutOfResourcesException errorSub) {
+                        //I don't expect to enter here.
+                    }
                 }
             }
-
         }
 
         /*This for checks the first three shelfs*/
@@ -138,13 +142,14 @@ public class WareHouseDepots {
                     throw new UnableToFillError();
                 }
                 else{
-                    shelfs.get(i).setUsed(my_resources.getAmountOf(my_resources.Max_Resource_Type()));
-                    shelfs.get(i).setResType(my_resources.Max_Resource_Type());
-                    try {
-                        my_resources=my_resources.sub(shelfs.get(i).getResType(),shelfs.get(i).getUsed());
-                    }
-                    catch (OutOfResourcesException errorSub){
-                        //I don't expect to enter here.
+                    if(my_resources.getAmountOf(my_resources.Max_Resource_Type())!=0) {
+                        shelfs.get(i).setUsed(my_resources.getAmountOf(my_resources.Max_Resource_Type()));
+                        shelfs.get(i).setResType(my_resources.Max_Resource_Type());
+                        try {
+                            my_resources = my_resources.sub(shelfs.get(i).getResType(), shelfs.get(i).getUsed());
+                        } catch (OutOfResourcesException errorSub) {
+                            //I don't expect to enter here.
+                        }
                     }
                 }
             }
