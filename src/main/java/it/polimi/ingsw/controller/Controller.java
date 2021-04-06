@@ -2,10 +2,7 @@ package it.polimi.ingsw.controller;
 
 import it.polimi.ingsw.model.*;
 import it.polimi.ingsw.model.Market;
-import it.polimi.ingsw.model.enumeration.ColorDevCard;
-import it.polimi.ingsw.model.enumeration.Level;
 import it.polimi.ingsw.model.enumeration.MarbleColor;
-import it.polimi.ingsw.model.enumeration.ResourceType;
 import it.polimi.ingsw.model.exception.*;
 
 import java.util.ArrayList;
@@ -73,7 +70,7 @@ public class Controller {
                         }
                     }
                 }
-                if (!tosub.IsEmpty()){
+                if (!tosub.isEmpty()){
                     for(int i=0;i<tosub.size();i++){
                         for (Player x: game.getPlayers()){
                           if (player!=x) {

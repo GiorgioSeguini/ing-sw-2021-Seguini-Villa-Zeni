@@ -116,7 +116,7 @@ public class NumberOfResources {
         return res;
     }
 
-    public boolean IsEmpty(){
+    public boolean isEmpty(){
         for (int x: resources){
             if (x!=0){
                 return false;

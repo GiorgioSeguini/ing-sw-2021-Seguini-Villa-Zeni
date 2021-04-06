@@ -13,7 +13,7 @@ public class TestNumberOfResources {
             System.out.print(test.getAmountOf(x));
         }
         System.out.println("\nMetodo Size: "+test.size());
-        System.out.println("Metodo Isempty: "+ test.IsEmpty());
+        System.out.println("Metodo Isempty: "+ test.isEmpty());
         System.out.println("Metodo Maxtype: "+test.Max_Resource_Type());
         System.out.print("Metodo clone: ");
         NumberOfResources test2= test.clone();
