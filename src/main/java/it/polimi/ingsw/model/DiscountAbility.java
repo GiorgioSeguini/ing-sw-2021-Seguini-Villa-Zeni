@@ -10,7 +10,10 @@ public class DiscountAbility extends Ability{
     private int discount;
 
     /*Default constructor*/
-    public DiscountAbility() {
+    public DiscountAbility(ColorDevCard cardColor, int discount) {
+        this.cardColor = cardColor;
+        this.discount = discount;
+
     }
 
     /*Getter*/
