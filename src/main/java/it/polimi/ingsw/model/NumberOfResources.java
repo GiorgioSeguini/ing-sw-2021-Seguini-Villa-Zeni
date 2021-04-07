@@ -125,5 +125,18 @@ public class NumberOfResources {
         return true;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if(this==obj)
+            return true;
+        if(!(obj instanceof NumberOfResources))
+            return false;
+        NumberOfResources other = (NumberOfResources) obj;
 
+        for(int i=0; i<resources.length; i++){
+            if(this.resources[i]!= other.resources[i])
+                return false;
+        }
+        return true;
+    }
 }
