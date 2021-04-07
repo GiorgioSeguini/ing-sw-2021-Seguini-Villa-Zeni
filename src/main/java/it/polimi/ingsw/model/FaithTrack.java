@@ -12,7 +12,7 @@ import java.util.*;
  */
 public class FaithTrack {
     private static final int NUM_OF_POP = 3;
-    private static final int MAX_POINTS = 20;
+    private static final int MAX_POINTS = 24;
 
     private static final int[] victoryPoints = {0,0,0, 1, 1,1,2,2,2,4,4,4,6,6,6,9,9,9,12,12,12,16,16,16,20};
     private static final int[] popesFavorPoints = {2,3,4};
@@ -25,6 +25,8 @@ public class FaithTrack {
      * Default constructor
      */
     public FaithTrack(int initialFaithPoints) {
+        if(initialFaithPoints<0)
+            throw new IllegalArgumentException();
         popesFavor = new PopesFavorStates[NUM_OF_POP];
         faithPoints=initialFaithPoints;
         for(int i=0; i<NUM_OF_POP; i++) {
@@ -64,7 +66,7 @@ public class FaithTrack {
      *
      * @return -1 if no inspection is needed, otherwise return 0, 1 or 2 depending on the number of the inspection needed
      */
-    public int inspectionNeed(){
+    int inspectionNeed(){
         for(int i=0; i<NUM_OF_POP; i++) {
             if (faithPoints >= popesFavorPosition[i] && popesFavor[i] == PopesFavorStates.FaceDown)
                 return i;
@@ -72,7 +74,7 @@ public class FaithTrack {
         return -1;
     }
 
-    public void popeInspection(int index) throws FinalTurnException{
+    void popeInspection(int index) throws FinalTurnException{
         if(faithPoints>=popesFavorInitialPosition[index])
             popesFavor[index]=PopesFavorStates.FaceUp;
         else{

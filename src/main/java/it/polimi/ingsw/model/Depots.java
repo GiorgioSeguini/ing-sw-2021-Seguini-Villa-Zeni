@@ -18,6 +18,8 @@ public class Depots {
      * Default constructor
      */
     public Depots() {
+        strongBox = new StrongBox();
+        wareHouseDepots = new WareHouseDepots();
     }
 
 
@@ -75,7 +77,7 @@ public class Depots {
                 subtracted = subtracted.add(type, toRemove);
                 missing = missing.sub(type, toRemove);
             }
-            strongBox.subResource(required);        //it can throws an exception but in this case I just rethrow it, I can't do anything differently
+            strongBox.subResource(missing);        //it can throws an exception but in this case I just rethrow it, I can't do anything differently
 
             //if no exception, i need to really update wareHouseDepots
             wareHouseDepots.subResource(subtracted);

@@ -2,12 +2,17 @@ package it.polimi.ingsw.controller;
 
 import it.polimi.ingsw.model.*;
 import it.polimi.ingsw.model.Market;
+import it.polimi.ingsw.model.enumeration.ColorDevCard;
+import it.polimi.ingsw.model.enumeration.Level;
 import it.polimi.ingsw.model.enumeration.MarbleColor;
+import it.polimi.ingsw.model.enumeration.ResourceType;
 import it.polimi.ingsw.model.exception.*;
 
 import java.util.ArrayList;
 
 public class Controller {
+
+    private Game game;
 
     /*Quello che ho immaginato è che avendo 4 colonne e 3 righe indextobuy sia un numero da 0 a 6
      * dove da 0 a 3 sono esattamente le 4 colonne e da 4 a 6 siano le tre righe */
@@ -124,12 +129,10 @@ public class Controller {
             game.getDashboard().buyDevCard(cardtobuy.getColor(),cardtobuy.getLevel());
             try {
                 player.getDepots().subResource(cardtobuy.getCost());
-            } catch (OutOfResourcesException ignored) {
-            }
+            } catch (OutOfResourcesException ignored) {}
         } else{
             //qui bisogna dire al player che non può comprare quella carta perchè non ha abbastazna risorse e quindi di sceglierne un'altra
             //TODO ERROR MESSAGE
-            return;
         }
 
     }
@@ -157,12 +160,12 @@ public class Controller {
         game.popesInspection();
     }
 
-    /*
-    public void mossaleader(  ){
+    public void Update(MoveType x){
 
     }
 
-    public void performMove(Classe MOveType){
+    /*
+    public void mossaleader(  ){
 
     }
 
