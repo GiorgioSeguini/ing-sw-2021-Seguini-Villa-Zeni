@@ -10,15 +10,14 @@ public class LorenzoSoloPlayer {
 
     private ArrayList<SoloActionTokens> soloActionTokens;
     private ArrayList<SoloActionTokens> copyOfSoloActionTokens;
-    private ArrayList<SoloActionTokens> soloActionTokensDiscarded;
-
-    private SoloActionTokens soloActionTokensRevealed;
+    //private ArrayList<SoloActionTokens> soloActionTokensDiscarded;
 
 
     /*default constructor*/
     public LorenzoSoloPlayer() {
         soloActionTokens = new ArrayList<SoloActionTokens>(7);
         copyOfSoloActionTokens = new ArrayList<SoloActionTokens>(7);
+        copyOfSoloActionTokens = (ArrayList<SoloActionTokens>) soloActionTokens.clone();
     }
 
     /*Getter*/
@@ -34,9 +33,9 @@ public class LorenzoSoloPlayer {
         return soloActionTokens;
     }
 
-    public ArrayList<SoloActionTokens> getSoloActionTokensDiscarded() {
+    /*public ArrayList<SoloActionTokens> getSoloActionTokensDiscarded() {
         return soloActionTokensDiscarded;
-    }
+    }*/
 
     public ArrayList<SoloActionTokens> getCopyOfSoloActionTokensInit() {
         return copyOfSoloActionTokens;
@@ -49,10 +48,10 @@ public class LorenzoSoloPlayer {
 
     /*Additional methods*/
     /**this reveal first stack's token and  apply the effect**/
-    public void revealdToken() {
+    public void revealToken() {
 
-        soloActionTokensRevealed = soloActionTokens.get(0);
-        soloActionTokensDiscarded.add(soloActionTokensRevealed);
+        SoloActionTokens soloActionTokensRevealed = soloActionTokens.get(0);
+        //soloActionTokensDiscarded.add(soloActionTokensRevealed);
         soloActionTokens.remove(0);
         soloActionTokensRevealed.ActivateToken(game);
     }

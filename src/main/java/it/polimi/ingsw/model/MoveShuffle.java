@@ -25,7 +25,7 @@ public class MoveShuffle extends SoloActionTokens {
     }
 
     /**This shuffle randomly the SoloActionToken's stack**/
-    public ArrayList<SoloActionTokens> Shuffle(ArrayList<SoloActionTokens> soloActionTokens){
+    private ArrayList<SoloActionTokens> Shuffle(ArrayList<SoloActionTokens> soloActionTokens){
         for(int i=0; i<7; i++) {
             int n = (int) (Math.random() * 6.1);
             while(shuffledDeck.get(n) != null) {
