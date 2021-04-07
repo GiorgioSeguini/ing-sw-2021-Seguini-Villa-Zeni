@@ -10,7 +10,8 @@ public class Discard2 extends SoloActionTokens {
 
 
     /*Default constructor*/
-    public Discard2() {
+    public Discard2(ColorDevCard color) {
+        this.color=color;
     }
 
     /*Getter*/

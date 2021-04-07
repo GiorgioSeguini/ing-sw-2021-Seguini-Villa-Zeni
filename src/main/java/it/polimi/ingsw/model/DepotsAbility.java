@@ -6,11 +6,12 @@ import it.polimi.ingsw.model.enumeration.ResourceType;
 
 public class DepotsAbility extends Ability {
 
-    private ResourceType typeOfRes;
+    public static final int extraSize = 2;
+    private final ResourceType typeOfRes;
 
     /*Default constructor*/
-    public DepotsAbility() {
-        //TODO
+    public DepotsAbility(ResourceType typeOfRes) {
+        this.typeOfRes=typeOfRes;
     }
 
     /*Getter*/
@@ -19,7 +20,7 @@ public class DepotsAbility extends Ability {
     }
 
     public void RunAbility(Player owner){
-        Shelf shelf =  new Shelf(2);
+        Shelf shelf =  new Shelf(extraSize);
         shelf.setResType(typeOfRes);
         owner.getDepots().addExtraShelf(shelf);
     }

@@ -22,7 +22,19 @@ public class Game {
     /**
      * Default constructor
      */
-    public Game() {
+    public Game(ArrayList<Player> players, Market market, Dashboard dashboard){
+        if(players.isEmpty())
+            throw new IllegalArgumentException();
+        if(players.size()==1){
+            //single player mode
+            soloGame = new LorenzoSoloPlayer();
+        }
+        else{
+            soloGame = null;
+        }
+
+        this.marketTray = market;
+        this.dashboard = dashboard;
     }
 
 

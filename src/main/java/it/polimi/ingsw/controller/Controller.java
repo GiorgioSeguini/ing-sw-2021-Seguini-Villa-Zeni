@@ -89,9 +89,16 @@ public class Controller {
         }
     }
 
+
     public void buyDevelopmentCard(DevelopmentCard cardtobuy, Game game, Player player){
 
         ArrayList<DevelopmentCard>[] cardsOwned = player.getPersonalBoard().getOwnedDevCards();
+
+        if(!game.getDashboard().getTopDevCard(cardtobuy.getColor(),cardtobuy.getLevel()).equals(cardtobuy)){
+            //la carta che il player vuole comprare non è la prima della pila quindi deve sceglierne un'altra
+            //TODO ERROR MESSAGE
+            return;
+        }
         //this counter is used to count how many empty cells there are in the player's personal board
         int countOfEmptyCells = 0;
         for(ArrayList x : cardsOwned) {
@@ -100,7 +107,8 @@ public class Controller {
             }
         }
         if(countOfEmptyCells==3 && cardtobuy.getLevel().ordinal()!=0){
-            throw new IllegalArgumentException();
+            //TODO ERROR MESSAGE
+            return;
         }
         //this counter is used to count how many cells of the player's personal board are unusable because of the level's card
         int countOfHigherLevelCells=0;
@@ -112,7 +120,10 @@ public class Controller {
                 }
             }
         }
-        if (countOfHigherLevelCells==3) throw new IllegalArgumentException();
+        if (countOfHigherLevelCells==3){
+            //TODO ERROR MESSAGE
+            return;
+            }
 
         if (player.getDepots().match(cardtobuy.getCost())) {
             game.getDashboard().buyDevCard(cardtobuy.getColor(),cardtobuy.getLevel());
@@ -121,6 +132,7 @@ public class Controller {
             } catch (OutOfResourcesException ignored) {}
         } else{
             //qui bisogna dire al player che non può comprare quella carta perchè non ha abbastazna risorse e quindi di sceglierne un'altra
+            //TODO ERROR MESSAGE
         }
 
     }
