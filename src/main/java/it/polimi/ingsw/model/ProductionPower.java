@@ -8,20 +8,20 @@ import it.polimi.ingsw.model.exception.OutOfResourcesException;
 
 public class ProductionPower {
 
-    private int PointsFaithOut;
+    private int pointsFaithOut;
     private NumberOfResources outputRes;
     private NumberOfResources inputRes;
-    private int OfYourChoiceInput;
-    private int OfYourChoiceOutput;
+    private int ofYourChoiceInput;
+    private int ofYourChoiceOutput;
 
 
     /*Default constructor*/
     public ProductionPower(int points, NumberOfResources outputRes, NumberOfResources inputRes, int ofYourChoiceInput, int ofYourChoiceOutput){
-        this.PointsFaithOut=points;
+        this.pointsFaithOut =points;
         this.outputRes=outputRes;
         this.inputRes=inputRes;
-        this.OfYourChoiceInput = ofYourChoiceInput;
-        this.OfYourChoiceOutput = ofYourChoiceOutput;
+        this.ofYourChoiceInput = ofYourChoiceInput;
+        this.ofYourChoiceOutput = ofYourChoiceOutput;
     }
     public ProductionPower(int points, NumberOfResources outputRes, NumberOfResources inputRes){
         new ProductionPower(points, outputRes, inputRes, 0, 0);
@@ -35,7 +35,7 @@ public class ProductionPower {
 
     /*Getter*/
     public int getFaithPointsOut() {
-        return this.PointsFaithOut;
+        return this.pointsFaithOut;
     }
 
     public NumberOfResources getInputRes() {
@@ -52,7 +52,7 @@ public class ProductionPower {
      * @return return the sum of this and other
      */
     public ProductionPower add(ProductionPower other){
-        return new ProductionPower(this.PointsFaithOut + other.PointsFaithOut , this.outputRes.add(other.outputRes), this.inputRes.add(other.inputRes), this.OfYourChoiceInput + other.OfYourChoiceInput, this.OfYourChoiceOutput + other.OfYourChoiceOutput);
+        return new ProductionPower(this.pointsFaithOut + other.pointsFaithOut, this.outputRes.add(other.outputRes), this.inputRes.add(other.inputRes), this.ofYourChoiceInput + other.ofYourChoiceInput, this.ofYourChoiceOutput + other.ofYourChoiceOutput);
     }
 
 /* L'idea è che il controller sommi tutte le production power che il giocatore vuole attivare --> un solo controllo sul deposito,
@@ -65,14 +65,14 @@ se torno l'eccezione della scelta( dobbiamo decidere il nome), il controllore in
     }
 
     public void active(Player owner, NumberOfResources choiceInput, NumberOfResources choiceOutput) throws OutOfResourcesException, ChoseResourcesException{
-        if(OfYourChoiceInput != choiceInput.size() || OfYourChoiceOutput !=choiceOutput.size()){
-            throw new ChoseResourcesException(OfYourChoiceInput,OfYourChoiceOutput);
+        if(ofYourChoiceInput != choiceInput.size() || ofYourChoiceOutput !=choiceOutput.size()){
+            throw new ChoseResourcesException(ofYourChoiceInput, ofYourChoiceOutput);
         }
 
         owner.getDepots().subResource(this.inputRes.add(choiceInput));
         owner.getDepots().addResourceFromProduction(this.outputRes.add(choiceOutput));
 
-        for(int i=0; i< this.PointsFaithOut; i++){
+        for(int i = 0; i< this.pointsFaithOut; i++){
             owner.getFaithTrack().addPoint();
         }
 

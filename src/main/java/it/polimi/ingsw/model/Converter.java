@@ -9,21 +9,21 @@ import java.util.ArrayList;
 
 public class Converter {
 
-    boolean WhiteAbilityActive;
-    Player owner;
-    NumberOfResources inwait;
+    private boolean whiteAbilityActive;
+    private Player owner;
+    private NumberOfResources inwait;
 
     Converter(Player owner){
-        WhiteAbilityActive=false;
+        whiteAbilityActive =false;
         this.owner=owner;
     }
 
     public boolean getWhiteAbility(){
-        return this.WhiteAbilityActive;
+        return this.whiteAbilityActive;
     }
 
     public void setWhiteAbility(){
-        this.WhiteAbilityActive=true;
+        this.whiteAbilityActive =true;
     }
 
     /*Questa classe converte tutte le risorse non bianche. Se trova qualcosa di bianco e l'abilità è attiva
@@ -43,7 +43,7 @@ public class Converter {
                 check_white_presence=true;
             }
         }
-        if (check_white_presence && WhiteAbilityActive){
+        if (check_white_presence && whiteAbilityActive){
             inwait=convert_resources(without_white); //TODO gestire eccezione
             throw new HaveToChooseException();
         }

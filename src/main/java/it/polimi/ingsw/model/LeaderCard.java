@@ -1,25 +1,21 @@
 package it.polimi.ingsw.model;
 
 import it.polimi.ingsw.model.enumeration.LeaderStatus;
-import it.polimi.ingsw.model.exception.FinalTurnException;
 /*Last Edit: Fabio*/
 
 public class LeaderCard extends Card {
 
     private LeaderStatus status;
-
-    private Requirements requirements;
-
-    private Ability ability;
-
-    private int VictoryPoints;
+    private final Requirements requirements;
+    private final Ability ability;
+    private int victoryPoints;
 
     /*Default constructor*/
     public LeaderCard(Requirements requirements, Ability ability, int victoryPoints) {
         this.status=LeaderStatus.onHand;
         this.requirements=requirements;
         this.ability=ability;
-        this.VictoryPoints = victoryPoints;
+        this.victoryPoints = victoryPoints;
     }
 
 
