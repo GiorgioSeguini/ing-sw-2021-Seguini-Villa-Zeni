@@ -75,7 +75,7 @@ public class Controller {
                         }
                     }
                 }
-                if (!tosub.IsEmpty()){
+                if (!tosub.isEmpty()){
                     for(int i=0;i<tosub.size();i++){
                         for (Player x: game.getPlayers()){
                           if (player!=x) {
