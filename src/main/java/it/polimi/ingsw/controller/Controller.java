@@ -91,7 +91,7 @@ public class Controller {
         }
     }
 
-    public void buyDevelopmentCard(DevelopmentCard cardtobuy, Game game, Player player){
+    public void buyDevelopmentCard(DevelopmentCard cardtobuy, Game game, Player player, int pos){
 
         ArrayList<DevelopmentCard>[] cardsOwned = player.getPersonalBoard().getOwnedDevCards();
 
@@ -124,6 +124,7 @@ public class Controller {
        */
         if (player.getDepots().match(cardtobuy.getCost())) {
             game.getDashboard().buyDevCard(cardtobuy.getColor(),cardtobuy.getLevel());
+            player.getPersonalBoard().addDevCard(cardtobuy,pos);
             try {
                 player.getDepots().subResource(cardtobuy.getCost());
             } catch (OutOfResourcesException ignored) {}
