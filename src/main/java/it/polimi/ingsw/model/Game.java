@@ -37,8 +37,9 @@ public class Game {
         this.dashboard = dashboard;
     }
 
-
-
+    public Market getMarketTray() {
+        return marketTray;
+    }
 
     /**
      * @param index 

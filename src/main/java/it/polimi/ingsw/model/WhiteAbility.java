@@ -20,6 +20,6 @@ public class WhiteAbility implements Ability {
 
     @Override
     public void RunAbility(Player owner) {
-        owner.getConverter().setWhiteAbility();
+        owner.getConverter().setWhiteAbility(typeOfRes);
     }
 }
