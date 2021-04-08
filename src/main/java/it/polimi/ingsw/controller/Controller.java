@@ -87,7 +87,7 @@ public class Controller {
                     }
                     game.popesInspection();
                 }
-            }/**/
+            }
         }
     }
 
