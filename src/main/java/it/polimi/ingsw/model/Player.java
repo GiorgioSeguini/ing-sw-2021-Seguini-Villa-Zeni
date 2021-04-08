@@ -1,20 +1,33 @@
 package it.polimi.ingsw.model;
 
+import it.polimi.ingsw.model.enumeration.ResourceType;
+import it.polimi.ingsw.model.exception.UnableToFillError;
+
 import java.util.*;
 
 /*Last Edit: Fabio*/
 public class Player {
 
-    private String userName;
-    private FaithTrack faithtrack;
-    private Depots depots;
-    private PersonalBoard personalBoard;
-    private Converter converter;
-    int victorypoints;
+    private final String userName;
+    private final FaithTrack faithtrack;
+    private final Depots depots;
+    private final PersonalBoard personalBoard;
+    private final Converter converter;
+    //private final ArrayList<ResourceType> discounted;         //or Buyer class
+    private int victoryPoints;
 
     /*Default constructor*/
-    public Player() {
-        victorypoints=0;
+    public Player(String userName, int initialFaithPoints, NumberOfResources initialResources) {
+        this.userName=userName;
+        faithtrack = new FaithTrack(initialFaithPoints);
+        depots = new Depots();
+        try {
+            depots.addResourcesFromMarket(initialResources);
+        }catch(UnableToFillError ignored){}
+        personalBoard = new PersonalBoard();
+        converter = new Converter(this);
+        victoryPoints=0;
+        //discounted = new ArrayList<ResourceType>();
     }
 
     /*Getter*/
@@ -39,12 +52,20 @@ public class Player {
     }
 
     public int getVictoryPoints(){
-        victorypoints = personalBoard.getVictoryPoints() + faithtrack.getVictoryPoints() + depots.getVictoryPoints();
-        return victorypoints;
+        victoryPoints = personalBoard.getVictoryPoints() + faithtrack.getVictoryPoints() + depots.getVictoryPoints();
+        return victoryPoints;
     }
     public void ActivateLeaderCard(int index) throws IllegalArgumentException{
-        LeaderCard toactivate= getPersonalBoard().getLeaderCards()[index];
-        toactivate.setPlayed(this);
+        LeaderCard toActivate= getPersonalBoard().getLeaderCards()[index];
+        toActivate.setPlayed(this);
     }
 
+    /*
+    public void addDiscount(ResourceType type){
+        discounted.add(type);
+    }
+
+    public boolean getDiscount(ResourceType type){
+
+    }*/
 }
