@@ -1,5 +1,8 @@
 package it.polimi.ingsw.model;
 
+import it.polimi.ingsw.model.enumeration.Level;
+import org.graalvm.compiler.hotspot.stubs.OutOfBoundsExceptionStub;
+
 import java.util.*;
 
 /*Last Edit: Fabio*/
@@ -78,20 +81,20 @@ public class PersonalBoard {
     /**This for add a DevCard in a specific position**/
     public void addDevCard(DevelopmentCard card, int pos) {
         if(goodindex(pos)){
-        if (OwnedDevCards[pos].isEmpty()) {
-            OwnedDevCards[pos].add(card);
-        } else
-        if(OwnedDevCards[pos].get(0).getLevel().ordinal() < card.getLevel().ordinal())
-        {
-            OwnedDevCards[pos].add(0, card);
-        }
+            if (OwnedDevCards[pos].isEmpty() && card.getLevel() == Level.One) {
+                OwnedDevCards[pos].add(card);
+            } else
+            if(OwnedDevCards[pos].get(0).getLevel().ordinal() == card.getLevel().ordinal()-1)
+            {
+                OwnedDevCards[pos].add(0, card);
+            }
         }
     }
 
     /**This for check the index**/
     private boolean goodindex(int index) throws IllegalArgumentException{
         if(index>2 || index<0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(); //TODO
         }
         return true;
     }

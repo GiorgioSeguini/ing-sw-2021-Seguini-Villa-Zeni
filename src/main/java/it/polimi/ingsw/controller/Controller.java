@@ -87,9 +87,9 @@ public class Controller {
     }
 
 
-    public void buyDevelopmentCard(DevelopmentCard cardtobuy, Game game, Player player){
+    public void buyDevelopmentCard(DevelopmentCard cardtobuy, Game game, Player player, int pos){
 
-        ArrayList<DevelopmentCard>[] cardsOwned = player.getPersonalBoard().getOwnedDevCards();
+        //ArrayList<DevelopmentCard>[] cardsOwned = player.getPersonalBoard().getOwnedDevCards();
 
         if(!game.getDashboard().getTopDevCard(cardtobuy.getColor(),cardtobuy.getLevel()).equals(cardtobuy)){
             //la carta che il player vuole comprare non è la prima della pila quindi deve sceglierne un'altra
@@ -97,7 +97,7 @@ public class Controller {
             return;
         }
         //this counter is used to count how many empty cells there are in the player's personal board
-        int countOfEmptyCells = 0;
+        /*int countOfEmptyCells = 0;
         for(ArrayList x : cardsOwned) {
             if (x.isEmpty()) {
                 countOfEmptyCells++;
@@ -120,12 +120,13 @@ public class Controller {
         if (countOfHigherLevelCells==3){
             //TODO ERROR MESSAGE
             return;
-            }
+            }*/
 
         if (player.getDepots().match(cardtobuy.getCost())) {
             game.getDashboard().buyDevCard(cardtobuy.getColor(),cardtobuy.getLevel());
             try {
                 player.getDepots().subResource(cardtobuy.getCost());
+                player.getPersonalBoard().addDevCard(cardtobuy,pos);
             } catch (OutOfResourcesException ignored) {}
         } else{
             //qui bisogna dire al player che non può comprare quella carta perchè non ha abbastazna risorse e quindi di sceglierne un'altra
