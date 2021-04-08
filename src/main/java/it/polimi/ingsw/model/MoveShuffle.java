@@ -2,6 +2,7 @@ package it.polimi.ingsw.model;
 
 import java.lang.Math;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /*Last Edit: Fabio*/
 public class MoveShuffle implements SoloActionTokens {
@@ -21,7 +22,9 @@ public class MoveShuffle implements SoloActionTokens {
         game.popesInspection();
 
         shuffledDeck = new ArrayList<>(7);
-        shuffledDeck = Shuffle(game.getSoloGame().getCopyOfSoloActionTokensInit());
+        shuffledDeck = game.getSoloGame().getCopyOfSoloActionTokensInit();
+        Collections.shuffle(shuffledDeck);
+        //shuffledDeck = Shuffle(game.getSoloGame().getCopyOfSoloActionTokensInit());
         game.getSoloGame().setSoloActionTokens(shuffledDeck);
     }
 

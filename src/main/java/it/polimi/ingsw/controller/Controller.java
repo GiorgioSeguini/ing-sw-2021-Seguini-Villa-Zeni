@@ -100,31 +100,15 @@ public class Controller {
             //TODO ERROR MESSAGE
             return;
         }
-        //this counter is used to count how many empty cells there are in the player's personal board
-        /*int countOfEmptyCells = 0;
-        for(ArrayList x : cardsOwned) {
-            if (x.isEmpty()) {
-                countOfEmptyCells++;
-            }
-        }
-        if(countOfEmptyCells==3 && cardtobuy.getLevel().ordinal()!=0){
-            //TODO ERROR MESSAGE
-            return;
-        }
-        //this counter is used to count how many cells of the player's personal board are unusable because of the level's card
-        int countOfHigherLevelCells=0;
-        for(ArrayList x : cardsOwned) {
-            if (!x.isEmpty()){
-                DevelopmentCard devcard = (DevelopmentCard)x.get(0);
-                if (cardtobuy.getLevel().ordinal()==devcard.getLevel().ordinal()+2) {
-                    countOfHigherLevelCells++;
-                }
-            }
-        }
-       */
+
         if (player.getDepots().match(cardtobuy.getCost())) {
+            try {
+                player.getPersonalBoard().addDevCard(cardtobuy,pos);
+            } catch (NoSpaceException e) {
+                //TODO ERROR MESSAGE
+                return;
+            }
             game.getDashboard().buyDevCard(cardtobuy.getColor(),cardtobuy.getLevel());
-            player.getPersonalBoard().addDevCard(cardtobuy,pos);
             try {
                 player.getDepots().subResource(cardtobuy.getCost());
             } catch (OutOfResourcesException ignored) {}

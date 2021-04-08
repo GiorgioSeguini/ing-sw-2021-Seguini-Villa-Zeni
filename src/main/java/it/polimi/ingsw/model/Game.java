@@ -11,9 +11,9 @@ public class Game {
 
     //compositions
     private ArrayList<Player> players;
-    private Market marketTray;
-    private Dashboard dashboard;
-    private LorenzoSoloPlayer soloGame;
+    private final Market marketTray;
+    private final Dashboard dashboard;
+    private final LorenzoSoloPlayer soloGame;
 
     //attribute
     private int indexPlayingPlayer;
@@ -27,7 +27,7 @@ public class Game {
             throw new IllegalArgumentException();
         if(players.size()==1){
             //single player mode
-            soloGame = new LorenzoSoloPlayer();
+            soloGame = new LorenzoSoloPlayer(this);
         }
         else{
             soloGame = null;
