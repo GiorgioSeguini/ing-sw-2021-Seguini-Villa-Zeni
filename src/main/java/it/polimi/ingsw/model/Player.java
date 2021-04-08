@@ -1,5 +1,6 @@
 package it.polimi.ingsw.model;
 
+import it.polimi.ingsw.model.enumeration.ResourceType;
 import it.polimi.ingsw.model.exception.UnableToFillException;
 
 /*Last Edit: Fabio*/
@@ -10,7 +11,7 @@ public class Player {
     private final Depots depots;
     private final PersonalBoard personalBoard;
     private final Converter converter;
-    //private final ArrayList<ResourceType> discounted;         //or Buyer class
+    private NumberOfResources discounted;
     private int victoryPoints;
 
     /*Default constructor*/
@@ -24,7 +25,7 @@ public class Player {
         personalBoard = new PersonalBoard();
         converter = new Converter(this);
         victoryPoints=0;
-        //discounted = new ArrayList<ResourceType>();
+        discounted = new NumberOfResources();
     }
 
     /*Getter*/
@@ -57,12 +58,12 @@ public class Player {
         toActivate.setPlayed(this);
     }
 
-    /*
-    public void addDiscount(ResourceType type){
-        discounted.add(type);
+
+    public void addDiscount(ResourceType type, int discount){
+        discounted = discounted.add(type, discount);
     }
 
-    public boolean getDiscount(ResourceType type){
-
-    }*/
+    public NumberOfResources getDiscount(){
+        return discounted;
+    }
 }

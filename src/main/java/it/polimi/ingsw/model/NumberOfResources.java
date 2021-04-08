@@ -77,6 +77,25 @@ public class NumberOfResources {
         }
     }
 
+    /**
+     * This methods perform a subtraction where the resources are present
+     */
+    public NumberOfResources safe_sub(NumberOfResources other){
+        int[] x= new int[4];
+        for(ResourceType type: ResourceType.values()){
+            if (resources[type.ordinal()]>=other.getAmountOf(type)){
+                x[type.ordinal()]=resources[type.ordinal()]- other.getAmountOf(type);
+            }
+            else{
+                x[type.ordinal()]=0;
+            }
+        }
+        NumberOfResources new_resources= new NumberOfResources(x[0],x[1],x[2],x[3]);
+
+        return new_resources;
+    }
+
+
     /**This method returns the resource type that has the bigger quantity. */
     public ResourceType Max_Resource_Type(){
         int max=resources[0];

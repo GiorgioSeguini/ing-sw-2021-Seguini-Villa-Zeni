@@ -2,23 +2,23 @@ package it.polimi.ingsw.model;
 
 /*Last Edit: Gio*/
 
-import it.polimi.ingsw.model.enumeration.ColorDevCard;
+import it.polimi.ingsw.model.enumeration.ResourceType;
 
 public class DiscountAbility implements Ability{
 
-    private ColorDevCard cardColor;
-    private int discount;
+    private final ResourceType resourceType;
+    private final int discount;
 
     /*Default constructor*/
-    public DiscountAbility(ColorDevCard cardColor, int discount) {
-        this.cardColor = cardColor;
+    public DiscountAbility(ResourceType resourceType, int discount) {
+        this.resourceType = resourceType;
         this.discount = discount;
 
     }
 
     /*Getter*/
-    public ColorDevCard getDiscountCardColor() {
-        return cardColor;
+    public ResourceType getDiscountType() {
+        return resourceType;
     }
 
     public int getDiscountAmount() {
@@ -27,7 +27,7 @@ public class DiscountAbility implements Ability{
 
     @Override
     public void RunAbility(Player owner){
-        //TODO
+        owner.addDiscount(resourceType, discount);
     }
 
 }
