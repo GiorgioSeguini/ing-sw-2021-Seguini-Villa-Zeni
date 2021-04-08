@@ -122,9 +122,6 @@ public class Controller {
             }
         }
        */
-
-
-
         if (player.getDepots().match(cardtobuy.getCost())) {
             game.getDashboard().buyDevCard(cardtobuy.getColor(),cardtobuy.getLevel());
             player.getPersonalBoard().addDevCard(cardtobuy,pos);
