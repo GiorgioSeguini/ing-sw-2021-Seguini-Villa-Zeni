@@ -121,11 +121,7 @@ public class Controller {
                 }
             }
         }
-        if (countOfHigherLevelCells==3){
-            //TODO ERROR MESSAGE
-            return;
-            }
-        */
+       */
         if (player.getDepots().match(cardtobuy.getCost())) {
             game.getDashboard().buyDevCard(cardtobuy.getColor(),cardtobuy.getLevel());
             try {
