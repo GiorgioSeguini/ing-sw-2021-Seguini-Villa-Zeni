@@ -5,8 +5,8 @@ import java.util.*;
 /*Last Edit: Fabio*/
 public class LorenzoSoloPlayer {
 
-    private FaithTrack faithTrack;
-    private Game game;
+    private final FaithTrack faithTrack;
+    private final Game game;
 
     private ArrayList<SoloActionTokens> soloActionTokens;
     private ArrayList<SoloActionTokens> copyOfSoloActionTokens;
@@ -14,7 +14,9 @@ public class LorenzoSoloPlayer {
 
 
     /*default constructor*/
-    public LorenzoSoloPlayer() {
+    public LorenzoSoloPlayer(Game game) {
+        this.game = game;
+        faithTrack = new FaithTrack(0);
         soloActionTokens = new ArrayList<SoloActionTokens>(7);
         copyOfSoloActionTokens = new ArrayList<SoloActionTokens>(7);
         copyOfSoloActionTokens = (ArrayList<SoloActionTokens>) soloActionTokens.clone();
@@ -30,7 +32,7 @@ public class LorenzoSoloPlayer {
     }
 
     public ArrayList<SoloActionTokens> getSoloActionTokens() {
-        return soloActionTokens;
+        return soloActionTokens; //TODO controllare
     }
 
     /*public ArrayList<SoloActionTokens> getSoloActionTokensDiscarded() {

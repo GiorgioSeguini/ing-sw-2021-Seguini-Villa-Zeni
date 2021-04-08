@@ -1,6 +1,7 @@
 package it.polimi.ingsw.model;
 
 import it.polimi.ingsw.model.enumeration.Level;
+import it.polimi.ingsw.model.exception.NoSpaceException;
 import org.graalvm.compiler.hotspot.stubs.OutOfBoundsExceptionStub;
 
 import java.util.*;
@@ -79,7 +80,7 @@ public class PersonalBoard {
     }
 
     /**This for add a DevCard in a specific position**/
-    public void addDevCard(DevelopmentCard card, int pos) {
+    public void addDevCard(DevelopmentCard card, int pos) throws NoSpaceException {
         if(goodindex(pos)){
             if (OwnedDevCards[pos].isEmpty() && card.getLevel() == Level.One) {
                 OwnedDevCards[pos].add(card);
@@ -87,7 +88,7 @@ public class PersonalBoard {
             if(OwnedDevCards[pos].get(0).getLevel().ordinal() == card.getLevel().ordinal()-1)
             {
                 OwnedDevCards[pos].add(0, card);
-            }
+            } else throw new NoSpaceException();
         }
     }
 
