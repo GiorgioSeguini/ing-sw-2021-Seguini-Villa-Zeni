@@ -9,56 +9,77 @@ import java.util.ArrayList;
 
 public class Converter {
 
-    private boolean whiteAbilityActive;
     private Player owner;
     private NumberOfResources inwait;
+    private ArrayList<ResourceType> toconvert;
 
+    /*Default Constructor*/
     Converter(Player owner){
-        whiteAbilityActive =false;
+        this.toconvert=new ArrayList<>();
         this.owner=owner;
     }
 
-    public boolean getWhiteAbility(){
-        return this.whiteAbilityActive;
+    /*Getter*/
+    public ArrayList<ResourceType> getToconvert() {
+        return toconvert;
     }
 
-    public void setWhiteAbility(){
-        this.whiteAbilityActive =true;
+    /**This method returns the Resources stored in Converter and it cleans them/. */
+    public NumberOfResources getResourcesAndClean(){
+        NumberOfResources pass=inwait.clone();
+        this.inwait=new NumberOfResources();
+        return pass;
     }
 
-    /*Questa classe converte tutte le risorse non bianche. Se trova qualcosa di bianco e l'abilità è attiva
-    lancia un eccezione e ripone le risorse già convertite in inwait (che sono le risorse non bianche convertite). Sarà a cura del controllorer o
-    del player gestire l'eccezione, creare una number of resources delle quantità bianche da convertire in base alla scelta
-    del giocatore e usare rescueConversion per terminare la conversione.
-     */
-    public NumberOfResources convertAll(ArrayList<MarbleColor> input) throws HaveToChooseException{
+    /*Setter*/
+    public void setWhiteAbility(ResourceType type){
+        this.toconvert.add(type);
+    }
+
+    /*Additional Methods*/
+    /**Returns TRUE if the WhiteAbility is active*/
+    public boolean IsWhiteAbilityActive(){
+        if(toconvert.size()!=0){
+            return true;
+        }
+        return false;
+    }
+
+    /**It converts bought marbles and it throws an exception if there are white marbles to convert. */
+    public void convertAll(ArrayList<MarbleColor> input) throws HaveToChooseException{
         ArrayList<MarbleColor>without_white=new ArrayList<>();
-        boolean check_white_presence=false;
+        int howmany=0;
 
         for (MarbleColor x: input){
             if(x!=MarbleColor.White){
                 without_white.add(x);
             }
             else{
-                check_white_presence=true;
+                howmany++;
             }
         }
-        if (check_white_presence && whiteAbilityActive){
-            inwait=convert_resources(without_white); //TODO gestire eccezione
-            throw new HaveToChooseException();
+        inwait=convert_resources(without_white);
+        if(howmany!=0){
+            if (toconvert.size()==2){
+                throw new HaveToChooseException(howmany);
+            }
+            else{
+                if(toconvert.size()==1){
+                    inwait=inwait.add(toconvert.get(0),howmany);
+                }
+            }
         }
-        else{
-            return convert_resources(without_white);
-        }
-
     }
 
-    public NumberOfResources rescueConversion(NumberOfResources whiteresources){
-        whiteresources=whiteresources.add(inwait);
-        inwait=new NumberOfResources();
-        return whiteresources;
+    /**It just store the white resources chosen from the player. */
+    public void WhiteMarbleConverter(ArrayList<ResourceType> whiteres){
+        for(ResourceType x: whiteres){
+            inwait=inwait.add(x,1);
+        }
     }
 
+    /*Private Methods*/
+    /**It converts a single marble. It doesn't convert a Red marble.*/
     private ResourceType convert_single_marble(MarbleColor toconvert){
         switch (toconvert) {
             case Blue: return ResourceType.Shields;
@@ -69,11 +90,12 @@ public class Converter {
         }
     }
 
+    /**It makes the real conversion*/
     private NumberOfResources convert_resources(ArrayList<MarbleColor> input){
         NumberOfResources output=new NumberOfResources();
         for(MarbleColor marble: input){
             if(marble.equals(MarbleColor.Red)){
-                owner.getFaithTrack().addPoint(); //TODO gestire eccezione
+                owner.getFaithTrack().addPoint();
             }
             else{
                 output=output.add(convert_single_marble(marble),1);
