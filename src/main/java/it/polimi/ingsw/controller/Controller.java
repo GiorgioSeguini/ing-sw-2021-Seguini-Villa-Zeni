@@ -101,7 +101,7 @@ public class Controller {
             return;
         }
         //this counter is used to count how many empty cells there are in the player's personal board
-        int countOfEmptyCells = 0;
+        /*int countOfEmptyCells = 0;
         for(ArrayList x : cardsOwned) {
             if (x.isEmpty()) {
                 countOfEmptyCells++;
@@ -125,7 +125,7 @@ public class Controller {
             //TODO ERROR MESSAGE
             return;
             }
-
+        */
         if (player.getDepots().match(cardtobuy.getCost())) {
             game.getDashboard().buyDevCard(cardtobuy.getColor(),cardtobuy.getLevel());
             try {
