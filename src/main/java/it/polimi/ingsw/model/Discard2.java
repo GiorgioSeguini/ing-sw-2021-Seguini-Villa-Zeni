@@ -4,9 +4,9 @@ package it.polimi.ingsw.model;
 
 import it.polimi.ingsw.model.enumeration.ColorDevCard;
 
-public class Discard2 extends SoloActionTokens {
+public class Discard2 implements SoloActionTokens {
 
-    private ColorDevCard color;
+    private final ColorDevCard color;
 
 
     /*Default constructor*/
@@ -19,7 +19,7 @@ public class Discard2 extends SoloActionTokens {
         return color;
     }
 
-    /*Abstract class to implement*/
+    @Override
     public void ActivateToken(Game game) {
         try {
             game.getDashboard().removeCard(color, 2);

@@ -4,7 +4,7 @@ package it.polimi.ingsw.model;
 
 import it.polimi.ingsw.model.enumeration.ColorDevCard;
 
-public class DiscountAbility extends Ability{
+public class DiscountAbility implements Ability{
 
     private ColorDevCard cardColor;
     private int discount;
@@ -25,7 +25,7 @@ public class DiscountAbility extends Ability{
         return discount;
     }
 
-    /*Abstract class to implement*/
+    @Override
     public void RunAbility(Player owner){
         //TODO
     }

@@ -2,14 +2,9 @@ package it.polimi.ingsw.model;
 
 /*Last Edit: William Zeni*/
 
-public abstract class SoloActionTokens{
-
-    /*Default Constructor*/
-    SoloActionTokens() {
-    }
+public interface SoloActionTokens{
 
     /*method that has to be implemented*/
-    public abstract void ActivateToken(Game game);
-
+    public void ActivateToken(Game game);
 
 }

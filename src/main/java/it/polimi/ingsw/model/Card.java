@@ -5,7 +5,11 @@ package it.polimi.ingsw.model;
 
 public abstract class Card {
 
-    private int victoryPoints;
+    private final int victoryPoints;
+
+    public Card(int victoryPoints) {
+        this.victoryPoints = victoryPoints;
+    }
 
     /**
      * @return

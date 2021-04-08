@@ -10,15 +10,16 @@ import it.polimi.ingsw.model.enumeration.Level;
  */
 public class DevelopmentCard extends Card {
 
-    private Level level;
-    private ColorDevCard cardColor;
-    private NumberOfResources cost;
-    private ProductionPower productionPower;
+    private final Level level;
+    private final ColorDevCard cardColor;
+    private final NumberOfResources cost;
+    private final ProductionPower productionPower;
 
     /**
      * Default constructor
      */
-    public DevelopmentCard(Level level, ColorDevCard cardColor, NumberOfResources cost, ProductionPower productionPower) {
+    public DevelopmentCard(Level level, ColorDevCard cardColor, NumberOfResources cost, ProductionPower productionPower, int victoryPoints) {
+        super(victoryPoints);
         this.level = level;
         this.cardColor = cardColor;
         this.cost = cost;

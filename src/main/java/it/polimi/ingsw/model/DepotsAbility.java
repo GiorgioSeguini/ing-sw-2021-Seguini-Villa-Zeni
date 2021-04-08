@@ -4,7 +4,7 @@ package it.polimi.ingsw.model;
 
 import it.polimi.ingsw.model.enumeration.ResourceType;
 
-public class DepotsAbility extends Ability {
+public class DepotsAbility implements Ability {
 
     public static final int extraSize = 2;
     private final ResourceType typeOfRes;
@@ -19,6 +19,7 @@ public class DepotsAbility extends Ability {
         return this.typeOfRes;
     }
 
+    @Override
     public void RunAbility(Player owner){
         Shelf shelf =  new Shelf(extraSize);
         shelf.setResType(typeOfRes);

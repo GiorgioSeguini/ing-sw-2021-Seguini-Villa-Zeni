@@ -2,13 +2,9 @@ package it.polimi.ingsw.model;
 
 /*Last Edit: Gio*/
 
-public abstract class Ability {
-
-    /**Default constructor*/
-    public Ability() {
-    }
+public interface Ability {
 
     /*method that has to be implemented*/
-    public abstract void RunAbility(Player owner);
+    public void RunAbility(Player owner);
 
 }

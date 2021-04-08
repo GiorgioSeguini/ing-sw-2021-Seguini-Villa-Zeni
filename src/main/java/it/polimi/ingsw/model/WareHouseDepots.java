@@ -2,7 +2,7 @@ package it.polimi.ingsw.model;
 
 import it.polimi.ingsw.model.enumeration.ResourceType;
 import it.polimi.ingsw.model.exception.OutOfResourcesException;
-import it.polimi.ingsw.model.exception.UnableToFillError;
+import it.polimi.ingsw.model.exception.UnableToFillException;
 
 import java.util.ArrayList;
 
@@ -33,7 +33,7 @@ public class WareHouseDepots {
 
     /*Additional Methods*/
     /** This method add the resources to all the shelf if it found them. */
-    public void addResource (NumberOfResources input) throws UnableToFillError{
+    public void addResource (NumberOfResources input) throws UnableToFillException {
         NumberOfResources old_resources=this.getResources();
         NumberOfResources new_resources=this.getResources();
         new_resources=new_resources.add(input);
@@ -42,14 +42,14 @@ public class WareHouseDepots {
             CleanShelf();
             fill_correctly(new_resources);
         }
-        catch (UnableToFillError error){
+        catch (UnableToFillException error){
             CleanShelf();
             try {
                 fill_correctly(old_resources);
-            }catch (UnableToFillError error2){
+            }catch (UnableToFillException error2){
                 //I don't expect to enter here
             }
-            throw new UnableToFillError();
+            throw new UnableToFillException();
         }
     }
 
@@ -62,11 +62,11 @@ public class WareHouseDepots {
             CleanShelf();
             fill_correctly(new_resources);
         }
-        catch (UnableToFillError error){
+        catch (UnableToFillException error){
             CleanShelf();
             try{
                 fill_correctly(old_resources);
-            }catch (UnableToFillError error2){
+            }catch (UnableToFillException error2){
                 //I don expect to enter here
             }
         }
@@ -115,7 +115,7 @@ public class WareHouseDepots {
     }
 
     /**This method return true if with the current disposition of the shelf you can fill them with a Number of resources */
-    private void fill_correctly(NumberOfResources my_resources)throws UnableToFillError{
+    private void fill_correctly(NumberOfResources my_resources)throws UnableToFillException {
 
         /*This for checks just for the extra shelf*/
         for(Shelf x: shelfs){
@@ -139,7 +139,7 @@ public class WareHouseDepots {
         if(check_NumberOfResources_Integrity_for_WareHouseDepots(my_resources)){
             for (int i=2;i>=0;i--){
                 if(shelfs.get(i).getMaxSize()< my_resources.getAmountOf(my_resources.Max_Resource_Type())){
-                    throw new UnableToFillError();
+                    throw new UnableToFillException();
                 }
                 else{
                     if(my_resources.getAmountOf(my_resources.Max_Resource_Type())!=0) {
@@ -155,7 +155,7 @@ public class WareHouseDepots {
             }
         }
         else {
-            throw new UnableToFillError();
+            throw new UnableToFillException();
         }
     }
 

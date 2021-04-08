@@ -2,10 +2,7 @@ package it.polimi.ingsw.controller;
 
 import it.polimi.ingsw.model.*;
 import it.polimi.ingsw.model.Market;
-import it.polimi.ingsw.model.enumeration.ColorDevCard;
-import it.polimi.ingsw.model.enumeration.Level;
 import it.polimi.ingsw.model.enumeration.MarbleColor;
-import it.polimi.ingsw.model.enumeration.ResourceType;
 import it.polimi.ingsw.model.exception.*;
 
 import java.util.ArrayList;
@@ -59,7 +56,7 @@ public class Controller {
                 try {
                     player.getDepots().addResourcesFromMarket(myresources);
                     acceptable = true;
-                } catch (UnableToFillError cannot) {
+                } catch (UnableToFillException cannot) {
                     /*qui dobbiamo chiedere al player cosa scartare(sto ipotizzando che quello
                      * che gli torni sia un numberofresources da scartare tosub*/
                     boolean acceptable2=false;

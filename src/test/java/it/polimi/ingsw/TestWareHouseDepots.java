@@ -5,9 +5,7 @@ import it.polimi.ingsw.model.Shelf;
 import it.polimi.ingsw.model.WareHouseDepots;
 import it.polimi.ingsw.model.enumeration.ResourceType;
 import it.polimi.ingsw.model.exception.OutOfResourcesException;
-import it.polimi.ingsw.model.exception.UnableToFillError;
-
-import java.util.ArrayList;
+import it.polimi.ingsw.model.exception.UnableToFillException;
 
 public class TestWareHouseDepots {
 
@@ -30,7 +28,7 @@ public class TestWareHouseDepots {
                System.out.print(mywarehouse.getResources().getAmountOf(x));
            }
 
-       } catch (UnableToFillError e) {
+       } catch (UnableToFillException e) {
            System.out.print("Unable to fill error\n");
            System.out.print("My shelf: ");
            for (ResourceType x: ResourceType.values()){
@@ -46,7 +44,7 @@ public class TestWareHouseDepots {
                 System.out.print(mywarehouse.getResources().getAmountOf(x));
             }
 
-        } catch (UnableToFillError e) {
+        } catch (UnableToFillException e) {
             System.out.print("Unable to fill error\n");
             System.out.print("My shelf: ");
             for (ResourceType x: ResourceType.values()){

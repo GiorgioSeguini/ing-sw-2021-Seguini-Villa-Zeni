@@ -1,7 +1,7 @@
 package it.polimi.ingsw.model;
 
 import it.polimi.ingsw.model.exception.OutOfResourcesException;
-import it.polimi.ingsw.model.exception.UnableToFillError;
+import it.polimi.ingsw.model.exception.UnableToFillException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -31,7 +31,7 @@ class DepotsTest {
         try{
             depots.addResourcesFromMarket(new NumberOfResources(0, 0, 0, 4));
             fail();
-        }catch(UnableToFillError ignored){}
+        }catch(UnableToFillException ignored){}
     }
 
     @Test

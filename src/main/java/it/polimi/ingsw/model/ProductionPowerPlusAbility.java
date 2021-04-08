@@ -3,7 +3,7 @@ package it.polimi.ingsw.model;
 
 import it.polimi.ingsw.model.enumeration.ResourceType;
 
-public class ProductionPowerPlusAbility extends Ability {
+public class ProductionPowerPlusAbility implements Ability {
 
     private ResourceType typeOfRes;
 
@@ -17,7 +17,7 @@ public class ProductionPowerPlusAbility extends Ability {
         return typeOfRes;
     }
 
-    /*Abstract class to implement*/
+    @Override
     public void RunAbility(Player owner) {
         NumberOfResources input = new NumberOfResources();
         input.add(typeOfRes, 1);

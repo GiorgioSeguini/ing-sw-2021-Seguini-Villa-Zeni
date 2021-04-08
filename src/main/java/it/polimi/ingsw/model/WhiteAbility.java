@@ -4,7 +4,7 @@ package it.polimi.ingsw.model;
 
 import it.polimi.ingsw.model.enumeration.ResourceType;
 
-public class WhiteAbility extends Ability {
+public class WhiteAbility implements Ability {
 
     private ResourceType typeOfRes;
 
@@ -18,7 +18,7 @@ public class WhiteAbility extends Ability {
         return this.typeOfRes;
     }
 
-    /*Abstract class to implement*/
+    @Override
     public void RunAbility(Player owner) {
         owner.getConverter().setWhiteAbility();
     }

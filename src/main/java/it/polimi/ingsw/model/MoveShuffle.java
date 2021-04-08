@@ -4,7 +4,7 @@ import java.lang.Math;
 import java.util.ArrayList;
 
 /*Last Edit: Fabio*/
-public class MoveShuffle extends SoloActionTokens {
+public class MoveShuffle implements SoloActionTokens {
 
     private ArrayList<SoloActionTokens> shuffledDeck;
 
@@ -13,8 +13,9 @@ public class MoveShuffle extends SoloActionTokens {
         shuffledDeck = new ArrayList<>(7);
     }
 
-    /*Additional methods*/
+
     /**This apply the effect of a MoveShuffleToken**/
+    @Override
     public void ActivateToken(Game game) {
         game.getSoloGame().getFaithTrack().addPoint();
         game.popesInspection();

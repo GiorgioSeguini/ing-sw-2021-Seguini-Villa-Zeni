@@ -8,14 +8,13 @@ public class LeaderCard extends Card {
     private LeaderStatus status;
     private final Requirements requirements;
     private final Ability ability;
-    private int victoryPoints;
 
     /*Default constructor*/
     public LeaderCard(Requirements requirements, Ability ability, int victoryPoints) {
+        super(victoryPoints);
         this.status=LeaderStatus.onHand;
         this.requirements=requirements;
         this.ability=ability;
-        this.victoryPoints = victoryPoints;
     }
 
 

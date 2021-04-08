@@ -1,9 +1,6 @@
 package it.polimi.ingsw.model;
 
-import it.polimi.ingsw.model.enumeration.ResourceType;
-import it.polimi.ingsw.model.exception.UnableToFillError;
-
-import java.util.*;
+import it.polimi.ingsw.model.exception.UnableToFillException;
 
 /*Last Edit: Fabio*/
 public class Player {
@@ -23,7 +20,7 @@ public class Player {
         depots = new Depots();
         try {
             depots.addResourcesFromMarket(initialResources);
-        }catch(UnableToFillError ignored){}
+        }catch(UnableToFillException ignored){}
         personalBoard = new PersonalBoard();
         converter = new Converter(this);
         victoryPoints=0;
