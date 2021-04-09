@@ -37,20 +37,44 @@ public class LeaderCard extends Card {
     }
 
     /*Additional Methods*/
-    /** This set the LeaderCard status on "played"**/
-    public void setPlayed(Player owner) {
-        if(getStatus().ordinal()==0 && getRequirements().match(owner)) {
+    /** This set the LeaderCard status on "played"
+     * @return true if the card is really activated
+     */
+    public boolean setPlayed(Player owner) {
+        if(getStatus().equals(LeaderStatus.onHand) && getRequirements().match(owner)){
                 getAbility().RunAbility(owner);
                 setStatus(LeaderStatus.Played);
+                return true;
         }
+        return false;
     }
 
-    /** This set the LeaderCard status on "Dead" and add one FaithPoint**/
-    public void setDiscard(Player owner){
+    /** This set the LeaderCard status on "Dead" and add one FaithPoint
+     * @return true if the card is really discarded, false otherwise
+     * */
+    public boolean setDiscard(Player owner){
         if(getStatus().ordinal()==0){
             setStatus(LeaderStatus.Dead);
             owner.getFaithTrack().addPoint();
+            return true;
         }
+        return false;
+    }
+
+    @Override
+    public boolean equals(Object o){
+        if(o==this)
+            return true;
+
+        if(!(o instanceof LeaderCard))
+            return false;
+
+        LeaderCard other = (LeaderCard) o;
+
+        if(!requirements.equals(other.requirements))
+            return false;
+
+        return ability.equals(other.ability);
     }
 
 }

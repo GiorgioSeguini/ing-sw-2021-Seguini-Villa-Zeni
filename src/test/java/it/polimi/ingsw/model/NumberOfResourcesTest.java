@@ -118,6 +118,7 @@ class NumberOfResourcesTest {
         assertEquals(test2, test2.clone());
         assertEquals(test3, test3.clone());
         assertEquals(test4, test4.clone());
+
     }
 
     @Test
@@ -138,5 +139,22 @@ class NumberOfResourcesTest {
     @Test
     void isEmpty() {
         assertTrue(new NumberOfResources().isEmpty());
+    }
+
+    @Test
+    void testEquals(){
+        NumberOfResources test = new NumberOfResources(5, 4, 4, 3);
+        NumberOfResources test1 = new NumberOfResources(2, 5, 4, 3);
+        NumberOfResources test2 = new NumberOfResources(2, 0, 5, 3);
+        NumberOfResources test3 = new NumberOfResources(5, 4, 4, 3);
+        NumberOfResources test4 = new NumberOfResources();
+
+        assertEquals(test, test);
+        assertEquals(test, test3);
+        assertNotEquals(test1, test);
+        assertNotEquals(test, test4);
+        assertNotEquals(test1, test4);
+        assertEquals(test4, test4);
+
     }
 }
