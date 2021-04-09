@@ -26,5 +26,17 @@ public class DepotsAbility implements Ability {
         owner.getDepots().addExtraShelf(shelf);
     }
 
+    @Override
+    public boolean equals(Object o){
+        if(o == this)
+            return true;
+
+        if(!(o instanceof DepotsAbility))
+            return false;
+
+        DepotsAbility other = (DepotsAbility) o;
+
+        return other.typeOfRes.equals(this.typeOfRes);
+    }
 
 }

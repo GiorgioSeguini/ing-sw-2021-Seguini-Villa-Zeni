@@ -6,7 +6,7 @@ import it.polimi.ingsw.model.enumeration.ResourceType;
 
 public class WhiteAbility implements Ability {
 
-    private ResourceType typeOfRes;
+    private final ResourceType typeOfRes;
 
     /*Default constructor*/
     WhiteAbility(ResourceType type) {
@@ -21,5 +21,18 @@ public class WhiteAbility implements Ability {
     @Override
     public void RunAbility(Player owner) {
         owner.getConverter().setWhiteAbility(typeOfRes);
+    }
+
+    @Override
+    public boolean equals(Object o){
+        if(o == this)
+            return true;
+
+        if(!(o instanceof WhiteAbility))
+            return false;
+
+        WhiteAbility other = (WhiteAbility) o;
+
+        return other.typeOfRes.equals(this.typeOfRes);
     }
 }

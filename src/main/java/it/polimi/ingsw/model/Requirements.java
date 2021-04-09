@@ -73,4 +73,22 @@ public class Requirements {
         return true;
     }
 
+    @Override
+    public boolean equals(Object o){
+        if(o==this)
+            return true;
+
+        if(!(o instanceof Requirements))
+            return false;
+
+        Requirements other = (Requirements) o;
+
+        for(int i = 0; i< ColorDevCard.values().length; i++)
+            for(int j =0; j< Level.values().length; j++)
+                if(this.minNumber[i][j]!=other.minNumber[i][j])
+                    return false;
+
+        return this.numberOfResourceses.equals(other.numberOfResourceses);
+    }
+
 }

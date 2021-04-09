@@ -30,4 +30,19 @@ public class DiscountAbility implements Ability{
         owner.addDiscount(resourceType, discount);
     }
 
+    @Override
+    public boolean equals(Object o){
+        if(o == this)
+            return true;
+
+        if(!(o instanceof DiscountAbility))
+            return false;
+
+        DiscountAbility other = (DiscountAbility) o;
+
+        if(this.discount != other.discount)
+            return false;
+
+        return other.resourceType.equals(this.resourceType);
+    }
 }
