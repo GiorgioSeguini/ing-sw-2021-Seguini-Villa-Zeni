@@ -25,10 +25,8 @@ public class Converter {
     }
 
     /**This method returns the Resources stored in Converter and it cleans them/. */
-    public NumberOfResources getResourcesAndClean(){
-        NumberOfResources pass=inwait.clone();
-        this.inwait=new NumberOfResources();
-        return pass;
+    public NumberOfResources getResources(){
+       return this.inwait;
     }
 
     /*Setter*/
@@ -61,7 +59,7 @@ public class Converter {
         inwait=convert_resources(without_white);
         if(howmany!=0){
             if (toconvert.size()==2){
-                throw new HaveToChooseException(howmany);
+                throw new HaveToChooseException();
             }
             else{
                 if(toconvert.size()==1){
@@ -76,6 +74,24 @@ public class Converter {
         for(ResourceType x: whiteres){
             inwait=inwait.add(x,1);
         }
+    }
+
+    public boolean CheckIntegrityToConvert(ArrayList<ResourceType> toconvert){
+        ArrayList<ResourceType>temp=new ArrayList<>();
+        for (ResourceType x: toconvert){
+            temp.add(x);
+        }
+        for(ResourceType x: this.toconvert){
+           while(temp.remove(x)){ }
+        }
+        if (temp.size()!=0){
+            return false;
+        }
+        return true;
+    }
+
+    public void CleanConverter(){
+        this.inwait=new NumberOfResources();
     }
 
     /*Private Methods*/

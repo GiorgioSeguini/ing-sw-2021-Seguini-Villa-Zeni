@@ -15,11 +15,12 @@ public class Controller{
     /*Quello che ho immaginato è che avendo 4 colonne e 3 righe indextobuy sia un numero da 0 a 6
      * dove da 0 a 3 sono esattamente le 4 colonne e da 4 a 6 siano le tre righe */
 
-    public void BuyFromMarket(int indextobuy, Game game, Player player){
-        ArrayList<MarbleColor> buyedresources = new ArrayList<>();
+    /**This method returns the marbles bought from the market*/
+    private ArrayList<MarbleColor> BuyFromMarket(Player player,MovetypeMarket movetype){
+        ArrayList<MarbleColor> buyedresources;
 
         /*Compro la colonna o la riga corretta*/
-        switch (indextobuy) {
+        switch (movetype.getIndextobuy()) {
             case 0:
                 buyedresources = game.getMarketTray().buyColumn(0);
                 break;
@@ -41,55 +42,52 @@ public class Controller{
             case 6:
                 buyedresources = game.getMarketTray().buyRow(2);
                 break;
+            default: return null;
         }
+        return buyedresources;
+    }
 
+    /**This method tries to convert the Marble as the player asked. If it can it makes the conversion
+     * and stores the converted resources in the Converter Class. Returns TRUE if the conversion ends correctly,
+     * returns FALSE if it doesn't.*/
+    private boolean ConvertFromMarket(Player player, ArrayList<MarbleColor> buyedresources, MovetypeMarket movetype){
         try {
             player.getConverter().convertAll(buyedresources);
         }
         catch (HaveToChooseException error) {
-            ArrayList<ResourceType> whiteresources=new ArrayList<>();
-            /*qui ci deve essere una parte di richiesta alla view di far scegliere al giocatore
-             * le risorse bianche nuove dell'abilità che devono essere messe in whiteresources.
-             * Il numero di biglie bianche da convertire è raccolta nell'eccezione.
-             * Mi aspetto che si riempia una MoveType per l'occasione TODO*/
-
-            /*biglie da convertire= */error.getWhitemarbles();
-            player.getConverter().WhiteMarbleConverter(whiteresources);
+            return false;
         }
-        NumberOfResources myresources=player.getConverter().getResourcesAndClean();
-        /*Finito questo blocco ho le biglie convertite in risorse. Inoltre il converter è pulito*/
+        return true;
+    }
 
-        boolean acceptable = false;
-        NumberOfResources tosub=new NumberOfResources();
-        while (!acceptable) {
-            try {
-                player.getDepots().addResourcesFromMarket(myresources);
-                acceptable = true;
-            } catch (UnableToFillException error) {
-                /*qui dobbiamo chiedere al player cosa scartare(sto ipotizzando che quello
-                 * che gli torni sia un numberofresources da scartare tosub*/
-                boolean acceptable2 = false;
-                while (!acceptable2) {
-                    try {
-                        myresources = myresources.sub(tosub);
-                        acceptable2 = true;
-                    } catch (OutOfResourcesException e) {
-                        /*qui dobbiamo dire al player che sta provando a scartare più risorse di quello che ha.
-                         * Potremmo chiedergli se sta tentando di scartare tutto. Se si allora si pone tosub=myresources.
-                         * Se no bisogna fargli sistemare la tosub*/
-                    }
-                }
-            }
-            if (!tosub.isEmpty()) {
-                for (int i = 0; i < tosub.size(); i++) {
-                    for (Player x : game.getPlayers()) {
-                        if (player != x) {
-                            x.getFaithTrack().addPoint();
-                        }
-                    }
-                    game.popesInspection();
-                }
-            }
+    private boolean ConvertJustWhites(Player player, MovetypeMarket movetype){
+        if(player.getConverter().CheckIntegrityToConvert(movetype.getWhitemarbles())){
+            player.getConverter().WhiteMarbleConverter(movetype.getWhitemarbles());
+        }
+        else{
+            return false;
+        }
+        return true;
+    }
+
+    /**This method tries to store the resources from converter to warehouse. If it can returns TRUE */
+    private boolean StoreFromMarket(Player player){
+        try{
+            player.getDepots().addResourcesFromMarket(player.getConverter().getResources());
+            return true;
+        }
+        catch (UnableToFillException e) {
+            return false;
+        }
+    }
+
+    private boolean DiscardMarketResources(Player player, MovetypeMarket movetype){
+        try{
+            player.getConverter().getResources().sub(movetype.getTodiscard());
+            return true;
+        }
+        catch (OutOfResourcesException e) {
+            return false;
         }
     }
 
@@ -144,7 +142,6 @@ public class Controller{
         }
         game.popesInspection();
     }
-
 
     public void leaderMove(LeaderCard card, Player player, int move){
         boolean isPresent = false;

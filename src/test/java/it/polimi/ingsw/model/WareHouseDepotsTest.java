@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class WareHouseDepotsTest {
 
     @Test
-    void getResources(){
+    void getResourcesandAddExtraShelf(){
         WareHouseDepots test= new WareHouseDepots();
         assertEquals(test.getResources(),new NumberOfResources());
         Shelf x= new Shelf(ResourceType.Shields,0);
