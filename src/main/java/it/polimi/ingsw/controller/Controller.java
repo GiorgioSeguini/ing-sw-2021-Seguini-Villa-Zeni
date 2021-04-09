@@ -4,6 +4,7 @@ import it.polimi.ingsw.model.*;
 import it.polimi.ingsw.model.enumeration.MarbleColor;
 import it.polimi.ingsw.model.enumeration.ResourceType;
 import it.polimi.ingsw.model.exception.*;
+import org.graalvm.compiler.lir.aarch64.AArch64Move;
 
 
 import java.util.ArrayList;
@@ -174,6 +175,26 @@ public class Controller{
     }
 
     public void update(MoveType x){
+
+        if(!x.player.equals(game.getCurrPlayer())){
+            //TODO error message
+            return;
+        }
+
+        if(x instanceof  MoveBuyDevCard){
+            MoveBuyDevCard move = (MoveBuyDevCard) x;
+            buyDevelopmentCard(move.cardToBuy, game, move.player, move.getPos());
+        }
+
+        if(x instanceof  MoveActiveProduction){
+            MoveActiveProduction move = (MoveActiveProduction) x;
+            activeProductions(move.toActive, move.player, game);
+        }
+
+        if(x instanceof MoveLeader){
+            MoveLeader move = (MoveLeader) x;
+            leaderMove(move.leaderCard, move.player, move.move);
+        }
 
     }
 }
