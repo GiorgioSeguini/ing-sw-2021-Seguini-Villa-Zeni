@@ -21111,6 +21111,19 @@
 							"headQualifiersCompartment": {
 								"$ref": "AAAAAAF4sPjzb9fsOWc="
 							}
+						},
+						{
+							"_type": "UMLNoteView",
+							"_id": "AAAAAAF4tq3ocPEnVVY=",
+							"_parent": {
+								"$ref": "AAAAAAFF+qBtyKM79qY="
+							},
+							"font": "Arial;13;0",
+							"left": 520,
+							"top": 144,
+							"width": 70,
+							"height": 40,
+							"text": "interface"
 						}
 					]
 				},
