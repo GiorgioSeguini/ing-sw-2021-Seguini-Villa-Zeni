@@ -101,7 +101,8 @@ public class Controller {
             return;
         }
 
-        if (player.getDepots().match(cardtobuy.getCost())) {
+        NumberOfResources realCost = cardtobuy.getCost().safe_sub(player.getDiscount());
+        if (player.getDepots().match(realCost)) {
             try {
                 player.getPersonalBoard().addDevCard(cardtobuy,pos);
             } catch (NoSpaceException e) {
@@ -110,7 +111,7 @@ public class Controller {
             }
             game.getDashboard().buyDevCard(cardtobuy.getColor(),cardtobuy.getLevel());
             try {
-                player.getDepots().subResource(cardtobuy.getCost());
+                player.getDepots().subResource(realCost);
             } catch (OutOfResourcesException ignored) {}
         } else{
             //qui bisogna dire al player che non può comprare quella carta perchè non ha abbastazna risorse e quindi di sceglierne un'altra
