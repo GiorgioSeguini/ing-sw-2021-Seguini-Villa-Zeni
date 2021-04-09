@@ -10,7 +10,7 @@ class MarketTest {
         Market tray = new Market();
 
 
-        assertEquals(3,tray.buyColumn(1).size());
+        assertEquals(3,tray.buyColumn(1));
         assertEquals(4,tray.buyRow(0));
     }
 }

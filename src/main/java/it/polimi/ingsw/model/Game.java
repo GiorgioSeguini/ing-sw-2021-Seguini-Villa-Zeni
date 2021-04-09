@@ -22,12 +22,12 @@ public class Game {
     /**
      * Default constructor
      */
-    public Game(ArrayList<Player> players, Market market, Dashboard dashboard){
+    public Game(ArrayList<Player> players, Market market, Dashboard dashboard, ArrayList<SoloActionTokens> soloActionTokens){ //TODO riguardare parametro arraylist<soloactiontokens>
         if(players.isEmpty())
             throw new IllegalArgumentException();
         if(players.size()==1){
             //single player mode
-            soloGame = new LorenzoSoloPlayer(this);
+            soloGame = new LorenzoSoloPlayer(this, this.getSoloGame().getSoloActionTokens());
         }
         else{
             soloGame = null;

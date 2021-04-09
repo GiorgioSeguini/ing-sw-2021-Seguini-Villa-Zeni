@@ -148,11 +148,16 @@ public class Controller{
 
     public void leaderMove(LeaderCard card, Player player, int move){
         boolean isPresent = false;
-        for(LeaderCard c : player.getPersonalBoard().getLeaderCards())
-            if(c.equals(card)) {
-                isPresent = true;
-                card = c;
-            }
+        try {
+            for(LeaderCard c : player.getPersonalBoard().getLeaderCards())
+                if(c.equals(card)) {
+                    isPresent = true;
+                    card = c;
+                }
+        } catch (NoMoreLeaderCardAliveException e) {
+            //Il player non ha più carte leader in mano
+            //TODO ERROR MESSAGE
+        }
 
         if(!isPresent){
             //TODO ERROR MESSAGE

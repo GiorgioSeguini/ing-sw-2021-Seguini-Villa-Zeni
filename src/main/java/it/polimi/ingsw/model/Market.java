@@ -7,18 +7,24 @@ import java.util.ArrayList;
 /*Last Edit: Fabio*/
 public class Market {
 
-    private final MarbleColor[][] tray;
+    MarbleColor[][] tray;
+
     private MarbleColor externalMarble;
     private static final int N_COL=4;
     private static final int N_ROW=3;
 
     //default constructor
-    public Market() {
-        tray = new MarbleColor[N_ROW][N_COL];
-        int i = 0;
-        for(int j=0;j<N_COL;j++){
-            tray[i][j] = MarbleColor.Red;
+
+    public Market(MarbleColor[] startMarbles) {
+        //startMarbles.length is 13
+
+        tray= new MarbleColor[N_ROW][N_COL];
+        for(int i=0; i<N_ROW; i++){
+            for(int j=0; j<N_COL; j++){
+                tray[i][j] = startMarbles[i+j];
+            }
         }
+        externalMarble = startMarbles[startMarbles.length-1];
     }
 
     //getter
