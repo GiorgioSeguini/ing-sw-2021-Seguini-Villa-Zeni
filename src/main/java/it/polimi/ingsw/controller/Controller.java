@@ -86,10 +86,13 @@ public class Controller{
     private boolean DiscardMarketResources(Player player, MovetypeMarket movetype){
         try{
             player.getConverter().setResources(player.getConverter().getResources().sub(movetype.getTodiscard()));
-            for(Player x: game.getPlayers()){
-              if(x!=player){
-                //TODO finish
+            for(int i=0; i<movetype.getTodiscard().size();i++){
+              for(Player y: game.getPlayers()){
+                if(y!=player){
+                  player.getFaithTrack().addPoint();
+                }
               }
+              game.popesInspection();
             }
             return true;
         }
