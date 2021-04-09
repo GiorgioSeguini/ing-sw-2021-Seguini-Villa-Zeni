@@ -18,6 +18,7 @@ public class LorenzoSoloPlayer {
         this.game = game;
         faithTrack = new FaithTrack(0);
         soloActionTokens = new ArrayList<SoloActionTokens>(7);
+
         copyOfSoloActionTokens = new ArrayList<SoloActionTokens>(7);
         copyOfSoloActionTokens = (ArrayList<SoloActionTokens>) soloActionTokens.clone();
     }
