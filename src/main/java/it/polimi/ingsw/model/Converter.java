@@ -26,12 +26,16 @@ public class Converter {
 
     /**This method returns the Resources stored in Converter and it cleans them/. */
     public NumberOfResources getResources(){
-       return this.inwait;
+       return inwait;
     }
 
     /*Setter*/
     public void setWhiteAbility(ResourceType type){
         this.toconvert.add(type);
+    }
+
+    public void setResources(NumberOfResources resources){
+      this.inwait=resources;
     }
 
     /*Additional Methods*/

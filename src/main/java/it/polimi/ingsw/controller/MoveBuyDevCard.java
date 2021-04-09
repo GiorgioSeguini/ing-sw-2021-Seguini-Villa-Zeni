@@ -2,6 +2,7 @@ package it.polimi.ingsw.controller;
 
 import it.polimi.ingsw.model.DevelopmentCard;
 import it.polimi.ingsw.model.Player;
+import it.polimi.ingsw.model.enumeration.MoveChoose;
 
 import javax.swing.text.View;
 
@@ -11,7 +12,7 @@ public class MoveBuyDevCard extends MoveType{
     DevelopmentCard cardToBuy;
 
     public MoveBuyDevCard(Player active, View view, boolean isLastMove, int pos, DevelopmentCard cardToBuy) {
-        super(active, view, isLastMove);
+        super(active, view, MoveChoose.BuyDevCard, isLastMove);
         this.pos = pos;
         this.cardToBuy = cardToBuy;
     }

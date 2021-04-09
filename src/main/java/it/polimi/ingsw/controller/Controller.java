@@ -4,7 +4,6 @@ import it.polimi.ingsw.model.*;
 import it.polimi.ingsw.model.enumeration.MarbleColor;
 import it.polimi.ingsw.model.enumeration.ResourceType;
 import it.polimi.ingsw.model.exception.*;
-import org.graalvm.compiler.lir.aarch64.AArch64Move;
 
 
 import java.util.ArrayList;
@@ -17,7 +16,7 @@ public class Controller{
      * dove da 0 a 3 sono esattamente le 4 colonne e da 4 a 6 siano le tre righe */
 
     /**This method returns the marbles bought from the market*/
-    private ArrayList<MarbleColor> BuyFromMarket(Player player,MovetypeMarket movetype){
+    private ArrayList<MarbleColor> TakeMarbles(Player player,MovetypeMarket movetype){
         ArrayList<MarbleColor> buyedresources;
 
         /*Compro la colonna o la riga corretta*/
@@ -61,6 +60,7 @@ public class Controller{
         return true;
     }
 
+    /**This method converts the white marbles. It returns TRUE if it ends correctly.*/
     private boolean ConvertJustWhites(Player player, MovetypeMarket movetype){
         if(player.getConverter().CheckIntegrityToConvert(movetype.getWhitemarbles())){
             player.getConverter().WhiteMarbleConverter(movetype.getWhitemarbles());
@@ -82,9 +82,15 @@ public class Controller{
         }
     }
 
+    /**This method discard the resources in converter choosen from the player*/
     private boolean DiscardMarketResources(Player player, MovetypeMarket movetype){
         try{
-            player.getConverter().getResources().sub(movetype.getTodiscard());
+            player.getConverter().setResources(player.getConverter().getResources().sub(movetype.getTodiscard()));
+            for(Player x: game.getPlayers()){
+              if(x!=player){
+                //TODO finish
+              }
+            }
             return true;
         }
         catch (OutOfResourcesException e) {
@@ -200,5 +206,3 @@ public class Controller{
 
     }
 }
-
-
