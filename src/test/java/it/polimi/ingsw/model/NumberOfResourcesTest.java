@@ -81,21 +81,80 @@ class NumberOfResourcesTest {
     }
 
     @Test
-    void max_Resource_Type() {
+    void max_Resource_Type(){
+        NumberOfResources test=new NumberOfResources(5,0,4,3);
+        NumberOfResources test1=new NumberOfResources(2,5,4,3);
+        NumberOfResources test2=new NumberOfResources(2,0,5,3);
+        NumberOfResources test3=new NumberOfResources(2,0,4,5);
+        NumberOfResources test4=new NumberOfResources();
+        NumberOfResources test5=new NumberOfResources(2,4,4,3);
+        NumberOfResources test6=new NumberOfResources(2,3,4,4);
+
+        ResourceType app= test.Max_Resource_Type();
+        assertEquals(app, ResourceType.Servants);
+        app= test1.Max_Resource_Type();
+        assertEquals(app, ResourceType.Shields);
+        app= test2.Max_Resource_Type();
+        assertEquals(app, ResourceType.Coins);
+        app= test3.Max_Resource_Type();
+        assertEquals(app, ResourceType.Stones);
+        app= test4.Max_Resource_Type();
+        assertEquals(app, ResourceType.Servants);
+        app= test5.Max_Resource_Type();
+        assertEquals(app, ResourceType.Shields);
+        app= test6.Max_Resource_Type();
+        assertEquals(app, ResourceType.Coins);
     }
 
     @Test
     void testClone() {
+        NumberOfResources test = new NumberOfResources(5, 4, 4, 3);
+        NumberOfResources test1 = new NumberOfResources(2, 5, 4, 3);
+        NumberOfResources test2 = new NumberOfResources(2, 0, 5, 3);
+        NumberOfResources test3 = new NumberOfResources(2, 0, 4, 5);
+        NumberOfResources test4 = new NumberOfResources();
+        assertEquals(test, test.clone());
+        assertEquals(test1, test1.clone());
+        assertEquals(test2, test2.clone());
+        assertEquals(test3, test3.clone());
+        assertEquals(test4, test4.clone());
+
     }
 
     @Test
     void size() {
+        NumberOfResources test = new NumberOfResources(0, 1, 0, 0);
+        NumberOfResources test1 = new NumberOfResources(1, 1, 0, 0);
+        NumberOfResources test2 = new NumberOfResources(2, 0, 0, 1);
+        NumberOfResources test3 = new NumberOfResources(2, 0, 1, 5);
+        NumberOfResources test4 = new NumberOfResources();
+
+        assertEquals(test.size(),1);
+        assertEquals(test1.size(),2);
+        assertEquals(test2.size(),3);
+        assertEquals(test3.size(),8);
+        assertEquals(test4.size(),0);
     }
 
     @Test
     void isEmpty() {
         assertTrue(new NumberOfResources().isEmpty());
+    }
 
+    @Test
+    void testEquals(){
+        NumberOfResources test = new NumberOfResources(5, 4, 4, 3);
+        NumberOfResources test1 = new NumberOfResources(2, 5, 4, 3);
+        NumberOfResources test2 = new NumberOfResources(2, 0, 5, 3);
+        NumberOfResources test3 = new NumberOfResources(5, 4, 4, 3);
+        NumberOfResources test4 = new NumberOfResources();
+
+        assertEquals(test, test);
+        assertEquals(test, test3);
+        assertNotEquals(test1, test);
+        assertNotEquals(test, test4);
+        assertNotEquals(test1, test4);
+        assertEquals(test4, test4);
 
     }
 }

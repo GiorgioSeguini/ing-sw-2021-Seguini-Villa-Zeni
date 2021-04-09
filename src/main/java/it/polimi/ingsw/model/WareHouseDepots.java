@@ -24,9 +24,7 @@ public class WareHouseDepots {
         for (int i=0; i<shelfs.size();i++){
             try{
                 x[shelfs.get(i).getResType().ordinal()]+= shelfs.get(i).getUsed();
-            }catch (NullPointerException e){
-                x[i]=0;
-            }
+            }catch (NullPointerException e){}
         }
         return new NumberOfResources(x[0],x[1],x[2],x[3]);
     }

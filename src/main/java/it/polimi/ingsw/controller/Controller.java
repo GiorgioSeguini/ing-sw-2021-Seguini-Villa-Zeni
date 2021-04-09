@@ -4,9 +4,11 @@ import it.polimi.ingsw.model.*;
 import it.polimi.ingsw.model.enumeration.MarbleColor;
 import it.polimi.ingsw.model.enumeration.ResourceType;
 import it.polimi.ingsw.model.exception.*;
+
+
 import java.util.ArrayList;
 
-public class Controller {
+public class Controller{
 
     private Game game;
 
@@ -143,14 +145,37 @@ public class Controller {
         game.popesInspection();
     }
 
-    public void Update(MoveType x){
 
+    public void leaderMove(LeaderCard card, Player player, int move){
+        boolean isPresent = false;
+        for(LeaderCard c : player.getPersonalBoard().getLeaderCards())
+            if(c.equals(card)) {
+                isPresent = true;
+                card = c;
+            }
+
+        if(!isPresent){
+            //TODO ERROR MESSAGE
+            return;
+        }
+
+        if(move==0){
+            if(!card.setPlayed(player)){
+                //TODO ERROR MESSAGE
+                //return not strictly needed
+            }
+        }
+
+        if(move==1)
+            if(!card.setDiscard(player)){
+                //TODO ERROR MESSAGE
+                //return not strictly needed
+            }
     }
 
-    public void LeaderMove(  ){
+    public void update(MoveType x){
 
     }
-
 }
 
 

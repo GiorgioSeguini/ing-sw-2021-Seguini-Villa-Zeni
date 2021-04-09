@@ -5,7 +5,7 @@ import it.polimi.ingsw.model.enumeration.ResourceType;
 
 public class ProductionPowerPlusAbility implements Ability {
 
-    private ResourceType typeOfRes;
+    private final ResourceType typeOfRes;
 
     /* Default constructor*/
     public ProductionPowerPlusAbility(ResourceType type) {
@@ -22,5 +22,18 @@ public class ProductionPowerPlusAbility implements Ability {
         NumberOfResources input = new NumberOfResources();
         input.add(typeOfRes, 1);
         owner.getPersonalBoard().addExtraProduction(new ProductionPower(0, input, new NumberOfResources(), 1, 1));
+    }
+
+    @Override
+    public boolean equals(Object o){
+        if(o == this)
+            return true;
+
+        if(!(o instanceof ProductionPowerPlusAbility))
+            return false;
+
+        ProductionPowerPlusAbility other = (ProductionPowerPlusAbility) o;
+
+        return other.typeOfRes.equals(this.typeOfRes);
     }
 }
