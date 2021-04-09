@@ -4,8 +4,7 @@ import it.polimi.ingsw.model.*;
 import it.polimi.ingsw.model.enumeration.MarbleColor;
 import it.polimi.ingsw.model.enumeration.ResourceType;
 import it.polimi.ingsw.model.exception.*;
-import sun.jvm.hotspot.utilities.Observable;
-import sun.jvm.hotspot.utilities.Observer;
+
 
 import java.util.ArrayList;
 
