@@ -1,6 +1,7 @@
 package it.polimi.ingsw.model;
 
 import it.polimi.ingsw.model.enumeration.ResourceType;
+import it.polimi.ingsw.model.exception.NoMoreLeaderCardAliveException;
 import it.polimi.ingsw.model.exception.UnableToFillException;
 
 /*Last Edit: Fabio*/
@@ -9,7 +10,7 @@ public class Player {
     private final String userName;
     private final FaithTrack faithtrack;
     private final Depots depots;
-    private final PersonalBoard personalBoard;
+    private PersonalBoard personalBoard;
     private final Converter converter;
     private NumberOfResources discounted;
     private int victoryPoints;
@@ -22,7 +23,9 @@ public class Player {
         try {
             depots.addResourcesFromMarket(initialResources);
         }catch(UnableToFillException ignored){}
-        personalBoard = new PersonalBoard();
+        try {
+            personalBoard = new PersonalBoard( this.getPersonalBoard().getLeaderCards());
+        } catch (NoMoreLeaderCardAliveException ignored) {}
         converter = new Converter(this);
         victoryPoints=0;
         discounted = new NumberOfResources();
@@ -53,7 +56,7 @@ public class Player {
         victoryPoints = personalBoard.getVictoryPoints() + faithtrack.getVictoryPoints() + depots.getVictoryPoints();
         return victoryPoints;
     }
-    public void ActivateLeaderCard(int index) throws IllegalArgumentException{
+    public void ActivateLeaderCard(int index) throws IllegalArgumentException, NoMoreLeaderCardAliveException {
         LeaderCard toActivate= getPersonalBoard().getLeaderCards()[index];
         toActivate.setPlayed(this);
     }

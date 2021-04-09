@@ -1,6 +1,8 @@
 package it.polimi.ingsw.model;
 
+import it.polimi.ingsw.model.enumeration.LeaderStatus;
 import it.polimi.ingsw.model.enumeration.Level;
+import it.polimi.ingsw.model.exception.NoMoreLeaderCardAliveException;
 import it.polimi.ingsw.model.exception.NoSpaceException;
 
 import java.util.*;
@@ -15,15 +17,34 @@ public class PersonalBoard {
     private ArrayList<ProductionPower> extraProduction;
 
     /*Default Constructor*/
-    public PersonalBoard() {
+    public PersonalBoard(LeaderCard[] startLeaderCards) {
         OwnedDevCards = new ArrayList[3]; //array di arraylist
         OwnedLeaderCard = new LeaderCard[2];
+        for(int i=0; i<OwnedLeaderCard.length; i++){
+            OwnedLeaderCard[i] = startLeaderCards[i];
+        }
         extraProduction = new ArrayList<>();
         extraProduction.add(new ProductionPower(0, new NumberOfResources(), new NumberOfResources(), 2, 1));
     }
 
     /*Getter*/
-    public LeaderCard[] getLeaderCards() {
+    public LeaderCard[] getLeaderCards() throws NoMoreLeaderCardAliveException{
+        int deadLeaderCards = 0;
+        for(int i=0; i< OwnedLeaderCard.length; i++){
+            if(OwnedLeaderCard[i].getStatus() == LeaderStatus.Dead) deadLeaderCards++;
+        }
+        switch (deadLeaderCards) {
+            case 1:
+                LeaderCard[] returnedLeaderCard = new LeaderCard[1];
+                if(OwnedLeaderCard[0].getStatus() == LeaderStatus.Dead) {
+                    returnedLeaderCard[0] = OwnedLeaderCard[1];
+                    return returnedLeaderCard;
+                }
+                returnedLeaderCard[0] = OwnedLeaderCard[0];
+                return returnedLeaderCard;
+            case 2:
+                throw new NoMoreLeaderCardAliveException();
+        }
         return OwnedLeaderCard.clone();
     }
 
@@ -72,9 +93,12 @@ public class PersonalBoard {
         for (DevelopmentCard developmentCard : getAllDevCard()) {
             victorypoints += developmentCard.getVictoryPoints();
         }
-        for (LeaderCard leaderCard : getLeaderCards()) {
-            victorypoints += leaderCard.getVictoryPoints();
-        }
+        try {
+            for (LeaderCard leaderCard : getLeaderCards()) {
+                if(leaderCard.getStatus() == LeaderStatus.Played) victorypoints += leaderCard.getVictoryPoints();
+            }
+        } catch (NoMoreLeaderCardAliveException ignored) {}
+
         return victorypoints;
     }
 

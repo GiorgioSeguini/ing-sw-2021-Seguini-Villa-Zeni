@@ -16,7 +16,7 @@ class LorenzoSoloPlayerTest {
         Market tray = new Market();
         Dashboard dashboard = new Dashboard();
         Game game = new Game(players,tray,dashboard);
-        LorenzoSoloPlayer soloPlayer = new LorenzoSoloPlayer(game);
+        LorenzoSoloPlayer soloPlayer = new LorenzoSoloPlayer(game, );
 
         assertEquals(0, soloPlayer.getFaithTrack().getFaithPoints());
         //assertFalse(soloPlayer.getSoloActionTokens().isEmpty());

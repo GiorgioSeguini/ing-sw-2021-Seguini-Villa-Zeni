@@ -4,6 +4,7 @@ import it.polimi.ingsw.model.*;
 import it.polimi.ingsw.model.enumeration.MarbleColor;
 import it.polimi.ingsw.model.enumeration.ResourceType;
 import it.polimi.ingsw.model.exception.*;
+import org.graalvm.compiler.lir.aarch64.AArch64Move;
 
 
 import java.util.ArrayList;
@@ -145,11 +146,16 @@ public class Controller{
 
     public void leaderMove(LeaderCard card, Player player, int move){
         boolean isPresent = false;
-        for(LeaderCard c : player.getPersonalBoard().getLeaderCards())
-            if(c.equals(card)) {
-                isPresent = true;
-                card = c;
-            }
+        try {
+            for(LeaderCard c : player.getPersonalBoard().getLeaderCards())
+                if(c.equals(card)) {
+                    isPresent = true;
+                    card = c;
+                }
+        } catch (NoMoreLeaderCardAliveException e) {
+            //Il player non ha più carte leader in mano
+            //TODO ERROR MESSAGE
+        }
 
         if(!isPresent){
             //TODO ERROR MESSAGE
@@ -171,6 +177,26 @@ public class Controller{
     }
 
     public void update(MoveType x){
+
+        if(!x.player.equals(game.getCurrPlayer())){
+            //TODO error message
+            return;
+        }
+
+        if(x instanceof  MoveBuyDevCard){
+            MoveBuyDevCard move = (MoveBuyDevCard) x;
+            buyDevelopmentCard(move.cardToBuy, game, move.player, move.getPos());
+        }
+
+        if(x instanceof  MoveActiveProduction){
+            MoveActiveProduction move = (MoveActiveProduction) x;
+            activeProductions(move.toActive, move.player, game);
+        }
+
+        if(x instanceof MoveLeader){
+            MoveLeader move = (MoveLeader) x;
+            leaderMove(move.leaderCard, move.player, move.move);
+        }
 
     }
 }
