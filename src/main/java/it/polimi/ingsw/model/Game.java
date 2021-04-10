@@ -1,5 +1,6 @@
 package it.polimi.ingsw.model;
 
+import it.polimi.ingsw.model.enumeration.PlayerStatus;
 import it.polimi.ingsw.model.exception.FinalTurnException;
 
 import java.util.*;
@@ -153,4 +154,10 @@ public class Game {
         }
     }
 
+    public void nextTurn(){
+        players.get(indexPlayingPlayer).setStatus(PlayerStatus.Waiting);
+        indexPlayingPlayer++;
+        indexPlayingPlayer%=players.size();
+        players.get(indexPlayingPlayer).setStatus(PlayerStatus.Active);
+    }
 }
