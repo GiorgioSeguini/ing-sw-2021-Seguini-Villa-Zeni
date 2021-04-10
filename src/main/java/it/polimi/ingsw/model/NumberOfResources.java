@@ -11,6 +11,8 @@ public class NumberOfResources {
 
     /*Default Constructor*/
     public NumberOfResources(int Servants, int Shields, int Coins, int Stones){
+        if(Servants< 0 || Shields<0 || Coins<0 || Stones<0)
+            throw new ArithmeticException();
         resources[0]=Servants;
         resources[1]=Shields;
         resources[2]=Coins;
@@ -44,6 +46,9 @@ public class NumberOfResources {
 
     /**This method adds just for a single type of resources.*/
     public NumberOfResources add(ResourceType type, int toadd){
+        if(toadd<0){
+            throw new ArithmeticException();
+        }
         NumberOfResources new_resources= this.clone();
         new_resources.resources[type.ordinal()]=new_resources.getAmountOf(type)+toadd;
         return new_resources;
@@ -67,6 +72,8 @@ public class NumberOfResources {
 
     /**This method subs just for a single type of resources.*/
     public NumberOfResources sub(ResourceType type, int tosub) throws OutOfResourcesException{
+        if(tosub<0)
+            throw new ArithmeticException();
         if(this.getAmountOf(type)<tosub){
             throw new OutOfResourcesException();
         }
@@ -94,7 +101,6 @@ public class NumberOfResources {
 
         return new_resources;
     }
-
 
     /**This method returns the resource type that has the bigger quantity. */
     public ResourceType Max_Resource_Type(){
