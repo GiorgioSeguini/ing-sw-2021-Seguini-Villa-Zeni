@@ -29,7 +29,7 @@ public class Player {
             depots.addResourcesFromMarket(initialResources);
         }catch(UnableToFillException ignored){}
         try {
-            personalBoard = new PersonalBoard( this.getPersonalBoard().getLeaderCards());
+            personalBoard = new PersonalBoard(getPersonalBoard().getLeaderCards());
         } catch (NoMoreLeaderCardAliveException ignored) {}
         converter = new Converter(this);
         victoryPoints=0;
