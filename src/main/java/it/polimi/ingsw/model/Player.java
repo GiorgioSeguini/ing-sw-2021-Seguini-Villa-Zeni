@@ -21,16 +21,14 @@ public class Player {
     private PlayerStatus status;
 
     /*Default constructor*/
-    public Player(String userName, int initialFaithPoints, NumberOfResources initialResources) {
+    public Player(String userName, PersonalBoard personalBoard, int initialFaithPoints, NumberOfResources initialResources) {
         this.userName=userName;
+        this.personalBoard = personalBoard;
         faithtrack = new FaithTrack(initialFaithPoints);
         depots = new Depots();
         try {
             depots.addResourcesFromMarket(initialResources);
         }catch(UnableToFillException ignored){}
-        try {
-            personalBoard = new PersonalBoard(getPersonalBoard().getLeaderCards());
-        } catch (NoMoreLeaderCardAliveException ignored) {}
         converter = new Converter(this);
         victoryPoints=0;
         discounted = new NumberOfResources();

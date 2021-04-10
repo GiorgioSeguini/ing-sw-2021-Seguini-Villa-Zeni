@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ConverterTest {
 
     @Test
-    void CheckIntegrityToConvert(){
+    void CheckIntegrityToConvert() {
         Player player=new Player(new String("Pippo"),3, new NumberOfResources());
         Converter x=new Converter(player);
         x.setWhiteAbility(ResourceType.Stones);
@@ -46,7 +46,5 @@ public class ConverterTest {
         test= new ArrayList<>();
         test.add(ResourceType.Servants);
         assertFalse(x.CheckIntegrityToConvert(test));
-
-
     }
-}
+

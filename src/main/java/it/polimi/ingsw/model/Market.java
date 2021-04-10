@@ -29,7 +29,7 @@ public class Market {
 
     //getter
     public MarbleColor[] getRow(int index) {
-        MarbleColor[] trayRow = new MarbleColor[3];
+        MarbleColor[] trayRow = new MarbleColor[4];
         for(int i= 0; i<N_COL; i++ ){
             trayRow[i] = tray[index][i];
         }
@@ -37,7 +37,7 @@ public class Market {
     }
 
     public MarbleColor[] getColumn(int index) {
-        MarbleColor[] trayColumn = new MarbleColor[4];
+        MarbleColor[] trayColumn = new MarbleColor[3];
         for(int i=0; i<N_ROW; i++){
             trayColumn[i] = tray[i][index];
         }
