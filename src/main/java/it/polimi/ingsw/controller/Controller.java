@@ -2,6 +2,7 @@ package it.polimi.ingsw.controller;
 
 import it.polimi.ingsw.model.*;
 import it.polimi.ingsw.model.enumeration.MarbleColor;
+import it.polimi.ingsw.model.enumeration.PlayerStatus;
 import it.polimi.ingsw.model.enumeration.ResourceType;
 import it.polimi.ingsw.model.exception.*;
 
@@ -16,43 +17,28 @@ public class Controller{
      * dove da 0 a 3 sono esattamente le 4 colonne e da 4 a 6 siano le tre righe */
 
     /**This method returns the marbles bought from the market*/
-    private ArrayList<MarbleColor> TakeMarbles(Player player,MovetypeMarket movetype){
-        ArrayList<MarbleColor> buyedresources;
+    private ArrayList<MarbleColor> takeMarbles(int indexToBuy){
+        ArrayList<MarbleColor> buyedresources = null;
 
         /*Compro la colonna o la riga corretta*/
-        switch (movetype.getIndextobuy()) {
-            case 0:
-                buyedresources = game.getMarketTray().buyColumn(0);
-                break;
-            case 1:
-                buyedresources = game.getMarketTray().buyColumn(1);
-                break;
-            case 2:
-                buyedresources = game.getMarketTray().buyColumn(2);
-                break;
-            case 3:
-                buyedresources = game.getMarketTray().buyColumn(3);
-                break;
-            case 4:
-                buyedresources = game.getMarketTray().buyRow(0);
-                break;
-            case 5:
-                buyedresources = game.getMarketTray().buyRow(1);
-                break;
-            case 6:
-                buyedresources = game.getMarketTray().buyRow(2);
-                break;
-            default: return null;
-        }
+        if(indexToBuy>=0 && indexToBuy<=3)
+            buyedresources = game.getMarketTray().buyColumn(indexToBuy);
+
+        if(indexToBuy>=4 && indexToBuy<=6)
+            buyedresources = buyedresources = game.getMarketTray().buyRow(indexToBuy - 4);
+
+        if(buyedresources==null);
+            //TODO check
+
         return buyedresources;
     }
 
     /**This method tries to convert the Marble as the player asked. If it can it makes the conversion
      * and stores the converted resources in the Converter Class. Returns TRUE if the conversion ends correctly,
      * returns FALSE if it doesn't.*/
-    private boolean ConvertFromMarket(Player player, ArrayList<MarbleColor> buyedresources, MovetypeMarket movetype){
+    private boolean buyFromMarket(Player player, int indexToBuy){
         try {
-            player.getConverter().convertAll(buyedresources);
+            player.getConverter().convertAll(takeMarbles(indexToBuy));
         }
         catch (HaveToChooseException error) {
             return false;
@@ -61,9 +47,9 @@ public class Controller{
     }
 
     /**This method converts the white marbles. It returns TRUE if it ends correctly.*/
-    private boolean ConvertJustWhites(Player player, MovetypeMarket movetype){
-        if(player.getConverter().CheckIntegrityToConvert(movetype.getWhitemarbles())){
-            player.getConverter().WhiteMarbleConverter(movetype.getWhitemarbles());
+    private boolean convertJustWhites(Player player, ArrayList<ResourceType> whiteMarbles){
+        if(player.getConverter().CheckIntegrityToConvert(whiteMarbles)){
+            player.getConverter().WhiteMarbleConverter(whiteMarbles);
         }
         else{
             return false;
@@ -72,7 +58,7 @@ public class Controller{
     }
 
     /**This method tries to store the resources from converter to warehouse. If it can returns TRUE */
-    private boolean StoreFromMarket(Player player){
+    private boolean storeFromMarket(Player player){
         try{
             player.getDepots().addResourcesFromMarket(player.getConverter().getResources());
             return true;
@@ -83,10 +69,10 @@ public class Controller{
     }
 
     /**This method discard the resources in converter choosen from the player*/
-    private boolean DiscardMarketResources(Player player, MovetypeMarket movetype){
+    private boolean discardMarketResources(Player player, NumberOfResources toDiscard){
         try{
-            player.getConverter().setResources(player.getConverter().getResources().sub(movetype.getTodiscard()));
-            for(int i=0; i<movetype.getTodiscard().size();i++){
+            player.getConverter().setResources(player.getConverter().getResources().sub(toDiscard));
+            for(int i=0; i<toDiscard.size();i++){
               for(Player y: game.getPlayers()){
                 if(y!=player){
                   player.getFaithTrack().addPoint();
@@ -101,14 +87,14 @@ public class Controller{
         }
     }
 
-    public void buyDevelopmentCard(DevelopmentCard cardtobuy, Game game, Player player, int pos){
+    public boolean buyDevelopmentCard(DevelopmentCard cardtobuy, Game game, Player player, int pos){
 
         ArrayList<DevelopmentCard>[] cardsOwned = player.getPersonalBoard().getOwnedDevCards();
 
         if(!game.getDashboard().getTopDevCard(cardtobuy.getColor(),cardtobuy.getLevel()).equals(cardtobuy)){
             //la carta che il player vuole comprare non è la prima della pila quindi deve sceglierne un'altra
             //TODO ERROR MESSAGE
-            return;
+            return false;
         }
 
         NumberOfResources realCost = cardtobuy.getCost().safe_sub(player.getDiscount());
@@ -117,7 +103,7 @@ public class Controller{
                 player.getPersonalBoard().addDevCard(cardtobuy,pos);
             } catch (NoSpaceException e) {
                 //TODO ERROR MESSAGE
-                return;
+                return false;
             }
             game.getDashboard().buyDevCard(cardtobuy.getColor(),cardtobuy.getLevel());
             try {
@@ -127,33 +113,49 @@ public class Controller{
             //qui bisogna dire al player che non può comprare quella carta perchè non ha abbastazna risorse e quindi di sceglierne un'altra
             //TODO ERROR MESSAGE
         }
-
+        return true;
     }
 
-    public void activeProductions(ProductionPower[] toActive, Player player, Game game){
+    public boolean choseProductions(ProductionPower[] toActive, Player player, Game game){
         //check if current player really own the productionPowers that want to active
         ArrayList<ProductionPower> productionOwned = player.getPersonalBoard().getProduction();
 
         for(ProductionPower p : toActive)
-            if(!productionOwned.contains(p))
-                throw new IllegalArgumentException();
-
+            if(!productionOwned.contains(p)) {
+                //TODO error Message
+                return false;
+            }
         //sum all productionPower
         ProductionPower total = new ProductionPower();
         for(ProductionPower p : toActive)
             total = total.add(p);
 
-        try {
-            total.active(player);
-        }catch(ChoseResourcesException e){
-            //TODO
-        }catch(OutOfResourcesException e){
-            //TODO something different
+        player.setToActive(total);
+
+        if(player.isActivable()) {
+            player.setToActive(null);
+            //TODO error message
+            return false;
         }
-        game.popesInspection();
+        return true;
     }
 
-    public void leaderMove(LeaderCard card, Player player, int move){
+    public boolean activeProductions(Player player, NumberOfResources ofYourChoiceInput, NumberOfResources ofYourChoiceOutput){
+        try {
+            player.getToActive().active(player, ofYourChoiceInput, ofYourChoiceOutput);
+        }catch(ChoseResourcesException e){
+            //TODO error message
+            return false;
+        }catch(OutOfResourcesException e){
+            //TODO something different
+            return false;
+        }
+        game.popesInspection();
+
+        return true;
+    }
+
+    public boolean leaderMove(LeaderCard card, Player player, int move){
         boolean isPresent = false;
         try {
             for(LeaderCard c : player.getPersonalBoard().getLeaderCards())
@@ -168,44 +170,100 @@ public class Controller{
 
         if(!isPresent){
             //TODO ERROR MESSAGE
-            return;
+            return false;
         }
 
         if(move==0){
             if(!card.setPlayed(player)){
                 //TODO ERROR MESSAGE
-                //return not strictly needed
+                return false;
             }
         }
 
         if(move==1)
             if(!card.setDiscard(player)){
                 //TODO ERROR MESSAGE
-                //return not strictly needed
+                return false;
             }
+
+        return true;
     }
 
     public void update(MoveType x){
 
-        if(!x.getActive().equals(game.getCurrPlayer())){
+        if(!x.getPlayer().equals(game.getCurrPlayer())){
             //TODO error message
             return;
         }
 
-        if(x instanceof  MoveBuyDevCard){
+        if(x instanceof  MoveBuyDevCard && x.getPlayer().getStatus()==PlayerStatus.Active){
             MoveBuyDevCard move = (MoveBuyDevCard) x;
-            buyDevelopmentCard(move.cardToBuy, game, move.getActive(), move.getPos());
+            buyDevelopmentCard(move.cardToBuy, game, move.getPlayer(), move.getPos());
+
         }
 
-        if(x instanceof  MoveActiveProduction){
+        if(x instanceof  MoveActiveProduction && x.getPlayer().getStatus()==PlayerStatus.Active){
             MoveActiveProduction move = (MoveActiveProduction) x;
-            activeProductions(move.toActive, move.getActive(), game);
+            if(choseProductions(move.toActive, move.getPlayer(), game)){
+                if(move.getPlayer().easyActive()){
+                    try {
+                        move.getPlayer().getToActive().active(move.getPlayer());
+                    }catch(ChoseResourcesException | OutOfResourcesException ignored){};
+                    move.getPlayer().setStatus(PlayerStatus.MovePerformed);
+                }
+                else{
+                    move.getPlayer().setStatus(PlayerStatus.NeedToCHoseRes);
+                }
+            }
         }
 
-        if(x instanceof MoveLeader){
+        if(x instanceof MoveChoseResources && x.getPlayer().getStatus()==PlayerStatus.NeedToCHoseRes) {
+            MoveChoseResources move = (MoveChoseResources) x;
+            if(activeProductions(move.getPlayer(), move.getOfYourChoiceInput(), move.getOfYourChoiceOutput())){
+                move.getPlayer().setStatus(PlayerStatus.MovePerformed);
+            }
+        }
+
+        if(x instanceof MoveLeader && (x.getPlayer().getStatus()==PlayerStatus.Active || x.getPlayer().getStatus()==PlayerStatus.MovePerformed)){
             MoveLeader move = (MoveLeader) x;
-            leaderMove(move.leaderCard, move.getActive(), move.move);
+            leaderMove(move.leaderCard, move.getPlayer(), move.move);
         }
 
+        if(x instanceof MovetypeMarket && x.getPlayer().getStatus()==PlayerStatus.Active){
+            MovetypeMarket move = (MovetypeMarket) x;
+            if(!buyFromMarket(move.player, move.getIndextobuy())){
+                move.getPlayer().setStatus(PlayerStatus.NeedToConvert);
+            } else{
+                move.getPlayer().setStatus(PlayerStatus.NeedToStore);
+            }
+        }
+
+        if(x instanceof MoveWhiteConversion && x.getPlayer().getStatus()==PlayerStatus.NeedToConvert){
+            MoveWhiteConversion move = (MoveWhiteConversion) x;
+            if(!convertJustWhites(move.player, move.getWhitemarbles())){
+                move.getPlayer().setStatus(PlayerStatus.NeedToConvert);
+                //TODO error message
+            } else{
+                move.getPlayer().setStatus(PlayerStatus.NeedToStore);
+            }
+        }
+
+        if(x instanceof  MoveDiscardResources && x.getPlayer().getStatus()==PlayerStatus.NeedToStore){
+            MoveDiscardResources move = (MoveDiscardResources) x;
+            if(!discardMarketResources(move.player, move.getToDiscard())){
+                move.getPlayer().setStatus(PlayerStatus.NeedToStore);
+                //TODO error message
+            }else{
+                if(!storeFromMarket(move.getPlayer())){
+                        move.getPlayer().setStatus(PlayerStatus.NeedToStore);
+                }else{
+                    move.getPlayer().setStatus(PlayerStatus.MovePerformed);
+                }
+            }
+        }
+
+        if(x.isLastMove && x.getPlayer().getStatus()==PlayerStatus.MovePerformed){
+            game.nextTurn();
+        }
     }
 }

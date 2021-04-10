@@ -1,26 +1,23 @@
 package it.polimi.ingsw.controller;
 import it.polimi.ingsw.model.Player;
-import it.polimi.ingsw.model.enumeration.MoveChoose;
 
 import javax.swing.text.View;
 
 public class MoveType {
     //raccogliere tutte le info chieste al giocatore e chiama l'update del controller
 
-    Player active;
+    Player player;
     View view;
     boolean isLastMove;
-    MoveChoose move;
 
-    public MoveType(Player active, View view, MoveChoose move, boolean isLastMove){
-        this.active=active;
+    public MoveType(Player player, View view, boolean isLastMove){
+        this.player = player;
         this.view=view;
         this.isLastMove=isLastMove;
-        this.move=move;
     }
 
-    public Player getActive() {
-        return active;
+    public Player getPlayer() {
+        return player;
     }
 
     public View getView() {
@@ -31,7 +28,4 @@ public class MoveType {
         return isLastMove;
     }
 
-    public MoveChoose getMove() {
-        return move;
-    }
 }

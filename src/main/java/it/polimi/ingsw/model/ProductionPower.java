@@ -46,6 +46,14 @@ public class ProductionPower {
         return this.outputRes;
     }
 
+    public int getOfYourChoiceInput() {
+        return ofYourChoiceInput;
+    }
+
+    public int getOfYourChoiceOutput() {
+        return ofYourChoiceOutput;
+    }
+
     /**
      *  It's usefull for active production in parallel
      * @param other adder
