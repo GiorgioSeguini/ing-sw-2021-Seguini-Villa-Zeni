@@ -10,6 +10,9 @@ class NumberOfResourcesTest {
 
     @Test
     void getAmountOf() {
+        try {
+            NumberOfResources test = new NumberOfResources(0, -1, 2, 3);
+        }catch(ArithmeticException e){}
         NumberOfResources test=new NumberOfResources(0,1,2,3);
         NumberOfResources test2= new NumberOfResources();
         int i=0;
