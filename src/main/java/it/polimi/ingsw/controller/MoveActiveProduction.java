@@ -11,7 +11,7 @@ public class MoveActiveProduction extends MoveType{
     ProductionPower[] toActive;
 
     public MoveActiveProduction(Player player, View view, boolean isLastMove, ProductionPower[] toActive) {
-        super(player, view, MoveChoose.ActivateProduction, isLastMove);
+        super(player, view, isLastMove);
         this.toActive = toActive;
     }
 

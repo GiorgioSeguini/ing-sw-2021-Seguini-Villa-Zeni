@@ -68,7 +68,7 @@ public class Controller{
         }
     }
 
-    /**This method discard the resources in converter choosen from the player*/
+    /**This method discard the resources in converter chosen from the player*/
     private boolean discardMarketResources(Player player, NumberOfResources toDiscard){
         try{
             player.getConverter().setResources(player.getConverter().getResources().sub(toDiscard));
@@ -196,6 +196,7 @@ public class Controller{
             return;
         }
 
+        /*Production Move*/
         if(x instanceof  MoveBuyDevCard && x.getPlayer().getStatus()==PlayerStatus.Active){
             MoveBuyDevCard move = (MoveBuyDevCard) x;
             buyDevelopmentCard(move.cardToBuy, game, move.getPlayer(), move.getPos());
@@ -229,6 +230,7 @@ public class Controller{
             leaderMove(move.leaderCard, move.getPlayer(), move.move);
         }
 
+        /*Market Move*/
         if(x instanceof MovetypeMarket && x.getPlayer().getStatus()==PlayerStatus.Active){
             MovetypeMarket move = (MovetypeMarket) x;
             if(!buyFromMarket(move.player, move.getIndextobuy())){
