@@ -187,24 +187,24 @@ public class Controller{
 
     public void update(MoveType x){
 
-        if(!x.player.equals(game.getCurrPlayer())){
+        if(!x.getActive().equals(game.getCurrPlayer())){
             //TODO error message
             return;
         }
 
         if(x instanceof  MoveBuyDevCard){
             MoveBuyDevCard move = (MoveBuyDevCard) x;
-            buyDevelopmentCard(move.cardToBuy, game, move.player, move.getPos());
+            buyDevelopmentCard(move.cardToBuy, game, move.getActive(), move.getPos());
         }
 
         if(x instanceof  MoveActiveProduction){
             MoveActiveProduction move = (MoveActiveProduction) x;
-            activeProductions(move.toActive, move.player, game);
+            activeProductions(move.toActive, move.getActive(), game);
         }
 
         if(x instanceof MoveLeader){
             MoveLeader move = (MoveLeader) x;
-            leaderMove(move.leaderCard, move.player, move.move);
+            leaderMove(move.leaderCard, move.getActive(), move.move);
         }
 
     }

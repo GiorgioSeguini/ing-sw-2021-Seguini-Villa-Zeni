@@ -62,7 +62,7 @@ public class Converter {
         }
         inwait=convert_resources(without_white);
         if(howmany!=0){
-            if (toconvert.size()==2){
+            if (toconvert.size()>1){
                 throw new HaveToChooseException();
             }
             else{
