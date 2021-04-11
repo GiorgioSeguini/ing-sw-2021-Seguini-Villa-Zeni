@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public class Market {
 
     MarbleColor[][] tray;
+    MarbleColor externalMarble;
 
-    private MarbleColor externalMarble;
     private static final int N_COL=4;
     private static final int N_ROW=3;
 

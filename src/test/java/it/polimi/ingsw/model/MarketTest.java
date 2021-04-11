@@ -2,107 +2,135 @@ package it.polimi.ingsw.model;
 
 import it.polimi.ingsw.model.enumeration.MarbleColor;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class MarketTest {
     @Test
     void Constructor() {
 
-        MarbleColor[] startMarbles = new MarbleColor[]{MarbleColor.Red, MarbleColor.Purple, MarbleColor.Red, MarbleColor.Red, MarbleColor.Red, MarbleColor.Red, MarbleColor.Red, MarbleColor.Red, MarbleColor.Red, MarbleColor.Red, MarbleColor.Red, MarbleColor.Red, MarbleColor.Blue};
-        Market tray = new Market(startMarbles);
+        MarbleColor[] startMarbles = new MarbleColor[]{MarbleColor.Purple, MarbleColor.Blue, MarbleColor.Red, MarbleColor.Yellow, MarbleColor.Grey, MarbleColor.Grey, MarbleColor.White, MarbleColor.Purple, MarbleColor.Blue, MarbleColor.Red, MarbleColor.White, MarbleColor.Yellow, MarbleColor.Grey};
+        Market marketTray = new Market(startMarbles);
 
+        for(int i=0; i<3; i++){
+            for(int j=0; j<4; j++){
+                assertNotNull(marketTray.tray[i][j]);
+            }
+        }
+        assertNotNull(marketTray.externalMarble);
 
     }
 
     @Test
     void GetterTest() {
-        MarbleColor[] startMarbles = new MarbleColor[]{MarbleColor.Red, MarbleColor.Purple, MarbleColor.Red, MarbleColor.Red, MarbleColor.Red, MarbleColor.Red, MarbleColor.Red, MarbleColor.Red, MarbleColor.Red, MarbleColor.Red, MarbleColor.Red, MarbleColor.Red, MarbleColor.Blue};
-        Market tray = new Market(startMarbles);
+        MarbleColor[] startMarbles = new MarbleColor[]{MarbleColor.Purple, MarbleColor.Blue, MarbleColor.Red, MarbleColor.Yellow, MarbleColor.Grey, MarbleColor.Grey, MarbleColor.White, MarbleColor.Purple, MarbleColor.Blue, MarbleColor.Red, MarbleColor.White, MarbleColor.Yellow, MarbleColor.Grey};
+        Market marketTray = new Market(startMarbles);
         //controlla che non accetta valori di colonna e riga maggiori o uguali di 4 e 3
         try {
-            tray.getColumn(4);
+            marketTray.getColumn(4);
             fail();
         }catch (IndexOutOfBoundsException ignored) {}
         try {
-            tray.getRow(3);
+            marketTray.getRow(3);
             fail();
         }catch (IndexOutOfBoundsException ignored) {}
         try {
-            tray.getColumn(5);
+            marketTray.getColumn(5);
             fail();
         }catch (IndexOutOfBoundsException ignored) {}
         try {
-            tray.getRow(5);
+            marketTray.getRow(5);
             fail();
         }catch (IndexOutOfBoundsException ignored) {}
 
         //Controlla che non accetti input negativi
         try {
-            tray.getRow(-1);
+            marketTray.getRow(-1);
             fail();
         }catch (IndexOutOfBoundsException ignored) {}
         try {
-            tray.getColumn(-1);
+            marketTray.getColumn(-1);
             fail();
         }catch (IndexOutOfBoundsException ignored) {}
 
         //controlla che restituiscono array di dimensione 3 e 4 e che non restituisca mai array con elementi nulli
         for(int i=0; i<3; i++) {
-            for (MarbleColor x : tray.getRow(i)) {
-                assertEquals(4,tray.getRow(i).length);
+            for (MarbleColor x : marketTray.getRow(i)) {
+                assertEquals(4,marketTray.getRow(i).length);
                 assertNotNull(x);
             }
-            assertArrayEquals(tray.getRow(i), tray.getRow(i)); //controllo che non venga modificata la riga dopo il get
+            assertArrayEquals(marketTray.getRow(i), marketTray.getRow(i)); //controllo che non venga modificata la riga dopo il get
         }                                                      //non so se ha senso controllare questa cosa, idem sotto :')
         for(int i=0; i<4; i++) {
-            for (MarbleColor x : tray.getColumn(i)) {
-                assertEquals(3,tray.getColumn(i).length);
+            for (MarbleColor x : marketTray.getColumn(i)) {
+                assertEquals(3,marketTray.getColumn(i).length);
                 assertNotNull(x);
             }
-            assertArrayEquals(tray.getColumn(i), tray.getColumn(i)); //controllo che non venga modificata la colonna dopo il get
+            assertArrayEquals(marketTray.getColumn(i), marketTray.getColumn(i)); //controllo che non venga modificata la colonna dopo il get
         }
     }
 
     @Test
     void BuyerTest() {
-        MarbleColor[] startMarbles = new MarbleColor[]{MarbleColor.Red, MarbleColor.Purple, MarbleColor.Red, MarbleColor.Red, MarbleColor.Red, MarbleColor.Red, MarbleColor.Red, MarbleColor.Red, MarbleColor.Red, MarbleColor.Red, MarbleColor.Red, MarbleColor.Red, MarbleColor.Blue};
-        Market tray = new Market(startMarbles);
+        MarbleColor[] startMarbles = new MarbleColor[]{MarbleColor.Purple, MarbleColor.Blue, MarbleColor.Red, MarbleColor.Yellow, MarbleColor.Grey, MarbleColor.Grey, MarbleColor.White, MarbleColor.Purple, MarbleColor.Blue, MarbleColor.Red, MarbleColor.White, MarbleColor.Yellow, MarbleColor.Grey};
+        Market marketTray = new Market(startMarbles);
         //controlla che non accetta valori di colonna e riga maggiori o uguali di 4 e 3
         try {
-            tray.buyColumn(4);
+            marketTray.buyColumn(4);
             fail();
         }catch (IndexOutOfBoundsException ignored) {}
         try {
-            tray.buyRow(3);
+            marketTray.buyRow(3);
             fail();
         }catch (IndexOutOfBoundsException ignored) {}
         try {
-            tray.buyColumn(5);
+            marketTray.buyColumn(5);
             fail();
         }catch (IndexOutOfBoundsException ignored) {}
         try {
-            tray.buyRow(5);
+            marketTray.buyRow(5);
             fail();
         }catch (IndexOutOfBoundsException ignored) {}
 
         //Controlla che non accetti input negativi
         try {
-            tray.buyRow(-1);
+            marketTray.buyRow(-1);
             fail();
         }catch (IndexOutOfBoundsException ignored) {}
         try {
-            tray.buyColumn(-1);
+            marketTray.buyColumn(-1);
             fail();
         }catch (IndexOutOfBoundsException ignored) {}
 
-         //controllo sulle dimensioni della lista ritornata dopo il buy
-        assertEquals(3, tray.buyColumn(1).size());
-        //controllo sul corretto inserimento dell'external marble
-        assertEquals(tray.getColumn(1)[2], MarbleColor.Blue);
-        //controllo sulle dimensioni della lista ritornata dopo il buy
-        assertEquals(4, tray.buyRow(0).size());
-        //controllo sul corretto inserimento dell'external marble
-        assertEquals(tray.getRow(0)[3], MarbleColor.Purple);
+
+        ArrayList<MarbleColor> buyedColumn;
+        MarbleColor oldExtMarble;
+        for(int i=0; i<4; i++){
+            oldExtMarble = marketTray.externalMarble;
+            buyedColumn = marketTray.buyColumn(i);
+            for(MarbleColor x: buyedColumn){
+                assertNotNull(x); //ogni elemento restituito dalla buy non è mai nullo
+            }
+            assertEquals(3, buyedColumn.size()); //controllo sulle dimensioni della lista ritornata dopo il buy
+            assertNotNull(marketTray.externalMarble);//externalMarble mai nulla
+            assertEquals(marketTray.externalMarble,buyedColumn.get(0)); //controllo sul corretto inserimento dell'external marble
+            assertEquals(oldExtMarble,marketTray.getColumn(i)[marketTray.getColumn(i).length-1]); //controllo sul corretto inserimento dell'external marble
+        }
+
+        ArrayList<MarbleColor> buyedRow;
+        for(int i=0; i<3; i++){
+            oldExtMarble = marketTray.externalMarble;
+            buyedRow = marketTray.buyRow(i);
+            for(MarbleColor x: buyedRow){
+                assertNotNull(x); //ogni elemento restituito dalla buy non è mai nullo
+            }
+            assertEquals(4, buyedRow.size()); //controllo sulle dimensioni della lista ritornata dopo il buy
+            assertNotNull(marketTray.externalMarble);//externalMarble mai nulla
+            assertEquals(marketTray.externalMarble,buyedRow.get(0)); //controllo sul corretto inserimento dell'external marble
+            assertEquals(oldExtMarble,marketTray.getRow(i)[marketTray.getRow(i).length-1]); //controllo sul corretto inserimento dell'external marble
+        }
 
     }
 }
