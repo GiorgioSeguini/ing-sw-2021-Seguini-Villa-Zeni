@@ -82,7 +82,9 @@ public class PersonalBoard {
     public ArrayList<DevelopmentCard> getAllDevCard() {
         ArrayList<DevelopmentCard> AllDevCard = new ArrayList<>();
         for (int i = 0; i < 2; i++) {
-            AllDevCard.addAll((Collection<? extends DevelopmentCard>) OwnedDevCards[i].clone());    //DA RIVEDERE
+            for( int j=0; j<2; j++)
+                AllDevCard.add(getOwnedDevCards()[i].get(j));
+            //AllDevCard.addAll((Collection<? extends DevelopmentCard>) OwnedDevCards[i].clone());    //DA RIVEDERE
         }
         return AllDevCard;
     }

@@ -53,7 +53,7 @@ public class LeaderCard extends Card {
      * @return true if the card is really discarded, false otherwise
      * */
     public boolean setDiscard(Player owner){
-        if(getStatus().ordinal()==0){
+        if(getStatus().equals(LeaderStatus.onHand)){
             setStatus(LeaderStatus.Dead);
             owner.getFaithTrack().addPoint();
             return true;

@@ -8,11 +8,12 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MarketTest {
+
+    MarbleColor[] startMarbles = new MarbleColor[]{MarbleColor.Purple, MarbleColor.Blue, MarbleColor.Red, MarbleColor.Yellow, MarbleColor.Grey, MarbleColor.Grey, MarbleColor.White, MarbleColor.Purple, MarbleColor.Blue, MarbleColor.Red, MarbleColor.White, MarbleColor.Yellow, MarbleColor.Grey};
+    Market marketTray = new Market(startMarbles);
+
     @Test
     void Constructor() {
-
-        MarbleColor[] startMarbles = new MarbleColor[]{MarbleColor.Purple, MarbleColor.Blue, MarbleColor.Red, MarbleColor.Yellow, MarbleColor.Grey, MarbleColor.Grey, MarbleColor.White, MarbleColor.Purple, MarbleColor.Blue, MarbleColor.Red, MarbleColor.White, MarbleColor.Yellow, MarbleColor.Grey};
-        Market marketTray = new Market(startMarbles);
 
         for(int i=0; i<3; i++){
             for(int j=0; j<4; j++){
@@ -25,8 +26,7 @@ class MarketTest {
 
     @Test
     void GetterTest() {
-        MarbleColor[] startMarbles = new MarbleColor[]{MarbleColor.Purple, MarbleColor.Blue, MarbleColor.Red, MarbleColor.Yellow, MarbleColor.Grey, MarbleColor.Grey, MarbleColor.White, MarbleColor.Purple, MarbleColor.Blue, MarbleColor.Red, MarbleColor.White, MarbleColor.Yellow, MarbleColor.Grey};
-        Market marketTray = new Market(startMarbles);
+
         //controlla che non accetta valori di colonna e riga maggiori o uguali di 4 e 3
         try {
             marketTray.getColumn(4);
@@ -74,8 +74,7 @@ class MarketTest {
 
     @Test
     void BuyerTest() {
-        MarbleColor[] startMarbles = new MarbleColor[]{MarbleColor.Purple, MarbleColor.Blue, MarbleColor.Red, MarbleColor.Yellow, MarbleColor.Grey, MarbleColor.Grey, MarbleColor.White, MarbleColor.Purple, MarbleColor.Blue, MarbleColor.Red, MarbleColor.White, MarbleColor.Yellow, MarbleColor.Grey};
-        Market marketTray = new Market(startMarbles);
+
         //controlla che non accetta valori di colonna e riga maggiori o uguali di 4 e 3
         try {
             marketTray.buyColumn(4);
