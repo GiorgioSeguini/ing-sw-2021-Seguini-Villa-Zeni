@@ -1,6 +1,6 @@
 [
   {
-    "Level": 1,
+    "Level": "ONE",
     "CardColor": "GREEN",
     "Cost": {
       "Servants": 0,
@@ -28,7 +28,7 @@
     }
   },
   {
-    "Level": 1,
+    "Level": "ONE",
     "CardColor": "PURPLE",
     "Cost": {
       "Servants": 2,
@@ -56,7 +56,7 @@
     }
   },
   {
-    "Level": 1,
+    "Level": "ONE",
     "CardColor": "BLUE",
     "Cost": {
       "Servants": 0,
@@ -84,7 +84,7 @@
     }
   },
   {
-    "Level": 1,
+    "Level": "ONE",
     "CardColor": "YELLOW",
     "Cost": {
       "Servants": 0,
@@ -112,7 +112,7 @@
     }
   },
   {
-    "Level": 1,
+    "Level": "ONE",
     "CardColor": "GREEN",
     "Cost": {
       "Servants": 1,
@@ -140,7 +140,7 @@
     }
   },
   {
-    "Level": 1,
+    "Level": "ONE",
     "CardColor": "PURPLE",
     "Cost": {
       "Servants": 1,
@@ -168,7 +168,7 @@
     }
   },
   {
-    "Level": 1,
+    "Level": "ONE",
     "CardColor": "BLUE",
     "Cost": {
       "Servants": 1,
@@ -196,7 +196,7 @@
     }
   },
   {
-    "Level": 1,
+    "Level": "ONE",
     "CardColor": "YELLOW",
     "Cost": {
       "Servants": 0,
@@ -224,7 +224,7 @@
     }
   },
   {
-    "Level": 1,
+    "Level": "ONE",
     "CardColor": "GREEN",
     "Cost": {
       "Servants": 0,
@@ -252,7 +252,7 @@
     }
   },
   {
-    "Level": 1,
+    "Level": "ONE",
     "CardColor": "PURPLE",
     "Cost": {
       "Servants": 3,
@@ -280,7 +280,7 @@
     }
   },
   {
-    "Level": 1,
+    "Level": "ONE",
     "CardColor": "BLUE",
     "Cost": {
       "Servants": 0,
@@ -308,7 +308,7 @@
     }
   },
   {
-    "Level": 1,
+    "Level": "ONE",
     "CardColor": "YELLOW",
     "Cost": {
       "Servants": 0,
@@ -336,7 +336,7 @@
     }
   },
   {
-    "Level": 1,
+    "Level": "ONE",
     "CardColor": "GREEN",
     "Cost": {
       "Servants": 0,
@@ -364,7 +364,7 @@
     }
   },
   {
-    "Level": 1,
+    "Level": "ONE",
     "CardColor": "PURPLE",
     "Cost": {
       "Servants": 2,
@@ -392,7 +392,7 @@
     }
   },
   {
-    "Level": 1,
+    "Level": "ONE",
     "CardColor": "BLUE",
     "Cost": {
       "Servants": 2,
@@ -420,7 +420,7 @@
     }
   },
   {
-    "Level": 1,
+    "Level": "ONE",
     "CardColor": "YELLOW",
     "Cost": {
       "Servants": 0,
@@ -448,7 +448,7 @@
     }
   },
   {
-    "Level": 2,
+    "Level": "TWO",
     "CardColor": "GREEN",
     "Cost": {
       "Servants": 0,
@@ -476,7 +476,7 @@
     }
   },
   {
-    "Level": 2,
+    "Level": "TWO",
     "CardColor": "PURPLE",
     "Cost": {
       "Servants": 4,
@@ -504,7 +504,7 @@
     }
   },
   {
-    "Level": 2,
+    "Level": "TWO",
     "CardColor": "BLUE",
     "Cost": {
       "Servants":0 ,
@@ -532,7 +532,7 @@
     }
   },
   {
-    "Level": 2,
+    "Level": "TWO",
     "CardColor": "YELLOW",
     "Cost": {
       "Servants": 0,
@@ -560,7 +560,7 @@
     }
   },
   {
-    "Level": 2,
+    "Level": "TWO",
     "CardColor": "GREEN",
     "Cost": {
       "Servants": 2,
@@ -588,7 +588,7 @@
     }
   },
   {
-    "Level": 2,
+    "Level": "TWO",
     "CardColor": "PURPLE",
     "Cost": {
       "Servants": 3,
@@ -616,7 +616,7 @@
     }
   },
   {
-    "Level": 2,
+    "Level": "TWO",
     "CardColor": "BLUE",
     "Cost": {
       "Servants": 0,
@@ -644,7 +644,7 @@
     }
   },
   {
-    "Level": 2,
+    "Level": "TWO",
     "CardColor": "YELLOW",
     "Cost": {
       "Servants": 0,
@@ -672,7 +672,7 @@
     }
   },
   {
-    "Level": 2,
+    "Level": "TWO",
     "CardColor": "GREEN",
     "Cost": {
       "Servants": 0,
@@ -700,7 +700,7 @@
     }
   },
   {
-    "Level": 2,
+    "Level": "TWO",
     "CardColor": "PURPLE",
     "Cost": {
       "Servants": 5,
@@ -728,7 +728,7 @@
     }
   },
   {
-    "Level": 2,
+    "Level": "TWO",
     "CardColor": "BLUE",
     "Cost": {
       "Servants": 0,
@@ -756,7 +756,7 @@
     }
   },
   {
-    "Level": 2,
+    "Level": "TWO",
     "CardColor": "YELLOW",
     "Cost": {
       "Servants": 0,
@@ -784,7 +784,7 @@
     }
   },
   {
-    "Level": 2,
+    "Level": "TWO",
     "CardColor": "GREEN",
     "Cost": {
       "Servants": 0,
@@ -812,7 +812,7 @@
     }
   },
   {
-    "Level": 2,
+    "Level": "TWO",
     "CardColor": "PURPLE",
     "Cost": {
       "Servants": 3,
@@ -840,7 +840,7 @@
     }
   },
   {
-    "Level": 2,
+    "Level": "TWO",
     "CardColor": "BLUE",
     "Cost": {
       "Servants": 0,
@@ -868,7 +868,7 @@
     }
   },
   {
-    "Level": 2,
+    "Level": "TWO",
     "CardColor": "YELLOW",
     "Cost": {
       "Servants": 3,
@@ -896,7 +896,7 @@
     }
   },
   {
-    "Level": 3,
+    "Level": "THREE",
     "CardColor": "GREEN",
     "Cost": {
       "Servants": 0,
@@ -924,7 +924,7 @@
     }
   },
   {
-    "Level": 3,
+    "Level": "THREE",
     "CardColor": "PURPLE",
     "Cost": {
       "Servants": 6,
@@ -952,7 +952,7 @@
     }
   },
   {
-    "Level": 3,
+    "Level": "THREE",
     "CardColor": "BLUE",
     "Cost": {
       "Servants": 0,
@@ -980,7 +980,7 @@
     }
   },
   {
-    "Level": 3,
+    "Level": "THREE",
     "CardColor": "YELLOW",
     "Cost": {
       "Servants": 0,
@@ -1008,7 +1008,7 @@
     }
   },
   {
-    "Level": 3,
+    "Level": "THREE",
     "CardColor": "GREEN",
     "Cost": {
       "Servants": 2,
@@ -1036,7 +1036,7 @@
     }
   },
   {
-    "Level": 3,
+    "Level": "THREE",
     "CardColor": "PURPLE",
     "Cost": {
       "Servants": 5,
@@ -1064,7 +1064,7 @@
     }
   },
   {
-    "Level": 3,
+    "Level": "THREE",
     "CardColor": "BLUE",
     "Cost": {
       "Servants": 0,
@@ -1092,7 +1092,7 @@
     }
   },
   {
-    "Level": 3,
+    "Level": "THREE",
     "CardColor": "YELLOW",
     "Cost": {
       "Servants": 2,
@@ -1120,7 +1120,7 @@
     }
   },
   {
-    "Level": 3,
+    "Level": "THREE",
     "CardColor": "GREEN",
     "Cost": {
       "Servants": 0,
@@ -1148,7 +1148,7 @@
     }
   },
   {
-    "Level": 3,
+    "Level": "THREE",
     "CardColor": "PURPLE",
     "Cost": {
       "Servants": 7,
@@ -1176,7 +1176,7 @@
     }
   },
   {
-    "Level": 3,
+    "Level": "THREE",
     "CardColor": "BLUE",
     "Cost": {
       "Servants": 0,
@@ -1204,7 +1204,7 @@
     }
   },
   {
-    "Level": 3,
+    "Level": "THREE",
     "CardColor": "YELLOW",
     "Cost": {
       "Servants": 0,
@@ -1232,7 +1232,7 @@
     }
   },
   {
-    "Level": 3,
+    "Level": "THREE",
     "CardColor": "GREEN",
     "Cost": {
       "Servants": 0,
@@ -1260,7 +1260,7 @@
     }
   },
   {
-    "Level": 3,
+    "Level": "THREE",
     "CardColor": "PURPLE",
     "Cost": {
       "Servants": 4,
@@ -1288,7 +1288,7 @@
     }
   },
   {
-    "Level": 3,
+    "Level": "THREE",
     "CardColor": "BLUE",
     "Cost": {
       "Servants": 0,
@@ -1316,7 +1316,7 @@
     }
   },
   {
-    "Level": 3,
+    "Level": "THREE",
     "CardColor": "YELLOW",
     "Cost": {
       "Servants": 4,

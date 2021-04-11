@@ -53,7 +53,7 @@ public class Converter {
         int howmany=0;
 
         for (MarbleColor x: input){
-            if(x!=MarbleColor.White){
+            if(x!=MarbleColor.WHITE){
                 without_white.add(x);
             }
             else{
@@ -102,10 +102,10 @@ public class Converter {
     /**It converts a single marble. It doesn't convert a Red marble.*/
     private ResourceType convert_single_marble(MarbleColor toconvert){
         switch (toconvert) {
-            case Blue: return ResourceType.Shields;
-            case Grey: return ResourceType.Stones;
-            case Purple: return ResourceType.Servants;
-            case Yellow: return ResourceType.Coins;
+            case BLUE: return ResourceType.Shields;
+            case GREY: return ResourceType.Stones;
+            case PURPLE: return ResourceType.Servants;
+            case YELLOW: return ResourceType.Coins;
             default: return null; //It should not enter here
         }
     }
@@ -114,7 +114,7 @@ public class Converter {
     private NumberOfResources convert_resources(ArrayList<MarbleColor> input){
         NumberOfResources output=new NumberOfResources();
         for(MarbleColor marble: input){
-            if(marble.equals(MarbleColor.Red)){
+            if(marble.equals(MarbleColor.RED)){
                 owner.getFaithTrack().addPoint();
             }
             else{

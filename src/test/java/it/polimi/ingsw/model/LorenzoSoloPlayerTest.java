@@ -6,8 +6,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class LorenzoSoloPlayerTest {
 
     @Test
@@ -21,10 +19,10 @@ class LorenzoSoloPlayerTest {
         ArrayList<Player> players = new ArrayList();
         players.add(player);
 
-        MarbleColor[] startMarbles  = new MarbleColor[]{MarbleColor.Red, MarbleColor.Purple, MarbleColor.Red, MarbleColor.Red, MarbleColor.Red, MarbleColor.Red, MarbleColor.Red, MarbleColor.Red, MarbleColor.Red, MarbleColor.Red, MarbleColor.Red, MarbleColor.Red, MarbleColor.Blue};
+        MarbleColor[] startMarbles  = new MarbleColor[]{MarbleColor.RED, MarbleColor.PURPLE, MarbleColor.RED, MarbleColor.RED, MarbleColor.RED, MarbleColor.RED, MarbleColor.RED, MarbleColor.RED, MarbleColor.RED, MarbleColor.RED, MarbleColor.RED, MarbleColor.RED, MarbleColor.BLUE};
         Market tray = new Market(startMarbles);
 
-        Dashboard dashboard = new Dashboard();
+        //Dashboard dashboard = new Dashboard();
         //Game game = new Game(players,tray,dashboard);
         //LorenzoSoloPlayer soloPlayer = new LorenzoSoloPlayer(game, );
 

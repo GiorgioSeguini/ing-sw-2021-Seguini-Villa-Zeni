@@ -14,7 +14,7 @@ public class Dashboard {
     /**
      * Default constructor
      */
-    public Dashboard() {
+    public Dashboard(ArrayList<DevelopmentCard> developmentCards) {
         //TODO
     }
 
@@ -46,7 +46,7 @@ public class Dashboard {
 
     //remove two devcard when discard2 token is activeted
     public void removeCard(ColorDevCard color, int n) throws IllegalArgumentException{      //TODO valutere se cambiare nome
-        Level l = Level.One;
+        Level l = Level.ONE;
         while(n>0){
             try{
                 buyDevCard(color, l);

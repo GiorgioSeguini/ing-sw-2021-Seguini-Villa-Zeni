@@ -107,7 +107,7 @@ public class PersonalBoard {
     /**This for add a DevCard in a specific position**/
     public void addDevCard(DevelopmentCard card, int pos) throws NoSpaceException {
         if(goodindex(pos)){
-            if (OwnedDevCards[pos].isEmpty() && card.getLevel() == Level.One) {
+            if (OwnedDevCards[pos].isEmpty() && card.getLevel() == Level.ONE) {
                 OwnedDevCards[pos].add(card);
             } else
             if(OwnedDevCards[pos].get(0).getLevel().ordinal() == card.getLevel().ordinal()-1)

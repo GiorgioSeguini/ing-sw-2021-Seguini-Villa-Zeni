@@ -3,9 +3,9 @@ package it.polimi.ingsw.model.enumeration;
 /*Last Edit: Fabio*/
 /* DevelopmentCard's level*/
 public enum Level {
-    One,
-    Two,
-    Three;
+    ONE,
+    TWO,
+    THREE;
 
     public static int size(){
         return Level.values().length;
