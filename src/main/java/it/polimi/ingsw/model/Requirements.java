@@ -27,9 +27,12 @@ public class Requirements {
         minNumber = new int[ColorDevCard.values().length][Level.values().length];
     }
 
-    Requirements(int [][] minNumber){
+    Requirements(ArrayList<Map.Entry<ColorDevCard, Level>> requirements){
         numberOfResourceses = new NumberOfResources();
-        this.minNumber = minNumber;
+        minNumber = new int[ColorDevCard.values().length][Level.values().length];
+        for(Map.Entry<ColorDevCard, Level> entry : requirements){
+            minNumber[entry.getKey().ordinal()][entry.getValue().ordinal()]++;
+        }
     }
 
 
