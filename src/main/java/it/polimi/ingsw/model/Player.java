@@ -12,7 +12,7 @@ public class Player {
     private final String userName;
     private final FaithTrack faithtrack;
     private final Depots depots;
-    private PersonalBoard personalBoard;
+    private final PersonalBoard personalBoard;
     private final Converter converter;
     private NumberOfResources discounted;
     private int victoryPoints;

@@ -17,10 +17,22 @@ public class Requirements {
 
 
     /*Default constructor*/
-    Requirements() {
-        numberOfResourceses = new NumberOfResources(0,0,0,0);
+    Requirements(){
+        numberOfResourceses = new NumberOfResources();
         minNumber = new int[ColorDevCard.values().length][Level.values().length];
     }
+
+    Requirements(NumberOfResources resources){
+        numberOfResourceses = resources;
+        minNumber = new int[ColorDevCard.values().length][Level.values().length];
+    }
+
+    Requirements(int [][] minNumber){
+        numberOfResourceses = new NumberOfResources();
+        this.minNumber = minNumber;
+    }
+
+
 
     /*Getter*/
     public int getReq(ColorDevCard color) {

@@ -1,5 +1,6 @@
 package it.polimi.ingsw.controller;
 
+import it.polimi.ingsw.model.Dashboard;
 import it.polimi.ingsw.model.DevelopmentCard;
 import it.polimi.ingsw.model.NumberOfResources;
 import it.polimi.ingsw.model.ProductionPower;
@@ -52,6 +53,20 @@ class ParserTest {
             System.out.println(card+"\n");
         }
         assertTrue(true);
+
+        Dashboard dashboard = new Dashboard(devcards);
+
+        for(Level l: Level.values()){
+            for(ColorDevCard c: ColorDevCard.values()){
+                for(int i=0; i<4; i++) {
+                    assertNotNull(dashboard.buyDevCard(c, l));
+                }
+                try{
+                    dashboard.buyDevCard(c, l);
+                    fail();
+                }catch(IllegalArgumentException ignored){}
+            }
+        }
 
     }
 

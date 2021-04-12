@@ -8,15 +8,17 @@ import it.polimi.ingsw.model.exception.OutOfResourcesException;
 
 public class ProductionPower {
 
-    private int pointsFaithOut;
-    private NumberOfResources outputRes;
-    private NumberOfResources inputRes;
-    private int ofYourChoiceInput;
-    private int ofYourChoiceOutput;
+    private final int pointsFaithOut;
+    private final NumberOfResources outputRes;
+    private final NumberOfResources inputRes;
+    private final int ofYourChoiceInput;
+    private final int ofYourChoiceOutput;
 
 
     /*Default constructor*/
     public ProductionPower(int points, NumberOfResources outputRes, NumberOfResources inputRes, int ofYourChoiceInput, int ofYourChoiceOutput){
+        if(ofYourChoiceInput<0 || ofYourChoiceOutput<0 || points<0)
+            throw new ArithmeticException();
         this.pointsFaithOut =points;
         this.outputRes=outputRes;
         this.inputRes=inputRes;
@@ -24,13 +26,13 @@ public class ProductionPower {
         this.ofYourChoiceOutput = ofYourChoiceOutput;
     }
     public ProductionPower(int points, NumberOfResources outputRes, NumberOfResources inputRes){
-        new ProductionPower(points, outputRes, inputRes, 0, 0);
+        this(points, outputRes, inputRes, 0, 0);
     }
     public ProductionPower(NumberOfResources outputRes, NumberOfResources inputRes){
-        new ProductionPower(0, outputRes, inputRes, 0, 0);
+        this(0, outputRes, inputRes, 0, 0);
     }
     public ProductionPower(){
-        new ProductionPower(0, new NumberOfResources(), new NumberOfResources(), 0, 0);
+        this(0, new NumberOfResources(), new NumberOfResources(), 0, 0);
     }
 
     /*Getter*/

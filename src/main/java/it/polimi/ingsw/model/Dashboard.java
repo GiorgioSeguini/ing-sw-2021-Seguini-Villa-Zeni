@@ -9,13 +9,21 @@ import java.util.*;
 
 public class Dashboard {
 
-    private Stack<DevelopmentCard> [][] dashBoard= new Stack[ColorDevCard.size()][Level.size()]; //number of level * number of colors
+    private Stack<DevelopmentCard>[][] dashBoard;
 
     /**
      * Default constructor
      */
     public Dashboard(ArrayList<DevelopmentCard> developmentCards) {
-        //TODO
+        dashBoard = new Stack[Level.size()][ColorDevCard.size()]; //number of level * number of colors
+        for(Level l : Level.values()){
+            for(ColorDevCard c: ColorDevCard.values()){
+                dashBoard[l.ordinal()][c.ordinal()] = new Stack<>();
+            }
+        }
+        for(DevelopmentCard card: developmentCards){
+            dashBoard[card.getLevel().ordinal()][card.getColor().ordinal()].add(card);
+        }
     }
 
 
