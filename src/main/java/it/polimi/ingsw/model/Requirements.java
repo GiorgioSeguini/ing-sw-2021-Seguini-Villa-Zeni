@@ -17,23 +17,27 @@ public class Requirements {
 
 
     /*Default constructor*/
-    Requirements(){
-        numberOfResourceses = new NumberOfResources();
-        minNumber = new int[ColorDevCard.values().length][Level.values().length];
-    }
-
-    Requirements(NumberOfResources resources){
+    Requirements(NumberOfResources resources, ArrayList<Map.Entry<ColorDevCard, Level>> requirements){
         numberOfResourceses = resources;
-        minNumber = new int[ColorDevCard.values().length][Level.values().length];
-    }
-
-    Requirements(ArrayList<Map.Entry<ColorDevCard, Level>> requirements){
-        numberOfResourceses = new NumberOfResources();
         minNumber = new int[ColorDevCard.values().length][Level.values().length];
         for(Map.Entry<ColorDevCard, Level> entry : requirements){
             minNumber[entry.getKey().ordinal()][entry.getValue().ordinal()]++;
         }
     }
+
+    Requirements(){
+        this(new NumberOfResources(), new ArrayList<>());
+    }
+
+    Requirements(NumberOfResources resources){
+        this(resources, new ArrayList<>());
+    }
+
+    Requirements(ArrayList<Map.Entry<ColorDevCard, Level>> requirements){
+        this(new NumberOfResources(), requirements);
+    }
+
+
 
 
 
