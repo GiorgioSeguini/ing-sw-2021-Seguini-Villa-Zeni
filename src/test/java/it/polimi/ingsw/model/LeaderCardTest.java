@@ -12,14 +12,14 @@ class LeaderCardTest {
     private DepotsAbility depotsability1 = new DepotsAbility(ResourceType.Coins);
     private WhiteAbility whiteAbility = new WhiteAbility(ResourceType.Coins);
 
-    LeaderCard leaderCard1 = new LeaderCard(new Requirements(), depotsability1, 5);
-    LeaderCard leaderCard2 = new LeaderCard(new Requirements(), whiteAbility, 2);
+    LeaderCard leaderCard1 = new LeaderCard(new Requirements(new NumberOfResources(1,1,0,0)), depotsability1, 5);
+    LeaderCard leaderCard2 = new LeaderCard(new Requirements(new NumberOfResources(0,0,0,5)), whiteAbility, 2);
 
     LeaderCard[] leaderCards = new LeaderCard[] {leaderCard1,leaderCard2};
 
     PersonalBoard personalBoard = new PersonalBoard(leaderCards);
 
-    Player player= new Player("Fabio", personalBoard, 0,new NumberOfResources());
+    Player player= new Player("Fabio", personalBoard, 0,new NumberOfResources(1,1,0,5));
 
     @Test
     void Constructor(){
