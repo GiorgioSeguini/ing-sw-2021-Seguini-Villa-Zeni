@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class MarketTest {
 
     MarbleColor[] startMarbles = new MarbleColor[]{MarbleColor.PURPLE, MarbleColor.BLUE, MarbleColor.RED, MarbleColor.YELLOW, MarbleColor.GREY, MarbleColor.GREY, MarbleColor.WHITE, MarbleColor.PURPLE, MarbleColor.BLUE, MarbleColor.RED, MarbleColor.WHITE, MarbleColor.YELLOW, MarbleColor.GREY};
-    Market marketTray = new Market(startMarbles);
+    /*Market marketTray = new Market(startMarbles);
 
     @Test
     void Constructor() {
@@ -132,4 +132,6 @@ class MarketTest {
         }
 
     }
+    */
+
 }

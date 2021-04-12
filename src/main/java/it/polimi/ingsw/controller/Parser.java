@@ -5,6 +5,7 @@ import it.polimi.ingsw.model.NumberOfResources;
 import it.polimi.ingsw.model.ProductionPower;
 import it.polimi.ingsw.model.enumeration.ColorDevCard;
 import it.polimi.ingsw.model.enumeration.Level;
+import it.polimi.ingsw.model.enumeration.MarbleColor;
 import it.polimi.ingsw.model.enumeration.ResourceType;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -12,13 +13,14 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class Parser {
 
-    public static Level ConvertStringToLevel(String levelapp){
+    private static Level ConvertStringToLevel(String levelapp){
         Level level=null;
         switch (levelapp){
             case "ONE": level=Level.ONE; break;
@@ -29,7 +31,7 @@ public class Parser {
         return level;
     }
 
-    public static ColorDevCard ConvertStringToColorDevCard(String colorapp){
+    private static ColorDevCard ConvertStringToColorDevCard(String colorapp){
         ColorDevCard color = null;
         switch (colorapp){
             case "BLUE": color=ColorDevCard.BLUE; break;
@@ -41,7 +43,7 @@ public class Parser {
         return color;
     }
 
-    public static NumberOfResources ConvertObjectToNumOfRes(JSONObject object, String objname){
+    private static NumberOfResources ConvertObjectToNumOfRes(JSONObject object, String objname){
         JSONObject NumOfRes=(JSONObject) object.get((objname));
         int servants= Math.toIntExact((Long) NumOfRes.get("Servants"));
         int shields= Math.toIntExact((Long) NumOfRes.get("Shields"));
@@ -77,6 +79,27 @@ public class Parser {
         }
 
         return devcards;
+    }
+
+    public static ArrayList<MarbleColor> MarblesParser() throws IOException, ParseException {
+        JSONParser parser= new JSONParser();
+        String filePath = new File("").getAbsolutePath();
+        JSONObject x= (JSONObject)parser.parse(new FileReader(filePath + "/src/main/resources/Marbles.json"));
+
+        ArrayList<MarbleColor> marbles= new ArrayList<>();
+        JSONArray array=(JSONArray) x.get("Marbles");
+        for (Object y: array){
+         switch ((String) y){
+             case "GREY": marbles.add(MarbleColor.GREY); break;
+             case "BLUE": marbles.add(MarbleColor.BLUE); break;
+             case "WHITE": marbles.add(MarbleColor.WHITE); break;
+             case "PURPLE": marbles.add(MarbleColor.PURPLE); break;
+             case "RED": marbles.add(MarbleColor.RED); break;
+             case "YELLOW": marbles.add(MarbleColor.YELLOW); break;
+             default: throw new IllegalArgumentException();
+         }
+        }
+        return marbles;
     }
 
 }
