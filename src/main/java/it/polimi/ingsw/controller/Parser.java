@@ -51,4 +51,32 @@ public class Parser {
         return new NumberOfResources(servants,shields,coins,stones);
     }
 
+    public static ArrayList<DevelopmentCard> DevCardParser() throws IOException, ParseException {
+        JSONParser parser = new JSONParser();
+        String filePath = new File("").getAbsolutePath();
+        JSONArray array = (JSONArray) parser.parse(new FileReader(filePath + "/src/main/resources/DevCard.json"));
+        ArrayList<DevelopmentCard> devcards = new ArrayList<>();
+        for (Object x : array) {
+            JSONObject DevCard = (JSONObject) x;
+            Level level = Parser.ConvertStringToLevel((String) DevCard.get("Level"));
+            ColorDevCard color = Parser.ConvertStringToColorDevCard((String) DevCard.get("CardColor"));
+            NumberOfResources cost = Parser.ConvertObjectToNumOfRes(DevCard, "Cost");
+
+            int victorypoints = Math.toIntExact((Long) DevCard.get("VictoryPoints"));
+            JSONObject ProductionPower = (JSONObject) DevCard.get("ProductionPower");
+            int yourchoicein = Math.toIntExact((Long) ProductionPower.get("YourChoiceIn"));
+            int yourchoiceout = Math.toIntExact((Long) ProductionPower.get("YourChoiceOut"));
+            NumberOfResources inres = Parser.ConvertObjectToNumOfRes(ProductionPower, "InRes");
+            NumberOfResources outres = Parser.ConvertObjectToNumOfRes(ProductionPower, "OutRes");
+            int faithpointsout = Math.toIntExact((Long) ProductionPower.get("FaithPointsOut"));
+
+            it.polimi.ingsw.model.ProductionPower productionPower = new ProductionPower(faithpointsout, outres, inres, yourchoicein, yourchoiceout);
+
+            devcards.add(new DevelopmentCard(level, color, cost, productionPower, victorypoints));
+
+        }
+
+        return devcards;
+    }
+
 }
