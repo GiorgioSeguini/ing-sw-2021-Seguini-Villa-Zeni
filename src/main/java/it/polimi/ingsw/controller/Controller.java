@@ -89,7 +89,7 @@ public class Controller{
 
     public boolean buyDevelopmentCard(DevelopmentCard cardtobuy, Game game, Player player, int pos){
 
-        ArrayList<DevelopmentCard>[] cardsOwned = player.getPersonalBoard().getOwnedDevCards();
+        //ArrayList<DevelopmentCard>[] cardsOwned = player.getPersonalBoard().getOwnedDevCards();
 
         if(!game.getDashboard().getTopDevCard(cardtobuy.getColor(),cardtobuy.getLevel()).equals(cardtobuy)){
             //la carta che il player vuole comprare non è la prima della pila quindi deve sceglierne un'altra

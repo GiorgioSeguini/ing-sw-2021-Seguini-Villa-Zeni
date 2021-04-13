@@ -67,7 +67,7 @@ public class Requirements {
 
         //match for the development card
         PersonalBoard board = owner.getPersonalBoard();
-        ArrayList<DevelopmentCard> ownedDevCard= board.getAllDevCard();
+        ArrayList<DevelopmentCard> ownedDevCard= board.getOwnedDevCards();
         for(ColorDevCard c : ColorDevCard.values()){
             for(Level l: Level.values()){
                 int missing = minNumber[c.ordinal()][l.ordinal()];
@@ -83,6 +83,7 @@ public class Requirements {
                                 if(missing == 0) break;
                             }
                         }
+                        increment++;
                     }
                     if(missing>0)  return false;
                 }
