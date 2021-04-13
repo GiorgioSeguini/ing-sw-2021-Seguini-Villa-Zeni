@@ -1,8 +1,6 @@
 package it.polimi.ingsw.controller;
 
-import it.polimi.ingsw.model.DevelopmentCard;
-import it.polimi.ingsw.model.NumberOfResources;
-import it.polimi.ingsw.model.ProductionPower;
+import it.polimi.ingsw.model.*;
 import it.polimi.ingsw.model.enumeration.ColorDevCard;
 import it.polimi.ingsw.model.enumeration.Level;
 import it.polimi.ingsw.model.enumeration.MarbleColor;
@@ -12,6 +10,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -98,6 +97,26 @@ public class Starter {
          }
         }
         return marbles;
+    }
+
+    public static ArrayList<SoloActionTokens> TokensParser() throws IOException, ParseException {
+        JSONParser parser = new JSONParser();
+        String filePath = new File("").getAbsolutePath();
+        JSONArray array = (JSONArray) parser.parse(new FileReader(filePath + "/src/main/resources/SoloActionTokens.json"));
+        ArrayList<SoloActionTokens> tokens= new ArrayList<>();
+
+        for (Object token: array){
+            switch ((String)token){
+                case "MOVE2": tokens.add(new Move2()); break;
+                case "MOVESHUFFLE": tokens.add(new MoveShuffle()); break;
+                case "DISCARD2-GREEN": tokens.add((new Discard2(ColorDevCard.GREEN)));
+                case "DISCARD2-YELLOW": tokens.add((new Discard2(ColorDevCard.YELLOW)));
+                case "DISCARD2-PURPLE": tokens.add((new Discard2(ColorDevCard.PURPLE)));
+                case "DISCARD2-BLUE": tokens.add((new Discard2(ColorDevCard.BLUE)));
+                default: throw new IllegalArgumentException();
+            }
+        }
+        return tokens;
     }
 
 }
