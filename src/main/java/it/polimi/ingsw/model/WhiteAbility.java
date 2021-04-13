@@ -9,7 +9,7 @@ public class WhiteAbility implements Ability {
     private final ResourceType typeOfRes;
 
     /*Default constructor*/
-    WhiteAbility(ResourceType type) {
+    public WhiteAbility(ResourceType type) {
         this.typeOfRes=type;
     }
 

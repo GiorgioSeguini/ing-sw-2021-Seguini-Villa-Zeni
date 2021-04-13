@@ -17,17 +17,17 @@ public class Requirements {
 
 
     /*Default constructor*/
-    Requirements(){
+    public Requirements(){
         numberOfResourceses = new NumberOfResources();
         minNumber = new int[ColorDevCard.values().length][Level.values().length];
     }
 
-    Requirements(NumberOfResources resources){
+    public Requirements(NumberOfResources resources){
         numberOfResourceses = resources;
         minNumber = new int[ColorDevCard.values().length][Level.values().length];
     }
 
-    Requirements(ArrayList<Map.Entry<ColorDevCard, Level>> requirements){
+    public Requirements(ArrayList<Map.Entry<ColorDevCard, Level>> requirements){
         numberOfResourceses = new NumberOfResources();
         minNumber = new int[ColorDevCard.values().length][Level.values().length];
         for(Map.Entry<ColorDevCard, Level> entry : requirements){
@@ -38,6 +38,15 @@ public class Requirements {
 
 
     /*Getter*/
+
+    public NumberOfResources getNumberOfResourceses() {
+        return numberOfResourceses;
+    }
+
+    public int[][] getMinNumber() {
+        return minNumber;
+    }
+
     public int getReq(ColorDevCard color) {
         //TODO
         return 0;

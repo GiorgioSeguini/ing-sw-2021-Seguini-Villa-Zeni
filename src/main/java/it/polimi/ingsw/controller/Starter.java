@@ -4,16 +4,18 @@ import it.polimi.ingsw.model.*;
 import it.polimi.ingsw.model.enumeration.ColorDevCard;
 import it.polimi.ingsw.model.enumeration.Level;
 import it.polimi.ingsw.model.enumeration.MarbleColor;
+import it.polimi.ingsw.model.enumeration.ResourceType;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.AbstractMap;
 import java.util.ArrayList;
+import java.util.Map;
 
 public class Starter {
 
@@ -40,14 +42,39 @@ public class Starter {
         return color;
     }
 
-    private static NumberOfResources ConvertObjectToNumOfRes(JSONObject object, String objname){
-        JSONObject NumOfRes=(JSONObject) object.get((objname));
+    private static NumberOfResources ConvertObjectToNumOfRes(JSONObject NumOfRes){
         int servants= Math.toIntExact((Long) NumOfRes.get("Servants"));
         int shields= Math.toIntExact((Long) NumOfRes.get("Shields"));
         int coins= Math.toIntExact((Long) NumOfRes.get("Coins"));
         int stones= Math.toIntExact((Long) NumOfRes.get("Stones"));
 
         return new NumberOfResources(servants,shields,coins,stones);
+    }
+
+    private static ResourceType ConvertStringToResType(String resource){
+        switch (resource){
+            case "STONES": return ResourceType.Stones;
+            case "SERVANTS": return ResourceType.Servants;
+            case "SHIELDS": return ResourceType.Shields;
+            case "COINS": return ResourceType.Coins;
+            default: throw new IllegalArgumentException();
+        }
+    }
+
+    private static Ability getAbilityFromObject(JSONObject ability){
+        try{
+            return new DepotsAbility(ConvertStringToResType((String) ability.get("DepotsAbility")));
+        } catch (NullPointerException e){};
+        try{
+            return new DiscountAbility(ConvertStringToResType((String) ability.get("DiscountAbility")),1);
+        } catch (NullPointerException e){};
+        try{
+            return new WhiteAbility(ConvertStringToResType((String) ability.get("WhiteAbility")));
+        } catch (NullPointerException e){};
+        try{
+            return new ProductionPowerPlusAbility(ConvertStringToResType((String) ability.get("ProductionPlusAbility")));
+        } catch (NullPointerException e){};
+        return null;
     }
 
     public static ArrayList<DevelopmentCard> DevCardParser() throws IOException, ParseException {
@@ -59,17 +86,17 @@ public class Starter {
             JSONObject DevCard = (JSONObject) x;
             Level level = Starter.ConvertStringToLevel((String) DevCard.get("Level"));
             ColorDevCard color = Starter.ConvertStringToColorDevCard((String) DevCard.get("CardColor"));
-            NumberOfResources cost = Starter.ConvertObjectToNumOfRes(DevCard, "Cost");
+            NumberOfResources cost = Starter.ConvertObjectToNumOfRes((JSONObject) DevCard.get("Cost"));
 
             int victorypoints = Math.toIntExact((Long) DevCard.get("VictoryPoints"));
             JSONObject ProductionPower = (JSONObject) DevCard.get("ProductionPower");
             int yourchoicein = Math.toIntExact((Long) ProductionPower.get("YourChoiceIn"));
             int yourchoiceout = Math.toIntExact((Long) ProductionPower.get("YourChoiceOut"));
-            NumberOfResources inres = Starter.ConvertObjectToNumOfRes(ProductionPower, "InRes");
-            NumberOfResources outres = Starter.ConvertObjectToNumOfRes(ProductionPower, "OutRes");
+            NumberOfResources inres = Starter.ConvertObjectToNumOfRes((JSONObject) ProductionPower.get("InRes"));
+            NumberOfResources outres = Starter.ConvertObjectToNumOfRes((JSONObject) ProductionPower.get("OutRes"));
             int faithpointsout = Math.toIntExact((Long) ProductionPower.get("FaithPointsOut"));
 
-            it.polimi.ingsw.model.ProductionPower productionPower = new ProductionPower(faithpointsout, outres, inres, yourchoicein, yourchoiceout);
+            ProductionPower productionPower = new ProductionPower(faithpointsout, outres, inres, yourchoicein, yourchoiceout);
 
             devcards.add(new DevelopmentCard(level, color, cost, productionPower, victorypoints));
 
@@ -117,6 +144,48 @@ public class Starter {
             }
         }
         return tokens;
+    }
+
+    public static ArrayList<LeaderCard> LeaderCardsParser() throws IOException, ParseException {
+        JSONParser parser = new JSONParser();
+        String filePath = new File("").getAbsolutePath();
+        JSONArray array = (JSONArray) parser.parse(new FileReader(filePath + "/src/main/resources/LeaderCards.json"));
+        ArrayList<LeaderCard> leaderCards=new ArrayList<>();
+
+        for ( Object x: array){
+            JSONObject card=(JSONObject) x;
+            int victorypoints = Math.toIntExact((Long) card.get("VictoryPoints"));
+            JSONObject abilityapp=(JSONObject) card.get("Ability");
+            Ability ability= getAbilityFromObject(abilityapp);
+            JSONObject reqapp= (JSONObject)card.get("Requirements");
+            Requirements requirements=getRequirementsFromObject(reqapp);
+            leaderCards.add(new LeaderCard(requirements,ability,victorypoints));
+        }
+
+        return leaderCards;
+    }
+
+    private static Requirements getRequirementsFromObject(JSONObject requirementsx) {
+        try {
+            JSONArray cardsReq= (JSONArray) requirementsx.get("CardsReq");
+            ArrayList<Map.Entry<ColorDevCard,Level>> cardreqs= new ArrayList<>();
+            for (Object x: cardsReq){
+                JSONObject couple=(JSONObject) x;
+                ColorDevCard color=ConvertStringToColorDevCard((String) couple.get("Color"));
+                Level level= ConvertStringToLevel((String) couple.get("Level"));
+                cardreqs.add(new AbstractMap.SimpleEntry<ColorDevCard,Level>(color,level));
+            }
+            return new Requirements(cardreqs);
+        }catch (NullPointerException e){}
+
+        try {
+            JSONObject Resources=(JSONObject) requirementsx.get("Resources") ;
+            NumberOfResources resources= ConvertObjectToNumOfRes(Resources);
+            return new Requirements(resources);
+
+        }catch (NullPointerException e){}
+
+        throw new IllegalArgumentException();
     }
 
 }

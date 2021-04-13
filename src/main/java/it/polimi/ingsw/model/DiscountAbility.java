@@ -17,7 +17,7 @@ public class DiscountAbility implements Ability{
     }
 
     /*Getter*/
-    public ResourceType getDiscountType() {
+    public ResourceType getTypeOfRes() {
         return resourceType;
     }
 

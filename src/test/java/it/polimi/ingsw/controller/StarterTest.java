@@ -4,6 +4,7 @@ import it.polimi.ingsw.model.*;
 import it.polimi.ingsw.model.enumeration.ColorDevCard;
 import it.polimi.ingsw.model.enumeration.Level;
 import it.polimi.ingsw.model.enumeration.MarbleColor;
+import it.polimi.ingsw.model.enumeration.ResourceType;
 import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.Test;
 
@@ -115,6 +116,43 @@ class StarterTest {
         assertEquals(1,moveshuffle);
         assertEquals(2,move2);
         assertEquals(4,discard2);
+    }
+
+    @Test
+    public void LeaderCardsParserTest(){
+        ArrayList<LeaderCard>leaderCards=new ArrayList<>();
+        try {
+            leaderCards=Starter.LeaderCardsParser();
+        } catch (IOException | ParseException e) {
+            fail();
+        }
+        assertEquals(16,leaderCards.size());
+
+        int i=0;
+        for(LeaderCard x: leaderCards){
+            assertNotNull(x.getAbility());
+            assertNotNull(x.getVictoryPoints());
+            assertNotNull(x.getRequirements());
+            i++;
+            System.out.println("Leader Card "+i);
+            System.out.println("VictoryPoints: "+ x.getVictoryPoints());
+            System.out.println("\tAbility: "+ x.getAbility()+ "\tRes: "+x.getAbility().getTypeOfRes());
+            System.out.println("\tRequirements: ");
+            if(!x.getRequirements().getNumberOfResourceses().isEmpty()){
+                for (ResourceType type: ResourceType.values()){
+                    System.out.println("\t\t"+type+" : "+x.getRequirements().getNumberOfResourceses().getAmountOf(type));
+                }
+            }
+            if (x.getRequirements().getMinNumber()!= new int[ColorDevCard.values().length][Level.values().length]){
+                for (ColorDevCard z: ColorDevCard.values()){
+                    for (Level k: Level.values()){
+                        System.out.print("\t\t"+x.getRequirements().getMinNumber()[z.ordinal()][k.ordinal()]);
+                    }
+                    System.out.println();
+                }
+            }
+        }
+
     }
 
 }
