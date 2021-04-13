@@ -19,6 +19,10 @@ public class PersonalBoard {
     /*Default Constructor*/
     public PersonalBoard(LeaderCard[] startLeaderCards) {
         OwnedDevCards = new ArrayList[3]; //array di arraylist
+        for( int i=0; i< 3; i++){
+            OwnedDevCards[i] = new ArrayList<DevelopmentCard>();
+        }
+
         OwnedLeaderCard = new LeaderCard[2];
         for(int i=0; i<OwnedLeaderCard.length; i++){
             OwnedLeaderCard[i] = startLeaderCards[i];
@@ -48,8 +52,11 @@ public class PersonalBoard {
         return OwnedLeaderCard.clone();
     }
 
-    public ArrayList<DevelopmentCard>[] getOwnedDevCards() {
-        return OwnedDevCards.clone();
+    public ArrayList<DevelopmentCard> getOwnedDevCards() {
+        ArrayList<DevelopmentCard> result = new ArrayList<DevelopmentCard>();
+        for(int i=0; i< 3; i++)
+            result.addAll(OwnedDevCards[i]);
+        return result;
     }
 
     /**Those methods allow to get top DevCard of the stacks on the player's personal board**/
@@ -79,7 +86,7 @@ public class PersonalBoard {
     }**/
 
     /**This allow to get all DevCard on the player's personal board**/
-    public ArrayList<DevelopmentCard> getAllDevCard() {
+    /*public ArrayList<DevelopmentCard> getAllDevCard() {
         ArrayList<DevelopmentCard> AllDevCard = new ArrayList<>();
         for (int i = 0; i < 2; i++) {
             for( int j=0; j<2; j++)
@@ -87,12 +94,12 @@ public class PersonalBoard {
             //AllDevCard.addAll((Collection<? extends DevelopmentCard>) OwnedDevCards[i].clone());    //DA RIVEDERE
         }
         return AllDevCard;
-    }
+    }*/
 
     /**This return the sum of card's victory points**/
     public int getVictoryPoints() {
         int victorypoints = 0;
-        for (DevelopmentCard developmentCard : getAllDevCard()) {
+        for (DevelopmentCard developmentCard : getOwnedDevCards()) {
             victorypoints += developmentCard.getVictoryPoints();
         }
         try {
