@@ -1,7 +1,6 @@
 package it.polimi.ingsw.controller;
 
-import it.polimi.ingsw.model.Dashboard;
-import it.polimi.ingsw.model.DevelopmentCard;
+import it.polimi.ingsw.model.*;
 import it.polimi.ingsw.model.enumeration.ColorDevCard;
 import it.polimi.ingsw.model.enumeration.Level;
 import it.polimi.ingsw.model.enumeration.MarbleColor;
@@ -81,6 +80,41 @@ class StarterTest {
         }
 
 
+    }
+
+    @Test
+    public void SoloActionTokesnTest(){
+        ArrayList<SoloActionTokens> tokens= new ArrayList<>();
+        try {
+           tokens=Starter.TokensParser();
+        } catch (IOException|ParseException e) {
+            fail();
+        }
+        assertEquals(7,tokens.size());
+        int move2=0;
+        int moveshuffle=0;
+        int discard2=0;
+        for (SoloActionTokens x: tokens){
+            if(x instanceof Move2){
+                move2++;
+            }
+            else{
+                if (x instanceof MoveShuffle){
+                    moveshuffle++;
+                }
+                else{
+                    if (x instanceof Discard2){
+                        discard2++;
+                    }
+                    else{
+                        fail();
+                    }
+                }
+            }
+        }
+        assertEquals(1,moveshuffle);
+        assertEquals(2,move2);
+        assertEquals(4,discard2);
     }
 
 }
