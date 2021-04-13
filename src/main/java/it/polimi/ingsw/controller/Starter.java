@@ -109,10 +109,10 @@ public class Starter {
             switch ((String)token){
                 case "MOVE2": tokens.add(new Move2()); break;
                 case "MOVESHUFFLE": tokens.add(new MoveShuffle()); break;
-                case "DISCARD2-GREEN": tokens.add((new Discard2(ColorDevCard.GREEN)));
-                case "DISCARD2-YELLOW": tokens.add((new Discard2(ColorDevCard.YELLOW)));
-                case "DISCARD2-PURPLE": tokens.add((new Discard2(ColorDevCard.PURPLE)));
-                case "DISCARD2-BLUE": tokens.add((new Discard2(ColorDevCard.BLUE)));
+                case "DISCARD2-GREEN": tokens.add((new Discard2(ColorDevCard.GREEN)));break;
+                case "DISCARD2-YELLOW": tokens.add((new Discard2(ColorDevCard.YELLOW))); break;
+                case "DISCARD2-PURPLE": tokens.add((new Discard2(ColorDevCard.PURPLE))); break;
+                case "DISCARD2-BLUE": tokens.add((new Discard2(ColorDevCard.BLUE))); break;
                 default: throw new IllegalArgumentException();
             }
         }
