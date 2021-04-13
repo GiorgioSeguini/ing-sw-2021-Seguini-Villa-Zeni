@@ -1,6 +1,6 @@
 package it.polimi.ingsw.model;
 
-import it.polimi.ingsw.controller.Parser;
+import it.polimi.ingsw.controller.Starter;
 import it.polimi.ingsw.model.enumeration.MarbleColor;
 import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.Test;
@@ -15,9 +15,10 @@ class MarketTest {
 
     ArrayList<MarbleColor> startMarbles;
 
+
     {
         try {
-            startMarbles = Parser.MarblesParser();
+            startMarbles = Starter.MarblesParser();
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }

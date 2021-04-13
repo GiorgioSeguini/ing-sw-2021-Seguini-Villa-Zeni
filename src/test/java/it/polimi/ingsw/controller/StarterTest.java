@@ -2,8 +2,6 @@ package it.polimi.ingsw.controller;
 
 import it.polimi.ingsw.model.Dashboard;
 import it.polimi.ingsw.model.DevelopmentCard;
-import it.polimi.ingsw.model.Market;
-import it.polimi.ingsw.model.NumberOfResources;
 import it.polimi.ingsw.model.enumeration.ColorDevCard;
 import it.polimi.ingsw.model.enumeration.Level;
 import it.polimi.ingsw.model.enumeration.MarbleColor;
@@ -15,13 +13,13 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ParserTest {
+class StarterTest {
 
     @Test
     public void DevCardParserTest(){
         ArrayList<DevelopmentCard> devcards = null;
         try {
-            devcards = Parser.DevCardParser();
+            devcards = Starter.DevCardParser();
         } catch (IOException | ParseException e) {
             fail();
         }
@@ -52,7 +50,7 @@ class ParserTest {
     public void MarblesParser(){
 
         try {
-            ArrayList<MarbleColor>marbles=Parser.MarblesParser();
+            ArrayList<MarbleColor>marbles= Starter.MarblesParser();
             assertEquals(13,marbles.size());
             int whites=0;
             int blues=0;
