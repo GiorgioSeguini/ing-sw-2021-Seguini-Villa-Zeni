@@ -1,16 +1,29 @@
 package it.polimi.ingsw.model;
 
+import it.polimi.ingsw.controller.Parser;
 import it.polimi.ingsw.model.enumeration.MarbleColor;
+import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.util.ArrayList;
+
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class MarketTest {
 
-    MarbleColor[] startMarbles = new MarbleColor[]{MarbleColor.PURPLE, MarbleColor.BLUE, MarbleColor.RED, MarbleColor.YELLOW, MarbleColor.GREY, MarbleColor.GREY, MarbleColor.WHITE, MarbleColor.PURPLE, MarbleColor.BLUE, MarbleColor.RED, MarbleColor.WHITE, MarbleColor.YELLOW, MarbleColor.GREY};
-    /*Market marketTray = new Market(startMarbles);
+    ArrayList<MarbleColor> startMarbles;
+
+    {
+        try {
+            startMarbles = Parser.MarblesParser();
+        } catch (IOException | ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
+    Market marketTray = new Market(startMarbles);
 
     @Test
     void Constructor() {
@@ -132,6 +145,6 @@ class MarketTest {
         }
 
     }
-    */
+
 
 }
