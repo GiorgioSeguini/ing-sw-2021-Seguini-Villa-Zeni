@@ -16,13 +16,13 @@ public class Shelf {
 
     /*default constructor*/
     public Shelf(ResourceType type, int maxSize) {
-        this.used =0;
-        this.MaxSize=maxSize;
+        this(maxSize);
         this.restype=type;
-        this.is_extra_shelf=false;
     }
 
     public Shelf(int maxSize){
+        if (maxSize<0)
+            throw new IllegalArgumentException();
         this.used =0;
         this.MaxSize=maxSize;
         this.is_extra_shelf=false;
@@ -50,6 +50,8 @@ public class Shelf {
     }
 
     public void setUsed(int used){
+        if (used<0)
+            throw new IllegalArgumentException();
         this.used =used;
     }
 

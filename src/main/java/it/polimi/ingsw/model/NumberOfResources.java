@@ -12,7 +12,7 @@ public class NumberOfResources {
     /*Default Constructor*/
     public NumberOfResources(int Servants, int Shields, int Coins, int Stones){
         if(Servants< 0 || Shields<0 || Coins<0 || Stones<0)
-            throw new ArithmeticException();
+            throw new IllegalArgumentException();
         resources[0]=Servants;
         resources[1]=Shields;
         resources[2]=Coins;
@@ -47,7 +47,7 @@ public class NumberOfResources {
     /**This method adds just for a single type of resources.*/
     public NumberOfResources add(ResourceType type, int toadd){
         if(toadd<0){
-            throw new ArithmeticException();
+            throw new IllegalArgumentException();
         }
         NumberOfResources new_resources= this.clone();
         new_resources.resources[type.ordinal()]=new_resources.getAmountOf(type)+toadd;
@@ -73,7 +73,7 @@ public class NumberOfResources {
     /**This method subs just for a single type of resources.*/
     public NumberOfResources sub(ResourceType type, int tosub) throws OutOfResourcesException{
         if(tosub<0)
-            throw new ArithmeticException();
+            throw new IllegalArgumentException();
         if(this.getAmountOf(type)<tosub){
             throw new OutOfResourcesException();
         }
