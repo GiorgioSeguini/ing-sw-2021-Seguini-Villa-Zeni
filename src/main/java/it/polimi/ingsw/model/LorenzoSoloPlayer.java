@@ -21,6 +21,7 @@ public class LorenzoSoloPlayer {
         for(SoloActionTokens x: startSoloActionTokens){
             soloActionTokens.add(x);
         }
+        Collections.shuffle(soloActionTokens);
 
         copyOfSoloActionTokens = new ArrayList<SoloActionTokens>(7);
         copyOfSoloActionTokens = (ArrayList<SoloActionTokens>) soloActionTokens.clone();
@@ -37,7 +38,7 @@ public class LorenzoSoloPlayer {
     }
 
     public ArrayList<SoloActionTokens> getSoloActionTokens() {
-        return soloActionTokens; //TODO controllare
+        return (ArrayList<SoloActionTokens>) soloActionTokens.clone();
     }
 
     /*public ArrayList<SoloActionTokens> getSoloActionTokensDiscarded() {
@@ -45,7 +46,7 @@ public class LorenzoSoloPlayer {
     }*/
 
     public ArrayList<SoloActionTokens> getCopyOfSoloActionTokensInit() {
-        return copyOfSoloActionTokens;
+        return (ArrayList<SoloActionTokens>) copyOfSoloActionTokens.clone();
     }
 
     /*setter*/
@@ -59,7 +60,7 @@ public class LorenzoSoloPlayer {
 
         SoloActionTokens soloActionTokensRevealed = soloActionTokens.get(0);
         //soloActionTokensDiscarded.add(soloActionTokensRevealed);
-        soloActionTokens.remove(0);
+        soloActionTokens.remove(soloActionTokensRevealed);
         soloActionTokensRevealed.ActivateToken(game);
     }
 
