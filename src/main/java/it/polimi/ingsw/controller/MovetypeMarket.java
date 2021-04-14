@@ -44,7 +44,7 @@ public class MovetypeMarket extends MoveType{
      * returns FALSE if it doesn't.*/
     @Override
     public boolean performMove(Game game){
-        if(!game.getCurrPlayer().equals(player))
+        if(!game.getCurrPlayer().equals(player))//TODO check dubbio
             //TODO error Message
             return false;
 

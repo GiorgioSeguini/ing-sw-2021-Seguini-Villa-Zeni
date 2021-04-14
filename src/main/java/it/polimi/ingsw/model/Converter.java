@@ -20,6 +20,11 @@ public class Converter {
     }
 
     /*Getter*/
+
+    public Player getOwner() {
+        return owner;
+    }
+
     public ArrayList<ResourceType> getToconvert() {
         return toconvert;
     }
@@ -31,6 +36,11 @@ public class Converter {
 
     /*Setter*/
     public void setWhiteAbility(ResourceType type){
+        for(ResourceType x: toconvert){
+            if(type==x){
+                throw new IllegalArgumentException();
+            }
+        }
         this.toconvert.add(type);
     }
 
