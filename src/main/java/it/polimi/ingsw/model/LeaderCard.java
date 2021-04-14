@@ -41,7 +41,7 @@ public class LeaderCard extends Card {
      * @return true if the card is really activated
      */
     public boolean setPlayed(Player owner) {
-        if(getStatus().equals(LeaderStatus.onHand) && getRequirements().match(owner)){
+        if(this.getStatus()==LeaderStatus.onHand && this.getRequirements().match(owner)){
                 getAbility().RunAbility(owner);
                 setStatus(LeaderStatus.Played);
                 return true;

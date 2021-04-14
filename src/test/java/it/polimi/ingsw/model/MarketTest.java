@@ -13,21 +13,19 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MarketTest {
 
-    ArrayList<MarbleColor> startMarbles;
 
+    @Test
+    void Constructor() {
+        ArrayList<MarbleColor> startMarbles = new ArrayList<>();
 
-    {
         try {
             startMarbles = Starter.MarblesParser();
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
-    }
 
-    Market marketTray = new Market(startMarbles);
 
-    @Test
-    void Constructor() {
+        Market marketTray = new Market(startMarbles);
 
         for(int i=0; i<3; i++){
             for(int j=0; j<4; j++){
@@ -40,6 +38,16 @@ class MarketTest {
 
     @Test
     void GetterTest() {
+        ArrayList<MarbleColor> startMarbles = new ArrayList<>();
+
+        try {
+            startMarbles = Starter.MarblesParser();
+        } catch (IOException | ParseException e) {
+            e.printStackTrace();
+        }
+
+
+        Market marketTray = new Market(startMarbles);
 
         //controlla che non accetta valori di colonna e riga maggiori o uguali di 4 e 3
         try {
@@ -88,6 +96,17 @@ class MarketTest {
 
     @Test
     void BuyerTest() {
+        ArrayList<MarbleColor> startMarbles = new ArrayList<>();
+
+        try {
+            startMarbles = Starter.MarblesParser();
+        } catch (IOException | ParseException e) {
+            e.printStackTrace();
+        }
+
+
+        Market marketTray = new Market(startMarbles);
+
 
         //controlla che non accetta valori di colonna e riga maggiori o uguali di 4 e 3
         try {
