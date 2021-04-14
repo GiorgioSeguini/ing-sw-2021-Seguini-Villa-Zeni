@@ -42,7 +42,6 @@ public class MoveBuyDevCard extends MoveType{
             return false;
         }
 
-        ArrayList<DevelopmentCard>[] cardsOwned = player.getPersonalBoard().getOwnedDevCards();
 
         if(!game.getDashboard().getTopDevCard(cardToBuy.getColor(),cardToBuy.getLevel()).equals(cardToBuy)){
             //la carta che il player vuole comprare non è la prima della pila quindi deve sceglierne un'altra
