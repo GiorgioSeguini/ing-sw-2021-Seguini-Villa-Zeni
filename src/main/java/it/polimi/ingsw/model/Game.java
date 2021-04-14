@@ -28,12 +28,12 @@ public class Game {
             throw new IllegalArgumentException();
         if(players.size()==1){
             //single player mode
-            soloGame = new LorenzoSoloPlayer(this, this.getSoloGame().getSoloActionTokens());
+            soloGame = new LorenzoSoloPlayer(this, soloActionTokens);
         }
         else{
             soloGame = null;
         }
-
+        this.players=players;
         this.marketTray = market;
         this.dashboard = dashboard;
     }
