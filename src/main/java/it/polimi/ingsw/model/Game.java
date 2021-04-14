@@ -1,5 +1,6 @@
 package it.polimi.ingsw.model;
 
+import it.polimi.ingsw.model.enumeration.GameStatus;
 import it.polimi.ingsw.model.enumeration.PlayerStatus;
 import it.polimi.ingsw.model.exception.FinalTurnException;
 
@@ -11,19 +12,20 @@ import java.util.*;
 public class Game {
 
     //compositions
-    private ArrayList<Player> players;
+    private final ArrayList<Player> players;
     private final Market marketTray;
     private final Dashboard dashboard;
     private final LorenzoSoloPlayer soloGame;
+    //private ArrayList<LeaderCard> leaderCards;
 
     //attribute
     private int indexPlayingPlayer;
-    private boolean finalTurn;
+    private GameStatus status;
 
     /**
      * Default constructor
      */
-    public Game(ArrayList<Player> players, Market market, Dashboard dashboard, ArrayList<SoloActionTokens> soloActionTokens){ //TODO riguardare parametro arraylist<soloactiontokens>
+    public Game(ArrayList<Player> players, Market market, Dashboard dashboard, ArrayList<SoloActionTokens> soloActionTokens){
         if(players.isEmpty())
             throw new IllegalArgumentException();
         if(players.size()==1){
@@ -36,6 +38,7 @@ public class Game {
         this.players=players;
         this.marketTray = market;
         this.dashboard = dashboard;
+        this.status = GameStatus.Initial;
     }
 
     public Market getMarketTray() {
@@ -90,7 +93,7 @@ public class Game {
      * @return
      */
     public Player getWinner() throws IllegalArgumentException{
-        if(!finalTurn || indexPlayingPlayer!=0){
+        if(status != GameStatus.LastTurn || indexPlayingPlayer!=0){
             throw new IllegalArgumentException();
         }
         Player winner;
@@ -115,11 +118,11 @@ public class Game {
     }
 
     public void setFinalTurn() {
-        this.finalTurn = true;
+        status = GameStatus.LastTurn;
     }
 
     public boolean isFinalTurn() {
-        return finalTurn;
+        return status == GameStatus.LastTurn;
     }
 
     public void popesInspection(){
