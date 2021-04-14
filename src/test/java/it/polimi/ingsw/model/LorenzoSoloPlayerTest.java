@@ -20,7 +20,7 @@ class LorenzoSoloPlayerTest {
         players.add(player);
 
         MarbleColor[] startMarbles  = new MarbleColor[]{MarbleColor.RED, MarbleColor.PURPLE, MarbleColor.RED, MarbleColor.RED, MarbleColor.RED, MarbleColor.RED, MarbleColor.RED, MarbleColor.RED, MarbleColor.RED, MarbleColor.RED, MarbleColor.RED, MarbleColor.RED, MarbleColor.BLUE};
-        Market tray = new Market(startMarbles);
+        //Market tray = new Market(startMarbles);
 
         //Dashboard dashboard = new Dashboard();
         //Game game = new Game(players,tray,dashboard);

@@ -1,0 +1,274 @@
+[
+  {
+    "VictoryPoints": 3,
+    "Ability": {
+      "DepotsAbility": "STONES"
+    },
+    "Requirements": {
+      "Resources": {
+        "Servants": 0,
+        "Shields": 0,
+        "Coins": 5,
+        "Stones": 0
+      }
+    }
+  },
+  {
+    "VictoryPoints": 3,
+    "Ability": {
+      "DepotsAbility": "SERVANTS"
+    },
+    "Requirements": {
+      "Resources": {
+        "Servants": 0,
+        "Shields": 0,
+        "Coins": 0,
+        "Stones": 5
+      }
+    }
+  },
+  {
+    "VictoryPoints": 3,
+    "Ability": {
+      "DepotsAbility": "SHIELDS"
+    },
+    "Requirements": {
+      "Resources": {
+        "Servants": 5,
+        "Shields": 0,
+        "Coins": 0,
+        "Stones": 0
+      }
+    }
+  },
+  {
+    "VictoryPoints": 3,
+    "Ability": {
+      "DepotsAbility": "COINS"
+    },
+    "Requirements": {
+      "Resources": {
+        "Servants": 0,
+        "Shields": 5,
+        "Coins": 0,
+        "Stones": 0
+      }
+    }
+  },
+  {
+    "VictoryPoints": 2,
+    "Ability":{
+      "DiscountAbility": "SERVANTS"
+    },
+    "Requirements": {
+      "CardsReq": [
+        {
+          "Color": "YELLOW",
+          "Level": "ONE"
+        },
+        {
+          "Color": "GREEN",
+          "Level": "ONE"
+        }
+      ]
+    }
+  },
+  {
+    "VictoryPoints": 2,
+    "Ability":{
+      "DiscountAbility": "SHIELDS"
+    },
+    "Requirements": {
+      "CardsReq": [
+        {
+          "Color": "BLUE",
+          "Level": "ONE"
+        },
+        {
+          "Color": "PURPLE",
+          "Level": "ONE"
+        }
+      ]
+    }
+  },
+  {
+    "VictoryPoints": 2,
+    "Ability":{
+      "DiscountAbility": "STONES"
+    },
+    "Requirements": {
+      "CardsReq": [
+        {
+          "Color": "GREEN",
+          "Level": "ONE"
+        },
+        {
+          "Color": "BLUE",
+          "Level": "ONE"
+        }
+      ]
+    }
+  },
+  {
+    "VictoryPoints": 2,
+    "Ability":{
+      "DiscountAbility": "COINS"
+    },
+    "Requirements": {
+      "CardsReq": [
+        {
+          "Color": "YELLOW",
+          "Level": "ONE"
+        },
+        {
+          "Color": "PURPLE",
+          "Level": "ONE"
+        }
+      ]
+    }
+  },
+  {
+    "VictoryPoints": 2,
+    "Ability":{
+      "WhiteAbility": "SERVANTS"
+    },
+    "Requirements": {
+      "CardsReq": [
+        {
+          "Color": "YELLOW",
+          "Level": "ONE"
+        },
+        {
+          "Color": "YELLOW",
+          "Level": "ONE"
+        },
+        {
+          "Color": "BLUE",
+          "Level": "ONE"
+        }
+      ]
+    }
+  },
+  {
+    "VictoryPoints": 2,
+    "Ability":{
+      "WhiteAbility": "SHIELDS"
+    },
+    "Requirements": {
+      "CardsReq": [
+        {
+          "Color": "GREEN",
+          "Level": "ONE"
+        },
+        {
+          "Color": "GREEN",
+          "Level": "ONE"
+        },
+        {
+          "Color": "PURPLE",
+          "Level": "ONE"
+        }
+      ]
+    }
+  },
+  {
+    "VictoryPoints": 2,
+    "Ability":{
+      "WhiteAbility": "STONES"
+    },
+    "Requirements": {
+      "CardsReq": [
+        {
+          "Color": "BLUE",
+          "Level": "ONE"
+        },
+        {
+          "Color": "BLUE",
+          "Level": "ONE"
+        },
+        {
+          "Color": "YELLOW",
+          "Level": "ONE"
+        }
+      ]
+    }
+  },
+  {
+    "VictoryPoints": 2,
+    "Ability":{
+      "WhiteAbility": "COINS"
+    },
+    "Requirements": {
+      "CardsReq": [
+        {
+          "Color": "PURPLE",
+          "Level": "ONE"
+        },
+        {
+          "Color": "PURPLE",
+          "Level": "ONE"
+        },
+        {
+          "Color": "GREEN",
+          "Level": "ONE"
+        }
+      ]
+    }
+  },
+  {
+    "VictoryPoints": 4,
+    "Ability":{
+      "ProductionPlusAbility": "SHIELDS"
+    },
+    "Requirements": {
+      "CardsReq": [
+        {
+          "Color": "YELLOW",
+          "Level": "TWO"
+        }
+      ]
+    }
+  },
+  {
+    "VictoryPoints": 4,
+    "Ability":{
+      "ProductionPlusAbility": "SERVANTS"
+    },
+    "Requirements": {
+      "CardsReq": [
+        {
+          "Color": "BLUE",
+          "Level": "TWO"
+        }
+      ]
+    }
+  },
+  {
+    "VictoryPoints": 4,
+    "Ability":{
+      "ProductionPlusAbility": "STONES"
+    },
+    "Requirements": {
+      "CardsReq": [
+        {
+          "Color": "PURPLE",
+          "Level": "TWO"
+        }
+      ]
+    }
+  },
+  {
+    "VictoryPoints": 4,
+    "Ability":{
+      "ProductionPlusAbility": "COINS"
+    },
+    "Requirements": {
+      "CardsReq": [
+        {
+          "Color": "GREEN",
+          "Level": "TWO"
+        }
+      ]
+    }
+  }
+]
