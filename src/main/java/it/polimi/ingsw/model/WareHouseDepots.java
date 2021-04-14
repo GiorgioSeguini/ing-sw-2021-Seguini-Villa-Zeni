@@ -83,20 +83,6 @@ public class WareHouseDepots {
         }
     }
 
-    /**This method check if all the shelfs have different types of resources*/
-    public boolean Check3ShelfTypeIntegrity(){
-        for(int i=0; i<2;i++){
-            for(int j=i+1; j<3;j++){
-                try{
-                    if(shelfs.get(i).getResType().equals(shelfs.get(j).getResType())){
-                        return false;
-                    }
-                }catch (NullPointerException e){}
-            }
-        }
-        return true;
-    }
-
     /**This method is called by ability Deposit, and can be called 2 times. Add an extra shelf to WareHouseDepots*/
     public void addExtraShelf(Shelf shelf){
         this.shelfs.add(shelf);

@@ -293,9 +293,5 @@ public class WareHouseDepotsTest {
 
     }
 
-    @Test
-    public void Check3ShelfTypeIntegrityTest(){
-
-    }
 
 }
