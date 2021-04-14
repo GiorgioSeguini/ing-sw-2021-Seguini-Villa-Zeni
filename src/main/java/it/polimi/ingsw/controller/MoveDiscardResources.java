@@ -5,6 +5,7 @@ import it.polimi.ingsw.model.NumberOfResources;
 import it.polimi.ingsw.model.Player;
 import it.polimi.ingsw.model.enumeration.PlayerStatus;
 import it.polimi.ingsw.model.exception.OutOfResourcesException;
+import it.polimi.ingsw.model.exception.UnableToFillException;
 
 import javax.swing.text.View;
 
@@ -34,6 +35,8 @@ public class MoveDiscardResources extends MoveType{
 
         try {
             player.getConverter().setResources(player.getConverter().getResources().sub(toDiscard));
+            player.getDepots().addResourcesFromMarket(player.getConverter().getResources());
+            player.getConverter().CleanConverter();
             for (int i = 0; i < toDiscard.size(); i++) {
                 for (Player y : game.getPlayers()) {
                     if (y != player) {
@@ -45,7 +48,11 @@ public class MoveDiscardResources extends MoveType{
         } catch (OutOfResourcesException e) {
             //TODO error messahe
             return false;
+        }catch (UnableToFillException e){
+            //TODO error message
+            return false;
         }
+
 
         player.setStatus(PlayerStatus.MovePerformed);
         return true;
