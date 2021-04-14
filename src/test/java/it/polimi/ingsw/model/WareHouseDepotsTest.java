@@ -1,6 +1,7 @@
 package it.polimi.ingsw.model;
 
 import it.polimi.ingsw.model.enumeration.ResourceType;
+import it.polimi.ingsw.model.exception.OutOfResourcesException;
 import it.polimi.ingsw.model.exception.UnableToFillException;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -206,6 +207,94 @@ public class WareHouseDepotsTest {
         } catch (UnableToFillException e) {
             fail();
         }
+
+    }
+
+    @Test
+    public  void subResourceTest(){
+        WareHouseDepots warehouse= new WareHouseDepots();
+        try {
+            warehouse.addResource(new NumberOfResources(1,2,3,0));
+        } catch (UnableToFillException e) {
+            fail();
+        }
+
+        try {
+            warehouse.subResource(new NumberOfResources(0,0,0,1));
+            fail();
+        } catch (OutOfResourcesException e) {
+        }
+        assertEquals(new NumberOfResources(1,2,3,0),warehouse.getResources());
+
+        try {
+            warehouse.subResource(new NumberOfResources(2,0,0,0));
+            fail();
+        } catch (OutOfResourcesException e) {
+        }
+        assertEquals(new NumberOfResources(1,2,3,0),warehouse.getResources());
+
+        try {
+            warehouse.subResource(new NumberOfResources(1,0,2,0));
+        } catch (OutOfResourcesException e) {
+            fail();
+        }
+        assertEquals(new NumberOfResources(0,2,1,0),warehouse.getResources());
+
+        int i=0;
+        for (Shelf x: warehouse.getShelfs()){
+            if(i<1){
+                assertNull(x.getResType());
+                assertEquals(0,x.getUsed());
+            }
+            if(i==1){
+                assertEquals(ResourceType.Coins,x.getResType());
+                assertEquals(1,x.getUsed());
+            }
+            if (i>1){
+                assertEquals(ResourceType.Shields,x.getResType());
+                assertEquals(2,x.getUsed());
+            }
+            i++;
+        }
+
+        try {
+            warehouse.subResource(new NumberOfResources(0,2,0,0));
+        } catch (OutOfResourcesException e) {
+            fail();
+        }
+        assertEquals(new NumberOfResources(0,0,1,0),warehouse.getResources());
+        i=0;
+        for (Shelf x: warehouse.getShelfs()){
+            if(i<2){
+                assertNull(x.getResType());
+                assertEquals(0,x.getUsed());
+            }
+            if(i>1){
+                assertEquals(ResourceType.Coins,x.getResType());
+                assertEquals(1,x.getUsed());
+            }
+            i++;
+        }
+
+        try {
+            warehouse.subResource(new NumberOfResources(0,0,1,0));
+        } catch (OutOfResourcesException e) {
+            fail();
+        }
+        assertEquals(new NumberOfResources(),warehouse.getResources());
+
+        i=0;
+        for (Shelf x: warehouse.getShelfs()){
+            i++;
+            assertEquals(0,x.getUsed());
+            assertNull(x.getResType());
+            assertEquals(i,x.getMaxSize());
+        }
+
+    }
+
+    @Test
+    public void Check3ShelfTypeIntegrityTest(){
 
     }
 

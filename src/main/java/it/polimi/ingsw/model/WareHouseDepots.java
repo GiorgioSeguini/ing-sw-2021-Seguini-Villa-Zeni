@@ -84,7 +84,7 @@ public class WareHouseDepots {
     }
 
     /**This method check if all the shelfs have different types of resources*/
-    public boolean check_3_shelf_type_Integrity(){
+    public boolean Check3ShelfTypeIntegrity(){
         for(int i=0; i<2;i++){
             for(int j=i+1; j<3;j++){
                 try{
