@@ -24,7 +24,11 @@ public class Player {
     public Player(String userName, PersonalBoard personalBoard, int initialFaithPoints, NumberOfResources initialResources) {
         this.userName=userName;
         this.personalBoard = personalBoard;
-        faithtrack = new FaithTrack(initialFaithPoints);
+        if (initialFaithPoints<0) {
+            throw new IllegalArgumentException();
+        }else {
+            faithtrack = new FaithTrack(initialFaithPoints);
+        }
         depots = new Depots();
         try {
             depots.addResourcesFromMarket(initialResources);
