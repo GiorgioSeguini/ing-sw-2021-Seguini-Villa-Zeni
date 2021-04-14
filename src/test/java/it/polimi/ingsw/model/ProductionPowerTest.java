@@ -25,9 +25,7 @@ class ProductionPowerTest {
 
         try {
             p.active(owner);
-        } catch (OutOfResourcesException e) {
-            fail();
-        } catch (ChoseResourcesException ignored) {
+        } catch (OutOfResourcesException | ChoseResourcesException e) {
             fail();
         }
 
@@ -49,9 +47,7 @@ class ProductionPowerTest {
 
         try {
             p.active(owner);
-        } catch (OutOfResourcesException e) {
-            fail();
-        } catch (ChoseResourcesException ignored) {
+        } catch (OutOfResourcesException | ChoseResourcesException e) {
             fail();
         }
 
@@ -135,7 +131,7 @@ class ProductionPowerTest {
         int choiceOutput = 2;
         NumberOfResources choice1 = new NumberOfResources(0, 1, 0, 0);
         NumberOfResources choice2 = new NumberOfResources(0, 1, 1, 0);
-        ProductionPower p = new ProductionPower(faithPoints, output, input);
+        ProductionPower p = new ProductionPower(faithPoints, output, input, choiceInput, choiceOutput);
 
         assertEquals(faithPoints, p.getFaithPointsOut());
         assertEquals(input, p.getInputRes());
@@ -170,9 +166,9 @@ class ProductionPowerTest {
             p.active(owner);
             fail();
         }catch (OutOfResourcesException e) {
-            assertTrue(true);
-        } catch (ChoseResourcesException ignored) {
             fail();
+        } catch (ChoseResourcesException ignored) {
+            assertTrue(true);
         }
 
         owner.getDepots().addResourceFromProduction(input.add(choice1));
