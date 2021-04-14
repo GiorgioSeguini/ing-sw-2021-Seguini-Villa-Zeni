@@ -116,7 +116,7 @@ public class Converter {
             case GREY: return ResourceType.Stones;
             case PURPLE: return ResourceType.Servants;
             case YELLOW: return ResourceType.Coins;
-            default: return null; //It should not enter here
+            default: throw new IllegalArgumentException(); //It should not enter here
         }
     }
 

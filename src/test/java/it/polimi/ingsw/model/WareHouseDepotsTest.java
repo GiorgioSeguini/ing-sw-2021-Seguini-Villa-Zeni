@@ -34,4 +34,11 @@ public class WareHouseDepotsTest {
         assertEquals(test.getResources(), new NumberOfResources(4,3,2,2));
 
     }
+
+    @Test
+    public void addResourceTest(){
+        WareHouseDepots warehouse= new WareHouseDepots();
+        
+    }
+
 }

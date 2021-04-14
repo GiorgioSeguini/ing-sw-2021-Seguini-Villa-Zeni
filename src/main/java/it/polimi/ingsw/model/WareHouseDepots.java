@@ -29,6 +29,19 @@ public class WareHouseDepots {
         return new NumberOfResources(x[0],x[1],x[2],x[3]);
     }
 
+    public ArrayList<Shelf> getShelfs() {
+        ArrayList<Shelf> copy= new ArrayList<>();
+        for (Shelf x: shelfs){
+            Shelf cloned= new Shelf(x.getResType(),x.getMaxSize());
+            cloned.setUsed(x.getUsed());
+            if(x.getIsExtra()){
+                cloned.setIsExtra();
+            }
+            copy.add(cloned);
+        }
+        return copy;
+    }
+
     /*Additional Methods*/
     /** This method add the resources to all the shelf if it found them. */
     public void addResource (NumberOfResources input) throws UnableToFillException {
