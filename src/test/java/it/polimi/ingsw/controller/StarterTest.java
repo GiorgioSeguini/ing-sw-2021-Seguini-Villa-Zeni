@@ -143,7 +143,8 @@ class StarterTest {
                     System.out.println("\t\t"+type+" : "+x.getRequirements().getNumberOfResourceses().getAmountOf(type));
                 }
             }
-            if (x.getRequirements().getMinNumber()!= new int[ColorDevCard.values().length][Level.values().length]){
+
+            if (!x.getRequirements().getMinNumber().equals(new int[ColorDevCard.size()][Level.size()])){
                 for (ColorDevCard z: ColorDevCard.values()){
                     for (Level k: Level.values()){
                         System.out.print("\t\t"+x.getRequirements().getMinNumber()[z.ordinal()][k.ordinal()]);
