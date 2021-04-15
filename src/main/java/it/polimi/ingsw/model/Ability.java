@@ -7,7 +7,7 @@ import it.polimi.ingsw.model.enumeration.ResourceType;
 public interface Ability {
 
     /*method that has to be implemented*/
-    public void RunAbility(Player owner);
-    public ResourceType getTypeOfRes();
+    void RunAbility(Player owner);
+    ResourceType getTypeOfRes();
 
 }
