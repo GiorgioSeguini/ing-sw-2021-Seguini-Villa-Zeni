@@ -17,18 +17,12 @@ class StarterTest {
 
     @Test
     public void DevCardParserTest(){
-        ArrayList<DevelopmentCard> devcards = null;
+        ArrayList<DevelopmentCard> devcards = new ArrayList<>();
         try {
             devcards = Starter.DevCardParser();
         } catch (IOException | ParseException e) {
             fail();
         }
-
-        for(DevelopmentCard card : devcards){
-            System.out.println("CARD "+ devcards.indexOf(card));
-            System.out.println(card+"\n");
-        }
-        assertTrue(true);
 
         Dashboard dashboard = new Dashboard(devcards);
 
@@ -128,30 +122,10 @@ class StarterTest {
         }
         assertEquals(16,leaderCards.size());
 
-        int i=0;
         for(LeaderCard x: leaderCards){
             assertNotNull(x.getAbility());
             assertNotNull(x.getVictoryPoints());
             assertNotNull(x.getRequirements());
-            i++;
-            System.out.println("Leader Card "+i);
-            System.out.println("VictoryPoints: "+ x.getVictoryPoints());
-            System.out.println("\tAbility: "+ x.getAbility()+ "\tRes: "+x.getAbility().getTypeOfRes());
-            System.out.println("\tRequirements: ");
-            if(!x.getRequirements().getNumberOfResourceses().isEmpty()){
-                for (ResourceType type: ResourceType.values()){
-                    System.out.println("\t\t"+type+" : "+x.getRequirements().getNumberOfResourceses().getAmountOf(type));
-                }
-            }
-
-            if (!x.getRequirements().getMinNumber().equals(new int[ColorDevCard.size()][Level.size()])){
-                for (ColorDevCard z: ColorDevCard.values()){
-                    for (Level k: Level.values()){
-                        System.out.print("\t\t"+x.getRequirements().getMinNumber()[z.ordinal()][k.ordinal()]);
-                    }
-                    System.out.println();
-                }
-            }
         }
 
     }

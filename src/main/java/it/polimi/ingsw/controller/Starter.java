@@ -77,6 +77,29 @@ public class Starter {
         return null;
     }
 
+    private static Requirements getRequirementsFromObject(JSONObject requirementsx) {
+        try {
+            JSONArray cardsReq= (JSONArray) requirementsx.get("CardsReq");
+            ArrayList<Map.Entry<ColorDevCard,Level>> cardreqs= new ArrayList<>();
+            for (Object x: cardsReq){
+                JSONObject couple=(JSONObject) x;
+                ColorDevCard color=ConvertStringToColorDevCard((String) couple.get("Color"));
+                Level level= ConvertStringToLevel((String) couple.get("Level"));
+                cardreqs.add(new AbstractMap.SimpleEntry<ColorDevCard,Level>(color,level));
+            }
+            return new Requirements(cardreqs);
+        }catch (NullPointerException e){}
+
+        try {
+            JSONObject Resources=(JSONObject) requirementsx.get("Resources") ;
+            NumberOfResources resources= ConvertObjectToNumOfRes(Resources);
+            return new Requirements(resources);
+
+        }catch (NullPointerException e){}
+
+        throw new IllegalArgumentException();
+    }
+
     public static ArrayList<DevelopmentCard> DevCardParser() throws IOException, ParseException {
         JSONParser parser = new JSONParser();
         String filePath = new File("").getAbsolutePath();
@@ -163,29 +186,6 @@ public class Starter {
         }
 
         return leaderCards;
-    }
-
-    private static Requirements getRequirementsFromObject(JSONObject requirementsx) {
-        try {
-            JSONArray cardsReq= (JSONArray) requirementsx.get("CardsReq");
-            ArrayList<Map.Entry<ColorDevCard,Level>> cardreqs= new ArrayList<>();
-            for (Object x: cardsReq){
-                JSONObject couple=(JSONObject) x;
-                ColorDevCard color=ConvertStringToColorDevCard((String) couple.get("Color"));
-                Level level= ConvertStringToLevel((String) couple.get("Level"));
-                cardreqs.add(new AbstractMap.SimpleEntry<ColorDevCard,Level>(color,level));
-            }
-            return new Requirements(cardreqs);
-        }catch (NullPointerException e){}
-
-        try {
-            JSONObject Resources=(JSONObject) requirementsx.get("Resources") ;
-            NumberOfResources resources= ConvertObjectToNumOfRes(Resources);
-            return new Requirements(resources);
-
-        }catch (NullPointerException e){}
-
-        throw new IllegalArgumentException();
     }
 
 }

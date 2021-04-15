@@ -77,4 +77,5 @@ public class LeaderCard extends Card {
         return ability.equals(other.ability);
     }
 
+
 }
