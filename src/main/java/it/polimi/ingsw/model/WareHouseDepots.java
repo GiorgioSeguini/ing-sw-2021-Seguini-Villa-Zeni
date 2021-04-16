@@ -29,6 +29,7 @@ public class WareHouseDepots {
         return new NumberOfResources(x[0],x[1],x[2],x[3]);
     }
 
+    /*just for testing*/
     public ArrayList<Shelf> getShelfs() {
         ArrayList<Shelf> copy= new ArrayList<>();
         for (Shelf x: shelfs){

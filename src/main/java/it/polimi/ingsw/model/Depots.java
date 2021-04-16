@@ -107,4 +107,9 @@ public class Depots {
     public int getVictoryPoints(){
         return this.getResources().size()/DIVIDER_VICTORY_POINTS;
     }
+
+    /*just for testing*/
+    public WareHouseDepots getWareHouseDepots() {
+        return wareHouseDepots;
+    }
 }

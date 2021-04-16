@@ -17,6 +17,7 @@ public class Converter {
     Converter(Player owner){
         this.toconvert=new ArrayList<>();
         this.owner=owner;
+        this.inwait=new NumberOfResources();
     }
 
     /*Getter*/

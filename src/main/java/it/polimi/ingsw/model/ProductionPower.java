@@ -88,4 +88,11 @@ se torno l'eccezione della scelta( dobbiamo decidere il nome), il controllore in
 
     }
 
+    @Override
+    public ProductionPower clone(){
+        NumberOfResources outres= this.outputRes.clone();
+        NumberOfResources inres= this.inputRes.clone();
+        return new ProductionPower(this.pointsFaithOut, outres,inres,this.ofYourChoiceInput,this.ofYourChoiceOutput);
+    }
+
 }

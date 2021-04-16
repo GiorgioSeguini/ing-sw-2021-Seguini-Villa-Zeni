@@ -20,7 +20,7 @@ public class ProductionPowerPlusAbility implements Ability {
     @Override
     public void RunAbility(Player owner) {
         NumberOfResources input = new NumberOfResources();
-        input.add(typeOfRes, 1);
+        input=input.add(typeOfRes, 1);
         owner.getPersonalBoard().addExtraProduction(new ProductionPower(0, input, new NumberOfResources(), 1, 1));
     }
 
