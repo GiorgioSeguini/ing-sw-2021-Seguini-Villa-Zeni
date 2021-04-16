@@ -60,7 +60,7 @@ public class PersonalBoard {
     }
 
     /**Those methods allow to get top DevCard of the stacks on the player's personal board**/
-    public DevelopmentCard getTopDevCard(int index) {
+    private DevelopmentCard getTopDevCard(int index) {
         DevelopmentCard topdevcard = null;
         if(goodindex(index)){
             topdevcard = OwnedDevCards[index].get(0);
@@ -136,6 +136,10 @@ public class PersonalBoard {
         extraProduction.add(productionPower);
     }
 
+    /**
+     *
+     * @return an ArrayList containing all the activable productionPower
+     */
     public ArrayList<ProductionPower> getProduction(){
         //ArrayList<ProductionPower> res = (ArrayList<ProductionPower>) extraProduction.clone();
 
@@ -146,7 +150,9 @@ public class PersonalBoard {
 
 
         for(int i=0; i<3; i++){
-            res.add(getTopDevCard(i).getProductionPower());
+            try {
+                res.add(getTopDevCard(i).getProductionPower());
+            }catch(IndexOutOfBoundsException ignored){};
         }
 
         return res;
