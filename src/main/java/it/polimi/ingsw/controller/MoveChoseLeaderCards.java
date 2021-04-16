@@ -34,7 +34,8 @@ public class MoveChoseLeaderCards extends MoveType{
             }
         }
         if(!goodChoice){
-            //TODO err
+            //TODO error message
+            return false;
         }
 
         try {

@@ -58,7 +58,7 @@ public class Game {
         }
 
         Collections.shuffle(players);
-        Collections.shuffle(leaderCards);
+        Collections.shuffle(this.leaderCards);
     }
 
     public Market getMarketTray() {
@@ -196,8 +196,10 @@ public class Game {
                 if(!p.getPersonalBoard().isReady()  || p.getDepots().getResources().size()!=getInitialResources(p))
                     needToUpdate = false;
             }
-            if(needToUpdate)
-                status=GameStatus.Running;
+            if(needToUpdate) {
+                status = GameStatus.Running;
+                players.get(0).setStatus(PlayerStatus.Active);
+            }
         }
     }
 

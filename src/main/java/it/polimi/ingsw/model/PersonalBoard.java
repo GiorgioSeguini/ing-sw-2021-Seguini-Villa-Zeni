@@ -161,7 +161,6 @@ public class PersonalBoard {
      * @return an ArrayList containing all the activable productionPower
      */
     public ArrayList<ProductionPower> getProduction(){
-        //ArrayList<ProductionPower> res = (ArrayList<ProductionPower>) extraProduction.clone();
 
         ArrayList<ProductionPower> res= new ArrayList<>();
         for (ProductionPower x: this.extraProduction){
@@ -177,4 +176,5 @@ public class PersonalBoard {
 
         return res;
     }
+
 }

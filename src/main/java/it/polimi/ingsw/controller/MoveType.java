@@ -4,11 +4,10 @@ import it.polimi.ingsw.model.Player;
 
 import javax.swing.text.View;
 
-public class MoveType {
+public abstract class MoveType {
     //raccogliere tutte le info chieste al giocatore e chiama l'update del controller
 
     Player player;
-
 
     public MoveType(Player player){
         this.player = player;
