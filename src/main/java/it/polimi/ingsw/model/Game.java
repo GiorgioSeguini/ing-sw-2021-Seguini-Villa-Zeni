@@ -11,12 +11,14 @@ import java.util.*;
  */
 public class Game {
 
+    private static final int INITIAL_LEADER_CARD = 4;
+
     //compositions
     private final ArrayList<Player> players;
     private final Market marketTray;
     private final Dashboard dashboard;
     private final LorenzoSoloPlayer soloGame;
-    //private ArrayList<LeaderCard> leaderCards;
+    private final ArrayList<LeaderCard> leaderCards;
 
     //attribute
     private int indexPlayingPlayer;
@@ -25,9 +27,16 @@ public class Game {
     /**
      * Default constructor
      */
-    public Game(ArrayList<Player> players, Market market, Dashboard dashboard, ArrayList<SoloActionTokens> soloActionTokens){
+    public Game(ArrayList<Player> players, Market market, Dashboard dashboard, ArrayList<SoloActionTokens> soloActionTokens, ArrayList<LeaderCard> leaderCards){
         if(players.isEmpty())
             throw new IllegalArgumentException();
+        for(Player p : players){
+            if(p.getPersonalBoard().isReady())
+                throw new IllegalArgumentException();
+        }
+        if(players.size()*INITIAL_LEADER_CARD> leaderCards.size())
+            throw  new IllegalArgumentException();
+
         if(players.size()==1){
             //single player mode
             soloGame = new LorenzoSoloPlayer(this, soloActionTokens);
@@ -35,10 +44,14 @@ public class Game {
         else{
             soloGame = null;
         }
+        this.leaderCards = leaderCards;
         this.players=players;
         this.marketTray = market;
         this.dashboard = dashboard;
         this.status = GameStatus.Initial;
+
+        Collections.shuffle(players);
+        Collections.shuffle(leaderCards);
     }
 
     public Market getMarketTray() {
@@ -61,6 +74,7 @@ public class Game {
      * @return
      */
     public Player getCurrPlayer() {
+        if(status==GameStatus.Initial || status == GameStatus.Ended) return null;
         return players.get(indexPlayingPlayer);
     }
 
@@ -162,5 +176,35 @@ public class Game {
         indexPlayingPlayer++;
         indexPlayingPlayer%=players.size();
         players.get(indexPlayingPlayer).setStatus(PlayerStatus.Active);
+    }
+
+    public GameStatus getStatus() {
+        return status;
+    }
+
+    public void updateStatus(){
+        if(status==GameStatus.Initial) {
+            boolean needToUpdate = true;
+            for (Player p : players) {
+                if(!p.getPersonalBoard().isReady())
+                    needToUpdate = false;
+            }
+            if(needToUpdate)
+                status=GameStatus.Running;
+        }
+    }
+
+    public ArrayList<LeaderCard> getActivableLeadCard(Player player){
+        int index = getPlayerIndex(player)* INITIAL_LEADER_CARD;
+        if(index<0)
+            throw new IllegalArgumentException();
+
+        ArrayList<LeaderCard> res= new ArrayList<>();
+
+        for(int i=0; i<INITIAL_LEADER_CARD; i++){
+            res.add(leaderCards.get(index + i));
+        }
+
+        return res;
     }
 }

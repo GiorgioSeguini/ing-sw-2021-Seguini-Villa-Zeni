@@ -113,18 +113,35 @@ public class PersonalBoard {
 
     /**
      *
+     * @param leaderCard array containing the choosen leader card
      */
-    public void addLeaderCard(LeaderCard leaderCard){
-        //LeaderCard card = leaderCard.clone();
-        leaderCard.setStatus(LeaderStatus.onHand);
+    public void addLeaderCard(LeaderCard[] leaderCard){
+        if(isReady()){
+            throw new IllegalArgumentException();
+        }
 
-        int i=0;
-        while(OwnedLeaderCard[i]==null && i< MAX_LEAD_CARD) i++;
+        if(leaderCard.length!= MAX_LEAD_CARD){
+            throw new IndexOutOfBoundsException();
+        }
 
-        if(i==MAX_LEAD_CARD) throw new IndexOutOfBoundsException();
+        for(int i=0; i<MAX_LEAD_CARD; i++) {
+            leaderCard[i].setStatus(LeaderStatus.onHand);
+            this.OwnedLeaderCard[i]= leaderCard[i];
+        }
+    }
 
-        OwnedLeaderCard[i] = leaderCard;
+    /**
+     *
+     * @return true if the leader card have already been chosen
+     */
+    public boolean isReady(){
+        boolean res = true;
+        for(LeaderCard card :OwnedLeaderCard){
+            if(card==null)
+                res=false;
+        }
 
+        return res;
     }
 
     /**This for check the index**/
