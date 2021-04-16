@@ -137,7 +137,13 @@ public class PersonalBoard {
     }
 
     public ArrayList<ProductionPower> getProduction(){
-        ArrayList<ProductionPower> res = (ArrayList<ProductionPower>) extraProduction.clone();
+        //ArrayList<ProductionPower> res = (ArrayList<ProductionPower>) extraProduction.clone();
+
+        ArrayList<ProductionPower> res= new ArrayList<>();
+        for (ProductionPower x: this.extraProduction){
+            res.add(x);
+        }
+
 
         for(int i=0; i<3; i++){
             res.add(getTopDevCard(i).getProductionPower());
