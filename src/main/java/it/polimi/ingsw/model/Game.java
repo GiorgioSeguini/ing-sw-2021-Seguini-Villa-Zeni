@@ -11,7 +11,10 @@ import java.util.*;
  */
 public class Game {
 
+    private static final int MAX_PLAYER = 4;
     private static final int INITIAL_LEADER_CARD = 4;
+    private static final int[] INITIAL_RESOURCES = {0,1,2,3};
+    private static final int[] INITIAL_FAITH_POINT = {0,1,2,3};
 
     //compositions
     private final ArrayList<Player> players;
@@ -27,17 +30,14 @@ public class Game {
     /**
      * Default constructor
      */
-    public Game(ArrayList<Player> players, Market market, Dashboard dashboard, ArrayList<SoloActionTokens> soloActionTokens, ArrayList<LeaderCard> leaderCards){
-        if(players.isEmpty())
+    public Game(ArrayList<String> playersName, Market market, Dashboard dashboard, ArrayList<SoloActionTokens> soloActionTokens, ArrayList<LeaderCard> leaderCards){
+        if(playersName.isEmpty())
             throw new IllegalArgumentException();
-        for(Player p : players){
-            if(p.getPersonalBoard().isReady())
-                throw new IllegalArgumentException();
-        }
-        if(players.size()*INITIAL_LEADER_CARD> leaderCards.size())
+
+        if(playersName.size()*INITIAL_LEADER_CARD> leaderCards.size() || playersName.size()>MAX_PLAYER)
             throw  new IllegalArgumentException();
 
-        if(players.size()==1){
+        if(playersName.size()==1){
             //single player mode
             soloGame = new LorenzoSoloPlayer(this, soloActionTokens);
         }
@@ -45,10 +45,17 @@ public class Game {
             soloGame = null;
         }
         this.leaderCards = leaderCards;
-        this.players=players;
         this.marketTray = market;
         this.dashboard = dashboard;
         this.status = GameStatus.Initial;
+
+        this.players = new ArrayList<>();
+        for(int i =0; i<playersName.size(); i++){
+            Player player = new Player(playersName.get(i));
+            for(int j=0; j<INITIAL_FAITH_POINT[i]; j++)
+                player.getFaithTrack().addPoint();
+            this.players.add(player);
+        }
 
         Collections.shuffle(players);
         Collections.shuffle(leaderCards);
@@ -186,7 +193,7 @@ public class Game {
         if(status==GameStatus.Initial) {
             boolean needToUpdate = true;
             for (Player p : players) {
-                if(!p.getPersonalBoard().isReady())
+                if(!p.getPersonalBoard().isReady()  || p.getDepots().getResources().size()!=getInitialResources(p))
                     needToUpdate = false;
             }
             if(needToUpdate)
@@ -206,5 +213,13 @@ public class Game {
         }
 
         return res;
+    }
+
+    public int getInitialResources(Player player){
+        int index = getPlayerIndex(player)* INITIAL_LEADER_CARD;
+        if(index<0)
+            throw new IllegalArgumentException();
+
+        return INITIAL_RESOURCES[index];
     }
 }

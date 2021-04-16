@@ -15,12 +15,12 @@ public class Player {
     private final PersonalBoard personalBoard;
     private final Converter converter;
     private NumberOfResources discounted;
-    private int victoryPoints;
     private ProductionPower toActive;
 
     private PlayerStatus status;
 
     /*Default constructor*/
+    //TODO remove
     public Player(String userName, PersonalBoard personalBoard, int initialFaithPoints, NumberOfResources initialResources) {
         this.userName=userName;
         this.personalBoard = personalBoard;
@@ -34,9 +34,18 @@ public class Player {
             depots.addResourcesFromMarket(initialResources);
         }catch(UnableToFillException ignored){}
         converter = new Converter(this);
-        victoryPoints=0;
         discounted = new NumberOfResources();
     }
+
+    public Player(String userName){
+        this.userName=userName;
+        this.personalBoard = new PersonalBoard();
+        this.faithtrack = new FaithTrack(0);
+        this.depots = new Depots();
+        this.converter = new Converter(this);
+        this.discounted = new NumberOfResources();
+    }
+
 
     /*Getter*/
     public String getUserName() {
@@ -60,7 +69,7 @@ public class Player {
     }
 
     public int getVictoryPoints(){
-        victoryPoints = personalBoard.getVictoryPoints() + faithtrack.getVictoryPoints() + depots.getVictoryPoints();
+        int victoryPoints = personalBoard.getVictoryPoints() + faithtrack.getVictoryPoints() + depots.getVictoryPoints();
         return victoryPoints;
     }
 

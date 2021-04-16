@@ -8,7 +8,7 @@ import it.polimi.ingsw.model.exception.NoMoreLeaderCardAliveException;
 
 public class MoveChoseLeaderCards extends MoveType{
 
-    private LeaderCard[] leaderCards;
+    private final LeaderCard[] leaderCards;
 
     public MoveChoseLeaderCards(Player player, LeaderCard[] leaderCards) {
         super(player);
@@ -34,8 +34,7 @@ public class MoveChoseLeaderCards extends MoveType{
             }
         }
         if(!goodChoice){
-            //TODO error message
-            return false;
+            //TODO err
         }
 
         try {
