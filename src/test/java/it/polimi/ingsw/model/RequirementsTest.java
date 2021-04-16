@@ -3,6 +3,7 @@ package it.polimi.ingsw.model;
 import it.polimi.ingsw.model.enumeration.ColorDevCard;
 import it.polimi.ingsw.model.enumeration.Level;
 import it.polimi.ingsw.model.exception.NoSpaceException;
+import it.polimi.ingsw.model.exception.UnableToFillException;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -37,7 +38,12 @@ class RequirementsTest {
             }
         });
 
-        Player owner = new Player("Pippo", new PersonalBoard(new LeaderCard[2]), 0, res1);
+        Player owner = new Player("Pippo");
+        try {
+            owner.getDepots().addResourcesFromMarket(res1);
+        } catch (UnableToFillException e) {
+            fail();
+        }
 
         Requirements test = (new Requirements(res1));
         Requirements test2 = new Requirements(req1);

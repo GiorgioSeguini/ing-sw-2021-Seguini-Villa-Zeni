@@ -85,6 +85,7 @@ public class PersonalBoard {
 
     /**This return the sum of card's victory points**/
     public int getVictoryPoints() {
+        if(!isReady()) return 0;
         int victorypoints = 0;
         for (DevelopmentCard developmentCard : getOwnedDevCards()) {
             victorypoints += developmentCard.getVictoryPoints();

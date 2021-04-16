@@ -24,11 +24,9 @@ public class FaithTrack {
     /**
      * Default constructor
      */
-    public FaithTrack(int initialFaithPoints) {
-        if(initialFaithPoints<0)
-            throw new IllegalArgumentException();
+    public FaithTrack() {
         popesFavor = new PopesFavorStates[NUM_OF_POP];
-        faithPoints=initialFaithPoints;
+        faithPoints = 0;
         for(int i=0; i<NUM_OF_POP; i++) {
                 popesFavor[i]=PopesFavorStates.FaceDown;
         }

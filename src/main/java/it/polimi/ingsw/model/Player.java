@@ -20,30 +20,14 @@ public class Player {
     private PlayerStatus status;
 
     /*Default constructor*/
-    //TODO remove
-    public Player(String userName, PersonalBoard personalBoard, int initialFaithPoints, NumberOfResources initialResources) {
-        this.userName=userName;
-        this.personalBoard = personalBoard;
-        if (initialFaithPoints<0) {
-            throw new IllegalArgumentException();
-        }else {
-            faithtrack = new FaithTrack(initialFaithPoints);
-        }
-        depots = new Depots();
-        try {
-            depots.addResourcesFromMarket(initialResources);
-        }catch(UnableToFillException ignored){}
-        converter = new Converter(this);
-        discounted = new NumberOfResources();
-    }
-
     public Player(String userName){
         this.userName=userName;
         this.personalBoard = new PersonalBoard();
-        this.faithtrack = new FaithTrack(0);
+        this.faithtrack = new FaithTrack();
         this.depots = new Depots();
         this.converter = new Converter(this);
         this.discounted = new NumberOfResources();
+        this.status = PlayerStatus.Waiting;
     }
 
 

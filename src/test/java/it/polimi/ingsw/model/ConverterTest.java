@@ -16,7 +16,7 @@ public class ConverterTest {
 
     @Test
     void CheckIntegrityToConvert() {
-        Player player=new Player("Pippo", new PersonalBoard(new LeaderCard[3]),5,new NumberOfResources());
+        Player player=new Player("Pippo");
         Converter x=new Converter(player);
         x.setWhiteAbility(ResourceType.Stones);
         x.setWhiteAbility(ResourceType.Coins);
@@ -55,7 +55,7 @@ public class ConverterTest {
 
     @Test
     public void convertAllTest(){
-        Converter converter= new Converter(new Player("Pippo", null, 0, new NumberOfResources()));
+        Converter converter= new Converter(new Player("Pippo"));
         ArrayList<MarbleColor> marbles= new ArrayList<>();
         try {
             marbles= Starter.MarblesParser();

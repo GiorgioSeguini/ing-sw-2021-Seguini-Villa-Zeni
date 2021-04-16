@@ -2,6 +2,7 @@ package it.polimi.ingsw.model;
 
 import it.polimi.ingsw.model.exception.ChoseResourcesException;
 import it.polimi.ingsw.model.exception.OutOfResourcesException;
+import it.polimi.ingsw.model.exception.UnableToFillException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -21,7 +22,13 @@ class ProductionPowerTest {
         assertEquals(0, p.getOfYourChoiceInput());
         assertEquals(0, p.getOfYourChoiceOutput());
 
-        Player owner = new Player("Pippo", new PersonalBoard(new LeaderCard[2]), 0, input);
+        Player owner = new Player("Pippo");
+
+        try {
+            owner.getDepots().addResourcesFromMarket(input);
+        } catch (UnableToFillException e) {
+            fail();
+        }
 
         try {
             p.active(owner);
@@ -74,7 +81,13 @@ class ProductionPowerTest {
         assertEquals(0, p.getOfYourChoiceInput());
         assertEquals(0, p.getOfYourChoiceOutput());
 
-        Player owner = new Player("Pippo", new PersonalBoard(new LeaderCard[2]), 0, input);
+        Player owner = new Player("Pippo");
+
+        try {
+            owner.getDepots().addResourcesFromMarket(input);
+        } catch (UnableToFillException e) {
+            fail();
+        }
 
         try {
             p.active(owner);
@@ -139,8 +152,13 @@ class ProductionPowerTest {
         assertEquals(choiceInput, p.getOfYourChoiceInput());
         assertEquals(choiceOutput, p.getOfYourChoiceOutput());
 
-        Player owner = new Player("Pippo", new PersonalBoard(new LeaderCard[2]), 0, input.add(choice1));
+        Player owner = new Player("Pippo");
 
+        try {
+            owner.getDepots().addResourcesFromMarket(input.add(choice1));
+        } catch (UnableToFillException e) {
+            fail();
+        }
         try {
             p.active(owner);
             fail();

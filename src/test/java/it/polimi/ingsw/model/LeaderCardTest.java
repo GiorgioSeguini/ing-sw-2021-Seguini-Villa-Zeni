@@ -41,7 +41,7 @@ class LeaderCardTest {
         LeaderCard[] leaderCardsOw = new LeaderCard[] {leaderCard1,leaderCard2};
 
         PersonalBoard personalBoard = new PersonalBoard(leaderCardsOw);
-        Player player = new Player("Fabio",personalBoard,0,new NumberOfResources());
+        Player player = new Player("Fabio");
         player.getDepots().addResourceFromProduction(new NumberOfResources(100,100,100,100));
 
         LeaderCard[] ownedLeaderCard = new LeaderCard[2];
@@ -91,7 +91,7 @@ class LeaderCardTest {
         LeaderCard[] leaderCardsOw = new LeaderCard[] {leaderCard1,leaderCard2};
 
         PersonalBoard personalBoard = new PersonalBoard(leaderCardsOw);
-        Player player = new Player("Fabio",personalBoard,0,new NumberOfResources());
+        Player player = new Player("Fabio");
         player.getDepots().addResourceFromProduction(new NumberOfResources(100,100,100,100));
         int faithpoints=player.getFaithTrack().getFaithPoints();
         LeaderCard[] ownedLeaderCard = new LeaderCard[2];

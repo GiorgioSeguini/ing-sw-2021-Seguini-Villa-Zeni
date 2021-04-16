@@ -21,33 +21,11 @@ class LorenzoSoloPlayerTest {
         soloActionTokensArrayList = Starter.TokensParser();
         ArrayList<LeaderCard> leaderCards;
 
-        leaderCards = Starter.LeaderCardsParser();
-        LeaderCard leaderCard1;
-        LeaderCard leaderCard2;
-        int n = (int) (Math.random() * 15.1);
-        leaderCard1 = leaderCards.get(n);
-        leaderCards.remove(n);
-        n=(int) (Math.random() * 14.1);
-        leaderCard2 = leaderCards.get(n);
-        leaderCards.remove(n);
-        LeaderCard[] leaderCardsOw = new LeaderCard[] {leaderCard1,leaderCard2};
+        //player.getDepots().addResourceFromProduction(new NumberOfResources(100,100,100,100));
+        ArrayList<String> playerArrayList = new ArrayList<>();
+        playerArrayList.add("Fabio");
 
-        PersonalBoard personalBoard = new PersonalBoard(leaderCardsOw);
-
-        Player player = new Player("Fabio",personalBoard,0,new NumberOfResources());
-        player.getDepots().addResourceFromProduction(new NumberOfResources(100,100,100,100));
-        ArrayList<Player> playerArrayList = new ArrayList<>(1);
-        playerArrayList.add(player);
-
-        ArrayList<MarbleColor> startMarbles = new ArrayList<>();
-        startMarbles = Starter.MarblesParser();
-        Market marketTray = new Market(startMarbles);
-
-        ArrayList<DevelopmentCard> developmentCardArrayList;
-        developmentCardArrayList = Starter.DevCardParser();
-        Dashboard dashboard = new Dashboard(developmentCardArrayList);
-
-        Game game = new Game(playerArrayList,marketTray,dashboard,soloActionTokensArrayList);
+        Game game = new Game(playerArrayList, new Market(Starter.MarblesParser()), new Dashboard(Starter.DevCardParser()), soloActionTokensArrayList, Starter.LeaderCardsParser());
 
         assertNotNull(game.getSoloGame().getGame());
         assertNotNull(game.getSoloGame().getFaithTrack());
@@ -68,36 +46,15 @@ class LorenzoSoloPlayerTest {
     @Test
     void Setter() throws IOException, ParseException {
         ArrayList<SoloActionTokens> soloActionTokensArrayList;
+
         soloActionTokensArrayList = Starter.TokensParser();
-
         ArrayList<LeaderCard> leaderCards;
-        leaderCards = Starter.LeaderCardsParser();
-        LeaderCard leaderCard1;
-        LeaderCard leaderCard2;
-        int n = (int) (Math.random() * 15.1);
-        leaderCard1 = leaderCards.get(n);
-        leaderCards.remove(n);
-        n=(int) (Math.random() * 14.1);
-        leaderCard2 = leaderCards.get(n);
-        leaderCards.remove(n);
-        LeaderCard[] leaderCardsOw = new LeaderCard[] {leaderCard1,leaderCard2};
 
-        PersonalBoard personalBoard = new PersonalBoard(leaderCardsOw);
+        //player.getDepots().addResourceFromProduction(new NumberOfResources(100,100,100,100));
+        ArrayList<String> playerArrayList = new ArrayList<>();
+        playerArrayList.add("Fabio");
 
-        Player player = new Player("Fabio",personalBoard,0,new NumberOfResources());
-        player.getDepots().addResourceFromProduction(new NumberOfResources(100,100,100,100));
-        ArrayList<Player> playerArrayList = new ArrayList<>(1);
-        playerArrayList.add(player);
-
-        ArrayList<MarbleColor> startMarbles = new ArrayList<>();
-        startMarbles = Starter.MarblesParser();
-        Market marketTray = new Market(startMarbles);
-
-        ArrayList<DevelopmentCard> developmentCardArrayList;
-        developmentCardArrayList = Starter.DevCardParser();
-        Dashboard dashboard = new Dashboard(developmentCardArrayList);
-
-        Game game = new Game(playerArrayList,marketTray,dashboard,soloActionTokensArrayList);
+        Game game = new Game(playerArrayList, new Market(Starter.MarblesParser()), new Dashboard(Starter.DevCardParser()), soloActionTokensArrayList, Starter.LeaderCardsParser());
 
         Collections.shuffle(soloActionTokensArrayList);
         game.getSoloGame().setSoloActionTokens(soloActionTokensArrayList);
@@ -114,36 +71,15 @@ class LorenzoSoloPlayerTest {
     @Test
     void RevealTokenTest() throws IOException, ParseException {
         ArrayList<SoloActionTokens> soloActionTokensArrayList;
+
         soloActionTokensArrayList = Starter.TokensParser();
-
         ArrayList<LeaderCard> leaderCards;
-        leaderCards = Starter.LeaderCardsParser();
-        LeaderCard leaderCard1;
-        LeaderCard leaderCard2;
-        int n = (int) (Math.random() * 15.1);
-        leaderCard1 = leaderCards.get(n);
-        leaderCards.remove(n);
-        n=(int) (Math.random() * 14.1);
-        leaderCard2 = leaderCards.get(n);
-        leaderCards.remove(n);
-        LeaderCard[] leaderCardsOw = new LeaderCard[] {leaderCard1,leaderCard2};
 
-        PersonalBoard personalBoard = new PersonalBoard(leaderCardsOw);
+        //player.getDepots().addResourceFromProduction(new NumberOfResources(100,100,100,100));
+        ArrayList<String> playerArrayList = new ArrayList<>();
+        playerArrayList.add("Fabio");
 
-        Player player = new Player("Fabio",personalBoard,0,new NumberOfResources());
-        player.getDepots().addResourceFromProduction(new NumberOfResources(100,100,100,100));
-        ArrayList<Player> playerArrayList = new ArrayList<>(1);
-        playerArrayList.add(player);
-
-        ArrayList<MarbleColor> startMarbles = new ArrayList<>();
-        startMarbles = Starter.MarblesParser();
-        Market marketTray = new Market(startMarbles);
-
-        ArrayList<DevelopmentCard> developmentCardArrayList;
-        developmentCardArrayList = Starter.DevCardParser();
-        Dashboard dashboard = new Dashboard(developmentCardArrayList);
-
-        Game game = new Game(playerArrayList,marketTray,dashboard,soloActionTokensArrayList);
+        Game game = new Game(playerArrayList, new Market(Starter.MarblesParser()), new Dashboard(Starter.DevCardParser()), soloActionTokensArrayList, Starter.LeaderCardsParser());
 
         int dim = game.getSoloGame().getSoloActionTokens().size();
         SoloActionTokens NextRevealedToken = game.getSoloGame().getSoloActionTokens().get(0);

@@ -27,7 +27,7 @@ public class PlayerTest {
 
         PersonalBoard personalBoard = new PersonalBoard(leaderCardsOw);
 
-        Player player1 = new Player("Fabio1",personalBoard,0,new NumberOfResources(0,0,0,0));
+        Player player1 = new Player("Fabio1");
         assertNotNull(player1.getUserName());
         assertNotNull(player1.getPersonalBoard());
         assertNotNull(player1.getDepots());
@@ -39,15 +39,5 @@ public class PlayerTest {
         assertTrue(player1.getVictoryPoints()>=0);
         assertEquals(0, player1.getDepots().getResources().size());
 
-        Player player2 = new Player("Fabio2", personalBoard, 0,new NumberOfResources(1,0,0,0));
-        assertEquals(1, player2.getDepots().getResources().size());
-
-        Player player3 = new Player("Fabio3", personalBoard, 1,new NumberOfResources(1,0,0,0));
-        assertEquals(1, player3.getDepots().getResources().size());
-        assertEquals(1, player3.getFaithTrack().getFaithPoints());
-
-        Player player4 = new Player("Fabio4", personalBoard, 1,new NumberOfResources(1,1,0,0));
-        assertEquals(2, player4.getDepots().getResources().size());
-        assertEquals(1, player4.getFaithTrack().getFaithPoints());
     }
 }
