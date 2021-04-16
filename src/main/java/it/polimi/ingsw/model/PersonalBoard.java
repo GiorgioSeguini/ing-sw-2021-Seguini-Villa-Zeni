@@ -10,6 +10,8 @@ import java.util.*;
 /*Last Edit: Fabio*/
 public class PersonalBoard {
 
+    private static final int MAX_LEAD_CARD = 2;
+
     private ArrayList<DevelopmentCard>[] OwnedDevCards;
 
     private LeaderCard[] OwnedLeaderCard;
@@ -17,6 +19,7 @@ public class PersonalBoard {
     private ArrayList<ProductionPower> extraProduction;
 
     /*Default Constructor*/
+    //TODO remove
     public PersonalBoard(LeaderCard[] startLeaderCards) {
         OwnedDevCards = new ArrayList[3]; //array di arraylist
         for( int i=0; i< 3; i++){
@@ -30,6 +33,18 @@ public class PersonalBoard {
         extraProduction = new ArrayList<>();
         extraProduction.add(new ProductionPower(0, new NumberOfResources(), new NumberOfResources(), 2, 1));
     }
+
+    public PersonalBoard(){
+        OwnedDevCards = new ArrayList[3]; //array di arraylist
+        for( int i=0; i< 3; i++){
+            OwnedDevCards[i] = new ArrayList<DevelopmentCard>();
+        }
+
+        OwnedLeaderCard = new LeaderCard[2];
+        extraProduction = new ArrayList<>();
+        extraProduction.add(new ProductionPower(0, new NumberOfResources(), new NumberOfResources(), 2, 1));
+    }
+
 
     /*Getter*/
     public LeaderCard[] getLeaderCards() throws NoMoreLeaderCardAliveException{
@@ -68,34 +83,6 @@ public class PersonalBoard {
         return topdevcard;
     }
 
-    /**
-    public DevelopmentCard getMidDevCard(int index) {
-        DevelopmentCard midevcard = null;
-        if(goodindex(index)){
-            midevcard = OwnedDevCards[index].get(1);
-        }
-        return midevcard;
-    }
-
-    public DevelopmentCard getLastDevCard(int index) {
-        DevelopmentCard lastdevcard = null;
-        if(goodindex(index)){
-        lastdevcard = OwnedDevCards[index].get(2);
-        }
-        return lastdevcard;
-    }**/
-
-    /**This allow to get all DevCard on the player's personal board**/
-    /*public ArrayList<DevelopmentCard> getAllDevCard() {
-        ArrayList<DevelopmentCard> AllDevCard = new ArrayList<>();
-        for (int i = 0; i < 2; i++) {
-            for( int j=0; j<2; j++)
-                AllDevCard.add(getOwnedDevCards()[i].get(j));
-            //AllDevCard.addAll((Collection<? extends DevelopmentCard>) OwnedDevCards[i].clone());    //DA RIVEDERE
-        }
-        return AllDevCard;
-    }*/
-
     /**This return the sum of card's victory points**/
     public int getVictoryPoints() {
         int victorypoints = 0;
@@ -122,6 +109,22 @@ public class PersonalBoard {
                 OwnedDevCards[pos].add(0, card);
             } else throw new NoSpaceException();
         }
+    }
+
+    /**
+     *
+     */
+    public void addLeaderCard(LeaderCard leaderCard){
+        //LeaderCard card = leaderCard.clone();
+        leaderCard.setStatus(LeaderStatus.onHand);
+
+        int i=0;
+        while(OwnedLeaderCard[i]==null && i< MAX_LEAD_CARD) i++;
+
+        if(i==MAX_LEAD_CARD) throw new IndexOutOfBoundsException();
+
+        OwnedLeaderCard[i] = leaderCard;
+
     }
 
     /**This for check the index**/
