@@ -1,5 +1,6 @@
 package it.polimi.ingsw.model;
 
+import it.polimi.ingsw.model.enumeration.ErrorMessage;
 import it.polimi.ingsw.model.enumeration.PlayerStatus;
 import it.polimi.ingsw.model.enumeration.ResourceType;
 import it.polimi.ingsw.model.exception.NoMoreLeaderCardAliveException;
@@ -18,6 +19,7 @@ public class Player {
     private ProductionPower toActive;
 
     private PlayerStatus status;
+    private ErrorMessage errorMessage;
 
     /*Default constructor*/
     public Player(String userName){
@@ -28,6 +30,7 @@ public class Player {
         this.converter = new Converter(this);
         this.discounted = new NumberOfResources();
         this.status = PlayerStatus.Waiting;
+        this.errorMessage = ErrorMessage.NoError;
     }
 
 
@@ -53,18 +56,7 @@ public class Player {
     }
 
     public int getVictoryPoints(){
-        int victoryPoints = personalBoard.getVictoryPoints() + faithtrack.getVictoryPoints() + depots.getVictoryPoints();
-        return victoryPoints;
-    }
-
-    public void ActivateLeaderCard(int index) throws IllegalArgumentException, NoMoreLeaderCardAliveException {
-        LeaderCard toActivate= getPersonalBoard().getLeaderCards()[index];
-        toActivate.setPlayed(this);
-    }
-
-
-    public void addDiscount(ResourceType type, int discount){
-        discounted = discounted.add(type, discount);
+        return personalBoard.getVictoryPoints() + faithtrack.getVictoryPoints() + depots.getVictoryPoints();
     }
 
     public NumberOfResources getDiscount(){
@@ -75,18 +67,17 @@ public class Player {
         return status;
     }
 
-    public void setStatus(PlayerStatus status) {
-        this.status = status;
-    }
-
     public ProductionPower getToActive() {
         return toActive;
     }
 
-    public void setToActive(ProductionPower toActive) {
-        this.toActive = toActive;
+    public ErrorMessage getErrorMessage(){
+        return errorMessage;
     }
 
+    /**
+     * @return true if the player own enough resources to active the power production chosen
+     */
     public boolean isActivable(){
         if(toActive==null)
             return false;
@@ -101,7 +92,23 @@ public class Player {
         return temp.size()>=toActive.getOfYourChoiceInput();
     }
 
-    public boolean easyActive(){
-        return toActive.getOfYourChoiceOutput()==0 && toActive.getOfYourChoiceInput()==0;
+
+    /*Modifier*/
+
+    public void addDiscount(ResourceType type, int discount){
+        discounted = discounted.add(type, discount);
     }
+
+    public void setStatus(PlayerStatus status) {
+        this.status = status;
+    }
+
+    public void setToActive(ProductionPower toActive) {
+        this.toActive = toActive;
+    }
+
+    public void setErrorMessage(ErrorMessage error){
+        this.errorMessage=error;
+    }
+
 }

@@ -4,38 +4,34 @@ import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.NumberOfResources;
 import it.polimi.ingsw.model.Player;
 import it.polimi.ingsw.model.ProductionPower;
+import it.polimi.ingsw.model.enumeration.ErrorMessage;
 import it.polimi.ingsw.model.enumeration.PlayerStatus;
 
-import javax.swing.text.View;
+
 import java.util.ArrayList;
 
 public class MoveActiveProduction extends MoveType{
 
     ProductionPower[] toActive;
 
-    public MoveActiveProduction(Player player, View view, boolean isLastMove, ProductionPower[] toActive) {
+    public MoveActiveProduction(Player player, ProductionPower[] toActive) {
         super(player);
         this.toActive = toActive;
+        this.allowedStatus = new PlayerStatus[]{PlayerStatus.Active};
     }
 
     @Override
     public boolean canPerform(Game game){
-        if(!game.getCurrPlayer().equals(player))
-            //TODO error Message
-            return false;
 
-        player= game.getCurrPlayer();
-        if(player.getStatus() != PlayerStatus.Active){
-            //TODO error Message
-            return false;
-        }
+        if(!super.canPerform(game)) return false;
+
 
         //check if current player really own the productionPowers that want to active
         ArrayList<ProductionPower> productionOwned = player.getPersonalBoard().getProduction();
 
         for(ProductionPower p : toActive) {
             if (!productionOwned.contains(p)) {
-                //TODO error Message
+                //TODO
                 return false;
             }
         }
@@ -60,7 +56,7 @@ public class MoveActiveProduction extends MoveType{
 
         player.setStatus(PlayerStatus.NeedToChoseRes);
 
-        if(player.easyActive()){
+        if(player.getToActive().easyActive()){
             //automatically perform the move if no choice is needed
             new MoveChoseResources(player, new NumberOfResources(), new NumberOfResources()).performMove(game);
 

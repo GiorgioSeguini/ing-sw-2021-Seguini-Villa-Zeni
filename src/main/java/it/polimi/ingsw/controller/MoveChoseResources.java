@@ -3,6 +3,7 @@ package it.polimi.ingsw.controller;
 import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.NumberOfResources;
 import it.polimi.ingsw.model.Player;
+import it.polimi.ingsw.model.enumeration.ErrorMessage;
 import it.polimi.ingsw.model.enumeration.PlayerStatus;
 import it.polimi.ingsw.model.exception.ChoseResourcesException;
 import it.polimi.ingsw.model.exception.OutOfResourcesException;
@@ -15,6 +16,7 @@ public class MoveChoseResources extends MoveType{
         super(active);
         this.ofYourChoiceInput = ofYourChoiceInput;
         this.ofYourChoiceOutput = ofYourChoiceOutput;
+        this.allowedStatus = new PlayerStatus[]{PlayerStatus.NeedToChoseRes};
     }
 
     public NumberOfResources getOfYourChoiceInput() {
@@ -27,17 +29,7 @@ public class MoveChoseResources extends MoveType{
 
     @Override
     public boolean canPerform(Game game){
-        if (!game.getCurrPlayer().equals(player))
-            //TODO error Message
-            return false;
-
-        player = game.getCurrPlayer();
-        if (player.getStatus() != PlayerStatus.NeedToChoseRes) {
-            //TODO error Message
-            return false;
-        }
-
-        return true;
+        return super.canPerform(game);
     }
 
     @Override

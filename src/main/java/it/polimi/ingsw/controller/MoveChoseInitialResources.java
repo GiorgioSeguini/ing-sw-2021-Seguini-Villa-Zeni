@@ -1,7 +1,6 @@
 package it.polimi.ingsw.controller;
 
 import it.polimi.ingsw.model.Game;
-import it.polimi.ingsw.model.LeaderCard;
 import it.polimi.ingsw.model.NumberOfResources;
 import it.polimi.ingsw.model.Player;
 import it.polimi.ingsw.model.enumeration.GameStatus;

@@ -3,6 +3,7 @@ package it.polimi.ingsw.controller;
 import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.Market;
 import it.polimi.ingsw.model.Player;
+import it.polimi.ingsw.model.enumeration.ErrorMessage;
 import it.polimi.ingsw.model.enumeration.MarbleColor;
 import it.polimi.ingsw.model.enumeration.PlayerStatus;
 import it.polimi.ingsw.model.exception.HaveToChooseException;
@@ -17,6 +18,7 @@ public class MovetypeMarket extends MoveType{
     public MovetypeMarket(Player player, View view, boolean isLastMove, int indextobuy){
         super(player);
         this.indexToBuy=indextobuy;
+        this.allowedStatus = new PlayerStatus[]{PlayerStatus.Active};
     }
 
     public int getIndextobuy() {
@@ -31,7 +33,7 @@ public class MovetypeMarket extends MoveType{
             buyedresources = market.buyColumn(indexToBuy);
 
         if(indexToBuy>=4 && indexToBuy<=6)
-            buyedresources = buyedresources = market.buyRow(indexToBuy - 4);
+            buyedresources = market.buyRow(indexToBuy - 4);
 
         if(buyedresources==null);
         //TODO check
@@ -41,16 +43,7 @@ public class MovetypeMarket extends MoveType{
 
     @Override
     public boolean canPerform(Game game){
-        if(!game.getCurrPlayer().equals(player))//TODO check dubbio
-            //TODO error Message
-            return false;
-
-        player= game.getCurrPlayer();
-        if(player.getStatus() != PlayerStatus.Active){
-            //TODO error Message
-            return false;
-        }
-        return true;
+        return super.canPerform(game);
     }
 
     /**This method tries to convert the Marble as the player asked. If it can it makes the conversion

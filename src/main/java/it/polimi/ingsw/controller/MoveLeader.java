@@ -3,33 +3,26 @@ package it.polimi.ingsw.controller;
 import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.LeaderCard;
 import it.polimi.ingsw.model.Player;
+import it.polimi.ingsw.model.enumeration.ErrorMessage;
 import it.polimi.ingsw.model.enumeration.PlayerStatus;
 import it.polimi.ingsw.model.exception.NoMoreLeaderCardAliveException;
 
-import javax.swing.text.View;
 
 public class MoveLeader extends MoveType{
 
     int move;
     LeaderCard leaderCard;
 
-    public MoveLeader(Player player, View view, boolean isLastMove, int move, LeaderCard leaderCard) {
+    public MoveLeader(Player player, int move, LeaderCard leaderCard) {
         super(player);
         this.move = move;
         this.leaderCard = leaderCard;
+        this.allowedStatus = new PlayerStatus[]{PlayerStatus.Active, PlayerStatus.MovePerformed};
     }
 
     @Override
     public boolean canPerform(Game game){
-        if (!game.getCurrPlayer().equals(player))
-            //TODO error Message
-            return false;
-
-        player = game.getCurrPlayer();
-        if (player.getStatus() != PlayerStatus.Active && player.getStatus() != PlayerStatus.MovePerformed) {
-            //TODO error Message
-            return false;
-        }
+        if(!super.canPerform(game)) return false;
 
         boolean isPresent = false;
         try {

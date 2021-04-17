@@ -4,12 +4,11 @@ import it.polimi.ingsw.model.DevelopmentCard;
 import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.NumberOfResources;
 import it.polimi.ingsw.model.Player;
+import it.polimi.ingsw.model.enumeration.ErrorMessage;
 import it.polimi.ingsw.model.enumeration.PlayerStatus;
 import it.polimi.ingsw.model.exception.NoSpaceException;
 import it.polimi.ingsw.model.exception.OutOfResourcesException;
 
-import javax.swing.text.View;
-import java.util.ArrayList;
 
 public class MoveBuyDevCard extends MoveType{
 
@@ -20,6 +19,7 @@ public class MoveBuyDevCard extends MoveType{
         super(active);
         this.pos = pos;
         this.cardToBuy = cardToBuy;
+        this.allowedStatus = new PlayerStatus[]{PlayerStatus.Active};
     }
 
     public int getPos() {
@@ -32,16 +32,8 @@ public class MoveBuyDevCard extends MoveType{
 
     @Override
     public boolean canPerform(Game game){
-        if (!game.getCurrPlayer().equals(player))
-            //TODO error Message
-            return false;
 
-        player = game.getCurrPlayer();
-        if (player.getStatus() != PlayerStatus.Active) {
-            //TODO error Message
-            return false;
-        }
-
+        if(!super.canPerform(game)) return false;
 
         if(!game.getDashboard().getTopDevCard(cardToBuy.getColor(),cardToBuy.getLevel()).equals(cardToBuy)){
             //la carta che il player vuole comprare non è la prima della pila quindi deve sceglierne un'altra

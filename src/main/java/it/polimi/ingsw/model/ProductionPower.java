@@ -57,6 +57,15 @@ public class ProductionPower {
     }
 
     /**
+     *
+     * @return true if the power production chosen do not need any choice
+     */
+    public boolean easyActive(){
+        return getOfYourChoiceOutput()==0 && getOfYourChoiceInput()==0;
+    }
+
+    /*Modifier*/
+    /**
      *  It's usefull for active production in parallel
      * @param other adder
      * @return return the sum of this and other
@@ -65,10 +74,6 @@ public class ProductionPower {
         return new ProductionPower(this.pointsFaithOut + other.pointsFaithOut, this.outputRes.add(other.outputRes), this.inputRes.add(other.inputRes), this.ofYourChoiceInput + other.ofYourChoiceInput, this.ofYourChoiceOutput + other.ofYourChoiceOutput);
     }
 
-/* L'idea è che il controller sommi tutte le production power che il giocatore vuole attivare --> un solo controllo sul deposito,
-poi il controller chiama la active con un solo argomento, se va a buon fine è super felice,
-se torno l'eccezione della scelta( dobbiamo decidere il nome), il controllore interagisce con il giocatore e dopo chiama la funzione ative con 3 argomenti che fa quello che deve fare
- */
 
     public void active(Player owner) throws OutOfResourcesException, ChoseResourcesException{
             active(owner, new NumberOfResources(), new NumberOfResources());
