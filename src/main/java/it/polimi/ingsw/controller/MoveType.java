@@ -17,8 +17,8 @@ public abstract class MoveType {
         return player;
     }
 
-    public boolean performMove(Game game){
-        return false;
-    }
+    public abstract boolean canPerform(Game game);
+
+    public abstract void performMove(Game game);
 
 }

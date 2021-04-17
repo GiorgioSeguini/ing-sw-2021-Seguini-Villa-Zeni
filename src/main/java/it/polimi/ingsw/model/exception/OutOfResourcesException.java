@@ -6,7 +6,7 @@ public class OutOfResourcesException extends Exception{
     private final ErrorMessage errorMessage;
 
     public OutOfResourcesException() {
-        errorMessage = ErrorMessage.OutOfResoucesError;
+        errorMessage = ErrorMessage.OutOfResourcesError;
     }
 
     public ErrorMessage getErrorMessage() {

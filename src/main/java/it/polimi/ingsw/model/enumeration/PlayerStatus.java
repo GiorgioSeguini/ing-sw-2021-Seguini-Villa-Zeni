@@ -6,6 +6,6 @@ public enum PlayerStatus {
     MovePerformed,
     NeedToConvert,
     NeedToStore,
-    NeedToCHoseRes;
+    NeedToChoseRes
 
 }

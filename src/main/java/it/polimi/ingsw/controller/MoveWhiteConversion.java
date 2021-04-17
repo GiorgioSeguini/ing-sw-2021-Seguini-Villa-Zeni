@@ -21,7 +21,7 @@ public class MoveWhiteConversion extends MoveType{
     }
 
     @Override
-    public boolean performMove(Game game) {
+    public boolean canPerform(Game game){
         if (!game.getCurrPlayer().equals(player))
             //TODO error Message
             return false;
@@ -32,14 +32,17 @@ public class MoveWhiteConversion extends MoveType{
             return false;
         }
 
-        if(player.getConverter().CheckIntegrityToConvert(whiteMarbles)){
-            player.getConverter().WhiteMarbleConverter(whiteMarbles);
-        }
-        else{
+        if(!player.getConverter().CheckIntegrityToConvert(whiteMarbles)){
+            //TODO error Message
             return false;
         }
-        player.setStatus(PlayerStatus.MovePerformed);
         return true;
+    }
+
+    @Override
+    public void performMove(Game game) {
+        player.getConverter().WhiteMarbleConverter(whiteMarbles);
+        player.setStatus(PlayerStatus.MovePerformed);
     }
 
 }

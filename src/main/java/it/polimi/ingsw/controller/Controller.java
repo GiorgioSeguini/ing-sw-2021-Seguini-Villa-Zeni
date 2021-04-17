@@ -7,7 +7,8 @@ public class Controller{
     private Game game;
 
     public void update(MoveType x) {
-        x.performMove(game);
+        if(x.canPerform(game))
+            x.performMove(game);
     }
 
 }

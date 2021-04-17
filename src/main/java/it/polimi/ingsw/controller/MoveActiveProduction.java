@@ -19,7 +19,7 @@ public class MoveActiveProduction extends MoveType{
     }
 
     @Override
-    public boolean performMove(Game game){
+    public boolean canPerform(Game game){
         if(!game.getCurrPlayer().equals(player))
             //TODO error Message
             return false;
@@ -33,11 +33,18 @@ public class MoveActiveProduction extends MoveType{
         //check if current player really own the productionPowers that want to active
         ArrayList<ProductionPower> productionOwned = player.getPersonalBoard().getProduction();
 
-        for(ProductionPower p : toActive)
-            if(!productionOwned.contains(p)) {
+        for(ProductionPower p : toActive) {
+            if (!productionOwned.contains(p)) {
                 //TODO error Message
                 return false;
             }
+        }
+
+        return true;
+    }
+
+    @Override
+    public void performMove(Game game){
         //sum all productionPower
         ProductionPower total = new ProductionPower();
         for(ProductionPower p : toActive)
@@ -48,16 +55,15 @@ public class MoveActiveProduction extends MoveType{
         if(player.isActivable()) {
             player.setToActive(null);
             //TODO error message
-            return false;
+            return;
         }
 
-        player.setStatus(PlayerStatus.NeedToCHoseRes);
+        player.setStatus(PlayerStatus.NeedToChoseRes);
 
         if(player.easyActive()){
             //automatically perform the move if no choice is needed
-            return new MoveChoseResources(player, new NumberOfResources(), new NumberOfResources()).performMove(game);
+            new MoveChoseResources(player, new NumberOfResources(), new NumberOfResources()).performMove(game);
 
         }
-        return true;
     }
 }

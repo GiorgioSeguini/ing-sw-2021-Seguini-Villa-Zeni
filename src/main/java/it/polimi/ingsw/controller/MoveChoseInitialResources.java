@@ -17,7 +17,7 @@ public class MoveChoseInitialResources extends MoveType{
     }
 
     @Override
-    public boolean performMove(Game game){
+    public boolean canPerform(Game game){
         if(game.getStatus() != GameStatus.Initial){
             //TODO errror message
             return false;
@@ -33,14 +33,17 @@ public class MoveChoseInitialResources extends MoveType{
             return false;
         }
 
+        return true;
+    }
+
+    @Override
+    public void performMove(Game game){
 
         try{
             player.getDepots().addResourcesFromMarket(resources);
         }catch(UnableToFillException ignored){}
 
-
         game.updateStatus();
-        return true;
     }
 
 }

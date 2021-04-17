@@ -31,7 +31,7 @@ public class MoveBuyDevCard extends MoveType{
     }
 
     @Override
-    public boolean performMove(Game game) {
+    public boolean canPerform(Game game){
         if (!game.getCurrPlayer().equals(player))
             //TODO error Message
             return false;
@@ -50,23 +50,28 @@ public class MoveBuyDevCard extends MoveType{
         }
 
         NumberOfResources realCost = cardToBuy.getCost().safe_sub(player.getDiscount());
-        if (player.getDepots().match(realCost)) {
-            try {
-                player.getPersonalBoard().addDevCard(cardToBuy,pos);
-            } catch (NoSpaceException e) {
-                //TODO ERROR MESSAGE
-                return false;
-            }
-            game.getDashboard().buyDevCard(cardToBuy.getColor(),cardToBuy.getLevel());
-            try {
-                player.getDepots().subResource(realCost);
-            } catch (OutOfResourcesException ignored) {}
-        } else{
+        if (!player.getDepots().match(realCost)){
             //qui bisogna dire al player che non può comprare quella carta perchè non ha abbastazna risorse e quindi di sceglierne un'altra
             //TODO ERROR MESSAGE
         }
 
-        player.setStatus(PlayerStatus.MovePerformed);
         return true;
+    }
+
+    @Override
+    public void performMove(Game game) {
+        NumberOfResources realCost = cardToBuy.getCost().safe_sub(player.getDiscount());
+        try {
+            player.getPersonalBoard().addDevCard(cardToBuy,pos);
+        } catch (NoSpaceException e) {
+            //TODO ERROR MESSAGE
+            return;
+        }
+        game.getDashboard().buyDevCard(cardToBuy.getColor(),cardToBuy.getLevel());
+        try {
+            player.getDepots().subResource(realCost);
+        } catch (OutOfResourcesException ignored) {}
+
+        player.setStatus(PlayerStatus.MovePerformed);
     }
 }

@@ -7,8 +7,6 @@ import it.polimi.ingsw.model.enumeration.PlayerStatus;
 import it.polimi.ingsw.model.exception.ChoseResourcesException;
 import it.polimi.ingsw.model.exception.OutOfResourcesException;
 
-import javax.swing.text.View;
-
 public class MoveChoseResources extends MoveType{
      private final NumberOfResources ofYourChoiceInput;
     private final NumberOfResources ofYourChoiceOutput;
@@ -28,28 +26,35 @@ public class MoveChoseResources extends MoveType{
     }
 
     @Override
-    public boolean performMove(Game game) {
+    public boolean canPerform(Game game){
         if (!game.getCurrPlayer().equals(player))
             //TODO error Message
             return false;
 
         player = game.getCurrPlayer();
-        if (player.getStatus() != PlayerStatus.NeedToCHoseRes) {
+        if (player.getStatus() != PlayerStatus.NeedToChoseRes) {
             //TODO error Message
             return false;
         }
+
+        return true;
+    }
+
+    @Override
+    public void performMove(Game game) {
+
         try {
             player.getToActive().active(player, ofYourChoiceInput, ofYourChoiceOutput);
         }catch(ChoseResourcesException e){
             //TODO error message
-            return false;
+            return;
         }catch(OutOfResourcesException e){
             //TODO something different
-            return false;
+            return;
         }
         game.popesInspection();
 
         player.setStatus(PlayerStatus.MovePerformed);
-        return true;
+        return;
     }
 }

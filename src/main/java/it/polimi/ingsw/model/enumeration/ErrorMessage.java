@@ -6,6 +6,6 @@ public enum ErrorMessage {
     HaveToChooseError,
     NoMoreLeaderCardAliveError,
     NoSpaceError,
-    OutOfResoucesError,
-    UnableToFillError;
+    OutOfResourcesError,
+    UnableToFillError
 }
