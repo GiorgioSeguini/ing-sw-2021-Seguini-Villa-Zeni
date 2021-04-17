@@ -12,7 +12,7 @@ public class MoveEndTurn extends MoveType{
     }
 
     @Override
-    public boolean performMove(Game game) {
+    public boolean canPerform(Game game){
         if (!game.getCurrPlayer().equals(player))
             //TODO error Message
             return false;
@@ -23,7 +23,12 @@ public class MoveEndTurn extends MoveType{
             return false;
         }
 
-        game.nextTurn();
         return true;
     }
+
+    @Override
+    public void performMove(Game game) {
+        game.nextTurn();
+    }
+
 }

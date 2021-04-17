@@ -22,7 +22,7 @@ public class MoveDiscardResources extends MoveType{
     }
 
     @Override
-    public boolean performMove(Game game) {
+    public boolean canPerform(Game game){
         if (!game.getCurrPlayer().equals(player))
             //TODO error Message
             return false;
@@ -32,6 +32,12 @@ public class MoveDiscardResources extends MoveType{
             //TODO error Message
             return false;
         }
+
+        return true;
+    }
+
+    @Override
+    public void performMove(Game game) {
 
         try {
             player.getConverter().setResources(player.getConverter().getResources().sub(toDiscard));
@@ -47,14 +53,13 @@ public class MoveDiscardResources extends MoveType{
             }
         } catch (OutOfResourcesException e) {
             //TODO error messahe
-            return false;
+            return;
         }catch (UnableToFillException e){
             //TODO error message
-            return false;
+            return;
         }
 
 
         player.setStatus(PlayerStatus.MovePerformed);
-        return true;
     }
 }

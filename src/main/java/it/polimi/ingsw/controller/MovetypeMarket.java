@@ -39,11 +39,8 @@ public class MovetypeMarket extends MoveType{
         return buyedresources;
     }
 
-    /**This method tries to convert the Marble as the player asked. If it can it makes the conversion
-     * and stores the converted resources in the Converter Class. Returns TRUE if the conversion ends correctly,
-     * returns FALSE if it doesn't.*/
     @Override
-    public boolean performMove(Game game){
+    public boolean canPerform(Game game){
         if(!game.getCurrPlayer().equals(player))//TODO check dubbio
             //TODO error Message
             return false;
@@ -53,7 +50,14 @@ public class MovetypeMarket extends MoveType{
             //TODO error Message
             return false;
         }
+        return true;
+    }
 
+    /**This method tries to convert the Marble as the player asked. If it can it makes the conversion
+     * and stores the converted resources in the Converter Class. Returns TRUE if the conversion ends correctly,
+     * returns FALSE if it doesn't.*/
+    @Override
+    public void performMove(Game game){
         try {
             player.getConverter().convertAll(takeMarbles(indexToBuy, game.getMarketTray()));
             player.setStatus(PlayerStatus.NeedToStore);
@@ -61,6 +65,5 @@ public class MovetypeMarket extends MoveType{
         catch (HaveToChooseException error) {
             player.setStatus(PlayerStatus.NeedToConvert);
         }
-        return true;
     }
 }

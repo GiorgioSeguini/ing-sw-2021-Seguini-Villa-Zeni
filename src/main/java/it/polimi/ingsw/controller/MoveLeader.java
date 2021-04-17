@@ -20,7 +20,7 @@ public class MoveLeader extends MoveType{
     }
 
     @Override
-    public boolean performMove(Game game) {
+    public boolean canPerform(Game game){
         if (!game.getCurrPlayer().equals(player))
             //TODO error Message
             return false;
@@ -41,6 +41,7 @@ public class MoveLeader extends MoveType{
         } catch (NoMoreLeaderCardAliveException e) {
             //Il player non ha più carte leader in mano
             //TODO ERROR MESSAGE
+            return false;
         }
 
         if (!isPresent) {
@@ -48,19 +49,24 @@ public class MoveLeader extends MoveType{
             return false;
         }
 
+        return true;
+    }
+
+    @Override
+    public void performMove(Game game) {
+
+
         if (move == 0) {
             if (!leaderCard.setPlayed(player)) {
                 //TODO ERROR MESSAGE
-                return false;
+                return;
             }
         }
 
         if (move == 1)
             if (!leaderCard.setDiscard(player)) {
                 //TODO ERROR MESSAGE
-                return false;
+                return;
             }
-
-        return true;
     }
 }

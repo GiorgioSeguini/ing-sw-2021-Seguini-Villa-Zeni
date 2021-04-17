@@ -16,7 +16,7 @@ public class MoveChoseLeaderCards extends MoveType{
     }
 
     @Override
-    public boolean performMove(Game game){
+    public boolean canPerform(Game game){
         if(game.getStatus() != GameStatus.Initial){
             //TODO errror message
             return false;
@@ -38,15 +38,21 @@ public class MoveChoseLeaderCards extends MoveType{
             return false;
         }
 
+        return true;
+
+    }
+
+    @Override
+    public void performMove(Game game){
+
         try {
             player.getPersonalBoard().addLeaderCard(leaderCards);
         }catch (IndexOutOfBoundsException e){
             //TODO error message
-            return false;
+            return;
         }
 
         game.updateStatus();
-        return true;
     }
 
 }
