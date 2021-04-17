@@ -97,7 +97,7 @@ public class Starter {
 
         }catch (NullPointerException e){}
 
-        throw new IllegalArgumentException();
+        return null;
     }
 
     public static ArrayList<DevelopmentCard> DevCardParser() throws IOException, ParseException {
@@ -191,7 +191,7 @@ public class Starter {
     public static boolean CanParseMarbles() {
         JSONParser parser= new JSONParser();
         String filePath = new File("").getAbsolutePath();
-        JSONObject x= null;
+        JSONObject x;
         try {
             x = (JSONObject)parser.parse(new FileReader(filePath + "/src/main/resources/Marbles.json"));
         } catch (IOException|ParseException e) {
@@ -228,6 +228,101 @@ public class Starter {
         return true;
     }
 
+    public static boolean CanDevCardParser(){
+        JSONParser parser = new JSONParser();
+        String filePath = new File("").getAbsolutePath();
+        JSONArray array;
+        try {
+            array = (JSONArray) parser.parse(new FileReader(filePath + "/src/main/resources/DevCard.json"));
+        } catch (IOException| ParseException e) {
+            return false;
+        }
 
+        for (Object x : array) {
+            JSONObject DevCard = (JSONObject) x;
+            JSONObject ProductionPower=null;
+            try{
+                DevCard.get("Level");
+                DevCard.get("CardColor");
+                DevCard.get("Cost");
+                DevCard.get("VictoryPoints");
+                ProductionPower = (JSONObject) DevCard.get("ProductionPower");
+                ProductionPower.get("YourChoiceIn");
+                ProductionPower.get("YourChoiceOut");
+                ProductionPower.get("InRes");
+                ProductionPower.get("OutRes");
+                ProductionPower.get("FaithPointsOut");
+            }catch (NullPointerException e){
+                return false;
+            }
+        }
+        if(array.size()!=48){
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean CanLeaderCardsParser(){
+        JSONParser parser = new JSONParser();
+        String filePath = new File("").getAbsolutePath();
+        JSONArray array;
+        try {
+            array = (JSONArray) parser.parse(new FileReader(filePath + "/src/main/resources/LeaderCards.json"));
+        } catch (IOException | ParseException e) {
+           return false;
+        }
+
+        for ( Object x: array){
+            JSONObject card=(JSONObject) x;
+            try {
+                card.get("VictoryPoints");
+                JSONObject abilityapp=(JSONObject) card.get("Ability");
+                getAbilityFromObject(abilityapp);
+                JSONObject reqapp= (JSONObject)card.get("Requirements");
+                getRequirementsFromObject(reqapp);
+            }catch (NullPointerException e){
+                return false;
+            }
+        }
+
+        if(array.size()!=16){
+            return false;
+        }
+
+        return true;
+    }
+
+    public static boolean CanTokensParser(){
+        JSONParser parser = new JSONParser();
+        String filePath = new File("").getAbsolutePath();
+        JSONArray array;
+        try {
+            array = (JSONArray) parser.parse(new FileReader(filePath + "/src/main/resources/SoloActionTokens.json"));
+        } catch (IOException | ParseException e) {
+            return false;
+        }
+        int move2=0;
+        int moveshuffle=0;
+        int green=0;
+        int yellow=0;
+        int purple=0;
+        int blue=0;
+        for (Object token: array){
+            switch ((String)token){
+                case "MOVE2": move2++; break;
+                case "MOVESHUFFLE": moveshuffle++; break;
+                case "DISCARD2-GREEN": green++;break;
+                case "DISCARD2-YELLOW": yellow++; break;
+                case "DISCARD2-PURPLE": purple++; break;
+                case "DISCARD2-BLUE": blue++; break;
+                default: throw new IllegalArgumentException();
+            }
+        }
+
+        if (array.size()!=7 || move2==0 || moveshuffle==0 || green==0 || yellow==0 || purple==0 || blue==0){
+            return false;
+        }
+        return true;
+    }
 
 }
