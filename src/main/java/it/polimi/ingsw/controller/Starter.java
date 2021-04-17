@@ -188,4 +188,46 @@ public class Starter {
         return leaderCards;
     }
 
+    public static boolean CanParseMarbles() {
+        JSONParser parser= new JSONParser();
+        String filePath = new File("").getAbsolutePath();
+        JSONObject x= null;
+        try {
+            x = (JSONObject)parser.parse(new FileReader(filePath + "/src/main/resources/Marbles.json"));
+        } catch (IOException|ParseException e) {
+            return false;
+        }
+
+        JSONArray array=(JSONArray) x.get("Marbles");
+        int grey=0;
+        int yellow=0;
+        int red=0;
+        int purple=0;
+        int white=0;
+        int blue=0;
+
+        for (Object y: array){
+            switch ((String) y){
+                case "GREY": grey++; break;
+                case "YELLOW": yellow++; break;
+                case "RED": red++; break;
+                case "PURPLE": purple++; break;
+                case "WHITE": white++; break;
+                case "BLUE": blue++; break;
+                default: return false;
+            }
+        }
+        if(array.size()!=13){
+            return false;
+        }
+        if(grey==0 || yellow==0 || red==0 || purple==0 || white==0 || blue==0){
+            return false;
+        }
+
+        /*Sostanzialmente controllo che siano 13, che non ci siano colori strani e che ci sia almeno una biglia per colore*/
+        return true;
+    }
+
+
+
 }

@@ -6,7 +6,6 @@ public class UnableToFillException extends Exception{
     private final ErrorMessage errorMessage;
 
     public UnableToFillException(){
-        //super("Attention! I'm not able to fill the deposit with this resources.");
         errorMessage = ErrorMessage.UnableToFillError;
     }
 
