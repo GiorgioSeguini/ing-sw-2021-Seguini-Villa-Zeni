@@ -127,7 +127,26 @@ class StarterTest {
             assertNotNull(x.getVictoryPoints());
             assertNotNull(x.getRequirements());
         }
+    }
 
+    @Test
+    public void CanLeaderCardParserTest(){
+        assertTrue(Starter.CanLeaderCardsParser());
+    }
+
+    @Test
+    public void CanDevCardParserTest(){
+        assertTrue(Starter.CanDevCardParser());
+    }
+
+    @Test
+    public void CanMarblesParserTest(){
+        assertTrue(Starter.CanParseMarbles());
+    }
+
+    @Test
+    public void CanSoloActionTokensTest(){
+        assertTrue(Starter.CanTokensParser());
     }
 
 }
