@@ -19,21 +19,6 @@ public class PersonalBoard {
     private ArrayList<ProductionPower> extraProduction;
 
     /*Default Constructor*/
-    //TODO remove
-    public PersonalBoard(LeaderCard[] startLeaderCards) {
-        OwnedDevCards = new ArrayList[3]; //array di arraylist
-        for( int i=0; i< 3; i++){
-            OwnedDevCards[i] = new ArrayList<DevelopmentCard>();
-        }
-
-        OwnedLeaderCard = new LeaderCard[2];
-        for(int i=0; i<OwnedLeaderCard.length; i++){
-            OwnedLeaderCard[i] = startLeaderCards[i];
-        }
-        extraProduction = new ArrayList<>();
-        extraProduction.add(new ProductionPower(0, new NumberOfResources(), new NumberOfResources(), 2, 1));
-    }
-
     public PersonalBoard(){
         OwnedDevCards = new ArrayList[3]; //array di arraylist
         for( int i=0; i< 3; i++){
