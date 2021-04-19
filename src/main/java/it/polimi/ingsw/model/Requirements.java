@@ -80,22 +80,19 @@ public class Requirements {
         for(ColorDevCard c : ColorDevCard.values()){
             for(Level l: Level.values()){
                 int missing = minNumber[c.ordinal()][l.ordinal()];
-                if(missing>0){
+                Level l1 = l;
+                while(missing>0){
                     //search for a match
-                    int increment =0;
-                    while(l.ordinal() + increment < Level.values().length && missing>0) {
-                        Level l1 = Level.values()[l.ordinal() + increment];
-                        for (DevelopmentCard dev : ownedDevCard) {
-                            if (dev.getColor().equals(c) && dev.getLevel().equals(l1)) {
-                                ownedDevCard.remove(dev);
-                                missing--;
-                                if(missing == 0) break;
-                            }
+                    for (DevelopmentCard dev : ownedDevCard) {
+                        if (dev.getColor().equals(c) && dev.getLevel().equals(l1)) {
+                            ownedDevCard.remove(dev);
+                            missing--;
+                            if(missing == 0) break;
                         }
-                        increment++;
                     }
-                    if(missing>0)  return false;
+                    try{ l1 = l1.getNext(); }catch(IllegalArgumentException e){break;}
                 }
+                if(missing>0)  return false;
             }
         }
 
