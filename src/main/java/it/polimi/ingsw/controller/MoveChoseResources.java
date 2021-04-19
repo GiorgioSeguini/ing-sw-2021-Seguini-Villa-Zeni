@@ -38,15 +38,14 @@ public class MoveChoseResources extends MoveType{
         try {
             player.getToActive().active(player, ofYourChoiceInput, ofYourChoiceOutput);
         }catch(ChoseResourcesException e){
-            //TODO error message
+            player.setErrorMessage(e.getErrorMessage());
             return;
         }catch(OutOfResourcesException e){
-            //TODO something different
+            player.setErrorMessage(e.getErrorMessage());
             return;
         }
         game.popesInspection();
 
         player.setStatus(PlayerStatus.MovePerformed);
-        return;
     }
 }

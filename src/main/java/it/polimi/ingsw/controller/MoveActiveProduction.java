@@ -31,7 +31,7 @@ public class MoveActiveProduction extends MoveType{
 
         for(ProductionPower p : toActive) {
             if (!productionOwned.contains(p)) {
-                //TODO
+                player.setErrorMessage(ErrorMessage.CardNotOwned);
                 return false;
             }
         }
@@ -50,7 +50,7 @@ public class MoveActiveProduction extends MoveType{
 
         if(player.isActivable()) {
             player.setToActive(null);
-            //TODO error message
+            player.setErrorMessage(ErrorMessage.OutOfResourcesError);
             return;
         }
 

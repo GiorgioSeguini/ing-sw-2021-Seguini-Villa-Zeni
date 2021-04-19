@@ -35,9 +35,6 @@ public class MovetypeMarket extends MoveType{
         if(indexToBuy>=4 && indexToBuy<=6)
             buyedresources = market.buyRow(indexToBuy - 4);
 
-        if(buyedresources==null);
-        //TODO check
-
         return buyedresources;
     }
 
@@ -51,8 +48,13 @@ public class MovetypeMarket extends MoveType{
      * returns FALSE if it doesn't.*/
     @Override
     public void performMove(Game game){
+        ArrayList<MarbleColor> marbles = takeMarbles(indexToBuy, game.getMarketTray());
+        if(marbles==null) {
+            player.setErrorMessage(ErrorMessage.BadChoice);
+            return;
+        }
         try {
-            player.getConverter().convertAll(takeMarbles(indexToBuy, game.getMarketTray()));
+            player.getConverter().convertAll(marbles);
             player.setStatus(PlayerStatus.NeedToStore);
         }
         catch (HaveToChooseException error) {

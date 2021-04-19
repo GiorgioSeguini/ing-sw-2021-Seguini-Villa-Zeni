@@ -3,6 +3,7 @@ package it.polimi.ingsw.controller;
 import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.NumberOfResources;
 import it.polimi.ingsw.model.Player;
+import it.polimi.ingsw.model.enumeration.ErrorMessage;
 import it.polimi.ingsw.model.enumeration.GameStatus;
 import it.polimi.ingsw.model.exception.UnableToFillException;
 
@@ -18,17 +19,17 @@ public class MoveChoseInitialResources extends MoveType{
     @Override
     public boolean canPerform(Game game){
         if(game.getStatus() != GameStatus.Initial){
-            //TODO errror message
+            player.setErrorMessage(ErrorMessage.MoveNotAllowed);
             return false;
         }
 
         if(game.getPlayerIndex(player)<0){
-            //TODO error message
+            player.setErrorMessage(ErrorMessage.BadChoice);
             return false;
         }
 
         if(game.getInitialResources(player)!=resources.size()){
-            //TODO error message
+            player.setErrorMessage(ErrorMessage.BadChoice);
             return false;
         }
 

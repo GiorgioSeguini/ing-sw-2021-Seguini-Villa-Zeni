@@ -37,14 +37,14 @@ public class MoveBuyDevCard extends MoveType{
 
         if(!game.getDashboard().getTopDevCard(cardToBuy.getColor(),cardToBuy.getLevel()).equals(cardToBuy)){
             //la carta che il player vuole comprare non è la prima della pila quindi deve sceglierne un'altra
-            //TODO ERROR MESSAGE
+            player.setErrorMessage(ErrorMessage.BadChoice);
             return false;
         }
 
         NumberOfResources realCost = cardToBuy.getCost().safe_sub(player.getDiscount());
         if (!player.getDepots().match(realCost)){
             //qui bisogna dire al player che non può comprare quella carta perchè non ha abbastazna risorse e quindi di sceglierne un'altra
-            //TODO ERROR MESSAGE
+            player.setErrorMessage(ErrorMessage.OutOfResourcesError);
         }
 
         return true;
@@ -56,7 +56,7 @@ public class MoveBuyDevCard extends MoveType{
         try {
             player.getPersonalBoard().addDevCard(cardToBuy,pos);
         } catch (NoSpaceException e) {
-            //TODO ERROR MESSAGE
+            player.setErrorMessage(e.getErrorMessage());
             return;
         }
         game.getDashboard().buyDevCard(cardToBuy.getColor(),cardToBuy.getLevel());

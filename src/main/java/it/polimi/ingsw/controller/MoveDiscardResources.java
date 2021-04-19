@@ -43,10 +43,10 @@ public class MoveDiscardResources extends MoveType{
                 game.popesInspection();
             }
         } catch (OutOfResourcesException e) {
-            //TODO error messahe
+            player.setErrorMessage(e.getErrorMessage());
             return;
         }catch (UnableToFillException e){
-            //TODO error message
+            player.setErrorMessage(e.getErrorMessage());
             return;
         }
 

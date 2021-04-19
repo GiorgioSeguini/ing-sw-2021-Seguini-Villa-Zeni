@@ -26,7 +26,7 @@ public class MoveWhiteConversion extends MoveType{
         if(!super.canPerform(game)) return false;
 
         if(!player.getConverter().CheckIntegrityToConvert(whiteMarbles)){
-            //TODO error Message
+            player.setErrorMessage(ErrorMessage.BadChoice);
             return false;
         }
         return true;

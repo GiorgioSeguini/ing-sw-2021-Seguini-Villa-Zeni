@@ -33,12 +33,12 @@ public class MoveLeader extends MoveType{
                 }
         } catch (NoMoreLeaderCardAliveException e) {
             //Il player non ha più carte leader in mano
-            //TODO ERROR MESSAGE
+            player.setErrorMessage(e.getErrorMessage());
             return false;
         }
 
         if (!isPresent) {
-            //TODO ERROR MESSAGE
+            player.setErrorMessage(ErrorMessage.CardNotOwned);
             return false;
         }
 
@@ -51,15 +51,15 @@ public class MoveLeader extends MoveType{
 
         if (move == 0) {
             if (!leaderCard.setPlayed(player)) {
-                //TODO ERROR MESSAGE
+                player.setErrorMessage(ErrorMessage.BadChoice);
                 return;
             }
         }
 
         if (move == 1)
             if (!leaderCard.setDiscard(player)) {
-                //TODO ERROR MESSAGE
-                return;
+                player.setErrorMessage(ErrorMessage.BadChoice);
+                //return;
             }
     }
 }

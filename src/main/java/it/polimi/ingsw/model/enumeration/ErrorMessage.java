@@ -10,6 +10,8 @@ public enum ErrorMessage {
     OutOfResourcesError,
     UnableToFillError,
     MoveNotAllowed,
-    NotYourTurn
+    NotYourTurn,
+    CardNotOwned,
+    BadChoice
 
 }
