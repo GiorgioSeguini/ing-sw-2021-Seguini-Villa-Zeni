@@ -36,6 +36,15 @@ public class Dashboard {
         return dashBoard[level.ordinal()][color.ordinal()].get(dashBoard[level.ordinal()][color.ordinal()].size() -1);
     }
 
+    public boolean isEmpty(ColorDevCard color){
+        Level l = Level.ONE;
+        while(true){
+            if(!dashBoard[l.ordinal()][color.ordinal()].isEmpty()) return false;
+            try {l = l.getNext();} catch(IllegalArgumentException e){break;}
+        }
+        return true;
+    }
+
     /**
      * @param color 
      * @param level 
@@ -53,7 +62,7 @@ public class Dashboard {
     }
 
     //remove two devcard when discard2 token is activeted
-    public void removeCard(ColorDevCard color, int n) throws IllegalArgumentException{      //TODO valutere se cambiare nome
+    public void removeCard(ColorDevCard color, int n) throws IllegalArgumentException{
         Level l = Level.ONE;
         while(n>0){
             try{

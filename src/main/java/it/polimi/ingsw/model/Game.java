@@ -118,7 +118,7 @@ public class Game {
             throw new IllegalArgumentException();
         }
         Player winner;
-        if(soloGame == null) {
+        if(players.size()>1) {
             //multiplayer
             int max = players.get(0).getVictoryPoints();
             winner = players.get(0);
@@ -130,9 +130,8 @@ public class Game {
             }
         }
         else{
-            //single player
-            //TODO
-            winner=players.get(0);
+            if(soloGame.isWinner()) winner=null;
+            else winner=players.get(0);
         }
 
         return winner;
@@ -164,14 +163,13 @@ public class Game {
                 try {
                     soloGame.getFaithTrack().popeInspection(index);
                 }catch(FinalTurnException e){
-                    //TODO Lorenzo il maginfico wins the game!
+                    soloGame.setWinner();
                 }
             }
             for(Player p : players){
                 try{
                     p.getFaithTrack().popeInspection(index);
                 }catch(FinalTurnException e){
-                    //TODO eventualmente si può rilanciare al chiamante
                     setFinalTurn();
                 }
             }
@@ -181,8 +179,14 @@ public class Game {
     public void nextTurn(){
         players.get(indexPlayingPlayer).setStatus(PlayerStatus.Waiting);
         indexPlayingPlayer++;
-        indexPlayingPlayer%=players.size();
-        players.get(indexPlayingPlayer).setStatus(PlayerStatus.Active);
+        if(indexPlayingPlayer==players.size()){
+            indexPlayingPlayer=0;
+            if(status==GameStatus.LastTurn){
+                status=GameStatus.Ended;
+            }else{
+                players.get(indexPlayingPlayer).setStatus(PlayerStatus.Active);
+            }
+        }
     }
 
     public GameStatus getStatus() {

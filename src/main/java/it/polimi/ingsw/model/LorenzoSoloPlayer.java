@@ -7,6 +7,7 @@ public class LorenzoSoloPlayer {
 
     private final FaithTrack faithTrack;
     private final Game game;
+    private boolean isWinner;
 
     private ArrayList<SoloActionTokens> soloActionTokens;
     private ArrayList<SoloActionTokens> copyOfSoloActionTokens;
@@ -22,6 +23,7 @@ public class LorenzoSoloPlayer {
             soloActionTokens.add(x);
         }
         Collections.shuffle(soloActionTokens);
+        isWinner=false;
 
         copyOfSoloActionTokens = new ArrayList<SoloActionTokens>(7);
         copyOfSoloActionTokens = (ArrayList<SoloActionTokens>) soloActionTokens.clone();
@@ -37,6 +39,10 @@ public class LorenzoSoloPlayer {
         return game;
     }
 
+    public boolean isWinner(){
+        return this.isWinner;
+    }
+
     public ArrayList<SoloActionTokens> getSoloActionTokens() {
         return (ArrayList<SoloActionTokens>) soloActionTokens.clone();
     }
@@ -48,6 +54,11 @@ public class LorenzoSoloPlayer {
     public ArrayList<SoloActionTokens> getCopyOfSoloActionTokensInit() {
         return (ArrayList<SoloActionTokens>) copyOfSoloActionTokens.clone();
     }
+
+    public void setWinner(){
+        isWinner=true;
+    }
+
 
     /*setter*/
     public void setSoloActionTokens(ArrayList<SoloActionTokens> soloActionTokens) {

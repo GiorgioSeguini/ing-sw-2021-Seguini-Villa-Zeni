@@ -51,10 +51,6 @@ public class Requirements {
         return numberOfResourceses;
     }
 
-    public int getReq(ColorDevCard color) {
-        //TODO
-        return 0;
-    }
 
     public int getReq(ColorDevCard color, Level level) {
         return minNumber[color.ordinal()][level.ordinal()];
