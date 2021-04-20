@@ -49,7 +49,7 @@ public class PersonalBoard {
             case 2:
                 throw new NoMoreLeaderCardAliveException();
         }
-        return OwnedLeaderCard.clone();
+        return OwnedLeaderCard;
     }
 
     public ArrayList<DevelopmentCard> getOwnedDevCards() {
