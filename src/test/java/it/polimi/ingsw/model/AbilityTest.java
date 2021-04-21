@@ -16,6 +16,16 @@ public class AbilityTest{
     public void DepotsAbilityTest() {
         DepotsAbility ability= new DepotsAbility(ResourceType.Coins);
 
+        //test getter
+        assertEquals(ability.getTypeOfRes(), ResourceType.Coins);
+
+        //test equals
+        assertEquals(ability, ability);
+        assertEquals(ability, new DepotsAbility(ResourceType.Coins));
+        assertNotEquals(ability, new DepotsAbility(ResourceType.Servants));
+        assertNotEquals(ability, new Object());
+
+
         Player player= new Player("Pippo");
         try {
             player.getDepots().addResourcesFromMarket(new NumberOfResources(1,2,3,0));
@@ -47,6 +57,15 @@ public class AbilityTest{
         WhiteAbility ability= new WhiteAbility(ResourceType.Coins);
         WhiteAbility ability2= new WhiteAbility(ResourceType.Shields);
 
+        //test getter
+        assertEquals(ability.getTypeOfRes(), ResourceType.Coins);
+
+        //test equals
+        assertEquals(ability, ability);
+        assertEquals(ability, new WhiteAbility(ResourceType.Coins));
+        assertNotEquals(ability, new WhiteAbility(ResourceType.Servants));
+        assertNotEquals(ability, new Object());
+
         Player player= new Player("Pippo");
 
         ability.RunAbility(player);
@@ -63,6 +82,17 @@ public class AbilityTest{
         DiscountAbility ability2=new DiscountAbility(ResourceType.Servants, 2);
         Player player= new Player("Pippo");
 
+        //test getter
+        assertEquals(ability.getTypeOfRes(), ResourceType.Coins);
+        assertEquals(5, ability.getDiscountAmount());
+
+        //test equals
+        assertEquals(ability, ability);
+        assertEquals(ability, new DiscountAbility(ResourceType.Coins, 5));
+        assertNotEquals(ability, new DiscountAbility(ResourceType.Coins, 3));
+        assertNotEquals(ability, new DiscountAbility(ResourceType.Servants, 5));
+        assertNotEquals(ability, new Object());
+
         ability.RunAbility(player);
         ability2.RunAbility(player);
 
@@ -73,6 +103,15 @@ public class AbilityTest{
     public void PowerProductionPlusAbilityTest(){
         ProductionPowerPlusAbility ability= new ProductionPowerPlusAbility(ResourceType.Coins);
         Player player= new Player("Pippo");
+
+        //test getter
+        assertEquals(ability.getTypeOfRes(), ResourceType.Coins);
+
+        //test equals
+        assertEquals(ability, ability);
+        assertEquals(ability, new ProductionPowerPlusAbility(ResourceType.Coins));
+        assertNotEquals(ability, new ProductionPowerPlusAbility(ResourceType.Servants));
+        assertNotEquals(ability, new Object());
 
         ability.RunAbility(player);
 

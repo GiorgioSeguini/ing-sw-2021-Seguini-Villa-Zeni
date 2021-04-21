@@ -25,9 +25,9 @@ public class ShelfTest {
         test=new Shelf(1);
         test2=new Shelf(2);
         test3= new Shelf(3);
-        assertEquals(test.getResType(),null);
-        assertEquals(test2.getResType(),null);
-        assertEquals(test3.getResType(),null);
+        assertNull(test.getResType());
+        assertNull(test2.getResType());
+        assertNull(test3.getResType());
     }
 
     @Test
@@ -72,6 +72,20 @@ public class ShelfTest {
         assertEquals(test.getResType(),ResourceType.Coins);
         test.setResType(ResourceType.Shields);
         assertEquals(test.getResType(),ResourceType.Shields);
+    }
+
+    @Test
+    void exception(){
+        try{
+            new Shelf(-1);
+            fail();
+        }catch(IllegalArgumentException ignored){}
+
+        Shelf shelf = new Shelf(0);
+        try {
+            shelf.setUsed(-1);
+            fail();
+        }catch(IllegalArgumentException ignored){}
     }
 
 }

@@ -84,7 +84,8 @@ class LorenzoSoloPlayerTest {
         int dim = game.getSoloGame().getSoloActionTokens().size();
         SoloActionTokens NextRevealedToken = game.getSoloGame().getSoloActionTokens().get(0);
         game.getSoloGame().revealToken();
-        assertFalse(game.getSoloGame().getSoloActionTokens().contains(NextRevealedToken));
+        ArrayList <SoloActionTokens> temp = game.getSoloGame().getSoloActionTokens();
+        assertFalse(temp.contains(NextRevealedToken));                                  //a volte va, a volte no, Boh? TODO
         assertEquals(--dim,game.getSoloGame().getSoloActionTokens().size());
 
     }
