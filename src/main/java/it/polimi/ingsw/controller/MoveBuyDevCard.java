@@ -35,7 +35,7 @@ public class MoveBuyDevCard extends MoveType{
 
         if(!super.canPerform(game)) return false;
 
-        if(!game.getDashboard().getTopDevCard(cardToBuy.getColor(),cardToBuy.getLevel()).equals(cardToBuy)){
+        if(!cardToBuy.equals(game.getDashboard().getTopDevCard(cardToBuy.getColor(),cardToBuy.getLevel()))){
             //la carta che il player vuole comprare non è la prima della pila quindi deve sceglierne un'altra
             player.setErrorMessage(ErrorMessage.BadChoice);
             return false;

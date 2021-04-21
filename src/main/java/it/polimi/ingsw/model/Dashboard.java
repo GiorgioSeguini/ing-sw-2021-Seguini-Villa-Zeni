@@ -9,31 +9,44 @@ import java.util.*;
 
 public class Dashboard {
 
-    private Stack<DevelopmentCard>[][] dashBoard;
+    private final Stack<DevelopmentCard>[][] dashBoard;
 
     /**
-     * Default constructor
+     * Default constructor, ensure correct classification of cards and randomness
+     * @param developmentCards arraylist containing all the development card for this dashboard
      */
     public Dashboard(ArrayList<DevelopmentCard> developmentCards) {
+        //initialization
         dashBoard = new Stack[Level.size()][ColorDevCard.size()]; //number of level * number of colors
         for(Level l : Level.values()){
             for(ColorDevCard c: ColorDevCard.values()){
                 dashBoard[l.ordinal()][c.ordinal()] = new Stack<>();
             }
         }
+
+        //load cards
         for(DevelopmentCard card: developmentCards){
             dashBoard[card.getLevel().ordinal()][card.getColor().ordinal()].add(card);
+        }
+
+        //shuffle
+        for(Level l : Level.values()){
+            for(ColorDevCard c: ColorDevCard.values()){
+                Collections.shuffle(dashBoard[l.ordinal()][c.ordinal()]);
+            }
         }
     }
 
 
     /**
-     * @param color 
-     * @param level 
-     * @return
+     * @param color of the card wanted
+     * @param level of che card wanted
+     * @return null if stack is empty, otherwise return the card in the top position, the one you can buy
      */
     public DevelopmentCard getTopDevCard(ColorDevCard color, Level level) {
-        return dashBoard[level.ordinal()][color.ordinal()].get(dashBoard[level.ordinal()][color.ordinal()].size() -1);
+        int size = dashBoard[level.ordinal()][color.ordinal()].size();
+        if(size ==0) return null;
+        return dashBoard[level.ordinal()][color.ordinal()].get(size -1);
     }
 
     public boolean isEmpty(ColorDevCard color){
@@ -46,9 +59,10 @@ public class Dashboard {
     }
 
     /**
-     * @param color 
-     * @param level 
-     * @return
+     * @param color of the card wanted
+     * @param level of che card wanted
+     * @return the card you wnat to buy, and remove it from the dashboard
+     * @throws IllegalArgumentException when the card required is no more available
      */
     public DevelopmentCard buyDevCard(ColorDevCard color, Level level) throws IllegalArgumentException{
         /*DevelopmentCard result = getTopDevCard(color, level);
@@ -61,7 +75,12 @@ public class Dashboard {
         return dashBoard[level.ordinal()][color.ordinal()].pop();
     }
 
-    //remove two devcard when discard2 token is activeted
+    /**
+     * Methods used by the solo Action Token
+     * @param color of the cards wanted to be removed
+     * @param n number of the cards to remove
+     * @throws IllegalArgumentException if there are not enough card of the required color
+     */
     public void removeCard(ColorDevCard color, int n) throws IllegalArgumentException{
         Level l = Level.ONE;
         while(n>0){
