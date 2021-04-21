@@ -45,8 +45,18 @@ class RequirementsTest {
             fail();
         }
 
-        Requirements test = (new Requirements(res1));
+        Requirements test = new Requirements(res1);
         Requirements test2 = new Requirements(req1);
+
+        //getter test
+        assertEquals(res1, test.getNumberOfResourceses());
+        assertEquals(1, test2.getReq(ColorDevCard.BLUE, Level.ONE));
+
+        //equality test
+        assertNotEquals(test, test2);
+        assertNotEquals(test, new Requirements());
+
+        assertFalse(test.match(new Player("Gio")));
         assertTrue(test.match(owner));
         assertFalse(test2.match(owner));
         try {
@@ -57,5 +67,23 @@ class RequirementsTest {
         }
         assertTrue(test2.match(owner));
 
+    }
+
+
+    @Test
+    public void test2(){
+
+        //empty constructor test
+        Requirements requirements = new Requirements();
+        assertEquals(new NumberOfResources(), requirements.getNumberOfResourceses());
+
+        for(int[] i: requirements.getMinNumber()){
+            for(int j : i){
+                assertEquals(0, j);
+            }
+        }
+
+        assertEquals(requirements, requirements);
+        assertNotEquals(requirements, new Object());
     }
 }

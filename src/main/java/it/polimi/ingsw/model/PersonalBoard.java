@@ -59,14 +59,6 @@ public class PersonalBoard {
         return result;
     }
 
-    /**Those methods allow to get top DevCard of the stacks on the player's personal board**/
-    private DevelopmentCard getTopDevCard(int index) {
-        DevelopmentCard topdevcard = null;
-        if(goodindex(index)){
-            topdevcard = OwnedDevCards[index].get(0);
-        }
-        return topdevcard;
-    }
 
     /**This return the sum of card's victory points**/
     public int getVictoryPoints() {
@@ -107,7 +99,7 @@ public class PersonalBoard {
         }
 
         if(leaderCard.length!= MAX_LEAD_CARD){
-            throw new IndexOutOfBoundsException();
+            throw new IllegalArgumentException();
         }
 
         for(int i=0; i<MAX_LEAD_CARD; i++) {
@@ -155,9 +147,9 @@ public class PersonalBoard {
 
 
         for(int i=0; i<3; i++){
-            try {
-                res.add(getTopDevCard(i).getProductionPower());
-            }catch(IndexOutOfBoundsException ignored){};
+            if(!OwnedDevCards[i].isEmpty()){
+                res.add(OwnedDevCards[i].get(0).getProductionPower());
+            }
         }
 
         return res;
