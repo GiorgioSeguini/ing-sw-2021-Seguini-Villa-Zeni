@@ -44,7 +44,7 @@ public class Game {
         else{
             soloGame = null;
         }
-        this.leaderCards = leaderCards;
+        this.leaderCards = new ArrayList<>(leaderCards);
         this.marketTray = market;
         this.dashboard = dashboard;
         this.status = GameStatus.Initial;
@@ -74,7 +74,7 @@ public class Game {
     }
 
     public ArrayList<Player> getPlayers(){
-        return this.players;
+        return new ArrayList<>(this.players);
     }
 
     /**
@@ -114,14 +114,13 @@ public class Game {
      * @return
      */
     public Player getWinner() throws IllegalArgumentException{
-        if(status != GameStatus.LastTurn || indexPlayingPlayer!=0){
+        if(status != GameStatus.Ended){
             throw new IllegalArgumentException();
         }
-        Player winner;
+        Player winner = null;
         if(players.size()>1) {
             //multiplayer
-            int max = players.get(0).getVictoryPoints();
-            winner = players.get(0);
+            int max = 0;
             for(Player p: players){
                 if(p.getVictoryPoints()>max){
                     max = p.getVictoryPoints();
@@ -130,19 +129,11 @@ public class Game {
             }
         }
         else{
-            if(soloGame.isWinner()) winner=null;
-            else winner=players.get(0);
+            if(!soloGame.isWinner())
+                winner=players.get(0);
         }
 
         return winner;
-    }
-
-    public void setFinalTurn() {
-        status = GameStatus.LastTurn;
-    }
-
-    public boolean isFinalTurn() {
-        return status == GameStatus.LastTurn;
     }
 
     public void popesInspection(){
@@ -234,7 +225,7 @@ public class Game {
     }
 
     public int getInitialResources(Player player){
-        int index = getPlayerIndex(player)* INITIAL_LEADER_CARD;
+        int index = getPlayerIndex(player);
         if(index<0)
             throw new IllegalArgumentException();
 

@@ -95,7 +95,7 @@ class LorenzoSoloPlayerTest {
         tokens.add(new Move2());
         tokens.add(new MoveShuffle());
         tokens.add(new Discard2(ColorDevCard.BLUE));
-        //just three tokens, to win I'm sure it shuold perform at least one time a MoveShuffle and two Discard2
+        //just three tokens, to win I'm sure it should perform at least one time a MoveShuffle and two Discard2
 
 
         assertEquals(ColorDevCard.BLUE, (new Discard2(ColorDevCard.BLUE)).getColor());
@@ -120,6 +120,7 @@ class LorenzoSoloPlayerTest {
         Market market = new Market(Starter.MarblesParser());
 
         Game game = new Game(single, market, new Dashboard(card), tokens, leaderCards);
+        assertNotNull(game.getSoloGame());
 
         game.updateStatus();
         assertEquals(GameStatus.Initial, game.getStatus());
@@ -135,6 +136,7 @@ class LorenzoSoloPlayerTest {
         }
 
         assertEquals(GameStatus.Ended, game.getStatus());
+        assertNull(game.getWinner());
 
     }
 }
