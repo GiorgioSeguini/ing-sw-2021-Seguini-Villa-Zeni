@@ -153,11 +153,45 @@ class NumberOfResourcesTest {
         NumberOfResources test4 = new NumberOfResources();
 
         assertEquals(test, test);
+        assertNotEquals(test, new Object());
         assertEquals(test, test3);
         assertNotEquals(test1, test);
         assertNotEquals(test, test4);
         assertNotEquals(test1, test4);
         assertEquals(test4, test4);
 
+    }
+
+    @Test
+    void exception(){
+        NumberOfResources test = new NumberOfResources();
+
+        try {
+            test.sub(ResourceType.Coins, -1);
+            fail();
+        }catch(OutOfResourcesException e){
+            fail();
+        }
+        catch(IllegalArgumentException ignored){}
+
+        try {
+            test.add(ResourceType.Coins, -1);
+            fail();
+        }
+        catch(IllegalArgumentException ignored){}
+
+
+    }
+
+    @Test
+    void safe_sub(){
+
+        NumberOfResources test = new NumberOfResources();
+        NumberOfResources test1 = new NumberOfResources(1, 1, 1, 1);
+        NumberOfResources test2 = new NumberOfResources(2, 0, 0, 1);
+
+        assertEquals(new NumberOfResources(), test.safe_sub(test1));
+
+        assertEquals(new NumberOfResources(0, 1, 1, 0), test1.safe_sub(test2));
     }
 }
