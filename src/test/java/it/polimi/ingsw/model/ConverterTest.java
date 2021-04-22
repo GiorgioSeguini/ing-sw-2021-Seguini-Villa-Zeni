@@ -113,6 +113,43 @@ public class ConverterTest {
 
 
     }
+
+    @Test
+    public void setResourcesTest(){
+        Player player= new Player("Pippo");
+        NumberOfResources x= new NumberOfResources(1,2,3,4);
+
+        player.getConverter().setResources(x);
+        assertEquals(new NumberOfResources(1,2,3,4), player.getConverter().getResources());
+    }
+
+    @Test
+    public void IsWhiteAbilityActiveTest(){
+        Player player= new Player("Pippo");
+        WhiteAbility whiteAbility= new WhiteAbility(ResourceType.Coins);
+
+        whiteAbility.RunAbility(player);
+
+        assertTrue(player.getConverter().IsWhiteAbilityActive());
+
+        Converter converter= new Converter(player);
+
+        assertFalse(converter.IsWhiteAbilityActive());
+
+    }
+
+    @Test
+    public void WhiteMarbleConverterTest(){
+        Player player= new Player("Pippo");
+
+        ArrayList<ResourceType> whites= new ArrayList<>();
+        for(ResourceType x: ResourceType.values()){
+            whites.add(x);
+        }
+
+        player.getConverter().WhiteMarbleConverter(whites);
+        assertEquals(new NumberOfResources(1,1,1,1), player.getConverter().getResources());
+    }
 }
 
 

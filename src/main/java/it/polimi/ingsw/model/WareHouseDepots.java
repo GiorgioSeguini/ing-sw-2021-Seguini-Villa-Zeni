@@ -67,7 +67,7 @@ public class WareHouseDepots {
 
     /** This method add the resources to all the shelf if it found them. */
     public void subResource(NumberOfResources required) throws OutOfResourcesException{
-        NumberOfResources old_resources=this.getResources();
+        //NumberOfResources old_resources=this.getResources();
         NumberOfResources new_resources=this.getResources();
         new_resources=new_resources.sub(required);
         try{
@@ -75,12 +75,7 @@ public class WareHouseDepots {
             fill_correctly(new_resources);
         }
         catch (UnableToFillException error){
-            CleanShelf();
-            try{
-                fill_correctly(old_resources);
-            }catch (UnableToFillException error2){
-                //I don expect to enter here
-            }
+            //I don't expect to enter here. If I can sub the required resources, obviously I can fill them;
         }
     }
 
