@@ -11,6 +11,7 @@ import java.util.*;
 public class PersonalBoard {
 
     private static final int MAX_LEAD_CARD = 2;
+    private static final int MAX_DEV_CARD = 7;
 
     private ArrayList<DevelopmentCard>[] OwnedDevCards;
 
@@ -120,6 +121,10 @@ public class PersonalBoard {
         }
 
         return res;
+    }
+
+    public boolean isFull(){
+        return getOwnedDevCards().size()==MAX_DEV_CARD;
     }
 
     /**This for check the index**/

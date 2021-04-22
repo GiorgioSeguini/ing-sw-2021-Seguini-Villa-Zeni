@@ -49,13 +49,17 @@ public class Dashboard {
         return dashBoard[level.ordinal()][color.ordinal()].get(size -1);
     }
 
-    public boolean isEmpty(ColorDevCard color){
-        Level l = Level.ONE;
-        while(true){
-            if(!dashBoard[l.ordinal()][color.ordinal()].isEmpty()) return false;
-            try {l = l.getNext();} catch(IllegalArgumentException e){break;}
+    public boolean isEmpty(){
+        for(ColorDevCard color: ColorDevCard.values()){
+            boolean empty = true;
+            for(Level level : Level.values()){
+                if(!dashBoard[level.ordinal()][color.ordinal()].isEmpty()){
+                    empty=false;
+                }
+            }
+            if(empty) return true;
         }
-        return true;
+        return false;
     }
 
     /**

@@ -2,7 +2,7 @@ package it.polimi.ingsw.model;
 
 import it.polimi.ingsw.model.enumeration.GameStatus;
 import it.polimi.ingsw.model.enumeration.PlayerStatus;
-import it.polimi.ingsw.model.exception.FinalTurnException;
+
 
 import java.util.*;
 /*Last Edit: Gio*/
@@ -148,6 +148,7 @@ public class Game {
     public void popesInspection(){
         int index = -1;
         if(players.size()==1){
+            //single player
             int temp = soloGame.getFaithTrack().inspectionNeed();
             if(temp>=0)
                 index = temp;
@@ -157,34 +158,45 @@ public class Game {
             if(temp>=0)
                 index = temp;
         }
-
+        //real pope's inspection
         if(index >=0){
             if(players.size()==1){
-                try {
-                    soloGame.getFaithTrack().popeInspection(index);
-                }catch(FinalTurnException e){
-                    soloGame.setWinner();
-                }
+                soloGame.getFaithTrack().popeInspection(index);
             }
             for(Player p : players){
-                try{
-                    p.getFaithTrack().popeInspection(index);
-                }catch(FinalTurnException e){
-                    setFinalTurn();
-                }
+                p.getFaithTrack().popeInspection(index);
             }
         }
     }
 
     public void nextTurn(){
         players.get(indexPlayingPlayer).setStatus(PlayerStatus.Waiting);
-        indexPlayingPlayer++;
-        if(indexPlayingPlayer==players.size()){
-            indexPlayingPlayer=0;
-            if(status==GameStatus.LastTurn){
+        if(players.size()==0){
+            //single player
+            if(players.get(indexPlayingPlayer).getFaithTrack().isEnd() || players.get(indexPlayingPlayer).getPersonalBoard().isFull()){
                 status=GameStatus.Ended;
-            }else{
-                players.get(indexPlayingPlayer).setStatus(PlayerStatus.Active);
+            }
+            soloGame.revealToken();
+            if(soloGame.getFaithTrack().isEnd() || getDashboard().isEmpty()){
+                status=GameStatus.Ended;
+                soloGame.setWinner();
+            }
+        }
+        else {
+            if(status == GameStatus.Running){
+                //check for final turn
+                if(players.get(indexPlayingPlayer).getFaithTrack().isEnd() || players.get(indexPlayingPlayer).getPersonalBoard().isFull()){
+                    status=GameStatus.LastTurn;
+                }
+            }
+            indexPlayingPlayer++;
+            if (indexPlayingPlayer == players.size()) {
+                indexPlayingPlayer = 0;
+                if (status == GameStatus.LastTurn) {
+                    status = GameStatus.Ended;
+                } else {
+                    players.get(indexPlayingPlayer).setStatus(PlayerStatus.Active);
+                }
             }
         }
     }

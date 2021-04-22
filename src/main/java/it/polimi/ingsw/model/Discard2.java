@@ -24,8 +24,6 @@ public class Discard2 implements SoloActionTokens {
         try {
             game.getDashboard().removeCard(color, 2);
         }catch(IllegalArgumentException ignored){};
-        if(game.getDashboard().isEmpty(color))
-            game.getSoloGame().setWinner();
 
     }
 }

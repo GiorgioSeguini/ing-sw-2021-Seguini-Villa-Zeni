@@ -1,7 +1,6 @@
 package it.polimi.ingsw.model;
 
 import it.polimi.ingsw.model.enumeration.PopesFavorStates;
-import it.polimi.ingsw.model.exception.FinalTurnException;
 
 
 import java.lang.reflect.Array;
@@ -72,14 +71,16 @@ public class FaithTrack {
         return -1;
     }
 
-    void popeInspection(int index) throws FinalTurnException{
+    void popeInspection(int index){
         if(faithPoints>=popesFavorInitialPosition[index])
             popesFavor[index]=PopesFavorStates.FaceUp;
         else{
             popesFavor[index]=PopesFavorStates.Discarded;
         }
-        if(faithPoints==MAX_POINTS)
-            throw new FinalTurnException();
+    }
+
+    boolean isEnd(){
+        return faithPoints==MAX_POINTS;
     }
 
 }

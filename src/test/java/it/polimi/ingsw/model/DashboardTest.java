@@ -14,7 +14,7 @@ class DashboardTest {
     void emptyDashboard(){
         Dashboard d = new Dashboard(new ArrayList<>());
         for(ColorDevCard color : ColorDevCard.values())
-            if(!d.isEmpty(color)) fail();
+            if(!d.isEmpty()) fail();
 
         try{
             for(ColorDevCard color : ColorDevCard.values())
@@ -42,11 +42,6 @@ class DashboardTest {
         if(!cards.contains(c1)) fail();
         assertEquals(c1, d.getTopDevCard(ColorDevCard.BLUE, Level.ONE));
 
-        //isEmptyTest
-        assertFalse(d.isEmpty(ColorDevCard.BLUE));
-        for(ColorDevCard color : ColorDevCard.values())
-            if(!color.equals(ColorDevCard.BLUE))
-                assertTrue(d.isEmpty(color));
 
         //buy Test
         assertTrue(cards.remove(d.buyDevCard(ColorDevCard.BLUE, Level.ONE)));
@@ -61,7 +56,7 @@ class DashboardTest {
             fail();
         }catch(IllegalArgumentException ignored){}
 
-        assertTrue(d.isEmpty(ColorDevCard.BLUE));
+        assertTrue(d.isEmpty());
 
 
 
@@ -75,6 +70,10 @@ class DashboardTest {
         cards.add(new DevelopmentCard(Level.TWO, ColorDevCard.BLUE, new NumberOfResources(), new ProductionPower(), 1));
         cards.add(new DevelopmentCard(Level.ONE, ColorDevCard.BLUE, new NumberOfResources(), new ProductionPower(), 2));
         cards.add(new DevelopmentCard(Level.THREE, ColorDevCard.BLUE, new NumberOfResources(), new ProductionPower(), 3));
+        cards.add(new DevelopmentCard(Level.ONE, ColorDevCard.GREEN, new NumberOfResources(), new ProductionPower(), 0));
+        cards.add(new DevelopmentCard(Level.TWO, ColorDevCard.YELLOW, new NumberOfResources(), new ProductionPower(), 1));
+        cards.add(new DevelopmentCard(Level.ONE, ColorDevCard.PURPLE, new NumberOfResources(), new ProductionPower(), 2));
+
 
         Dashboard d = new Dashboard(cards);
 
@@ -88,10 +87,10 @@ class DashboardTest {
         assertNull(d.getTopDevCard(ColorDevCard.YELLOW, Level.ONE));
 
 
-        //remove test
-        assertFalse(d.isEmpty(ColorDevCard.BLUE));
+        //remove test e isEmpity test
+        assertFalse(d.isEmpty());
         d.removeCard(ColorDevCard.BLUE, 4);
-        assertTrue(d.isEmpty(ColorDevCard.BLUE));
+        assertTrue(d.isEmpty());
 
         try{
             d.removeCard(ColorDevCard.BLUE, 4);
