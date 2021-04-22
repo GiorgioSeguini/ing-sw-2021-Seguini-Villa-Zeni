@@ -1,7 +1,11 @@
 package it.polimi.ingsw.model;
 
 import it.polimi.ingsw.controller.Starter;
+import it.polimi.ingsw.model.enumeration.ErrorMessage;
+import it.polimi.ingsw.model.enumeration.PlayerStatus;
+import it.polimi.ingsw.model.enumeration.ResourceType;
 import it.polimi.ingsw.model.exception.NoMoreLeaderCardAliveException;
+import it.polimi.ingsw.model.exception.UnableToFillException;
 import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.Test;
 
@@ -40,6 +44,10 @@ public class PlayerTest {
         assertEquals(0,player1.getFaithTrack().getFaithPoints());
         assertTrue(player1.getVictoryPoints()>=0);
         assertEquals(0, player1.getDepots().getResources().size());
+        assertEquals(PlayerStatus.Waiting, player1.getStatus());
+        assertEquals(ErrorMessage.NoError, player1.getErrorMessage());
+        assertNull(player1.getToActive());
+        assertFalse(player1.isActivable());
 
     }
 
@@ -69,5 +77,73 @@ public class PlayerTest {
 
         player.getPersonalBoard().getLeaderCards()[0].setPlayed(player);
         assertTrue(player.getVictoryPoints()>0);
+    }
+
+    @Test
+    void discountTest(){
+        Player player = new Player("Pippo");
+
+        assertEquals(new NumberOfResources(), player.getDiscount());
+
+        try{
+            player.addDiscount(ResourceType.Coins, -1);
+            fail();
+        }catch(IllegalArgumentException ignored){}
+
+        player.addDiscount(ResourceType.Coins, 1);
+
+        assertEquals(new NumberOfResources(0, 0, 1, 0), player.getDiscount());
+    }
+
+    @Test
+    void productionTest(){
+        Player player = new Player("Pippo");
+
+        assertNull(player.getToActive());
+
+        //test1
+        ProductionPower power = new ProductionPower(0, new NumberOfResources(1, 2, 3, 4), new NumberOfResources(1, 0, 0, 0));
+        player.setToActive(power);
+
+        assertEquals(power, player.getToActive());
+        assertFalse(player.isActivable());
+
+        try {
+            player.getDepots().addResourcesFromMarket(new NumberOfResources(1, 0, 0, 0));
+        } catch (UnableToFillException e) {
+            fail();
+        }
+
+        assertTrue(player.isActivable());
+
+
+        //test2
+        ProductionPower power1 = new ProductionPower(0, new NumberOfResources(1, 2, 3, 4), new NumberOfResources(1, 0, 0, 0), 1, 0);
+        player.setToActive(power1);
+
+        assertEquals(power1, player.getToActive());
+        assertFalse(player.isActivable());
+
+        try {
+            player.getDepots().addResourcesFromMarket(new NumberOfResources(0, 2, 0, 0));
+        } catch (UnableToFillException e) {
+            fail();
+        }
+
+        assertTrue(player.isActivable());
+    }
+
+    @Test
+    void errorMessage(){
+        Player player = new Player("Pippo");
+        assertEquals(ErrorMessage.NoError, player.getErrorMessage());
+
+        player.setErrorMessage(ErrorMessage.MoveNotAllowed);
+        assertEquals(ErrorMessage.MoveNotAllowed, player.getErrorMessage());
+
+
+        player.setErrorMessage(ErrorMessage.CardNotOwned);
+        assertEquals(ErrorMessage.CardNotOwned, player.getErrorMessage());
+
     }
 }

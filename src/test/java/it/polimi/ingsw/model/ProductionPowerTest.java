@@ -203,5 +203,31 @@ class ProductionPowerTest {
 
     }
 
+    @Test
+    void equals(){
+        NumberOfResources input = new NumberOfResources(3, 0, 1, 0);
+        NumberOfResources input1 = new NumberOfResources();
+        NumberOfResources output = new NumberOfResources(0, 3, 3, 3);
+        NumberOfResources output1 = new NumberOfResources();
+
+        ProductionPower power = new ProductionPower(0, input, output, 0, 0);
+
+        assertEquals(power, power);
+        assertEquals(new ProductionPower(), new ProductionPower());
+        assertEquals(power, new ProductionPower(0, input, output, 0, 0));
+        assertNotEquals(power, new Object());
+        assertNotEquals(power, new ProductionPower(1, input, output, 0, 0));
+        assertNotEquals(power, new ProductionPower(0, input1, output, 0, 0));
+        assertNotEquals(power, new ProductionPower(0, input, output1, 0, 0));
+        assertNotEquals(power, new ProductionPower(0, input, output, 1, 0));
+        assertNotEquals(power, new ProductionPower(0, input, output, 0, 1));
+
+        assertTrue(power.easyActive());
+
+        assertFalse(new ProductionPower(0, input, output, 1, 0).easyActive());
+        assertFalse(new ProductionPower(0, input, output, 0, 1).easyActive());
+        assertFalse(new ProductionPower(0, input, output, 1, 1).easyActive());
+    }
+
 
 }

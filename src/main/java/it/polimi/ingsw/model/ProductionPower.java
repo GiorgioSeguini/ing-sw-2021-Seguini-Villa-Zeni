@@ -94,4 +94,30 @@ public class ProductionPower {
     }
 
 
+    @Override
+    public boolean equals(Object o){
+        if(o==this)
+            return true;
+
+        if(!(o instanceof ProductionPower))
+            return false;
+
+        ProductionPower other = (ProductionPower) o;
+
+        if(this.pointsFaithOut != other.pointsFaithOut)
+            return false;
+
+        if(this.ofYourChoiceInput != other.ofYourChoiceInput)
+            return false;
+
+        if(this.ofYourChoiceOutput != other.ofYourChoiceOutput)
+            return false;
+
+        if(!this.inputRes.equals(other.inputRes))
+            return false;
+
+         return this.outputRes.equals(other.outputRes);
+    }
+
+
 }
