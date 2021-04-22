@@ -171,7 +171,7 @@ public class Game {
 
     public void nextTurn(){
         players.get(indexPlayingPlayer).setStatus(PlayerStatus.Waiting);
-        if(players.size()==0){
+        if(players.size()==1){
             //single player
             if(players.get(indexPlayingPlayer).getFaithTrack().isEnd() || players.get(indexPlayingPlayer).getPersonalBoard().isFull()){
                 status=GameStatus.Ended;

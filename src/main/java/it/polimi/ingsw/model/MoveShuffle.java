@@ -29,7 +29,7 @@ public class MoveShuffle implements SoloActionTokens {
     }
 
     /**This shuffle randomly the SoloActionToken's stack**/
-    private ArrayList<SoloActionTokens> Shuffle(ArrayList<SoloActionTokens> soloActionTokens){
+    /*private ArrayList<SoloActionTokens> Shuffle(ArrayList<SoloActionTokens> soloActionTokens){
         for(int i=0; i<7; i++) {
             int n = (int) (Math.random() * 6.1);
             while(shuffledDeck.get(n) != null) {
@@ -38,6 +38,6 @@ public class MoveShuffle implements SoloActionTokens {
             shuffledDeck.add(n, soloActionTokens.get(i));
         }
         return shuffledDeck;
-    }
+    }*/
 
 }
