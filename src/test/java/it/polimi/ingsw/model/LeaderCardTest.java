@@ -125,6 +125,40 @@ class LeaderCardTest {
 
 
     }
+
+    @Test
+    void equalsTest(){
+        //test equality
+
+
+        LeaderCard card1 = new LeaderCard(new Requirements(), new WhiteAbility(ResourceType.Coins), 0);
+        LeaderCard card2 = new LeaderCard(new Requirements(), new WhiteAbility(ResourceType.Coins), 0);
+        LeaderCard card3 = new LeaderCard(new Requirements(), new WhiteAbility(ResourceType.Coins), 1);
+        LeaderCard card4 = new LeaderCard(new Requirements(), new DepotsAbility(ResourceType.Coins), 0);
+        LeaderCard card5 = new LeaderCard(new Requirements(new NumberOfResources(3,3,3,3)), new WhiteAbility(ResourceType.Coins), 0);
+
+        assertEquals(card1, card1);
+        assertEquals(card2, card1);
+        assertNotEquals(card3, new Object());
+        assertNotEquals(card3, card1);
+        assertNotEquals(card4, card1);
+        assertNotEquals(card5, card1);
+
+        Player player = new Player("Pippo");
+
+        player.getPersonalBoard().addLeaderCard(new LeaderCard[]{card1, card3});
+        card1.setDiscard(player);
+
+        try {
+            assertEquals(1, player.getPersonalBoard().getLeaderCards().length);
+        } catch (NoMoreLeaderCardAliveException e) {
+            fail();
+        }
+
+        assertFalse(card1.setDiscard(player));
+
+
+    }
 }
 
 

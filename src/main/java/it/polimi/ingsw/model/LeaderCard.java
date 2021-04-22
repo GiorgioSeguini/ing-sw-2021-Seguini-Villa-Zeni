@@ -71,6 +71,9 @@ public class LeaderCard extends Card {
 
         LeaderCard other = (LeaderCard) o;
 
+        if(this.getVictoryPoints() != other.getVictoryPoints())
+            return false;
+
         if(!requirements.equals(other.requirements))
             return false;
 
