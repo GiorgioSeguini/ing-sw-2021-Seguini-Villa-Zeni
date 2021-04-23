@@ -15,7 +15,7 @@ public class MovetypeMarket extends MoveType{
 
     private final int indexToBuy;
 
-    public MovetypeMarket(Player player, View view, boolean isLastMove, int indextobuy){
+    public MovetypeMarket(Player player, int indextobuy){
         super(player);
         this.indexToBuy=indextobuy;
         this.allowedStatus = new PlayerStatus[]{PlayerStatus.Active};
