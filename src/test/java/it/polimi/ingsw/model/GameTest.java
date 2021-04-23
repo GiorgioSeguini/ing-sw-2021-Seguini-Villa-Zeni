@@ -186,6 +186,13 @@ class GameTest {
         //now game is running
         assertEquals(GameStatus.Running, game.getStatus());
 
+        //8 faith points for Lorenzo
+        for(int i=0; i<8; i++)
+            game.getSoloGame().getFaithTrack().addPoint();
+
+        game.popesInspection();
+
+        //24 faith points for player
         for(int i=0; i<24; i++)
             game.getCurrPlayer().getFaithTrack().addPoint();
 
