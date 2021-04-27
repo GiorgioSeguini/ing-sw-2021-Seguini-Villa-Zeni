@@ -1,12 +1,11 @@
 package it.polimi.ingsw.server;
 
-import it.polimi.ingsw.controller.Controller;
-import it.polimi.ingsw.controller.Starter;
-import it.polimi.ingsw.model.*;
-import it.polimi.ingsw.model.enumeration.MarbleColor;
-import it.polimi.ingsw.view.RemoteView;
-import it.polimi.ingsw.view.View;
-import org.json.simple.parser.ParseException;
+import it.polimi.ingsw.server.controller.Controller;
+import it.polimi.ingsw.server.controller.Starter;
+import it.polimi.ingsw.server.model.*;
+import it.polimi.ingsw.server.model.enumeration.MarbleColor;
+import it.polimi.ingsw.server.view.RemoteView;
+import it.polimi.ingsw.server.view.View;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -63,6 +62,7 @@ public class Server {
                 leaderCards = Starter.LeaderCardsParser();
             }catch(Exception e){
                 e.printStackTrace();
+                //TODO
                 return;
             }
             Game game = new Game(keys, new Market(marble), new Dashboard(developmentCards), tokens, leaderCards);

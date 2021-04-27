@@ -1,6 +1,6 @@
 package it.polimi.ingsw.server;
 
-import it.polimi.ingsw.observer.Observable;
+import it.polimi.ingsw.server.observer.Observable;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;

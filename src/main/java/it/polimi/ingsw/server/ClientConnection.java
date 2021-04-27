@@ -1,6 +1,6 @@
 package it.polimi.ingsw.server;
 
-import it.polimi.ingsw.observer.Observer;
+import it.polimi.ingsw.server.observer.Observer;
 
 public interface ClientConnection{
 
