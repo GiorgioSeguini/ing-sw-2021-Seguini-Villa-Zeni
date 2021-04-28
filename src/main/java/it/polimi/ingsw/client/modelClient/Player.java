@@ -43,7 +43,6 @@ public class Player {
         return this.faithtrack;
     }
 
-
     public int getVictoryPoints(){
         return personalBoard.getVictoryPoints() + faithtrack.getVictoryPoints() + depots.getVictoryPoints();
     }

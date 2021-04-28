@@ -1,5 +1,7 @@
 package it.polimi.ingsw.client.modelClient;
 
+import it.polimi.ingsw.client.modelClient.enumeration.TokenType;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -9,25 +11,14 @@ public class LorenzoSoloPlayer {
     private final FaithTrack faithTrack;
     private final Game game;
     private boolean isWinner;
-
-    private ArrayList<SoloActionTokens> soloActionTokens;
-    private ArrayList<SoloActionTokens> copyOfSoloActionTokens;
-    //private ArrayList<SoloActionTokens> soloActionTokensDiscarded;
+    TokenType revealed;
 
 
     /*default constructor*/
-    public LorenzoSoloPlayer(Game game, ArrayList<SoloActionTokens> startSoloActionTokens) {
+    public LorenzoSoloPlayer(Game game, TokenType revealed) {
         this.game = game;
         faithTrack = new FaithTrack();
-        soloActionTokens = new ArrayList<SoloActionTokens>(7);
-        for(SoloActionTokens x: startSoloActionTokens){
-            soloActionTokens.add(x);
-        }
-        Collections.shuffle(soloActionTokens);
-        isWinner=false;
-
-        copyOfSoloActionTokens = new ArrayList<SoloActionTokens>(7);
-        copyOfSoloActionTokens = (ArrayList<SoloActionTokens>) soloActionTokens.clone();
+        this.revealed = revealed;
     }
 
 
@@ -44,17 +35,8 @@ public class LorenzoSoloPlayer {
         return this.isWinner;
     }
 
-    public ArrayList<SoloActionTokens> getSoloActionTokens() {
-        return (ArrayList<SoloActionTokens>) soloActionTokens.clone();
+    public TokenType getRevealed(){
+        return revealed;
     }
-
-    /*public ArrayList<SoloActionTokens> getSoloActionTokensDiscarded() {
-        return soloActionTokensDiscarded;
-    }*/
-
-    public ArrayList<SoloActionTokens> getCopyOfSoloActionTokensInit() {
-        return (ArrayList<SoloActionTokens>) copyOfSoloActionTokens.clone();
-    }
-
 
 }

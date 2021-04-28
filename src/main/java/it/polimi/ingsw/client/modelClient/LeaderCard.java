@@ -30,11 +30,6 @@ public class LeaderCard extends Card {
         return ability;
     }
 
-    /*setter*/
-    public void setStatus(LeaderStatus status) {
-        this.status = status;
-    }
-
 
     @Override
     public boolean equals(Object o){

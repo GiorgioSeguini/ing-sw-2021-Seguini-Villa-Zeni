@@ -47,36 +47,4 @@ public class FaithTrack {
         }
         return result;
     }
-
-    /**
-     *dopo ogni chiamata chiamate game.popesInspection!!!
-     */
-    public void addPoint() {
-        if(faithPoints<MAX_POINTS) faithPoints++;
-    }
-
-    /**
-     *
-     * @return -1 if no inspection is needed, otherwise return 0, 1 or 2 depending on the number of the inspection needed
-     */
-    int inspectionNeed(){
-        for(int i=0; i<NUM_OF_POP; i++) {
-            if (faithPoints >= popesFavorPosition[i] && popesFavor[i] == PopesFavorStates.FaceDown)
-                return i;
-        }
-        return -1;
-    }
-
-    void popeInspection(int index){
-        if(faithPoints>=popesFavorInitialPosition[index])
-            popesFavor[index]= PopesFavorStates.FaceUp;
-        else{
-            popesFavor[index]= PopesFavorStates.Discarded;
-        }
-    }
-
-    boolean isEnd(){
-        return faithPoints==MAX_POINTS;
-    }
-
 }

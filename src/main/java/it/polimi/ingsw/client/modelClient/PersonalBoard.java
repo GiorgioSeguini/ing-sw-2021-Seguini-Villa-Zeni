@@ -58,7 +58,6 @@ public class PersonalBoard {
 
     /**This return the sum of card's victory points**/
     public int getVictoryPoints() {
-        if(!isReady()) return 0;
         int victorypoints = 0;
         for (DevelopmentCard developmentCard : getOwnedDevCards()) {
             victorypoints += developmentCard.getVictoryPoints();
@@ -72,21 +71,6 @@ public class PersonalBoard {
         return victorypoints;
     }
 
-
-
-    /**
-     *
-     * @return true if the leader card have already been chosen
-     */
-    public boolean isReady(){
-        boolean res = true;
-        for(LeaderCard card :OwnedLeaderCard){
-            if(card==null)
-                res=false;
-        }
-
-        return res;
-    }
 
     public boolean isFull(){
         return getOwnedDevCards().size()==MAX_DEV_CARD;
@@ -114,7 +98,6 @@ public class PersonalBoard {
         for (ProductionPower x: this.extraProduction){
             res.add(x);
         }
-
 
         for(int i=0; i<3; i++){
             if(!OwnedDevCards[i].isEmpty()){

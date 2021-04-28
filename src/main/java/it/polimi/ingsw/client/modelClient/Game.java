@@ -12,9 +12,6 @@ import java.util.Collections;
  */
 public class Game {
 
-    private static final int MAX_PLAYER = 4;
-    private static final int INITIAL_LEADER_CARD = 4;
-    private static final int[] INITIAL_RESOURCES = {0,1,2,3};
     private static final int[] INITIAL_FAITH_POINT = {0,1,2,3};
 
     //compositions
@@ -22,7 +19,6 @@ public class Game {
     private final Market marketTray;
     private final Dashboard dashboard;
     private final LorenzoSoloPlayer soloGame;
-    private final ArrayList<LeaderCard> leaderCards;
 
     //attribute
     private int indexPlayingPlayer;
@@ -31,35 +27,20 @@ public class Game {
     /**
      * Default constructor
      */
-    public Game(ArrayList<String> playersName, Market market, Dashboard dashboard, ArrayList<SoloActionTokens> soloActionTokens, ArrayList<LeaderCard> leaderCards){
+    public Game(ArrayList<String> playersName, Market market, Dashboard dashboard, LorenzoSoloPlayer soloGame){
         if(playersName.isEmpty())
             throw new IllegalArgumentException();
 
-        if(playersName.size()*INITIAL_LEADER_CARD> leaderCards.size() || playersName.size()>MAX_PLAYER)
-            throw  new IllegalArgumentException();
-
-        if(playersName.size()==1){
-            //single player mode
-            soloGame = new LorenzoSoloPlayer(this, soloActionTokens);
-        }
-        else{
-            soloGame = null;
-        }
-        this.leaderCards = new ArrayList<>(leaderCards);
         this.marketTray = market;
         this.dashboard = dashboard;
         this.status = GameStatus.Initial;
+        this.soloGame = soloGame;
 
         this.players = new ArrayList<>();
-        for(int i =0; i<playersName.size(); i++){
-            Player player = new Player(playersName.get(i));
-            for(int j=0; j<INITIAL_FAITH_POINT[i]; j++)
-                player.getFaithTrack().addPoint();
+        for (String s : playersName) {
+            Player player = new Player(s);
             this.players.add(player);
         }
-
-        Collections.shuffle(players);
-        Collections.shuffle(this.leaderCards);
     }
 
     public Market getMarketTray() {
@@ -141,26 +122,4 @@ public class Game {
         return status;
     }
 
-
-    public ArrayList<LeaderCard> getActivableLeadCard(Player player){
-        int index = getPlayerIndex(player)* INITIAL_LEADER_CARD;
-        if(index<0)
-            throw new IllegalArgumentException();
-
-        ArrayList<LeaderCard> res= new ArrayList<>();
-
-        for(int i=0; i<INITIAL_LEADER_CARD; i++){
-            res.add(leaderCards.get(index + i));
-        }
-
-        return res;
-    }
-
-    public int getInitialResources(Player player){
-        int index = getPlayerIndex(player);
-        if(index<0)
-            throw new IllegalArgumentException();
-
-        return INITIAL_RESOURCES[index];
-    }
 }
