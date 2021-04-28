@@ -25,8 +25,8 @@ class LorenzoSoloPlayerTest {
         ArrayList<LeaderCard> leaderCards;
 
         //player.getDepots().addResourceFromProduction(new NumberOfResources(100,100,100,100));
-        ArrayList<String> playerArrayList = new ArrayList<>();
-        playerArrayList.add("Fabio");
+        ArrayList<Player> playerArrayList = new ArrayList<>();
+        playerArrayList.add(new Player("Fabio"));
 
         Game game = new Game(playerArrayList, new Market(Starter.MarblesParser()), new Dashboard(Starter.DevCardParser()), soloActionTokensArrayList, Starter.LeaderCardsParser());
 
@@ -54,8 +54,8 @@ class LorenzoSoloPlayerTest {
         ArrayList<LeaderCard> leaderCards;
 
         //player.getDepots().addResourceFromProduction(new NumberOfResources(100,100,100,100));
-        ArrayList<String> playerArrayList = new ArrayList<>();
-        playerArrayList.add("Fabio");
+        ArrayList<Player> playerArrayList = new ArrayList<>();
+        playerArrayList.add(new Player("Fabio"));
 
         Game game = new Game(playerArrayList, new Market(Starter.MarblesParser()), new Dashboard(Starter.DevCardParser()), soloActionTokensArrayList, Starter.LeaderCardsParser());
 
@@ -79,8 +79,8 @@ class LorenzoSoloPlayerTest {
         ArrayList<LeaderCard> leaderCards;
 
         //player.getDepots().addResourceFromProduction(new NumberOfResources(100,100,100,100));
-        ArrayList<String> playerArrayList = new ArrayList<>();
-        playerArrayList.add("Fabio");
+        ArrayList<Player> playerArrayList = new ArrayList<>();
+        playerArrayList.add(new Player("Fabio"));
 
         Game game = new Game(playerArrayList, new Market(Starter.MarblesParser()), new Dashboard(Starter.DevCardParser()), soloActionTokensArrayList, Starter.LeaderCardsParser());
 
@@ -103,8 +103,8 @@ class LorenzoSoloPlayerTest {
 
 
         assertEquals(ColorDevCard.BLUE, (new Discard2(ColorDevCard.BLUE)).getColor());
-        ArrayList<String> single = new ArrayList<>();
-        single.add("Pippo");
+        ArrayList<Player> single = new ArrayList<>();
+        single.add(new Player("Pippo"));
 
         ArrayList<DevelopmentCard> card = new ArrayList<>();
         card.add(new DevelopmentCard(Level.ONE, ColorDevCard.BLUE, new NumberOfResources(), new ProductionPower(), 0));

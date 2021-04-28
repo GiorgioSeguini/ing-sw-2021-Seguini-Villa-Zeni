@@ -65,7 +65,8 @@ public class Server {
                 //TODO
                 return;
             }
-            Game game = new Game(keys, new Market(marble), new Dashboard(developmentCards), tokens, leaderCards);
+            ArrayList<Player> players = new ArrayList<>(); players.add(player1); players.add(player2);
+            Game game = new Game(players, new Market(marble), new Dashboard(developmentCards), tokens, leaderCards);
             Controller controller = new Controller(game);
 
 
