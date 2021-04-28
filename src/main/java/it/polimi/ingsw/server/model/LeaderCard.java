@@ -1,6 +1,8 @@
 package it.polimi.ingsw.server.model;
 
 import it.polimi.ingsw.server.model.enumeration.LeaderStatus;
+
+import java.util.concurrent.atomic.AtomicInteger;
 /*Last Edit: Fabio*/
 
 public class LeaderCard extends Card {
@@ -8,10 +10,11 @@ public class LeaderCard extends Card {
     private LeaderStatus status;
     private final Requirements requirements;
     private final Ability ability;
+    static AtomicInteger nextId= new AtomicInteger();
 
     /*Default constructor*/
     public LeaderCard(Requirements requirements, Ability ability, int victoryPoints) {
-        super(victoryPoints);
+        super(victoryPoints, nextId.incrementAndGet());
         this.status=LeaderStatus.onHand;
         this.requirements=requirements;
         this.ability=ability;
@@ -48,6 +51,8 @@ public class LeaderCard extends Card {
         }
         return false;
     }
+
+
 
     /** This set the LeaderCard status on "Dead" and add one FaithPoint
      * @return true if the card is really discarded, false otherwise

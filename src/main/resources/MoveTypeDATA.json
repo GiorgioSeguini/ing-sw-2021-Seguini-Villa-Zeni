@@ -1,0 +1,7 @@
+//FOR MoveTypeDevCard
+{
+  "Movetype": "MoveBuyDevCard",
+  "Position": 0,
+  "CardToBuy": "x",
+},
+//FOR MoveTypeDevCard

@@ -2,16 +2,15 @@ package it.polimi.ingsw.server.model;
 
 import it.polimi.ingsw.server.controller.Starter;
 import it.polimi.ingsw.server.model.*;
-import it.polimi.ingsw.server.model.enumeration.ColorDevCard;
-import it.polimi.ingsw.server.model.enumeration.GameStatus;
-import it.polimi.ingsw.server.model.enumeration.Level;
-import it.polimi.ingsw.server.model.enumeration.ResourceType;
+import it.polimi.ingsw.server.model.enumeration.*;
 import it.polimi.ingsw.server.model.exception.UnableToFillException;
 import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -205,4 +204,34 @@ class GameTest {
 
     }
 
+    @Test
+    void findLeaderCard() throws IOException, ParseException {
+        ArrayList<LeaderCard> leaderCards= Starter.LeaderCardsParser();
+        ArrayList<DevelopmentCard> developmentCards= Starter.DevCardParser();
+        ArrayList<MarbleColor> marbles= Starter.MarblesParser();
+        ArrayList<String> players= new ArrayList<>();
+        ArrayList<SoloActionTokens> tokens= new ArrayList<>();
+        Dashboard dashboard= new Dashboard(developmentCards);
+        Market market= new Market(marbles);
+        players.add("pippo");
+        tokens.add(new Discard2(ColorDevCard.BLUE));
+
+
+        Game game= new Game(players,market,dashboard,tokens,leaderCards);
+        Random rand= new Random();
+        int id;
+        for (int i=1; i<17; i++){
+            //id=rand.nextInt(15)+1;
+            assertNotNull(game.findLeaderCard(i));
+        }
+
+        for (int i=0; i<100; i++){
+            id=rand.nextInt(100)+17;
+            assertNull(game.findLeaderCard(id));
+        }
+
+        id=3;
+        assertEquals(dashboard.findDevCard(id).getColor(), ColorDevCard.BLUE);
+        assertEquals(dashboard.findDevCard(id).getLevel(), Level.ONE);
+    }
 }

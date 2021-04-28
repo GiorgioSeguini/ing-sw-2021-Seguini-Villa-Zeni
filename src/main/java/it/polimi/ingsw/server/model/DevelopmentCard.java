@@ -6,6 +6,8 @@ import it.polimi.ingsw.server.model.enumeration.ColorDevCard;
 import it.polimi.ingsw.server.model.enumeration.Level;
 import it.polimi.ingsw.server.model.enumeration.ResourceType;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  * 
  */
@@ -15,12 +17,13 @@ public class DevelopmentCard extends Card {
     private final ColorDevCard cardColor;
     private final NumberOfResources cost;
     private final ProductionPower productionPower;
+    static AtomicInteger nextId= new AtomicInteger();
 
     /**
      * Default constructor
      */
     public DevelopmentCard(Level level, ColorDevCard cardColor, NumberOfResources cost, ProductionPower productionPower, int victoryPoints) {
-        super(victoryPoints);
+        super(victoryPoints, nextId.incrementAndGet());
         this.level = level;
         this.cardColor = cardColor;
         this.cost = cost;

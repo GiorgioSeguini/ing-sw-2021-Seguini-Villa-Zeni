@@ -231,4 +231,14 @@ public class Game {
 
         return INITIAL_RESOURCES[index];
     }
+
+    public LeaderCard findLeaderCard(int id){
+        for(LeaderCard x: leaderCards){
+            if(x.getId()==id){
+                return x;
+            }
+        }
+        return null;
+    }
+
 }

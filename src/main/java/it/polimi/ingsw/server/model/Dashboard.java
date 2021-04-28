@@ -98,4 +98,17 @@ public class Dashboard {
 
     }
 
+    public DevelopmentCard findDevCard(int id){
+        for (Level l: Level.values()){
+            for( ColorDevCard c: ColorDevCard.values()){
+                for (DevelopmentCard x: dashBoard[l.ordinal()][c.ordinal()]){
+                    if(x.getId()==id){
+                        return x;
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
 }

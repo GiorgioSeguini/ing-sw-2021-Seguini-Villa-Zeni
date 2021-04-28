@@ -1,14 +1,18 @@
 package it.polimi.ingsw.server.model;
 
+import it.polimi.ingsw.server.controller.Starter;
 import it.polimi.ingsw.server.model.Dashboard;
 import it.polimi.ingsw.server.model.DevelopmentCard;
 import it.polimi.ingsw.server.model.NumberOfResources;
 import it.polimi.ingsw.server.model.ProductionPower;
 import it.polimi.ingsw.server.model.enumeration.ColorDevCard;
 import it.polimi.ingsw.server.model.enumeration.Level;
+import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -100,6 +104,28 @@ class DashboardTest {
             d.removeCard(ColorDevCard.BLUE, 4);
             fail();
         }catch(IllegalArgumentException ignored){}
+
+    }
+
+    @Test
+    void findDevCard() throws IOException, ParseException {
+        ArrayList<DevelopmentCard> developmentCards= Starter.DevCardParser();
+        Dashboard dashboard= new Dashboard(developmentCards);
+        Random rand= new Random();
+        int id;
+        for (int i=0; i<300; i++){
+            id=rand.nextInt(48)+1;
+            assertNotNull(dashboard.findDevCard(id));
+        }
+
+        for (int i=0; i<300; i++){
+            id=rand.nextInt(300)+49;
+            assertNull(dashboard.findDevCard(id));
+        }
+
+        id=3;
+        assertEquals(dashboard.findDevCard(id).getLevel(), Level.ONE);
+        assertEquals(dashboard.findDevCard(id).getColor(), ColorDevCard.BLUE);
 
     }
 }
