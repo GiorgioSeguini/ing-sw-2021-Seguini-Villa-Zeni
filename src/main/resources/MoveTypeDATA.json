@@ -45,21 +45,61 @@
   {
     "Movetype": "MoveLeader",
     "Move": 0,
-    "LeaderCard": 0, // Leader card id
+    "LeaderCard": 0 // Leader card id
   },
   //FOR MovetypeMarket
   {
     "Movetype": "MovetypeMarket",
-    "Move": 0
+    "IndexToBuy": 0
   },
   //FOR MoveWhiteConversion
   {
     "Movetype": "MoveWhiteConversion",
-    "Marbles": [
-      "COLOR",
-      "COLOR",
-      "COLOR",
-      "COLOR"
+    "WhiteResources": [
+      "RES",
+      "RES",
+      "RES",
+      "RES"
+    ] //Resources Already Converted
+  },
+  //FOR MoveActiveProduction
+  {
+    "Movetype": "MoveActiveProduction",
+    "ProductionPowers":[
+      {
+        "FaithPointsOut":0,
+        "OutRes": {
+          "Servants": 0,
+          "Shields": 0,
+          "Coins": 0,
+          "Stones": 0
+        },
+        "InRes": {
+          "Servants": 0,
+          "Shields": 0,
+          "Coins": 0,
+          "Stones": 0
+        },
+        "YourChoiceIn": 0,
+        "YourChoiceOut": 0
+      },
+      {
+        "FaithPointsOut":0,
+        "OutRes": {
+          "Servants": 0,
+          "Shields": 0,
+          "Coins": 0,
+          "Stones": 0
+        },
+        "InRes": {
+          "Servants": 0,
+          "Shields": 0,
+          "Coins": 0,
+          "Stones": 0
+        },
+        "YourChoiceIn": 0,
+        "YourChoiceOut": 0
+      }
     ]
   }
 ]

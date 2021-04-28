@@ -19,6 +19,7 @@ import java.util.Map;
 
 public class Starter {
 
+    /*Private Methods for conversion*/
     private static Level ConvertStringToLevel(String levelapp){
         Level level=null;
         switch (levelapp){
@@ -42,7 +43,7 @@ public class Starter {
         return color;
     }
 
-    private static NumberOfResources ConvertObjectToNumOfRes(JSONObject NumOfRes){
+    public static NumberOfResources ConvertObjectToNumOfRes(JSONObject NumOfRes){
         int servants= Math.toIntExact((Long) NumOfRes.get("Servants"));
         int shields= Math.toIntExact((Long) NumOfRes.get("Shields"));
         int coins= Math.toIntExact((Long) NumOfRes.get("Coins"));
@@ -100,32 +101,49 @@ public class Starter {
         return null;
     }
 
-    public static ArrayList<DevelopmentCard> DevCardParser() throws IOException, ParseException {
-        JSONParser parser = new JSONParser();
-        String filePath = new File("").getAbsolutePath();
-        JSONArray array = (JSONArray) parser.parse(new FileReader(filePath + "/src/main/resources/DevCard.json"));
-        ArrayList<DevelopmentCard> devcards = new ArrayList<>();
-        for (Object x : array) {
-            JSONObject DevCard = (JSONObject) x;
-            Level level = Starter.ConvertStringToLevel((String) DevCard.get("Level"));
-            ColorDevCard color = Starter.ConvertStringToColorDevCard((String) DevCard.get("CardColor"));
-            NumberOfResources cost = Starter.ConvertObjectToNumOfRes((JSONObject) DevCard.get("Cost"));
+    private static ArrayList<MarbleColor> getMarblesFromObjArray(JSONArray array){
+        ArrayList<MarbleColor> marbles= new ArrayList<>();
+        for (Object y: array){
+            switch ((String) y){
+                case "GREY": marbles.add(MarbleColor.GREY); break;
+                case "BLUE": marbles.add(MarbleColor.BLUE); break;
+                case "WHITE": marbles.add(MarbleColor.WHITE); break;
+                case "PURPLE": marbles.add(MarbleColor.PURPLE); break;
+                case "RED": marbles.add(MarbleColor.RED); break;
+                case "YELLOW": marbles.add(MarbleColor.YELLOW); break;
+                default: throw new IllegalArgumentException();
+            }
+        }
+        return marbles;
+    }
 
-            int victorypoints = Math.toIntExact((Long) DevCard.get("VictoryPoints"));
-            JSONObject ProductionPower = (JSONObject) DevCard.get("ProductionPower");
-            int yourchoicein = Math.toIntExact((Long) ProductionPower.get("YourChoiceIn"));
-            int yourchoiceout = Math.toIntExact((Long) ProductionPower.get("YourChoiceOut"));
-            NumberOfResources inres = Starter.ConvertObjectToNumOfRes((JSONObject) ProductionPower.get("InRes"));
-            NumberOfResources outres = Starter.ConvertObjectToNumOfRes((JSONObject) ProductionPower.get("OutRes"));
-            int faithpointsout = Math.toIntExact((Long) ProductionPower.get("FaithPointsOut"));
+    private static ProductionPower getProdcutionFromJsonObj(JSONObject object){
+        int yourchoicein = Math.toIntExact((Long) object.get("YourChoiceIn"));
+        int yourchoiceout = Math.toIntExact((Long) object.get("YourChoiceOut"));
+        NumberOfResources inres = Starter.ConvertObjectToNumOfRes((JSONObject) object.get("InRes"));
+        NumberOfResources outres = Starter.ConvertObjectToNumOfRes((JSONObject) object.get("OutRes"));
+        int faithpointsout = Math.toIntExact((Long) object.get("FaithPointsOut"));
 
-            ProductionPower productionPower = new ProductionPower(faithpointsout, outres, inres, yourchoicein, yourchoiceout);
+        return new ProductionPower(faithpointsout,outres,inres,yourchoicein,yourchoiceout);
+    }
 
-            devcards.add(new DevelopmentCard(level, color, cost, productionPower, victorypoints));
 
+    /*Public methods for parsing*/
+    public static ArrayList<ProductionPower> getProdArrayfromObjArray(JSONArray  array){
+        ArrayList<ProductionPower> arrayList= new ArrayList<>();
+        for(Object x: array){
+            arrayList.add(getProdcutionFromJsonObj((JSONObject) x));
+        }
+        return arrayList;
+    }
+
+    public static ArrayList<ResourceType> getResArrayFromObjArray(JSONArray array){
+        ArrayList<ResourceType> arrayList= new ArrayList<>();
+        for(Object x: array){
+            arrayList.add(ConvertStringToResType((String) x));
         }
 
-        return devcards;
+        return arrayList;
     }
 
     public static ArrayList<MarbleColor> MarblesParser() throws IOException, ParseException {
@@ -133,19 +151,7 @@ public class Starter {
         String filePath = new File("").getAbsolutePath();
         JSONObject x= (JSONObject)parser.parse(new FileReader(filePath + "/src/main/resources/Marbles.json"));
 
-        ArrayList<MarbleColor> marbles= new ArrayList<>();
-        JSONArray array=(JSONArray) x.get("Marbles");
-        for (Object y: array){
-         switch ((String) y){
-             case "GREY": marbles.add(MarbleColor.GREY); break;
-             case "BLUE": marbles.add(MarbleColor.BLUE); break;
-             case "WHITE": marbles.add(MarbleColor.WHITE); break;
-             case "PURPLE": marbles.add(MarbleColor.PURPLE); break;
-             case "RED": marbles.add(MarbleColor.RED); break;
-             case "YELLOW": marbles.add(MarbleColor.YELLOW); break;
-             default: throw new IllegalArgumentException();
-         }
-        }
+        ArrayList<MarbleColor> marbles= getMarblesFromObjArray((JSONArray) x.get("Marbles"));
         return marbles;
     }
 
@@ -188,6 +194,26 @@ public class Starter {
         return leaderCards;
     }
 
+    public static ArrayList<DevelopmentCard> DevCardParser() throws IOException, ParseException {
+        JSONParser parser = new JSONParser();
+        String filePath = new File("").getAbsolutePath();
+        JSONArray array = (JSONArray) parser.parse(new FileReader(filePath + "/src/main/resources/DevCard.json"));
+        ArrayList<DevelopmentCard> devcards = new ArrayList<>();
+        for (Object x : array) {
+            JSONObject DevCard = (JSONObject) x;
+            Level level = Starter.ConvertStringToLevel((String) DevCard.get("Level"));
+            ColorDevCard color = Starter.ConvertStringToColorDevCard((String) DevCard.get("CardColor"));
+            NumberOfResources cost = Starter.ConvertObjectToNumOfRes((JSONObject) DevCard.get("Cost"));
+            int victorypoints = Math.toIntExact((Long) DevCard.get("VictoryPoints"));
+            ProductionPower productionPower= getProdcutionFromJsonObj((JSONObject) DevCard.get("ProductionPower"));
+            devcards.add(new DevelopmentCard(level, color, cost, productionPower, victorypoints));
+        }
+
+        return devcards;
+    }
+
+
+    /*Methods for CanPerform*/
     public static boolean CanParseMarbles() {
         JSONParser parser= new JSONParser();
         String filePath = new File("").getAbsolutePath();

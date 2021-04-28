@@ -12,9 +12,9 @@ import java.util.ArrayList;
 
 public class MoveActiveProduction extends MoveType{
 
-    ProductionPower[] toActive;
+    ArrayList<ProductionPower> toActive;
 
-    public MoveActiveProduction(Player player, ProductionPower[] toActive) {
+    public MoveActiveProduction(Player player, ArrayList<ProductionPower> toActive) {
         super(player);
         this.toActive = toActive;
         this.allowedStatus = new PlayerStatus[]{PlayerStatus.Active};
