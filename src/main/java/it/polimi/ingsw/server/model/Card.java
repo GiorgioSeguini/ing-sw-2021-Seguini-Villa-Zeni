@@ -2,13 +2,10 @@ package it.polimi.ingsw.server.model;
 
 /*Last Edit: Gio*/
 
-
-import java.util.concurrent.atomic.AtomicInteger;
-
 public abstract class Card {
 
     private final int victoryPoints;
-    private int id;
+    private final int id;
 
     public Card(int victoryPoints, int id) {
         this.victoryPoints = victoryPoints;

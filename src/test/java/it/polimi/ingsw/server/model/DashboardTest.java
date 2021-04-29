@@ -109,23 +109,25 @@ class DashboardTest {
 
     @Test
     void findDevCard() throws IOException, ParseException {
+        int starting_point = DevelopmentCard.nextId.get()+1;
         ArrayList<DevelopmentCard> developmentCards= Starter.DevCardParser();
         Dashboard dashboard= new Dashboard(developmentCards);
         Random rand= new Random();
+
         int id;
         for (int i=0; i<300; i++){
-            id=rand.nextInt(48);
-            //assertNotNull(dashboard.findDevCard(id)); TODO
+            id=rand.nextInt(48)+starting_point;
+            assertNotNull(dashboard.findDevCard(id));
         }
 
         for (int i=0; i<300; i++){
-            id=rand.nextInt(300)+49;
-            //assertNull(dashboard.findDevCard(id));        TODO
+            id=rand.nextInt(300)+49+starting_point;
+            assertNull(dashboard.findDevCard(id));
         }
 
-        id=3;
-        //assertEquals(dashboard.findDevCard(id).getLevel(), Level.ONE);        TODO
-        //assertEquals(dashboard.findDevCard(id).getColor(), ColorDevCard.BLUE);
+        id=2+starting_point;
+        assertEquals(dashboard.findDevCard(id).getLevel(), Level.ONE);
+        assertEquals(dashboard.findDevCard(id).getColor(), ColorDevCard.BLUE);
 
     }
 }

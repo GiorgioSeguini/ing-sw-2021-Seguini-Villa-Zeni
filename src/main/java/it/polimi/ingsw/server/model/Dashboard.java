@@ -111,4 +111,21 @@ public class Dashboard {
         return null;
     }
 
+
+    /* Just for testing
+    @Override
+    public String toString(){
+        String res = "";
+        for (Level l: Level.values()){
+            for( ColorDevCard c: ColorDevCard.values()){
+                for (DevelopmentCard x: dashBoard[l.ordinal()][c.ordinal()]){
+                    res += x.getId();
+                    res += ' ';
+                }
+            }
+            res += '\n';
+        }
+        return res;
+    }*/
+
 }
