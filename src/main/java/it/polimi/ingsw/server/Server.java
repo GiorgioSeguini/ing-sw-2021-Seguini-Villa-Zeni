@@ -49,10 +49,10 @@ public class Server {
             Player player2 = new Player(keys.get(1));
 
             //instance of a new game
-            ArrayList<MarbleColor> marble = new ArrayList<>();
-            ArrayList<DevelopmentCard> developmentCards = new ArrayList<>();
-            ArrayList<SoloActionTokens> tokens = new ArrayList<>();
-            ArrayList<LeaderCard> leaderCards = new ArrayList<>();
+            ArrayList<MarbleColor> marble;
+            ArrayList<DevelopmentCard> developmentCards;
+            ArrayList<SoloActionTokens> tokens;
+            ArrayList<LeaderCard> leaderCards;
             try {
                  marble = Starter.MarblesParser();
                 developmentCards = Starter.DevCardParser();
@@ -65,8 +65,8 @@ public class Server {
             }
             ArrayList<Player> players = new ArrayList<>(); players.add(player1); players.add(player2);
             Game game = new Game(players, new Market(marble), new Dashboard(developmentCards), tokens, leaderCards);
-            View player1View = new RemoteView(game, player1,  c1);
-            View player2View = new RemoteView(game, player2,  c2);
+            View player1View = new RemoteView(player1,  c1);
+            View player2View = new RemoteView(player2,  c2);
 
             Controller controller = new Controller(game);
 

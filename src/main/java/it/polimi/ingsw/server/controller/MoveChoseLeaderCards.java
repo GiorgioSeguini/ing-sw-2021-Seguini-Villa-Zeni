@@ -11,11 +11,12 @@ import java.util.ArrayList;
 
 public class MoveChoseLeaderCards extends MoveType{
 
-    private final ArrayList<LeaderCard> leaderCards;
+    private final ArrayList<Integer> indexLeaderCards;
 
-    public MoveChoseLeaderCards(Player player, ArrayList<LeaderCard> leaderCards) {
+    public MoveChoseLeaderCards(Player player, ArrayList<Integer> indexLeaderCards) {
         super(player);
-        this.leaderCards = leaderCards;
+        this.indexLeaderCards = new ArrayList<>();
+        this.indexLeaderCards.addAll(indexLeaderCards);
     }
 
     @Override
@@ -29,6 +30,8 @@ public class MoveChoseLeaderCards extends MoveType{
             player.setErrorMessage(ErrorMessage.BadChoice);
             return false;
         }
+
+        ArrayList<LeaderCard> leaderCards = game.findMoreLeaderCard(indexLeaderCards);
 
         boolean goodChoice = true;
         for(LeaderCard card : leaderCards){
@@ -47,7 +50,7 @@ public class MoveChoseLeaderCards extends MoveType{
 
     @Override
     public void performMove(Game game){
-
+        ArrayList<LeaderCard> leaderCards = game.findMoreLeaderCard(indexLeaderCards);
         try {
             player.getPersonalBoard().addLeaderCard(leaderCards.toArray(new LeaderCard[0]));
         }catch (IndexOutOfBoundsException e){
