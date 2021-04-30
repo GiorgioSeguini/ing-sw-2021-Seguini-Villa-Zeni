@@ -239,4 +239,14 @@ public class Game {
         return null;
     }
 
+    public ArrayList<LeaderCard> findMoreLeaderCard(ArrayList<Integer> cardId){
+        ArrayList<LeaderCard> leaderCards= new ArrayList<>();
+        for (int id: cardId){
+            leaderCards.add(findLeaderCard(id));
+
+        }
+
+        return leaderCards;
+    }
+
 }

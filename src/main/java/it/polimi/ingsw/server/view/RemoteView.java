@@ -2,14 +2,16 @@ package it.polimi.ingsw.server.view;
 
 
 import it.polimi.ingsw.server.controller.*;
+import it.polimi.ingsw.server.model.Game;
 import it.polimi.ingsw.server.model.Player;
-import it.polimi.ingsw.server.model.ProductionPower;
 import it.polimi.ingsw.server.observer.Observer;
 import it.polimi.ingsw.server.ClientConnection;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+
+import java.util.ArrayList;
 
 public class RemoteView extends View {
 
@@ -29,9 +31,9 @@ public class RemoteView extends View {
 
             switch (movex.toString()){
                 case "MoveActiveProduction": move= new MoveActiveProduction(getPlayer(),Starter.getProdArrayfromObjArray((JSONArray) info.get("ProductionPowers"))); break; 
-                case "MoveBuyDevCard": move= new MoveBuyDevCard(getPlayer(),(int) info.get("Position"),null);break; // TODO: 4/28/21
+                case "MoveBuyDevCard": move= new MoveBuyDevCard(getPlayer(),(int) info.get("Position"),getGame().getDashboard().findDevCard((int) info.get("CardToBuy"))) ;break;
                 case "MoveChoseInitialResources": move=new MoveChoseInitialResources(getPlayer(),Starter.ConvertObjectToNumOfRes((JSONObject) info.get("Resources"))); break;
-                case "MoveChoseLeaderCards": move=new MoveChoseLeaderCards(getPlayer(),null); break; // TODO: 4/28/21
+                case "MoveChoseLeaderCards": move=new MoveChoseLeaderCards(getPlayer(),getGame().findMoreLeaderCard((ArrayList<Integer>) info.get("LeaderCards"))); break;
                 case "MoveChoseResources": move= new MoveChoseResources(getPlayer(),Starter.ConvertObjectToNumOfRes((JSONObject) info.get("ResourcesIn")),Starter.ConvertObjectToNumOfRes((JSONObject) info.get("ResourcesOut")));break;
                 case "MoveEndTurn": move= new MoveEndTurn(getPlayer()); break;
                 case "MovetypeMarket": move = new MovetypeMarket(getPlayer(), (int) info.get("IndexToBuy")); break;
@@ -46,8 +48,8 @@ public class RemoteView extends View {
 
     private final ClientConnection clientConnection;
 
-    public RemoteView(Player player, ClientConnection c) {
-        super(player);
+    public RemoteView(Game game, Player player, ClientConnection c) {
+        super(player, game);
         this.clientConnection = c;
         c.addObserver(new MessageReceiver());
     }

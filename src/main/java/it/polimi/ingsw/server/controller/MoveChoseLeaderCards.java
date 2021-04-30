@@ -6,12 +6,14 @@ import it.polimi.ingsw.server.model.Player;
 import it.polimi.ingsw.server.model.enumeration.ErrorMessage;
 import it.polimi.ingsw.server.model.enumeration.GameStatus;
 
+import java.util.ArrayList;
+
 
 public class MoveChoseLeaderCards extends MoveType{
 
-    private final LeaderCard[] leaderCards;
+    private final ArrayList<LeaderCard> leaderCards;
 
-    public MoveChoseLeaderCards(Player player, LeaderCard[] leaderCards) {
+    public MoveChoseLeaderCards(Player player, ArrayList<LeaderCard> leaderCards) {
         super(player);
         this.leaderCards = leaderCards;
     }
@@ -47,7 +49,7 @@ public class MoveChoseLeaderCards extends MoveType{
     public void performMove(Game game){
 
         try {
-            player.getPersonalBoard().addLeaderCard(leaderCards);
+            player.getPersonalBoard().addLeaderCard(leaderCards.toArray(new LeaderCard[0]));
         }catch (IndexOutOfBoundsException e){
             player.setErrorMessage(ErrorMessage.BadChoice);
             return;

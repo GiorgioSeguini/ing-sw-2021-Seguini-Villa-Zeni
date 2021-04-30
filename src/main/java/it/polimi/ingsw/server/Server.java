@@ -47,8 +47,6 @@ public class Server {
             ClientConnection c2 = waitingConnection.get(keys.get(1));
             Player player1 = new Player(keys.get(0));
             Player player2 = new Player(keys.get(1));
-            View player1View = new RemoteView(player1,  c1);
-            View player2View = new RemoteView(player2,  c2);
 
             //instance of a new game
             ArrayList<MarbleColor> marble = new ArrayList<>();
@@ -67,6 +65,9 @@ public class Server {
             }
             ArrayList<Player> players = new ArrayList<>(); players.add(player1); players.add(player2);
             Game game = new Game(players, new Market(marble), new Dashboard(developmentCards), tokens, leaderCards);
+            View player1View = new RemoteView(game, player1,  c1);
+            View player2View = new RemoteView(game, player2,  c2);
+
             Controller controller = new Controller(game);
 
 
