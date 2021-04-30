@@ -13,8 +13,8 @@ public class Game {
 
     private static final int MAX_PLAYER = 4;
     private static final int INITIAL_LEADER_CARD = 4;
-    private static final int[] INITIAL_RESOURCES = {0,1,2,3};
-    private static final int[] INITIAL_FAITH_POINT = {0,1,2,3};
+    private static final int[] INITIAL_RESOURCES = {0,1,1,2};
+    private static final int[] INITIAL_FAITH_POINT = {0,0,1,1};
 
     //compositions
     private final ArrayList<Player> players;
