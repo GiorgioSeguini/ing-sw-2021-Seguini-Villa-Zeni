@@ -1,8 +1,10 @@
 package it.polimi.ingsw.server;
 
 import it.polimi.ingsw.server.observer.Observable;
+import org.json.simple.JSONObject;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.NoSuchElementException;
@@ -11,7 +13,7 @@ import java.util.Scanner;
 /**
  * Each instance is a connection to a specific client
  */
-public class SocketClientConnection extends Observable<String> implements ClientConnection, Runnable {
+public class SocketClientConnection extends Observable<JSONObject> implements ClientConnection, Runnable {
 
     private Socket socket;
     private ObjectOutputStream out;
@@ -69,20 +71,20 @@ public class SocketClientConnection extends Observable<String> implements Client
 
     @Override
     public void run() {
-        Scanner in;
+        ObjectInputStream in;
         String name;
         try{
-            in = new Scanner(socket.getInputStream());
+            in = new ObjectInputStream(socket.getInputStream());
             out = new ObjectOutputStream(socket.getOutputStream());
             send("Welcome!\nWhat is your name?");
-            String read = in.nextLine();
-            name = read;
-            server.lobby(this, name);
+            //String read = in.nextLine();
+            //name = read;
+            server.lobby(this, "Poippo");
             while(isActive()){
-                read = in.nextLine();
+                JSONObject read= (JSONObject) in.readObject();
                 notify(read);
             }
-        } catch (IOException | NoSuchElementException e) {
+        } catch (IOException | NoSuchElementException | ClassNotFoundException e) {
             System.err.println("Error!" + e.getMessage());
         }finally{
             close();

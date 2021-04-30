@@ -14,16 +14,11 @@ import java.util.ArrayList;
 
 public class RemoteView extends View {
 
-    private class MessageReceiver implements Observer<String> {
+    private class MessageReceiver implements Observer<JSONObject> {
 
         @Override
-        public void update(String message) {
-            System.out.println("Received: " + message);
-            JSONParser parser= new JSONParser();
-            JSONObject info=null;
-            try {
-                info=(JSONObject) parser.parse(message);
-            } catch (ParseException ignored) {}
+        public void update(JSONObject info) {
+            System.out.println("Received: " + info.toString());
 
             JSONObject movex=(JSONObject) info.get("Movetype");
             MoveType move;
