@@ -48,7 +48,7 @@ public class MoveActiveProduction extends MoveType{
 
         player.setToActive(total);
 
-        if(player.isActivable()) {
+        if(!player.isActivable()) {
             player.setToActive(null);
             player.setErrorMessage(ErrorMessage.OutOfResourcesError);
             return;
