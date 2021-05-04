@@ -1,10 +1,8 @@
 package it.polimi.ingsw.client.modelClient;
 
-import it.polimi.ingsw.client.modelClient.enumeration.GameStatus;
-import it.polimi.ingsw.client.modelClient.enumeration.PlayerStatus;
+import it.polimi.ingsw.constant.enumeration.GameStatus;
 
 import java.util.ArrayList;
-import java.util.Collections;
 /*Last Edit: Gio*/
 
 /**
@@ -16,7 +14,7 @@ public class Game {
 
     //compositions
     private final ArrayList<Player> players;
-    private final Market marketTray;
+    private Market marketTray;
     private final Dashboard dashboard;
     private final LorenzoSoloPlayer soloGame;
 

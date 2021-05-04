@@ -2,8 +2,8 @@ package it.polimi.ingsw.server.model;
 
 /*Las Edit: William Zeni*/
 
-import it.polimi.ingsw.server.model.enumeration.MarbleColor;
-import it.polimi.ingsw.server.model.enumeration.ResourceType;
+import it.polimi.ingsw.constant.enumeration.MarbleColor;
+import it.polimi.ingsw.constant.enumeration.ResourceType;
 import it.polimi.ingsw.server.model.exception.HaveToChooseException;
 import java.util.ArrayList;
 

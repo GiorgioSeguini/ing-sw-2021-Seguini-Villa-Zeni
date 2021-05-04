@@ -1,9 +1,9 @@
 package it.polimi.ingsw.server.controller;
 
-import it.polimi.ingsw.server.model.enumeration.ColorDevCard;
-import it.polimi.ingsw.server.model.enumeration.Level;
-import it.polimi.ingsw.server.model.enumeration.MarbleColor;
-import it.polimi.ingsw.server.model.enumeration.ResourceType;
+import it.polimi.ingsw.constant.enumeration.ColorDevCard;
+import it.polimi.ingsw.constant.enumeration.Level;
+import it.polimi.ingsw.constant.enumeration.MarbleColor;
+import it.polimi.ingsw.constant.enumeration.ResourceType;
 import it.polimi.ingsw.server.model.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;

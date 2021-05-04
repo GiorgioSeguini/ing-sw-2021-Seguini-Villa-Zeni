@@ -1,6 +1,6 @@
 package it.polimi.ingsw.server.model;
 
-import it.polimi.ingsw.server.model.enumeration.LeaderStatus;
+import it.polimi.ingsw.constant.enumeration.LeaderStatus;
 
 import java.util.concurrent.atomic.AtomicInteger;
 /*Last Edit: Fabio*/

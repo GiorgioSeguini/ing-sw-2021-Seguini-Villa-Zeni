@@ -1,6 +1,6 @@
 package it.polimi.ingsw.client.modelClient;
 
-import it.polimi.ingsw.client.modelClient.enumeration.PopesFavorStates;
+import it.polimi.ingsw.constant.enumeration.PopesFavorStates;
 
 /**
  * 

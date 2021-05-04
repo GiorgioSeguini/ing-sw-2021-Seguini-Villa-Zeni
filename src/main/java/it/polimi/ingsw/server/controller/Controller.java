@@ -1,6 +1,6 @@
 package it.polimi.ingsw.server.controller;
 
-import it.polimi.ingsw.server.model.enumeration.ErrorMessage;
+import it.polimi.ingsw.constant.enumeration.ErrorMessage;
 import it.polimi.ingsw.server.observer.Observer;
 import it.polimi.ingsw.server.model.Game;
 

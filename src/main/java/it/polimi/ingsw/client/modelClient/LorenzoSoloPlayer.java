@@ -1,9 +1,6 @@
 package it.polimi.ingsw.client.modelClient;
 
-import it.polimi.ingsw.client.modelClient.enumeration.TokenType;
-
-import java.util.ArrayList;
-import java.util.Collections;
+import it.polimi.ingsw.constant.enumeration.TokenType;
 
 /*Last Edit: Fabio*/
 public class LorenzoSoloPlayer {

@@ -1,4 +1,4 @@
-package it.polimi.ingsw.server.model.enumeration;
+package it.polimi.ingsw.constant.enumeration;
 
 public enum PopesFavorStates {
     FaceUp,

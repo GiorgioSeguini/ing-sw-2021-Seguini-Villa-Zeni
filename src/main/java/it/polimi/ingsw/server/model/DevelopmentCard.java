@@ -2,9 +2,9 @@ package it.polimi.ingsw.server.model;
 
 /*Last Edit: Gio*/
 
-import it.polimi.ingsw.server.model.enumeration.ColorDevCard;
-import it.polimi.ingsw.server.model.enumeration.Level;
-import it.polimi.ingsw.server.model.enumeration.ResourceType;
+import it.polimi.ingsw.constant.enumeration.ColorDevCard;
+import it.polimi.ingsw.constant.enumeration.Level;
+import it.polimi.ingsw.constant.enumeration.ResourceType;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

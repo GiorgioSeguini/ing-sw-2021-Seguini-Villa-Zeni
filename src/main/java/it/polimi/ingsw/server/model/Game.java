@@ -1,7 +1,7 @@
 package it.polimi.ingsw.server.model;
 
-import it.polimi.ingsw.server.model.enumeration.GameStatus;
-import it.polimi.ingsw.server.model.enumeration.PlayerStatus;
+import it.polimi.ingsw.constant.enumeration.GameStatus;
+import it.polimi.ingsw.constant.enumeration.PlayerStatus;
 
 
 import java.util.*;

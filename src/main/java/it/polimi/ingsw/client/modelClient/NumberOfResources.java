@@ -2,7 +2,7 @@ package it.polimi.ingsw.client.modelClient;
 
 /*Last Edit: William Zeni*/
 
-import it.polimi.ingsw.client.modelClient.enumeration.ResourceType;
+import it.polimi.ingsw.constant.enumeration.ResourceType;
 
 /**This class is unchangeable: it always returns a new address to it */
 public class NumberOfResources {

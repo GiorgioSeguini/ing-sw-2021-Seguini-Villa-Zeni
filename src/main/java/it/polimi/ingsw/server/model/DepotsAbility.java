@@ -2,7 +2,7 @@ package it.polimi.ingsw.server.model;
 
 /*Last Edit: Gio*/
 
-import it.polimi.ingsw.server.model.enumeration.ResourceType;
+import it.polimi.ingsw.constant.enumeration.ResourceType;
 
 public class DepotsAbility implements Ability {
 

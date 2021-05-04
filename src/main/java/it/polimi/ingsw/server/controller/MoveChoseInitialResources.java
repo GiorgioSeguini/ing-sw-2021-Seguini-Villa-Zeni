@@ -3,8 +3,8 @@ package it.polimi.ingsw.server.controller;
 import it.polimi.ingsw.server.model.Game;
 import it.polimi.ingsw.server.model.NumberOfResources;
 import it.polimi.ingsw.server.model.Player;
-import it.polimi.ingsw.server.model.enumeration.ErrorMessage;
-import it.polimi.ingsw.server.model.enumeration.GameStatus;
+import it.polimi.ingsw.constant.enumeration.ErrorMessage;
+import it.polimi.ingsw.constant.enumeration.GameStatus;
 import it.polimi.ingsw.server.model.exception.UnableToFillException;
 
 public class MoveChoseInitialResources extends MoveType{

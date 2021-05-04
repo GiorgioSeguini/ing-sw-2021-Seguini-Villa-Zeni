@@ -1,6 +1,6 @@
 package it.polimi.ingsw.server.model.exception;
 
-import it.polimi.ingsw.server.model.enumeration.ErrorMessage;
+import it.polimi.ingsw.constant.enumeration.ErrorMessage;
 
 public class NoMoreLeaderCardAliveException extends Exception{
     private final ErrorMessage errorMessage;

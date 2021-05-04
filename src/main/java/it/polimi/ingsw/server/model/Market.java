@@ -1,11 +1,15 @@
 package it.polimi.ingsw.server.model;
 
-import it.polimi.ingsw.server.model.enumeration.MarbleColor;
+import it.polimi.ingsw.constant.message.MarketMessage;
+import it.polimi.ingsw.constant.message.Message;
+import it.polimi.ingsw.constant.enumeration.MarbleColor;
+import it.polimi.ingsw.server.observer.Observable;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /*Last Edit: Fabio*/
-public class Market {
+public class Market extends Observable<Message> {
 
     MarbleColor[][] tray;
     MarbleColor externalMarble;
@@ -57,6 +61,7 @@ public class Market {
             tray[index][i]=buyedRow.get(i+1);
         }
         externalMarble=buyedRow.get(0);
+        changement();
         return buyedRow;
     }
 
@@ -72,7 +77,21 @@ public class Market {
             tray[i][index]=buyedColumn.get(i+1);
         }
         externalMarble=buyedColumn.get(0);
+        changement();
         return buyedColumn;
+    }
+
+    /**
+     * this methods should be call each time a changement in status happened, in order to correctly notify all the observer
+     */
+    private void changement(){
+        //TODO find a cooler name
+        ArrayList<MarbleColor> marbles = new ArrayList<MarbleColor>();
+        for(MarbleColor[] row : tray){
+            marbles.addAll(Arrays.asList(row));
+        }
+        marbles.add(externalMarble);
+        notify(new MarketMessage(marbles));
     }
 
 }

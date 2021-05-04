@@ -1,8 +1,7 @@
 package it.polimi.ingsw.client.modelClient;
 
-import it.polimi.ingsw.client.modelClient.enumeration.ErrorMessage;
-import it.polimi.ingsw.client.modelClient.enumeration.PlayerStatus;
-import it.polimi.ingsw.client.modelClient.enumeration.ResourceType;
+import it.polimi.ingsw.constant.enumeration.ErrorMessage;
+import it.polimi.ingsw.constant.enumeration.PlayerStatus;
 
 /*Last Edit: Fabio*/
 public class Player {

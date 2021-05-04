@@ -2,9 +2,8 @@ package it.polimi.ingsw.client.modelClient;
 
 /*Last Edit: Gio*/
 
-import it.polimi.ingsw.client.modelClient.enumeration.ColorDevCard;
-import it.polimi.ingsw.client.modelClient.enumeration.Level;
-import it.polimi.ingsw.client.modelClient.enumeration.ResourceType;
+import it.polimi.ingsw.constant.enumeration.ColorDevCard;
+import it.polimi.ingsw.constant.enumeration.Level;
 
 /**
  * 

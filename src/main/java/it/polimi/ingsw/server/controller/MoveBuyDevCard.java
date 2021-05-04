@@ -4,8 +4,8 @@ import it.polimi.ingsw.server.model.DevelopmentCard;
 import it.polimi.ingsw.server.model.Game;
 import it.polimi.ingsw.server.model.NumberOfResources;
 import it.polimi.ingsw.server.model.Player;
-import it.polimi.ingsw.server.model.enumeration.ErrorMessage;
-import it.polimi.ingsw.server.model.enumeration.PlayerStatus;
+import it.polimi.ingsw.constant.enumeration.ErrorMessage;
+import it.polimi.ingsw.constant.enumeration.PlayerStatus;
 import it.polimi.ingsw.server.model.exception.NoSpaceException;
 import it.polimi.ingsw.server.model.exception.OutOfResourcesException;
 

@@ -3,7 +3,7 @@ package it.polimi.ingsw.server;
 import it.polimi.ingsw.server.controller.Controller;
 import it.polimi.ingsw.server.controller.Starter;
 import it.polimi.ingsw.server.model.*;
-import it.polimi.ingsw.server.model.enumeration.MarbleColor;
+import it.polimi.ingsw.constant.enumeration.MarbleColor;
 import it.polimi.ingsw.server.view.RemoteView;
 import it.polimi.ingsw.server.view.View;
 
@@ -71,8 +71,10 @@ public class Server {
             Controller controller = new Controller(game);
 
 
-            /*game.addObserver(player1View);
-            game.addObserver(player2View);*/
+            game.getMarketTray().addObserver(player1View);
+            game.getMarketTray().addObserver(player2View);
+
+
             player1View.addObserver(controller);
             player2View.addObserver(controller);
             playingConnection.put(c1, c2);

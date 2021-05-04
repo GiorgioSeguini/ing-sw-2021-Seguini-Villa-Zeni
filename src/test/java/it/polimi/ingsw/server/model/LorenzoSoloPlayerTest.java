@@ -2,10 +2,10 @@ package it.polimi.ingsw.server.model;
 
 import it.polimi.ingsw.server.controller.Starter;
 import it.polimi.ingsw.server.model.*;
-import it.polimi.ingsw.server.model.enumeration.ColorDevCard;
-import it.polimi.ingsw.server.model.enumeration.GameStatus;
-import it.polimi.ingsw.server.model.enumeration.Level;
-import it.polimi.ingsw.server.model.enumeration.ResourceType;
+import it.polimi.ingsw.constant.enumeration.ColorDevCard;
+import it.polimi.ingsw.constant.enumeration.GameStatus;
+import it.polimi.ingsw.constant.enumeration.Level;
+import it.polimi.ingsw.constant.enumeration.ResourceType;
 import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.Test;
 

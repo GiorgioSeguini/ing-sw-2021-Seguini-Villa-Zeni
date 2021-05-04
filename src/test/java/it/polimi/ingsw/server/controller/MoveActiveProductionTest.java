@@ -1,6 +1,6 @@
 package it.polimi.ingsw.server.controller;
 import it.polimi.ingsw.server.model.*;
-import it.polimi.ingsw.server.model.enumeration.*;
+import it.polimi.ingsw.constant.enumeration.*;
 import it.polimi.ingsw.server.model.exception.NoSpaceException;
 import it.polimi.ingsw.server.model.exception.OutOfResourcesException;
 import org.json.simple.parser.ParseException;

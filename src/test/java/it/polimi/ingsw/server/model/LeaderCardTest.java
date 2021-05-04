@@ -2,8 +2,8 @@ package it.polimi.ingsw.server.model;
 
 import it.polimi.ingsw.server.controller.Starter;
 import it.polimi.ingsw.server.model.*;
-import it.polimi.ingsw.server.model.enumeration.LeaderStatus;
-import it.polimi.ingsw.server.model.enumeration.ResourceType;
+import it.polimi.ingsw.constant.enumeration.LeaderStatus;
+import it.polimi.ingsw.constant.enumeration.ResourceType;
 import it.polimi.ingsw.server.model.exception.NoMoreLeaderCardAliveException;
 import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.Test;

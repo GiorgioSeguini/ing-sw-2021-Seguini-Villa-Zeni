@@ -1,8 +1,8 @@
 package it.polimi.ingsw.server.model;
 
-import it.polimi.ingsw.server.model.enumeration.ErrorMessage;
-import it.polimi.ingsw.server.model.enumeration.PlayerStatus;
-import it.polimi.ingsw.server.model.enumeration.ResourceType;
+import it.polimi.ingsw.constant.enumeration.ErrorMessage;
+import it.polimi.ingsw.constant.enumeration.PlayerStatus;
+import it.polimi.ingsw.constant.enumeration.ResourceType;
 import it.polimi.ingsw.server.model.exception.OutOfResourcesException;
 
 /*Last Edit: Fabio*/

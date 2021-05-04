@@ -1,14 +1,13 @@
 package it.polimi.ingsw.server.view;
 
 
+import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.server.controller.*;
 import it.polimi.ingsw.server.model.Player;
 import it.polimi.ingsw.server.observer.Observer;
 import it.polimi.ingsw.server.ClientConnection;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
 import java.util.ArrayList;
 
@@ -50,6 +49,12 @@ public class RemoteView extends View {
 
     @Override
     protected void showMessage(Object message) {
+        clientConnection.asyncSend(message);
+    }
+
+    @Override
+    public void update(Message message){
+        //TODO json conversion
         clientConnection.asyncSend(message);
     }
 

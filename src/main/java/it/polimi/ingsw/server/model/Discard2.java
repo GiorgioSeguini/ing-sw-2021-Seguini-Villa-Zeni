@@ -2,7 +2,7 @@ package it.polimi.ingsw.server.model;
 
 /*Last Edit: Gio*/
 
-import it.polimi.ingsw.server.model.enumeration.ColorDevCard;
+import it.polimi.ingsw.constant.enumeration.ColorDevCard;
 
 public class Discard2 implements SoloActionTokens {
 

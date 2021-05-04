@@ -1,7 +1,7 @@
 package it.polimi.ingsw.server.model;
 
-import it.polimi.ingsw.server.model.enumeration.PopesFavorStates;
-/*Last Edit: Fabio*/  //ho soltanto tolto il metodo che aggiungeva due punti fede
+import it.polimi.ingsw.constant.enumeration.PopesFavorStates;
+/*Last Edit: Fabio*/
 /**
  * 
  */

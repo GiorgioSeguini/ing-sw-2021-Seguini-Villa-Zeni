@@ -1,7 +1,6 @@
 package it.polimi.ingsw.client.modelClient;
 
-import it.polimi.ingsw.client.modelClient.enumeration.LeaderStatus;
-import it.polimi.ingsw.client.modelClient.enumeration.Level;
+import it.polimi.ingsw.constant.enumeration.LeaderStatus;
 
 import java.util.ArrayList;
 

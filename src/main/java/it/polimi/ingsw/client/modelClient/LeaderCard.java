@@ -1,6 +1,6 @@
 package it.polimi.ingsw.client.modelClient;
 
-import it.polimi.ingsw.client.modelClient.enumeration.LeaderStatus;
+import it.polimi.ingsw.constant.enumeration.LeaderStatus;
 
 public class LeaderCard extends Card {
 

@@ -1,7 +1,7 @@
 package it.polimi.ingsw.server.model;
 /*Last Edit: William Zeni*/
 
-import it.polimi.ingsw.server.model.enumeration.ResourceType;
+import it.polimi.ingsw.constant.enumeration.ResourceType;
 
 public class ProductionPowerPlusAbility implements Ability {
 

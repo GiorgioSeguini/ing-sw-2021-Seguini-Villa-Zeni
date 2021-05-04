@@ -5,8 +5,8 @@ import it.polimi.ingsw.server.model.Dashboard;
 import it.polimi.ingsw.server.model.DevelopmentCard;
 import it.polimi.ingsw.server.model.NumberOfResources;
 import it.polimi.ingsw.server.model.ProductionPower;
-import it.polimi.ingsw.server.model.enumeration.ColorDevCard;
-import it.polimi.ingsw.server.model.enumeration.Level;
+import it.polimi.ingsw.constant.enumeration.ColorDevCard;
+import it.polimi.ingsw.constant.enumeration.Level;
 import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.Test;
 

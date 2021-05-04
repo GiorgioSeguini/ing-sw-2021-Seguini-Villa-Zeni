@@ -3,8 +3,8 @@ package it.polimi.ingsw.server.controller;
 import it.polimi.ingsw.server.model.Game;
 import it.polimi.ingsw.server.model.LeaderCard;
 import it.polimi.ingsw.server.model.Player;
-import it.polimi.ingsw.server.model.enumeration.ErrorMessage;
-import it.polimi.ingsw.server.model.enumeration.GameStatus;
+import it.polimi.ingsw.constant.enumeration.ErrorMessage;
+import it.polimi.ingsw.constant.enumeration.GameStatus;
 
 import java.util.ArrayList;
 

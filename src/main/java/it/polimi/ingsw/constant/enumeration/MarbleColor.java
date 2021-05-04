@@ -1,4 +1,4 @@
-package it.polimi.ingsw.client.modelClient.enumeration;
+package it.polimi.ingsw.constant.enumeration;
 
 /*Last Edit: Fabio*/
 /*Color of Game's marble*/

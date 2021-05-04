@@ -2,7 +2,7 @@ package it.polimi.ingsw.server.model;
 
 /*Last Edit: William Zeni*/
 
-import it.polimi.ingsw.server.model.enumeration.ResourceType;
+import it.polimi.ingsw.constant.enumeration.ResourceType;
 import it.polimi.ingsw.server.model.exception.OutOfResourcesException;
 
 /**This class is unchangeable: it always returns a new address to it */

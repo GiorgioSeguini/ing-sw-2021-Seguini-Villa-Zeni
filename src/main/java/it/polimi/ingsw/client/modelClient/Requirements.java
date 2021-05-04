@@ -1,7 +1,7 @@
 package it.polimi.ingsw.client.modelClient;
 
-import it.polimi.ingsw.client.modelClient.enumeration.ColorDevCard;
-import it.polimi.ingsw.client.modelClient.enumeration.Level;
+import it.polimi.ingsw.constant.enumeration.ColorDevCard;
+import it.polimi.ingsw.constant.enumeration.Level;
 
 import java.util.ArrayList;
 import java.util.Map;

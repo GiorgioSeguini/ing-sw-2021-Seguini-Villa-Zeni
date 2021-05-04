@@ -1,6 +1,6 @@
 package it.polimi.ingsw.client.modelClient;
 
-import it.polimi.ingsw.client.modelClient.enumeration.MarbleColor;
+import it.polimi.ingsw.constant.enumeration.MarbleColor;
 
 import java.util.ArrayList;
 
@@ -16,15 +16,9 @@ public class Market {
     //default constructor
 
     public Market(ArrayList<MarbleColor> startMarbles) {
-        //startMarbles.length is 13
-
+        //startMarbles.size() is 13
         tray= new MarbleColor[N_ROW][N_COL];
-        for(int i=0; i<N_ROW; i++){
-            for(int j=0; j<N_COL; j++){
-                tray[i][j] = startMarbles.get(i+j);
-            }
-        }
-        externalMarble = startMarbles.get(startMarbles.size()-1);
+        setMarbles(startMarbles);
     }
 
     //getter
@@ -42,6 +36,15 @@ public class Market {
             trayColumn[i] = tray[i][index];
         }
         return trayColumn;
+    }
+
+    public void setMarbles(ArrayList<MarbleColor> marbles){
+        for(int i=0; i<N_ROW; i++){
+            for(int j=0; j<N_COL; j++){
+                tray[i][j] = marbles.get(i*N_COL+j);
+            }
+        }
+        externalMarble = marbles.get(N_COL*N_ROW);
     }
 
 }
