@@ -2,19 +2,22 @@ package it.polimi.ingsw.server.model;
 
 /*Last Edit: Gio*/
 
+import it.polimi.ingsw.constant.message.DepotsMessage;
+import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.server.model.exception.OutOfResourcesException;
 import it.polimi.ingsw.server.model.exception.UnableToFillException;
+import it.polimi.ingsw.server.observer.Observable;
 
 /**
  * 
  */
-public class Depots {
+public class Depots extends Observable<Message> {
 
     private static final int DIVIDER_VICTORY_POINTS = 5;
 
     private final int ownerID;
-    private StrongBox strongBox;
-    private WareHouseDepots wareHouseDepots;
+    private final StrongBox strongBox;
+    private final WareHouseDepots wareHouseDepots;
     /**
      * Default constructor
      */
@@ -27,7 +30,7 @@ public class Depots {
 
     /**
      *
-     * @return
+     * @return total resources stored in the depots ( both Strongbox and WareHouse)
      */
     public NumberOfResources getResources() {
         NumberOfResources fromStrongBox = strongBox.getResources();
@@ -36,25 +39,25 @@ public class Depots {
     }
 
     /**
-     * @param input 
-     * @return
+     * @param input resources to add
      */
     public void addResourceFromProduction(NumberOfResources input) {
         strongBox.addResource(input);
+        change();
     }
 
     /**
      *
-     * @param input
-     * @throws IllegalArgumentException
+     * @param input resources to add
+     * @throws IllegalArgumentException if you can't add this resources
      */
     public void addResourcesFromMarket(NumberOfResources input) throws UnableToFillException {
         wareHouseDepots.addResource(input);
+        change();
     }
 
     /**
-     * @param required 
-     * @return
+     * @param required number of resources to subtract
      */
     public void subResource(NumberOfResources required) throws OutOfResourcesException {
         try {
@@ -73,11 +76,12 @@ public class Depots {
             wareHouseDepots.subResource(subtracted);
 
         }
+        change();
     }
 
     /**
-     * @param required 
-     * @return
+     * @param required resources needed
+     * @return true if the depots contains enough resources
      */
     public boolean match(NumberOfResources required) {
         NumberOfResources currentResources = getResources();
@@ -89,18 +93,13 @@ public class Depots {
         return true;
     }
 
-    /**
-     * @param input 
-     * @return
-     */
     /*
     public boolean canAddFromMarket(NumberOfResources input) {
         return wareHouseDepots.canAdd(input);
     }
 */
     /**
-     *
-     * @param s
+     * @param s shelf to add
      */
     public void addExtraShelf(Shelf s){
         wareHouseDepots.addExtraShelf(s);
@@ -113,5 +112,15 @@ public class Depots {
     /*just for testing*/
     public WareHouseDepots getWareHouseDepots() {
         return wareHouseDepots;
+    }
+
+    /**
+     * This methods create an instance of FaithTrackMessage and notify observers
+     */
+    private void change(){
+        String depots = "";
+        //TODO parsing
+
+        notify(new DepotsMessage(depots, this.ownerID));
     }
 }

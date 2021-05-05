@@ -78,7 +78,8 @@ public class Server {
                 game.getDashboard().addObserver(view);
                 for(Player player : game.getPlayers()){
                     player.getPersonalBoard().addObserver(view);
-                    //TODO
+                    player.getFaithTrack().addObserver(view);
+                    player.getDepots().addObserver(view);
                 }
 
                 //add controller - view links

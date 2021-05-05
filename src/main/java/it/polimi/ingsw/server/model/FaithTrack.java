@@ -1,11 +1,14 @@
 package it.polimi.ingsw.server.model;
 
 import it.polimi.ingsw.constant.enumeration.PopesFavorStates;
+import it.polimi.ingsw.constant.message.FaithTrackMessage;
+import it.polimi.ingsw.constant.message.Message;
+import it.polimi.ingsw.server.observer.Observable;
 /*Last Edit: Fabio*/
 /**
  * 
  */
-public class FaithTrack {
+public class FaithTrack extends Observable<Message> {
     private static final int NUM_OF_POP = 3;
     private static final int MAX_POINTS = 24;
 
@@ -32,14 +35,14 @@ public class FaithTrack {
 
 
     /**
-     * @return
+     * @return number of faith points
      */
     public int getFaithPoints() {
         return faithPoints;
     }
 
     /**
-     * @return
+     * @return number of victory points
      */
     public int getVictoryPoints() {
         int result = victoryPoints[faithPoints];
@@ -52,10 +55,13 @@ public class FaithTrack {
     }
 
     /**
-     *dopo ogni chiamata chiamate game.popesInspection!!!
+     * after each call, caller is expected to call inspectionNeed() at a proper time
      */
     public void addPoint() {
-        if(faithPoints<MAX_POINTS) faithPoints++;
+        if(faithPoints<MAX_POINTS){
+            faithPoints++;
+            change();
+        }
     }
 
     /**
@@ -76,10 +82,20 @@ public class FaithTrack {
         else{
             popesFavor[index]=PopesFavorStates.Discarded;
         }
+        change();
     }
 
     boolean isEnd(){
         return faithPoints==MAX_POINTS;
     }
 
+    /**
+     * This methods create an instance of FaithTrackMessage and notify observers
+     */
+    private void change(){
+        String faithTrack = "";
+        //TODO parsing
+
+        notify(new FaithTrackMessage(faithTrack, this.ownerID));
+    }
 }

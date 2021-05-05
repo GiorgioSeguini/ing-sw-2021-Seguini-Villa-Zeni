@@ -7,8 +7,8 @@ import it.polimi.ingsw.constant.enumeration.PlayerStatus;
 public class Player {
 
     private final String userName;
-    private final FaithTrack faithtrack;
-    private final Depots depots;
+    private FaithTrack faithtrack;
+    private Depots depots;
     private final PersonalBoard personalBoard;
     private final int ID;
 
@@ -58,5 +58,13 @@ public class Player {
 
     public int getID() {
         return ID;
+    }
+
+    public void setFaithTrack(FaithTrack faithtrack){
+        this.faithtrack= faithtrack;
+    }
+
+    public void setDepots(Depots depots){
+        this.depots= depots;
     }
 }
