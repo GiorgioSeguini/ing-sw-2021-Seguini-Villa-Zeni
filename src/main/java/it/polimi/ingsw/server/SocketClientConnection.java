@@ -13,7 +13,7 @@ import java.util.Scanner;
 /**
  * Each instance is a connection to a specific client
  */
-public class SocketClientConnection extends Observable<JSONObject> implements ClientConnection, Runnable {
+public class SocketClientConnection extends Observable<String> implements ClientConnection, Runnable {
 
     private Socket socket;
     private ObjectOutputStream out;
@@ -71,20 +71,19 @@ public class SocketClientConnection extends Observable<JSONObject> implements Cl
 
     @Override
     public void run() {
-        ObjectInputStream in;
-        String name;
+        Scanner in;
+
         try{
-            in = new ObjectInputStream(socket.getInputStream());
+            in = new Scanner(socket.getInputStream());
             out = new ObjectOutputStream(socket.getOutputStream());
             send("Welcome!\nWhat is your name?");
-            //String read = in.nextLine();
-            //name = read;
-            server.lobby(this, "Poippo");
+            String read = in.nextLine();
+            server.lobby(this, read);
             while(isActive()){
-                JSONObject read= (JSONObject) in.readObject();
+                read=in.nextLine();
                 notify(read);
             }
-        } catch (IOException | NoSuchElementException | ClassNotFoundException e) {
+        } catch (IOException | NoSuchElementException e) {
             System.err.println("Error!" + e.getMessage());
         }finally{
             close();

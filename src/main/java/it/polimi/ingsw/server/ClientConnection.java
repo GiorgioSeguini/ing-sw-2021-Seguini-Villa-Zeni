@@ -7,7 +7,7 @@ public interface ClientConnection{
 
     void closeConnection();
 
-    void addObserver(Observer<JSONObject> observer);
+    void addObserver(Observer<String> observer);
 
     void asyncSend(Object message);
 }
