@@ -20,5 +20,5 @@ public class lol {
         String tosend=gson.toJson(move2)+gson.toJson(discard2)+gson.toJson(moveShuffle);
 
         System.out.println(tosend);
-    }
+    }// TODO: 5/5/21 non capisco delle cose
 }

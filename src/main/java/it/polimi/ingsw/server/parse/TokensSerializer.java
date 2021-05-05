@@ -34,5 +34,5 @@ public class TokensSerializer implements JsonSerializer<SoloActionTokens>, JsonD
         JsonElement elem = context.serialize(soloActionTokens);
         retValue.add(INSTANCE, elem);
         return retValue;
-    }
+    }// TODO: 5/5/21 non capisco delle cose 
 }
