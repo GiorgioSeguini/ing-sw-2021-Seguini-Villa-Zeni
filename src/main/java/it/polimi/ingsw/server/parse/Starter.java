@@ -176,7 +176,13 @@ public class Starter {
  */
 
     public static ArrayList<SoloActionTokens> TokensParser() throws FileNotFoundException{
-        return null;
+        GsonBuilder builder= new GsonBuilder();
+        builder.registerTypeAdapter(SoloActionTokens.class, new TokensSerializer());
+        Gson gson=builder.create();
+
+        Type TokensListType = new TypeToken<ArrayList<SoloActionTokens>>(){}.getType();
+        String filePath = new File("").getAbsolutePath();
+        return gson.fromJson(new FileReader(filePath + "/src/main/resources/SoloActionTokens.json"), TokensListType);
     }
 
 

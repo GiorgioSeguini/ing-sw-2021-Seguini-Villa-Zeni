@@ -6,7 +6,8 @@ import java.util.Collections;
 /*Last Edit: Fabio*/
 public class MoveShuffle implements SoloActionTokens {
 
-    private ArrayList<SoloActionTokens> shuffledDeck;
+    public static final String name = "MoveShuffle";
+    private transient ArrayList<SoloActionTokens> shuffledDeck;
 
     /*Default constructor*/
     public MoveShuffle() {
@@ -25,6 +26,11 @@ public class MoveShuffle implements SoloActionTokens {
         Collections.shuffle(shuffledDeck);
         //shuffledDeck = Shuffle(game.getSoloGame().getCopyOfSoloActionTokensInit());
         game.getSoloGame().setSoloActionTokens(shuffledDeck);
+    }
+
+    @Override
+    public String getName(){
+        return name;
     }
 
     /**This shuffle randomly the SoloActionToken's stack**/

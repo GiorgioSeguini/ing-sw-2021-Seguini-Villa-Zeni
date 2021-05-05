@@ -3,6 +3,8 @@ package it.polimi.ingsw.server.model;
 /*Last Edit: Fabio*/
 public class Move2 implements SoloActionTokens {
 
+    public static final String name = "Move2";
+
     /*Default constructor*/
     public Move2() {
     }
@@ -14,5 +16,10 @@ public class Move2 implements SoloActionTokens {
             game.getSoloGame().getFaithTrack().addPoint();
         }
         game.popesInspection();
+    }
+
+    @Override
+    public String getName(){
+        return name;
     }
 }
