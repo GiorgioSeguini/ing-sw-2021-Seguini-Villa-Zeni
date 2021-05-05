@@ -12,9 +12,10 @@ import java.util.ArrayList;
 public class MoveChoseLeaderCards extends MoveType{
 
     private final ArrayList<Integer> indexLeaderCards;
+    public static final String className= "MoveChoseLeaderCards";
 
     public MoveChoseLeaderCards(Player player, ArrayList<Integer> indexLeaderCards) {
-        super(player);
+        super(player, className);
         this.indexLeaderCards = new ArrayList<>();
         this.indexLeaderCards.addAll(indexLeaderCards);
     }

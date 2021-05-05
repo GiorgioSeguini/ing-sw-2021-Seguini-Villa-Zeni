@@ -10,9 +10,10 @@ import it.polimi.ingsw.server.model.exception.UnableToFillException;
 public class MoveChoseInitialResources extends MoveType{
 
     NumberOfResources resources;
+    public static final String className= "MoveChoseInitialResources";
 
     public MoveChoseInitialResources(Player player, NumberOfResources resources) {
-        super(player);
+        super(player, className);
         this.resources = resources;
     }
 

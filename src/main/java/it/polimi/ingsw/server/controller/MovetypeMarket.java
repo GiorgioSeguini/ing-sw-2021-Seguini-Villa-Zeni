@@ -13,9 +13,10 @@ import java.util.ArrayList;
 public class MovetypeMarket extends MoveType{
 
     private final int indexToBuy;
+    public static final String className= "MovetypeMarket";
 
     public MovetypeMarket(Player player, int indextobuy){
-        super(player);
+        super(player, className);
         this.indexToBuy=indextobuy;
         this.allowedStatus = new PlayerStatus[]{PlayerStatus.Active};
     }

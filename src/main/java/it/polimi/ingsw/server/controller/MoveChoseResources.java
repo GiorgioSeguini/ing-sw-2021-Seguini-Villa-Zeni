@@ -8,11 +8,12 @@ import it.polimi.ingsw.server.model.exception.ChoseResourcesException;
 import it.polimi.ingsw.server.model.exception.OutOfResourcesException;
 
 public class MoveChoseResources extends MoveType{
-     private final NumberOfResources ofYourChoiceInput;
+    private final NumberOfResources ofYourChoiceInput;
     private final NumberOfResources ofYourChoiceOutput;
+    public static final String className= "MoveChoseResources";
 
     public MoveChoseResources(Player active, NumberOfResources ofYourChoiceInput, NumberOfResources ofYourChoiceOutput) {
-        super(active);
+        super(active,className);
         this.ofYourChoiceInput = ofYourChoiceInput;
         this.ofYourChoiceOutput = ofYourChoiceOutput;
         this.allowedStatus = new PlayerStatus[]{PlayerStatus.NeedToChoseRes};

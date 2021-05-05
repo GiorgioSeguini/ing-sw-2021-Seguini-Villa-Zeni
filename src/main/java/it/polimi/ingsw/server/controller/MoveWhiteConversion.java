@@ -10,9 +10,10 @@ import java.util.ArrayList;
 
 public class MoveWhiteConversion extends MoveType{
     private final ArrayList<ResourceType> whiteMarbles;
+    public static final String className= "MoveWhiteConversion";
 
     public MoveWhiteConversion(Player player, ArrayList<ResourceType> whitemarbles){
-        super(player);
+        super(player, className);
         this.whiteMarbles=whitemarbles;
         this.allowedStatus = new PlayerStatus[]{PlayerStatus.NeedToConvert};
     }

@@ -14,9 +14,10 @@ public class MoveBuyDevCard extends MoveType{
 
     private final int pos;
     private final int indexCardToBuy;
+    public static final String className= "MoveBuyDevCard";
 
     public MoveBuyDevCard(Player active, int pos, int indexCardToBuy) {
-        super(active);
+        super(active,className);
         this.pos = pos;
         this.indexCardToBuy = indexCardToBuy;
         this.allowedStatus = new PlayerStatus[]{PlayerStatus.Active};

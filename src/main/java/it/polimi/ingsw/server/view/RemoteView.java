@@ -38,7 +38,7 @@ public class RemoteView extends View {
              */
 
             handleMove(move);
-        }// TODO: 4/28/21 Testing 
+        } // TODO: 5/5/21 implementare MoveTypeSerializer 
 
     }
 

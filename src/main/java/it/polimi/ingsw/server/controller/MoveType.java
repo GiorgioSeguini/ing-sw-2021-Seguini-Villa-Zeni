@@ -9,13 +9,19 @@ public abstract class MoveType {
 
     Player player;
     PlayerStatus[] allowedStatus;
+    private static String className;
 
-    public MoveType(Player player){
+    public MoveType(Player player, String className){
         this.player = player;
+        this.className=className;
     }
 
     public Player getPlayer() {
         return player;
+    }
+
+    public String getClassName() {
+        return className;
     }
 
     /**

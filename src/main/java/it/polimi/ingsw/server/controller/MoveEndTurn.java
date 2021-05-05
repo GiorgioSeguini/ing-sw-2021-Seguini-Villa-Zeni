@@ -6,9 +6,10 @@ import it.polimi.ingsw.constant.enumeration.PlayerStatus;
 
 public class MoveEndTurn extends MoveType{
 
+    public static final String className= "MoveEndTurn";
 
     public MoveEndTurn(Player player) {
-        super(player);
+        super(player, className);
         this.allowedStatus = new PlayerStatus[]{PlayerStatus.MovePerformed};
     }
 

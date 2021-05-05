@@ -12,9 +12,10 @@ public class MoveLeader extends MoveType{
 
     int move;
     LeaderCard leaderCard;
+    public static final String className= "MoveLeader";
 
     public MoveLeader(Player player, int move, LeaderCard leaderCard) {
-        super(player);
+        super(player,className);
         this.move = move;
         this.leaderCard = leaderCard;
         this.allowedStatus = new PlayerStatus[]{PlayerStatus.Active, PlayerStatus.MovePerformed};

@@ -10,9 +10,10 @@ import it.polimi.ingsw.server.model.exception.UnableToFillException;
 
 public class MoveDiscardResources extends MoveType{
     private final NumberOfResources toDiscard;
+    public static final String className= "MoveDiscardResources";
 
     public MoveDiscardResources(Player player, NumberOfResources toDiscard){
-        super(player);
+        super(player,className);
         this.toDiscard=toDiscard;
         this.allowedStatus = new PlayerStatus[]{PlayerStatus.NeedToStore};
     }
