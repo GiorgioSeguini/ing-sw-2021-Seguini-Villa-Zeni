@@ -60,7 +60,7 @@ public class MoveActiveProductionTest {
         ArrayList<LeaderCard>leaderCards=new ArrayList<>();
         try {
             leaderCards=Starter.LeaderCardsParser();
-        } catch (IOException | ParseException e) {
+        } catch (IOException e) {
             fail();
         }
 
@@ -127,7 +127,7 @@ public class MoveActiveProductionTest {
         ArrayList<LeaderCard>leaderCards=new ArrayList<>();
         try {
             leaderCards=Starter.LeaderCardsParser();
-        } catch (IOException | ParseException e) {
+        } catch (IOException e) {
             fail();
         }
 
@@ -191,7 +191,7 @@ public class MoveActiveProductionTest {
         ArrayList<LeaderCard>leaderCards2=new ArrayList<>();
         try {
             leaderCards2=Starter.LeaderCardsParser();
-        } catch (IOException | ParseException e) {
+        } catch (IOException e) {
             fail();
         }
 

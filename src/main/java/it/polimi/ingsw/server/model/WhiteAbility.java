@@ -7,6 +7,12 @@ import it.polimi.ingsw.constant.enumeration.ResourceType;
 public class WhiteAbility implements Ability {
 
     private final ResourceType typeOfRes;
+    public static final String name="WhiteAbility";
+
+    @Override
+    public String getName() {
+        return name;
+    }
 
     /*Default constructor*/
     public WhiteAbility(ResourceType type) {

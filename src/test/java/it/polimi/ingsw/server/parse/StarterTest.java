@@ -1,6 +1,5 @@
-package it.polimi.ingsw.server.controller;
+package it.polimi.ingsw.server.parse;
 
-import it.polimi.ingsw.server.parse.Starter;
 import it.polimi.ingsw.server.model.*;
 import it.polimi.ingsw.constant.enumeration.ColorDevCard;
 import it.polimi.ingsw.constant.enumeration.Level;
@@ -118,7 +117,7 @@ class StarterTest {
         ArrayList<LeaderCard>leaderCards=new ArrayList<>();
         try {
             leaderCards=Starter.LeaderCardsParser();
-        } catch (IOException | ParseException e) {
+        } catch (IOException  e) {
             fail();
         }
         assertEquals(16,leaderCards.size());

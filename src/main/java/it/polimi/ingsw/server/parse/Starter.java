@@ -152,41 +152,7 @@ public class Starter {
         return arrayList;
     }
 
-
-/*   public static ArrayList<SoloActionTokens> TokensParser() throws IOException, ParseException {
-        JSONParser parser = new JSONParser();
-        String filePath = new File("").getAbsolutePath();
-        JSONArray array = (JSONArray) parser.parse(new FileReader(filePath + "/src/main/resources/SoloActionTokens.json"));
-        ArrayList<SoloActionTokens> tokens= new ArrayList<>();
-
-        for (Object token: array){
-            switch ((String)token){
-                case "MOVE2": tokens.add(new Move2()); break;
-                case "MOVESHUFFLE": tokens.add(new MoveShuffle()); break;
-                case "DISCARD2-GREEN": tokens.add((new Discard2(ColorDevCard.GREEN)));break;
-                case "DISCARD2-YELLOW": tokens.add((new Discard2(ColorDevCard.YELLOW))); break;
-                case "DISCARD2-PURPLE": tokens.add((new Discard2(ColorDevCard.PURPLE))); break;
-                case "DISCARD2-BLUE": tokens.add((new Discard2(ColorDevCard.BLUE))); break;
-                default: throw new IllegalArgumentException();
-            }
-        }
-        return tokens;
-    }
-
- */
-
-    public static ArrayList<SoloActionTokens> TokensParser() throws FileNotFoundException{
-        GsonBuilder builder= new GsonBuilder();
-        builder.registerTypeAdapter(SoloActionTokens.class, new TokensSerializer());
-        Gson gson=builder.create();
-
-        Type TokensListType = new TypeToken<ArrayList<SoloActionTokens>>(){}.getType();
-        String filePath = new File("").getAbsolutePath();
-        return gson.fromJson(new FileReader(filePath + "/src/main/resources/SoloActionTokens.json"), TokensListType);
-    }
-
-
-    public static ArrayList<LeaderCard> LeaderCardsParser() throws IOException, ParseException {
+   /* public static ArrayList<LeaderCard> LeaderCardsParser() throws IOException, ParseException {
         JSONParser parser = new JSONParser();
         String filePath = new File("").getAbsolutePath();
         JSONArray array = (JSONArray) parser.parse(new FileReader(filePath + "/src/main/resources/LeaderCards.json"));
@@ -201,9 +167,35 @@ public class Starter {
             Requirements requirements=getRequirementsFromObject(reqapp);
             leaderCards.add(new LeaderCard(requirements,ability,victorypoints));
         }
-
+i
         return leaderCards;
     } // TODO: 5/5/21
+
+    */
+
+
+    public static ArrayList<LeaderCard> LeaderCardsParser() throws FileNotFoundException {
+        GsonBuilder builder= new GsonBuilder();
+        builder.registerTypeAdapter(NumberOfResources.class, new NumberOfResSerializer());
+        builder.registerTypeAdapter(Ability.class, new AbilitySerializer());
+        Gson gson=builder.create();
+        Type LeaderListType = new TypeToken<ArrayList<LeaderCard>>(){}.getType();
+        String filePath = new File("").getAbsolutePath();
+        return gson.fromJson(new FileReader(filePath + "/src/main/resources/LeaderCards.json"), LeaderListType);
+    }
+
+
+
+
+    public static ArrayList<SoloActionTokens> TokensParser() throws FileNotFoundException{
+        GsonBuilder builder= new GsonBuilder();
+        builder.registerTypeAdapter(SoloActionTokens.class, new TokensSerializer());
+        Gson gson=builder.create();
+
+        Type TokensListType = new TypeToken<ArrayList<SoloActionTokens>>(){}.getType();
+        String filePath = new File("").getAbsolutePath();
+        return gson.fromJson(new FileReader(filePath + "/src/main/resources/SoloActionTokens.json"), TokensListType);
+    }
 
     public static ArrayList<MarbleColor> MarblesParser() throws FileNotFoundException {
         Gson gson= new Gson();

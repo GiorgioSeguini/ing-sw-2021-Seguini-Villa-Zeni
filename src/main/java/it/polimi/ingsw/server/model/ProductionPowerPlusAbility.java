@@ -6,6 +6,12 @@ import it.polimi.ingsw.constant.enumeration.ResourceType;
 public class ProductionPowerPlusAbility implements Ability {
 
     private final ResourceType typeOfRes;
+    public static final String name="ProductionPowerPlusAbility";
+
+    @Override
+    public String getName() {
+        return name;
+    }
 
     /* Default constructor*/
     public ProductionPowerPlusAbility(ResourceType type) {

@@ -7,9 +7,9 @@ public abstract class Card {
     private final int victoryPoints;
     private final int id;
 
-    public Card(int victoryPoints, int id) {
+    public Card(int victoryPoints) {
         this.victoryPoints = victoryPoints;
-        this.id=id;
+        this.id=0;
     }
 
     public int getId() {

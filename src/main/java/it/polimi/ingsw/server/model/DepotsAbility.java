@@ -8,6 +8,12 @@ public class DepotsAbility implements Ability {
 
     public static final int extraSize = 2;
     private final ResourceType typeOfRes;
+    public static final String name="DepotsAbility";
+
+    @Override
+    public String getName() {
+        return name;
+    }
 
     /*Default constructor*/
     public DepotsAbility(ResourceType typeOfRes) {

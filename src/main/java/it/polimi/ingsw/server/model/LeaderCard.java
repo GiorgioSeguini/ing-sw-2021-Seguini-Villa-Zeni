@@ -7,14 +7,14 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class LeaderCard extends Card {
 
-    private LeaderStatus status;
+    private transient LeaderStatus status;
     private final Requirements requirements;
     private final Ability ability;
-    static AtomicInteger nextId= new AtomicInteger();
+    //static AtomicInteger nextId= new AtomicInteger();
 
     /*Default constructor*/
     public LeaderCard(Requirements requirements, Ability ability, int victoryPoints) {
-        super(victoryPoints, nextId.incrementAndGet());
+        super(victoryPoints);
         this.status=LeaderStatus.onHand;
         this.requirements=requirements;
         this.ability=ability;
@@ -84,6 +84,5 @@ public class LeaderCard extends Card {
 
         return ability.equals(other.ability);
     }
-
 
 }

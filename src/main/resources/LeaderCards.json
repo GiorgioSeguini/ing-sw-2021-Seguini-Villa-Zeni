@@ -1,274 +1,389 @@
 [
   {
-    "VictoryPoints": 3,
-    "Ability": {
-      "DepotsAbility": "STONES"
+    "requirements":{
+      "numberOfResourceses":{
+        "Servants":0,
+        "Shields":0,
+        "Coins":5,
+        "Stones":0
+      },
+      "minNumber":[
+        [0,0,0],
+        [0,0,0],
+        [0,0,0],
+        [0,0,0]
+      ]
     },
-    "Requirements": {
-      "Resources": {
-        "Servants": 0,
-        "Shields": 0,
-        "Coins": 5,
-        "Stones": 0
+    "ability":{
+      "CLASSNAME":"DepotsAbility",
+      "INSTANCE":{
+        "typeOfRes":"Stones"
       }
-    }
+    },
+    "victoryPoints":3,
+    "id":0
   },
   {
-    "VictoryPoints": 3,
-    "Ability": {
-      "DepotsAbility": "SERVANTS"
+    "requirements":{
+      "numberOfResourceses":{
+        "Servants":0,
+        "Shields":0,
+        "Coins":0,
+        "Stones":5
+      },
+      "minNumber":[
+        [0,0,0],
+        [0,0,0],
+        [0,0,0],
+        [0,0,0]
+      ]
     },
-    "Requirements": {
-      "Resources": {
-        "Servants": 0,
-        "Shields": 0,
-        "Coins": 0,
-        "Stones": 5
+    "ability":{
+      "CLASSNAME":"DepotsAbility",
+      "INSTANCE":{
+        "typeOfRes":"Servants"
       }
-    }
+    },
+    "victoryPoints":3,
+    "id":1
   },
   {
-    "VictoryPoints": 3,
-    "Ability": {
-      "DepotsAbility": "SHIELDS"
+    "requirements": {
+      "numberOfResourceses":{
+        "Servants":5,
+        "Shields":0,
+        "Coins":0,
+        "Stones":0
+      },
+      "minNumber":[
+        [0,0,0],
+        [0,0,0],
+        [0,0,0],
+        [0,0,0]
+      ]
     },
-    "Requirements": {
-      "Resources": {
-        "Servants": 5,
-        "Shields": 0,
-        "Coins": 0,
-        "Stones": 0
+    "ability":{
+      "CLASSNAME":"DepotsAbility",
+      "INSTANCE":{
+        "typeOfRes":"Shields"
       }
-    }
+    },
+    "victoryPoints":3,
+    "id":2
   },
   {
-    "VictoryPoints": 3,
-    "Ability": {
-      "DepotsAbility": "COINS"
+    "requirements": {
+      "numberOfResourceses":{
+        "Servants":0,
+        "Shields":5,
+        "Coins":0,
+        "Stones":0
+      },
+      "minNumber":[
+        [0,0,0],
+        [0,0,0],
+        [0,0,0],
+        [0,0,0]
+      ]
     },
-    "Requirements": {
-      "Resources": {
-        "Servants": 0,
-        "Shields": 5,
-        "Coins": 0,
-        "Stones": 0
+    "ability":{
+      "CLASSNAME":"DepotsAbility",
+      "INSTANCE":{
+        "typeOfRes":"Coins"
       }
-    }
+    },
+    "victoryPoints":3,
+    "id":3
   },
   {
-    "VictoryPoints": 2,
-    "Ability":{
-      "DiscountAbility": "SERVANTS"
-    },
-    "Requirements": {
-      "CardsReq": [
-        {
-          "Color": "YELLOW",
-          "Level": "ONE"
-        },
-        {
-          "Color": "GREEN",
-          "Level": "ONE"
-        }
+    "requirements":{
+      "numberOfResourceses":{
+        "Servants":0,
+        "Shields":0,
+        "Coins":0,
+        "Stones":0
+      },
+      "minNumber":[
+        [1,0,0],
+        [1,0,0],
+        [0,0,0],
+        [0,0,0]
       ]
-    }
+    },
+    "ability":{
+      "CLASSNAME":"DiscountAbility",
+      "INSTANCE":{
+        "resourceType":"Servants",
+        "discount":1
+      }
+    },
+    "victoryPoints":2,
+    "id":4
   },
   {
-    "VictoryPoints": 2,
-    "Ability":{
-      "DiscountAbility": "SHIELDS"
-    },
-    "Requirements": {
-      "CardsReq": [
-        {
-          "Color": "BLUE",
-          "Level": "ONE"
-        },
-        {
-          "Color": "PURPLE",
-          "Level": "ONE"
-        }
+    "requirements":{
+      "numberOfResourceses":{
+        "Servants":0,
+        "Shields":0,
+        "Coins":0,
+        "Stones":0},
+      "minNumber":[
+        [0,0,0],
+        [0,0,0],
+        [1,0,0],
+        [1,0,0]
       ]
-    }
+    },
+    "ability":{
+      "CLASSNAME":"DiscountAbility",
+      "INSTANCE":{
+        "resourceType":"Shields",
+        "discount":1
+      }
+    },
+    "victoryPoints":2,
+    "id":5
   },
   {
-    "VictoryPoints": 2,
-    "Ability":{
-      "DiscountAbility": "STONES"
-    },
-    "Requirements": {
-      "CardsReq": [
-        {
-          "Color": "GREEN",
-          "Level": "ONE"
-        },
-        {
-          "Color": "BLUE",
-          "Level": "ONE"
-        }
+    "requirements":{
+      "numberOfResourceses":{
+        "Servants":0,
+        "Shields":0,
+        "Coins":0,
+        "Stones":0
+      },
+      "minNumber":[
+        [0,0,0],
+        [1,0,0],
+        [1,0,0],
+        [0,0,0]
       ]
-    }
+    },
+    "ability":{
+      "CLASSNAME":"DiscountAbility",
+      "INSTANCE":{
+        "resourceType":"Stones",
+        "discount":1
+      }
+    },
+    "victoryPoints":2,
+    "id":6
   },
   {
-    "VictoryPoints": 2,
-    "Ability":{
-      "DiscountAbility": "COINS"
-    },
-    "Requirements": {
-      "CardsReq": [
-        {
-          "Color": "YELLOW",
-          "Level": "ONE"
-        },
-        {
-          "Color": "PURPLE",
-          "Level": "ONE"
-        }
+    "requirements":{
+      "numberOfResourceses":{
+        "Servants":0,
+        "Shields":0,
+        "Coins":0,
+        "Stones":0
+      },
+      "minNumber":[
+        [1,0,0],
+        [0,0,0],
+        [0,0,0],
+        [1,0,0]
       ]
-    }
+    },
+    "ability":{
+      "CLASSNAME":"DiscountAbility",
+      "INSTANCE":{
+        "resourceType":"Coins",
+        "discount":1
+      }
+    },
+    "victoryPoints":2,
+    "id":7
   },
   {
-    "VictoryPoints": 2,
-    "Ability":{
-      "WhiteAbility": "SERVANTS"
-    },
-    "Requirements": {
-      "CardsReq": [
-        {
-          "Color": "YELLOW",
-          "Level": "ONE"
-        },
-        {
-          "Color": "YELLOW",
-          "Level": "ONE"
-        },
-        {
-          "Color": "BLUE",
-          "Level": "ONE"
-        }
+    "requirements":{
+      "numberOfResourceses":{
+        "Servants":0,
+        "Shields":0,
+        "Coins":0,
+        "Stones":0
+      },
+      "minNumber":[
+        [2,0,0],
+        [0,0,0],
+        [1,0,0],
+        [0,0,0]
       ]
-    }
+    },
+    "ability":{
+      "CLASSNAME":"WhiteAbility",
+      "INSTANCE":{
+        "typeOfRes":"Servants"
+      }
+    },
+    "victoryPoints":2,
+    "id":8
   },
   {
-    "VictoryPoints": 2,
-    "Ability":{
-      "WhiteAbility": "SHIELDS"
-    },
-    "Requirements": {
-      "CardsReq": [
-        {
-          "Color": "GREEN",
-          "Level": "ONE"
-        },
-        {
-          "Color": "GREEN",
-          "Level": "ONE"
-        },
-        {
-          "Color": "PURPLE",
-          "Level": "ONE"
-        }
+    "requirements":{
+      "numberOfResourceses":{
+        "Servants":0,
+        "Shields":0,
+        "Coins":0,
+        "Stones":0
+      },
+      "minNumber":[
+        [0,0,0],
+        [2,0,0],
+        [0,0,0],
+        [1,0,0]
       ]
-    }
+    },
+    "ability":{
+      "CLASSNAME":"WhiteAbility",
+      "INSTANCE":{
+        "typeOfRes":"Shields"
+      }
+    },
+    "victoryPoints":2,
+    "id":9
   },
   {
-    "VictoryPoints": 2,
-    "Ability":{
-      "WhiteAbility": "STONES"
-    },
-    "Requirements": {
-      "CardsReq": [
-        {
-          "Color": "BLUE",
-          "Level": "ONE"
-        },
-        {
-          "Color": "BLUE",
-          "Level": "ONE"
-        },
-        {
-          "Color": "YELLOW",
-          "Level": "ONE"
-        }
+    "requirements":{
+      "numberOfResourceses":{
+        "Servants":0,
+        "Shields":0,
+        "Coins":0,
+        "Stones":0
+      },
+      "minNumber":[
+        [1,0,0],
+        [0,0,0],
+        [2,0,0],
+        [0,0,0]
       ]
-    }
+    },
+    "ability":{
+      "CLASSNAME":"WhiteAbility",
+      "INSTANCE":{
+        "typeOfRes":"Stones"
+      }
+    },
+    "victoryPoints":2,
+    "id":10
   },
   {
-    "VictoryPoints": 2,
-    "Ability":{
-      "WhiteAbility": "COINS"
-    },
-    "Requirements": {
-      "CardsReq": [
-        {
-          "Color": "PURPLE",
-          "Level": "ONE"
-        },
-        {
-          "Color": "PURPLE",
-          "Level": "ONE"
-        },
-        {
-          "Color": "GREEN",
-          "Level": "ONE"
-        }
+    "requirements":{
+      "numberOfResourceses":{
+        "Servants":0,
+        "Shields":0,
+        "Coins":0,
+        "Stones":0
+      },
+      "minNumber":[
+        [0,0,0],
+        [1,0,0],
+        [0,0,0],
+        [2,0,0]
       ]
-    }
+    },
+    "ability":{
+      "CLASSNAME":"WhiteAbility",
+      "INSTANCE":{
+        "typeOfRes":"Coins"
+      }
+    },
+    "victoryPoints":2,
+    "id":11
   },
   {
-    "VictoryPoints": 4,
-    "Ability":{
-      "ProductionPlusAbility": "SHIELDS"
-    },
-    "Requirements": {
-      "CardsReq": [
-        {
-          "Color": "YELLOW",
-          "Level": "TWO"
-        }
+    "requirements":{
+      "numberOfResourceses":{
+        "Servants":0,
+        "Shields":0,
+        "Coins":0,
+        "Stones":0
+      },
+      "minNumber":[
+        [0,1,0],
+        [0,0,0],
+        [0,0,0],
+        [0,0,0]
       ]
-    }
+    },
+    "ability":{
+      "CLASSNAME":"ProductionPowerPlusAbility",
+      "INSTANCE":{
+        "typeOfRes":"Shields"
+      }
+    },
+    "victoryPoints":4,
+    "id":12
   },
   {
-    "VictoryPoints": 4,
-    "Ability":{
-      "ProductionPlusAbility": "SERVANTS"
-    },
-    "Requirements": {
-      "CardsReq": [
-        {
-          "Color": "BLUE",
-          "Level": "TWO"
-        }
+    "requirements":{
+      "numberOfResourceses":{
+        "Servants":0,
+        "Shields":0,
+        "Coins":0,
+        "Stones":0
+      },
+      "minNumber":[
+        [0,0,0],
+        [0,0,0],
+        [0,1,0],
+        [0,0,0]
       ]
-    }
+    },
+    "ability":{
+      "CLASSNAME":"ProductionPowerPlusAbility",
+      "INSTANCE":{
+        "typeOfRes":"Servants"
+      }
+    },
+    "victoryPoints":4,
+    "id":13
   },
   {
-    "VictoryPoints": 4,
-    "Ability":{
-      "ProductionPlusAbility": "STONES"
-    },
-    "Requirements": {
-      "CardsReq": [
-        {
-          "Color": "PURPLE",
-          "Level": "TWO"
-        }
+    "requirements":{
+      "numberOfResourceses":{
+        "Servants":0,
+        "Shields":0,
+        "Coins":0,
+        "Stones":0
+      },
+      "minNumber":[
+        [0,0,0],
+        [0,0,0],
+        [0,0,0],
+        [0,1,0]
       ]
-    }
+    },
+    "ability":{
+      "CLASSNAME":"ProductionPowerPlusAbility",
+      "INSTANCE":{
+        "typeOfRes":"Stones"
+      }
+    },
+    "victoryPoints":4,
+    "id":14
   },
   {
-    "VictoryPoints": 4,
-    "Ability":{
-      "ProductionPlusAbility": "COINS"
-    },
-    "Requirements": {
-      "CardsReq": [
-        {
-          "Color": "GREEN",
-          "Level": "TWO"
-        }
+    "requirements":{
+      "numberOfResourceses":{
+        "Servants":0,
+        "Shields":0,
+        "Coins":0,
+        "Stones":0
+      },
+      "minNumber":[
+        [0,0,0],
+        [0,1,0],
+        [0,0,0],
+        [0,0,0]
       ]
-    }
+    },
+    "ability":{
+      "CLASSNAME":"ProductionPowerPlusAbility",
+      "INSTANCE":{
+        "typeOfRes":"Coins"
+      }
+    },
+    "victoryPoints":4,
+    "id":15
   }
 ]
