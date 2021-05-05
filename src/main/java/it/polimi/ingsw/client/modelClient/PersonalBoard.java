@@ -107,4 +107,18 @@ public class PersonalBoard {
         return res;
     }
 
+    public void setDevCards(ArrayList<DevelopmentCard> cards[]){
+        for(int i=0; i<3; i++){
+            this.OwnedDevCards[i].clear();
+            this.OwnedDevCards[i].addAll(cards[i]);
+        }
+    }
+
+    public void setLeaderCards(ArrayList<LeaderCard> cards){
+        for(int i=0; i<MAX_LEAD_CARD; i++){
+            if(cards.size()>i){
+                OwnedLeaderCard[i] = cards.get(i);
+            }
+        }
+    }
 }

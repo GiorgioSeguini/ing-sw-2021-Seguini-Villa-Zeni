@@ -11,12 +11,15 @@ import it.polimi.ingsw.server.model.exception.UnableToFillException;
 public class Depots {
 
     private static final int DIVIDER_VICTORY_POINTS = 5;
+
+    private final int ownerID;
     private StrongBox strongBox;
     private WareHouseDepots wareHouseDepots;
     /**
      * Default constructor
      */
-    public Depots() {
+    public Depots(int ownerID) {
+        this.ownerID=ownerID;
         strongBox = new StrongBox();
         wareHouseDepots = new WareHouseDepots();
     }

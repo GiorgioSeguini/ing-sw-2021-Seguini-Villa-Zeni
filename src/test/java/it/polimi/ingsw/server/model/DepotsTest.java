@@ -13,7 +13,7 @@ class DepotsTest {
     @Test
     void goodSetup(){
 
-        Depots depots = new Depots();
+        Depots depots = new Depots(0);
 
         assertTrue(depots.getResources().isEmpty());
 
@@ -39,7 +39,7 @@ class DepotsTest {
     @Test
     void operationTest(){
 
-        Depots depots= new Depots();
+        Depots depots= new Depots(0);
 
         depots.addResourceFromProduction(new NumberOfResources(100, 100, 100, 100));
 

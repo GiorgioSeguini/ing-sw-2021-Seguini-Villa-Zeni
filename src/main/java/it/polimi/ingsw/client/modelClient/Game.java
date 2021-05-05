@@ -120,4 +120,12 @@ public class Game {
         return status;
     }
 
+    public Player getPlayerFromID(int ID){
+        for(Player player : getPlayers()){
+            if(player.getID()==ID)
+                return player;
+        }
+        return null;
+    }
+
 }

@@ -5,14 +5,19 @@ import it.polimi.ingsw.constant.enumeration.PlayerStatus;
 import it.polimi.ingsw.constant.enumeration.ResourceType;
 import it.polimi.ingsw.server.model.exception.OutOfResourcesException;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 /*Last Edit: Fabio*/
 public class Player {
+
+    private static final AtomicInteger nextID = new AtomicInteger();
 
     private final String userName;
     private final FaithTrack faithtrack;
     private final Depots depots;
     private final PersonalBoard personalBoard;
     private final Converter converter;
+    private final int ID;
     private NumberOfResources discounted;
     private ProductionPower toActive;
 
@@ -22,9 +27,10 @@ public class Player {
     /*Default constructor*/
     public Player(String userName){
         this.userName=userName;
-        this.personalBoard = new PersonalBoard();
-        this.faithtrack = new FaithTrack();
-        this.depots = new Depots();
+        this.ID = nextID.getAndIncrement();
+        this.personalBoard = new PersonalBoard(this.ID);
+        this.faithtrack = new FaithTrack(this.ID);
+        this.depots = new Depots(this.ID);
         this.converter = new Converter(this);
         this.discounted = new NumberOfResources();
         this.status = PlayerStatus.Waiting;
@@ -71,6 +77,10 @@ public class Player {
 
     public ErrorMessage getErrorMessage(){
         return errorMessage;
+    }
+
+    public int getID(){
+        return ID;
     }
 
     /**

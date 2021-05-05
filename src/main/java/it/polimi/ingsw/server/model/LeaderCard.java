@@ -47,6 +47,7 @@ public class LeaderCard extends Card {
         if(this.getStatus()==LeaderStatus.onHand && this.getRequirements().match(owner)){
                 getAbility().RunAbility(owner);
                 setStatus(LeaderStatus.Played);
+                owner.getPersonalBoard().change();
                 return true;
         }
         return false;
@@ -61,6 +62,7 @@ public class LeaderCard extends Card {
         if(getStatus().equals(LeaderStatus.onHand)){
             setStatus(LeaderStatus.Dead);
             owner.getFaithTrack().addPoint();
+            owner.getPersonalBoard().change();
             return true;
         }
         return false;

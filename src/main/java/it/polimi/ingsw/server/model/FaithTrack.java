@@ -13,13 +13,16 @@ public class FaithTrack {
     private static final int[] popesFavorPoints = {2,3,4};
     private static final int[] popesFavorPosition = {8, 16, 24};
     private static final int[] popesFavorInitialPosition = {5, 12, 19};
+
+    private final int ownerID;
     private int faithPoints;
     private final PopesFavorStates[] popesFavor;
 
     /**
      * Default constructor
      */
-    public FaithTrack() {
+    public FaithTrack(int ownerID) {
+        this.ownerID= ownerID;
         popesFavor = new PopesFavorStates[NUM_OF_POP];
         faithPoints = 0;
         for(int i=0; i<NUM_OF_POP; i++) {

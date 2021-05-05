@@ -9,7 +9,7 @@ class FaithTrackTest{
 
     @Test
     void goodSetup(){
-        FaithTrack curr = new FaithTrack();
+        FaithTrack curr = new FaithTrack(0);
         assertEquals(curr.getFaithPoints(), 0);
 
         for(int i=0; i<100; i++) {
@@ -22,7 +22,7 @@ class FaithTrackTest{
 
     @Test
     void testAdd(){
-        FaithTrack curr = new FaithTrack();
+        FaithTrack curr = new FaithTrack(0);
         assertEquals(curr.getFaithPoints(), 0);
 
         for(int i=0; i<5; i++)

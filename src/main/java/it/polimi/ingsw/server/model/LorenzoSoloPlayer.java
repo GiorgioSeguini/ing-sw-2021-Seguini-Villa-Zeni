@@ -17,7 +17,7 @@ public class LorenzoSoloPlayer {
     /*default constructor*/
     public LorenzoSoloPlayer(Game game, ArrayList<SoloActionTokens> startSoloActionTokens) {
         this.game = game;
-        faithTrack = new FaithTrack();
+        faithTrack = new FaithTrack(0);
         soloActionTokens = new ArrayList<SoloActionTokens>(7);
         for(SoloActionTokens x: startSoloActionTokens){
             soloActionTokens.add(x);

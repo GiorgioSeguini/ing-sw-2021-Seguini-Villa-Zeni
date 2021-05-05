@@ -2,17 +2,21 @@ package it.polimi.ingsw.server.model;
 
 import it.polimi.ingsw.constant.enumeration.LeaderStatus;
 import it.polimi.ingsw.constant.enumeration.Level;
+import it.polimi.ingsw.constant.message.Message;
+import it.polimi.ingsw.constant.message.PersonalBoardMessage;
 import it.polimi.ingsw.server.model.exception.NoMoreLeaderCardAliveException;
 import it.polimi.ingsw.server.model.exception.NoSpaceException;
+import it.polimi.ingsw.server.observer.Observable;
 
 import java.util.*;
 
 /*Last Edit: Fabio*/
-public class PersonalBoard {
+public class PersonalBoard extends Observable<Message> {
 
     private static final int MAX_LEAD_CARD = 2;
     private static final int MAX_DEV_CARD = 7;
 
+    private final int ownerID;
     private ArrayList<DevelopmentCard>[] OwnedDevCards;
 
     private LeaderCard[] OwnedLeaderCard;
@@ -20,7 +24,8 @@ public class PersonalBoard {
     private ArrayList<ProductionPower> extraProduction;
 
     /*Default Constructor*/
-    public PersonalBoard(){
+    public PersonalBoard(int ownerID){
+        this.ownerID=ownerID;
         OwnedDevCards = new ArrayList[3]; //array di arraylist
         for( int i=0; i< 3; i++){
             OwnedDevCards[i] = new ArrayList<DevelopmentCard>();
@@ -88,6 +93,7 @@ public class PersonalBoard {
                 OwnedDevCards[pos].add(0, card);
             } else throw new NoSpaceException();
         }
+        change();
     }
 
     /**
@@ -158,6 +164,17 @@ public class PersonalBoard {
         }
 
         return res;
+    }
+
+    /**
+     * This methods create an instance of PersonalBoardMessage and notify observer
+     * @see LeaderCard only class that call this methods
+     */
+    protected void change(){
+        String devCards = "";
+        String leaderCards = "";
+        //TODO parsing
+        notify(new PersonalBoardMessage(devCards, leaderCards, this.ownerID));
     }
 
 }

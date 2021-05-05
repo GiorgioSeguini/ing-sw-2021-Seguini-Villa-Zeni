@@ -10,6 +10,7 @@ public class Player {
     private final FaithTrack faithtrack;
     private final Depots depots;
     private final PersonalBoard personalBoard;
+    private final int ID;
 
     private PlayerStatus status;
     private ErrorMessage errorMessage;
@@ -22,6 +23,7 @@ public class Player {
         this.depots = new Depots();
         this.status = PlayerStatus.Waiting;
         this.errorMessage = ErrorMessage.NoError;
+        this.ID  = 0;   //TODO
     }
 
 
@@ -54,5 +56,7 @@ public class Player {
         return errorMessage;
     }
 
-
+    public int getID() {
+        return ID;
+    }
 }
