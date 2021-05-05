@@ -76,7 +76,10 @@ public class Server {
                 //add model - view links
                 game.getMarketTray().addObserver(view);
                 game.getDashboard().addObserver(view);
-                //TODO
+                for(Player player : game.getPlayers()){
+                    player.getPersonalBoard().addObserver(view);
+                    //TODO
+                }
 
                 //add controller - view links
                 view.addObserver(controller);
