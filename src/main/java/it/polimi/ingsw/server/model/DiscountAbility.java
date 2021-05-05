@@ -8,6 +8,12 @@ public class DiscountAbility implements Ability{
 
     private final ResourceType resourceType;
     private final int discount;
+    public static final String name="DiscountAbility";
+
+    @Override
+    public String getName() {
+        return name;
+    }
 
     /*Default constructor*/
     public DiscountAbility(ResourceType resourceType, int discount) {

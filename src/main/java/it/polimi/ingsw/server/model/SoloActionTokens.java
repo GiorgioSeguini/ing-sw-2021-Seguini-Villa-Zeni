@@ -5,6 +5,7 @@ package it.polimi.ingsw.server.model;
 public interface SoloActionTokens{
 
     /*method that has to be implemented*/
-    public void ActivateToken(Game game);
+    public abstract void ActivateToken(Game game);
 
+    public abstract String getName();
 }

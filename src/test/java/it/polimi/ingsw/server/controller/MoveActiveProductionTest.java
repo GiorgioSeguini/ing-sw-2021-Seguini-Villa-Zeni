@@ -3,12 +3,13 @@ import it.polimi.ingsw.server.model.*;
 import it.polimi.ingsw.constant.enumeration.*;
 import it.polimi.ingsw.server.model.exception.NoSpaceException;
 import it.polimi.ingsw.server.model.exception.OutOfResourcesException;
+import it.polimi.ingsw.server.parse.Starter;
 import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.Test;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -41,7 +42,7 @@ public class MoveActiveProductionTest {
         ArrayList<MarbleColor> startMarbles = new ArrayList<>();
         try {
             startMarbles = Starter.MarblesParser();
-        } catch (IOException | ParseException e) {
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
         Market marketTray = new Market(startMarbles);
@@ -49,7 +50,7 @@ public class MoveActiveProductionTest {
         ArrayList<DevelopmentCard> devcards = new ArrayList<>();
         try {
             devcards = Starter.DevCardParser();
-        } catch (IOException | ParseException e) {
+        } catch (IOException e) {
             fail();
         }
         Dashboard dashboard = new Dashboard(devcards);
@@ -59,7 +60,7 @@ public class MoveActiveProductionTest {
         ArrayList<LeaderCard>leaderCards=new ArrayList<>();
         try {
             leaderCards=Starter.LeaderCardsParser();
-        } catch (IOException | ParseException e) {
+        } catch (IOException e) {
             fail();
         }
 
@@ -108,7 +109,7 @@ public class MoveActiveProductionTest {
         ArrayList<MarbleColor> startMarbles = new ArrayList<>();
         try {
             startMarbles = Starter.MarblesParser();
-        } catch (IOException | ParseException e) {
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
         Market marketTray = new Market(startMarbles);
@@ -116,7 +117,7 @@ public class MoveActiveProductionTest {
         ArrayList<DevelopmentCard> devcards = new ArrayList<>();
         try {
             devcards = Starter.DevCardParser();
-        } catch (IOException | ParseException e) {
+        } catch (IOException e) {
             fail();
         }
         Dashboard dashboard = new Dashboard(devcards);
@@ -126,7 +127,7 @@ public class MoveActiveProductionTest {
         ArrayList<LeaderCard>leaderCards=new ArrayList<>();
         try {
             leaderCards=Starter.LeaderCardsParser();
-        } catch (IOException | ParseException e) {
+        } catch (IOException e) {
             fail();
         }
 
@@ -172,7 +173,7 @@ public class MoveActiveProductionTest {
         ArrayList<MarbleColor> startMarbles2 = new ArrayList<>();
         try {
             startMarbles2 = Starter.MarblesParser();
-        } catch (IOException | ParseException e) {
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
         Market marketTray2 = new Market(startMarbles2);
@@ -180,7 +181,7 @@ public class MoveActiveProductionTest {
         ArrayList<DevelopmentCard> devcards2 = new ArrayList<>();
         try {
             devcards2 = Starter.DevCardParser();
-        } catch (IOException | ParseException e) {
+        } catch (IOException e) {
             fail();
         }
         Dashboard dashboard2 = new Dashboard(devcards2);
@@ -190,7 +191,7 @@ public class MoveActiveProductionTest {
         ArrayList<LeaderCard>leaderCards2=new ArrayList<>();
         try {
             leaderCards2=Starter.LeaderCardsParser();
-        } catch (IOException | ParseException e) {
+        } catch (IOException e) {
             fail();
         }
 

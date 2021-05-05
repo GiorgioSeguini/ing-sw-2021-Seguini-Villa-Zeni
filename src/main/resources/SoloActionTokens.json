@@ -1,10 +1,39 @@
 [
-  "MOVE2",
-  "MOVE2",
-  "MOVESHUFFLE",
-  "DISCARD2-GREEN",
-  "DISCARD2-YELLOW",
-  "DISCARD2-PURPLE",
-  "DISCARD2-BLUE"
+  {
+    "CLASSNAME": "Move2",
+    "INSTANCE": {}
+  },
+  {
+    "CLASSNAME": "Move2",
+    "INSTANCE": {}
+  },
+  {
+    "CLASSNAME": "MoveShuffle",
+    "INSTANCE": {}
+  },
+  {
+    "CLASSNAME": "Discard2",
+    "INSTANCE": {
+      "color": "GREEN"
+    }
+  },
+  {
+    "CLASSNAME": "Discard2",
+    "INSTANCE": {
+      "color": "YELLOW"
+    }
+  },
+  {
+    "CLASSNAME": "Discard2",
+    "INSTANCE": {
+      "color": "PURPLE"
+    }
+  },
+  {
+    "CLASSNAME": "Discard2",
+    "INSTANCE": {
+      "color": "BLUE"
+    }
+  }
 ]
 

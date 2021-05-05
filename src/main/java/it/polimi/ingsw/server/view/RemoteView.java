@@ -6,6 +6,7 @@ import it.polimi.ingsw.server.controller.*;
 import it.polimi.ingsw.server.model.Player;
 import it.polimi.ingsw.server.observer.Observer;
 import it.polimi.ingsw.server.ClientConnection;
+import it.polimi.ingsw.server.parse.Starter;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -20,10 +21,10 @@ public class RemoteView extends View {
             System.out.println("Received: " + info.toString());
 
             JSONObject movex=(JSONObject) info.get("Movetype");
-            MoveType move;
-
+            MoveType move=null;
+            /*
             switch (movex.toString()){
-                case "MoveActiveProduction": move= new MoveActiveProduction(getPlayer(),Starter.getProdArrayfromObjArray((JSONArray) info.get("ProductionPowers"))); break; 
+                case "MoveActiveProduction": move= new MoveActiveProduction(getPlayer(), Starter.getProdArrayfromObjArray((JSONArray) info.get("ProductionPowers"))); break;
                 case "MoveBuyDevCard": move= new MoveBuyDevCard(getPlayer(),(int) info.get("Position"),(int) info.get("CardToBuy")) ;break;
                 case "MoveChoseInitialResources": move=new MoveChoseInitialResources(getPlayer(),Starter.ConvertObjectToNumOfRes((JSONObject) info.get("Resources"))); break;
                 case "MoveChoseLeaderCards": move=new MoveChoseLeaderCards(getPlayer(),(ArrayList<Integer>) info.get("LeaderCards")); break;
@@ -33,6 +34,8 @@ public class RemoteView extends View {
                 case "MoveWhiteConversion": move= new MoveWhiteConversion(getPlayer(),Starter.getResArrayFromObjArray((JSONArray) info.get("WhiteResources"))); break;
                 default: clientConnection.asyncSend("Error!"); return;
             }
+
+             */
 
             handleMove(move);
         }// TODO: 4/28/21 Testing 

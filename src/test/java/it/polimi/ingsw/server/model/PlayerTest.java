@@ -1,7 +1,6 @@
 package it.polimi.ingsw.server.model;
 
-import it.polimi.ingsw.server.controller.Starter;
-import it.polimi.ingsw.server.model.*;
+import it.polimi.ingsw.server.parse.Starter;
 import it.polimi.ingsw.constant.enumeration.ErrorMessage;
 import it.polimi.ingsw.constant.enumeration.PlayerStatus;
 import it.polimi.ingsw.constant.enumeration.ResourceType;

@@ -6,7 +6,8 @@ import java.util.Collections;
 /*Last Edit: Fabio*/
 public class MoveShuffle implements SoloActionTokens {
 
-    private ArrayList<SoloActionTokens> shuffledDeck;
+    public static final String name = "MoveShuffle";
+    private transient ArrayList<SoloActionTokens> shuffledDeck;
 
     /*Default constructor*/
     public MoveShuffle() {
@@ -27,6 +28,11 @@ public class MoveShuffle implements SoloActionTokens {
         game.getSoloGame().setSoloActionTokens(shuffledDeck);
     }
 
+    @Override
+    public String getName(){
+        return name;
+    }
+
     /**This shuffle randomly the SoloActionToken's stack**/
     /*private ArrayList<SoloActionTokens> Shuffle(ArrayList<SoloActionTokens> soloActionTokens){
         for(int i=0; i<7; i++) {
@@ -38,5 +44,22 @@ public class MoveShuffle implements SoloActionTokens {
         }
         return shuffledDeck;
     }*/
+
+    @Override
+    public boolean equals(Object o){
+        if(o==this)
+            return true;
+
+        if(!(o instanceof MoveShuffle))
+            return false;
+
+        MoveShuffle other = (MoveShuffle) o;
+
+        if(!this.getName().equals(other.getName())){
+            return false;
+        }
+
+        return true;
+    }
 
 }

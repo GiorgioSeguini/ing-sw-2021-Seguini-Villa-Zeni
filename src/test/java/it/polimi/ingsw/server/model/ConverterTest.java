@@ -1,15 +1,12 @@
 package it.polimi.ingsw.server.model;
-import it.polimi.ingsw.server.controller.Starter;
-import it.polimi.ingsw.server.model.Converter;
-import it.polimi.ingsw.server.model.NumberOfResources;
-import it.polimi.ingsw.server.model.Player;
-import it.polimi.ingsw.server.model.WhiteAbility;
+import it.polimi.ingsw.server.parse.Starter;
 import it.polimi.ingsw.constant.enumeration.MarbleColor;
 import it.polimi.ingsw.constant.enumeration.ResourceType;
 import it.polimi.ingsw.server.model.exception.HaveToChooseException;
 import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.Test;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -63,7 +60,7 @@ public class ConverterTest {
         ArrayList<MarbleColor> marbles= new ArrayList<>();
         try {
             marbles= Starter.MarblesParser();
-        } catch (IOException|ParseException e) {
+        } catch (FileNotFoundException e) {
             fail();
         }
 

@@ -1,10 +1,10 @@
 package it.polimi.ingsw.constant.enumeration;
 
 public enum TokenType {
-    MoveShuffle,
-    Move2,
-    Discard2Servants,
-    Discard2Shields,
-    Discard2Coins,
-    Discard2Stones
+    MOVE_SHUFFLE,
+    MOVE2,
+    DISCARD2_SERVANTS,
+    DISCARD2_SHIELDS,
+    DISCARD2_COINS,
+    DISCARD2_STONES
 }
