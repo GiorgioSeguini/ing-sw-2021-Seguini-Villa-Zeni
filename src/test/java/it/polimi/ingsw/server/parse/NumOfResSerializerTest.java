@@ -6,7 +6,7 @@ import it.polimi.ingsw.server.model.NumberOfResources;
 import org.junit.jupiter.api.Test;
 
 public class NumOfResSerializerTest {
-
+/*
     @Test
     public void test2(){
         NumberOfResources n = new NumberOfResources(0, 1, 3,5);
@@ -18,4 +18,6 @@ public class NumOfResSerializerTest {
         System.out.println(out);
     }// TODO: 5/5/21 da sistemare
 
+
+ */
 }

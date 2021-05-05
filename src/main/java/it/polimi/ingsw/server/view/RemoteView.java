@@ -21,8 +21,8 @@ public class RemoteView extends View {
             System.out.println("Received: " + info.toString());
 
             JSONObject movex=(JSONObject) info.get("Movetype");
-            MoveType move;
-
+            MoveType move=null;
+            /*
             switch (movex.toString()){
                 case "MoveActiveProduction": move= new MoveActiveProduction(getPlayer(), Starter.getProdArrayfromObjArray((JSONArray) info.get("ProductionPowers"))); break;
                 case "MoveBuyDevCard": move= new MoveBuyDevCard(getPlayer(),(int) info.get("Position"),(int) info.get("CardToBuy")) ;break;
@@ -34,6 +34,8 @@ public class RemoteView extends View {
                 case "MoveWhiteConversion": move= new MoveWhiteConversion(getPlayer(),Starter.getResArrayFromObjArray((JSONArray) info.get("WhiteResources"))); break;
                 default: clientConnection.asyncSend("Error!"); return;
             }
+
+             */
 
             handleMove(move);
         }// TODO: 4/28/21 Testing 

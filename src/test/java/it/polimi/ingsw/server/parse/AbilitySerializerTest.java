@@ -16,30 +16,34 @@ import java.util.ArrayList;
 
 public class AbilitySerializerTest {
 
+    /*
     @Test
-    public void testx(){
-        ArrayList<LeaderCard> leaderCards= new ArrayList<>();
+    public void testx() {
+        ArrayList<LeaderCard> leaderCards = new ArrayList<>();
         try {
-            leaderCards=Starter.LeaderCardsParser();
+            leaderCards = Starter.LeaderCardsParser();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        GsonBuilder gsonBuilder= new GsonBuilder();
+        GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.registerTypeAdapter(Ability.class, new AbilitySerializer());
         gsonBuilder.registerTypeAdapter(NumberOfResources.class, new NumberOfResSerializer());
-        Gson gson=gsonBuilder.create();
+        Gson gson = gsonBuilder.create();
 
         System.out.print("[");
-        for(LeaderCard card: leaderCards){
-            System.out.print(gson.toJson(card)+",");
+        for (LeaderCard card : leaderCards) {
+            System.out.print(gson.toJson(card) + ",");
         }
         System.out.print("]");
-        Type LeaderListType = new TypeToken<ArrayList<LeaderCard>>(){}.getType();
-        String mesage=gson.toJson(leaderCards,LeaderListType);
+        Type LeaderListType = new TypeToken<ArrayList<LeaderCard>>() {
+        }.getType();
+        String mesage = gson.toJson(leaderCards, LeaderListType);
 
-        ArrayList<LeaderCard> leaderCards1= gson.fromJson(mesage,LeaderListType);
+        ArrayList<LeaderCard> leaderCards1 = gson.fromJson(mesage, LeaderListType);
 
-       System.out.println("lol");
-    }
+        System.out.println("lol");
+    } // TODO: 5/5/21 da sistemare
+      */
+
 }
