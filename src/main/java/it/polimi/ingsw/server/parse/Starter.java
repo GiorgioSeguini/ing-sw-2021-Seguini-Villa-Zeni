@@ -121,7 +121,7 @@ public class Starter {
             }
         }
         return marbles;
-    }
+    } // TODO: 5/5/21 cancel
 
     private static ProductionPower getProdcutionFromJsonObj(JSONObject object){
         int yourchoicein = Math.toIntExact((Long) object.get("YourChoiceIn"));
@@ -131,7 +131,7 @@ public class Starter {
         int faithpointsout = Math.toIntExact((Long) object.get("FaithPointsOut"));
 
         return new ProductionPower(faithpointsout,outres,inres,yourchoicein,yourchoiceout);
-    }
+    } // TODO: 5/5/21
 
 
     /*Public methods for parsing*/
@@ -152,19 +152,8 @@ public class Starter {
         return arrayList;
     }
 
-    /*
-    public static ArrayList<MarbleColor> MarblesParser() throws IOException, ParseException {
-        JSONParser parser= new JSONParser();
-        String filePath = new File("").getAbsolutePath();
-        JSONObject x= (JSONObject)parser.parse(new FileReader(filePath + "/src/main/resources/Marbles.json"));
 
-        ArrayList<MarbleColor> marbles= getMarblesFromObjArray((JSONArray) x.get("Marbles"));
-        return marbles;
-    }
-
-     */
-
-   public static ArrayList<SoloActionTokens> TokensParser() throws IOException, ParseException {
+/*   public static ArrayList<SoloActionTokens> TokensParser() throws IOException, ParseException {
         JSONParser parser = new JSONParser();
         String filePath = new File("").getAbsolutePath();
         JSONArray array = (JSONArray) parser.parse(new FileReader(filePath + "/src/main/resources/SoloActionTokens.json"));
@@ -184,15 +173,12 @@ public class Starter {
         return tokens;
     }
 
+ */
 
-    public static ArrayList<MarbleColor> MarblesParser() throws FileNotFoundException {
-        Gson gson= new Gson();
-        String filePath = new File("").getAbsolutePath();
-
-        Type marblesarray= new TypeToken<ArrayList<MarbleColor>>(){}.getType();
-
-        return gson.fromJson(new FileReader(filePath+"/src/main/resources/Marbles.json"), marblesarray);
+    public static ArrayList<SoloActionTokens> TokensParser() throws FileNotFoundException{
+        return null;
     }
+
 
     public static ArrayList<LeaderCard> LeaderCardsParser() throws IOException, ParseException {
         JSONParser parser = new JSONParser();
@@ -211,28 +197,16 @@ public class Starter {
         }
 
         return leaderCards;
-    }
+    } // TODO: 5/5/21
 
-    /*
-    public static ArrayList<DevelopmentCard> DevCardParser() throws IOException, ParseException {
-        JSONParser parser = new JSONParser();
+    public static ArrayList<MarbleColor> MarblesParser() throws FileNotFoundException {
+        Gson gson= new Gson();
         String filePath = new File("").getAbsolutePath();
-        JSONArray array = (JSONArray) parser.parse(new FileReader(filePath + "/src/main/resources/DevCard.json"));
-        ArrayList<DevelopmentCard> devcards = new ArrayList<>();
-        for (Object x : array) {
-            JSONObject DevCard = (JSONObject) x;
-            Level level = Starter.ConvertStringToLevel((String) DevCard.get("Level"));
-            ColorDevCard color = Starter.ConvertStringToColorDevCard((String) DevCard.get("CardColor"));
-            NumberOfResources cost = Starter.ConvertObjectToNumOfRes((JSONObject) DevCard.get("Cost"));
-            int victorypoints = Math.toIntExact((Long) DevCard.get("VictoryPoints"));
-            ProductionPower productionPower= getProdcutionFromJsonObj((JSONObject) DevCard.get("ProductionPower"));
-            devcards.add(new DevelopmentCard(level, color, cost, productionPower, victorypoints));
-        }
 
-        return devcards;
+        Type marblesarray= new TypeToken<ArrayList<MarbleColor>>(){}.getType();
+
+        return gson.fromJson(new FileReader(filePath+"/src/main/resources/Marbles.json"), marblesarray);
     }
-
-     */
 
     public static ArrayList<DevelopmentCard> DevCardParser() throws FileNotFoundException {
         Gson gsonExt;

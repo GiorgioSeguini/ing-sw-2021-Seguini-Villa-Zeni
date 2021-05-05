@@ -83,7 +83,7 @@ class StarterTest {
         ArrayList<SoloActionTokens> tokens= new ArrayList<>();
         try {
            tokens=Starter.TokensParser();
-        } catch (IOException | ParseException e) {
+        } catch (FileNotFoundException e) {
             fail();
         }
         assertEquals(7,tokens.size());
