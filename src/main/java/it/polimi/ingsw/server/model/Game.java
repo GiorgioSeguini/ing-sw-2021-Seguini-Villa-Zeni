@@ -2,6 +2,9 @@ package it.polimi.ingsw.server.model;
 
 import it.polimi.ingsw.constant.enumeration.GameStatus;
 import it.polimi.ingsw.constant.enumeration.PlayerStatus;
+import it.polimi.ingsw.constant.message.GameMessage;
+import it.polimi.ingsw.constant.message.Message;
+import it.polimi.ingsw.server.observer.Observable;
 
 
 import java.util.*;
@@ -9,7 +12,7 @@ import java.util.*;
 /**
  * Superclasse che gestisce tutto il gioco
  */
-public class Game {
+public class Game extends Observable<Message> {
 
     private static final int MAX_PLAYER = 4;
     private static final int INITIAL_LEADER_CARD = 4;
@@ -188,6 +191,7 @@ public class Game {
                 }
             }
         }
+        change();
     }
 
     public GameStatus getStatus() {
@@ -204,6 +208,7 @@ public class Game {
             if(needToUpdate) {
                 status = GameStatus.Running;
                 players.get(0).setStatus(PlayerStatus.Active);
+                change();
             }
         }
     }
@@ -249,4 +254,8 @@ public class Game {
         return leaderCards;
     }
 
+
+    private void change(){
+        notify(new GameMessage(getStatus(), getCurrIndex()));
+    }
 }

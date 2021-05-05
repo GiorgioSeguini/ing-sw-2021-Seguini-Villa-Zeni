@@ -46,8 +46,8 @@ public class Game {
     }
 
     /**
-     * @param index 
-     * @return
+     * @param index of the player
+     * @return if present a reference o player index, otherwise null
      */
     public Player getPlayer(int index) {
         return players.get(index);
@@ -58,7 +58,7 @@ public class Game {
     }
 
     /**
-     * @return
+     * @return a reference to the only player witch state is Active
      */
     public Player getCurrPlayer() {
         if(status== GameStatus.Initial || status == GameStatus.Ended) return null;
@@ -66,15 +66,15 @@ public class Game {
     }
 
     /**
-     * @param player 
-     * @return
+     * @param player player
+     * @return the index corresponding to the player
      */
     public int getPlayerIndex(Player player) {
         return players.indexOf(player);
     }
 
     /**
-     * @return
+     * @return index of the current player
      */
     public int getCurrIndex() {
         return indexPlayingPlayer;
@@ -91,7 +91,8 @@ public class Game {
 
 
     /**
-     * @return
+     * @return a reference to the winner player
+     * @throws IllegalArgumentException if game is not ended
      */
     public Player getWinner() throws IllegalArgumentException{
         if(status != GameStatus.Ended){
@@ -128,4 +129,11 @@ public class Game {
         return null;
     }
 
+    public void setStatus(GameStatus status){
+        this.status = status;
+    }
+
+    public void setIndex(int index){
+        this.indexPlayingPlayer= index;
+    }
 }
