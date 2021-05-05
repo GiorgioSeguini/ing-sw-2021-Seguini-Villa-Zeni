@@ -22,4 +22,17 @@ public class Move2 implements SoloActionTokens {
     public String getName(){
         return name;
     }
+
+    @Override
+    public boolean equals(Object o){
+        if(o==this)
+            return true;
+
+        if(!(o instanceof Move2))
+            return false;
+
+        Move2 other = (Move2) o;
+
+        return this.getName().equals(other.getName());
+    }
 }

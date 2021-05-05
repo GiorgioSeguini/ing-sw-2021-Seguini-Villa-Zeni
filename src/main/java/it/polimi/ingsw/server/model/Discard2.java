@@ -32,4 +32,21 @@ public class Discard2 implements SoloActionTokens {
     public String getName(){
         return name;
     }
+
+    @Override
+    public boolean equals(Object o){
+        if(o==this)
+            return true;
+
+        if(!(o instanceof Discard2))
+            return false;
+
+        Discard2 other = (Discard2) o;
+
+        if(this.color!=other.getColor()){
+            return false;
+        }
+
+        return this.getName().equals(other.getName());
+    }
 }

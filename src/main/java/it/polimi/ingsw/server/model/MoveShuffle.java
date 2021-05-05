@@ -45,4 +45,21 @@ public class MoveShuffle implements SoloActionTokens {
         return shuffledDeck;
     }*/
 
+    @Override
+    public boolean equals(Object o){
+        if(o==this)
+            return true;
+
+        if(!(o instanceof MoveShuffle))
+            return false;
+
+        MoveShuffle other = (MoveShuffle) o;
+
+        if(!this.getName().equals(other.getName())){
+            return false;
+        }
+
+        return true;
+    }
+
 }

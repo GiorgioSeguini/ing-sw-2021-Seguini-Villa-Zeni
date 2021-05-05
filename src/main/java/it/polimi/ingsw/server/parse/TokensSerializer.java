@@ -29,9 +29,6 @@ public class TokensSerializer implements JsonSerializer<SoloActionTokens>, JsonD
     public SoloActionTokens deserialize(JsonElement json, Type type, JsonDeserializationContext context) throws JsonParseException {
         String className = json.getAsJsonObject().get(CLASSNAME).getAsString();
         Class c = map.get(className);
-        if (c == null)
-            throw new RuntimeException("Unknow class: " + type);
-
         return context.deserialize(json.getAsJsonObject().get(INSTANCE), c);
     }
 

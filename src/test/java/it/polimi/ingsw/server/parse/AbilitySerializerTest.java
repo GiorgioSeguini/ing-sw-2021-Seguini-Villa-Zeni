@@ -14,16 +14,19 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
+
 public class AbilitySerializerTest {
 
-    /*
+
     @Test
     public void testx() {
         ArrayList<LeaderCard> leaderCards = new ArrayList<>();
         try {
             leaderCards = Starter.LeaderCardsParser();
         } catch (IOException e) {
-            e.printStackTrace();
+            fail();
         }
 
         GsonBuilder gsonBuilder = new GsonBuilder();
@@ -31,19 +34,16 @@ public class AbilitySerializerTest {
         gsonBuilder.registerTypeAdapter(NumberOfResources.class, new NumberOfResSerializer());
         Gson gson = gsonBuilder.create();
 
-        System.out.print("[");
-        for (LeaderCard card : leaderCards) {
-            System.out.print(gson.toJson(card) + ",");
+        Type LeaderListType = new TypeToken<ArrayList<LeaderCard>>() {}.getType();
+        String message = gson.toJson(leaderCards, LeaderListType);
+
+        ArrayList<LeaderCard> leaderCards1 = gson.fromJson(message, LeaderListType);
+        int i=0;
+        for (LeaderCard card: leaderCards){
+            assertEquals(card,leaderCards1.get(i));
+            i++;
         }
-        System.out.print("]");
-        Type LeaderListType = new TypeToken<ArrayList<LeaderCard>>() {
-        }.getType();
-        String mesage = gson.toJson(leaderCards, LeaderListType);
+    }
 
-        ArrayList<LeaderCard> leaderCards1 = gson.fromJson(mesage, LeaderListType);
-
-        System.out.println("lol");
-    } // TODO: 5/5/21 da sistemare
-      */
 
 }

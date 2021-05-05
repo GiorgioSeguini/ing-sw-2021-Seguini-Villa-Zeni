@@ -26,9 +26,6 @@ public class AbilitySerializer implements JsonSerializer<Ability>, JsonDeseriali
     public Ability deserialize(JsonElement json, Type type, JsonDeserializationContext context) throws JsonParseException {
         String className = json.getAsJsonObject().get(CLASSNAME).getAsString();
         Class c = mapNameClass.get(className);
-        if (c == null)
-            throw new RuntimeException("Unknow class: " + type);
-
         return context.deserialize(json.getAsJsonObject().get(INSTANCE), c);
     }
 

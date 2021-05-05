@@ -15,40 +15,38 @@ import java.io.FileReader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
+
 public class TokenSerializerTest {
-/*
-    @Test
-    public void test() {
-        Move2 move2 = new Move2();
-        Discard2 discard2 = new Discard2(ColorDevCard.BLUE);
-        MoveShuffle moveShuffle = new MoveShuffle();
-        GsonBuilder builder = new GsonBuilder();
-        builder.registerTypeAdapter(SoloActionTokens.class, new TokensSerializer());
-        Gson gson = builder.create();
-
-        String tosend = gson.toJson(move2, SoloActionTokens.class)
-                + gson.toJson(discard2, SoloActionTokens.class)
-                + gson.toJson(moveShuffle, SoloActionTokens.class);
-
-        System.out.println(tosend);
-    } // TODO: 5/5/21 da sistemare 
-
 
     @Test
-    public void test3() throws FileNotFoundException {
+    public void test(){
         GsonBuilder builder= new GsonBuilder();
         builder.registerTypeAdapter(SoloActionTokens.class, new TokensSerializer());
         Gson gson=builder.create();
 
         Type TokensListType = new TypeToken<ArrayList<SoloActionTokens>>(){}.getType();
         String filePath = new File("").getAbsolutePath();
-        ArrayList<SoloActionTokens> tokens = gson.fromJson(new FileReader(filePath + "/src/main/resources/SoloActionTokens.json"), TokensListType);
-
-        for(SoloActionTokens token : tokens){
-            System.out.println(gson.toJson(token, SoloActionTokens.class));
+        ArrayList<SoloActionTokens> tokens = new ArrayList<>();
+        try {
+            tokens = gson.fromJson(new FileReader(filePath + "/src/main/resources/SoloActionTokens.json"), TokensListType);
+        } catch (FileNotFoundException e) {
+            fail();
         }
 
-    } // TODO: 5/5/21 da sistemare
+        String message= gson.toJson(tokens,TokensListType );
 
- */
+        ArrayList<SoloActionTokens> tokens1= gson.fromJson(message, TokensListType);
+
+        int i=0;
+        for (SoloActionTokens tok: tokens){
+            assertEquals(tok, tokens1.get(i));
+            i++;
+        }
+
+
+    }
+
+
 }
