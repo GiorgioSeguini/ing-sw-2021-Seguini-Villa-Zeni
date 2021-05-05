@@ -2,12 +2,15 @@ package it.polimi.ingsw.server.model;
 
 import it.polimi.ingsw.constant.enumeration.ColorDevCard;
 import it.polimi.ingsw.constant.enumeration.Level;
+import it.polimi.ingsw.constant.message.DashBoardMessage;
+import it.polimi.ingsw.constant.message.Message;
+import it.polimi.ingsw.server.observer.Observable;
 
 import java.util.*;
 
 /*Last Edit: Gio*/
 
-public class Dashboard {
+public class Dashboard extends Observable<Message> {
 
     private final Stack<DevelopmentCard>[][] dashBoard;
 
@@ -76,6 +79,8 @@ public class Dashboard {
          */
         if(dashBoard[level.ordinal()][color.ordinal()].empty())
             throw new IllegalArgumentException();
+
+        change();
         return dashBoard[level.ordinal()][color.ordinal()].pop();
     }
 
@@ -95,7 +100,7 @@ public class Dashboard {
                 l = l.getNext();
             }
         }
-
+        change();
     }
 
     public DevelopmentCard findDevCard(int id){
@@ -112,20 +117,18 @@ public class Dashboard {
     }
 
 
-    /* Just for testing
-    @Override
-    public String toString(){
-        String res = "";
-        for (Level l: Level.values()){
-            for( ColorDevCard c: ColorDevCard.values()){
-                for (DevelopmentCard x: dashBoard[l.ordinal()][c.ordinal()]){
-                    res += x.getId();
-                    res += ' ';
-                }
+    private void change(){
+        //TODO find a cooler name
+        ArrayList<String> cards = new ArrayList<>();
+        for(Level l : Level.values()) {
+            for (ColorDevCard c : ColorDevCard.values()) {
+                getTopDevCard(c, l);
+                //TODO parsing
+                cards.add(new String());
             }
-            res += '\n';
         }
-        return res;
-    }*/
+
+        notify(new DashBoardMessage(cards));
+    }
 
 }

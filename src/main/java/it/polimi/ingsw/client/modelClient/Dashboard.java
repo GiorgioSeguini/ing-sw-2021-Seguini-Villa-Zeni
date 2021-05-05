@@ -20,9 +20,7 @@ public class Dashboard {
         dashBoard = new DevelopmentCard[Level.size()][ColorDevCard.size()];
 
         //load cards
-        for(DevelopmentCard card: developmentCards){
-            dashBoard[card.getLevel().ordinal()][card.getColor().ordinal()] = card;
-        }
+        setCards(developmentCards);
     }
 
 
@@ -35,6 +33,23 @@ public class Dashboard {
         return dashBoard[level.ordinal()][color.ordinal()];
     }
 
+    /**
+     * This methods clear the dashboard and store the new cards, if a card is missing, its corresponding value will be set to null
+     * @param developmentCards new cards to store
+     */
+    public void setCards( ArrayList<DevelopmentCard> developmentCards){
+        //clear table
+        for(Level l : Level.values()){
+            for(ColorDevCard c : ColorDevCard.values()){
+                dashBoard[l.ordinal()][c.ordinal()] = null;
+            }
+        }
+
+        //load new cards
+        for(DevelopmentCard card: developmentCards){
+            dashBoard[card.getLevel().ordinal()][card.getColor().ordinal()] = card;
+        }
+    }
 
 
 }

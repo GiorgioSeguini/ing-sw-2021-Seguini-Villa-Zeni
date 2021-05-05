@@ -14,7 +14,7 @@ public class Game {
 
     //compositions
     private final ArrayList<Player> players;
-    private Market marketTray;
+    private final Market marketTray;
     private final Dashboard dashboard;
     private final LorenzoSoloPlayer soloGame;
 

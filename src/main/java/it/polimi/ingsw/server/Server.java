@@ -65,18 +65,23 @@ public class Server {
             }
             ArrayList<Player> players = new ArrayList<>(); players.add(player1); players.add(player2);
             Game game = new Game(players, new Market(marble), new Dashboard(developmentCards), tokens, leaderCards);
-            View player1View = new RemoteView(player1,  c1);
-            View player2View = new RemoteView(player2,  c2);
 
             Controller controller = new Controller(game);
 
+            ArrayList<View> playersView =new ArrayList<View>();
+            playersView.add(new RemoteView(player1,  c1));
+            playersView.add(new RemoteView(player2,  c2));
 
-            game.getMarketTray().addObserver(player1View);
-            game.getMarketTray().addObserver(player2View);
+            for(View view : playersView){
+                //add model - view links
+                game.getMarketTray().addObserver(view);
+                game.getDashboard().addObserver(view);
+                //TODO
 
+                //add controller - view links
+                view.addObserver(controller);
+            }
 
-            player1View.addObserver(controller);
-            player2View.addObserver(controller);
             playingConnection.put(c1, c2);
             playingConnection.put(c2, c1);
             waitingConnection.clear();
