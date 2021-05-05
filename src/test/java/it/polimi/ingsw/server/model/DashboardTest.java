@@ -1,10 +1,6 @@
 package it.polimi.ingsw.server.model;
 
-import it.polimi.ingsw.server.controller.Starter;
-import it.polimi.ingsw.server.model.Dashboard;
-import it.polimi.ingsw.server.model.DevelopmentCard;
-import it.polimi.ingsw.server.model.NumberOfResources;
-import it.polimi.ingsw.server.model.ProductionPower;
+import it.polimi.ingsw.server.parse.Starter;
 import it.polimi.ingsw.constant.enumeration.ColorDevCard;
 import it.polimi.ingsw.constant.enumeration.Level;
 import org.json.simple.parser.ParseException;

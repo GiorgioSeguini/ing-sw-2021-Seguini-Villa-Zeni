@@ -1,7 +1,6 @@
 package it.polimi.ingsw.server.model;
 
-import it.polimi.ingsw.server.controller.Starter;
-import it.polimi.ingsw.server.model.*;
+import it.polimi.ingsw.server.parse.Starter;
 import it.polimi.ingsw.constant.enumeration.*;
 import it.polimi.ingsw.server.model.exception.UnableToFillException;
 import org.json.simple.parser.ParseException;
@@ -10,7 +9,6 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.junit.jupiter.api.Assertions.*;
 

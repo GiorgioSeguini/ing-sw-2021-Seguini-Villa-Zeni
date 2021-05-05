@@ -1,11 +1,11 @@
 package it.polimi.ingsw.server.model;
 
-import it.polimi.ingsw.server.controller.Starter;
-import it.polimi.ingsw.server.model.Market;
+import it.polimi.ingsw.server.parse.Starter;
 import it.polimi.ingsw.constant.enumeration.MarbleColor;
 import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.Test;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -21,7 +21,7 @@ class MarketTest {
 
         try {
             startMarbles = Starter.MarblesParser();
-        } catch (IOException | ParseException e) {
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
@@ -43,7 +43,7 @@ class MarketTest {
 
         try {
             startMarbles = Starter.MarblesParser();
-        } catch (IOException | ParseException e) {
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
@@ -101,7 +101,7 @@ class MarketTest {
 
         try {
             startMarbles = Starter.MarblesParser();
-        } catch (IOException | ParseException e) {
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 

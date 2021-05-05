@@ -1,9 +1,13 @@
-package it.polimi.ingsw.server.controller;
+package it.polimi.ingsw.server.parse;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import it.polimi.ingsw.constant.enumeration.ColorDevCard;
 import it.polimi.ingsw.constant.enumeration.Level;
 import it.polimi.ingsw.constant.enumeration.MarbleColor;
 import it.polimi.ingsw.constant.enumeration.ResourceType;
+
 import it.polimi.ingsw.server.model.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -11,8 +15,10 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Map;
@@ -146,6 +152,7 @@ public class Starter {
         return arrayList;
     }
 
+    /*
     public static ArrayList<MarbleColor> MarblesParser() throws IOException, ParseException {
         JSONParser parser= new JSONParser();
         String filePath = new File("").getAbsolutePath();
@@ -155,7 +162,9 @@ public class Starter {
         return marbles;
     }
 
-    public static ArrayList<SoloActionTokens> TokensParser() throws IOException, ParseException {
+     */
+
+   public static ArrayList<SoloActionTokens> TokensParser() throws IOException, ParseException {
         JSONParser parser = new JSONParser();
         String filePath = new File("").getAbsolutePath();
         JSONArray array = (JSONArray) parser.parse(new FileReader(filePath + "/src/main/resources/SoloActionTokens.json"));
@@ -173,6 +182,16 @@ public class Starter {
             }
         }
         return tokens;
+    }
+
+
+    public static ArrayList<MarbleColor> MarblesParser() throws FileNotFoundException {
+        Gson gson= new Gson();
+        String filePath = new File("").getAbsolutePath();
+
+        Type marblesarray= new TypeToken<ArrayList<MarbleColor>>(){}.getType();
+
+        return gson.fromJson(new FileReader(filePath+"/src/main/resources/Marbles.json"), marblesarray);
     }
 
     public static ArrayList<LeaderCard> LeaderCardsParser() throws IOException, ParseException {
@@ -194,6 +213,7 @@ public class Starter {
         return leaderCards;
     }
 
+    /*
     public static ArrayList<DevelopmentCard> DevCardParser() throws IOException, ParseException {
         JSONParser parser = new JSONParser();
         String filePath = new File("").getAbsolutePath();
@@ -210,6 +230,18 @@ public class Starter {
         }
 
         return devcards;
+    }
+
+     */
+
+    public static ArrayList<DevelopmentCard> DevCardParser() throws FileNotFoundException {
+        Gson gsonExt;
+        GsonBuilder builder = new GsonBuilder();
+        builder.registerTypeAdapter(NumberOfResources.class, new NumberOfResSerializer());
+        gsonExt = builder.create();
+        Type devCardListType = new TypeToken<ArrayList<DevelopmentCard>>(){}.getType();
+        String filePath = new File("").getAbsolutePath();
+        return gsonExt.fromJson(new FileReader(filePath + "/src/main/resources/DevCard.json"), devCardListType);
     }
 
 
@@ -252,7 +284,7 @@ public class Starter {
 
         /*Sostanzialmente controllo che siano 13, che non ci siano colori strani e che ci sia almeno una biglia per colore*/
         return true;
-    }
+    } // TODO: 5/5/21 change
 
     public static boolean CanDevCardParser(){
         JSONParser parser = new JSONParser();
@@ -268,16 +300,16 @@ public class Starter {
             JSONObject DevCard = (JSONObject) x;
             JSONObject ProductionPower=null;
             try{
-                DevCard.get("Level");
-                DevCard.get("CardColor");
-                DevCard.get("Cost");
-                DevCard.get("VictoryPoints");
-                ProductionPower = (JSONObject) DevCard.get("ProductionPower");
-                ProductionPower.get("YourChoiceIn");
-                ProductionPower.get("YourChoiceOut");
-                ProductionPower.get("InRes");
-                ProductionPower.get("OutRes");
-                ProductionPower.get("FaithPointsOut");
+                DevCard.get("level");
+                DevCard.get("cardColor");
+                DevCard.get("cost");
+                DevCard.get("victoryPoints");
+                ProductionPower = (JSONObject) DevCard.get("productionPower");
+                ProductionPower.get("ofYourChoiceInput");
+                ProductionPower.get("ofYourChoiceOutput");
+                ProductionPower.get("inputRes");
+                ProductionPower.get("outputRes");
+                ProductionPower.get("pointsFaithOut");
             }catch (NullPointerException e){
                 return false;
             }
@@ -286,7 +318,7 @@ public class Starter {
             return false;
         }
         return true;
-    }
+    } // TODO: 5/5/21 change
 
     public static boolean CanLeaderCardsParser(){
         JSONParser parser = new JSONParser();
@@ -316,7 +348,7 @@ public class Starter {
         }
 
         return true;
-    }
+    } // TODO: 5/5/21 change
 
     public static boolean CanTokensParser(){
         JSONParser parser = new JSONParser();
@@ -349,6 +381,6 @@ public class Starter {
             return false;
         }
         return true;
-    }
+    } // TODO: 5/5/21 change
 
 }

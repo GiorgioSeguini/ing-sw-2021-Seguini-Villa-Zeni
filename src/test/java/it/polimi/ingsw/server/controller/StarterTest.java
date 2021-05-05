@@ -1,6 +1,6 @@
 package it.polimi.ingsw.server.controller;
 
-import it.polimi.ingsw.server.controller.Starter;
+import it.polimi.ingsw.server.parse.Starter;
 import it.polimi.ingsw.server.model.*;
 import it.polimi.ingsw.constant.enumeration.ColorDevCard;
 import it.polimi.ingsw.constant.enumeration.Level;
@@ -8,6 +8,7 @@ import it.polimi.ingsw.constant.enumeration.MarbleColor;
 import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.Test;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -20,7 +21,7 @@ class StarterTest {
         ArrayList<DevelopmentCard> devcards = new ArrayList<>();
         try {
             devcards = Starter.DevCardParser();
-        } catch (IOException | ParseException e) {
+        } catch (IOException e) {
             fail();
         }
 
@@ -70,7 +71,7 @@ class StarterTest {
             assertEquals(2,yellows);
             assertEquals(4,whites);
 
-        } catch (IOException | ParseException e){
+        } catch (FileNotFoundException e){
             fail();
         }
 
@@ -82,7 +83,7 @@ class StarterTest {
         ArrayList<SoloActionTokens> tokens= new ArrayList<>();
         try {
            tokens=Starter.TokensParser();
-        } catch (IOException|ParseException e) {
+        } catch (IOException | ParseException e) {
             fail();
         }
         assertEquals(7,tokens.size());

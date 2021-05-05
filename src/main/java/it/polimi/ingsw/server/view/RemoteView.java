@@ -6,6 +6,7 @@ import it.polimi.ingsw.server.controller.*;
 import it.polimi.ingsw.server.model.Player;
 import it.polimi.ingsw.server.observer.Observer;
 import it.polimi.ingsw.server.ClientConnection;
+import it.polimi.ingsw.server.parse.Starter;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -23,7 +24,7 @@ public class RemoteView extends View {
             MoveType move;
 
             switch (movex.toString()){
-                case "MoveActiveProduction": move= new MoveActiveProduction(getPlayer(),Starter.getProdArrayfromObjArray((JSONArray) info.get("ProductionPowers"))); break; 
+                case "MoveActiveProduction": move= new MoveActiveProduction(getPlayer(), Starter.getProdArrayfromObjArray((JSONArray) info.get("ProductionPowers"))); break;
                 case "MoveBuyDevCard": move= new MoveBuyDevCard(getPlayer(),(int) info.get("Position"),(int) info.get("CardToBuy")) ;break;
                 case "MoveChoseInitialResources": move=new MoveChoseInitialResources(getPlayer(),Starter.ConvertObjectToNumOfRes((JSONObject) info.get("Resources"))); break;
                 case "MoveChoseLeaderCards": move=new MoveChoseLeaderCards(getPlayer(),(ArrayList<Integer>) info.get("LeaderCards")); break;

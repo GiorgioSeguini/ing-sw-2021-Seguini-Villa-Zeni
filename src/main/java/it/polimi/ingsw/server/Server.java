@@ -1,7 +1,7 @@
 package it.polimi.ingsw.server;
 
 import it.polimi.ingsw.server.controller.Controller;
-import it.polimi.ingsw.server.controller.Starter;
+import it.polimi.ingsw.server.parse.Starter;
 import it.polimi.ingsw.server.model.*;
 import it.polimi.ingsw.constant.enumeration.MarbleColor;
 import it.polimi.ingsw.server.view.RemoteView;

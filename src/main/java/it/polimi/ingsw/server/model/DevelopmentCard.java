@@ -2,6 +2,7 @@ package it.polimi.ingsw.server.model;
 
 /*Last Edit: Gio*/
 
+import com.google.gson.annotations.SerializedName;
 import it.polimi.ingsw.constant.enumeration.ColorDevCard;
 import it.polimi.ingsw.constant.enumeration.Level;
 import it.polimi.ingsw.constant.enumeration.ResourceType;

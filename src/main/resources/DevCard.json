@@ -1,1346 +1,1346 @@
 [
   {
-    "Level": "ONE",
-    "CardColor": "GREEN",
-    "Cost": {
+    "level": "ONE",
+    "cardColor": "GREEN",
+    "cost": {
       "Servants": 0,
       "Shields": 2,
       "Coins": 0,
       "Stones": 0
     },
-    "VictoryPoints":1,
-    "ProductionPower": {
-      "FaithPointsOut":1,
-      "OutRes": {
+    "victoryPoints":1,
+    "productionPower": {
+      "pointsFaithOut":1,
+      "outputRes": {
         "Servants": 0,
         "Shields": 0,
         "Coins": 0,
         "Stones": 0
       },
-      "InRes": {
+      "inputRes": {
         "Servants": 0,
         "Shields": 0,
         "Coins": 1,
         "Stones": 0
       },
-      "YourChoiceIn": 0,
-      "YourChoiceOut": 0
+      "ofYourChoiceInput": 0,
+      "ofYourChoiceOutput": 0
     }
   },
   {
-    "Level": "ONE",
-    "CardColor": "PURPLE",
-    "Cost": {
+    "level": "ONE",
+    "cardColor": "PURPLE",
+    "cost": {
       "Servants": 2,
       "Shields": 0,
       "Coins": 0,
       "Stones": 0
     },
-    "VictoryPoints": 1,
-    "ProductionPower": {
-      "FaithPointsOut": 1,
-      "OutRes": {
+    "victoryPoints": 1,
+    "productionPower": {
+      "pointsFaithOut": 1,
+      "outputRes": {
         "Servants": 0,
         "Shields": 0,
         "Coins": 0,
         "Stones": 0
       },
-      "InRes": {
+      "inputRes": {
         "Servants": 0,
         "Shields": 0,
         "Coins": 0,
         "Stones": 1
       },
-      "YourChoiceIn": 0,
-      "YourChoiceOut": 0
+      "ofYourChoiceInput": 0,
+      "ofYourChoiceOutput": 0
     }
   },
   {
-    "Level": "ONE",
-    "CardColor": "BLUE",
-    "Cost": {
+    "level": "ONE",
+    "cardColor": "BLUE",
+    "cost": {
       "Servants": 0,
       "Shields": 0,
       "Coins": 2,
       "Stones": 0
     },
-    "VictoryPoints":1,
-    "ProductionPower": {
-      "FaithPointsOut":1,
-      "OutRes": {
+    "victoryPoints":1,
+    "productionPower": {
+      "pointsFaithOut":1,
+      "outputRes": {
         "Servants": 0,
         "Shields": 0,
         "Coins": 0,
         "Stones": 0
       },
-      "InRes": {
+      "inputRes": {
         "Servants": 0,
         "Shields": 1,
         "Coins": 0,
         "Stones": 0
       },
-      "YourChoiceIn": 0,
-      "YourChoiceOut": 0
+      "ofYourChoiceInput": 0,
+      "ofYourChoiceOutput": 0
     }
   },
   {
-    "Level": "ONE",
-    "CardColor": "YELLOW",
-    "Cost": {
+    "level": "ONE",
+    "cardColor": "YELLOW",
+    "cost": {
       "Servants": 0,
       "Shields": 0,
       "Coins": 0,
       "Stones": 2
     },
-    "VictoryPoints":1,
-    "ProductionPower": {
-      "FaithPointsOut":1,
-      "OutRes": {
+    "victoryPoints":1,
+    "productionPower": {
+      "pointsFaithOut":1,
+      "outputRes": {
         "Servants": 0,
         "Shields": 0,
         "Coins": 0,
         "Stones": 0
       },
-      "InRes": {
+      "inputRes": {
         "Servants": 1,
         "Shields": 0,
         "Coins": 0,
         "Stones": 0
       },
-      "YourChoiceIn": 0,
-      "YourChoiceOut": 0
+      "ofYourChoiceInput": 0,
+      "ofYourChoiceOutput": 0
     }
   },
   {
-    "Level": "ONE",
-    "CardColor": "GREEN",
-    "Cost": {
+    "level": "ONE",
+    "cardColor": "GREEN",
+    "cost": {
       "Servants": 1,
       "Shields": 1,
       "Coins": 0,
       "Stones": 1
     },
-    "VictoryPoints":2,
-    "ProductionPower": {
-      "FaithPointsOut":0,
-      "OutRes": {
+    "victoryPoints":2,
+    "productionPower": {
+      "pointsFaithOut":0,
+      "outputRes": {
         "Servants": 1,
         "Shields": 0,
         "Coins": 0,
         "Stones": 0
       },
-      "InRes": {
+      "inputRes": {
         "Servants": 0,
         "Shields": 0,
         "Coins": 0,
         "Stones": 1
       },
-      "YourChoiceIn": 0,
-      "YourChoiceOut": 0
+      "ofYourChoiceInput": 0,
+      "ofYourChoiceOutput": 0
     }
   },
   {
-    "Level": "ONE",
-    "CardColor": "PURPLE",
-    "Cost": {
+    "level": "ONE",
+    "cardColor": "PURPLE",
+    "cost": {
       "Servants": 1,
       "Shields": 1,
       "Coins": 1,
       "Stones": 0
     },
-    "VictoryPoints": 2,
-    "ProductionPower": {
-      "FaithPointsOut": 0,
-      "OutRes": {
+    "victoryPoints": 2,
+    "productionPower": {
+      "pointsFaithOut": 0,
+      "outputRes": {
         "Servants": 0,
         "Shields": 1,
         "Coins": 0,
         "Stones": 0
       },
-      "InRes": {
+      "inputRes": {
         "Servants": 0,
         "Shields": 0,
         "Coins": 1,
         "Stones": 0
       },
-      "YourChoiceIn": 0,
-      "YourChoiceOut": 0
+      "ofYourChoiceInput": 0,
+      "ofYourChoiceOutput": 0
     }
   },
   {
-    "Level": "ONE",
-    "CardColor": "BLUE",
-    "Cost": {
+    "level": "ONE",
+    "cardColor": "BLUE",
+    "cost": {
       "Servants": 1,
       "Shields": 0,
       "Coins": 1,
       "Stones": 1
     },
-    "VictoryPoints":2,
-    "ProductionPower": {
-      "FaithPointsOut":0,
-      "OutRes": {
+    "victoryPoints":2,
+    "productionPower": {
+      "pointsFaithOut":0,
+      "outputRes": {
         "Servants": 0,
         "Shields": 0,
         "Coins": 0,
         "Stones": 1
       },
-      "InRes": {
+      "inputRes": {
         "Servants": 1,
         "Shields": 0,
         "Coins": 0,
         "Stones": 0
       },
-      "YourChoiceIn": 0,
-      "YourChoiceOut": 0
+      "ofYourChoiceInput": 0,
+      "ofYourChoiceOutput": 0
     }
   },
   {
-    "Level": "ONE",
-    "CardColor": "YELLOW",
-    "Cost": {
+    "level": "ONE",
+    "cardColor": "YELLOW",
+    "cost": {
       "Servants": 0,
       "Shields": 1,
       "Coins": 1,
       "Stones": 1
     },
-    "VictoryPoints":2,
-    "ProductionPower": {
-      "FaithPointsOut":0,
-      "OutRes": {
+    "victoryPoints":2,
+    "productionPower": {
+      "pointsFaithOut":0,
+      "outputRes": {
         "Servants": 0,
         "Shields": 0,
         "Coins": 1,
         "Stones": 0
       },
-      "InRes": {
+      "inputRes": {
         "Servants": 0,
         "Shields": 1,
         "Coins": 0,
         "Stones": 0
       },
-      "YourChoiceIn": 0,
-      "YourChoiceOut": 0
+      "ofYourChoiceInput": 0,
+      "ofYourChoiceOutput": 0
     }
   },
   {
-    "Level": "ONE",
-    "CardColor": "GREEN",
-    "Cost": {
+    "level": "ONE",
+    "cardColor": "GREEN",
+    "cost": {
       "Servants": 0,
       "Shields": 3,
       "Coins": 0,
       "Stones": 0
     },
-    "VictoryPoints":3,
-    "ProductionPower": {
-      "FaithPointsOut":0,
-      "OutRes": {
+    "victoryPoints":3,
+    "productionPower": {
+      "pointsFaithOut":0,
+      "outputRes": {
         "Servants": 0,
         "Shields": 1,
         "Coins": 1,
         "Stones": 1
       },
-      "InRes": {
+      "inputRes": {
         "Servants": 2,
         "Shields": 0,
         "Coins": 0,
         "Stones": 0
       },
-      "YourChoiceIn": 0,
-      "YourChoiceOut": 0
+      "ofYourChoiceInput": 0,
+      "ofYourChoiceOutput": 0
     }
   },
   {
-    "Level": "ONE",
-    "CardColor": "PURPLE",
-    "Cost": {
+    "level": "ONE",
+    "cardColor": "PURPLE",
+    "cost": {
       "Servants": 3,
       "Shields": 0,
       "Coins": 0,
       "Stones": 0
     },
-    "VictoryPoints": 3,
-    "ProductionPower": {
-      "FaithPointsOut": 0,
-      "OutRes": {
+    "victoryPoints": 3,
+    "productionPower": {
+      "pointsFaithOut": 0,
+      "outputRes": {
         "Servants": 1,
         "Shields": 1,
         "Coins": 0,
         "Stones": 1
       },
-      "InRes": {
+      "inputRes": {
         "Servants": 0,
         "Shields": 0,
         "Coins": 2,
         "Stones": 0
       },
-      "YourChoiceIn": 0,
-      "YourChoiceOut": 0
+      "ofYourChoiceInput": 0,
+      "ofYourChoiceOutput": 0
     }
   },
   {
-    "Level": "ONE",
-    "CardColor": "BLUE",
-    "Cost": {
+    "level": "ONE",
+    "cardColor": "BLUE",
+    "cost": {
       "Servants": 0,
       "Shields": 0,
       "Coins": 3,
       "Stones": 0
     },
-    "VictoryPoints":3,
-    "ProductionPower": {
-      "FaithPointsOut":0,
-      "OutRes": {
+    "victoryPoints":3,
+    "productionPower": {
+      "pointsFaithOut":0,
+      "outputRes": {
         "Servants": 1,
         "Shields": 1,
         "Coins": 1,
         "Stones": 0
       },
-      "InRes": {
+      "inputRes": {
         "Servants": 0,
         "Shields": 0,
         "Coins": 0,
         "Stones": 2
       },
-      "YourChoiceIn": 0,
-      "YourChoiceOut": 0
+      "ofYourChoiceInput": 0,
+      "ofYourChoiceOutput": 0
     }
   },
   {
-    "Level": "ONE",
-    "CardColor": "YELLOW",
-    "Cost": {
+    "level": "ONE",
+    "cardColor": "YELLOW",
+    "cost": {
       "Servants": 0,
       "Shields": 0,
       "Coins": 0,
       "Stones": 3
     },
-    "VictoryPoints":3,
-    "ProductionPower": {
-      "FaithPointsOut":0,
-      "OutRes": {
+    "victoryPoints":3,
+    "productionPower": {
+      "pointsFaithOut":0,
+      "outputRes": {
         "Servants": 1,
         "Shields": 0,
         "Coins": 1,
         "Stones": 1
       },
-      "InRes": {
+      "inputRes": {
         "Servants": 0,
         "Shields": 2,
         "Coins": 0,
         "Stones": 0
       },
-      "YourChoiceIn": 0,
-      "YourChoiceOut": 0
+      "ofYourChoiceInput": 0,
+      "ofYourChoiceOutput": 0
     }
   },
   {
-    "Level": "ONE",
-    "CardColor": "GREEN",
-    "Cost": {
+    "level": "ONE",
+    "cardColor": "GREEN",
+    "cost": {
       "Servants": 0,
       "Shields": 2,
       "Coins": 2,
       "Stones": 0
     },
-    "VictoryPoints":4,
-    "ProductionPower": {
-      "FaithPointsOut":1,
-      "OutRes": {
+    "victoryPoints":4,
+    "productionPower": {
+      "pointsFaithOut":1,
+      "outputRes": {
         "Servants": 0,
         "Shields": 0,
         "Coins": 2,
         "Stones": 0
       },
-      "InRes": {
+      "inputRes": {
         "Servants": 1,
         "Shields": 0,
         "Coins": 0,
         "Stones": 1
       },
-      "YourChoiceIn": 0,
-      "YourChoiceOut": 0
+      "ofYourChoiceInput": 0,
+      "ofYourChoiceOutput": 0
     }
   },
   {
-    "Level": "ONE",
-    "CardColor": "PURPLE",
-    "Cost": {
+    "level": "ONE",
+    "cardColor": "PURPLE",
+    "cost": {
       "Servants": 2,
       "Shields": 0,
       "Coins": 0,
       "Stones": 2
     },
-    "VictoryPoints": 4,
-    "ProductionPower": {
-      "FaithPointsOut": 1,
-      "OutRes": {
+    "victoryPoints": 4,
+    "productionPower": {
+      "pointsFaithOut": 1,
+      "outputRes": {
         "Servants": 0,
         "Shields": 0,
         "Coins": 0,
         "Stones": 2
       },
-      "InRes": {
+      "inputRes": {
         "Servants": 0,
         "Shields": 1,
         "Coins": 1,
         "Stones": 0
       },
-      "YourChoiceIn": 0,
-      "YourChoiceOut": 0
+      "ofYourChoiceInput": 0,
+      "ofYourChoiceOutput": 0
     }
   },
   {
-    "Level": "ONE",
-    "CardColor": "BLUE",
-    "Cost": {
+    "level": "ONE",
+    "cardColor": "BLUE",
+    "cost": {
       "Servants": 2,
       "Shields": 0,
       "Coins": 2,
       "Stones": 0
     },
-    "VictoryPoints":4,
-    "ProductionPower": {
-      "FaithPointsOut":1,
-      "OutRes": {
+    "victoryPoints":4,
+    "productionPower": {
+      "pointsFaithOut":1,
+      "outputRes": {
         "Servants": 2,
         "Shields": 0,
         "Coins": 0,
         "Stones": 0
       },
-      "InRes": {
+      "inputRes": {
         "Servants": 0,
         "Shields": 1,
         "Coins": 0,
         "Stones": 1
       },
-      "YourChoiceIn": 0,
-      "YourChoiceOut": 0
+      "ofYourChoiceInput": 0,
+      "ofYourChoiceOutput": 0
     }
   },
   {
-    "Level": "ONE",
-    "CardColor": "YELLOW",
-    "Cost": {
+    "level": "ONE",
+    "cardColor": "YELLOW",
+    "cost": {
       "Servants": 0,
       "Shields": 2,
       "Coins": 0,
       "Stones": 2
     },
-    "VictoryPoints":4,
-    "ProductionPower": {
-      "FaithPointsOut":1,
-      "OutRes": {
+    "victoryPoints":4,
+    "productionPower": {
+      "pointsFaithOut":1,
+      "outputRes": {
         "Servants": 0,
         "Shields": 2,
         "Coins": 0,
         "Stones": 0
       },
-      "InRes": {
+      "inputRes": {
         "Servants": 1,
         "Shields": 0,
         "Coins": 1,
         "Stones": 0
       },
-      "YourChoiceIn": 0,
-      "YourChoiceOut": 0
+      "ofYourChoiceInput": 0,
+      "ofYourChoiceOutput": 0
     }
   },
   {
-    "Level": "TWO",
-    "CardColor": "GREEN",
-    "Cost": {
+    "level": "TWO",
+    "cardColor": "GREEN",
+    "cost": {
       "Servants": 0,
       "Shields": 4,
       "Coins": 0,
       "Stones": 0
     },
-    "VictoryPoints":5,
-    "ProductionPower": {
-      "FaithPointsOut":2,
-      "OutRes": {
+    "victoryPoints":5,
+    "productionPower": {
+      "pointsFaithOut":2,
+      "outputRes": {
         "Servants": 0,
         "Shields": 0,
         "Coins": 0,
         "Stones": 0
       },
-      "InRes": {
+      "inputRes": {
         "Servants": 0,
         "Shields": 0,
         "Coins": 0,
         "Stones": 1
       },
-      "YourChoiceIn": 0,
-      "YourChoiceOut": 0
+      "ofYourChoiceInput": 0,
+      "ofYourChoiceOutput": 0
     }
   },
   {
-    "Level": "TWO",
-    "CardColor": "PURPLE",
-    "Cost": {
+    "level": "TWO",
+    "cardColor": "PURPLE",
+    "cost": {
       "Servants": 4,
       "Shields": 0,
       "Coins": 0,
       "Stones": 0
     },
-    "VictoryPoints": 5,
-    "ProductionPower": {
-      "FaithPointsOut": 2,
-      "OutRes": {
+    "victoryPoints": 5,
+    "productionPower": {
+      "pointsFaithOut": 2,
+      "outputRes": {
         "Servants": 0,
         "Shields": 0,
         "Coins": 0,
         "Stones": 0
       },
-      "InRes": {
+      "inputRes": {
         "Servants": 0,
         "Shields": 0,
         "Coins": 1,
         "Stones": 0
       },
-      "YourChoiceIn": 0,
-      "YourChoiceOut": 0
+      "ofYourChoiceInput": 0,
+      "ofYourChoiceOutput": 0
     }
   },
   {
-    "Level": "TWO",
-    "CardColor": "BLUE",
-    "Cost": {
+    "level": "TWO",
+    "cardColor": "BLUE",
+    "cost": {
       "Servants":0 ,
       "Shields": 0,
       "Coins": 4,
       "Stones": 0
     },
-    "VictoryPoints":5,
-    "ProductionPower": {
-      "FaithPointsOut":2,
-      "OutRes": {
+    "victoryPoints":5,
+    "productionPower": {
+      "pointsFaithOut":2,
+      "outputRes": {
         "Servants": 0,
         "Shields": 0,
         "Coins": 0,
         "Stones": 0
       },
-      "InRes": {
+      "inputRes": {
         "Servants": 1,
         "Shields": 0,
         "Coins": 0,
         "Stones": 0
       },
-      "YourChoiceIn": 0,
-      "YourChoiceOut": 0
+      "ofYourChoiceInput": 0,
+      "ofYourChoiceOutput": 0
     }
   },
   {
-    "Level": "TWO",
-    "CardColor": "YELLOW",
-    "Cost": {
+    "level": "TWO",
+    "cardColor": "YELLOW",
+    "cost": {
       "Servants": 0,
       "Shields": 0,
       "Coins": 0,
       "Stones": 4
     },
-    "VictoryPoints":5,
-    "ProductionPower": {
-      "FaithPointsOut":2,
-      "OutRes": {
+    "victoryPoints":5,
+    "productionPower": {
+      "pointsFaithOut":2,
+      "outputRes": {
         "Servants": 0,
         "Shields": 0,
         "Coins": 0,
         "Stones": 0
       },
-      "InRes": {
+      "inputRes": {
         "Servants": 0,
         "Shields": 1,
         "Coins": 0,
         "Stones": 0
       },
-      "YourChoiceIn": 0,
-      "YourChoiceOut": 0
+      "ofYourChoiceInput": 0,
+      "ofYourChoiceOutput": 0
     }
   },
   {
-    "Level": "TWO",
-    "CardColor": "GREEN",
-    "Cost": {
+    "level": "TWO",
+    "cardColor": "GREEN",
+    "cost": {
       "Servants": 2,
       "Shields": 3,
       "Coins": 0,
       "Stones": 0
     },
-    "VictoryPoints":6,
-    "ProductionPower": {
-      "FaithPointsOut":0,
-      "OutRes": {
+    "victoryPoints":6,
+    "productionPower": {
+      "pointsFaithOut":0,
+      "outputRes": {
         "Servants": 0,
         "Shields": 0,
         "Coins": 0,
         "Stones": 3
       },
-      "InRes": {
+      "inputRes": {
         "Servants": 1,
         "Shields": 1,
         "Coins": 0,
         "Stones": 0
       },
-      "YourChoiceIn": 0,
-      "YourChoiceOut": 0
+      "ofYourChoiceInput": 0,
+      "ofYourChoiceOutput": 0
     }
   },
   {
-    "Level": "TWO",
-    "CardColor": "PURPLE",
-    "Cost": {
+    "level": "TWO",
+    "cardColor": "PURPLE",
+    "cost": {
       "Servants": 3,
       "Shields": 0,
       "Coins": 2,
       "Stones": 0
     },
-    "VictoryPoints": 6,
-    "ProductionPower": {
-      "FaithPointsOut": 0,
-      "OutRes": {
+    "victoryPoints": 6,
+    "productionPower": {
+      "pointsFaithOut": 0,
+      "outputRes": {
         "Servants": 0,
         "Shields": 3,
         "Coins": 0,
         "Stones": 0
       },
-      "InRes": {
+      "inputRes": {
         "Servants": 1,
         "Shields": 0,
         "Coins": 1,
         "Stones": 0
       },
-      "YourChoiceIn": 0,
-      "YourChoiceOut": 0
+      "ofYourChoiceInput": 0,
+      "ofYourChoiceOutput": 0
     }
   },
   {
-    "Level": "TWO",
-    "CardColor": "BLUE",
-    "Cost": {
+    "level": "TWO",
+    "cardColor": "BLUE",
+    "cost": {
       "Servants": 0,
       "Shields": 0,
       "Coins": 3,
       "Stones": 2
     },
-    "VictoryPoints":6,
-    "ProductionPower": {
-      "FaithPointsOut":0,
-      "OutRes": {
+    "victoryPoints":6,
+    "productionPower": {
+      "pointsFaithOut":0,
+      "outputRes": {
         "Servants": 3,
         "Shields": 0,
         "Coins": 0,
         "Stones": 0
       },
-      "InRes": {
+      "inputRes": {
         "Servants": 0,
         "Shields": 0,
         "Coins": 1,
         "Stones": 1
       },
-      "YourChoiceIn": 0,
-      "YourChoiceOut": 0
+      "ofYourChoiceInput": 0,
+      "ofYourChoiceOutput": 0
     }
   },
   {
-    "Level": "TWO",
-    "CardColor": "YELLOW",
-    "Cost": {
+    "level": "TWO",
+    "cardColor": "YELLOW",
+    "cost": {
       "Servants": 0,
       "Shields": 2,
       "Coins": 0,
       "Stones": 3
     },
-    "VictoryPoints":6,
-    "ProductionPower": {
-      "FaithPointsOut":0,
-      "OutRes": {
+    "victoryPoints":6,
+    "productionPower": {
+      "pointsFaithOut":0,
+      "outputRes": {
         "Servants": 0,
         "Shields": 0,
         "Coins": 3,
         "Stones": 0
       },
-      "InRes": {
+      "inputRes": {
         "Servants": 0,
         "Shields": 1,
         "Coins": 0,
         "Stones": 1
       },
-      "YourChoiceIn": 0,
-      "YourChoiceOut": 0
+      "ofYourChoiceInput": 0,
+      "ofYourChoiceOutput": 0
     }
   },
   {
-    "Level": "TWO",
-    "CardColor": "GREEN",
-    "Cost": {
+    "level": "TWO",
+    "cardColor": "GREEN",
+    "cost": {
       "Servants": 0,
       "Shields": 5,
       "Coins": 0,
       "Stones": 0
     },
-    "VictoryPoints":7,
-    "ProductionPower": {
-      "FaithPointsOut":2,
-      "OutRes": {
+    "victoryPoints":7,
+    "productionPower": {
+      "pointsFaithOut":2,
+      "outputRes": {
         "Servants": 0,
         "Shields": 0,
         "Coins": 0,
         "Stones": 2
       },
-      "InRes": {
+      "inputRes": {
         "Servants": 0,
         "Shields": 0,
         "Coins": 2,
         "Stones": 0
       },
-      "YourChoiceIn": 0,
-      "YourChoiceOut": 0
+      "ofYourChoiceInput": 0,
+      "ofYourChoiceOutput": 0
     }
   },
   {
-    "Level": "TWO",
-    "CardColor": "PURPLE",
-    "Cost": {
+    "level": "TWO",
+    "cardColor": "PURPLE",
+    "cost": {
       "Servants": 5,
       "Shields": 0,
       "Coins": 0,
       "Stones": 0
     },
-    "VictoryPoints": 7,
-    "ProductionPower": {
-      "FaithPointsOut": 2,
-      "OutRes": {
+    "victoryPoints": 7,
+    "productionPower": {
+      "pointsFaithOut": 2,
+      "outputRes": {
         "Servants": 0,
         "Shields": 0,
         "Coins": 2,
         "Stones": 0
       },
-      "InRes": {
+      "inputRes": {
         "Servants": 0,
         "Shields": 0,
         "Coins": 0,
         "Stones": 2
       },
-      "YourChoiceIn": 0,
-      "YourChoiceOut": 0
+      "ofYourChoiceInput": 0,
+      "ofYourChoiceOutput": 0
     }
   },
   {
-    "Level": "TWO",
-    "CardColor": "BLUE",
-    "Cost": {
+    "level": "TWO",
+    "cardColor": "BLUE",
+    "cost": {
       "Servants": 0,
       "Shields": 0,
       "Coins": 5,
       "Stones": 0
     },
-    "VictoryPoints":7,
-    "ProductionPower": {
-      "FaithPointsOut":2,
-      "OutRes": {
+    "victoryPoints":7,
+    "productionPower": {
+      "pointsFaithOut":2,
+      "outputRes": {
         "Servants": 0,
         "Shields": 2,
         "Coins": 0,
         "Stones": 0
       },
-      "InRes": {
+      "inputRes": {
         "Servants": 2,
         "Shields": 0,
         "Coins": 0,
         "Stones": 0
       },
-      "YourChoiceIn": 0,
-      "YourChoiceOut": 0
+      "ofYourChoiceInput": 0,
+      "ofYourChoiceOutput": 0
     }
   },
   {
-    "Level": "TWO",
-    "CardColor": "YELLOW",
-    "Cost": {
+    "level": "TWO",
+    "cardColor": "YELLOW",
+    "cost": {
       "Servants": 0,
       "Shields": 0,
       "Coins": 0,
       "Stones": 5
     },
-    "VictoryPoints":7,
-    "ProductionPower": {
-      "FaithPointsOut":2,
-      "OutRes": {
+    "victoryPoints":7,
+    "productionPower": {
+      "pointsFaithOut":2,
+      "outputRes": {
         "Servants": 2,
         "Shields": 0,
         "Coins": 0,
         "Stones": 0
       },
-      "InRes": {
+      "inputRes": {
         "Servants": 0,
         "Shields": 2,
         "Coins": 0,
         "Stones": 0
       },
-      "YourChoiceIn": 0,
-      "YourChoiceOut": 0
+      "ofYourChoiceInput": 0,
+      "ofYourChoiceOutput": 0
     }
   },
   {
-    "Level": "TWO",
-    "CardColor": "GREEN",
-    "Cost": {
+    "level": "TWO",
+    "cardColor": "GREEN",
+    "cost": {
       "Servants": 0,
       "Shields": 3,
       "Coins": 3,
       "Stones": 0
     },
-    "VictoryPoints":8,
-    "ProductionPower": {
-      "FaithPointsOut":2,
-      "OutRes": {
+    "victoryPoints":8,
+    "productionPower": {
+      "pointsFaithOut":2,
+      "outputRes": {
         "Servants": 0,
         "Shields": 2,
         "Coins": 0,
         "Stones": 0
       },
-      "InRes": {
+      "inputRes": {
         "Servants": 0,
         "Shields": 0,
         "Coins": 1,
         "Stones": 0
       },
-      "YourChoiceIn": 0,
-      "YourChoiceOut": 0
+      "ofYourChoiceInput": 0,
+      "ofYourChoiceOutput": 0
     }
   },
   {
-    "Level": "TWO",
-    "CardColor": "PURPLE",
-    "Cost": {
+    "level": "TWO",
+    "cardColor": "PURPLE",
+    "cost": {
       "Servants": 3,
       "Shields": 3,
       "Coins": 0,
       "Stones": 0
     },
-    "VictoryPoints": 8,
-    "ProductionPower": {
-      "FaithPointsOut": 1,
-      "OutRes": {
+    "victoryPoints": 8,
+    "productionPower": {
+      "pointsFaithOut": 1,
+      "outputRes": {
         "Servants": 2,
         "Shields": 0,
         "Coins": 0,
         "Stones": 0
       },
-      "InRes": {
+      "inputRes": {
         "Servants": 0,
         "Shields": 0,
         "Coins": 0,
         "Stones": 1
       },
-      "YourChoiceIn": 0,
-      "YourChoiceOut": 0
+      "ofYourChoiceInput": 0,
+      "ofYourChoiceOutput": 0
     }
   },
   {
-    "Level": "TWO",
-    "CardColor": "BLUE",
-    "Cost": {
+    "level": "TWO",
+    "cardColor": "BLUE",
+    "cost": {
       "Servants": 0,
       "Shields": 0,
       "Coins": 3,
       "Stones": 3
     },
-    "VictoryPoints":8,
-    "ProductionPower": {
-      "FaithPointsOut":1,
-      "OutRes": {
+    "victoryPoints":8,
+    "productionPower": {
+      "pointsFaithOut":1,
+      "outputRes": {
         "Servants": 0,
         "Shields": 0,
         "Coins": 0,
         "Stones": 2
       },
-      "InRes": {
+      "inputRes": {
         "Servants": 1,
         "Shields": 0,
         "Coins": 0,
         "Stones": 0
       },
-      "YourChoiceIn": 0,
-      "YourChoiceOut": 0
+      "ofYourChoiceInput": 0,
+      "ofYourChoiceOutput": 0
     }
   },
   {
-    "Level": "TWO",
-    "CardColor": "YELLOW",
-    "Cost": {
+    "level": "TWO",
+    "cardColor": "YELLOW",
+    "cost": {
       "Servants": 3,
       "Shields": 0,
       "Coins": 0,
       "Stones": 3
     },
-    "VictoryPoints":8,
-    "ProductionPower": {
-      "FaithPointsOut":1,
-      "OutRes": {
+    "victoryPoints":8,
+    "productionPower": {
+      "pointsFaithOut":1,
+      "outputRes": {
         "Servants": 0,
         "Shields": 0,
         "Coins": 2,
         "Stones": 0
       },
-      "InRes": {
+      "inputRes": {
         "Servants": 0,
         "Shields": 1,
         "Coins": 0,
         "Stones": 0
       },
-      "YourChoiceIn": 0,
-      "YourChoiceOut": 0
+      "ofYourChoiceInput": 0,
+      "ofYourChoiceOutput": 0
     }
   },
   {
-    "Level": "THREE",
-    "CardColor": "GREEN",
-    "Cost": {
+    "level": "THREE",
+    "cardColor": "GREEN",
+    "cost": {
       "Servants": 0,
       "Shields": 6,
       "Coins": 0,
       "Stones": 0
     },
-    "VictoryPoints":9,
-    "ProductionPower": {
-      "FaithPointsOut":2,
-      "OutRes": {
+    "victoryPoints":9,
+    "productionPower": {
+      "pointsFaithOut":2,
+      "outputRes": {
         "Servants": 0,
         "Shields": 0,
         "Coins": 0,
         "Stones": 3
       },
-      "InRes": {
+      "inputRes": {
         "Servants": 0,
         "Shields": 0,
         "Coins": 2,
         "Stones": 0
       },
-      "YourChoiceIn": 0,
-      "YourChoiceOut": 0
+      "ofYourChoiceInput": 0,
+      "ofYourChoiceOutput": 0
     }
   },
   {
-    "Level": "THREE",
-    "CardColor": "PURPLE",
-    "Cost": {
+    "level": "THREE",
+    "cardColor": "PURPLE",
+    "cost": {
       "Servants": 6,
       "Shields": 0,
       "Coins": 0,
       "Stones": 0
     },
-    "VictoryPoints":9,
-    "ProductionPower": {
-      "FaithPointsOut":2,
-      "OutRes": {
+    "victoryPoints":9,
+    "productionPower": {
+      "pointsFaithOut":2,
+      "outputRes": {
         "Servants": 0,
         "Shields": 0,
         "Coins": 3,
         "Stones": 0
       },
-      "InRes": {
+      "inputRes": {
         "Servants": 0,
         "Shields": 0,
         "Coins": 0,
         "Stones": 2
       },
-      "YourChoiceIn": 0,
-      "YourChoiceOut": 0
+      "ofYourChoiceInput": 0,
+      "ofYourChoiceOutput": 0
     }
   },
   {
-    "Level": "THREE",
-    "CardColor": "BLUE",
-    "Cost": {
+    "level": "THREE",
+    "cardColor": "BLUE",
+    "cost": {
       "Servants": 0,
       "Shields": 0,
       "Coins": 6,
       "Stones": 0
     },
-    "VictoryPoints":9,
-    "ProductionPower": {
-      "FaithPointsOut":2,
-      "OutRes": {
+    "victoryPoints":9,
+    "productionPower": {
+      "pointsFaithOut":2,
+      "outputRes": {
         "Servants": 0,
         "Shields": 3,
         "Coins": 0,
         "Stones": 0
       },
-      "InRes": {
+      "inputRes": {
         "Servants": 2,
         "Shields": 0,
         "Coins": 0,
         "Stones": 0
       },
-      "YourChoiceIn": 0,
-      "YourChoiceOut": 0
+      "ofYourChoiceInput": 0,
+      "ofYourChoiceOutput": 0
     }
   },
   {
-    "Level": "THREE",
-    "CardColor": "YELLOW",
-    "Cost": {
+    "level": "THREE",
+    "cardColor": "YELLOW",
+    "cost": {
       "Servants": 0,
       "Shields": 0,
       "Coins": 0,
       "Stones": 6
     },
-    "VictoryPoints":9,
-    "ProductionPower": {
-      "FaithPointsOut":2,
-      "OutRes": {
+    "victoryPoints":9,
+    "productionPower": {
+      "pointsFaithOut":2,
+      "outputRes": {
         "Servants": 3,
         "Shields": 0,
         "Coins": 0,
         "Stones": 0
       },
-      "InRes": {
+      "inputRes": {
         "Servants": 0,
         "Shields": 2,
         "Coins": 0,
         "Stones": 0
       },
-      "YourChoiceIn": 0,
-      "YourChoiceOut": 0
+      "ofYourChoiceInput": 0,
+      "ofYourChoiceOutput": 0
     }
   },
   {
-    "Level": "THREE",
-    "CardColor": "GREEN",
-    "Cost": {
+    "level": "THREE",
+    "cardColor": "GREEN",
+    "cost": {
       "Servants": 2,
       "Shields": 5,
       "Coins": 0,
       "Stones": 0
     },
-    "VictoryPoints":10,
-    "ProductionPower": {
-      "FaithPointsOut":1,
-      "OutRes": {
+    "victoryPoints":10,
+    "productionPower": {
+      "pointsFaithOut":1,
+      "outputRes": {
         "Servants": 0,
         "Shields": 2,
         "Coins": 0,
         "Stones": 2
       },
-      "InRes": {
+      "inputRes": {
         "Servants": 1,
         "Shields": 0,
         "Coins": 1,
         "Stones": 0
       },
-      "YourChoiceIn": 0,
-      "YourChoiceOut": 0
+      "ofYourChoiceInput": 0,
+      "ofYourChoiceOutput": 0
     }
   },
   {
-    "Level": "THREE",
-    "CardColor": "PURPLE",
-    "Cost": {
+    "level": "THREE",
+    "cardColor": "PURPLE",
+    "cost": {
       "Servants": 5,
       "Shields": 0,
       "Coins": 2,
       "Stones": 0
     },
-    "VictoryPoints":10,
-    "ProductionPower": {
-      "FaithPointsOut":1,
-      "OutRes": {
+    "victoryPoints":10,
+    "productionPower": {
+      "pointsFaithOut":1,
+      "outputRes": {
         "Servants": 2,
         "Shields": 0,
         "Coins": 2,
         "Stones": 0
       },
-      "InRes": {
+      "inputRes": {
         "Servants": 0,
         "Shields": 1,
         "Coins": 0,
         "Stones": 1
       },
-      "YourChoiceIn": 0,
-      "YourChoiceOut": 0
+      "ofYourChoiceInput": 0,
+      "ofYourChoiceOutput": 0
     }
   },
   {
-    "Level": "THREE",
-    "CardColor": "BLUE",
-    "Cost": {
+    "level": "THREE",
+    "cardColor": "BLUE",
+    "cost": {
       "Servants": 0,
       "Shields": 0,
       "Coins": 5,
       "Stones": 2
     },
-    "VictoryPoints":10,
-    "ProductionPower": {
-      "FaithPointsOut":1,
-      "OutRes": {
+    "victoryPoints":10,
+    "productionPower": {
+      "pointsFaithOut":1,
+      "outputRes": {
         "Servants": 2,
         "Shields": 0,
         "Coins": 0,
         "Stones": 2
       },
-      "InRes": {
+      "inputRes": {
         "Servants": 0,
         "Shields": 1,
         "Coins": 1,
         "Stones": 0
       },
-      "YourChoiceIn": 0,
-      "YourChoiceOut": 0
+      "ofYourChoiceInput": 0,
+      "ofYourChoiceOutput": 0
     }
   },
   {
-    "Level": "THREE",
-    "CardColor": "YELLOW",
-    "Cost": {
+    "level": "THREE",
+    "cardColor": "YELLOW",
+    "cost": {
       "Servants": 2,
       "Shields": 0,
       "Coins": 0,
       "Stones": 5
     },
-    "VictoryPoints":10,
-    "ProductionPower": {
-      "FaithPointsOut":1,
-      "OutRes": {
+    "victoryPoints":10,
+    "productionPower": {
+      "pointsFaithOut":1,
+      "outputRes": {
         "Servants": 0,
         "Shields": 2,
         "Coins": 2,
         "Stones": 0
       },
-      "InRes": {
+      "inputRes": {
         "Servants": 1,
         "Shields": 0,
         "Coins": 0,
         "Stones": 1
       },
-      "YourChoiceIn": 0,
-      "YourChoiceOut": 0
+      "ofYourChoiceInput": 0,
+      "ofYourChoiceOutput": 0
     }
   },
   {
-    "Level": "THREE",
-    "CardColor": "GREEN",
-    "Cost": {
+    "level": "THREE",
+    "cardColor": "GREEN",
+    "cost": {
       "Servants": 0,
       "Shields": 7,
       "Coins": 0,
       "Stones": 0
     },
-    "VictoryPoints":11,
-    "ProductionPower": {
-      "FaithPointsOut":3,
-      "OutRes": {
+    "victoryPoints":11,
+    "productionPower": {
+      "pointsFaithOut":3,
+      "outputRes": {
         "Servants": 0,
         "Shields": 0,
         "Coins": 1,
         "Stones": 0
       },
-      "InRes": {
+      "inputRes": {
         "Servants": 1,
         "Shields": 0,
         "Coins": 0,
         "Stones": 0
       },
-      "YourChoiceIn": 0,
-      "YourChoiceOut": 0
+      "ofYourChoiceInput": 0,
+      "ofYourChoiceOutput": 0
     }
   },
   {
-    "Level": "THREE",
-    "CardColor": "PURPLE",
-    "Cost": {
+    "level": "THREE",
+    "cardColor": "PURPLE",
+    "cost": {
       "Servants": 7,
       "Shields": 0,
       "Coins": 0,
       "Stones": 0
     },
-    "VictoryPoints":11,
-    "ProductionPower": {
-      "FaithPointsOut":3,
-      "OutRes": {
+    "victoryPoints":11,
+    "productionPower": {
+      "pointsFaithOut":3,
+      "outputRes": {
         "Servants": 0,
         "Shields": 0,
         "Coins": 0,
         "Stones": 1
       },
-      "InRes": {
+      "inputRes": {
         "Servants": 0,
         "Shields": 0,
         "Coins": 1,
         "Stones": 0
       },
-      "YourChoiceIn": 0,
-      "YourChoiceOut": 0
+      "ofYourChoiceInput": 0,
+      "ofYourChoiceOutput": 0
     }
   },
   {
-    "Level": "THREE",
-    "CardColor": "BLUE",
-    "Cost": {
+    "level": "THREE",
+    "cardColor": "BLUE",
+    "cost": {
       "Servants": 0,
       "Shields": 0,
       "Coins": 7,
       "Stones": 0
     },
-    "VictoryPoints":11,
-    "ProductionPower": {
-      "FaithPointsOut":3,
-      "OutRes": {
+    "victoryPoints":11,
+    "productionPower": {
+      "pointsFaithOut":3,
+      "outputRes": {
         "Servants": 0,
         "Shields": 1,
         "Coins": 0,
         "Stones": 0
       },
-      "InRes": {
+      "inputRes": {
         "Servants": 0,
         "Shields": 0,
         "Coins": 0,
         "Stones": 1
       },
-      "YourChoiceIn": 0,
-      "YourChoiceOut": 0
+      "ofYourChoiceInput": 0,
+      "ofYourChoiceOutput": 0
     }
   },
   {
-    "Level": "THREE",
-    "CardColor": "YELLOW",
-    "Cost": {
+    "level": "THREE",
+    "cardColor": "YELLOW",
+    "cost": {
       "Servants": 0,
       "Shields": 0,
       "Coins": 0,
       "Stones": 7
     },
-    "VictoryPoints":11,
-    "ProductionPower": {
-      "FaithPointsOut":3,
-      "OutRes": {
+    "victoryPoints":11,
+    "productionPower": {
+      "pointsFaithOut":3,
+      "outputRes": {
         "Servants": 1,
         "Shields": 0,
         "Coins": 0,
         "Stones": 0
       },
-      "InRes": {
+      "inputRes": {
         "Servants": 0,
         "Shields": 1,
         "Coins": 0,
         "Stones": 0
       },
-      "YourChoiceIn": 0,
-      "YourChoiceOut": 0
+      "ofYourChoiceInput": 0,
+      "ofYourChoiceOutput": 0
     }
   },
   {
-    "Level": "THREE",
-    "CardColor": "GREEN",
-    "Cost": {
+    "level": "THREE",
+    "cardColor": "GREEN",
+    "cost": {
       "Servants": 0,
       "Shields": 4,
       "Coins": 4,
       "Stones": 0
     },
-    "VictoryPoints":12,
-    "ProductionPower": {
-      "FaithPointsOut":0,
-      "OutRes": {
+    "victoryPoints":12,
+    "productionPower": {
+      "pointsFaithOut":0,
+      "outputRes": {
         "Servants": 0,
         "Shields": 1,
         "Coins": 3,
         "Stones": 0
       },
-      "InRes": {
+      "inputRes": {
         "Servants": 0,
         "Shields": 0,
         "Coins": 0,
         "Stones": 1
       },
-      "YourChoiceIn": 0,
-      "YourChoiceOut": 0
+      "ofYourChoiceInput": 0,
+      "ofYourChoiceOutput": 0
     }
   },
   {
-    "Level": "THREE",
-    "CardColor": "PURPLE",
-    "Cost": {
+    "level": "THREE",
+    "cardColor": "PURPLE",
+    "cost": {
       "Servants": 4,
       "Shields": 4,
       "Coins": 0,
       "Stones": 0
     },
-    "VictoryPoints": 12,
-    "ProductionPower": {
-      "FaithPointsOut": 0,
-      "OutRes": {
+    "victoryPoints": 12,
+    "productionPower": {
+      "pointsFaithOut": 0,
+      "outputRes": {
         "Servants": 1,
         "Shields": 0,
         "Coins": 0,
         "Stones": 3
       },
-      "InRes": {
+      "inputRes": {
         "Servants": 0,
         "Shields": 0,
         "Coins": 1,
         "Stones": 0
       },
-      "YourChoiceIn": 0,
-      "YourChoiceOut": 0
+      "ofYourChoiceInput": 0,
+      "ofYourChoiceOutput": 0
     }
   },
   {
-    "Level": "THREE",
-    "CardColor": "BLUE",
-    "Cost": {
+    "level": "THREE",
+    "cardColor": "BLUE",
+    "cost": {
       "Servants": 0,
       "Shields": 0,
       "Coins": 4,
       "Stones": 4
     },
-    "VictoryPoints":12,
-    "ProductionPower": {
-      "FaithPointsOut":0,
-      "OutRes": {
+    "victoryPoints":12,
+    "productionPower": {
+      "pointsFaithOut":0,
+      "outputRes": {
         "Servants": 0,
         "Shields": 3,
         "Coins": 1,
         "Stones": 0
       },
-      "InRes": {
+      "inputRes": {
         "Servants": 1,
         "Shields": 0,
         "Coins": 0,
         "Stones": 0
       },
-      "YourChoiceIn": 0,
-      "YourChoiceOut": 0
+      "ofYourChoiceInput": 0,
+      "ofYourChoiceOutput": 0
     }
   },
   {
-    "Level": "THREE",
-    "CardColor": "YELLOW",
-    "Cost": {
+    "level": "THREE",
+    "cardColor": "YELLOW",
+    "cost": {
       "Servants": 4,
       "Shields": 0,
       "Coins": 0,
       "Stones": 4
     },
-    "VictoryPoints":12,
-    "ProductionPower": {
-      "FaithPointsOut":0,
-      "OutRes": {
+    "victoryPoints":12,
+    "productionPower": {
+      "pointsFaithOut":0,
+      "outputRes": {
         "Servants": 3,
         "Shields": 0,
         "Coins": 0,
         "Stones": 1
       },
-      "InRes": {
+      "inputRes": {
         "Servants": 0,
         "Shields": 1,
         "Coins": 0,
         "Stones": 0
       },
-      "YourChoiceIn": 0,
-      "YourChoiceOut": 0
+      "ofYourChoiceInput": 0,
+      "ofYourChoiceOutput": 0
     }
   }
 ]
