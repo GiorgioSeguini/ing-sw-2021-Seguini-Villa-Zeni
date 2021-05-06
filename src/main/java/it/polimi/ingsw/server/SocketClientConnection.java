@@ -2,8 +2,8 @@ package it.polimi.ingsw.server;
 
 import it.polimi.ingsw.server.observer.Observable;
 
+import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class SocketClientConnection extends Observable<String> implements ClientConnection, Runnable {
 
     private Socket socket;
-    private ObjectOutputStream out;
+    private DataOutputStream out;
     private Server server;
 
     private boolean active = true;
@@ -28,10 +28,10 @@ public class SocketClientConnection extends Observable<String> implements Client
         return active;
     }
 
-    private synchronized void send(Object message) {
+    private synchronized void send(String json) {
             try {
-                out.reset();
-                out.writeObject(message);
+                //out.reset();
+                out.writeUTF(json);
                 out.flush();
             } catch(IOException e){
                 System.err.println(e.getMessage());
@@ -58,11 +58,11 @@ public class SocketClientConnection extends Observable<String> implements Client
     }
 
     @Override
-    public void asyncSend(final Object message){
+    public void asyncSend(final String json){
         new Thread(new Runnable() {
             @Override
             public void run() {
-                send(message);
+                send(json);
             }
         }).start();
     }
@@ -73,7 +73,7 @@ public class SocketClientConnection extends Observable<String> implements Client
 
         try{
             in = new Scanner(socket.getInputStream());
-            out = new ObjectOutputStream(socket.getOutputStream());
+            out = new DataOutputStream(socket.getOutputStream());
             send("Welcome!\nWhat is your name?");
             String read = in.nextLine();
             server.lobby(this, read);

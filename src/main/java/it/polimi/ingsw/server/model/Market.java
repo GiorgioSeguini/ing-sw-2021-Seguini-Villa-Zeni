@@ -61,7 +61,7 @@ public class Market extends Observable<Message> {
             tray[index][i]=buyedRow.get(i+1);
         }
         externalMarble=buyedRow.get(0);
-        changement();
+        change();
         return buyedRow;
     }
 
@@ -77,15 +77,14 @@ public class Market extends Observable<Message> {
             tray[i][index]=buyedColumn.get(i+1);
         }
         externalMarble=buyedColumn.get(0);
-        changement();
+        change();
         return buyedColumn;
     }
 
     /**
      * this methods should be call each time a changement in status happened, in order to correctly notify all the observer
      */
-    private void changement(){
-        //TODO find a cooler name
+    private void change(){
         ArrayList<MarbleColor> marbles = new ArrayList<MarbleColor>();
         for(MarbleColor[] row : tray){
             marbles.addAll(Arrays.asList(row));

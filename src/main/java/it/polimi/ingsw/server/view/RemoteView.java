@@ -6,6 +6,7 @@ import it.polimi.ingsw.server.controller.*;
 import it.polimi.ingsw.server.model.Player;
 import it.polimi.ingsw.server.observer.Observer;
 import it.polimi.ingsw.server.ClientConnection;
+import it.polimi.ingsw.server.parse.Starter;
 
 public class RemoteView extends View {
 
@@ -45,48 +46,14 @@ public class RemoteView extends View {
         c.addObserver(new MessageReceiver());
     }
 
-    @Override
+    /*@Override
     protected void showMessage(Object message) {
         clientConnection.asyncSend(message);
-    }
+    }*/
 
     @Override
     public void update(Message message){
-        //TODO json conversion
-        clientConnection.asyncSend(message);
+        clientConnection.asyncSend(Starter.toJson(message));
     }
-
-    /*
-    TODO Metodo per comunicare alla view che il model è cambiato
-    @Override
-    public void update(MoveMessage message)
-    {
-        showMessage(message.getBoard());
-        String resultMsg = "";
-        boolean gameOver = message.getBoard().isGameOver(message.getPlayer().getMarker());
-        boolean draw = message.getBoard().isFull();
-        if (gameOver) {
-            if (message.getPlayer() == getPlayer()) {
-                resultMsg = gameMessage.winMessage + "\n";
-            } else {
-                resultMsg = gameMessage.loseMessage + "\n";
-            }
-        }
-        else {
-            if (draw) {
-                resultMsg = gameMessage.drawMessage + "\n";
-            }
-        }
-        if(message.getPlayer() == getPlayer()){
-            resultMsg += gameMessage.waitMessage;
-        }
-        else{
-            resultMsg += gameMessage.moveMessage;
-        }
-
-        showMessage(resultMsg);
-    }
-    */
-
 
 }

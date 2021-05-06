@@ -7,6 +7,7 @@ import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.server.model.exception.OutOfResourcesException;
 import it.polimi.ingsw.server.model.exception.UnableToFillException;
 import it.polimi.ingsw.server.observer.Observable;
+import it.polimi.ingsw.server.parse.Starter;
 
 /**
  * 
@@ -15,7 +16,7 @@ public class Depots extends Observable<Message> {
 
     private static final int DIVIDER_VICTORY_POINTS = 5;
 
-    private final int ownerID;
+    private transient final int ownerID;
     private final StrongBox strongBox;
     private final WareHouseDepots wareHouseDepots;
     /**
@@ -118,9 +119,7 @@ public class Depots extends Observable<Message> {
      * This methods create an instance of FaithTrackMessage and notify observers
      */
     private void change(){
-        String depots = "";
-        //TODO parsing
-
+        String depots = Starter.toJson(this);
         notify(new DepotsMessage(depots, this.ownerID));
     }
 }

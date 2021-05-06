@@ -19,14 +19,14 @@ public abstract class View extends Observable<MoveType> implements Observer<Mess
         return player;
     }
 
-    protected abstract void showMessage(Object message);
+    /*protected abstract void showMessage(Object message);*/
 
     void handleMove(MoveType x) {
         notify(x);
     }
 
-    public void reportError(String message){
+    /*public void reportError(String message){
         showMessage(message);
-    }
+    }*/
 
 }

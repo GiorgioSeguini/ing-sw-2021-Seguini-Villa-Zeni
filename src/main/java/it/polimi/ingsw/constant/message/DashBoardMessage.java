@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public class DashBoardMessage implements Message{
 
+    public static final String className = "DashBoardMessage";
     ArrayList<String> developmentCardsString;
 
     public DashBoardMessage(ArrayList<String> cards){
@@ -19,5 +20,10 @@ public class DashBoardMessage implements Message{
         //TODO parsing
         ArrayList<DevelopmentCard> developmentCards = new ArrayList<>();
         simpleGame.getDashboard().setCards(developmentCards);
+    }
+
+    @Override
+    public String getName() {
+        return className;
     }
 }

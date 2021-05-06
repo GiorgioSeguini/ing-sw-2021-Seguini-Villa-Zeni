@@ -6,6 +6,7 @@ import it.polimi.ingsw.client.modelClient.Player;
 
 public class DepotsMessage implements Message{
 
+    public static final String className = "DepotsMessage";
     private final String depots;
     private final int ownerID;
 
@@ -21,5 +22,10 @@ public class DepotsMessage implements Message{
         //TODO parsing
 
         owner.setDepots(depots);
+    }
+
+    @Override
+    public String getName() {
+        return className;
     }
 }

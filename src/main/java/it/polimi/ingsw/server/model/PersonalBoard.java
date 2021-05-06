@@ -7,6 +7,7 @@ import it.polimi.ingsw.constant.message.PersonalBoardMessage;
 import it.polimi.ingsw.server.model.exception.NoMoreLeaderCardAliveException;
 import it.polimi.ingsw.server.model.exception.NoSpaceException;
 import it.polimi.ingsw.server.observer.Observable;
+import it.polimi.ingsw.server.parse.Starter;
 
 import java.util.*;
 
@@ -171,9 +172,8 @@ public class PersonalBoard extends Observable<Message> {
      * @see LeaderCard only class that call this methods
      */
     protected void change(){
-        String devCards = "";
-        String leaderCards = "";
-        //TODO parsing
+        String devCards = Starter.toJson(this.OwnedDevCards);
+        String leaderCards = Starter.toJson(this.OwnedLeaderCard);
         notify(new PersonalBoardMessage(devCards, leaderCards, this.ownerID));
     }
 

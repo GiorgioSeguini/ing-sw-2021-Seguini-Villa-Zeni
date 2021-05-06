@@ -4,6 +4,7 @@ import it.polimi.ingsw.constant.enumeration.PopesFavorStates;
 import it.polimi.ingsw.constant.message.FaithTrackMessage;
 import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.server.observer.Observable;
+import it.polimi.ingsw.server.parse.Starter;
 /*Last Edit: Fabio*/
 /**
  * 
@@ -17,7 +18,7 @@ public class FaithTrack extends Observable<Message> {
     private static final int[] popesFavorPosition = {8, 16, 24};
     private static final int[] popesFavorInitialPosition = {5, 12, 19};
 
-    private final int ownerID;
+    private final transient int ownerID;
     private int faithPoints;
     private final PopesFavorStates[] popesFavor;
 
@@ -93,9 +94,7 @@ public class FaithTrack extends Observable<Message> {
      * This methods create an instance of FaithTrackMessage and notify observers
      */
     private void change(){
-        String faithTrack = "";
-        //TODO parsing
-
+        String faithTrack = Starter.toJson(this);
         notify(new FaithTrackMessage(faithTrack, this.ownerID));
     }
 }

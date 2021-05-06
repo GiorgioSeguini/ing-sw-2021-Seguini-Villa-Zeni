@@ -5,6 +5,7 @@ import it.polimi.ingsw.constant.enumeration.GameStatus;
 
 public class GameMessage implements Message{
 
+    public static final String className = "GameMessage";
     private final GameStatus status;
     private final int index;
 
@@ -17,5 +18,10 @@ public class GameMessage implements Message{
     public void handleMessage(Game simpleGame) {
         simpleGame.setStatus(status);
         simpleGame.setIndex(index);
+    }
+
+    @Override
+    public String getName() {
+        return className;
     }
 }

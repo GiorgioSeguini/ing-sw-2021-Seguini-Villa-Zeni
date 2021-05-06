@@ -5,6 +5,7 @@ import it.polimi.ingsw.constant.enumeration.Level;
 import it.polimi.ingsw.constant.message.DashBoardMessage;
 import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.server.observer.Observable;
+import it.polimi.ingsw.server.parse.Starter;
 
 import java.util.*;
 
@@ -118,13 +119,10 @@ public class Dashboard extends Observable<Message> {
 
 
     private void change(){
-        //TODO find a cooler name
         ArrayList<String> cards = new ArrayList<>();
         for(Level l : Level.values()) {
             for (ColorDevCard c : ColorDevCard.values()) {
-                getTopDevCard(c, l);
-                //TODO parsing
-                cards.add(new String());
+                cards.add(Starter.toJson(getTopDevCard(c, l)));
             }
         }
 

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class PersonalBoardMessage implements Message{
 
+    public static final String className = "PersonalBoardMessage";
     String devCardsString;
     String leaderCardString;
     int IDplayer;
@@ -27,5 +28,10 @@ public class PersonalBoardMessage implements Message{
         ArrayList<LeaderCard> leaderCards = new ArrayList<>();
         //TODO parsing
         owner.getPersonalBoard().setLeaderCards(leaderCards);
+    }
+
+    @Override
+    public String getName() {
+        return className;
     }
 }

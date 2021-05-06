@@ -6,6 +6,7 @@ import it.polimi.ingsw.client.modelClient.Player;
 
 public class FaithTrackMessage implements Message{
 
+    public static final String className = "FaithTrackMessage";
     private final String faithTrack;
     private final int ownerID;
 
@@ -20,5 +21,10 @@ public class FaithTrackMessage implements Message{
         FaithTrack faithTrack = new FaithTrack();
 
         owner.setFaithTrack(faithTrack);
+    }
+
+    @Override
+    public String getName() {
+        return className;
     }
 }

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public class MarketMessage implements Message{
 
+    public static final String className = "MarketMessage";
     ArrayList<MarbleColor> marbles;
 
     public MarketMessage(ArrayList<MarbleColor> marbles) {
@@ -17,5 +18,10 @@ public class MarketMessage implements Message{
     @Override
     public void handleMessage(Game simpleGame){
         simpleGame.getMarketTray().setMarbles(marbles);
+    }
+
+    @Override
+    public String getName() {
+        return className;
     }
 }

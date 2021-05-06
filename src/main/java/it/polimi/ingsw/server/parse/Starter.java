@@ -3,8 +3,10 @@ package it.polimi.ingsw.server.parse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import it.polimi.ingsw.constant.MessageSerializer;
 import it.polimi.ingsw.constant.enumeration.MarbleColor;
 
+import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.server.model.*;
 
 import java.io.File;
@@ -20,46 +22,47 @@ public class Starter {
     private static int NUMOFLEADERCARD=16;
     private static int NUMOFTOKENS=7;
 
-    /*Methods to Initialize the Game*/
-    public static ArrayList<LeaderCard> LeaderCardsParser() throws FileNotFoundException {
+    private static final Gson gson;
+    private static final String filePath;
+
+    static{
         GsonBuilder builder= new GsonBuilder();
         builder.registerTypeAdapter(NumberOfResources.class, new NumberOfResSerializer());
         builder.registerTypeAdapter(Ability.class, new AbilitySerializer());
-        Gson gson=builder.create();
+        builder.registerTypeAdapter(SoloActionTokens.class, new TokensSerializer());
+        builder.registerTypeAdapter(Message.class, new MessageSerializer());
+        gson=builder.create();
+        filePath = new File("").getAbsolutePath();
+    }
+
+    /*Methods to Initialize the Game*/
+    public static ArrayList<LeaderCard> LeaderCardsParser() throws FileNotFoundException {
         Type LeaderListType = new TypeToken<ArrayList<LeaderCard>>(){}.getType();
-        String filePath = new File("").getAbsolutePath();
         return gson.fromJson(new FileReader(filePath + "/src/main/resources/LeaderCards.json"), LeaderListType);
     }
 
     public static ArrayList<SoloActionTokens> TokensParser() throws FileNotFoundException{
-        GsonBuilder builder= new GsonBuilder();
-        builder.registerTypeAdapter(SoloActionTokens.class, new TokensSerializer());
-        Gson gson=builder.create();
-
         Type TokensListType = new TypeToken<ArrayList<SoloActionTokens>>(){}.getType();
-        String filePath = new File("").getAbsolutePath();
         return gson.fromJson(new FileReader(filePath + "/src/main/resources/SoloActionTokens.json"), TokensListType);
     }
 
     public static ArrayList<MarbleColor> MarblesParser() throws FileNotFoundException {
-        Gson gson= new Gson();
-        String filePath = new File("").getAbsolutePath();
-
         Type marblesarray= new TypeToken<ArrayList<MarbleColor>>(){}.getType();
-
         return gson.fromJson(new FileReader(filePath+"/src/main/resources/Marbles.json"), marblesarray);
     }
 
     public static ArrayList<DevelopmentCard> DevCardParser() throws FileNotFoundException {
-        Gson gsonExt;
-        GsonBuilder builder = new GsonBuilder();
-        builder.registerTypeAdapter(NumberOfResources.class, new NumberOfResSerializer());
-        gsonExt = builder.create();
         Type devCardListType = new TypeToken<ArrayList<DevelopmentCard>>(){}.getType();
-        String filePath = new File("").getAbsolutePath();
-        return gsonExt.fromJson(new FileReader(filePath + "/src/main/resources/DevCard.json"), devCardListType);
+        return gson.fromJson(new FileReader(filePath + "/src/main/resources/DevCard.json"), devCardListType);
     }
 
+    public static String toJson(DevelopmentCard card){
+        return gson.toJson(card);
+    }
+
+    public static String toJson(Object o){
+        return gson.toJson(o, o.getClass());
+    }
 
     /*Methods for CanPerform*/
     public static boolean CanParseMarbles() {

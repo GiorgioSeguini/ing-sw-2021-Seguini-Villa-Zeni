@@ -12,4 +12,10 @@ public interface Message {
      * @param simpleGame reference to the simpler model
      */
     void handleMessage(Game simpleGame);
+
+    /**
+     *
+     * @return the class name, useful for json serialization
+     */
+    String getName();
 }
