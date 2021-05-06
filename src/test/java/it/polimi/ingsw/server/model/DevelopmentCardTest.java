@@ -23,8 +23,6 @@ class DevelopmentCardTest {
         assertEquals(power, card.getProductionPower());
         assertEquals(3, card.getVictoryPoints());
 
-        card.toString();
-
 
     }
 

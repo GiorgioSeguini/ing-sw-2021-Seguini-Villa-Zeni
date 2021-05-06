@@ -7,7 +7,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class LeaderCard extends Card {
 
-    private transient LeaderStatus status;
+    private transient LeaderStatus status; // TODO: 5/6/21 defualt value on hand json
     private final Requirements requirements;
     private final Ability ability;
     //static AtomicInteger nextId= new AtomicInteger();

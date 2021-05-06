@@ -32,7 +32,7 @@ public class Starter {
         builder.registerTypeAdapter(Ability.class, new AbilitySerializer());
         builder.registerTypeAdapter(SoloActionTokens.class, new TokensSerializer());
         builder.registerTypeAdapter(Message.class, new MessageSerializer());
-        //builder.registerTypeAdapter(MoveType.class, new MoveTypeSerializer());
+        builder.registerTypeAdapter(MoveType.class, new MoveTypeSerializer());
         gson=builder.create();
         filePath = new File("").getAbsolutePath();
     }

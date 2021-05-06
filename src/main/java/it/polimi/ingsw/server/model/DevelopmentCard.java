@@ -18,7 +18,6 @@ public class DevelopmentCard extends Card {
     private final ColorDevCard cardColor;
     private final NumberOfResources cost;
     private final ProductionPower productionPower;
-    //static AtomicInteger nextId= new AtomicInteger();
 
     /**
      * Default constructor

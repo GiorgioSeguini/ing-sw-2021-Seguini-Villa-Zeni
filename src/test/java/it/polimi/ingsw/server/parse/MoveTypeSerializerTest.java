@@ -32,7 +32,7 @@ public class MoveTypeSerializerTest {
 
        // Type array= new TypeToken<ArrayList<ProductionPower>>(){}.getType();
         System.out.println(move.getClassName());
-        String message=gson.toJson(move);
+        String message=Starter.toJson(move);
 
         System.out.println(message);
 
@@ -47,7 +47,7 @@ public class MoveTypeSerializerTest {
         //gsonBuilder.registerTypeAdapter(NumberOfResources.class, new NumberOfResSerializer());
         Gson gson= gsonBuilder.create();
 
-        System.out.println(gson.toJson(move,  MoveType.class));
+        System.out.println(Starter.toJson(move));
     }
 
 }

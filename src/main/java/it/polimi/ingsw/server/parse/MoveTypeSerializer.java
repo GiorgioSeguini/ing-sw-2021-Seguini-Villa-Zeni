@@ -32,7 +32,7 @@ public class MoveTypeSerializer implements JsonSerializer<MoveType>, JsonDeseria
         String className = json.getAsJsonObject().get(CLASSNAME).getAsString();
         Class c = moveNames.get(className);
         return context.deserialize(json.getAsJsonObject().get(INSTANCE), c);
-    } // TODO: 5/5/21 non sicuro testare
+    }
 
     @Override
     public JsonElement serialize(MoveType moveType, Type type, JsonSerializationContext context) {
@@ -42,5 +42,5 @@ public class MoveTypeSerializer implements JsonSerializer<MoveType>, JsonDeseria
         JsonElement elem = context.serialize(moveType, c);
         retValue.add(INSTANCE, elem);
         return retValue;
-    } // TODO: 5/5/21 non sicuro testare
+    }
 }
