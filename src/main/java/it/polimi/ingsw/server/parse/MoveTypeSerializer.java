@@ -1,6 +1,7 @@
 package it.polimi.ingsw.server.parse;
 
 import com.google.gson.*;
+import com.google.gson.reflect.TypeToken;
 import it.polimi.ingsw.server.controller.*;
 
 import java.lang.reflect.Type;
@@ -37,7 +38,8 @@ public class MoveTypeSerializer implements JsonSerializer<MoveType>, JsonDeseria
     public JsonElement serialize(MoveType moveType, Type type, JsonSerializationContext context) {
         JsonObject retValue = new JsonObject();
         retValue.addProperty(CLASSNAME, moveType.getClassName());
-        JsonElement elem = context.serialize(moveType);
+        Class c= moveNames.get(moveType.getClassName());
+        JsonElement elem = context.serialize(moveType, c);
         retValue.add(INSTANCE, elem);
         return retValue;
     } // TODO: 5/5/21 non sicuro testare

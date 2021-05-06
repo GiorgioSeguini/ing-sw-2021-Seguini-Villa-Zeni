@@ -7,13 +7,13 @@ import it.polimi.ingsw.constant.enumeration.PlayerStatus;
 public abstract class MoveType {
     //raccogliere tutte le info chieste al giocatore e chiama l'update del controller
 
-    Player player;
+    transient Player player;
     PlayerStatus[] allowedStatus;
-    private static String className;
+    private final String ClassName;
 
     public MoveType(Player player, String className){
         this.player = player;
-        this.className=className;
+        this.ClassName=className;
     }
 
     public Player getPlayer() {
@@ -21,7 +21,7 @@ public abstract class MoveType {
     }
 
     public String getClassName() {
-        return className;
+        return ClassName;
     }
 
     /**

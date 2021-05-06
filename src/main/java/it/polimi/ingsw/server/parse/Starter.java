@@ -7,6 +7,7 @@ import it.polimi.ingsw.constant.MessageSerializer;
 import it.polimi.ingsw.constant.enumeration.MarbleColor;
 
 import it.polimi.ingsw.constant.message.Message;
+import it.polimi.ingsw.server.controller.MoveType;
 import it.polimi.ingsw.server.model.*;
 
 import java.io.File;
@@ -31,6 +32,7 @@ public class Starter {
         builder.registerTypeAdapter(Ability.class, new AbilitySerializer());
         builder.registerTypeAdapter(SoloActionTokens.class, new TokensSerializer());
         builder.registerTypeAdapter(Message.class, new MessageSerializer());
+        //builder.registerTypeAdapter(MoveType.class, new MoveTypeSerializer());
         gson=builder.create();
         filePath = new File("").getAbsolutePath();
     }
@@ -54,14 +56,6 @@ public class Starter {
     public static ArrayList<DevelopmentCard> DevCardParser() throws FileNotFoundException {
         Type devCardListType = new TypeToken<ArrayList<DevelopmentCard>>(){}.getType();
         return gson.fromJson(new FileReader(filePath + "/src/main/resources/DevCard.json"), devCardListType);
-    }
-
-    public static String toJson(DevelopmentCard card){
-        return gson.toJson(card);
-    }
-
-    public static String toJson(Object o){
-        return gson.toJson(o, o.getClass());
     }
 
     /*Methods for CanPerform*/
@@ -147,4 +141,19 @@ public class Starter {
 
         return true;
     }
+
+    /*Utilities*/
+    public static String toJson(DevelopmentCard card){
+        return gson.toJson(card);
+    }
+
+    public static String toJson(Object o){
+        return gson.toJson(o, o.getClass());
+    }
+
+    public static String toJson(ArrayList<ProductionPower> productionPowers){
+        Type powerListType = new TypeToken<ArrayList<ProductionPower>>(){}.getType();
+        return gson.toJson(productionPowers, powerListType);
+    }
+
 }

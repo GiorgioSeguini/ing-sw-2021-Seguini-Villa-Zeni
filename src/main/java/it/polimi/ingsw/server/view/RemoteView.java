@@ -14,7 +14,7 @@ public class RemoteView extends View {
 
         @Override
         public void update(String info) {
-            System.out.println("Received: " + info.toString());
+            System.out.println("Received: " + info);
 
             //JSONObject movex=(JSONObject) info.get("Movetype");
             MoveType move=null;
