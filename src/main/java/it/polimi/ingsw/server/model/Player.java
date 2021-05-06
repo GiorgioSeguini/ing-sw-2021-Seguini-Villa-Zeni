@@ -16,7 +16,7 @@ public class Player {
     private final FaithTrack faithtrack;
     private final Depots depots;
     private final PersonalBoard personalBoard;
-    private final Converter converter;
+    private transient final Converter converter;
     private final int ID;
     private NumberOfResources discounted;
     private ProductionPower toActive;

@@ -113,7 +113,7 @@
     "ability":{
       "CLASSNAME":"DiscountAbility",
       "INSTANCE":{
-        "resourceType":"Servants",
+        "typeOfRes":"Servants",
         "discount":1
       }
     },
@@ -137,7 +137,7 @@
     "ability":{
       "CLASSNAME":"DiscountAbility",
       "INSTANCE":{
-        "resourceType":"Shields",
+        "typeOfRes":"Shields",
         "discount":1
       }
     },
@@ -162,7 +162,7 @@
     "ability":{
       "CLASSNAME":"DiscountAbility",
       "INSTANCE":{
-        "resourceType":"Stones",
+        "typeOfRes":"Stones",
         "discount":1
       }
     },
@@ -187,7 +187,7 @@
     "ability":{
       "CLASSNAME":"DiscountAbility",
       "INSTANCE":{
-        "resourceType":"Coins",
+        "typeOfRes":"Coins",
         "discount":1
       }
     },

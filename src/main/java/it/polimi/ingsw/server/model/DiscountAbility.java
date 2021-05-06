@@ -6,7 +6,7 @@ import it.polimi.ingsw.constant.enumeration.ResourceType;
 
 public class DiscountAbility implements Ability{
 
-    private final ResourceType resourceType;
+    private final ResourceType typeOfRes;
     private final int discount;
     public static final String name="DiscountAbility";
 
@@ -17,14 +17,14 @@ public class DiscountAbility implements Ability{
 
     /*Default constructor*/
     public DiscountAbility(ResourceType resourceType, int discount) {
-        this.resourceType = resourceType;
+        this.typeOfRes = resourceType;
         this.discount = discount;
 
     }
 
     /*Getter*/
     public ResourceType getTypeOfRes() {
-        return resourceType;
+        return typeOfRes;
     }
 
     public int getDiscountAmount() {
@@ -33,7 +33,7 @@ public class DiscountAbility implements Ability{
 
     @Override
     public void RunAbility(Player owner){
-        owner.addDiscount(resourceType, discount);
+        owner.addDiscount(typeOfRes, discount);
     }
 
     @Override
@@ -49,6 +49,6 @@ public class DiscountAbility implements Ability{
         if(this.discount != other.discount)
             return false;
 
-        return other.resourceType.equals(this.resourceType);
+        return other.typeOfRes.equals(this.typeOfRes);
     }
 }

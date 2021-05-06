@@ -90,6 +90,7 @@ public class Server {
             playingConnection.put(c2, c1);
             waitingConnection.clear();
 
+            game.start();
         }
     }
 

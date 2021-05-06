@@ -3,8 +3,10 @@ package it.polimi.ingsw.server.model;
 import it.polimi.ingsw.constant.enumeration.GameStatus;
 import it.polimi.ingsw.constant.enumeration.PlayerStatus;
 import it.polimi.ingsw.constant.message.GameMessage;
+import it.polimi.ingsw.constant.message.InitialMessage;
 import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.server.observer.Observable;
+import it.polimi.ingsw.server.parse.Starter;
 
 
 import java.util.*;
@@ -265,5 +267,9 @@ public class Game extends Observable<Message> {
 
     private void change(){
         notify(new GameMessage(getStatus(), getCurrIndex()));
+    }
+
+    public void start(){
+        notify(new InitialMessage(Starter.toJson(this)));
     }
 }
