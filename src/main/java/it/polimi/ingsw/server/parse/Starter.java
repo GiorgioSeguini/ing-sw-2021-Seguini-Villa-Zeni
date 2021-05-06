@@ -3,10 +3,7 @@ package it.polimi.ingsw.server.parse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import it.polimi.ingsw.constant.enumeration.ColorDevCard;
-import it.polimi.ingsw.constant.enumeration.Level;
 import it.polimi.ingsw.constant.enumeration.MarbleColor;
-import it.polimi.ingsw.constant.enumeration.ResourceType;
 
 import it.polimi.ingsw.server.model.*;
 

@@ -2,7 +2,6 @@ package it.polimi.ingsw.client.modelClient;
 
 /*Last Edit: Gio*/
 
-import it.polimi.ingsw.constant.enumeration.AbilityType;
 import it.polimi.ingsw.constant.enumeration.ResourceType;
 
 public class Ability {

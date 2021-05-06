@@ -1,4 +1,4 @@
-package it.polimi.ingsw.constant.enumeration;
+package it.polimi.ingsw.client.modelClient;
 
 public enum AbilityType {
     Depots,

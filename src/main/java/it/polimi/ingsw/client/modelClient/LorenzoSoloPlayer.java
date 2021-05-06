@@ -1,7 +1,5 @@
 package it.polimi.ingsw.client.modelClient;
 
-import it.polimi.ingsw.constant.enumeration.TokenType;
-
 /*Last Edit: Fabio*/
 public class LorenzoSoloPlayer {
 
