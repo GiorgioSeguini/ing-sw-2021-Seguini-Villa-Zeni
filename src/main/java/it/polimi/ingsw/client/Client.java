@@ -14,6 +14,7 @@ import java.util.Scanner;
 public class Client {
 
     private String ip;
+    private int myPlayerID;
     private int port;
     Game simpleGame;
 
@@ -41,7 +42,7 @@ public class Client {
                     while (isActive()) {
                         read=socketIn.nextLine();
                         Message received = StarterClient.fromJsonMessage(read);
-                        received.handleMessage(simpleGame);
+                        received.handleMessage(Client.this);
                     }
                 } catch (Exception e){
                     setActive(false);
@@ -93,4 +94,19 @@ public class Client {
         }
     }
 
+    public void setSimpleGame(Game game){
+        this.simpleGame = game;
+    }
+
+    public Game getSimpleGame(){
+        return this.simpleGame;
+    }
+
+    public int getMyPlayerID() {
+        return myPlayerID;
+    }
+
+    public void setMyPlayerID(int myPlayerID) {
+        this.myPlayerID = myPlayerID;
+    }
 }

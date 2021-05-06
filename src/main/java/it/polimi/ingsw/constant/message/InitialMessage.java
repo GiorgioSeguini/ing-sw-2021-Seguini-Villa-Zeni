@@ -1,6 +1,8 @@
 package it.polimi.ingsw.constant.message;
 
+import it.polimi.ingsw.client.Client;
 import it.polimi.ingsw.client.modelClient.Game;
+import it.polimi.ingsw.client.parser.StarterClient;
 
 public class InitialMessage implements Message{
 
@@ -13,9 +15,8 @@ public class InitialMessage implements Message{
     }
 
     @Override
-    public void handleMessage(Game simpleGame) {
-        //TODO parser
-        //simpleGame = new Game();
+    public void handleMessage(Client client){
+        client.setSimpleGame(StarterClient.fromJsonGame(model));
     }
 
     @Override

@@ -1,5 +1,6 @@
 package it.polimi.ingsw.constant.message;
 
+import it.polimi.ingsw.client.Client;
 import it.polimi.ingsw.client.modelClient.Game;
 import it.polimi.ingsw.constant.enumeration.GameStatus;
 
@@ -15,7 +16,8 @@ public class GameMessage implements Message{
     }
 
     @Override
-    public void handleMessage(Game simpleGame) {
+    public void handleMessage(Client client){
+        Game simpleGame = client.getSimpleGame();
         simpleGame.setStatus(status);
         simpleGame.setIndex(index);
     }

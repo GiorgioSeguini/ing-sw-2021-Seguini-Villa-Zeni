@@ -119,14 +119,17 @@ public class Dashboard extends Observable<Message> {
 
 
     private void change(){
-        ArrayList<String> cards = new ArrayList<>();
-        for(Level l : Level.values()) {
-            for (ColorDevCard c : ColorDevCard.values()) {
-                cards.add(Starter.toJson(getTopDevCard(c, l)));
-            }
-        }
+        notify(new DashBoardMessage(Starter.toJson(this)));
+    }
+    //            green   blu     Yellow  Purple
+    //Level 3:
+    @Override
+    public String toString(){
+        String res="";
+        res+="\t\t\tGreen \tBlu \tYellow \tPurple";
+        res+="Level 3:\t"+getTopDevCard(ColorDevCard.GREEN,Level.THREE);
 
-        notify(new DashBoardMessage(cards));
+        return res;
     }
 
 }

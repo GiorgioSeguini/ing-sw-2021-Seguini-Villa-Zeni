@@ -7,6 +7,7 @@ import it.polimi.ingsw.server.observer.Observable;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 /*Last Edit: Fabio*/
 public class Market extends Observable<Message> {
@@ -21,11 +22,12 @@ public class Market extends Observable<Message> {
 
     public Market(ArrayList<MarbleColor> startMarbles) {
         //startMarbles.length is 13
+        Collections.shuffle(startMarbles);
 
         tray= new MarbleColor[N_ROW][N_COL];
         for(int i=0; i<N_ROW; i++){
             for(int j=0; j<N_COL; j++){
-                tray[i][j] = startMarbles.get(i+j);
+                tray[i][j] = startMarbles.get(i*N_COL+j);
             }
         }
         externalMarble = startMarbles.get(startMarbles.size()-1);
@@ -91,6 +93,22 @@ public class Market extends Observable<Message> {
         }
         marbles.add(externalMarble);
         notify(new MarketMessage(marbles));
+    }
+
+    @Override
+    public String toString(){
+        String tray="";
+        for(int i=0;i<N_ROW;i++){
+            int count=0;
+            MarbleColor[] marbleColors= getRow(i);
+            for(MarbleColor x: marbleColors) {
+                tray += "\t"+x.toString();
+                count++;
+                if(count==4) tray += "\t<-\n";
+            }
+        }
+        tray += "\t\t^\t\t^\t\t^\t\t^\t "+externalMarble.toString()+"\n";
+        return tray;
     }
 
 }

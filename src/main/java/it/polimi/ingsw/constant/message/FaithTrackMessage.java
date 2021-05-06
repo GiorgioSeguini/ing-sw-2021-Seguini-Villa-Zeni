@@ -1,8 +1,10 @@
 package it.polimi.ingsw.constant.message;
 
+import it.polimi.ingsw.client.Client;
 import it.polimi.ingsw.client.modelClient.FaithTrack;
 import it.polimi.ingsw.client.modelClient.Game;
 import it.polimi.ingsw.client.modelClient.Player;
+import it.polimi.ingsw.client.parser.StarterClient;
 
 public class FaithTrackMessage implements Message{
 
@@ -16,11 +18,10 @@ public class FaithTrackMessage implements Message{
     }
 
     @Override
-    public void handleMessage(Game simpleGame) {
+    public void handleMessage(Client client){
+        Game simpleGame = client.getSimpleGame();
         Player owner = simpleGame.getPlayerFromID(ownerID);
-        FaithTrack faithTrack = new FaithTrack();
-
-        owner.setFaithTrack(faithTrack);
+        owner.setFaithTrack(StarterClient.fromJsonFaithTruck(faithTrack));
     }
 
     @Override

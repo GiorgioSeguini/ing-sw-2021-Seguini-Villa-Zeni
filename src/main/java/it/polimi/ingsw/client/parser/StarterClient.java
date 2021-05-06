@@ -2,7 +2,7 @@ package it.polimi.ingsw.client.parser;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import it.polimi.ingsw.client.modelClient.NumberOfResources;
+import it.polimi.ingsw.client.modelClient.*;
 import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.constant.MessageSerializer;
 
@@ -23,5 +23,21 @@ public class StarterClient {
 
     public static Message fromJsonMessage(String json){
         return gson.fromJson(json, Message.class);
+    }
+
+    public static Game fromJsonGame(String json){
+        return gson.fromJson(json, Game.class);
+    }
+
+    public static Dashboard fromJsonDashBoard(String json){
+        return gson.fromJson(json, Dashboard.class);
+    }
+
+    public static Depots fromJsonDepots(String json){
+        return gson.fromJson(json, Depots.class);
+    }
+
+    public static FaithTrack fromJsonFaithTruck(String json){
+        return gson.fromJson(json, FaithTrack.class);
     }
 }
