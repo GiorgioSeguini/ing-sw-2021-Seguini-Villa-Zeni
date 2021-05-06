@@ -23,7 +23,7 @@ public class MoveTypeSerializerTest {
         productionPowers.add(new ProductionPower(2, new NumberOfResources(0,1,2,3), new NumberOfResources(3,2,4,0)));
         productionPowers.add(new ProductionPower(1, new NumberOfResources(1,0,2,3), new NumberOfResources(3,0,4,0), 3,1));
 
-        MoveType move= new MoveActiveProduction(new Player("Pippo"), productionPowers);
+        MoveType move= new MoveActiveProduction(0, productionPowers);
 
         GsonBuilder gsonBuilder= new GsonBuilder();
         gsonBuilder.registerTypeAdapter(MoveType.class, new MoveTypeSerializer());
@@ -40,7 +40,7 @@ public class MoveTypeSerializerTest {
 
     @Test
     public void test2(){
-        MoveType move= new MoveEndTurn(new Player("pippo"));
+        MoveType move= new MoveEndTurn(0);
 
         GsonBuilder gsonBuilder= new GsonBuilder();
         gsonBuilder.registerTypeAdapter(MoveType.class, new MoveTypeSerializer());

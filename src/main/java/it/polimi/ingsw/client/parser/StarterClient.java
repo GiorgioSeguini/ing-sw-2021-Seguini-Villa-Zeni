@@ -2,6 +2,7 @@ package it.polimi.ingsw.client.parser;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import it.polimi.ingsw.client.modelClient.NumberOfResources;
 import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.constant.MessageSerializer;
 
@@ -15,6 +16,7 @@ public class StarterClient {
     static{
         GsonBuilder builder= new GsonBuilder();
         builder.registerTypeAdapter(Message.class, new MessageSerializer());
+        builder.registerTypeAdapter(NumberOfResources.class, new NumberOfResSerializer());
         gson=builder.create();
         filePath = new File("").getAbsolutePath();
     }
