@@ -1,6 +1,9 @@
 package it.polimi.ingsw.server.parse;
 
 import it.polimi.ingsw.constant.enumeration.ResourceType;
+import it.polimi.ingsw.constant.message.GameMessage;
+import it.polimi.ingsw.constant.message.InitialMessage;
+import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.server.model.*;
 import org.junit.jupiter.api.Test;
 
@@ -35,5 +38,8 @@ public class GameTest {
 
         System.out.println(Starter.toJson(game));
 
+        Message msg = new InitialMessage(Starter.toJson(game));
+        it.polimi.ingsw.client.modelClient.Game game1 = null;
+        msg.handleMessage(game1);
     }
 }
