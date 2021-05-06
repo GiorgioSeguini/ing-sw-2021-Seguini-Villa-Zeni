@@ -94,7 +94,7 @@ public class FaithTrack extends Observable<Message> {
      * This methods create an instance of FaithTrackMessage and notify observers
      */
     private void change(){
-        String faithTrack = Starter.toJson(this, FaithTrack.class);
-        notify(new FaithTrackMessage(faithTrack, this.ownerID));
+       // String faithTrack = Starter.toJson(this, FaithTrack.class); // TODO: 5/6/21 da rivedere
+        //notify(new FaithTrackMessage(faithTrack, this.ownerID));
     }
 }

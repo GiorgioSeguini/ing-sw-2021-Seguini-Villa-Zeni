@@ -13,7 +13,7 @@ public class ChangeTest{
     public void test(){
         Depots depots = new Depots(0);
 
-        System.out.println(Starter.toJson(depots, Depots.class));
+        //System.out.println(Starter.toJson(depots, Depots.class)); // TODO: 5/6/21 da rivedere
         
         depots.addResourceFromProduction(new NumberOfResources(1,2,3,4));
         try {
@@ -22,7 +22,7 @@ public class ChangeTest{
             fail();
         }
 
-        System.out.println(Starter.toJson(depots, Depots.class));
+        //System.out.println(Starter.toJson(depots, Depots.class)); // TODO: 5/6/21 da rivedere
 
 
     }
