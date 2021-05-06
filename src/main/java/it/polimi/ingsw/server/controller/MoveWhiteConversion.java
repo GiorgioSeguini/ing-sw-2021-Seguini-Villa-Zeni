@@ -12,8 +12,8 @@ public class MoveWhiteConversion extends MoveType{
     private final ArrayList<ResourceType> whiteMarbles;
     public static final String className= "MoveWhiteConversion";
 
-    public MoveWhiteConversion(Player player, ArrayList<ResourceType> whitemarbles){
-        super(player, className);
+    public MoveWhiteConversion(int idPlayer, ArrayList<ResourceType> whitemarbles){
+        super(idPlayer, className);
         this.whiteMarbles=whitemarbles;
         this.allowedStatus = new PlayerStatus[]{PlayerStatus.NeedToConvert};
     }
@@ -26,6 +26,7 @@ public class MoveWhiteConversion extends MoveType{
     public boolean canPerform(Game game){
         if(!super.canPerform(game)) return false;
 
+        Player player =game.getPlayerFromID(getIdPlayer());
         if(!player.getConverter().CheckIntegrityToConvert(whiteMarbles)){
             player.setErrorMessage(ErrorMessage.BadChoice);
             return false;
@@ -35,6 +36,8 @@ public class MoveWhiteConversion extends MoveType{
 
     @Override
     public void performMove(Game game) {
+        Player player =game.getPlayerFromID(getIdPlayer());
+        player.setErrorMessage(ErrorMessage.NoError);
         player.getConverter().WhiteMarbleConverter(whiteMarbles);
         player.setStatus(PlayerStatus.MovePerformed);
     }

@@ -1,4 +1,5 @@
 package it.polimi.ingsw.server.controller;
+import it.polimi.ingsw.constant.enumeration.GameStatus;
 import it.polimi.ingsw.server.model.Game;
 import it.polimi.ingsw.server.model.Player;
 import it.polimi.ingsw.constant.enumeration.ErrorMessage;
@@ -7,17 +8,17 @@ import it.polimi.ingsw.constant.enumeration.PlayerStatus;
 public abstract class MoveType {
     //raccogliere tutte le info chieste al giocatore e chiama l'update del controller
 
-    transient Player player;
+    private int idPlayer;
     PlayerStatus[] allowedStatus;
     private final String ClassName;
 
-    public MoveType(Player player, String className){
-        this.player = player;
+    public MoveType(int idPlayer, String className){
+        this.idPlayer = idPlayer;
         this.ClassName=className;
     }
 
-    public Player getPlayer() {
-        return player;
+    public int getIdPlayer() {
+        return idPlayer;
     }
 
     public String getClassName() {
@@ -28,6 +29,7 @@ public abstract class MoveType {
      * @return true if the player is in the correct status and it's his turn
      */
     public boolean canPerform(Game game){
+        Player player = game.getPlayerFromID(idPlayer);
         if(!game.getCurrPlayer().equals(player)) {
             player.setErrorMessage(ErrorMessage.NotYourTurn);
             return false;

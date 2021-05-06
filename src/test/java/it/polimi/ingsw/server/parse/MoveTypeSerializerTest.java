@@ -27,13 +27,13 @@ public class MoveTypeSerializerTest {
         String message=Starter.toJson(move);
 
         System.out.println(message);
-        // TODO: 5/6/21 change 
+        // TODO: 5/6/21 change
     }
 
     @Test
     public void test2(){
         MoveType move= new MoveEndTurn(new Player("pippo"));
         System.out.println(Starter.toJson(move));
-    } // TODO: 5/6/21 change 
+    } // TODO: 5/6/21 change
 
 }

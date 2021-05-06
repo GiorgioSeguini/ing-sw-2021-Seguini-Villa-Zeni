@@ -22,8 +22,8 @@ public class MoveActiveProductionTest {
         ArrayList<ProductionPower> toActive = new ArrayList<>();
         toActive.add(productionPowerbase);
         toActive.add(productionPower);
-        MoveActiveProduction moveActiveProduction = new MoveActiveProduction(player,toActive);
-        assertNotNull(moveActiveProduction.player);
+        MoveActiveProduction moveActiveProduction = new MoveActiveProduction(player.getID(),toActive);
+        assertNotNull(moveActiveProduction.getIdPlayer());
         for(ProductionPower x : moveActiveProduction.toActive) {
             assertNotNull(x);
         }
@@ -83,16 +83,16 @@ public class MoveActiveProductionTest {
         game.getPlayer(0).getDepots().addResourceFromProduction(new NumberOfResources(10,10,10,10));
         game.getPlayer(0).getPersonalBoard().addDevCard(dashboard.buyDevCard(colorDevCard, level),0);
         ArrayList<ProductionPower> productionOwned = game.getPlayer(0).getPersonalBoard().getProduction();
-        MoveActiveProduction moveActiveProduction = new MoveActiveProduction(game.getCurrPlayer(), productionOwned);
+        MoveActiveProduction moveActiveProduction = new MoveActiveProduction(game.getCurrPlayer().getID(), productionOwned);
         assertTrue(moveActiveProduction.canPerform(game));
 
         productionOwned = game.getPlayer(1).getPersonalBoard().getProduction();
-        MoveActiveProduction moveActiveProduction1 = new MoveActiveProduction(game.getPlayer(1),productionOwned);
+        MoveActiveProduction moveActiveProduction1 = new MoveActiveProduction(game.getPlayer(1).getID(),productionOwned);
         assertFalse(moveActiveProduction1.canPerform(game));
 
         productionOwned = new ArrayList<ProductionPower>();
         productionOwned.add(new ProductionPower());
-        MoveActiveProduction moveActiveProduction2 = new MoveActiveProduction(game.getCurrPlayer(), productionOwned);
+        MoveActiveProduction moveActiveProduction2 = new MoveActiveProduction(game.getCurrPlayer().getID(), productionOwned);
         assertFalse(moveActiveProduction2.canPerform(game));
 
     }
@@ -148,7 +148,7 @@ public class MoveActiveProductionTest {
         game.getPlayer(0).getPersonalBoard().addDevCard(dashboard.buyDevCard(colorDevCard, level),0);
         ArrayList<ProductionPower> productionOwned = game.getCurrPlayer().getPersonalBoard().getProduction();
 
-        MoveActiveProduction moveActiveProduction = new MoveActiveProduction(player1,productionOwned);
+        MoveActiveProduction moveActiveProduction = new MoveActiveProduction(player1.getID(),productionOwned);
         moveActiveProduction.performMove(game);
 
         //need to chose
@@ -212,7 +212,7 @@ public class MoveActiveProductionTest {
         ArrayList<ProductionPower> productionOwned2 = game2.getCurrPlayer().getPersonalBoard().getProduction();
 
 
-        MoveActiveProduction moveActiveProduction2 = new MoveActiveProduction(player3,productionOwned2);
+        MoveActiveProduction moveActiveProduction2 = new MoveActiveProduction(player3.getID(),productionOwned2);
         moveActiveProduction2.toActive.remove(0);
         moveActiveProduction2.performMove(game2);
         assertFalse(game2.getCurrPlayer().isActivable());

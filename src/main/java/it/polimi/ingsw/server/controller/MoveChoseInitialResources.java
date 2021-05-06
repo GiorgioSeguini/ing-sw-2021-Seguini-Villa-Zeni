@@ -12,13 +12,14 @@ public class MoveChoseInitialResources extends MoveType{
     NumberOfResources resources;
     public static final String className= "MoveChoseInitialResources";
 
-    public MoveChoseInitialResources(Player player, NumberOfResources resources) {
-        super(player, className);
+    public MoveChoseInitialResources(int idPlayer, NumberOfResources resources) {
+        super(idPlayer, className);
         this.resources = resources;
     }
 
     @Override
     public boolean canPerform(Game game){
+        Player player =game.getPlayerFromID(getIdPlayer());
         if(game.getStatus() != GameStatus.Initial){
             player.setErrorMessage(ErrorMessage.MoveNotAllowed);
             return false;
@@ -39,6 +40,8 @@ public class MoveChoseInitialResources extends MoveType{
 
     @Override
     public void performMove(Game game){
+        Player player =game.getPlayerFromID(getIdPlayer());
+        player.setErrorMessage(ErrorMessage.NoError);
 
         try{
             player.getDepots().addResourcesFromMarket(resources);

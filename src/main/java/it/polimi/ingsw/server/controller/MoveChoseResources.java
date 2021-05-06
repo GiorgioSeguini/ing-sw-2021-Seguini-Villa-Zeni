@@ -1,5 +1,6 @@
 package it.polimi.ingsw.server.controller;
 
+import it.polimi.ingsw.constant.enumeration.ErrorMessage;
 import it.polimi.ingsw.server.model.Game;
 import it.polimi.ingsw.server.model.NumberOfResources;
 import it.polimi.ingsw.server.model.Player;
@@ -12,8 +13,8 @@ public class MoveChoseResources extends MoveType{
     private final NumberOfResources ofYourChoiceOutput;
     public static final String className= "MoveChoseResources";
 
-    public MoveChoseResources(Player active, NumberOfResources ofYourChoiceInput, NumberOfResources ofYourChoiceOutput) {
-        super(active,className);
+    public MoveChoseResources(int idPlayer, NumberOfResources ofYourChoiceInput, NumberOfResources ofYourChoiceOutput) {
+        super(idPlayer,className);
         this.ofYourChoiceInput = ofYourChoiceInput;
         this.ofYourChoiceOutput = ofYourChoiceOutput;
         this.allowedStatus = new PlayerStatus[]{PlayerStatus.NeedToChoseRes};
@@ -34,6 +35,8 @@ public class MoveChoseResources extends MoveType{
 
     @Override
     public void performMove(Game game) {
+        Player player =game.getPlayerFromID(getIdPlayer());
+        player.setErrorMessage(ErrorMessage.NoError);
 
         try {
             player.getToActive().active(player, ofYourChoiceInput, ofYourChoiceOutput);

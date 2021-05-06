@@ -14,8 +14,8 @@ public class MoveLeader extends MoveType{
     LeaderCard leaderCard;
     public static final String className= "MoveLeader";
 
-    public MoveLeader(Player player, int move, LeaderCard leaderCard) {
-        super(player,className);
+    public MoveLeader(int idPlayer, int move, LeaderCard leaderCard) {
+        super(idPlayer,className);
         this.move = move;
         this.leaderCard = leaderCard;
         this.allowedStatus = new PlayerStatus[]{PlayerStatus.Active, PlayerStatus.MovePerformed};
@@ -25,6 +25,7 @@ public class MoveLeader extends MoveType{
     public boolean canPerform(Game game){
         if(!super.canPerform(game)) return false;
 
+        Player player =game.getPlayerFromID(getIdPlayer());
         boolean isPresent = false;
         try {
             for (LeaderCard c : player.getPersonalBoard().getLeaderCards())
@@ -48,7 +49,8 @@ public class MoveLeader extends MoveType{
 
     @Override
     public void performMove(Game game) {
-
+        Player player =game.getPlayerFromID(getIdPlayer());
+        player.setErrorMessage(ErrorMessage.NoError);
 
         if (move == 0) {
             if (!leaderCard.setPlayed(player)) {

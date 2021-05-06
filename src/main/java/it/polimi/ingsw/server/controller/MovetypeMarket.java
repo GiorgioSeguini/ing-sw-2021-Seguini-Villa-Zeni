@@ -15,8 +15,8 @@ public class MovetypeMarket extends MoveType{
     private final int indexToBuy;
     public static final String className= "MovetypeMarket";
 
-    public MovetypeMarket(Player player, int indextobuy){
-        super(player, className);
+    public MovetypeMarket(int idPlayer, int indextobuy){
+        super(idPlayer, className);
         this.indexToBuy=indextobuy;
         this.allowedStatus = new PlayerStatus[]{PlayerStatus.Active};
     }
@@ -48,6 +48,9 @@ public class MovetypeMarket extends MoveType{
      * returns FALSE if it doesn't.*/
     @Override
     public void performMove(Game game){
+        Player player =game.getPlayerFromID(getIdPlayer());
+        player.setErrorMessage(ErrorMessage.NoError);
+
         ArrayList<MarbleColor> marbles = takeMarbles(indexToBuy, game.getMarketTray());
         if(marbles==null) {
             player.setErrorMessage(ErrorMessage.BadChoice);

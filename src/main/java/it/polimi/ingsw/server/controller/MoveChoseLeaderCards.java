@@ -14,14 +14,15 @@ public class MoveChoseLeaderCards extends MoveType{
     private final ArrayList<Integer> indexLeaderCards;
     public static final String className= "MoveChoseLeaderCards";
 
-    public MoveChoseLeaderCards(Player player, ArrayList<Integer> indexLeaderCards) {
-        super(player, className);
+    public MoveChoseLeaderCards(int idPlayer, ArrayList<Integer> indexLeaderCards) {
+        super(idPlayer, className);
         this.indexLeaderCards = new ArrayList<>();
         this.indexLeaderCards.addAll(indexLeaderCards);
     }
 
     @Override
     public boolean canPerform(Game game){
+        Player player =game.getPlayerFromID(getIdPlayer());
         if(game.getStatus() != GameStatus.Initial){
             player.setErrorMessage(ErrorMessage.MoveNotAllowed);
             return false;
@@ -51,6 +52,9 @@ public class MoveChoseLeaderCards extends MoveType{
 
     @Override
     public void performMove(Game game){
+        Player player =game.getPlayerFromID(getIdPlayer());
+        player.setErrorMessage(ErrorMessage.NoError);
+
         ArrayList<LeaderCard> leaderCards = game.findMoreLeaderCard(indexLeaderCards);
         try {
             player.getPersonalBoard().addLeaderCard(leaderCards.toArray(new LeaderCard[0]));

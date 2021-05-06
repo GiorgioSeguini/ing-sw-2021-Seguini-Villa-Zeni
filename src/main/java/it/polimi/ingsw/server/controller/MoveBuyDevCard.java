@@ -16,8 +16,8 @@ public class MoveBuyDevCard extends MoveType{
     private final int indexCardToBuy;
     public static final String className= "MoveBuyDevCard";
 
-    public MoveBuyDevCard(Player active, int pos, int indexCardToBuy) {
-        super(active,className);
+    public MoveBuyDevCard(int idPlayer, int pos, int indexCardToBuy) {
+        super(idPlayer,className);
         this.pos = pos;
         this.indexCardToBuy = indexCardToBuy;
         this.allowedStatus = new PlayerStatus[]{PlayerStatus.Active};
@@ -35,6 +35,7 @@ public class MoveBuyDevCard extends MoveType{
     public boolean canPerform(Game game){
 
         if(!super.canPerform(game)) return false;
+        Player player =game.getPlayerFromID(getIdPlayer());
 
         DevelopmentCard cardToBuy = game.getDashboard().findDevCard(indexCardToBuy);
 
@@ -60,6 +61,9 @@ public class MoveBuyDevCard extends MoveType{
 
     @Override
     public void performMove(Game game) {
+        Player player =game.getPlayerFromID(getIdPlayer());
+        player.setErrorMessage(ErrorMessage.NoError);
+
         DevelopmentCard cardToBuy = game.getDashboard().findDevCard(indexCardToBuy);
 
         NumberOfResources realCost = cardToBuy.getCost().safe_sub(player.getDiscount());

@@ -1,5 +1,6 @@
 package it.polimi.ingsw.server.controller;
 
+import it.polimi.ingsw.constant.enumeration.ErrorMessage;
 import it.polimi.ingsw.server.model.Game;
 import it.polimi.ingsw.server.model.NumberOfResources;
 import it.polimi.ingsw.server.model.Player;
@@ -12,8 +13,8 @@ public class MoveDiscardResources extends MoveType{
     private final NumberOfResources toDiscard;
     public static final String className= "MoveDiscardResources";
 
-    public MoveDiscardResources(Player player, NumberOfResources toDiscard){
-        super(player,className);
+    public MoveDiscardResources(int idPlayer, NumberOfResources toDiscard){
+        super(idPlayer,className);
         this.toDiscard=toDiscard;
         this.allowedStatus = new PlayerStatus[]{PlayerStatus.NeedToStore};
     }
@@ -29,6 +30,8 @@ public class MoveDiscardResources extends MoveType{
 
     @Override
     public void performMove(Game game) {
+        Player player =game.getPlayerFromID(getIdPlayer());
+        player.setErrorMessage(ErrorMessage.NoError);
 
         try {
             player.getConverter().setResources(player.getConverter().getResources().sub(toDiscard));
