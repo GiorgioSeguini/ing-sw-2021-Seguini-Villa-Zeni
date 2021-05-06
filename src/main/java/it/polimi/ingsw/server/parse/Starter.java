@@ -144,21 +144,8 @@ public class Starter {
     }
 
     /*Utilities*/
-    public static String toJson(DevelopmentCard card){
-        return gson.toJson(card);
-    }
-
-    public static String toJson(Object o){
-        return gson.toJson(o, o.getClass());
-    }
-
     public static String toJson(Object o, Class c){
         return gson.toJson(o, c);
-    }
-
-    public static String toJson(ArrayList<ProductionPower> productionPowers){
-        Type powerListType = new TypeToken<ArrayList<ProductionPower>>(){}.getType();
-        return gson.toJson(productionPowers, powerListType);
     }
 
     public static MoveType fromJson(String message){

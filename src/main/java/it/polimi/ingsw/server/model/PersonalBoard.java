@@ -172,9 +172,12 @@ public class PersonalBoard extends Observable<Message> {
      * @see LeaderCard only class that call this methods
      */
     protected void change(){
-        String devCards = Starter.toJson(this.OwnedDevCards);
-        String leaderCards = Starter.toJson(this.OwnedLeaderCard);
-        notify(new PersonalBoardMessage(devCards, leaderCards, this.ownerID));
+        //TODO
+        /*String devCards = Starter.toJson(this.OwnedDevCards);
+        String leaderCards = Starter.toJson(this.OwnedLeaderCard);*/
+        String devCards = "";
+        String leaderCards = "";
+                notify(new PersonalBoardMessage(devCards, leaderCards, this.ownerID));
     }
 
 }
