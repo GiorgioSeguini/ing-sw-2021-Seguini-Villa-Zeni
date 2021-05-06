@@ -3,7 +3,6 @@ import it.polimi.ingsw.server.parse.Starter;
 import it.polimi.ingsw.constant.enumeration.MarbleColor;
 import it.polimi.ingsw.constant.enumeration.ResourceType;
 import it.polimi.ingsw.server.model.exception.HaveToChooseException;
-import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;

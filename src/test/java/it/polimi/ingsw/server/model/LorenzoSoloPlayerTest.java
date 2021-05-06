@@ -5,7 +5,6 @@ import it.polimi.ingsw.constant.enumeration.ColorDevCard;
 import it.polimi.ingsw.constant.enumeration.GameStatus;
 import it.polimi.ingsw.constant.enumeration.Level;
 import it.polimi.ingsw.constant.enumeration.ResourceType;
-import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -17,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class LorenzoSoloPlayerTest {
 
     @Test
-    void constructor() throws IOException, ParseException {
+    void constructor() throws IOException{
         ArrayList<SoloActionTokens> soloActionTokensArrayList;
 
         soloActionTokensArrayList = Starter.TokensParser();
@@ -46,7 +45,7 @@ class LorenzoSoloPlayerTest {
     }
 
     @Test
-    void Setter() throws IOException, ParseException {
+    void Setter() throws IOException{
         ArrayList<SoloActionTokens> soloActionTokensArrayList;
 
         soloActionTokensArrayList = Starter.TokensParser();
@@ -71,7 +70,7 @@ class LorenzoSoloPlayerTest {
     }
 
     @Test
-    void RevealTokenTest() throws IOException, ParseException {
+    void RevealTokenTest() throws IOException{
         ArrayList<SoloActionTokens> soloActionTokensArrayList;
 
         soloActionTokensArrayList = Starter.TokensParser();
@@ -93,7 +92,7 @@ class LorenzoSoloPlayerTest {
     }
 
     @Test
-    void singlePlayerGame() throws IOException, ParseException {
+    void singlePlayerGame() throws IOException{
         ArrayList<SoloActionTokens> tokens = new ArrayList<>();
         tokens.add(new Move2());
         tokens.add(new MoveShuffle());

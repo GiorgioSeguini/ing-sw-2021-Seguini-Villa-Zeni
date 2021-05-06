@@ -4,7 +4,6 @@ import it.polimi.ingsw.constant.enumeration.*;
 import it.polimi.ingsw.server.model.exception.NoSpaceException;
 import it.polimi.ingsw.server.model.exception.OutOfResourcesException;
 import it.polimi.ingsw.server.parse.Starter;
-import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;

@@ -6,8 +6,6 @@ import com.google.gson.reflect.TypeToken;
 import it.polimi.ingsw.server.model.Ability;
 import it.polimi.ingsw.server.model.LeaderCard;
 import it.polimi.ingsw.server.model.NumberOfResources;
-import it.polimi.ingsw.server.model.SoloActionTokens;
-import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;

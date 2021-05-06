@@ -2,11 +2,9 @@ package it.polimi.ingsw.server.model;
 
 import it.polimi.ingsw.server.parse.Starter;
 import it.polimi.ingsw.constant.enumeration.MarbleColor;
-import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 
 

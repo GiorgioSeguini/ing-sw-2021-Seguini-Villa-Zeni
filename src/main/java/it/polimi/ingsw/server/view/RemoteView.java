@@ -6,11 +6,6 @@ import it.polimi.ingsw.server.controller.*;
 import it.polimi.ingsw.server.model.Player;
 import it.polimi.ingsw.server.observer.Observer;
 import it.polimi.ingsw.server.ClientConnection;
-import it.polimi.ingsw.server.parse.Starter;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-
-import java.util.ArrayList;
 
 public class RemoteView extends View {
 

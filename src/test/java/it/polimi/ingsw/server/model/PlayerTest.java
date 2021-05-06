@@ -6,7 +6,6 @@ import it.polimi.ingsw.constant.enumeration.PlayerStatus;
 import it.polimi.ingsw.constant.enumeration.ResourceType;
 import it.polimi.ingsw.server.model.exception.NoMoreLeaderCardAliveException;
 import it.polimi.ingsw.server.model.exception.UnableToFillException;
-import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -17,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class PlayerTest {
 
     @Test
-    void Constructor() throws IOException, ParseException, NoMoreLeaderCardAliveException {
+    void Constructor() throws IOException{
         ArrayList<LeaderCard> leaderCards;
         leaderCards = Starter.LeaderCardsParser();
         LeaderCard leaderCard1;
@@ -52,7 +51,7 @@ public class PlayerTest {
     }
 
     @Test
-    void GetterVictoryPoints() throws IOException, ParseException, NoMoreLeaderCardAliveException {
+    void GetterVictoryPoints() throws IOException, NoMoreLeaderCardAliveException {
         Player player= new Player("Fabio");
         assertTrue(player.getVictoryPoints()==0);
         player.getDepots().addResourceFromProduction(new NumberOfResources(0,0,5,0));

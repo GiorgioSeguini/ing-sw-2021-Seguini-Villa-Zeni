@@ -3,7 +3,6 @@ package it.polimi.ingsw.server.model;
 import it.polimi.ingsw.server.parse.Starter;
 import it.polimi.ingsw.constant.enumeration.*;
 import it.polimi.ingsw.server.model.exception.UnableToFillException;
-import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -15,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class GameTest {
 
     @Test
-    void multiplayer() throws IOException, ParseException {
+    void multiplayer() throws IOException{
         ArrayList<Player> due = new ArrayList<>();
         due.add(new Player("Pippo"));
         due.add(new Player("Piero"));
@@ -123,7 +122,7 @@ class GameTest {
     }
 
     @Test
-    void illegalInitialization() throws IOException, ParseException {
+    void illegalInitialization() throws IOException{
         Market market = new Market(Starter.MarblesParser());
         try{
             new Game(new ArrayList<>(), market, new Dashboard(new ArrayList<>()), new ArrayList<>(), new ArrayList<>());
@@ -139,7 +138,7 @@ class GameTest {
     }
 
     @Test
-    void singlePlayer() throws IOException, ParseException {
+    void singlePlayer() throws IOException{
         ArrayList<SoloActionTokens> tokens = new ArrayList<>();
         tokens.add(new Move2());
         tokens.add(new MoveShuffle());
@@ -203,7 +202,7 @@ class GameTest {
     }
 
     @Test
-    void findLeaderCard() throws IOException, ParseException {
+    void findLeaderCard() throws IOException{
         ArrayList<LeaderCard> leaderCards= Starter.LeaderCardsParser();
         ArrayList<DevelopmentCard> developmentCards= Starter.DevCardParser();
         ArrayList<MarbleColor> marbles= Starter.MarblesParser();

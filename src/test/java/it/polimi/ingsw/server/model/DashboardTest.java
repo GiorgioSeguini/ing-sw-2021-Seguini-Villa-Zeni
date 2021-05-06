@@ -3,7 +3,6 @@ package it.polimi.ingsw.server.model;
 import it.polimi.ingsw.server.parse.Starter;
 import it.polimi.ingsw.constant.enumeration.ColorDevCard;
 import it.polimi.ingsw.constant.enumeration.Level;
-import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -104,7 +103,7 @@ class DashboardTest {
     }
 
     @Test
-    void findDevCard() throws IOException, ParseException {
+    void findDevCard() throws IOException{
         //int starting_point = DevelopmentCard.nextId.get()+1;
         ArrayList<DevelopmentCard> developmentCards= Starter.DevCardParser();
         Dashboard dashboard= new Dashboard(developmentCards);

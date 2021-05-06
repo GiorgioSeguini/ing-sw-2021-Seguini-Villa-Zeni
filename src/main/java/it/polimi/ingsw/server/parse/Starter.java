@@ -9,19 +9,12 @@ import it.polimi.ingsw.constant.enumeration.MarbleColor;
 import it.polimi.ingsw.constant.enumeration.ResourceType;
 
 import it.polimi.ingsw.server.model.*;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
 import java.lang.reflect.Type;
-import java.util.AbstractMap;
 import java.util.ArrayList;
-import java.util.Map;
 
 public class Starter {
 

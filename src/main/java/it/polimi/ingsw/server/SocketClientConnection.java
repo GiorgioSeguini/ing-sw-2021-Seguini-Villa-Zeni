@@ -1,10 +1,8 @@
 package it.polimi.ingsw.server;
 
 import it.polimi.ingsw.server.observer.Observable;
-import org.json.simple.JSONObject;
 
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.NoSuchElementException;
