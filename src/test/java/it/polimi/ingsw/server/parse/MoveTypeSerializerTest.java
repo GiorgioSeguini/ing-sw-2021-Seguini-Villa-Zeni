@@ -24,30 +24,16 @@ public class MoveTypeSerializerTest {
         productionPowers.add(new ProductionPower(1, new NumberOfResources(1,0,2,3), new NumberOfResources(3,0,4,0), 3,1));
 
         MoveType move= new MoveActiveProduction(new Player("Pippo"), productionPowers);
-
-        GsonBuilder gsonBuilder= new GsonBuilder();
-        gsonBuilder.registerTypeAdapter(MoveType.class, new MoveTypeSerializer());
-        gsonBuilder.registerTypeAdapter(NumberOfResources.class, new NumberOfResSerializer());
-        Gson gson= gsonBuilder.create();
-
-       // Type array= new TypeToken<ArrayList<ProductionPower>>(){}.getType();
-        System.out.println(move.getClassName());
         String message=Starter.toJson(move);
 
         System.out.println(message);
-
+        // TODO: 5/6/21 change 
     }
 
     @Test
     public void test2(){
         MoveType move= new MoveEndTurn(new Player("pippo"));
-
-        GsonBuilder gsonBuilder= new GsonBuilder();
-        gsonBuilder.registerTypeAdapter(MoveType.class, new MoveTypeSerializer());
-        //gsonBuilder.registerTypeAdapter(NumberOfResources.class, new NumberOfResSerializer());
-        Gson gson= gsonBuilder.create();
-
         System.out.println(Starter.toJson(move));
-    }
+    } // TODO: 5/6/21 change 
 
 }
