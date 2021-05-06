@@ -128,5 +128,15 @@ public class Dashboard extends Observable<Message> {
 
         notify(new DashBoardMessage(cards));
     }
+    //            green   blu     Yellow  Purple
+    //Level 3:
+    @Override
+    public String toString(){
+        String res="";
+        res+="\t\t\tGreen \tBlu \tYellow \tPurple";
+        res+="Level 3:\t"+getTopDevCard(ColorDevCard.GREEN,Level.THREE);
+
+        return res;
+    }
 
 }

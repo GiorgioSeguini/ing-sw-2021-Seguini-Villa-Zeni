@@ -33,6 +33,7 @@ class MarketTest {
         }
         assertNotNull(marketTray.externalMarble);
 
+        System.out.println(marketTray);
     }
 
     @Test

@@ -22,8 +22,6 @@ class DevelopmentCardTest {
         assertEquals(cost, card.getCost());
         assertEquals(power, card.getProductionPower());
         assertEquals(3, card.getVictoryPoints());
-
-
     }
 
 }
