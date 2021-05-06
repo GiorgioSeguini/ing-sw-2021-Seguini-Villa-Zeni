@@ -1,7 +1,6 @@
 package it.polimi.ingsw.server.parse;
 
 import com.google.gson.*;
-import com.google.gson.reflect.TypeToken;
 import it.polimi.ingsw.server.controller.*;
 
 import java.lang.reflect.Type;
@@ -25,6 +24,10 @@ public class MoveTypeSerializer implements JsonSerializer<MoveType>, JsonDeseria
         moveNames.put(MoveLeader.className, MoveLeader.class);
         moveNames.put(MovetypeMarket.className, MovetypeMarket.class);
         moveNames.put(MoveWhiteConversion.className, MoveWhiteConversion.class);
+    }
+
+    public static HashMap<String, Class> getMoveNames() {
+        return moveNames;
     }
 
     @Override

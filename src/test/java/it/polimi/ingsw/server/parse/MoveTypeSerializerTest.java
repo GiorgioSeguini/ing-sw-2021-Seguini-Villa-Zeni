@@ -1,12 +1,16 @@
 package it.polimi.ingsw.server.parse;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import it.polimi.ingsw.constant.MessageSerializer;
+import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.server.controller.MoveActiveProduction;
 import it.polimi.ingsw.server.controller.MoveEndTurn;
 import it.polimi.ingsw.server.controller.MoveType;
-import it.polimi.ingsw.server.model.NumberOfResources;
-import it.polimi.ingsw.server.model.Player;
-import it.polimi.ingsw.server.model.ProductionPower;
+import it.polimi.ingsw.server.model.*;
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.ArrayList;
 
@@ -31,5 +35,20 @@ public class MoveTypeSerializerTest {
         MoveType move= new MoveEndTurn(new Player("ciao").getID());
         System.out.println(Starter.toJson(move));
     } // TODO: 5/6/21 change
+
+    @Test
+    public void test3(){
+        MoveType move= new MoveEndTurn(new Player("pioo").getID());
+        //GsonBuilder builder= new GsonBuilder();
+        //builder.registerTypeAdapter(MoveType.class, new MoveTypeSerializer());
+        //Gson gson=builder.create();
+
+        //String message=gson.toJson(move, MoveType.class);
+        String message=Starter.toJson(move);
+        MoveType move2=Starter.fromJson(message);
+
+        assertEquals(move, move2);
+
+    }
 
 }

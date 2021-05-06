@@ -1,6 +1,7 @@
 package it.polimi.ingsw.server.controller;
 import it.polimi.ingsw.constant.enumeration.GameStatus;
 import it.polimi.ingsw.server.model.Game;
+import it.polimi.ingsw.server.model.Move2;
 import it.polimi.ingsw.server.model.Player;
 import it.polimi.ingsw.constant.enumeration.ErrorMessage;
 import it.polimi.ingsw.constant.enumeration.PlayerStatus;
@@ -51,5 +52,20 @@ public abstract class MoveType {
     }
 
     public abstract void performMove(Game game);
+
+    @Override
+    public boolean equals(Object other){
+        if(other==this)
+            return true;
+
+        if(!(other instanceof MoveType))
+            return false;
+
+        if(this.idPlayer!= ((MoveType) other).getIdPlayer()){
+            return false;
+        }
+
+        return this.ClassName.equals(((MoveType) other).getClassName());
+    }
 
 }

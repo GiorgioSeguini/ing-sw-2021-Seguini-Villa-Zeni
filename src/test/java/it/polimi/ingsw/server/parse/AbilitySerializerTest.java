@@ -6,6 +6,7 @@ import com.google.gson.reflect.TypeToken;
 import it.polimi.ingsw.server.model.Ability;
 import it.polimi.ingsw.server.model.LeaderCard;
 import it.polimi.ingsw.server.model.NumberOfResources;
+import it.polimi.ingsw.server.model.Requirements;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -43,5 +44,24 @@ public class AbilitySerializerTest {
         }
     }
 
+    @Test
+    public void test() {
+        ArrayList<LeaderCard> leaderCards = new ArrayList<>();
+        try {
+            leaderCards = Starter.LeaderCardsParser();
+        } catch (IOException e) {
+            fail();
+        }
 
+        String message= Starter.toJson(leaderCards.get(5));
+
+        System.out.println(message);
+
+        GsonBuilder builder= new GsonBuilder();
+        builder.registerTypeAdapter(Ability.class, new AbilitySerializer());
+        Gson gson= builder.create();
+
+        LeaderCard card=gson.fromJson(message, LeaderCard.class);
+        assertEquals(leaderCards.get(5), card );
+    }
 }

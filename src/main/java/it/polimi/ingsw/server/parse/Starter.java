@@ -156,4 +156,9 @@ public class Starter {
         return gson.toJson(productionPowers, powerListType);
     }
 
+    public static MoveType fromJson(String message){
+        MoveType x= gson.fromJson(message,MoveType.class);
+        return x;
+    }
+
 }

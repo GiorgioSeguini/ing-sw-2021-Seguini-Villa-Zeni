@@ -15,24 +15,7 @@ public class RemoteView extends View {
         @Override
         public void update(String info) {
             System.out.println("Received: " + info);
-
-            //JSONObject movex=(JSONObject) info.get("Movetype");
-            MoveType move=null;
-            /*
-            switch (movex.toString()){
-                case "MoveActiveProduction": move= new MoveActiveProduction(getPlayer(), Starter.getProdArrayfromObjArray((JSONArray) info.get("ProductionPowers"))); break;
-                case "MoveBuyDevCard": move= new MoveBuyDevCard(getPlayer(),(int) info.get("Position"),(int) info.get("CardToBuy")) ;break;
-                case "MoveChoseInitialResources": move=new MoveChoseInitialResources(getPlayer(),Starter.ConvertObjectToNumOfRes((JSONObject) info.get("Resources"))); break;
-                case "MoveChoseLeaderCards": move=new MoveChoseLeaderCards(getPlayer(),(ArrayList<Integer>) info.get("LeaderCards")); break;
-                case "MoveChoseResources": move= new MoveChoseResources(getPlayer(),Starter.ConvertObjectToNumOfRes((JSONObject) info.get("ResourcesIn")),Starter.ConvertObjectToNumOfRes((JSONObject) info.get("ResourcesOut")));break;
-                case "MoveEndTurn": move= new MoveEndTurn(getPlayer()); break;
-                case "MovetypeMarket": move = new MovetypeMarket(getPlayer(), (int) info.get("IndexToBuy")); break;
-                case "MoveWhiteConversion": move= new MoveWhiteConversion(getPlayer(),Starter.getResArrayFromObjArray((JSONArray) info.get("WhiteResources"))); break;
-                default: clientConnection.asyncSend("Error!"); return;
-            }
-
-             */
-
+            MoveType move=Starter.fromJson(info);
             handleMove(move);
         } // TODO: 5/5/21 implementare MoveTypeSerializer 
 
