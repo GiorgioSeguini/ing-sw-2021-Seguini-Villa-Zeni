@@ -152,6 +152,10 @@ public class Starter {
         return gson.toJson(o, o.getClass());
     }
 
+    public static String toJson(Object o, Class c){
+        return gson.toJson(o, c);
+    }
+
     public static String toJson(ArrayList<ProductionPower> productionPowers){
         Type powerListType = new TypeToken<ArrayList<ProductionPower>>(){}.getType();
         return gson.toJson(productionPowers, powerListType);
