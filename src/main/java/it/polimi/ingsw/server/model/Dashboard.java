@@ -119,14 +119,7 @@ public class Dashboard extends Observable<Message> {
 
 
     private void change(){
-        ArrayList<String> cards = new ArrayList<>();
-        for(Level l : Level.values()) {
-            for (ColorDevCard c : ColorDevCard.values()) {
-                cards.add(Starter.toJson(getTopDevCard(c, l)));
-            }
-        }
-
-        notify(new DashBoardMessage(cards));
+        notify(new DashBoardMessage(Starter.toJson(this)));
     }
 
 }

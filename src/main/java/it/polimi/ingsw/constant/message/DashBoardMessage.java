@@ -1,25 +1,25 @@
 package it.polimi.ingsw.constant.message;
 
+import it.polimi.ingsw.client.Client;
 import it.polimi.ingsw.client.modelClient.DevelopmentCard;
 import it.polimi.ingsw.client.modelClient.Game;
+import it.polimi.ingsw.client.parser.StarterClient;
 
 import java.util.ArrayList;
 
 public class DashBoardMessage implements Message{
 
     public static final String className = "DashBoardMessage";
-    ArrayList<String> developmentCardsString;
+    private final String dashBoard;
 
-    public DashBoardMessage(ArrayList<String> cards){
-        this.developmentCardsString = new ArrayList<>();
-        this.developmentCardsString.addAll(cards);
+    public DashBoardMessage(String dashBoard){
+        this.dashBoard= dashBoard;
     }
 
     @Override
-    public void handleMessage(Game simpleGame){
-        //TODO parsing
-        ArrayList<DevelopmentCard> developmentCards = new ArrayList<>();
-        simpleGame.getDashboard().setCards(developmentCards);
+    public void handleMessage(Client client){
+        Game simpleGame = client.getSimpleGame();
+        simpleGame.setDashboard(StarterClient.fromJsonDashBoard(dashBoard));
     }
 
     @Override

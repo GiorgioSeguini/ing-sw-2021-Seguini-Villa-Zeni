@@ -37,7 +37,7 @@ public class Dashboard {
      * This methods clear the dashboard and store the new cards, if a card is missing, its corresponding value will be set to null
      * @param developmentCards new cards to store
      */
-    public void setCards( ArrayList<DevelopmentCard> developmentCards){
+    private void setCards( ArrayList<DevelopmentCard> developmentCards){
         //clear table
         for(Level l : Level.values()){
             for(ColorDevCard c : ColorDevCard.values()){

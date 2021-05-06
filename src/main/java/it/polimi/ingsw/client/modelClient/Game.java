@@ -15,7 +15,7 @@ public class Game {
     //compositions
     private final ArrayList<Player> players;
     private final Market marketTray;
-    private final Dashboard dashboard;
+    private Dashboard dashboard;
     private final LorenzoSoloPlayer soloGame;
 
     //attribute
@@ -135,5 +135,9 @@ public class Game {
 
     public void setIndex(int index){
         this.indexPlayingPlayer= index;
+    }
+
+    public void setDashboard(Dashboard dashboard) {
+        this.dashboard = dashboard;
     }
 }
