@@ -26,10 +26,6 @@ public class MoveTypeSerializer implements JsonSerializer<MoveType>, JsonDeseria
         moveNames.put(MoveWhiteConversion.className, MoveWhiteConversion.class);
     }
 
-    public static HashMap<String, Class> getMoveNames() {
-        return moveNames;
-    }
-
     @Override
     public MoveType deserialize(JsonElement json, Type type, JsonDeserializationContext context) throws JsonParseException {
         String className = json.getAsJsonObject().get(CLASSNAME).getAsString();

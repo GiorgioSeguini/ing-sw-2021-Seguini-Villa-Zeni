@@ -15,9 +15,9 @@ public class RemoteView extends View {
         @Override
         public void update(String info) {
             System.out.println("Received: " + info);
-            MoveType move=Starter.fromJson(info);
+            MoveType move= (MoveType) Starter.fromJson(info, MoveType.class);
             handleMove(move);
-        } // TODO: 5/5/21 implementare MoveTypeSerializer 
+        }
 
     }
 
@@ -36,7 +36,7 @@ public class RemoteView extends View {
 
     @Override
     public void update(Message message){
-        clientConnection.asyncSend(Starter.toJson(message));
+        //clientConnection.asyncSend(Starter.toJson(message)); TODO
     }
 
 }

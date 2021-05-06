@@ -53,7 +53,7 @@ public class AbilitySerializerTest {
             fail();
         }
 
-        String message= Starter.toJson(leaderCards.get(5));
+        String message= Starter.toJson(leaderCards.get(5), LeaderCard.class);
 
         System.out.println(message);
 

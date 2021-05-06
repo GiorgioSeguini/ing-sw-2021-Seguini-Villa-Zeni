@@ -24,7 +24,7 @@ public class MoveTypeSerializerTest {
         productionPowers.add(new ProductionPower(1, new NumberOfResources(1,0,2,3), new NumberOfResources(3,0,4,0), 3,1));
 
         MoveType move= new MoveActiveProduction(new Player("lol").getID(), productionPowers);
-        String message=Starter.toJson(move);
+        String message=Starter.toJson(move, MoveType.class);
 
         System.out.println(message);
         // TODO: 5/6/21 change
@@ -33,7 +33,7 @@ public class MoveTypeSerializerTest {
     @Test
     public void test2(){
         MoveType move= new MoveEndTurn(new Player("ciao").getID());
-        System.out.println(Starter.toJson(move));
+        System.out.println(Starter.toJson(move, MoveType.class));
     } // TODO: 5/6/21 change
 
     @Test
@@ -45,7 +45,7 @@ public class MoveTypeSerializerTest {
 
         //String message=gson.toJson(move, MoveType.class);
         String message=Starter.toJson(move, MoveType.class);
-        MoveType move2=Starter.fromJson(message);
+        MoveType move2= (MoveType) Starter.fromJson(message, MoveType.class);
 
         assertEquals(move, move2);
 

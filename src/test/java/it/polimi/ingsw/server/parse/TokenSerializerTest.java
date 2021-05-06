@@ -48,5 +48,21 @@ public class TokenSerializerTest {
 
     }
 
+    @Test
+    public void test2(){
+        ArrayList<SoloActionTokens> tokens= new ArrayList<>();
+        try {
+            tokens=Starter.TokensParser();
+        } catch (FileNotFoundException e) {
+            fail();
+        }
+
+        String message=Starter.toJson(tokens.get(3), SoloActionTokens.class);
+
+        SoloActionTokens token= (SoloActionTokens) Starter.fromJson(message, SoloActionTokens.class);
+
+        assertEquals(tokens.get(3), token);
+    }
+
 
 }
