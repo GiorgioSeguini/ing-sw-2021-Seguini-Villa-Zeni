@@ -61,8 +61,6 @@ public class Starter {
 
     /*Methods for CanPerform*/
     public static boolean CanParseMarbles() {
-        Gson gson= new Gson();
-        String filePath = new File("").getAbsolutePath();
         Type marblesarray= new TypeToken<ArrayList<MarbleColor>>(){}.getType();
         ArrayList<MarbleColor> marbles= new ArrayList<>();
         try {
@@ -78,11 +76,6 @@ public class Starter {
     }
 
     public static boolean CanDevCardParser(){
-        GsonBuilder gsonBuilder=new GsonBuilder();
-        gsonBuilder.registerTypeAdapter(NumberOfResources.class, new NumberOfResSerializer());
-        Gson gson= gsonBuilder.create();
-
-        String filePath = new File("").getAbsolutePath();
         Type devCardListType = new TypeToken<ArrayList<DevelopmentCard>>(){}.getType();
         ArrayList<DevelopmentCard> developmentCards=new ArrayList<>();
 
@@ -100,12 +93,6 @@ public class Starter {
     }
 
     public static boolean CanLeaderCardsParser(){
-        GsonBuilder gsonBuilder=new GsonBuilder();
-        gsonBuilder.registerTypeAdapter(NumberOfResources.class, new NumberOfResSerializer());
-        gsonBuilder.registerTypeAdapter(Ability.class, new AbilitySerializer());
-        Gson gson= gsonBuilder.create();
-
-        String filePath = new File("").getAbsolutePath();
         Type LeaderListType = new TypeToken<ArrayList<LeaderCard>>(){}.getType();
         ArrayList<LeaderCard> leaderCards=new ArrayList<>();
 
@@ -122,11 +109,6 @@ public class Starter {
     }
 
     public static boolean CanTokensParser(){
-        GsonBuilder gsonBuilder=new GsonBuilder();
-        gsonBuilder.registerTypeAdapter(SoloActionTokens.class, new TokensSerializer());
-        Gson gson= gsonBuilder.create();
-
-        String filePath = new File("").getAbsolutePath();
         Type TokensListType = new TypeToken<ArrayList<SoloActionTokens>>(){}.getType();
         ArrayList<SoloActionTokens> tokens= new ArrayList<>();
 
