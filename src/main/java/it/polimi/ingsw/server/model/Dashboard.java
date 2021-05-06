@@ -126,8 +126,13 @@ public class Dashboard extends Observable<Message> {
     @Override
     public String toString(){
         String res="";
-        res+="\t\t\tGreen \tBlu \tYellow \tPurple";
-        res+="Level 3:\t"+getTopDevCard(ColorDevCard.GREEN,Level.THREE);
+        for(Level l : Level.values()){
+            for(ColorDevCard c: ColorDevCard.values()){
+                try{
+                    res+= getTopDevCard(c, l);
+                }catch (NullPointerException e){}
+            }
+        }
 
         return res;
     }
