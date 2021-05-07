@@ -37,10 +37,10 @@ public class GameTest {
 
         Game game = new Game(due, market, dashboard, new ArrayList<SoloActionTokens>(), leaderCards);
 
-        System.out.println(Starter.toJson(game, Game.class));
+        //System.out.println(Starter.toJson(game, Game.class)); // TODO: 5/6/21 da rivedere
 
-        Message msg = new InitialMessage(Starter.toJson(game, Game.class));
+       // Message msg = new InitialMessage(Starter.toJson(game, Game.class));
         Client client = new Client("127.0.0.1", 12345);
-        msg.handleMessage(client);
+        //msg.handleMessage(client);
     }
 }

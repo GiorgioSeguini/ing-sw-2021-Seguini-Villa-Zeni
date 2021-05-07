@@ -5,7 +5,11 @@ import it.polimi.ingsw.server.model.NumberOfResources;
 import it.polimi.ingsw.server.model.ProductionPower;
 import it.polimi.ingsw.constant.enumeration.ColorDevCard;
 import it.polimi.ingsw.constant.enumeration.Level;
+import it.polimi.ingsw.server.parse.Starter;
 import org.junit.jupiter.api.Test;
+
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -22,6 +26,20 @@ class DevelopmentCardTest {
         assertEquals(cost, card.getCost());
         assertEquals(power, card.getProductionPower());
         assertEquals(3, card.getVictoryPoints());
+    }
+
+    @Test
+    void cliTest(){
+        ArrayList<DevelopmentCard> developmentCards= new ArrayList<>();
+        try {
+            developmentCards= Starter.DevCardParser();
+        } catch (FileNotFoundException e) {
+            fail();
+        }
+
+        Dashboard dashboard= new Dashboard(developmentCards);
+
+        System.out.println(dashboard);
     }
 
 }

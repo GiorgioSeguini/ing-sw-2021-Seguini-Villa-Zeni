@@ -45,7 +45,7 @@ public class MoveTypeSerializerTest {
 
         //String message=gson.toJson(move, MoveType.class);
         String message=Starter.toJson(move, MoveType.class);
-        MoveType move2=Starter.fromJson(message);
+        MoveType move2= (MoveType) Starter.fromJson(message, MoveType.class);
 
         assertEquals(move, move2);
 

@@ -270,6 +270,6 @@ public class Game extends Observable<Message> {
     }
 
     public void start(){
-        notify(new InitialMessage(Starter.toJson(this, Game.class)));
+        //notify(new InitialMessage(Starter.toJson(this, InitialMessage.class))); // TODO: 5/6/21 da rivedere
     }
 }
