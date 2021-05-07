@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import it.polimi.ingsw.constant.MessageSerializer;
 import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.server.controller.MoveActiveProduction;
+import it.polimi.ingsw.server.controller.MoveBuyDevCard;
 import it.polimi.ingsw.server.controller.MoveEndTurn;
 import it.polimi.ingsw.server.controller.MoveType;
 import it.polimi.ingsw.server.model.*;
@@ -12,6 +13,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class MoveTypeSerializerTest {
@@ -38,16 +40,55 @@ public class MoveTypeSerializerTest {
     @Test
     public void test3(){
         MoveType move= new MoveEndTurn(new Player("pioo").getID());
-        //GsonBuilder builder= new GsonBuilder();
-        //builder.registerTypeAdapter(MoveType.class, new MoveTypeSerializer());
-        //Gson gson=builder.create();
-
-        //String message=gson.toJson(move, MoveType.class);
         String message=Starter.toJson(move, MoveType.class);
         MoveType move2= (MoveType) Starter.fromJson(message, MoveType.class);
 
         assertEquals(move, move2);
 
+    }
+
+    @Test
+    public void test4() {
+        ArrayList<DevelopmentCard> developmentCards= new ArrayList<>();
+
+        try {
+            developmentCards=Starter.DevCardParser();
+        } catch (FileNotFoundException e) {
+            fail();
+        }
+
+        ArrayList<ProductionPower> productionPowers= new ArrayList<>();
+        for (DevelopmentCard card: developmentCards){
+            productionPowers.add(card.getProductionPower());
+        }
+
+        MoveType move= new MoveActiveProduction(new Player("pippo").getID(), productionPowers);
+        String message=Starter.toJson(move, MoveType.class);
+
+        MoveType move2= (MoveType) Starter.fromJson(message, MoveType.class);
+
+        assertEquals(move, move2);
+
+    }
+
+
+    @Test
+    public void test5(){
+        ArrayList<DevelopmentCard> developmentCards= new ArrayList<>();
+
+        try {
+            developmentCards=Starter.DevCardParser();
+        } catch (FileNotFoundException e) {
+            fail();
+        }
+
+        DevelopmentCard card= developmentCards.get(8);
+        MoveType move= new MoveBuyDevCard(new Player("lol").getID(), 7, card.getId());
+
+        String message= Starter.toJson(move, MoveType.class);
+        MoveType move2= (MoveType) Starter.fromJson(message, MoveType.class);
+
+        assertEquals(move, move2);
     }
 
 }
