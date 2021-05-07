@@ -119,7 +119,7 @@ public class Depots extends Observable<Message> {
      * This methods create an instance of FaithTrackMessage and notify observers
      */
     private void change(){
-       //String depots = Starter.toJson(this, Depots.class);// TODO: 5/6/21 da rivedere
-       //notify(new DepotsMessage(depots, this.ownerID));
+        String depots = Starter.toJson(this, Depots.class);
+        notify(new DepotsMessage(depots, this.ownerID));
     }
 }

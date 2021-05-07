@@ -119,7 +119,7 @@ public class Dashboard extends Observable<Message> {
 
 
     private void change(){
-        //notify(new DashBoardMessage(Starter.toJson(this, Dashboard.class))); // TODO: 5/6/21 da rivedere
+        notify(new DashBoardMessage(Starter.toJson(this, Dashboard.class)));
     }
     //            green   blu     Yellow  Purple
     //Level 3:
