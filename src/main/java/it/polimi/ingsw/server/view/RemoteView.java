@@ -36,7 +36,7 @@ public class RemoteView extends View {
 
     @Override
     public void update(Message message){
-        //clientConnection.asyncSend(Starter.toJson(message)); TODO
+        clientConnection.asyncSend(Starter.toJson(message, Message.class));
     }
 
 }
