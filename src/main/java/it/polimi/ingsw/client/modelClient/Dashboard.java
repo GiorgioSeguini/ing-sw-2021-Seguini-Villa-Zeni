@@ -59,7 +59,7 @@ public class Dashboard {
     }
 
     //TODO ora come ora è tutta sbagliata e incompleta, devo cancellarla e rifarla tutta
-    @Override
+    /*@Override
     public String toString(){
         String res="";
         res += "\t\t\tGreen \tBlu \tYellow \tPurple\n";
@@ -97,7 +97,7 @@ public class Dashboard {
             }
         }
         return res;
-    }
+    }*/
 
 
 }
