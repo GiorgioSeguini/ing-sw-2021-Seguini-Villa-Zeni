@@ -2,6 +2,7 @@ package it.polimi.ingsw.server.model;
 
 /*Last Edit: Gio*/
 
+import it.polimi.ingsw.constant.enumeration.ResourceType;
 import it.polimi.ingsw.constant.message.DepotsMessage;
 import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.server.model.exception.OutOfResourcesException;

@@ -140,4 +140,35 @@ public class Game {
     public void setDashboard(Dashboard dashboard) {
         this.dashboard = dashboard;
     }
+
+    @Override
+    public String toString(){
+        String game = "";
+        if(players.size()==1){
+            game += "SinglePlayer mode!\n";
+            game += ""+this.players.get(0).getUserName()+" VS Lorenzo il Magnifico\n";
+            game += ""+this.marketTray.toString()+"\t"+this.dashboard.toString()+"\n";
+            game += "Game status: "+this.getStatus()+"\n";
+            game += "Current player: "+this.getCurrPlayer().getUserName()+"\n";
+            if (this.getStatus() == GameStatus.Ended){
+                game += "The winner is: "+this.getWinner().getUserName()+"\n";
+                game += "With "+this.getWinner().getVictoryPoints()+" VictoryPoints\n";
+            }
+        }
+        else {
+            game += "MultiPlayer mode!\n";
+            for (Player p : players) {
+                game += "" + p.getUserName() + " VS ";
+            }
+            game += "\n";
+            game += ""+this.marketTray.toString()+"\t"+this.dashboard.toString()+"\n";
+            game += "Game status: "+this.getStatus()+"\n";
+            game += "Current player: "+this.getCurrPlayer().getUserName()+"\n";
+            if (this.getStatus() == GameStatus.Ended){
+                game += "The winner is: "+this.getWinner().getUserName()+"\n";
+                game += "With "+this.getWinner().getVictoryPoints()+" VictoryPoints\n";
+            }
+        }
+        return game;
+    }
 }

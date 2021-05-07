@@ -94,21 +94,4 @@ public class Market extends Observable<Message> {
         marbles.add(externalMarble);
         notify(new MarketMessage(marbles));
     }
-
-    @Override
-    public String toString(){
-        String tray="";
-        for(int i=0;i<N_ROW;i++){
-            int count=0;
-            MarbleColor[] marbleColors= getRow(i);
-            for(MarbleColor x: marbleColors) {
-                tray += "\t"+x.toString();
-                count++;
-                if(count==4) tray += "\t<-\n";
-            }
-        }
-        tray += "\t\t^\t\t^\t\t^\t\t^\t "+externalMarble.toString()+"\n";
-        return tray;
-    }
-
 }

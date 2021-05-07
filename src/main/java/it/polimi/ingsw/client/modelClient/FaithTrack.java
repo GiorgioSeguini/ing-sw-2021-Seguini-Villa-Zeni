@@ -47,4 +47,12 @@ public class FaithTrack {
         }
         return result;
     }
+
+    @Override
+    public String toString(){
+        String FT = "";
+        FT += "Faithpoints: "+getFaithPoints()+"\n";
+        FT += "FaithTrack's victory points: "+getVictoryPoints()+"\n";
+        return  FT;
+    }
 }

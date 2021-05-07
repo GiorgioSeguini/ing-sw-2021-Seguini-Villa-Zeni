@@ -23,7 +23,6 @@ class MarketTest {
             e.printStackTrace();
         }
 
-
         Market marketTray = new Market(startMarbles);
 
         for(int i=0; i<3; i++){

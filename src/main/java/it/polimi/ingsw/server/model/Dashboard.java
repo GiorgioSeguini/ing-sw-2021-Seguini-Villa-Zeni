@@ -121,15 +121,5 @@ public class Dashboard extends Observable<Message> {
     private void change(){
         //notify(new DashBoardMessage(Starter.toJson(this, Dashboard.class))); // TODO: 5/6/21 da rivedere
     }
-    //            green   blu     Yellow  Purple
-    //Level 3:
-    @Override
-    public String toString(){
-        String res="";
-        res+="\t\t\tGreen \tBlu \tYellow \tPurple";
-        res+="Level 3:\t"+getTopDevCard(ColorDevCard.GREEN,Level.THREE);
-
-        return res;
-    }
 
 }

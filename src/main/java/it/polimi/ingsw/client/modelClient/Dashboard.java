@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class Dashboard {
 
     private final DevelopmentCard[][] dashBoard;
+    public int[][] visualizedDasboard;
 
     /**
      * Default constructor, ensure correct classification of cards and randomness
@@ -18,6 +19,12 @@ public class Dashboard {
     public Dashboard(ArrayList<DevelopmentCard> developmentCards) {
         //initialization
         dashBoard = new DevelopmentCard[Level.size()][ColorDevCard.size()];
+        visualizedDasboard = new int[Level.size()][ColorDevCard.size()];
+        for(int i=0; i<Level.size(); i++){
+            for(int j=0; j<ColorDevCard.size(); j++){
+                visualizedDasboard[i][j] = 1;
+            }
+        }
 
         //load cards
         setCards(developmentCards);
@@ -49,6 +56,47 @@ public class Dashboard {
         for(DevelopmentCard card: developmentCards){
             dashBoard[card.getLevel().ordinal()][card.getColor().ordinal()] = card;
         }
+    }
+
+    //TODO ora come ora è tutta sbagliata e incompleta, devo cancellarla e rifarla tutta
+    @Override
+    public String toString(){
+        String res="";
+        res += "\t\t\tGreen \tBlu \tYellow \tPurple\n";
+        res += "Level 3:\tF\tF\tF\tF\n";
+        res += "Level 2:\tF\tF\tF\tF\n";
+        res += "Level 1:\tF\tF\tF\tF\n";
+        for(int i=0; i<Level.size(); i++) {
+            for(int j=0; j<ColorDevCard.size(); j++) {
+                if(dashBoard[i][j]==null){
+                    if(i==0&&j==0){
+                        res += "\t\t\tGreen \tBlu \tYellow \tPurple\n";
+                        res += "Level 3:\tE\tF\tF\tF\n";
+                        res += "Level 2:\tF\tF\tF\tF\n";
+                        res += "Level 1:\tF\tF\tF\tF\n";
+                    }
+                    if(i==0&&j==1){
+                        res += "\t\t\tGreen \tBlu \tYellow \tPurple\n";
+                        res += "Level 3:\tF\tE\tF\tF\n";
+                        res += "Level 2:\tF\tF\tF\tF\n";
+                        res += "Level 1:\tF\tF\tF\tF\n";
+                    }
+                    if(i==0&&j==2){
+                        res += "\t\t\tGreen \tBlu \tYellow \tPurple\n";
+                        res += "Level 3:\tF\tF\tE\tF\n";
+                        res += "Level 2:\tF\tF\tF\tF\n";
+                        res += "Level 1:\tF\tF\tF\tF\n";
+                    }
+                    if(i==0&&j==3){
+                        res += "\t\t\tGreen \tBlu \tYellow \tPurple\n";
+                        res += "Level 3:\tF\tF\tF\tE\n";
+                        res += "Level 2:\tF\tF\tF\tF\n";
+                        res += "Level 1:\tF\tF\tF\tF\n";
+                    }
+                }
+            }
+        }
+        return res;
     }
 
 

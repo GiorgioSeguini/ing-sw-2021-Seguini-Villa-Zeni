@@ -1,6 +1,7 @@
 package it.polimi.ingsw.client.modelClient;
 
 import it.polimi.ingsw.constant.enumeration.LeaderStatus;
+import it.polimi.ingsw.constant.enumeration.ResourceType;
 
 import java.util.ArrayList;
 
@@ -120,5 +121,31 @@ public class PersonalBoard {
                 OwnedLeaderCard[i] = cards.get(i);
             }
         }
+    }
+
+    @Override
+    public String toString(){
+        String PB = "";
+        PB += "Card's victory points: "+getVictoryPoints()+"\n";
+        PB += "N° LeaderCard on hand or played: "+getLeaderCards().length+"\n";
+        PB += "N° DevelopmentCard owned: "+getOwnedDevCards().size()+"\n";
+        for (DevelopmentCard x: getOwnedDevCards()){
+            PB += "\tColor: "+x.getColor().toString()+" Level: "+x.getLevel().toString()+"\n";
+        }
+        PB += "N° ProductionPower you can active: "+getProduction().size()+"\n";
+        for (ProductionPower x: getProduction()){
+            PB+="\tInput Resources" +"\n";
+            for(ResourceType y: ResourceType.values()){
+                PB+=("\t\t"+y+": "+x.getInputRes().getAmountOf(y) +"\n");
+            }
+            PB+="\tOutput Resources" +"\n";
+            for(ResourceType y: ResourceType.values()){
+                PB+=("\t\t"+y+": "+x.getOutputRes().getAmountOf(y) +"\n");
+            }
+            PB+="\t\tFaithPoints out: "+x.getFaithPointsOut() +"\n";
+            PB+="\t\tYourChoiceIn: "+x.getOfYourChoiceInput() +"\n";
+            PB+="\t\tYourChoiceOut: "+x.getOfYourChoiceOutput() +"\n";
+        }
+        return PB;
     }
 }
