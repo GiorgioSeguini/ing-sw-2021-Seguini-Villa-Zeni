@@ -58,6 +58,10 @@ public class Depots extends Observable<Message> {
         change();
     }
 
+    public StrongBox getStrongBox(){
+        return strongBox;
+    }
+
     /**
      * @param required number of resources to subtract
      */
@@ -122,5 +126,17 @@ public class Depots extends Observable<Message> {
     private void change(){
         String depots = Starter.toJson(this, Depots.class);
         notify(new DepotsMessage(depots, this.ownerID));
+    }
+
+    @Override
+    public String toString(){
+        String res="------------\n";
+        res+="| Depots |\n";
+        res+="------------\n";
+        res+=this.getStrongBox();
+        res+="\n";
+        res+=this.getWareHouseDepots();
+        res+="\n";
+        return res;
     }
 }

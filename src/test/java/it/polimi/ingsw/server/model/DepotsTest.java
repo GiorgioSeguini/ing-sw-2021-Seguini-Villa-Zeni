@@ -56,4 +56,12 @@ class DepotsTest {
 
         assertTrue(depots.getResources().isEmpty());
     }
+
+    @Test
+    void toStringTest() throws UnableToFillException {
+        Depots depots= new Depots(0);
+        depots.addResourceFromProduction(new NumberOfResources(100, 100, 100, 100));
+        depots.addResourcesFromMarket(new NumberOfResources(1,1,1,0));
+        System.out.println(depots);
+    }
 }

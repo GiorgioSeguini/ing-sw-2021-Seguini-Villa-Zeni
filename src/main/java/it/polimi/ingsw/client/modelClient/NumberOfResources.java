@@ -95,4 +95,16 @@ public class NumberOfResources {
         }
         return true;
     }
+
+    //TODO I NEED SETTER TESTING
+    /*@Override
+    public String toString(){
+        String res="";
+        res+="Servants: "+resources[0]+"\t";
+        res+="Shields: "+resources[1]+"\t";
+        res+="Coins: "+resources[2]+"\t";
+        res+="Stones: "+resources[3]+"\n";
+
+        return res;
+    }*/
 }

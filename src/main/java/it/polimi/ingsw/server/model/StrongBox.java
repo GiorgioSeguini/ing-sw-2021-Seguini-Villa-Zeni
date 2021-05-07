@@ -27,8 +27,15 @@ public class StrongBox {
 
     /**This method subs resources to the strongbox*/
     public void subResource(NumberOfResources required) throws OutOfResourcesException {
-        NumberOfResources new_resources= resources.sub(required);   //may throw n exception if sub is impossible
+        NumberOfResources new_resources = resources.sub(required);   //may throw n exception if sub is impossible
         resources = new_resources;
     }
 
+    @Override
+    public String toString(){
+        String res="Strong Box\n";
+
+        res+=getResources();
+        return res;
+    }
 }

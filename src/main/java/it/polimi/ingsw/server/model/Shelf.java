@@ -59,5 +59,15 @@ public class Shelf {
         this.is_extra_shelf=true;
     }
 
+    @Override
+    public String toString(){
+        String res ="Shelf-->\t";
+        res+="Size: "+ getMaxSize()+"\t";
+        res+="Objects: "+getUsed()+" , "+getResType()+"\t";
+        res+="Is extra? : "+getIsExtra()+"\n";
+
+        return res;
+    }
+
 
 }

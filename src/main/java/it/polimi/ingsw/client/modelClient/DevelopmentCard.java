@@ -55,7 +55,7 @@ public class DevelopmentCard extends Card {
         return cardColor;
     }
 
-    /*@Override
+    @Override
     public String toString(){
         String res="";
         res+="Level: "+getLevel() +"\n";
@@ -80,6 +80,6 @@ public class DevelopmentCard extends Card {
 
 
         return res;
-    }*/
+    }
 
 }
