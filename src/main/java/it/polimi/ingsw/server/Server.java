@@ -90,7 +90,10 @@ public class Server {
             playingConnection.put(c2, c1);
             waitingConnection.clear();
 
-            game.start();
+            //send initial message
+            for(View view : playersView){
+                view.sendInitialMessage(game);
+            }
         }
     }
 

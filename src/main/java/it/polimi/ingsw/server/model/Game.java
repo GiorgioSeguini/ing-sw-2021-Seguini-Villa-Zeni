@@ -89,8 +89,8 @@ public class Game extends Observable<Message> {
     }
 
     /**
-     * @param player 
-     * @return
+     * @param player player to search for
+     * @return Returns the index of the first occurrence of the specified player in this game, or -1 if this list does not contain the player
      */
     public int getPlayerIndex(Player player) {
         return players.indexOf(player);
@@ -269,7 +269,4 @@ public class Game extends Observable<Message> {
         notify(new GameMessage(getStatus(), getCurrIndex()));
     }
 
-    public void start(){
-        //notify(new InitialMessage(Starter.toJson(this, InitialMessage.class))); // TODO: 5/6/21 da rivedere
-    }
 }

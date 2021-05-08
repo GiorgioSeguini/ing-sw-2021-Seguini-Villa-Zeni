@@ -22,6 +22,10 @@ public class Game {
     private int indexPlayingPlayer;
     private GameStatus status;
 
+    //player related attribute
+    private int myID;
+    private ArrayList<LeaderCard> leaderCards;
+
     /**
      * Default constructor
      */
@@ -139,6 +143,14 @@ public class Game {
 
     public void setDashboard(Dashboard dashboard) {
         this.dashboard = dashboard;
+    }
+
+    public void setMyID(int myID) {
+        this.myID = myID;
+    }
+
+    public void setLeaderCards(ArrayList<LeaderCard> leaderCards) {
+        this.leaderCards = leaderCards;
     }
 
     @Override
