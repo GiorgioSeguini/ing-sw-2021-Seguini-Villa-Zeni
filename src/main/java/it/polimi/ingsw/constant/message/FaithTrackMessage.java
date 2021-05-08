@@ -21,7 +21,7 @@ public class FaithTrackMessage implements Message{
     public void handleMessage(Client client){
         Game simpleGame = client.getSimpleGame();
         Player owner = simpleGame.getPlayerFromID(ownerID);
-        owner.setFaithTrack(StarterClient.fromJsonFaithTruck(faithTrack));
+        owner.setFaithTrack(StarterClient.fromJson(faithTrack, FaithTrack.class));
     }
 
     @Override

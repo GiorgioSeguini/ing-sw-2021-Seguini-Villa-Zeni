@@ -41,7 +41,7 @@ public class Client {
                     String read;
                     while (isActive()) {
                         read=socketIn.nextLine();
-                        Message received = StarterClient.fromJsonMessage(read);
+                        Message received = StarterClient.fromJson(read, Message.class);
                         received.handleMessage(Client.this);
                     }
                 } catch (Exception e){

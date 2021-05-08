@@ -25,8 +25,8 @@ public class Game extends Observable<Message> {
     private final ArrayList<Player> players;
     private final Market marketTray;
     private final Dashboard dashboard;
-    private final LorenzoSoloPlayer soloGame;
-    private final ArrayList<LeaderCard> leaderCards;
+    private final LorenzoSoloPlayer soloGame;       //TODO transient?
+    private transient final ArrayList<LeaderCard> leaderCards;
 
     //attribute
     private int indexPlayingPlayer;

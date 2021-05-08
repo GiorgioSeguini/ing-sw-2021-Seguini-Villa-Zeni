@@ -21,7 +21,7 @@ public class DepotsMessage implements Message{
     public void handleMessage(Client client){
         Game simpleGame = client.getSimpleGame();
         Player owner = simpleGame.getPlayerFromID(ownerID);
-        owner.setDepots(StarterClient.fromJsonDepots(depots));
+        owner.setDepots(StarterClient.fromJson(depots, Depots.class));
     }
 
     @Override

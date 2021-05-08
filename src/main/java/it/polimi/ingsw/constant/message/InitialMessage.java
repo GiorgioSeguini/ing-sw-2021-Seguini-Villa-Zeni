@@ -16,7 +16,7 @@ public class InitialMessage implements Message{
 
     @Override
     public void handleMessage(Client client){
-        client.setSimpleGame(StarterClient.fromJsonGame(model));
+        client.setSimpleGame(StarterClient.fromJson(model, Game.class));
     }
 
     @Override

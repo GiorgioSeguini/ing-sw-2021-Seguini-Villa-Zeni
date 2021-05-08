@@ -1,6 +1,7 @@
 package it.polimi.ingsw.constant.message;
 
 import it.polimi.ingsw.client.Client;
+import it.polimi.ingsw.client.modelClient.Dashboard;
 import it.polimi.ingsw.client.modelClient.DevelopmentCard;
 import it.polimi.ingsw.client.modelClient.Game;
 import it.polimi.ingsw.client.parser.StarterClient;
@@ -19,7 +20,7 @@ public class DashBoardMessage implements Message{
     @Override
     public void handleMessage(Client client){
         Game simpleGame = client.getSimpleGame();
-        simpleGame.setDashboard(StarterClient.fromJsonDashBoard(dashBoard));
+        simpleGame.setDashboard(StarterClient.fromJson(dashBoard, Dashboard.class));
     }
 
     @Override

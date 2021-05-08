@@ -2,42 +2,36 @@ package it.polimi.ingsw.client.parser;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import it.polimi.ingsw.client.modelClient.*;
 import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.constant.MessageSerializer;
 
 
 import java.io.File;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 
-public class StarterClient {
+public class StarterClient{
     private static final Gson gson;
-    private static final String filePath;
 
     static{
         GsonBuilder builder= new GsonBuilder();
         builder.registerTypeAdapter(Message.class, new MessageSerializer());
         builder.registerTypeAdapter(NumberOfResources.class, new NumberOfResSerializer());
         gson=builder.create();
-        filePath = new File("").getAbsolutePath();
     }
 
-    public static Message fromJsonMessage(String json){
-        return gson.fromJson(json, Message.class);
+    /*public T fromJson(String json){
+        Type type = new TypeToken<T>(){}.getType();
+        return gson.fromJson(json, type);
+    }*/
+
+    public static <T> T fromJson(String json, Class<T> classOfT){
+        return gson.fromJson(json, classOfT);
     }
 
-    public static Game fromJsonGame(String json){
-        return gson.fromJson(json, Game.class);
-    }
-
-    public static Dashboard fromJsonDashBoard(String json){
-        return gson.fromJson(json, Dashboard.class);
-    }
-
-    public static Depots fromJsonDepots(String json){
-        return gson.fromJson(json, Depots.class);
-    }
-
-    public static FaithTrack fromJsonFaithTruck(String json){
-        return gson.fromJson(json, FaithTrack.class);
+    public static  <T> T fromJson(String json, Type typeOfT){
+        return gson.fromJson(json, typeOfT);
     }
 }

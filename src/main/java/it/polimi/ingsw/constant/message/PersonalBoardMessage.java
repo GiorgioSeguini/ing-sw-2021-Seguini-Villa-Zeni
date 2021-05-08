@@ -1,8 +1,12 @@
 package it.polimi.ingsw.constant.message;
 
+import com.google.gson.reflect.TypeToken;
 import it.polimi.ingsw.client.Client;
 import it.polimi.ingsw.client.modelClient.*;
+import it.polimi.ingsw.client.parser.StarterClient;
+import it.polimi.ingsw.constant.enumeration.MarbleColor;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 public class PersonalBoardMessage implements Message{
@@ -23,12 +27,12 @@ public class PersonalBoardMessage implements Message{
         Game simpleGame = client.getSimpleGame();
         Player owner = simpleGame.getPlayerFromID(IDplayer);
 
-        ArrayList<DevelopmentCard>[] developmentCards = new ArrayList[3];
-        //TODO parsing
+        Type type = new TypeToken<ArrayList<DevelopmentCard>[]>(){}.getType();
+        ArrayList<DevelopmentCard>[] developmentCards = StarterClient.fromJson(devCardsString, type);
         owner.getPersonalBoard().setDevCards(developmentCards);
 
-        ArrayList<LeaderCard> leaderCards = new ArrayList<>();
-        //TODO parsing
+        Type type1 = new TypeToken<ArrayList<LeaderCard>>(){}.getType();
+        ArrayList<LeaderCard> leaderCards = StarterClient.fromJson(leaderCardString, type1);
         owner.getPersonalBoard().setLeaderCards(leaderCards);
     }
 
