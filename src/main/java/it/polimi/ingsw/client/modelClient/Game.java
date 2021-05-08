@@ -23,8 +23,8 @@ public class Game {
     private GameStatus status;
 
     //player related attribute
-    private int myID;
-    private ArrayList<LeaderCard> leaderCards;
+    private transient int myID;
+    private transient ArrayList<LeaderCard> leaderCards;
 
     /**
      * Default constructor
