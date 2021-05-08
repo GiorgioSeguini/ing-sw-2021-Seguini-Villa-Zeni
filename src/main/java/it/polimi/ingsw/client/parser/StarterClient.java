@@ -22,11 +22,6 @@ public class StarterClient{
         gson=builder.create();
     }
 
-    /*public T fromJson(String json){
-        Type type = new TypeToken<T>(){}.getType();
-        return gson.fromJson(json, type);
-    }*/
-
     public static <T> T fromJson(String json, Class<T> classOfT){
         return gson.fromJson(json, classOfT);
     }

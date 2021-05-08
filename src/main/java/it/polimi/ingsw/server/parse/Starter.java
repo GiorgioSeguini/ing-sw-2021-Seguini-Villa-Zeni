@@ -127,12 +127,16 @@ public class Starter {
 
     /*Utilities*/
 
-    public static String toJson(Object o, Class c){
-        return gson.toJson(o, c);
+    public static String toJson(Object src, Type typeOfSrc){
+        return gson.toJson(src, typeOfSrc);
     }
 
-    public static Object fromJson(String message, Class c){
-        return gson.fromJson(message, c);
+    public static <T> T fromJson(String json, Class<T> classOfT){
+        return gson.fromJson(json, classOfT);
+    }
+
+    public static  <T> T fromJson(String json, Type typeOfT){
+        return gson.fromJson(json, typeOfT);
     }
 
 }

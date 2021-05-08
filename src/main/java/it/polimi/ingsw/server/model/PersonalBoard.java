@@ -1,5 +1,6 @@
 package it.polimi.ingsw.server.model;
 
+import com.google.gson.reflect.TypeToken;
 import it.polimi.ingsw.constant.enumeration.LeaderStatus;
 import it.polimi.ingsw.constant.enumeration.Level;
 import it.polimi.ingsw.constant.message.Message;
@@ -9,6 +10,7 @@ import it.polimi.ingsw.server.model.exception.NoSpaceException;
 import it.polimi.ingsw.server.observer.Observable;
 import it.polimi.ingsw.server.parse.Starter;
 
+import java.lang.reflect.Type;
 import java.util.*;
 
 /*Last Edit: Fabio*/
@@ -172,9 +174,12 @@ public class PersonalBoard extends Observable<Message> {
      * @see LeaderCard only class that call this methods
      */
     protected void change(){
-     //  String devCards = Starter.toJson(this.OwnedDevCards, DevelopmentCard.class); // TODO: 5/6/21  da rivedere
-       //String leaderCards = Starter.toJson(this.OwnedLeaderCard, LeaderCard.class);
-       //notify(new PersonalBoardMessage(devCards, leaderCards, this.ownerID));
+        Type type = new TypeToken<ArrayList<DevelopmentCard>[]>(){}.getType();
+        String devCards = Starter.toJson(this.OwnedDevCards, type);
+
+        Type type1 = new TypeToken<LeaderCard[]>(){}.getType();
+        String leaderCards = Starter.toJson(this.OwnedLeaderCard, type1);
+        notify(new PersonalBoardMessage(devCards, leaderCards, this.ownerID));
     }
 
 }
