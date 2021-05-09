@@ -44,4 +44,14 @@ public class Shelf {
 
     public boolean getIsExtra(){return this.is_extra_shelf;}
 
+    /*@Override
+    public String toString(){
+        String res ="Shelf-->\t";
+        res+="Size: "+ getMaxSize()+"\t";
+        res+="Objects: "+getUsed()+" , "+getResType()+"\t";
+        res+="Is extra? : "+getIsExtra()+"\n";
+
+        return res;
+    }*/
+
 }

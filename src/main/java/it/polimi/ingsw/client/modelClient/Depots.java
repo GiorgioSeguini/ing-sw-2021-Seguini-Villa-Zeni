@@ -43,18 +43,15 @@ public class Depots {
         return strongBox;
     }
 
-    @Override
+    /*@Override
     public String toString(){
-        String resSB="";
-        String resWH="";
-        resSB += "In the StrongBox: \n";
-        for(ResourceType x: ResourceType.values()){
-            resSB += "\t"+x+": "+strongBox.getResources().getAmountOf(x)+ "\n";
-        }
-        resWH += "In the WarehouseDepots: \n";
-        for(ResourceType x: ResourceType.values()){
-            resWH += "\t"+x+": "+wareHouseDepots.getResources().getAmountOf(x)+ "\n";
-        }
-        return resSB+resWH;
-    }
+        String res="------------\n";
+        res+="| Depots |\n";
+        res+="------------\n";
+        res+=this.getStrongBox();
+        res+="\n";
+        res+=this.getWareHouseDepots();
+        res+="\n";
+        return res;
+    }*/
 }

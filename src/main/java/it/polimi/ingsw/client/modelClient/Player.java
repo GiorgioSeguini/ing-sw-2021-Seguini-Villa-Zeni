@@ -68,20 +68,20 @@ public class Player {
         this.depots= depots;
     }
 
-    @Override
+    /*@Override
     public String toString(){
         String PL = "";
         PL += "Username: "+getUserName()+"\n";
         PL += "\tID: "+getID()+"\n";
         PL += "Status: "+getStatus()+"\n";
-        PL += "Error message: "+getErrorMessage().toString()+"\n";
+        PL += "Error message: "+getErrorMessage()+"\n";
         PL += "Victory points: "+getVictoryPoints()+"\n";
         PL += "PersonalBoard:\n";
-        PL += "\t"+getPersonalBoard().toString()+"\n";
+        PL += "\t"+getPersonalBoard()+"\n";
         PL += "FaithTrack:\n";
-        PL += "\t"+getFaithTrack().toString()+"\n";
+        PL += "\t"+getFaithTrack()+"\n";
         PL += "Depots:\n";
-        PL += "\t"+getDepots().toString()+"\n";
+        PL += "\t"+getDepots()+"\n";
         return PL;
-    }
+    }*/
 }

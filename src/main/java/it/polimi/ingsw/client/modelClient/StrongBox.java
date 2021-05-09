@@ -17,4 +17,11 @@ public class StrongBox {
         return resources;
     }
 
+    /*@Override
+    public String toString(){
+        String res="Strong Box\n";
+
+        res+=getResources();
+        return res;
+    }*/
 }

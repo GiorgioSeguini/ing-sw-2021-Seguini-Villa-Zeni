@@ -58,46 +58,21 @@ public class Dashboard {
         }
     }
 
-    //TODO ora come ora è tutta sbagliata e incompleta, devo cancellarla e rifarla tutta
     /*@Override
     public String toString(){
-        String res="";
-        res += "\t\t\tGreen \tBlu \tYellow \tPurple\n";
-        res += "Level 3:\tF\tF\tF\tF\n";
-        res += "Level 2:\tF\tF\tF\tF\n";
-        res += "Level 1:\tF\tF\tF\tF\n";
-        for(int i=0; i<Level.size(); i++) {
-            for(int j=0; j<ColorDevCard.size(); j++) {
-                if(dashBoard[i][j]==null){
-                    if(i==0&&j==0){
-                        res += "\t\t\tGreen \tBlu \tYellow \tPurple\n";
-                        res += "Level 3:\tE\tF\tF\tF\n";
-                        res += "Level 2:\tF\tF\tF\tF\n";
-                        res += "Level 1:\tF\tF\tF\tF\n";
-                    }
-                    if(i==0&&j==1){
-                        res += "\t\t\tGreen \tBlu \tYellow \tPurple\n";
-                        res += "Level 3:\tF\tE\tF\tF\n";
-                        res += "Level 2:\tF\tF\tF\tF\n";
-                        res += "Level 1:\tF\tF\tF\tF\n";
-                    }
-                    if(i==0&&j==2){
-                        res += "\t\t\tGreen \tBlu \tYellow \tPurple\n";
-                        res += "Level 3:\tF\tF\tE\tF\n";
-                        res += "Level 2:\tF\tF\tF\tF\n";
-                        res += "Level 1:\tF\tF\tF\tF\n";
-                    }
-                    if(i==0&&j==3){
-                        res += "\t\t\tGreen \tBlu \tYellow \tPurple\n";
-                        res += "Level 3:\tF\tF\tF\tE\n";
-                        res += "Level 2:\tF\tF\tF\tF\n";
-                        res += "Level 1:\tF\tF\tF\tF\n";
-                    }
-                }
+        String res="------------------------";
+        int k=3;
+        for(int i=0; i<Level.size(); i++){
+            res+= "|LEVEL "+k+": |\n";
+            res+= "|\t1)GREEN, 2)BLU, 3)YELLOW, 4)PURPLE|\n";
+            res+= "------------------------";
+            for(int j=0; j<ColorDevCard.size(); j++){
+                res+=""+j+++":\n";
+                res+= dashBoard[i][j]+"\n";
+                res+="**********************\n";
             }
+            k--;
         }
         return res;
     }*/
-
-
 }

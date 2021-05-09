@@ -47,7 +47,7 @@ public class Market {
         externalMarble = marbles.get(N_COL*N_ROW);
     }
 
-    @Override
+    /*@Override
     public String toString(){
         String tray="";
         for(int i=0;i<N_ROW;i++){
@@ -61,6 +61,6 @@ public class Market {
         }
         tray += "\t\t^\t\t^\t\t^\t\t^\t "+externalMarble.toString()+"\n";
         return tray;
-    }
+    }*/
 
 }

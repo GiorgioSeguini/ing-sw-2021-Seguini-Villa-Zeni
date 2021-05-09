@@ -75,4 +75,15 @@ public class Requirements {
         return this.numberOfResourceses.equals(other.numberOfResourceses);
     }
 
+    /*@Override
+    public String toString(){
+        String req = "";
+        req += "Number of Resources: \n";
+        req += "\t"+getNumberOfResourceses();
+        req += "Number or Type of Development card: \n";
+        //req += "\t"+getReq(); //TODO
+        req += "\n";
+        return req;
+    }*/
+
 }

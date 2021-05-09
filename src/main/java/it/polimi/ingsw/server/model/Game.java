@@ -269,4 +269,16 @@ public class Game extends Observable<Message> {
         notify(new GameMessage(getStatus(), getCurrIndex()));
     }
 
+    @Override
+    public String toString(){
+        String game = "Players: ";
+        for(Player p: players) {
+            game += "\t"+p.getUserName();
+        }
+        game += "\n";
+        game += "Game status: "+this.getStatus()+"\n";
+        game += "Current player: "+this.getCurrPlayer().getUserName()+"\n";
+        game += "\n";
+        return game;
+    }
 }

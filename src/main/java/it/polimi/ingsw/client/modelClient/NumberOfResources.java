@@ -99,12 +99,12 @@ public class NumberOfResources {
     //TODO I NEED SETTER TESTING
     /*@Override
     public String toString(){
-        String res="";
-        res+="Servants: "+resources[0]+"\t";
-        res+="Shields: "+resources[1]+"\t";
-        res+="Coins: "+resources[2]+"\t";
-        res+="Stones: "+resources[3]+"\n";
+        String resources="";
+        resources+="Servants: "+ this.resources[0]+"\t";
+        resources+="Shields: "+ this.resources[1]+"\t";
+        resources+="Coins: "+ this.resources[2]+"\t";
+        resources+="Stones: "+ this.resources[3]+"\n";
 
-        return res;
+        return resources;
     }*/
 }
