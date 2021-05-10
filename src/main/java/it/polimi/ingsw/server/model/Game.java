@@ -237,6 +237,11 @@ public class Game extends Observable<Message> {
         return INITIAL_RESOURCES[index];
     }
 
+    /**
+     *
+     * @param id to search for
+     * @return a reference to the leader card with the wanted Id, null otherwise
+     */
     public LeaderCard findLeaderCard(int id){
         for(LeaderCard x: leaderCards){
             if(x.getId()==id){

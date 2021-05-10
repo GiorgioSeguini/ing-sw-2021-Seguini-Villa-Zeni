@@ -11,19 +11,22 @@ import it.polimi.ingsw.server.model.exception.NoMoreLeaderCardAliveException;
 public class MoveLeader extends MoveType{
 
     int move;
-    LeaderCard leaderCard;
+    int idLeaderCard;
     public static final String className= "MoveLeader";
 
-    public MoveLeader(int idPlayer, int move, LeaderCard leaderCard) {
+    public MoveLeader(int idPlayer, int move, int idLeaderCard) {
         super(idPlayer,className);
         this.move = move;
-        this.leaderCard = leaderCard;
+        this.idLeaderCard = idLeaderCard;
         this.allowedStatus = new PlayerStatus[]{PlayerStatus.Active, PlayerStatus.MovePerformed};
     }
 
     @Override
     public boolean canPerform(Game game){
         if(!super.canPerform(game)) return false;
+
+        LeaderCard leaderCard = game.findLeaderCard(idLeaderCard);
+        if(leaderCard==null) return false;
 
         Player player =game.getPlayerFromID(getIdPlayer());
         boolean isPresent = false;
@@ -50,6 +53,8 @@ public class MoveLeader extends MoveType{
     @Override
     public void performMove(Game game) {
         Player player =game.getPlayerFromID(getIdPlayer());
+        LeaderCard leaderCard = game.findLeaderCard(idLeaderCard);
+
         player.setErrorMessage(ErrorMessage.NoError);
 
         if (move == 0) {

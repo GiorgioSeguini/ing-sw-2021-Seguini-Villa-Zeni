@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import it.polimi.ingsw.client.modelClient.*;
+import it.polimi.ingsw.client.move.MoveType;
 import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.constant.MessageSerializer;
 
@@ -19,6 +20,7 @@ public class StarterClient{
         GsonBuilder builder= new GsonBuilder();
         builder.registerTypeAdapter(Message.class, new MessageSerializer());
         builder.registerTypeAdapter(NumberOfResources.class, new NumberOfResSerializer());
+        builder.registerTypeAdapter(MoveType.class, new MoveTypeSerializer());
         gson=builder.create();
     }
 
