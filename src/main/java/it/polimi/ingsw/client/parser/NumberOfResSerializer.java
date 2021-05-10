@@ -13,10 +13,9 @@ public class NumberOfResSerializer implements JsonSerializer<NumberOfResources>,
     public JsonElement serialize(NumberOfResources src, Type typeOfSrc, JsonSerializationContext context) {
 
         JsonObject retValue = new JsonObject();
-        retValue.addProperty("Servants", src.getAmountOf(ResourceType.Servants));
-        retValue.addProperty("Shields", src.getAmountOf(ResourceType.Shields));
-        retValue.addProperty("Coins", src.getAmountOf(ResourceType.Coins));
-        retValue.addProperty("Stones", src.getAmountOf(ResourceType.Stones));
+        for(ResourceType type : ResourceType.values()){
+            retValue.addProperty(type.name(), src.getAmountOf(type));
+        }
         return retValue;
     }
 
@@ -24,10 +23,10 @@ public class NumberOfResSerializer implements JsonSerializer<NumberOfResources>,
     public NumberOfResources deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException  {
         JsonObject jsonObject = json.getAsJsonObject();
 
-        return new NumberOfResources(
-                jsonObject.get("Servants").getAsInt(),
-                jsonObject.get("Shields").getAsInt(),
-                jsonObject.get("Coins").getAsInt(),
-                jsonObject.get("Stones").getAsInt());
+        NumberOfResources result = new NumberOfResources();
+        for(ResourceType type : ResourceType.values()){
+            result = result.add(type, jsonObject.get(type.name()).getAsInt());
+        }
+        return result;
     }
 }
