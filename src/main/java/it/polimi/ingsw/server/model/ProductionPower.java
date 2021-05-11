@@ -119,5 +119,18 @@ public class ProductionPower {
          return this.outputRes.equals(other.outputRes);
     }
 
+    @Override
+    public String toString(){
+        String PP ="";
+        PP+="Input Resources" +"\n";
+        PP += "\t"+getInputRes();
+        PP +="Output Resources" +"\n";
+        PP += "\t"+getOutputRes();
+        PP+="FaithPoints out: "+getFaithPointsOut() +"\n";
+        PP+="YourChoiceIn: "+getOfYourChoiceInput() +"\n";
+        PP+="YourChoiceOut: "+getOfYourChoiceOutput() +"\n";
+        return PP;
+    }
+
 
 }

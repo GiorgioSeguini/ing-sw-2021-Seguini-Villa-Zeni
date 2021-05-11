@@ -128,20 +128,21 @@ public class PersonalBoard {
         String PB = "";
         PB += "Card's victory points: "+getVictoryPoints()+"\n";
         PB += "N° LeaderCard on hand or played: "+getLeaderCards().length+"\n";
-        for(LeaderCard lc: getLeaderCards()){
-            PB += ""+lc;
+
+        for(LeaderCard lc: getLeaderCards()) {
+            PB += "\n" + lc + "\n";
         }
-        PB += "-----------------------------------\n";
+        PB += "************************************\n";
         PB += "N° DevelopmentCard on the top: "+getOwnedDevCards().size()+"\n";
         for (DevelopmentCard x: getOwnedDevCards()){
-            PB += ""+x;
+            PB += "\n"+x+"\n";
         }
-        PB += "-----------------------------------\n";
+        PB += "************************************\n";
         PB += "N° ProductionPower you can active: "+getProduction().size()+"\n";
         for (ProductionPower x: getProduction()){
-            PB += ""+x;
+            PB += "\n"+x+"\n";
         }
-        PB += "-----------------------------------\n";
+        PB += "************************************\n";
         return PB;
     }*/
 }

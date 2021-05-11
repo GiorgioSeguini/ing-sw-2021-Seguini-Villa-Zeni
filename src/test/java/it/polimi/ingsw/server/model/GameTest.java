@@ -34,6 +34,7 @@ class GameTest {
         Dashboard dashboard = new Dashboard(new ArrayList<DevelopmentCard>());
 
         Game game = new Game(due, market, dashboard, new ArrayList<SoloActionTokens>(), leaderCards);
+        System.out.println(game);
         assertEquals(market, game.getMarketTray());
         assertEquals(dashboard, game.getDashboard());
 
@@ -96,6 +97,7 @@ class GameTest {
             fail();
         }
         game.updateStatus();
+        System.out.println(game);
         //now game is running
         assertEquals(GameStatus.Running, game.getStatus());
         assertEquals(player1, game.getCurrPlayer());

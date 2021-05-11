@@ -10,6 +10,7 @@ class FaithTrackTest{
     @Test
     void goodSetup(){
         FaithTrack curr = new FaithTrack(0);
+        System.out.println(curr);
         assertEquals(curr.getFaithPoints(), 0);
 
         for(int i=0; i<100; i++) {

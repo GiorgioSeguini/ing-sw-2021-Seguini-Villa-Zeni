@@ -33,6 +33,7 @@ class LeaderCardTest {
         LeaderCard leaderCard2;
         int n = (int) (Math.random() * 15.1);
         leaderCard1 = leaderCards.get(n);
+        System.out.println(leaderCard1);
         leaderCards.remove(n);
         n=(int) (Math.random() * 14.1);
         leaderCard2 = leaderCards.get(n);

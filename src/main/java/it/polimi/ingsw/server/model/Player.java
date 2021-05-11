@@ -119,4 +119,20 @@ public class Player {
         this.errorMessage=error;
     }
 
+    @Override
+    public String toString(){
+        String PL = "";
+        PL += "Username: "+getUserName()+"\n";
+        PL += "\tID: "+getID()+"\n";
+        PL += "Status: "+getStatus()+"\n";
+        PL += "Error message: "+getErrorMessage()+"\n";
+        PL += "Victory points: "+getVictoryPoints()+"\n";
+        PL += "PersonalBoard:\n";
+        PL += "\t"+getPersonalBoard()+"\n";
+        PL += "FaithTrack:\n";
+        PL += "\t"+getFaithTrack()+"\n";
+        //PL += "Depots:\n";
+        PL += ""+getDepots()+"\n";
+        return PL;
+    }
 }

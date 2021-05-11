@@ -24,6 +24,7 @@ class MarketTest {
         }
 
         Market marketTray = new Market(startMarbles);
+        System.out.println(marketTray);
 
         for(int i=0; i<3; i++){
             for(int j=0; j<4; j++){
@@ -32,7 +33,6 @@ class MarketTest {
         }
         assertNotNull(marketTray.externalMarble);
 
-        System.out.println(marketTray);
     }
 
     @Test
@@ -47,6 +47,7 @@ class MarketTest {
 
 
         Market marketTray = new Market(startMarbles);
+        System.out.println(marketTray);
 
         //controlla che non accetta valori di colonna e riga maggiori o uguali di 4 e 3
         try {

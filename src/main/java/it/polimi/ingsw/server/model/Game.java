@@ -282,7 +282,11 @@ public class Game extends Observable<Message> {
         }
         game += "\n";
         game += "Game status: "+this.getStatus()+"\n";
+        if(this.getCurrPlayer()==null){
+            game += "Current player: game isn't start yet\n";
+        }else{
         game += "Current player: "+this.getCurrPlayer().getUserName()+"\n";
+        }
         game += "\n";
         return game;
     }

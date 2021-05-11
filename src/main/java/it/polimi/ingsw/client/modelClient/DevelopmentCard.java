@@ -57,7 +57,8 @@ public class DevelopmentCard extends Card {
 
     /*@Override
     public String toString(){
-        String card="";
+        String card="\n";
+        card+="CARD "+this.getId()+"\n";
         card+="Level: "+getLevel() +"\n";
         card+="Color: "+getColor() +"\n";
         card+="VictoryPoints: "+getVictoryPoints() +"\n";

@@ -54,12 +54,31 @@ public class Market {
             int count=0;
             MarbleColor[] marbleColors= getRow(i);
             for(MarbleColor x: marbleColors) {
-                tray += "\t"+x.toString();
+                switch (x){
+                    case RED:
+                        tray+= "R\t";
+                        break;
+                    case BLUE:
+                        tray+= "B\t";
+                        break;
+                    case GREY:
+                        tray+= "G\t";
+                        break;
+                    case PURPLE:
+                        tray+= "P\t";
+                        break;
+                    case WHITE:
+                        tray+= "W\t";
+                        break;
+                    case YELLOW:
+                        tray+= "Y\t";
+                        break;
+                }
                 count++;
-                if(count==4) tray += "\t<-\n";
+                if(count==4) tray += "<-\n";
             }
         }
-        tray += "\t\t^\t\t^\t\t^\t\t^\t "+externalMarble.toString()+"\n";
+        tray += "^\t^\t^\t^\t "+externalMarble+"\n";
         return tray;
     }*/
 

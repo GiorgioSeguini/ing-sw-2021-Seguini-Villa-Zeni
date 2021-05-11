@@ -58,7 +58,7 @@ public class DevelopmentCard extends Card {
         return cardColor;
     }
 
-    @Override
+    /*@Override
     public String toString(){
         String res="CARD "+this.getId()+"\n";
         res+="Level: "+getLevel() +"\n";
@@ -83,6 +83,25 @@ public class DevelopmentCard extends Card {
 
 
         return res;
+    }*/
+    @Override
+    public String toString(){
+        String card="\n";
+        card+="CARD "+this.getId()+"\n";
+        card+="Level: "+getLevel() +"\n";
+        card+="Color: "+getColor() +"\n";
+        card+="VictoryPoints: "+getVictoryPoints() +"\n";
+        card+="Cost:" +"\n";
+        card+="\t"+getCost()+"\n";
+        card+="Production Power:" +"\n";
+        card+="\tInput Resources:" +"\n";
+        card+=("\t\t"+getProductionPower().getInputRes()+"\n");
+        card+="\tOutput Resources:" +"\n";
+        card+=("\t\t"+getProductionPower().getOutputRes()+"\n");
+        card+="\t\tFaithPoints out: "+getProductionPower().getFaithPointsOut() +"\n";
+        card+="\t\tYourChoiceIn: "+getProductionPower().getOfYourChoiceInput() +"\n";
+        card+="\t\tYourChoiceOut: "+getProductionPower().getOfYourChoiceOutput() +"\n";
+        return card;
     }
 
 }

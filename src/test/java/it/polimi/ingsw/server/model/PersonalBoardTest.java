@@ -79,6 +79,7 @@ public class PersonalBoardTest {
 
         try{
             assertEquals(2, p.getLeaderCards().length);
+            System.out.println(p);
             cards[1].setDiscard(player);
             assertEquals(1, p.getLeaderCards().length);
         }catch(NoMoreLeaderCardAliveException e){

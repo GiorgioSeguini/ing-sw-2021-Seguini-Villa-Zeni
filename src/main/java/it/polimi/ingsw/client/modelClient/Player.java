@@ -80,8 +80,8 @@ public class Player {
         PL += "\t"+getPersonalBoard()+"\n";
         PL += "FaithTrack:\n";
         PL += "\t"+getFaithTrack()+"\n";
-        PL += "Depots:\n";
-        PL += "\t"+getDepots()+"\n";
+        //PL += "Depots:\n";
+        PL += ""+getDepots()+"\n";
         return PL;
     }*/
 }

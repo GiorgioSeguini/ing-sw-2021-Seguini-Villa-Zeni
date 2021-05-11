@@ -122,21 +122,23 @@ public class Dashboard extends Observable<Message> {
         //notify(new DashBoardMessage(Starter.toJson(this, Dashboard.class))); // TODO: 5/6/21 da rivedere
     }
 
-    @Override
+    /*@Override
     public String toString(){
-        String res="------------------------";
+        String res="----------------------------------\n";
         int k=3;
         for(int i=0; i<Level.size(); i++){
-            res+= "|LEVEL "+k+": |\n";
-            res+= "|\t1)GREEN, 2)BLU, 3)YELLOW, 4)PURPLE|\n";
-            res+= "------------------------";
+            int t=1;
+            res+= "LEVEL "+k+": \n";
+            res+= "\t1)GREEN, 2)BLU, 3)YELLOW, 4)PURPLE\n";
+            res+= "----------------------------------\n";
             for(int j=0; j<ColorDevCard.size(); j++){
-                res+=""+j+++":\n";
+                res+=""+ t +":\n";
                 res+= dashBoard[i][j]+"\n";
                 res+="**********************\n";
+                t++;
             }
             k--;
         }
         return res;
-    }
+    }*/
 }

@@ -181,5 +181,34 @@ public class PersonalBoard extends Observable<Message> {
         String leaderCards = Starter.toJson(this.OwnedLeaderCard, type1);
         notify(new PersonalBoardMessage(devCards, leaderCards, this.ownerID));
     }
+    @Override
+    public String toString(){
+        String PB = "";
+        PB += "Card's victory points: "+getVictoryPoints()+"\n";
+        try {
+            PB += "N° LeaderCard on hand or played: "+getLeaderCards().length+"\n";
+        } catch (NoMoreLeaderCardAliveException e) {
+            e.printStackTrace();
+        }
+        try {
+            for(LeaderCard lc: getLeaderCards()){
+                PB += "\n"+lc+"\n";
+            }
+        } catch (NoMoreLeaderCardAliveException e) {
+            e.printStackTrace();
+        }
+        PB += "************************************\n";
+        PB += "N° DevelopmentCard on the top: "+getOwnedDevCards().size()+"\n";
+        for (DevelopmentCard x: getOwnedDevCards()){
+            PB += "\n"+x+"\n";
+        }
+        PB += "************************************\n";
+        PB += "N° ProductionPower you can active: "+getProduction().size()+"\n";
+        for (ProductionPower x: getProduction()){
+            PB += "\n"+x+"\n";
+        }
+        PB += "************************************\n";
+        return PB;
+    }
 
 }
