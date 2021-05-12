@@ -137,6 +137,14 @@ public class Game {
         this.status = status;
     }
 
+    public boolean isMyTurn(){
+        return getCurrPlayer().getID()==this.myID;
+    }
+
+    public int getMyID() {
+        return myID;
+    }
+
     public void setIndex(int index){
         this.indexPlayingPlayer= index;
     }

@@ -31,4 +31,8 @@ public class StarterClient{
     public static  <T> T fromJson(String json, Type typeOfT){
         return gson.fromJson(json, typeOfT);
     }
+
+    public static String toJson(Object src, Type typeOfSrc){
+        return gson.toJson(src, typeOfSrc);
+    }
 }

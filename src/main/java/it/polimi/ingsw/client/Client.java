@@ -5,8 +5,7 @@ import it.polimi.ingsw.client.modelClient.Game;
 import it.polimi.ingsw.client.parser.StarterClient;
 import it.polimi.ingsw.constant.message.Message;
 
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.Socket;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
@@ -14,9 +13,9 @@ import java.util.Scanner;
 public class Client {
 
     private String ip;
-    private int myPlayerID;
     private int port;
     Game simpleGame;
+    CLI cli;
 
     public Client(String ip, int port){
         this.ip = ip;
@@ -33,16 +32,18 @@ public class Client {
         this.active = active;
     }
 
-    public Thread asyncReadFromSocket(final Scanner socketIn){
+    public Thread asyncReadFromSocket(final DataInputStream socketIn){
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
                     String read;
                     while (isActive()) {
-                        read=socketIn.nextLine();
+                        read=socketIn.readUTF();
+                        System.out.println(read);
                         Message received = StarterClient.fromJson(read, Message.class);
                         received.handleMessage(Client.this);
+                        cli.print(simpleGame);      //TODO some problem with concurrency
                     }
                 } catch (Exception e){
                     setActive(false);
@@ -53,14 +54,14 @@ public class Client {
         return t;
     }
 
-    public Thread asyncWriteToSocket(final Scanner stdin, final PrintWriter socketOut){
+    public Thread asyncWriteToSocket(final Scanner stdin, final DataOutputStream socketOut){
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
                     while (isActive()) {
                         String inputLine = stdin.nextLine();
-                        socketOut.println(inputLine);
+                        socketOut.writeUTF(inputLine);
                         socketOut.flush();
                     }
                 }catch(Exception e){
@@ -75,15 +76,18 @@ public class Client {
     public void run() throws IOException {
         Socket socket = new Socket(ip, port);
         System.out.println("Connection established");
-        Scanner socketIn = new Scanner(socket.getInputStream());
-        PrintWriter socketOut = new PrintWriter(socket.getOutputStream());
+        DataInputStream socketIn = new DataInputStream(socket.getInputStream());
+        DataOutputStream socketOut = new DataOutputStream(socket.getOutputStream());
         Scanner stdin = new Scanner(System.in);
-
+        System.out.println("insert your name");
+        //System.out.println(socketIn.nextLine());
+        String name = stdin.nextLine();
+        socketOut.writeUTF(name);
+        socketOut.flush();
         try{
+            cli = new CLI(simpleGame, socketOut);
             Thread t0 = asyncReadFromSocket(socketIn);
-            Thread t1 = asyncWriteToSocket(stdin, socketOut);
             t0.join();
-            t1.join();
         } catch(InterruptedException | NoSuchElementException e){
             System.out.println("Connection closed from the client side");
         } finally {
@@ -102,11 +106,4 @@ public class Client {
         return this.simpleGame;
     }
 
-    public int getMyPlayerID() {
-        return myPlayerID;
-    }
-
-    public void setMyPlayerID(int myPlayerID) {
-        this.myPlayerID = myPlayerID;
-    }
 }

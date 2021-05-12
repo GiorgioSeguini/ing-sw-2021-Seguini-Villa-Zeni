@@ -1,6 +1,9 @@
 package it.polimi.ingsw.server.parse;
 
+import com.google.gson.reflect.TypeToken;
+import it.polimi.ingsw.client.CLI;
 import it.polimi.ingsw.client.Client;
+import it.polimi.ingsw.client.parser.StarterClient;
 import it.polimi.ingsw.constant.enumeration.ResourceType;
 import it.polimi.ingsw.constant.message.GameMessage;
 import it.polimi.ingsw.constant.message.InitialMessage;
@@ -9,9 +12,10 @@ import it.polimi.ingsw.server.model.*;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class GameTest {
 
@@ -39,8 +43,22 @@ public class GameTest {
 
         System.out.println(Starter.toJson(game, Game.class));
 
-       // Message msg = new InitialMessage(Starter.toJson(game, Game.class));
-        Client client = new Client("127.0.0.1", 12345);
-        //msg.handleMessage(client);
+        Client client= new Client("127.0.0.1", 12345);
+
+        String model = Starter.toJson(game, Game.class);
+        int myID = due.get(0).getID();
+        Type type = new TypeToken<ArrayList<LeaderCard>>(){}.getType();
+        String leaderCardsString = Starter.toJson(game.getActivableLeadCard(due.get(0)), type);
+
+        Message msg = new InitialMessage(model, myID, leaderCardsString);
+
+        String packet = Starter.toJson(msg, Message.class);
+        System.out.println(packet);
+        Message recived = StarterClient.fromJson(packet, Message.class);
+
+        recived.handleMessage(client);
+
+        assertNotNull(client.getSimpleGame());
+
     }
 }

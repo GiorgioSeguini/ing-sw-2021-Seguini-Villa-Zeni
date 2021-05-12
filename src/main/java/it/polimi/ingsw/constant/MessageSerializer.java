@@ -1,11 +1,7 @@
 package it.polimi.ingsw.constant;
 
 import com.google.gson.*;
-import it.polimi.ingsw.constant.message.Message;
-import it.polimi.ingsw.server.model.DepotsAbility;
-import it.polimi.ingsw.server.model.DiscountAbility;
-import it.polimi.ingsw.server.model.ProductionPowerPlusAbility;
-import it.polimi.ingsw.server.model.WhiteAbility;
+import it.polimi.ingsw.constant.message.*;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -17,10 +13,13 @@ public class MessageSerializer implements JsonSerializer<Message>, JsonDeseriali
     private static final String INSTANCE="INSTANCE";
 
     static {
-        mapNameClass.put(WhiteAbility.name, WhiteAbility.class);
-        mapNameClass.put(DepotsAbility.name, DepotsAbility.class);
-        mapNameClass.put(ProductionPowerPlusAbility.name, ProductionPowerPlusAbility.class);
-        mapNameClass.put(DiscountAbility.name, DiscountAbility.class);
+        mapNameClass.put(InitialMessage.className, InitialMessage.class);
+        mapNameClass.put(DashBoardMessage.className, DashBoardMessage.class);
+        mapNameClass.put(FaithTrackMessage.className, FaithTrackMessage.class);
+        mapNameClass.put(GameMessage.className, GameMessage.class);
+        mapNameClass.put(MarketMessage.className, MarketMessage.class);
+        mapNameClass.put(PersonalBoardMessage.className, PersonalBoardMessage.class);
+
     }
 
     @Override

@@ -1,10 +1,14 @@
 package it.polimi.ingsw.server;
 
+import it.polimi.ingsw.server.model.Game;
 import it.polimi.ingsw.server.observer.Observable;
+import it.polimi.ingsw.server.parse.Starter;
 
+import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -29,8 +33,15 @@ public class SocketClientConnection extends Observable<String> implements Client
     }
 
     private synchronized void send(String json) {
+        try {
+            Starter.fromJson(json, Game.class);
+        } catch(Exception e){
+            int breakpoint =1;
+        }
             try {
                 //out.reset();
+                //socket.getOutputStream().write(json.getBytes(StandardCharsets.UTF_8));
+                //socket.getOutputStream().flush();
                 out.writeUTF(json);
                 out.flush();
             } catch(IOException e){
@@ -69,16 +80,16 @@ public class SocketClientConnection extends Observable<String> implements Client
 
     @Override
     public void run() {
-        Scanner in;
+        DataInputStream in;
 
         try{
-            in = new Scanner(socket.getInputStream());
+            in = new DataInputStream(socket.getInputStream());
             out = new DataOutputStream(socket.getOutputStream());
-            send("Welcome!\nWhat is your name?");
-            String read = in.nextLine();
+            //send("Welcome!\nWhat is your name?");
+            String read = in.readUTF();
             server.lobby(this, read);
             while(isActive()){
-                read=in.nextLine();
+                read=in.readUTF();
                 notify(read);
             }
         } catch (IOException | NoSuchElementException e) {
