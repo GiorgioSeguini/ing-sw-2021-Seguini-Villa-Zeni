@@ -17,6 +17,7 @@ public class Controller implements Observer<MoveType> {
         if(x.canPerform(game)) {
             x.performMove(game);
         }else{
+            System.out.println("Move invalid");
             //x.getPlayer().setErrorMessage();
         }
     }

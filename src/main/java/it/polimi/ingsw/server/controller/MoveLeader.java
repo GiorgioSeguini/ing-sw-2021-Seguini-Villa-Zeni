@@ -15,7 +15,7 @@ public class MoveLeader extends MoveType{
     public static final String className= "MoveLeader";
 
     public MoveLeader(int idPlayer, int move, int idLeaderCard) {
-        super(idPlayer,className);
+        super(idPlayer);
         this.move = move;
         this.idLeaderCard = idLeaderCard;
         this.allowedStatus = new PlayerStatus[]{PlayerStatus.Active, PlayerStatus.MovePerformed};
@@ -69,5 +69,10 @@ public class MoveLeader extends MoveType{
                 player.setErrorMessage(ErrorMessage.BadChoice);
                 //return;
             }
+    }
+
+    @Override
+    public String getClassName() {
+        return className;
     }
 }

@@ -8,8 +8,13 @@ public class MoveChoseInitialResources extends MoveType {
     public static final String className= "MoveChoseInitialResources";
 
     public MoveChoseInitialResources(int idPlayer, NumberOfResources resources) {
-        super(idPlayer, className);
+        super(idPlayer);
         this.resources = resources;
+    }
+
+    @Override
+    public String getClassName() {
+        return className;
     }
 
 }

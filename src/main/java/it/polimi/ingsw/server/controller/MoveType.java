@@ -9,22 +9,18 @@ import it.polimi.ingsw.constant.enumeration.PlayerStatus;
 public abstract class MoveType {
     //raccogliere tutte le info chieste al giocatore e chiama l'update del controller
 
-    private int idPlayer;
+    private final int idPlayer;
     PlayerStatus[] allowedStatus;
-    private final String ClassName;
 
-    public MoveType(int idPlayer, String className){
+    public MoveType(int idPlayer){
         this.idPlayer = idPlayer;
-        this.ClassName=className;
     }
 
     public int getIdPlayer() {
         return idPlayer;
     }
 
-    public String getClassName() {
-        return ClassName;
-    }
+    public abstract String getClassName();
 
     /**
      * @return true if the player is in the correct status and it's his turn
@@ -61,11 +57,7 @@ public abstract class MoveType {
         if(!(other instanceof MoveType))
             return false;
 
-        if(this.idPlayer!= ((MoveType) other).getIdPlayer()){
-            return false;
-        }
-
-        return this.ClassName.equals(((MoveType) other).getClassName());
+        return this.idPlayer == ((MoveType) other).getIdPlayer();
     }
 
 }

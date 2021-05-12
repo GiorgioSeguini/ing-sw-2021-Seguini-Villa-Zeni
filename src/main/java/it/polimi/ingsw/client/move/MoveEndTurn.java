@@ -5,7 +5,11 @@ public class MoveEndTurn extends MoveType {
     public static final String className= "MoveEndTurn";
 
     public MoveEndTurn(int idPlayer) {
-        super(idPlayer, className);
+        super(idPlayer);
     }
 
+    @Override
+    public String getClassName() {
+        return className;
+    }
 }

@@ -16,7 +16,7 @@ public class MovetypeMarket extends MoveType{
     public static final String className= "MovetypeMarket";
 
     public MovetypeMarket(int idPlayer, int indextobuy){
-        super(idPlayer, className);
+        super(idPlayer);
         this.indexToBuy=indextobuy;
         this.allowedStatus = new PlayerStatus[]{PlayerStatus.Active};
     }
@@ -63,5 +63,10 @@ public class MovetypeMarket extends MoveType{
         catch (HaveToChooseException error) {
             player.setStatus(PlayerStatus.NeedToConvert);
         }
+    }
+
+    @Override
+    public String getClassName() {
+        return className;
     }
 }

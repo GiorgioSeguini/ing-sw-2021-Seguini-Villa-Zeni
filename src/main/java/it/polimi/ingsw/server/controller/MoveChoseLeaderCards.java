@@ -15,7 +15,7 @@ public class MoveChoseLeaderCards extends MoveType{
     public static final String className= "MoveChoseLeaderCards";
 
     public MoveChoseLeaderCards(int idPlayer, ArrayList<Integer> indexLeaderCards) {
-        super(idPlayer, className);
+        super(idPlayer);
         this.indexLeaderCards = new ArrayList<>();
         this.indexLeaderCards.addAll(indexLeaderCards);
     }
@@ -64,6 +64,11 @@ public class MoveChoseLeaderCards extends MoveType{
         }
 
         game.updateStatus();
+    }
+
+    @Override
+    public String getClassName() {
+        return className;
     }
 
 }

@@ -43,7 +43,7 @@ public class Client {
                         System.out.println(read);
                         Message received = StarterClient.fromJson(read, Message.class);
                         received.handleMessage(Client.this);
-                        cli.print(simpleGame);      //TODO some problem with concurrency
+                        new Thread(cli).start();
                     }
                 } catch (Exception e){
                     setActive(false);
@@ -85,7 +85,7 @@ public class Client {
         socketOut.writeUTF(name);
         socketOut.flush();
         try{
-            cli = new CLI(simpleGame, socketOut);
+            cli = new CLI(this, socketOut);
             Thread t0 = asyncReadFromSocket(socketIn);
             t0.join();
         } catch(InterruptedException | NoSuchElementException e){

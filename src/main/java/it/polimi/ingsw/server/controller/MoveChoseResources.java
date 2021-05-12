@@ -14,7 +14,7 @@ public class MoveChoseResources extends MoveType{
     public static final String className= "MoveChoseResources";
 
     public MoveChoseResources(int idPlayer, NumberOfResources ofYourChoiceInput, NumberOfResources ofYourChoiceOutput) {
-        super(idPlayer,className);
+        super(idPlayer);
         this.ofYourChoiceInput = ofYourChoiceInput;
         this.ofYourChoiceOutput = ofYourChoiceOutput;
         this.allowedStatus = new PlayerStatus[]{PlayerStatus.NeedToChoseRes};
@@ -50,5 +50,10 @@ public class MoveChoseResources extends MoveType{
         game.popesInspection();
 
         player.setStatus(PlayerStatus.MovePerformed);
+    }
+
+    @Override
+    public String getClassName() {
+        return className;
     }
 }

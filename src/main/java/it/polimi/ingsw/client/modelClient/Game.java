@@ -11,6 +11,7 @@ import java.util.ArrayList;
 public class Game {
 
     private static final int[] INITIAL_FAITH_POINT = {0,1,2,3};
+    private static final int[] INITIAL_RESOURCES = {0,1,1,2};
 
     //compositions
     private final ArrayList<Player> players;
@@ -138,11 +139,21 @@ public class Game {
     }
 
     public boolean isMyTurn(){
+        if(getCurrPlayer()==null)
+            return false;
         return getCurrPlayer().getID()==this.myID;
     }
 
     public int getMyID() {
         return myID;
+    }
+
+    public ArrayList<LeaderCard> getLeaderCards() {
+        return leaderCards;
+    }
+
+    public int getInitialResources() {
+        return INITIAL_RESOURCES[getPlayerIndex(getPlayerFromID(myID))];
     }
 
     public void setIndex(int index){

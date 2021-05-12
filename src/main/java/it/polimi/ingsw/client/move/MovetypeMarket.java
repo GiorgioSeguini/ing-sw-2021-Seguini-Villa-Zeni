@@ -6,7 +6,12 @@ public class MovetypeMarket extends MoveType {
     public static final String className= "MovetypeMarket";
 
     public MovetypeMarket(int idPlayer, int indextobuy){
-        super(idPlayer, className);
+        super(idPlayer);
         this.indexToBuy=indextobuy;
+    }
+
+    @Override
+    public String getClassName() {
+        return className;
     }
 }

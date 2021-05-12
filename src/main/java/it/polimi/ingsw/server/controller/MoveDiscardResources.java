@@ -14,7 +14,7 @@ public class MoveDiscardResources extends MoveType{
     public static final String className= "MoveDiscardResources";
 
     public MoveDiscardResources(int idPlayer, NumberOfResources toDiscard){
-        super(idPlayer,className);
+        super(idPlayer);
         this.toDiscard=toDiscard;
         this.allowedStatus = new PlayerStatus[]{PlayerStatus.NeedToStore};
     }
@@ -55,5 +55,10 @@ public class MoveDiscardResources extends MoveType{
 
 
         player.setStatus(PlayerStatus.MovePerformed);
+    }
+
+    @Override
+    public String getClassName() {
+        return className;
     }
 }

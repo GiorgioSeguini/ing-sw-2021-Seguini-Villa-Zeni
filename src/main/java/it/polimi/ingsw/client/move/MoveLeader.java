@@ -7,8 +7,13 @@ public class MoveLeader extends MoveType {
     public static final String className= "MoveLeader";
 
     public MoveLeader(int idPlayer, int move, int idLeaderCard) {
-        super(idPlayer,className);
+        super(idPlayer);
         this.move = move;
         this.idLeaderCard = idLeaderCard;
+    }
+
+    @Override
+    public String getClassName() {
+        return className;
     }
 }

@@ -1,26 +1,45 @@
 package it.polimi.ingsw.client;
 
 import it.polimi.ingsw.client.modelClient.Game;
+import it.polimi.ingsw.client.modelClient.LeaderCard;
+import it.polimi.ingsw.client.modelClient.NumberOfResources;
+import it.polimi.ingsw.client.modelClient.PersonalBoard;
+import it.polimi.ingsw.client.move.MoveChoseInitialResources;
+import it.polimi.ingsw.client.move.MoveChoseLeaderCards;
 import it.polimi.ingsw.client.move.MoveType;
 import it.polimi.ingsw.client.move.MovetypeMarket;
 import it.polimi.ingsw.client.parser.StarterClient;
+import it.polimi.ingsw.constant.enumeration.GameStatus;
+import it.polimi.ingsw.constant.enumeration.ResourceType;
 
 import java.io.*;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
-public class CLI {
+public class CLI implements Runnable{
+    private final Client client;
     private Game game;
     Scanner in = new Scanner(System.in);
     DataOutputStream socket;
-    public CLI(Game game, DataOutputStream writer) {
-        this.game = game;
+    public CLI(Client client, DataOutputStream writer) {
+        this.client = client;
         this.socket = writer;
     }
 
-    public void print(Game game){
-        this.game=game;
+    @Override
+    public void run(){
+        this.game = client.getSimpleGame();
         System.out.println("Hello");
+        if(game.getStatus()== GameStatus.Initial){
+            System.out.println("Fai le tue scelte iniziali");
+            if(!game.getPlayerFromID(game.getMyID()).getPersonalBoard().isReady()){
+                initialLeaderCard();
+            }else if(game.getInitialResources()>game.getPlayerFromID(game.getMyID()).getDepots().getResources().size()){
+                initialResources();
+            }
+
+        }
         if(game.isMyTurn()){
             System.out.println("It's your turn");
             System.out.println("cosa desideri fare?");
@@ -53,7 +72,7 @@ public class CLI {
                 //TODO
                 break;
             case 2:
-
+                market();
                 break;
             //TODO
             default:
@@ -88,12 +107,47 @@ public class CLI {
         }
         index+=temp;
         MoveType move = new MovetypeMarket(game.getMyID(), index);
-        String s = StarterClient.toJson(move, MoveType.class);
-        send(s);
+        send(move);
     }
 
-    private void send(String s) {
+    private void initialLeaderCard(){
+        System.out.println("Scegli "+ PersonalBoard.MAX_LEAD_CARD + " carte leader tra le seguenti:");
+        for(LeaderCard card : game.getLeaderCards()){
+            System.out.println(card);
+        }
+        ArrayList<Integer> choice = new ArrayList<>();
+        while(choice.size() < PersonalBoard.MAX_LEAD_CARD){
+            int index = in.nextInt();
+            if(index>0 && index<game.getLeaderCards().size()){
+                choice.add(game.getLeaderCards().get(index).getId());
+            }else{
+                System.out.println("Indice non valido");
+            }
+        }
+        MoveType move = new MoveChoseLeaderCards(game.getMyID(), choice);
+        send(move);
+    }
+
+    private void initialResources(){
+        System.out.println("Scegli le risorse iniziali:");
+        NumberOfResources resources= new NumberOfResources();
+
+        for(ResourceType type : ResourceType.values()){
+            System.out.println(type);
+        }
+        while(resources.size()< game.getInitialResources()){
+            int index = in.nextInt();
+            if(index>0 && index-1 < ResourceType.values().length){
+                resources.add(ResourceType.values()[index], 1);
+            }
+        }
+        MoveType move = new MoveChoseInitialResources(game.getMyID(), resources);
+        send(move);
+    }
+
+    private void send(MoveType move) {
         try {
+            String s = StarterClient.toJson(move, MoveType.class);
             //out.reset();
             socket.writeUTF(s);
             socket.flush();

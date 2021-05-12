@@ -17,7 +17,7 @@ public class MoveBuyDevCard extends MoveType{
     public static final String className= "MoveBuyDevCard";
 
     public MoveBuyDevCard(int idPlayer, int pos, int indexCardToBuy) {
-        super(idPlayer,className);
+        super(idPlayer);
         this.pos = pos;
         this.indexCardToBuy = indexCardToBuy;
         this.allowedStatus = new PlayerStatus[]{PlayerStatus.Active};
@@ -79,5 +79,10 @@ public class MoveBuyDevCard extends MoveType{
         } catch (OutOfResourcesException ignored) {}
 
         player.setStatus(PlayerStatus.MovePerformed);
+    }
+
+    @Override
+    public String getClassName() {
+        return className;
     }
 }

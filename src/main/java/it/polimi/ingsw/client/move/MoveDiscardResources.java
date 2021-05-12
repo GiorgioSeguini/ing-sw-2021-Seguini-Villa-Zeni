@@ -7,8 +7,12 @@ public class MoveDiscardResources extends MoveType {
     public static final String className= "MoveDiscardResources";
 
     public MoveDiscardResources(int idPlayer, NumberOfResources toDiscard){
-        super(idPlayer,className);
+        super(idPlayer);
         this.toDiscard=toDiscard;
     }
 
+    @Override
+    public String getClassName() {
+        return className;
+    }
 }

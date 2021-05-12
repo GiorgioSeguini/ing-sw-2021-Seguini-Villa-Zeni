@@ -10,7 +10,7 @@ public class MoveEndTurn extends MoveType{
     public static final String className= "MoveEndTurn";
 
     public MoveEndTurn(int idPlayer) {
-        super(idPlayer, className);
+        super(idPlayer);
         this.allowedStatus = new PlayerStatus[]{PlayerStatus.MovePerformed};
     }
 
@@ -26,4 +26,8 @@ public class MoveEndTurn extends MoveType{
         game.nextTurn();
     }
 
+    @Override
+    public String getClassName() {
+        return className;
+    }
 }

@@ -6,16 +6,18 @@ package it.polimi.ingsw.client.modelClient;
 public abstract class Card {
 
     private final int victoryPoints;
+    private final int id;
 
     public Card(int victoryPoints) {
         this.victoryPoints = victoryPoints;
+        this.id = 0;
     }
 
-    /**
-     * @return
-     */
     public int getVictoryPoints() {
         return victoryPoints;
     }
 
+    public int getId() {
+        return id;
+    }
 }

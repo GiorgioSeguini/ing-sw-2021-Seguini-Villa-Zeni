@@ -9,8 +9,12 @@ public class MoveWhiteConversion extends MoveType {
     public static final String className= "MoveWhiteConversion";
 
     public MoveWhiteConversion(int idPlayer, ArrayList<ResourceType> whitemarbles){
-        super(idPlayer, className);
+        super(idPlayer);
         this.whiteMarbles=whitemarbles;
     }
 
+    @Override
+    public String getClassName() {
+        return className;
+    }
 }

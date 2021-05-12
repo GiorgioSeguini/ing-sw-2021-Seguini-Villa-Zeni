@@ -3,20 +3,16 @@ package it.polimi.ingsw.client.move;
 public abstract class MoveType {
 
     private final int idPlayer;
-    private final String ClassName;
 
-    public MoveType(int idPlayer, String className){
+    public MoveType(int idPlayer){
         this.idPlayer = idPlayer;
-        this.ClassName=className;
     }
 
     public int getIdPlayer() {
         return idPlayer;
     }
 
-    public String getClassName() {
-        return ClassName;
-    }
+    public abstract String getClassName();
 
     @Override
     public boolean equals(Object other){
@@ -26,11 +22,8 @@ public abstract class MoveType {
         if(!(other instanceof MoveType))
             return false;
 
-        if(this.idPlayer!= ((MoveType) other).getIdPlayer()){
-            return false;
-        }
-
-        return this.ClassName.equals(((MoveType) other).getClassName());
+        return this.idPlayer == ((MoveType) other).getIdPlayer();
+        //TODO rivedere
     }
 
 }

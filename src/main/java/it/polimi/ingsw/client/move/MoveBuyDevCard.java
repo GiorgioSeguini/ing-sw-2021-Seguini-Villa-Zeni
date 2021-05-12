@@ -7,9 +7,14 @@ public class MoveBuyDevCard extends MoveType {
     public static final String className= "MoveBuyDevCard";
 
     public MoveBuyDevCard(int idPlayer, int pos, int indexCardToBuy) {
-        super(idPlayer,className);
+        super(idPlayer);
         this.pos = pos;
         this.indexCardToBuy = indexCardToBuy;
+    }
+
+    @Override
+    public String getClassName() {
+        return className;
     }
 
 }

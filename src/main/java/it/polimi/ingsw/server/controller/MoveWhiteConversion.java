@@ -13,7 +13,7 @@ public class MoveWhiteConversion extends MoveType{
     public static final String className= "MoveWhiteConversion";
 
     public MoveWhiteConversion(int idPlayer, ArrayList<ResourceType> whitemarbles){
-        super(idPlayer, className);
+        super(idPlayer);
         this.whiteMarbles=whitemarbles;
         this.allowedStatus = new PlayerStatus[]{PlayerStatus.NeedToConvert};
     }
@@ -40,6 +40,11 @@ public class MoveWhiteConversion extends MoveType{
         player.setErrorMessage(ErrorMessage.NoError);
         player.getConverter().WhiteMarbleConverter(whiteMarbles);
         player.setStatus(PlayerStatus.MovePerformed);
+    }
+
+    @Override
+    public String getClassName() {
+        return className;
     }
 
 }

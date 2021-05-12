@@ -116,6 +116,7 @@ public class PersonalBoard extends Observable<Message> {
             leaderCard[i].setStatus(LeaderStatus.onHand);
             this.OwnedLeaderCard[i]= leaderCard[i];
         }
+        change();
     }
 
     /**

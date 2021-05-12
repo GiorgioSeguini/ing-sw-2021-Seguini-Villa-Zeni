@@ -8,7 +8,7 @@ import java.util.ArrayList;
 /*Last Edit: Fabio*/
 public class PersonalBoard {
 
-    private static final int MAX_LEAD_CARD = 2;
+    public static final int MAX_LEAD_CARD = 2;
     private static final int MAX_DEV_CARD = 7;
 
     private ArrayList<DevelopmentCard>[] OwnedDevCards;
@@ -103,6 +103,20 @@ public class PersonalBoard {
             if(!OwnedDevCards[i].isEmpty()){
                 res.add(OwnedDevCards[i].get(0).getProductionPower());
             }
+        }
+
+        return res;
+    }
+
+    /**
+     *
+     * @return true if the leader card have already been chosen
+     */
+    public boolean isReady(){
+        boolean res = true;
+        for(LeaderCard card :OwnedLeaderCard){
+            if(card==null)
+                res=false;
         }
 
         return res;

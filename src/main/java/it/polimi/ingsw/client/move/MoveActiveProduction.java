@@ -10,8 +10,13 @@ public class MoveActiveProduction extends MoveType {
     public static final String className= "MoveActiveProduction";
 
     public MoveActiveProduction(int idPlayer, ArrayList<ProductionPower> toActive) {
-        super(idPlayer,className);
+        super(idPlayer);
         this.toActive = toActive;
+    }
+
+    @Override
+    public String getClassName() {
+        return className;
     }
 
 }

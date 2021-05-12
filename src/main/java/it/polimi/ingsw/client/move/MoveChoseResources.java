@@ -8,9 +8,13 @@ public class MoveChoseResources extends MoveType {
     public static final String className= "MoveChoseResources";
 
     public MoveChoseResources(int idPlayer, NumberOfResources ofYourChoiceInput, NumberOfResources ofYourChoiceOutput) {
-        super(idPlayer,className);
+        super(idPlayer);
         this.ofYourChoiceInput = ofYourChoiceInput;
         this.ofYourChoiceOutput = ofYourChoiceOutput;
     }
 
+    @Override
+    public String getClassName() {
+        return className;
+    }
 }
