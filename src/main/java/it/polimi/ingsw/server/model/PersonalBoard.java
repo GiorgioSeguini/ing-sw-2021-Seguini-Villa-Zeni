@@ -182,7 +182,7 @@ public class PersonalBoard extends Observable<Message> {
         String leaderCards = Starter.toJson(this.OwnedLeaderCard, type1);
         notify(new PersonalBoardMessage(devCards, leaderCards, this.ownerID));
     }
-    @Override
+    /*@Override
     public String toString(){
         String PB = "";
         PB += "Card's victory points: "+getVictoryPoints()+"\n";
@@ -210,6 +210,6 @@ public class PersonalBoard extends Observable<Message> {
         }
         PB += "************************************\n";
         return PB;
-    }
+    }*/
 
 }

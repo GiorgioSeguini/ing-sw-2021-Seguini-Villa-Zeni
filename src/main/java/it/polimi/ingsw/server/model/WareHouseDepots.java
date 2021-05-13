@@ -152,13 +152,13 @@ public class WareHouseDepots {
         }
     }
 
-    @Override
+    /*@Override
     public String toString(){
         String res = "Warehouse Depots: \n";
         for(Shelf x: shelfs){
             res+=x+"\n";
         }
         return res;
-    }
+    }*/
 
 }

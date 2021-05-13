@@ -72,7 +72,7 @@ public class Player {
         this.status = status;
     }
 
-    /*@Override
+    @Override
     public String toString(){
         String PL = "";
         PL += "Username: "+getUserName()+"\n";
@@ -87,5 +87,5 @@ public class Player {
         //PL += "Depots:\n";
         PL += ""+getDepots()+"\n";
         return PL;
-    }*/
+    }
 }

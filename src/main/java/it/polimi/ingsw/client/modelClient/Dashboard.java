@@ -58,7 +58,7 @@ public class Dashboard {
         }
     }
 
-    /*@Override
+    @Override
     public String toString(){
         String res="----------------------------------\n";
         int k=3;
@@ -76,5 +76,5 @@ public class Dashboard {
             k--;
         }
         return res;
-    }*/
+    }
 }

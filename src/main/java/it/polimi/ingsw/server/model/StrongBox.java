@@ -31,11 +31,11 @@ public class StrongBox {
         resources = new_resources;
     }
 
-    @Override
+    /*@Override
     public String toString(){
         String res="Strong Box\n";
 
         res+=getResources();
         return res;
-    }
+    }*/
 }

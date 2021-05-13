@@ -123,7 +123,7 @@ public class Player extends Observable<Message> {
         this.errorMessage=error;
     }
 
-    @Override
+    /*@Override
     public String toString(){
         String PL = "";
         PL += "Username: "+getUserName()+"\n";
@@ -138,5 +138,5 @@ public class Player extends Observable<Message> {
         //PL += "Depots:\n";
         PL += ""+getDepots()+"\n";
         return PL;
-    }
+    }*/
 }

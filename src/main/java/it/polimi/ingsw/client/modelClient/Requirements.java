@@ -75,7 +75,7 @@ public class Requirements {
         return this.numberOfResourceses.equals(other.numberOfResourceses);
     }
 
-    /*@Override
+    @Override
     public String toString(){
         String req = "";
         req += "Number of Resources: \n";
@@ -84,6 +84,6 @@ public class Requirements {
         //req += "\t"+getReq(); //TODO
         req += "\n";
         return req;
-    }*/
+    }
 
 }

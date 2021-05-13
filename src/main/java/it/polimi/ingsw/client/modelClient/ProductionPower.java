@@ -86,7 +86,7 @@ public class ProductionPower {
          return this.outputRes.equals(other.outputRes);
     }
 
-    /*@Override
+    @Override
     public String toString(){
         String PP ="";
         PP+="Input Resources" +"\n";
@@ -97,7 +97,7 @@ public class ProductionPower {
         PP+="YourChoiceIn: "+getOfYourChoiceInput() +"\n";
         PP+="YourChoiceOut: "+getOfYourChoiceOutput() +"\n";
         return PP;
-    }*/
+    }
 
 
 }

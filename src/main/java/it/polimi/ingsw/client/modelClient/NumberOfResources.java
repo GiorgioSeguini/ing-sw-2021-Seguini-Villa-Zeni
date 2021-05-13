@@ -97,7 +97,7 @@ public class NumberOfResources {
     }
 
     //TODO I NEED SETTER TESTING
-    /*@Override
+    @Override
     public String toString(){
         String resources="";
         resources+="Servants: "+ this.resources[0]+"\t";
@@ -106,5 +106,5 @@ public class NumberOfResources {
         resources+="Stones: "+ this.resources[3]+"\n";
 
         return resources;
-    }*/
+    }
 }

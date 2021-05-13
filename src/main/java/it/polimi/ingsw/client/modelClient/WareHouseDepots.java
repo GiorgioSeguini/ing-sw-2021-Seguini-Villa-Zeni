@@ -25,13 +25,13 @@ public class WareHouseDepots {
         return new NumberOfResources(x[0],x[1],x[2],x[3]);
     }
 
-    /*@Override
+    @Override
     public String toString(){
         String res = "Warehouse Depots: \n";
         for(Shelf x: shelfs){
             res+=x+"\n";
         }
         return res;
-    }*/
+    }
 
 }

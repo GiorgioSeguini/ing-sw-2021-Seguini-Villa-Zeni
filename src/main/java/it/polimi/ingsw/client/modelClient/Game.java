@@ -172,7 +172,7 @@ public class Game {
         this.leaderCards = leaderCards;
     }
 
-    /*@Override
+    @Override
     public String toString(){
         String game = "Players: ";
         for(Player p: players) {
@@ -187,5 +187,5 @@ public class Game {
         }
         game += "\n";
         return game;
-    }*/
+    }
 }

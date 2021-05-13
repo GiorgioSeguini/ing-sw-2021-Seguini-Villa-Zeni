@@ -50,7 +50,7 @@ public class LeaderCard extends Card {
         return ability.equals(other.ability);
     }
 
-    /*@Override
+    @Override
     public String toString(){
         String LC ="";
         LC += "Status: "+getStatus()+"\n";
@@ -58,8 +58,8 @@ public class LeaderCard extends Card {
         LC += "\t"+getRequirements();
         LC += "Victory Points: "+getVictoryPoints()+"\n";
         LC += "Ability: \n";
-        LC += "\t "+getAbility().getName()+"\tResources: "+getAbility().getTypeOfRes()+"\n";
+        LC += "\t "+getAbility().getAbilityType()+"\tResources: "+getAbility().getResource()+"\n";
         return LC;
-    }*/
+    }
 
 }

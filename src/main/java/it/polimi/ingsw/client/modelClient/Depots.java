@@ -43,7 +43,7 @@ public class Depots {
         return strongBox;
     }
 
-    /*@Override
+    @Override
     public String toString(){
         String res="------------\n";
         res+="| Depots |\n";
@@ -53,5 +53,5 @@ public class Depots {
         res+=this.getWareHouseDepots();
         res+="\n";
         return res;
-    }*/
+    }
 }

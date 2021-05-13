@@ -137,7 +137,7 @@ public class PersonalBoard {
         }
     }
 
-    /*@Override
+    @Override
     public String toString(){
         String PB = "";
         PB += "Card's victory points: "+getVictoryPoints()+"\n";
@@ -158,5 +158,5 @@ public class PersonalBoard {
         }
         PB += "************************************\n";
         return PB;
-    }*/
+    }
 }

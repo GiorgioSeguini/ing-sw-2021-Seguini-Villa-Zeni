@@ -283,7 +283,7 @@ public class Game extends Observable<Message> {
         notify(new GameMessage(getStatus(), getCurrIndex()));
     }
 
-    @Override
+    /*@Override
     public String toString(){
         String game = "Players: ";
         for(Player p: players) {
@@ -298,5 +298,5 @@ public class Game extends Observable<Message> {
         }
         game += "\n";
         return game;
-    }
+    }*/
 }

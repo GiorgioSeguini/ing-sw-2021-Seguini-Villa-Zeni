@@ -97,11 +97,11 @@ public class FaithTrack extends Observable<Message> {
         String faithTrack = Starter.toJson(this, FaithTrack.class);
         notify(new FaithTrackMessage(faithTrack, this.ownerID));
     }
-    @Override
+    /*@Override
     public String toString(){
         String FT = "";
         FT += "Faithpoints: "+getFaithPoints()+"\n";
         FT += "FaithTrack's victory points: "+getVictoryPoints()+"\n";
         return  FT;
-    }
+    }*/
 }

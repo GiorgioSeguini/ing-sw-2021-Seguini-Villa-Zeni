@@ -166,7 +166,7 @@ public class NumberOfResources {
         return true;
     }
 
-    @Override
+    /*@Override
     public String toString(){
         String res="";
         res+="Servants: "+resources[0]+"\t";
@@ -175,5 +175,5 @@ public class NumberOfResources {
         res+="Stones: "+resources[3]+"\n";
 
         return res;
-    }
+    }*/
 }

@@ -95,7 +95,7 @@ public class Market extends Observable<Message> {
         notify(new MarketMessage(marbles));
     }
     //TODO discutere lo switch case
-    @Override
+    /*@Override
     public String toString(){
         String tray="";
         for(int i=0;i<N_ROW;i++){
@@ -128,5 +128,5 @@ public class Market extends Observable<Message> {
         }
         tray += "^\t^\t^\t^\t "+externalMarble+"\n";
         return tray;
-    }
+    }*/
 }

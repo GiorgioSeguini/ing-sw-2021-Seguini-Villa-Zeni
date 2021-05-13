@@ -84,7 +84,7 @@ public class DevelopmentCard extends Card {
 
         return res;
     }*/
-    @Override
+    /*@Override
     public String toString(){
         String card="\n";
         card+="CARD "+this.getId()+"\n";
@@ -102,6 +102,6 @@ public class DevelopmentCard extends Card {
         card+="\t\tYourChoiceIn: "+getProductionPower().getOfYourChoiceInput() +"\n";
         card+="\t\tYourChoiceOut: "+getProductionPower().getOfYourChoiceOutput() +"\n";
         return card;
-    }
+    }*/
 
 }

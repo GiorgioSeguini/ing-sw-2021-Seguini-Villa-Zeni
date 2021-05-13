@@ -128,7 +128,7 @@ public class Depots extends Observable<Message> {
         notify(new DepotsMessage(depots, this.ownerID));
     }
 
-    @Override
+    /*@Override
     public String toString(){
         String res="------------\n";
         res+="| Depots |\n";
@@ -138,5 +138,5 @@ public class Depots extends Observable<Message> {
         res+=this.getWareHouseDepots();
         res+="\n";
         return res;
-    }
+    }*/
 }
