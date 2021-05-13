@@ -94,7 +94,7 @@ public class Market extends Observable<Message> {
         marbles.add(externalMarble);
         notify(new MarketMessage(marbles));
     }
-    //TODO discutere lo switch case
+
     /*@Override
     public String toString(){
         String tray="";
@@ -102,31 +102,12 @@ public class Market extends Observable<Message> {
             int count=0;
             MarbleColor[] marbleColors= getRow(i);
             for(MarbleColor x: marbleColors) {
-                switch (x){
-                    case RED:
-                        tray+= "R\t";
-                        break;
-                    case BLUE:
-                        tray+= "B\t";
-                        break;
-                    case GREY:
-                        tray+= "G\t";
-                        break;
-                    case PURPLE:
-                        tray+= "P\t";
-                        break;
-                    case WHITE:
-                        tray+= "W\t";
-                        break;
-                    case YELLOW:
-                        tray+= "Y\t";
-                        break;
-                }
+                tray += "\t"+x.getChar();
                 count++;
                 if(count==4) tray += "<-\n";
             }
         }
-        tray += "^\t^\t^\t^\t "+externalMarble+"\n";
+        tray += "\t^\t^\t^\t^\t "+externalMarble.getChar()+"\n";
         return tray;
     }*/
 }

@@ -119,7 +119,14 @@ public class Requirements {
         req += "Number of Resources: \n";
         req += "\t"+getNumberOfResourceses();
         req += "Number or Type of Development card: \n";
-        //req += "\t"+getReq();
+        for(int i = 0; i< ColorDevCard.values().length; i++)
+            for(int j = 0; j< Level.values().length; j++)
+                if(this.minNumber[i][j] >0){
+                    req += "\t"+minNumber[i][j];
+                    req += "\t"+ColorDevCard.values()[i];
+                    req += "\tLevel: "+Level.values()[j];
+                }
+
         req += "\n";
         return req;
     }*/
