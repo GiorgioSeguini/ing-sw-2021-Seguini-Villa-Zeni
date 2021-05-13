@@ -84,7 +84,7 @@ public class Game extends Observable<Message> {
      * @return
      */
     public Player getCurrPlayer() {
-        if(status==GameStatus.Initial || status == GameStatus.Ended) return null;
+        if(status == GameStatus.Ended) return null;
         return players.get(indexPlayingPlayer);
     }
 
@@ -261,6 +261,10 @@ public class Game extends Observable<Message> {
         return leaderCards;
     }
 
+    /**
+     * @param ID of type int
+     * @return a reference to the corresponding player, null if she does not exist
+     */
     public Player getPlayerFromID(int ID){
         for(Player player : getPlayers()){
             if(player.getID()==ID)

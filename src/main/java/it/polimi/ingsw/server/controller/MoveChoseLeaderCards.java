@@ -22,19 +22,11 @@ public class MoveChoseLeaderCards extends MoveType{
 
     @Override
     public boolean canPerform(Game game){
-        Player player =game.getPlayerFromID(getIdPlayer());
-        if(game.getStatus() != GameStatus.Initial){
-            player.setErrorMessage(ErrorMessage.MoveNotAllowed);
-            return false;
-        }
+        if(!super.initialMove(game)) return false;
 
-        if(game.getPlayerIndex(player)<0){
-            player.setErrorMessage(ErrorMessage.BadChoice);
-            return false;
-        }
+        Player player = game.getPlayerFromID(getIdPlayer());
 
         ArrayList<LeaderCard> leaderCards = game.findMoreLeaderCard(indexLeaderCards);
-
         boolean goodChoice = true;
         for(LeaderCard card : leaderCards){
             if(!game.getActivableLeadCard(player).contains(card)){

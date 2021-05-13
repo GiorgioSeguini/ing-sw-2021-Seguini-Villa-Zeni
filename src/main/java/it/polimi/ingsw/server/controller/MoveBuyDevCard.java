@@ -15,12 +15,12 @@ public class MoveBuyDevCard extends MoveType{
     private final int pos;
     private final int indexCardToBuy;
     public static final String className= "MoveBuyDevCard";
+    private static final PlayerStatus[] allowedStatus = new PlayerStatus[]{PlayerStatus.Active};
 
     public MoveBuyDevCard(int idPlayer, int pos, int indexCardToBuy) {
         super(idPlayer);
         this.pos = pos;
         this.indexCardToBuy = indexCardToBuy;
-        this.allowedStatus = new PlayerStatus[]{PlayerStatus.Active};
     }
 
     public int getPos() {
@@ -34,7 +34,7 @@ public class MoveBuyDevCard extends MoveType{
     @Override
     public boolean canPerform(Game game){
 
-        if(!super.canPerform(game)) return false;
+        if(!super.simpleCheck(game, allowedStatus)) return false;
         Player player =game.getPlayerFromID(getIdPlayer());
 
         DevelopmentCard cardToBuy = game.getDashboard().findDevCard(indexCardToBuy);

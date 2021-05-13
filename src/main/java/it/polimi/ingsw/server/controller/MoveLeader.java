@@ -13,17 +13,17 @@ public class MoveLeader extends MoveType{
     int move;
     int idLeaderCard;
     public static final String className= "MoveLeader";
+    private static final PlayerStatus[] allowedStatus = new PlayerStatus[]{PlayerStatus.Active, PlayerStatus.MovePerformed};
 
     public MoveLeader(int idPlayer, int move, int idLeaderCard) {
         super(idPlayer);
         this.move = move;
         this.idLeaderCard = idLeaderCard;
-        this.allowedStatus = new PlayerStatus[]{PlayerStatus.Active, PlayerStatus.MovePerformed};
     }
 
     @Override
     public boolean canPerform(Game game){
-        if(!super.canPerform(game)) return false;
+        if(!super.simpleCheck(game, allowedStatus)) return false;
 
         LeaderCard leaderCard = game.findLeaderCard(idLeaderCard);
         if(leaderCard==null) return false;

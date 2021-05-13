@@ -11,11 +11,11 @@ import java.util.ArrayList;
 public class MoveWhiteConversion extends MoveType{
     private final ArrayList<ResourceType> whiteMarbles;
     public static final String className= "MoveWhiteConversion";
+    private static final PlayerStatus[] allowedStatus = new PlayerStatus[]{PlayerStatus.NeedToConvert};
 
     public MoveWhiteConversion(int idPlayer, ArrayList<ResourceType> whitemarbles){
         super(idPlayer);
         this.whiteMarbles=whitemarbles;
-        this.allowedStatus = new PlayerStatus[]{PlayerStatus.NeedToConvert};
     }
 
     public ArrayList<ResourceType> getWhiteMarbles() {
@@ -24,7 +24,7 @@ public class MoveWhiteConversion extends MoveType{
 
     @Override
     public boolean canPerform(Game game){
-        if(!super.canPerform(game)) return false;
+        if(!super.simpleCheck(game, allowedStatus)) return false;
 
         Player player =game.getPlayerFromID(getIdPlayer());
         if(!player.getConverter().CheckIntegrityToConvert(whiteMarbles)){

@@ -10,7 +10,6 @@ public abstract class MoveType {
     //raccogliere tutte le info chieste al giocatore e chiama l'update del controller
 
     private final int idPlayer;
-    PlayerStatus[] allowedStatus;
 
     public MoveType(int idPlayer){
         this.idPlayer = idPlayer;
@@ -25,27 +24,7 @@ public abstract class MoveType {
     /**
      * @return true if the player is in the correct status and it's his turn
      */
-    public boolean canPerform(Game game){
-        Player player = game.getPlayerFromID(idPlayer);
-        if(!game.getCurrPlayer().equals(player)) {
-            player.setErrorMessage(ErrorMessage.NotYourTurn);
-            return false;
-        }
-
-        player= game.getCurrPlayer();
-
-        boolean goodStatus=false;
-        for(PlayerStatus status : allowedStatus) {
-            if (player.getStatus() == status) {
-                goodStatus=true;
-            }
-        }
-        if(!goodStatus){
-            player.setErrorMessage(ErrorMessage.MoveNotAllowed);
-        }
-
-        return goodStatus;
-    }
+    public abstract boolean canPerform(Game game);
 
     public abstract void performMove(Game game);
 
@@ -60,4 +39,47 @@ public abstract class MoveType {
         return this.idPlayer == ((MoveType) other).getIdPlayer();
     }
 
+    protected boolean simpleCheck(Game game, PlayerStatus[] allowedStatus){
+        Player player = game.getPlayerFromID(idPlayer);
+        if(player==null)
+            return false;
+
+        if(game.getStatus()!= GameStatus.Running && game.getStatus()!=GameStatus.LastTurn){
+            player.setErrorMessage(ErrorMessage.MoveNotAllowed);
+        }
+        if(!game.getCurrPlayer().equals(player)) {
+            player.setErrorMessage(ErrorMessage.NotYourTurn);
+            return false;
+        }
+
+        boolean goodStatus=false;
+        for(PlayerStatus status : allowedStatus) {
+            if (player.getStatus() == status) {
+                goodStatus=true;
+            }
+        }
+        if(!goodStatus){
+            player.setErrorMessage(ErrorMessage.MoveNotAllowed);
+        }
+
+        return goodStatus;
+    }
+
+    protected boolean initialMove(Game game){
+        Player player = game.getPlayerFromID(idPlayer);
+        if(player==null)
+            return false;
+
+        if(game.getStatus() != GameStatus.Initial){
+            player.setErrorMessage(ErrorMessage.MoveNotAllowed);
+            return false;
+        }
+
+        if(!game.getCurrPlayer().equals(player)) {
+            player.setErrorMessage(ErrorMessage.NotYourTurn);
+            return false;
+        }
+
+        return true;
+    }
 }

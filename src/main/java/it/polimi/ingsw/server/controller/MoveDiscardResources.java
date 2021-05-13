@@ -12,11 +12,11 @@ import it.polimi.ingsw.server.model.exception.UnableToFillException;
 public class MoveDiscardResources extends MoveType{
     private final NumberOfResources toDiscard;
     public static final String className= "MoveDiscardResources";
+    private static final PlayerStatus[] allowedStatus = new PlayerStatus[]{PlayerStatus.NeedToStore};
 
     public MoveDiscardResources(int idPlayer, NumberOfResources toDiscard){
         super(idPlayer);
         this.toDiscard=toDiscard;
-        this.allowedStatus = new PlayerStatus[]{PlayerStatus.NeedToStore};
     }
 
     public NumberOfResources getToDiscard() {
@@ -25,7 +25,7 @@ public class MoveDiscardResources extends MoveType{
 
     @Override
     public boolean canPerform(Game game){
-        return super.canPerform(game);
+        return super.simpleCheck(game, allowedStatus);
     }
 
     @Override

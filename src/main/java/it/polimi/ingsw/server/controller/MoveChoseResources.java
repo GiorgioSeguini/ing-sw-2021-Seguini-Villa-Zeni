@@ -12,12 +12,12 @@ public class MoveChoseResources extends MoveType{
     private final NumberOfResources ofYourChoiceInput;
     private final NumberOfResources ofYourChoiceOutput;
     public static final String className= "MoveChoseResources";
+    private static final PlayerStatus[] allowedStatus = new PlayerStatus[]{PlayerStatus.NeedToChoseRes};
 
     public MoveChoseResources(int idPlayer, NumberOfResources ofYourChoiceInput, NumberOfResources ofYourChoiceOutput) {
         super(idPlayer);
         this.ofYourChoiceInput = ofYourChoiceInput;
         this.ofYourChoiceOutput = ofYourChoiceOutput;
-        this.allowedStatus = new PlayerStatus[]{PlayerStatus.NeedToChoseRes};
     }
 
     public NumberOfResources getOfYourChoiceInput() {
@@ -30,7 +30,7 @@ public class MoveChoseResources extends MoveType{
 
     @Override
     public boolean canPerform(Game game){
-        return super.canPerform(game);
+        return super.simpleCheck(game, allowedStatus);
     }
 
     @Override

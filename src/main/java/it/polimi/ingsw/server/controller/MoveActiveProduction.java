@@ -14,16 +14,16 @@ public class MoveActiveProduction extends MoveType{
 
     ArrayList<ProductionPower> toActive;
     public static final String className= "MoveActiveProduction";
+    private static final PlayerStatus[] allowedStatus = new PlayerStatus[]{PlayerStatus.Active};
 
     public MoveActiveProduction(int idPlayer, ArrayList<ProductionPower> toActive) {
         super(idPlayer);
         this.toActive = toActive;
-        this.allowedStatus = new PlayerStatus[]{PlayerStatus.Active};
     }
 
     @Override
     public boolean canPerform(Game game){
-        if(!super.canPerform(game)) return false;
+        if(!super.simpleCheck(game, allowedStatus)) return false;
         Player player =game.getPlayerFromID(getIdPlayer());
 
         //check if current player really own the productionPowers that want to active

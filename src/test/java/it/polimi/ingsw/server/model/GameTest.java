@@ -42,7 +42,7 @@ class GameTest {
         assertEquals(GameStatus.Initial, game.getStatus());
         game.updateStatus();
         assertEquals(GameStatus.Initial, game.getStatus());
-        assertNull(game.getCurrPlayer());
+
         assertEquals(0, game.getCurrIndex());
 
         //check players

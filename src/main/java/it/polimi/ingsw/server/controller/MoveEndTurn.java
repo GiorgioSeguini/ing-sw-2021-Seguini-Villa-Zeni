@@ -8,15 +8,15 @@ import it.polimi.ingsw.constant.enumeration.PlayerStatus;
 public class MoveEndTurn extends MoveType{
 
     public static final String className= "MoveEndTurn";
+    private static final PlayerStatus[] allowedStatus = new PlayerStatus[]{PlayerStatus.MovePerformed};
 
     public MoveEndTurn(int idPlayer) {
         super(idPlayer);
-        this.allowedStatus = new PlayerStatus[]{PlayerStatus.MovePerformed};
     }
 
     @Override
     public boolean canPerform(Game game){
-        return super.canPerform(game);
+        return super.simpleCheck(game, allowedStatus);
     }
 
     @Override

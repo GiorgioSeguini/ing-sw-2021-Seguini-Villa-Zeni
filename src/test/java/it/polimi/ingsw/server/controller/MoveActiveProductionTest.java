@@ -27,7 +27,6 @@ public class MoveActiveProductionTest {
         for(ProductionPower x : moveActiveProduction.toActive) {
             assertNotNull(x);
         }
-        assertNotNull(moveActiveProduction.allowedStatus);
     }
 
     @Test

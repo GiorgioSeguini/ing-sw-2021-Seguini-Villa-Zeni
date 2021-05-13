@@ -14,11 +14,11 @@ public class MovetypeMarket extends MoveType{
 
     private final int indexToBuy;
     public static final String className= "MovetypeMarket";
+    private static final PlayerStatus[] allowedStatus = new PlayerStatus[]{PlayerStatus.Active};
 
     public MovetypeMarket(int idPlayer, int indextobuy){
         super(idPlayer);
         this.indexToBuy=indextobuy;
-        this.allowedStatus = new PlayerStatus[]{PlayerStatus.Active};
     }
 
     public int getIndextobuy() {
@@ -40,7 +40,7 @@ public class MovetypeMarket extends MoveType{
 
     @Override
     public boolean canPerform(Game game){
-        return super.canPerform(game);
+        return super.simpleCheck(game, allowedStatus);
     }
 
     /**This method tries to convert the Marble as the player asked. If it can it makes the conversion
