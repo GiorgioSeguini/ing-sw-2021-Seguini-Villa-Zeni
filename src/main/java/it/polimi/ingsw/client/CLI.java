@@ -52,11 +52,15 @@ public class CLI implements Runnable{
         if(game.isMyTurn()){
             moves.clear();
             moves.add(new MoveActiveProduction(myID));
+            moves.add(new MoveBuyDevCard(myID));
             moves.add(new MoveChoseInitialResources(myID));
             moves.add(new MoveChoseLeaderCards(myID));
-            moves.add( new MovetypeMarket(myID));
+            moves.add(new MoveChoseResources(myID));
+            moves.add(new MoveDiscardResources(myID));
             moves.add(new MoveEndTurn(myID));
-            //TODO aggiungere tutti o trovare un modo più efficente
+            moves.add(new MoveLeader(myID));
+            moves.add(new MovetypeMarket(myID));
+            moves.add(new MoveWhiteConversion(myID));
 
             boolean goodchoice = false;
             int index = -1;
@@ -88,28 +92,6 @@ public class CLI implements Runnable{
         }
         else{
             System.out.println("E' il turno di :" + game.getCurrPlayer().getUserName());
-        }
-    }
-
-    //da rimuovere
-    private void perforMove() {
-        System.out.println("Scegli che mossa fare: " +
-                "1: attiva carta leader" +
-                "2: compra dal mercato" +
-                "3: attiva produzione" +
-                "4: compra carta sviluppo");
-        int choice = in.nextInt();
-        switch (choice) {
-            case 1:
-                //TODO
-                break;
-            case 2:
-
-                break;
-            //TODO
-            default:
-                System.out.println("Mossa non valida");
-                break;
         }
     }
 
