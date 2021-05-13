@@ -210,6 +210,11 @@ public class Game extends Observable<Message> {
             if(needToUpdate) {
                 status = GameStatus.Running;
                 players.get(0).setStatus(PlayerStatus.Active);
+                indexPlayingPlayer = 0;
+                change();
+            }else if(getCurrPlayer().getPersonalBoard().isReady()  && getCurrPlayer().getDepots().getResources().size()==getInitialResources(getCurrPlayer())){
+                indexPlayingPlayer++;
+                indexPlayingPlayer = indexPlayingPlayer%players.size();
                 change();
             }
         }

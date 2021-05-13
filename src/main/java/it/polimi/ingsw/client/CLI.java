@@ -4,10 +4,7 @@ import it.polimi.ingsw.client.modelClient.Game;
 import it.polimi.ingsw.client.modelClient.LeaderCard;
 import it.polimi.ingsw.client.modelClient.NumberOfResources;
 import it.polimi.ingsw.client.modelClient.PersonalBoard;
-import it.polimi.ingsw.client.move.MoveChoseInitialResources;
-import it.polimi.ingsw.client.move.MoveChoseLeaderCards;
-import it.polimi.ingsw.client.move.MoveType;
-import it.polimi.ingsw.client.move.MovetypeMarket;
+import it.polimi.ingsw.client.move.*;
 import it.polimi.ingsw.client.parser.StarterClient;
 import it.polimi.ingsw.constant.enumeration.GameStatus;
 import it.polimi.ingsw.constant.enumeration.ResourceType;
@@ -22,44 +19,70 @@ public class CLI implements Runnable{
     private Game game;
     Scanner in = new Scanner(System.in);
     DataOutputStream socket;
+    ArrayList<MoveType> moves;
+
     public CLI(Client client, DataOutputStream writer) {
         this.client = client;
         this.socket = writer;
+        this.moves = new ArrayList<>();
     }
 
     @Override
     public void run(){
         this.game = client.getSimpleGame();
-        System.out.println("Hello");
-        if(game.getStatus()== GameStatus.Initial){
-            System.out.println("Fai le tue scelte iniziali");
-            if(!game.getPlayerFromID(game.getMyID()).getPersonalBoard().isReady()){
+        if(game==null) return;
+
+        boolean moveAviable = false;
+        int myID = game.getMyID();
+        if(game.isMyTurn()){
+            moves.clear();
+            moves.add(new MoveActiveProduction(myID));
+            moves.add(new MoveChoseInitialResources(myID));
+            moves.add(new MoveChoseLeaderCards(myID));
+            moves.add( new MovetypeMarket(myID));
+            moves.add(new MoveEndTurn(myID));
+            //TODO aggiungere tutti o trovare un modo più efficente
+
+            boolean goodchoice = false;
+            int index = -1;
+            System.out.println("Hello");
+            System.out.println("cosa desideri fare?");
+            do {
+                for (int i=0; i< moves.size(); i++) {
+                    if (moves.get(i).canPerform(game)) {
+                        System.out.println((i + 1) + ": " + moves.get(i).getClassName());
+                        moveAviable = true;
+                    }
+                }
+                if(!moveAviable)
+                    break;
+                index = in.nextInt() -1;
+                try {
+                    if (moves.get(index).canPerform(game))
+                        goodchoice = true;
+                } catch (IndexOutOfBoundsException ignored) {
+                }
+                if (!goodchoice) System.out.println("Invalid index!");
+            }while(!goodchoice);
+
+            if(moveAviable) {
+                MoveType move = moves.get(index);
+                move.updateCLI(game, in);
+                send(move);
+            }
+        }
+        else{
+            System.out.println("E' il turno di :" + game.getCurrPlayer().getUserName());
+        }
+
+            /*if(!game.getPlayerFromID(game.getMyID()).getPersonalBoard().isReady()){
                 initialLeaderCard();
             }else if(game.getInitialResources()>game.getPlayerFromID(game.getMyID()).getDepots().getResources().size()){
                 initialResources();
-            }
-
-        }
-        if(game.isMyTurn()){
-            System.out.println("It's your turn");
-            System.out.println("cosa desideri fare?");
-            System.out.println("1: vedere stato" +
-                    "2: scegliere una mossa");
-            int choice = in.nextInt();
-            switch (choice){
-                case 1:
-                    //TODO
-                    break;
-                case 2:
-                    perforMove();
-                    break;
-                default:
-                    System.out.println("Mossa non valida");
-                    break;
-            }
-        }
+            }*/
     }
 
+    //da rimuovere
     private void perforMove() {
         System.out.println("Scegli che mossa fare: " +
                 "1: attiva carta leader" +
@@ -72,7 +95,7 @@ public class CLI implements Runnable{
                 //TODO
                 break;
             case 2:
-                market();
+
                 break;
             //TODO
             default:
@@ -81,69 +104,6 @@ public class CLI implements Runnable{
         }
     }
 
-    private void market(){
-        System.out.println(game.getMarketTray());
-        System.out.println("Vuoi comprare una riga o una colonna?");
-        int index = 0;
-        String c = in.nextLine();
-        switch(c) {
-            case "r":
-            case "riga":
-                index = 0;
-                break;
-            case "c":
-            case "colonna":
-                index = 4;
-                break;
-            default:
-                System.out.println("Invalid choice");
-
-        }
-
-        System.out.println("Inserisci l'indice desiderato");
-        int temp = in.nextInt();
-        if(temp<0 || temp>7){
-            System.out.println("Invalid choice");
-        }
-        index+=temp;
-        MoveType move = new MovetypeMarket(game.getMyID(), index);
-        send(move);
-    }
-
-    private void initialLeaderCard(){
-        System.out.println("Scegli "+ PersonalBoard.MAX_LEAD_CARD + " carte leader tra le seguenti:");
-        for(LeaderCard card : game.getLeaderCards()){
-            System.out.println(card);
-        }
-        ArrayList<Integer> choice = new ArrayList<>();
-        while(choice.size() < PersonalBoard.MAX_LEAD_CARD){
-            int index = in.nextInt();
-            if(index>0 && index<game.getLeaderCards().size()){
-                choice.add(game.getLeaderCards().get(index).getId());
-            }else{
-                System.out.println("Indice non valido");
-            }
-        }
-        MoveType move = new MoveChoseLeaderCards(game.getMyID(), choice);
-        send(move);
-    }
-
-    private void initialResources(){
-        System.out.println("Scegli le risorse iniziali:");
-        NumberOfResources resources= new NumberOfResources();
-
-        for(ResourceType type : ResourceType.values()){
-            System.out.println(type);
-        }
-        while(resources.size()< game.getInitialResources()){
-            int index = in.nextInt();
-            if(index>0 && index-1 < ResourceType.values().length){
-                resources.add(ResourceType.values()[index], 1);
-            }
-        }
-        MoveType move = new MoveChoseInitialResources(game.getMyID(), resources);
-        send(move);
-    }
 
     private void send(MoveType move) {
         try {

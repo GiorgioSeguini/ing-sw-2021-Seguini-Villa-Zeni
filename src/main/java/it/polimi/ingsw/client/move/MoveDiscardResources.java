@@ -1,18 +1,29 @@
 package it.polimi.ingsw.client.move;
 
+import it.polimi.ingsw.client.modelClient.Game;
 import it.polimi.ingsw.client.modelClient.NumberOfResources;
+import it.polimi.ingsw.constant.enumeration.PlayerStatus;
 
 public class MoveDiscardResources extends MoveType {
-    private final NumberOfResources toDiscard;
+    private NumberOfResources toDiscard;
     public static final String className= "MoveDiscardResources";
+    private static final PlayerStatus[] allowedStatus = new PlayerStatus[]{PlayerStatus.NeedToStore};
 
-    public MoveDiscardResources(int idPlayer, NumberOfResources toDiscard){
+    public MoveDiscardResources(int idPlayer){
         super(idPlayer);
-        this.toDiscard=toDiscard;
     }
 
     @Override
     public String getClassName() {
         return className;
+    }
+
+    public void setToDiscard(NumberOfResources toDiscard) {
+        this.toDiscard = toDiscard;
+    }
+
+    @Override
+    public boolean canPerform(Game game) {
+        return simpleCheck(game, allowedStatus);
     }
 }

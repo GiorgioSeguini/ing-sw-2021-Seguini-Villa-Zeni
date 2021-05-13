@@ -46,6 +46,7 @@ public abstract class MoveType {
 
         if(game.getStatus()!= GameStatus.Running && game.getStatus()!=GameStatus.LastTurn){
             player.setErrorMessage(ErrorMessage.MoveNotAllowed);
+            return false;
         }
         if(!game.getCurrPlayer().equals(player)) {
             player.setErrorMessage(ErrorMessage.NotYourTurn);

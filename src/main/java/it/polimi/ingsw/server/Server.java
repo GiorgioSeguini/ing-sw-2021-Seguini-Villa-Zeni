@@ -76,6 +76,7 @@ public class Server {
                 //add model - view links
                 game.getMarketTray().addObserver(view);
                 game.getDashboard().addObserver(view);
+                game.addObserver(view);
                 for(Player player : game.getPlayers()){
                     player.getPersonalBoard().addObserver(view);
                     player.getFaithTrack().addObserver(view);

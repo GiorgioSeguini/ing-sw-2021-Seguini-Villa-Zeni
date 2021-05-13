@@ -66,7 +66,7 @@ public class Game {
      * @return a reference to the only player witch state is Active
      */
     public Player getCurrPlayer() {
-        if(status== GameStatus.Initial || status == GameStatus.Ended) return null;
+        if(status == GameStatus.Ended) return null;
         return players.get(indexPlayingPlayer);
     }
 
