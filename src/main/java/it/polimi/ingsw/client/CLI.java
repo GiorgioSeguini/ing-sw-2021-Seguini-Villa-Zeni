@@ -13,8 +13,9 @@ import java.io.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
-public class CLI {
+public class CLI implements Runnable{
     private final Client client;
     private Game game;
     Scanner in = new Scanner(System.in);
@@ -27,8 +28,22 @@ public class CLI {
         this.moves = new ArrayList<>();
     }
 
+    @Override
+    public void run() {
+        while(client.isActive()){
+            try {
+                TimeUnit.MILLISECONDS.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            if(client.recived){
+                update();
+                client.recived=false;
+            }
+        }
+    }
 
-    public void run(){
+    public void update(){
         this.game = client.getSimpleGame();
         if(game==null) return;
 
@@ -74,12 +89,6 @@ public class CLI {
         else{
             System.out.println("E' il turno di :" + game.getCurrPlayer().getUserName());
         }
-
-            /*if(!game.getPlayerFromID(game.getMyID()).getPersonalBoard().isReady()){
-                initialLeaderCard();
-            }else if(game.getInitialResources()>game.getPlayerFromID(game.getMyID()).getDepots().getResources().size()){
-                initialResources();
-            }*/
     }
 
     //da rimuovere

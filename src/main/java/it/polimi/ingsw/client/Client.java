@@ -14,6 +14,7 @@ public class Client {
 
     private String ip;
     private int port;
+    boolean recived;
     Game simpleGame;
     CLI cli;
 
@@ -43,7 +44,7 @@ public class Client {
                         System.out.println(read);
                         Message received = StarterClient.fromJson(read, Message.class);
                         received.handleMessage(Client.this);
-                        cli.run();
+                        recived=true;
                     }
                 } catch (Exception e){
                     setActive(false);
@@ -86,8 +87,11 @@ public class Client {
         socketOut.flush();
         try{
             cli = new CLI(this, socketOut);
+            Thread t1 = new Thread(cli);
+            t1.start();
             Thread t0 = asyncReadFromSocket(socketIn);
             t0.join();
+            t1.join();
         } catch(InterruptedException | NoSuchElementException e){
             System.out.println("Connection closed from the client side");
         } finally {
