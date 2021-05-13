@@ -8,8 +8,8 @@ import it.polimi.ingsw.constant.enumeration.ResourceType;
  */
 public class Depots {
     private static final int DIVIDER_VICTORY_POINTS = 5;
-    private StrongBox strongBox;
-    private WareHouseDepots wareHouseDepots;
+    private final StrongBox strongBox;
+    private final WareHouseDepots wareHouseDepots;
     /**
      * Default constructor
      */

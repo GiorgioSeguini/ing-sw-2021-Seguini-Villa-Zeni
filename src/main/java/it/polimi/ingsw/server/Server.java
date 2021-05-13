@@ -81,6 +81,7 @@ public class Server {
                     player.getPersonalBoard().addObserver(view);
                     player.getFaithTrack().addObserver(view);
                     player.getDepots().addObserver(view);
+                    player.addObserver(view);
                 }
 
                 //add controller - view links

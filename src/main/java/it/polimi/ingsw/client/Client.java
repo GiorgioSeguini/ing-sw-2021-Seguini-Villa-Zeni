@@ -38,12 +38,12 @@ public class Client {
             public void run() {
                 try {
                     String read;
-                    while (isActive()) {
+                    while (true) {
                         read=socketIn.readUTF();
                         System.out.println(read);
                         Message received = StarterClient.fromJson(read, Message.class);
                         received.handleMessage(Client.this);
-                        new Thread(cli).start();
+                        cli.run();
                     }
                 } catch (Exception e){
                     setActive(false);

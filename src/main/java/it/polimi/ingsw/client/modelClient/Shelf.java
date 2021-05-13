@@ -12,7 +12,7 @@ public class Shelf {
     private ResourceType restype;
     private final int MaxSize;
     private int used;
-    boolean is_extra_shelf;
+    transient boolean is_extra_shelf;
 
     /*default constructor*/
     public Shelf(ResourceType type, int maxSize) {

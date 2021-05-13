@@ -14,7 +14,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class CLI implements Runnable{
+public class CLI {
     private final Client client;
     private Game game;
     Scanner in = new Scanner(System.in);
@@ -27,7 +27,7 @@ public class CLI implements Runnable{
         this.moves = new ArrayList<>();
     }
 
-    @Override
+
     public void run(){
         this.game = client.getSimpleGame();
         if(game==null) return;

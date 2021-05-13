@@ -68,6 +68,10 @@ public class Player {
         this.depots= depots;
     }
 
+    public void setStatus(PlayerStatus status) {
+        this.status = status;
+    }
+
     /*@Override
     public String toString(){
         String PL = "";

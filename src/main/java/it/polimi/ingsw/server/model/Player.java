@@ -3,12 +3,15 @@ package it.polimi.ingsw.server.model;
 import it.polimi.ingsw.constant.enumeration.ErrorMessage;
 import it.polimi.ingsw.constant.enumeration.PlayerStatus;
 import it.polimi.ingsw.constant.enumeration.ResourceType;
+import it.polimi.ingsw.constant.message.Message;
+import it.polimi.ingsw.constant.message.PlayerMessage;
 import it.polimi.ingsw.server.model.exception.OutOfResourcesException;
+import it.polimi.ingsw.server.observer.Observable;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
 /*Last Edit: Fabio*/
-public class Player {
+public class Player extends Observable<Message> {
 
     private static final AtomicInteger nextID = new AtomicInteger();
 
@@ -109,6 +112,7 @@ public class Player {
 
     public void setStatus(PlayerStatus status) {
         this.status = status;
+        notify(new PlayerMessage(this.status, this.ID));
     }
 
     public void setToActive(ProductionPower toActive) {
