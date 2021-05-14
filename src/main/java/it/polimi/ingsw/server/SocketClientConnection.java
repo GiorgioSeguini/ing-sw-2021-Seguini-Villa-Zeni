@@ -1,6 +1,6 @@
 package it.polimi.ingsw.server;
 
-import it.polimi.ingsw.server.model.Game;
+import it.polimi.ingsw.constant.model.Game;
 import it.polimi.ingsw.server.observer.Observable;
 import it.polimi.ingsw.server.parse.Starter;
 
@@ -10,12 +10,12 @@ import java.io.IOException;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 import java.util.NoSuchElementException;
-import java.util.Scanner;
+import it.polimi.ingsw.server.observer.Observable;
 
 /**
  * Each instance is a connection to a specific client
  */
-public class SocketClientConnection extends Observable<String> implements ClientConnection, Runnable {
+public class SocketClientConnection implements  Observable<String>, ClientConnection, Runnable {
 
     private Socket socket;
     private DataOutputStream out;

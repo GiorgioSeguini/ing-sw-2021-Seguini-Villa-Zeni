@@ -32,7 +32,7 @@ public class DiscountAbility implements Ability{
     }
 
     @Override
-    public void RunAbility(Player owner){
+    public void RunAbility(PlayerExt owner){
         owner.addDiscount(typeOfRes, discount);
     }
 

@@ -1,9 +1,10 @@
 package it.polimi.ingsw.client.move;
 
-import it.polimi.ingsw.client.modelClient.Game;
+import it.polimi.ingsw.client.modelClient.GameClient;
+import it.polimi.ingsw.constant.model.Game;
 import it.polimi.ingsw.constant.enumeration.GameStatus;
 import it.polimi.ingsw.constant.enumeration.PlayerStatus;
-import it.polimi.ingsw.client.modelClient.Player;
+import it.polimi.ingsw.constant.model.Player;
 
 import java.util.Scanner;
 
@@ -20,7 +21,7 @@ public abstract class MoveType {
     }
 
 
-    public abstract boolean canPerform(Game game);
+    public abstract boolean canPerform(GameClient game);
 
     public void updateCLI(Game game, Scanner stdin){
         System.out.println("Move not yet implemented");
@@ -30,7 +31,7 @@ public abstract class MoveType {
     public abstract String getClassName();
 
 
-    protected boolean simpleCheck(Game game, PlayerStatus[] allowedStatus){
+    protected boolean simpleCheck(GameClient game, PlayerStatus[] allowedStatus){
         Player player = game.getPlayerFromID(idPlayer);
         if(player==null)
             return false;
@@ -52,7 +53,7 @@ public abstract class MoveType {
     }
 
 
-    protected boolean initialMove(Game game){
+    protected boolean initialMove(GameClient game){
         Player player = game.getPlayerFromID(idPlayer);
         if(player==null)
             return false;

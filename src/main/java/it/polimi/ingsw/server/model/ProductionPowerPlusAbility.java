@@ -2,6 +2,8 @@ package it.polimi.ingsw.server.model;
 /*Last Edit: William Zeni*/
 
 import it.polimi.ingsw.constant.enumeration.ResourceType;
+import it.polimi.ingsw.constant.model.NumberOfResources;
+import it.polimi.ingsw.constant.model.ProductionPower;
 
 public class ProductionPowerPlusAbility implements Ability {
 
@@ -24,7 +26,7 @@ public class ProductionPowerPlusAbility implements Ability {
     }
 
     @Override
-    public void RunAbility(Player owner) {
+    public void RunAbility(PlayerExt owner) {
         NumberOfResources input = new NumberOfResources();
         input=input.add(typeOfRes, 1);
         owner.getPersonalBoard().addExtraProduction(new ProductionPower(0, input, new NumberOfResources(), 1, 1));

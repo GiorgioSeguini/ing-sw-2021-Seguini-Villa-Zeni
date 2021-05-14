@@ -1,7 +1,7 @@
 package it.polimi.ingsw.client.move;
 
-import it.polimi.ingsw.client.modelClient.Game;
-import it.polimi.ingsw.client.modelClient.ProductionPower;
+import it.polimi.ingsw.constant.model.Game;
+import it.polimi.ingsw.constant.model.ProductionPower;
 import it.polimi.ingsw.constant.enumeration.PlayerStatus;
 
 import java.util.ArrayList;

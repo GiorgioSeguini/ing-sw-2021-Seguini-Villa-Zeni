@@ -4,17 +4,18 @@ package it.polimi.ingsw.server.model;
 
 import it.polimi.ingsw.constant.enumeration.MarbleColor;
 import it.polimi.ingsw.constant.enumeration.ResourceType;
+import it.polimi.ingsw.constant.model.NumberOfResources;
 import it.polimi.ingsw.server.model.exception.HaveToChooseException;
 import java.util.ArrayList;
 
 public class Converter {
 
-    private Player owner;
+    private PlayerExt owner;
     private NumberOfResources inwait;
     private ArrayList<ResourceType> toconvert;
 
     /*Default Constructor*/
-    public Converter(Player owner){
+    public Converter(PlayerExt owner){
         this.toconvert=new ArrayList<>();
         this.owner=owner;
         this.inwait=new NumberOfResources();
@@ -22,7 +23,7 @@ public class Converter {
 
     /*Getter*/
 
-    public Player getOwner() {
+    public PlayerExt getOwner() {
         return owner;
     }
 
@@ -126,7 +127,7 @@ public class Converter {
         NumberOfResources output=new NumberOfResources();
         for(MarbleColor marble: input){
             if(marble.equals(MarbleColor.RED)){
-                owner.getFaithTrack().addPoint();
+                ((FaithTrackExt)owner.getFaithTrack()).addPoint();
             }
             else{
                 output=output.add(convert_single_marble(marble),1);

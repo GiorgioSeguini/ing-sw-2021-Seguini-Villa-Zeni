@@ -1,14 +1,10 @@
 package it.polimi.ingsw.client.cli;
 
 import it.polimi.ingsw.client.Client;
-import it.polimi.ingsw.client.modelClient.Game;
-import it.polimi.ingsw.client.modelClient.LeaderCard;
-import it.polimi.ingsw.client.modelClient.NumberOfResources;
-import it.polimi.ingsw.client.modelClient.PersonalBoard;
+import it.polimi.ingsw.client.modelClient.GameClient;
+import it.polimi.ingsw.constant.model.Game;
 import it.polimi.ingsw.client.move.*;
 import it.polimi.ingsw.client.parser.StarterClient;
-import it.polimi.ingsw.constant.enumeration.GameStatus;
-import it.polimi.ingsw.constant.enumeration.ResourceType;
 
 import java.io.*;
 
@@ -18,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 public class CLI implements Runnable{
     private final Client client;
-    private Game game;
+    private GameClient game;
     Scanner in = new Scanner(System.in);
     DataOutputStream socket;
     ArrayList<cliInterface> moves;

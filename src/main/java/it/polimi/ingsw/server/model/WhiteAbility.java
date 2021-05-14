@@ -25,7 +25,7 @@ public class WhiteAbility implements Ability {
     }
 
     @Override
-    public void RunAbility(Player owner) {
+    public void RunAbility(PlayerExt owner) {
         owner.getConverter().setWhiteAbility(typeOfRes);
     }
 

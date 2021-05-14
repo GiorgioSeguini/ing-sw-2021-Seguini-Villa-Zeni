@@ -21,9 +21,9 @@ public class Discard2 implements SoloActionTokens {
     }
 
     @Override
-    public void ActivateToken(Game game) {
+    public void ActivateToken(GameExt game) {
         try {
-            game.getDashboard().removeCard(color, 2);
+            ((DashboardExt)game.getDashboard()).removeCard(color, 2);
         }catch(IllegalArgumentException ignored){};
 
     }

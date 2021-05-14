@@ -3,6 +3,7 @@ package it.polimi.ingsw.server.model;
 /*Last Edit: Gio*/
 
 import it.polimi.ingsw.constant.enumeration.ResourceType;
+import it.polimi.ingsw.constant.model.Shelf;
 
 public class DepotsAbility implements Ability {
 
@@ -26,10 +27,10 @@ public class DepotsAbility implements Ability {
     }
 
     @Override
-    public void RunAbility(Player owner){
+    public void RunAbility(PlayerExt owner){
         Shelf shelf =  new Shelf(extraSize);
         shelf.setResType(typeOfRes);
-        owner.getDepots().addExtraShelf(shelf);
+        ((DepotsExt)owner.getDepots()).addExtraShelf(shelf);
     }
 
     @Override

@@ -15,7 +15,7 @@ public class DepotsTest {
         String msg =Starter.toJson(depots, Depots.class);
 
         try{
-            StarterClient.fromJson(msg, it.polimi.ingsw.client.modelClient.Depots.class);
+            StarterClient.fromJson(msg, it.polimi.ingsw.constant.model.Depots.class);
         }catch(Exception e){
             fail();
         }

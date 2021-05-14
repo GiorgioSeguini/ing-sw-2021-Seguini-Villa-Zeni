@@ -2,8 +2,9 @@ package it.polimi.ingsw.constant.message;
 
 import com.google.gson.reflect.TypeToken;
 import it.polimi.ingsw.client.Client;
-import it.polimi.ingsw.client.modelClient.Game;
-import it.polimi.ingsw.client.modelClient.LeaderCard;
+import it.polimi.ingsw.client.modelClient.GameClient;
+import it.polimi.ingsw.constant.model.Game;
+import it.polimi.ingsw.constant.model.LeaderCard;
 import it.polimi.ingsw.client.parser.StarterClient;
 
 import java.lang.reflect.Type;
@@ -25,8 +26,8 @@ public class InitialMessage implements Message{
 
     @Override
     public void handleMessage(Client client){
-        client.setSimpleGame(StarterClient.fromJson(model, Game.class));
-        Game simpleGame = client.getSimpleGame();
+        client.setSimpleGame(StarterClient.fromJson(model, GameClient.class));
+        GameClient simpleGame = client.getSimpleGame();
         simpleGame.setMyID(yourID);
 
         Type type = new TypeToken<ArrayList<LeaderCard>>(){}.getType();

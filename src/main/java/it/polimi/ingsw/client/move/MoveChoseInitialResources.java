@@ -1,7 +1,8 @@
 package it.polimi.ingsw.client.move;
 
-import it.polimi.ingsw.client.modelClient.Game;
-import it.polimi.ingsw.client.modelClient.NumberOfResources;
+import it.polimi.ingsw.client.modelClient.GameClient;
+import it.polimi.ingsw.constant.model.Game;
+import it.polimi.ingsw.constant.model.NumberOfResources;
 import it.polimi.ingsw.constant.enumeration.ResourceType;
 
 import java.util.Scanner;
@@ -25,7 +26,7 @@ public class MoveChoseInitialResources extends MoveType {
     }
 
     @Override
-    public boolean canPerform(Game game) {
+    public boolean canPerform(GameClient game) {
         if(!initialMove(game))
             return false;
         return game.getInitialResources()>game.getPlayerFromID(game.getMyID()).getDepots().getResources().size();

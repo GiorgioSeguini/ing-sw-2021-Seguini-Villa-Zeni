@@ -1,5 +1,7 @@
 package it.polimi.ingsw.server.model;
 
+import it.polimi.ingsw.constant.model.Game;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -17,15 +19,15 @@ public class MoveShuffle implements SoloActionTokens {
 
     /**This apply the effect of a MoveShuffleToken**/
     @Override
-    public void ActivateToken(Game game) {
-        game.getSoloGame().getFaithTrack().addPoint();
+    public void ActivateToken(GameExt game) {
+        ((FaithTrackExt)game.getSoloGame().getFaithTrack()).addPoint();
         game.popesInspection();
 
         shuffledDeck = new ArrayList<>(7);
-        shuffledDeck = game.getSoloGame().getCopyOfSoloActionTokensInit();
+        shuffledDeck = ((LorenzoSoloPlayerExt)game.getSoloGame()).getCopyOfSoloActionTokensInit();
         Collections.shuffle(shuffledDeck);
         //shuffledDeck = Shuffle(game.getSoloGame().getCopyOfSoloActionTokensInit());
-        game.getSoloGame().setSoloActionTokens(shuffledDeck);
+        ((LorenzoSoloPlayerExt)game.getSoloGame()).setSoloActionTokens(shuffledDeck);
     }
 
     @Override

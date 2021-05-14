@@ -1,8 +1,8 @@
 package it.polimi.ingsw.client.move;
 
-import it.polimi.ingsw.client.modelClient.Game;
-import it.polimi.ingsw.client.modelClient.LeaderCard;
-import it.polimi.ingsw.client.modelClient.PersonalBoard;
+import it.polimi.ingsw.constant.model.Game;
+import it.polimi.ingsw.constant.model.LeaderCard;
+import it.polimi.ingsw.constant.model.PersonalBoard;
 
 import java.util.ArrayList;
 import java.util.Scanner;

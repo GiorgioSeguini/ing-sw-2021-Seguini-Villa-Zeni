@@ -2,7 +2,7 @@ package it.polimi.ingsw.client.parser;
 
 import com.google.gson.*;
 import it.polimi.ingsw.constant.enumeration.ResourceType;
-import it.polimi.ingsw.client.modelClient.NumberOfResources;
+import it.polimi.ingsw.constant.model.NumberOfResources;
 
 import java.lang.reflect.Type;
 

@@ -1,6 +1,6 @@
 package it.polimi.ingsw.client.move;
 
-import it.polimi.ingsw.client.modelClient.Game;
+import it.polimi.ingsw.constant.model.Game;
 import it.polimi.ingsw.constant.enumeration.PlayerStatus;
 
 public class MoveBuyDevCard extends MoveType {

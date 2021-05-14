@@ -1,7 +1,7 @@
 package it.polimi.ingsw.client.move;
 
-import it.polimi.ingsw.client.modelClient.Game;
-import it.polimi.ingsw.client.modelClient.NumberOfResources;
+import it.polimi.ingsw.constant.model.Game;
+import it.polimi.ingsw.constant.model.NumberOfResources;
 import it.polimi.ingsw.constant.enumeration.PlayerStatus;
 
 public class MoveChoseResources extends MoveType {

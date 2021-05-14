@@ -2,7 +2,8 @@ package it.polimi.ingsw.client;
 
 
 import it.polimi.ingsw.client.cli.CLI;
-import it.polimi.ingsw.client.modelClient.Game;
+import it.polimi.ingsw.client.modelClient.GameClient;
+import it.polimi.ingsw.constant.model.Game;
 import it.polimi.ingsw.client.parser.StarterClient;
 import it.polimi.ingsw.constant.message.Message;
 
@@ -16,7 +17,7 @@ public class Client {
     private String ip;
     private int port;
    public boolean recived;
-    Game simpleGame;
+    GameClient simpleGame;
     CLI cli;
 
     public Client(String ip, int port){
@@ -103,11 +104,11 @@ public class Client {
         }
     }
 
-    public void setSimpleGame(Game game){
+    public void setSimpleGame(GameClient game){
         this.simpleGame = game;
     }
 
-    public Game getSimpleGame(){
+    public GameClient getSimpleGame(){
         return this.simpleGame;
     }
 
