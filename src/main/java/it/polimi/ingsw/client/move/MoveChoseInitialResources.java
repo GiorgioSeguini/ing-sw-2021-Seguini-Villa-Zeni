@@ -41,8 +41,8 @@ public class MoveChoseInitialResources extends MoveType {
         }
         while(resources.size()< game.getInitialResources()){
             System.out.println("devi scegliere " + (game.getInitialResources() - resources.size()) + " risorse");
-            int index = in.nextInt();
-            if(index>0 && index-1 < ResourceType.values().length){
+            int index = in.nextInt() -1;
+            if(index>=0 && index < ResourceType.values().length){
                 resources = resources.add(ResourceType.values()[index], 1);
             }else{
                 System.out.println("invalid index");

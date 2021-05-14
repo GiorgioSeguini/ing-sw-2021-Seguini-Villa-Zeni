@@ -43,7 +43,7 @@ public class MoveChoseLeaderCards extends MoveType {
         ArrayList<Integer> choice = new ArrayList<>();
         while(choice.size() < PersonalBoard.MAX_LEAD_CARD){
             int index = in.nextInt();
-            if(index>0 && index<game.getLeaderCards().size()){
+            if(index>0 && index<game.getLeaderCards().size() && !choice.contains(index)){
                 choice.add(game.getLeaderCards().get(index).getId());
             }else{
                 System.out.println("Indice non valido");
