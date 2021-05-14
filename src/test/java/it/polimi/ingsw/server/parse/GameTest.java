@@ -1,11 +1,9 @@
 package it.polimi.ingsw.server.parse;
 
 import com.google.gson.reflect.TypeToken;
-import it.polimi.ingsw.client.CLI;
 import it.polimi.ingsw.client.Client;
 import it.polimi.ingsw.client.parser.StarterClient;
 import it.polimi.ingsw.constant.enumeration.ResourceType;
-import it.polimi.ingsw.constant.message.GameMessage;
 import it.polimi.ingsw.constant.message.InitialMessage;
 import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.server.model.*;

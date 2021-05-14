@@ -1,5 +1,6 @@
-package it.polimi.ingsw.client;
+package it.polimi.ingsw.client.cli;
 
+import it.polimi.ingsw.client.Client;
 import it.polimi.ingsw.client.modelClient.Game;
 import it.polimi.ingsw.client.modelClient.LeaderCard;
 import it.polimi.ingsw.client.modelClient.NumberOfResources;
@@ -20,7 +21,7 @@ public class CLI implements Runnable{
     private Game game;
     Scanner in = new Scanner(System.in);
     DataOutputStream socket;
-    ArrayList<MoveType> moves;
+    ArrayList<cliInterface> moves;
 
     public CLI(Client client, DataOutputStream writer) {
         this.client = client;
@@ -51,16 +52,8 @@ public class CLI implements Runnable{
         int myID = game.getMyID();
         if(game.isMyTurn()){
             moves.clear();
-            moves.add(new MoveActiveProduction(myID));
-            moves.add(new MoveBuyDevCard(myID));
-            moves.add(new MoveChoseInitialResources(myID));
-            moves.add(new MoveChoseLeaderCards(myID));
-            moves.add(new MoveChoseResources(myID));
-            moves.add(new MoveDiscardResources(myID));
-            moves.add(new MoveEndTurn(myID));
-            moves.add(new MoveLeader(myID));
-            moves.add(new MovetypeMarket(myID));
-            moves.add(new MoveWhiteConversion(myID));
+            moves.add(new cliChoseLeaderCard(myID));
+            //TODO
 
             boolean goodchoice = false;
             int index = -1;
@@ -69,7 +62,7 @@ public class CLI implements Runnable{
             do {
                 for (int i=0; i< moves.size(); i++) {
                     if (moves.get(i).canPerform(game)) {
-                        System.out.println((i + 1) + ": " + moves.get(i).getClassName());
+                        System.out.println((i + 1) + ": " + moves.get(i).getName());
                         moveAviable = true;
                     }
                 }
@@ -85,8 +78,8 @@ public class CLI implements Runnable{
             }while(!goodchoice);
 
             if(moveAviable) {
-                MoveType move = moves.get(index);
-                move.updateCLI(game, in);
+                cliInterface cliInterface = moves.get(index);
+                MoveType move = cliInterface.updateCLI(game, in);
                 send(move);
             }
         }
