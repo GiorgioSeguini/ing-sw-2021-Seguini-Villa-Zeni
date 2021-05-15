@@ -3,7 +3,6 @@ package it.polimi.ingsw.server.controller;
 import it.polimi.ingsw.constant.enumeration.ErrorMessage;
 import it.polimi.ingsw.constant.enumeration.PlayerStatus;
 import it.polimi.ingsw.constant.model.DevelopmentCard;
-import it.polimi.ingsw.constant.model.Game;
 import it.polimi.ingsw.constant.model.NumberOfResources;
 import it.polimi.ingsw.constant.move.MoveBuyDevCard;
 import it.polimi.ingsw.server.model.*;
@@ -18,12 +17,12 @@ public class MoveBuyDevCardExt extends MoveBuyDevCard implements Performable {
     }
 
     @Override
-    public boolean canPerform(Game game){
+    public boolean canPerform(GameExt game){
 
         if(!super.canPerform(game)) return false;
-        PlayerExt player = (PlayerExt) game.getPlayerFromID(getIdPlayer());
+        PlayerExt player = game.getPlayerFromID(getIdPlayer());
 
-        DevelopmentCard cardToBuy = ((DashboardExt)game.getDashboard()).findDevCard(getIndexCardToBuy());
+        DevelopmentCard cardToBuy = game.getDashboard().findDevCard(getIndexCardToBuy());
 
         if(cardToBuy== null){
             player.setErrorMessage(ErrorMessage.BadChoice);
@@ -46,11 +45,11 @@ public class MoveBuyDevCardExt extends MoveBuyDevCard implements Performable {
     }
 
     @Override
-    public void performMove(Game game) {
-        PlayerExt player = (PlayerExt) game.getPlayerFromID(getIdPlayer());
+    public void performMove(GameExt game) {
+        PlayerExt player = game.getPlayerFromID(getIdPlayer());
         player.setErrorMessage(ErrorMessage.NoError);
 
-        DevelopmentCard cardToBuy = ((DashboardExt)game.getDashboard()).findDevCard(getIndexCardToBuy());
+        DevelopmentCard cardToBuy = game.getDashboard().findDevCard(getIndexCardToBuy());
 
         NumberOfResources realCost = cardToBuy.getCost().safe_sub(player.getDiscounted());
         try {
@@ -59,7 +58,7 @@ public class MoveBuyDevCardExt extends MoveBuyDevCard implements Performable {
             player.setErrorMessage(e.getErrorMessage());
             return;
         }
-        ((DashboardExt)game.getDashboard()).buyDevCard(cardToBuy.getColor(),cardToBuy.getLevel());
+        game.getDashboard().buyDevCard(cardToBuy.getColor(),cardToBuy.getLevel());
         try {
             ((DepotsExt)player.getDepots()).subResource(realCost);
         } catch (OutOfResourcesException ignored) {}

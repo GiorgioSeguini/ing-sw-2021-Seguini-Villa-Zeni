@@ -6,6 +6,7 @@ import it.polimi.ingsw.constant.model.Game;
 import it.polimi.ingsw.constant.model.Player;
 import it.polimi.ingsw.constant.model.ProductionPower;
 import it.polimi.ingsw.constant.move.MoveActiveProduction;
+import it.polimi.ingsw.server.model.GameExt;
 import it.polimi.ingsw.server.model.PlayerExt;
 
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ public class MoveActiveProductionExt extends MoveActiveProduction implements Per
     }
 
     @Override
-    public boolean canPerform(Game game){
+    public boolean canPerform(GameExt game){
         if(!super.canPerform(game)) return false;
         Player player =game.getPlayerFromID(getIdPlayer());
 
@@ -35,8 +36,8 @@ public class MoveActiveProductionExt extends MoveActiveProduction implements Per
     }
 
     @Override
-    public void performMove(Game game){
-        PlayerExt player =(PlayerExt) game.getPlayerFromID(getIdPlayer());
+    public void performMove(GameExt game){
+        PlayerExt player = game.getPlayerFromID(getIdPlayer());
         player.setErrorMessage(ErrorMessage.NoError);
 
         //sum all productionPower

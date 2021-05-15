@@ -1,9 +1,9 @@
 package it.polimi.ingsw.server.controller;
 
-import it.polimi.ingsw.constant.model.Game;
+import it.polimi.ingsw.server.model.GameExt;
 
 public interface Performable {
-    void performMove(Game game);
+    void performMove(GameExt game);
 
-    public boolean canPerform(Game game);
+    public boolean canPerform(GameExt game);
 }

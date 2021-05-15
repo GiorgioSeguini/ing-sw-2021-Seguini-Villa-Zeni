@@ -1,6 +1,5 @@
 package it.polimi.ingsw.server.controller;
 
-import it.polimi.ingsw.constant.model.Game;
 import it.polimi.ingsw.constant.model.Player;
 import it.polimi.ingsw.constant.move.MoveChoseInitialResources;
 import it.polimi.ingsw.constant.enumeration.ErrorMessage;
@@ -17,7 +16,12 @@ public class MoveChoseInitialResourcesExt extends MoveChoseInitialResources impl
     }
 
     @Override
-    public void performMove(Game game){
+    public boolean canPerform(GameExt game) {
+        return super.canPerform(game);
+    }
+
+    @Override
+    public void performMove(GameExt game){
         Player player =game.getPlayerFromID(getIdPlayer());
         player.setErrorMessage(ErrorMessage.NoError);
 
@@ -25,7 +29,7 @@ public class MoveChoseInitialResourcesExt extends MoveChoseInitialResources impl
             ((DepotsExt)player.getDepots()).addResourcesFromMarket(getResources());
         }catch(UnableToFillException ignored){}
 
-        ((GameExt)game).updateStatus();
+        game.updateStatus();
     }
 
     @Override

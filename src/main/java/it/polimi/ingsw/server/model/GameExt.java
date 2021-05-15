@@ -5,9 +5,7 @@ import it.polimi.ingsw.constant.enumeration.PlayerStatus;
 import it.polimi.ingsw.constant.message.GameMessage;
 import it.polimi.ingsw.constant.message.InitialMessage;
 import it.polimi.ingsw.constant.message.Message;
-import it.polimi.ingsw.constant.model.Game;
-import it.polimi.ingsw.constant.model.LeaderCard;
-import it.polimi.ingsw.constant.model.Player;
+import it.polimi.ingsw.constant.model.*;
 import it.polimi.ingsw.server.observer.Observable;
 import it.polimi.ingsw.server.observer.Observer;
 import it.polimi.ingsw.server.parse.Starter;
@@ -52,6 +50,26 @@ public class GameExt extends Game implements Observable<Message> {
         for(int i =0; i<players.size(); i++){
             super.getPlayers().get(i).getFaithTrack().setFaithPoints(Game.INITIAL_FAITH_POINT[i]);
         }
+    }
+
+    @Override
+    public MarketExt getMarketTray() {
+        return (MarketExt) super.getMarketTray();
+    }
+
+    @Override
+    public DashboardExt getDashboard() {
+        return (DashboardExt) super.getDashboard();
+    }
+
+    @Override
+    public LorenzoSoloPlayerExt getSoloGame() {
+        return (LorenzoSoloPlayerExt) super.getSoloGame();
+    }
+
+    @Override
+    public PlayerExt getPlayerFromID(int id) {
+        return (PlayerExt)super.getPlayerFromID(id);
     }
 
     public void popesInspection(){

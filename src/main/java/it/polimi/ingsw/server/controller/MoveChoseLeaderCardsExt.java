@@ -19,15 +19,15 @@ public class MoveChoseLeaderCardsExt extends MoveChoseLeaderCards implements Per
     }
 
     @Override
-    public boolean canPerform(Game game){
+    public boolean canPerform(GameExt game){
         if(!super.canPerform(game)) return false;
 
         Player player = game.getPlayerFromID(getIdPlayer());
 
-        ArrayList<LeaderCard> leaderCards = ((GameExt)game).findMoreLeaderCard(getIndexLeaderCards());
+        ArrayList<LeaderCard> leaderCards = game.findMoreLeaderCard(getIndexLeaderCards());
         boolean goodChoice = true;
         for(LeaderCard card : leaderCards){
-            if(!((GameExt)game).getActivableLeadCard(player).contains(card)){
+            if(!game.getActivableLeadCard(player).contains(card)){
                 goodChoice = false;
             }
         }
@@ -41,11 +41,11 @@ public class MoveChoseLeaderCardsExt extends MoveChoseLeaderCards implements Per
     }
 
     @Override
-    public void performMove(Game game){
+    public void performMove(GameExt game){
         Player player =game.getPlayerFromID(getIdPlayer());
         player.setErrorMessage(ErrorMessage.NoError);
 
-        ArrayList<LeaderCard> leaderCards = ((GameExt)game).findMoreLeaderCard(getIndexLeaderCards());
+        ArrayList<LeaderCard> leaderCards = game.findMoreLeaderCard(getIndexLeaderCards());
         try {
             ((PersonalBoardExt)player.getPersonalBoard()).addLeaderCard(leaderCards.toArray(new LeaderCard[0]));
         }catch (IndexOutOfBoundsException e){
@@ -53,7 +53,7 @@ public class MoveChoseLeaderCardsExt extends MoveChoseLeaderCards implements Per
             return;
         }
 
-        ((GameExt)game).updateStatus();
+        game.updateStatus();
     }
 
     @Override
