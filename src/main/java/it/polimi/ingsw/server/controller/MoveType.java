@@ -1,10 +1,11 @@
 package it.polimi.ingsw.server.controller;
 import it.polimi.ingsw.constant.enumeration.GameStatus;
-import it.polimi.ingsw.server.model.Game;
+import it.polimi.ingsw.constant.model.Game;
+import it.polimi.ingsw.constant.model.Player;
 import it.polimi.ingsw.server.model.Move2;
-import it.polimi.ingsw.server.model.Player;
 import it.polimi.ingsw.constant.enumeration.ErrorMessage;
 import it.polimi.ingsw.constant.enumeration.PlayerStatus;
+import it.polimi.ingsw.server.model.PlayerExt;
 
 public abstract class MoveType {
     //raccogliere tutte le info chieste al giocatore e chiama l'update del controller
@@ -40,7 +41,7 @@ public abstract class MoveType {
     }
 
     protected boolean simpleCheck(Game game, PlayerStatus[] allowedStatus){
-        Player player = game.getPlayerFromID(idPlayer);
+        PlayerExt player = (PlayerExt) game.getPlayerFromID(idPlayer);
         if(player==null)
             return false;
 

@@ -1,8 +1,7 @@
 package it.polimi.ingsw.server.controller;
 
-import it.polimi.ingsw.constant.enumeration.ErrorMessage;
+import it.polimi.ingsw.constant.model.Game;
 import it.polimi.ingsw.server.observer.Observer;
-import it.polimi.ingsw.server.model.Game;
 
 public class Controller implements Observer<MoveType> {
 

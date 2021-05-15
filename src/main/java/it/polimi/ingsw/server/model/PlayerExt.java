@@ -10,7 +10,10 @@ import it.polimi.ingsw.constant.model.Player;
 import it.polimi.ingsw.constant.model.ProductionPower;
 import it.polimi.ingsw.server.model.exception.OutOfResourcesException;
 import it.polimi.ingsw.server.observer.Observable;
+import it.polimi.ingsw.server.observer.Observer;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /*Last Edit: Fabio*/
@@ -74,5 +77,24 @@ public class PlayerExt extends Player implements Observable<Message> {
 
     public Converter getConverter() {
         return converter;
+    }
+
+    //Observable implementation
+    private transient final List<Observer<Message>> observers = new ArrayList<>();
+
+    @Override
+    public void addObserver(Observer<Message> observer){
+        synchronized (observers) {
+            observers.add(observer);
+        }
+    }
+
+    @Override
+    public void notify(Message message) {
+        synchronized (observers) {
+            for(Observer<Message> observer : observers){
+                observer.update(message);
+            }
+        }
     }
 }

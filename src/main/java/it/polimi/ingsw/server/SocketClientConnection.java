@@ -1,7 +1,9 @@
 package it.polimi.ingsw.server;
 
 import it.polimi.ingsw.constant.model.Game;
+import it.polimi.ingsw.server.controller.MoveType;
 import it.polimi.ingsw.server.observer.Observable;
+import it.polimi.ingsw.server.observer.Observer;
 import it.polimi.ingsw.server.parse.Starter;
 
 import java.io.DataInputStream;
@@ -9,6 +11,8 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
 import it.polimi.ingsw.server.observer.Observable;
 
@@ -96,6 +100,24 @@ public class SocketClientConnection implements  Observable<String>, ClientConnec
             System.err.println("Error!" + e.getMessage());
         }finally{
             close();
+        }
+    }
+    //Observable implementation
+    private transient final List<Observer<String>> observers = new ArrayList<>();
+
+    @Override
+    public void addObserver(Observer<String> observer){
+        synchronized (observers) {
+            observers.add(observer);
+        }
+    }
+
+    @Override
+    public void notify(String message) {
+        synchronized (observers) {
+            for(Observer<String> observer : observers){
+                observer.update(message);
+            }
         }
     }
 }

@@ -5,7 +5,11 @@ import it.polimi.ingsw.constant.message.FaithTrackMessage;
 import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.constant.model.FaithTrack;
 import it.polimi.ingsw.server.observer.Observable;
+import it.polimi.ingsw.server.observer.Observer;
 import it.polimi.ingsw.server.parse.Starter;
+
+import java.util.ArrayList;
+import java.util.List;
 /*Last Edit: Fabio*/
 /**
  * 
@@ -65,6 +69,25 @@ public class FaithTrackExt extends FaithTrack implements Observable<Message> {
     private void change(){
         String faithTrack = Starter.toJson(this, FaithTrack.class);
         notify(new FaithTrackMessage(faithTrack, this.ownerID));
+    }
+
+    //Observable implementation
+    private transient final List<Observer<Message>> observers = new ArrayList<>();
+
+    @Override
+    public void addObserver(Observer<Message> observer){
+        synchronized (observers) {
+            observers.add(observer);
+        }
+    }
+
+    @Override
+    public void notify(Message message) {
+        synchronized (observers) {
+            for(Observer<Message> observer : observers){
+                observer.update(message);
+            }
+        }
     }
 
 }

@@ -11,6 +11,7 @@ import it.polimi.ingsw.constant.model.PersonalBoard;
 import it.polimi.ingsw.server.model.exception.NoMoreLeaderCardAliveException;
 import it.polimi.ingsw.server.model.exception.NoSpaceException;
 import it.polimi.ingsw.server.observer.Observable;
+import it.polimi.ingsw.server.observer.Observer;
 import it.polimi.ingsw.server.parse.Starter;
 
 import java.lang.reflect.Type;
@@ -88,5 +89,23 @@ public class PersonalBoardExt extends PersonalBoard implements Observable<Messag
         notify(new PersonalBoardMessage(devCards, leaderCards, this.ownerID));
     }
 
+    //Observable implementation
+    private transient final List<it.polimi.ingsw.server.observer.Observer<Message>> observers = new ArrayList<>();
+
+    @Override
+    public void addObserver(it.polimi.ingsw.server.observer.Observer<Message> observer){
+        synchronized (observers) {
+            observers.add(observer);
+        }
+    }
+
+    @Override
+    public void notify(Message message) {
+        synchronized (observers) {
+            for(Observer<Message> observer : observers){
+                observer.update(message);
+            }
+        }
+    }
 
 }

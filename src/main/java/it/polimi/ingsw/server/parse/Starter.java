@@ -7,6 +7,8 @@ import it.polimi.ingsw.constant.MessageSerializer;
 import it.polimi.ingsw.constant.enumeration.MarbleColor;
 
 import it.polimi.ingsw.constant.message.Message;
+import it.polimi.ingsw.constant.model.Dashboard;
+import it.polimi.ingsw.constant.model.NumberOfResources;
 import it.polimi.ingsw.server.controller.MoveType;
 import it.polimi.ingsw.server.model.*;
 
@@ -39,8 +41,8 @@ public class Starter {
     }
 
     /*Methods to Initialize the Game*/
-    public static ArrayList<LeaderCard> LeaderCardsParser() throws FileNotFoundException {
-        Type LeaderListType = new TypeToken<ArrayList<LeaderCard>>(){}.getType();
+    public static ArrayList<LeaderCardExt> LeaderCardsParser() throws FileNotFoundException {
+        Type LeaderListType = new TypeToken<ArrayList<LeaderCardExt>>(){}.getType();
         return gson.fromJson(new FileReader(filePath + "/src/main/resources/LeaderCards.json"), LeaderListType);
     }
 
@@ -54,8 +56,8 @@ public class Starter {
         return gson.fromJson(new FileReader(filePath+"/src/main/resources/Marbles.json"), marblesarray);
     }
 
-    public static ArrayList<DevelopmentCard> DevCardParser() throws FileNotFoundException {
-        Type devCardListType = new TypeToken<ArrayList<DevelopmentCard>>(){}.getType();
+    public static ArrayList<DevelopmentCardExt> DevCardParser() throws FileNotFoundException {
+        Type devCardListType = new TypeToken<ArrayList<DevelopmentCardExt>>(){}.getType();
         return gson.fromJson(new FileReader(filePath + "/src/main/resources/DevCard.json"), devCardListType);
     }
 
@@ -76,8 +78,8 @@ public class Starter {
     }
 
     public static boolean CanDevCardParser(){
-        Type devCardListType = new TypeToken<ArrayList<DevelopmentCard>>(){}.getType();
-        ArrayList<DevelopmentCard> developmentCards=new ArrayList<>();
+        Type devCardListType = new TypeToken<ArrayList<DevelopmentCardExt>>(){}.getType();
+        ArrayList<DevelopmentCardExt> developmentCards=new ArrayList<>();
 
         try {
             developmentCards=gson.fromJson(new FileReader(filePath + "/src/main/resources/DevCard.json"), devCardListType);
@@ -93,8 +95,8 @@ public class Starter {
     }
 
     public static boolean CanLeaderCardsParser(){
-        Type LeaderListType = new TypeToken<ArrayList<LeaderCard>>(){}.getType();
-        ArrayList<LeaderCard> leaderCards=new ArrayList<>();
+        Type LeaderListType = new TypeToken<ArrayList<LeaderCardExt>>(){}.getType();
+        ArrayList<LeaderCardExt> leaderCards=new ArrayList<>();
 
         try {
             leaderCards=gson.fromJson(new FileReader(filePath + "/src/main/resources/LeaderCards.json"), LeaderListType);

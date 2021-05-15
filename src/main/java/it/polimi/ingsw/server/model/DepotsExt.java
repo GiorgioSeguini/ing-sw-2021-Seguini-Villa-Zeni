@@ -12,7 +12,11 @@ import it.polimi.ingsw.constant.model.WareHouseDepots;
 import it.polimi.ingsw.server.model.exception.OutOfResourcesException;
 import it.polimi.ingsw.server.model.exception.UnableToFillException;
 import it.polimi.ingsw.server.observer.Observable;
+import it.polimi.ingsw.server.observer.Observer;
 import it.polimi.ingsw.server.parse.Starter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 
@@ -105,4 +109,22 @@ public class DepotsExt extends Depots implements Observable<Message> {
         notify(new DepotsMessage(depots, this.ownerID));
     }
 
+    //Observable implementation
+    private transient final List<Observer<Message>> observers = new ArrayList<>();
+
+    @Override
+    public void addObserver(Observer<Message> observer){
+        synchronized (observers) {
+            observers.add(observer);
+        }
+    }
+
+    @Override
+    public void notify(Message message) {
+        synchronized (observers) {
+            for(Observer<Message> observer : observers){
+                observer.update(message);
+            }
+        }
+    }
 }

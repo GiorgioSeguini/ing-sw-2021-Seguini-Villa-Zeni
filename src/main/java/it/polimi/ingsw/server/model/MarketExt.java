@@ -5,10 +5,12 @@ import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.constant.enumeration.MarbleColor;
 import it.polimi.ingsw.constant.model.Market;
 import it.polimi.ingsw.server.observer.Observable;
+import it.polimi.ingsw.server.observer.Observer;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 /*Last Edit: Fabio*/
 public class MarketExt extends Market implements Observable<Message> {
@@ -24,32 +26,37 @@ public class MarketExt extends Market implements Observable<Message> {
 
 
     /*Additional methods*/
-    /**This allow to buy a row from the market's tray**/
+
+    /**
+     * This allow to buy a row from the market's tray
+     **/
     public ArrayList<MarbleColor> buyRow(int index) {
         ArrayList<MarbleColor> buyedRow = new ArrayList<>(4);
 
-        for (int i=0; i<N_COL; i++){
+        for (int i = 0; i < N_COL; i++) {
             buyedRow.add(super.gettMarble(index, i));
         }
-        super.setMarble(index, N_COL-1, super.getExternalMarble());
-        for (int i=N_COL-2; i>=0; i--){
-            setMarble(index, i, buyedRow.get(i+1));
+        super.setMarble(index, N_COL - 1, super.getExternalMarble());
+        for (int i = N_COL - 2; i >= 0; i--) {
+            setMarble(index, i, buyedRow.get(i + 1));
         }
         super.setExternalMarble(buyedRow.get(0));
         change();
         return buyedRow;
     }
 
-    /**This allow to buy a column from the market's tray**/
+    /**
+     * This allow to buy a column from the market's tray
+     **/
     public ArrayList<MarbleColor> buyColumn(int index) {
         ArrayList<MarbleColor> buyedColumn = new ArrayList<>(3);
 
-        for(int i=0; i<N_ROW; i++){
+        for (int i = 0; i < N_ROW; i++) {
             buyedColumn.add(gettMarble(i, index));
         }
-        super.setMarble(N_ROW-1, index, super.getExternalMarble());
-        for(int i=N_ROW-2; i>=0; i--){
-            super.setMarble(i, index, buyedColumn.get(i+1));
+        super.setMarble(N_ROW - 1, index, super.getExternalMarble());
+        for (int i = N_ROW - 2; i >= 0; i--) {
+            super.setMarble(i, index, buyedColumn.get(i + 1));
         }
         setExternalMarble(buyedColumn.get(0));
         change();
@@ -59,7 +66,7 @@ public class MarketExt extends Market implements Observable<Message> {
     /**
      * this methods should be call each time a changement in status happened, in order to correctly notify all the observer
      */
-    private void change(){
+    private void change() {
         ArrayList<MarbleColor> marbles = new ArrayList<MarbleColor>();
         /*for(MarbleColor[] row : tray){
             marbles.addAll(Arrays.asList(row));
@@ -68,19 +75,23 @@ public class MarketExt extends Market implements Observable<Message> {
         notify(new MarketMessage(marbles));
     }
 
-    /*@Override
-    public String toString(){
-        String tray="";
-        for(int i=0;i<N_ROW;i++){
-            int count=0;
-            MarbleColor[] marbleColors= getRow(i);
-            for(MarbleColor x: marbleColors) {
-                tray += "\t"+x.getChar();
-                count++;
-                if(count==4) tray += "<-\n";
+    //Observable implementation
+    private transient final List<Observer<Message>> observers = new ArrayList<>();
+
+    @Override
+    public void addObserver(Observer<Message> observer) {
+        synchronized (observers) {
+            observers.add(observer);
+        }
+    }
+
+    @Override
+    public void notify(Message message) {
+        synchronized (observers) {
+            for (Observer<Message> observer : observers) {
+                observer.update(message);
             }
         }
-        tray += "\t^\t^\t^\t^\t "+externalMarble.getChar()+"\n";
-        return tray;
-    }*/
+    }
+
 }

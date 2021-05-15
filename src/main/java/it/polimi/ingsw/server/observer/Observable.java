@@ -7,7 +7,7 @@ public interface Observable<T> {
 
     //private transient final List<Observer<T>> observers = new ArrayList<>();
 
-    //void addObserver(Observer<T> observer);
+    void addObserver(Observer<T> observer);
       /*  synchronized (observers) {
             observers.add(observer);
         }
@@ -19,14 +19,13 @@ public interface Observable<T> {
         }
     }*/
 
-    default void notify(T message){
-        return;
-    }
-    /*    synchronized (observers) {
+    void notify(T message);
+    /*{
+        synchronized (observers) {
             for(Observer<T> observer : observers){
                 observer.update(message);
             }
         }
-    }*/
-
+    }
+*/
 }

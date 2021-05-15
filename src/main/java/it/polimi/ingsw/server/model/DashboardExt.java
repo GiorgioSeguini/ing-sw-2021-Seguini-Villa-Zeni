@@ -7,6 +7,7 @@ import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.constant.model.Dashboard;
 import it.polimi.ingsw.constant.model.DevelopmentCard;
 import it.polimi.ingsw.server.observer.Observable;
+import it.polimi.ingsw.server.observer.Observer;
 import it.polimi.ingsw.server.parse.Starter;
 
 import java.util.*;
@@ -21,7 +22,7 @@ public class DashboardExt extends Dashboard implements Observable<Message> {
      * Default constructor, ensure correct classification of cards and randomness
      * @param developmentCards arraylist containing all the development card for this dashboard
      */
-    public DashboardExt(ArrayList<DevelopmentCard> developmentCards) {
+    public DashboardExt(ArrayList<DevelopmentCardExt> developmentCards) {
         //initialization
         dashBoard = new Stack[Level.size()][ColorDevCard.size()]; //number of level * number of colors
         for(Level l : Level.values()){
@@ -120,4 +121,22 @@ public class DashboardExt extends Dashboard implements Observable<Message> {
         notify(new DashBoardMessage(Starter.toJson(this, Dashboard.class)));
     }
 
+    //Observable implementation
+    private transient final List<it.polimi.ingsw.server.observer.Observer<Message>> observers = new ArrayList<>();
+
+    @Override
+    public void addObserver(it.polimi.ingsw.server.observer.Observer<Message> observer){
+        synchronized (observers) {
+            observers.add(observer);
+        }
+    }
+
+    @Override
+    public void notify(Message message) {
+        synchronized (observers) {
+            for(Observer<Message> observer : observers){
+                observer.update(message);
+            }
+        }
+    }
 }

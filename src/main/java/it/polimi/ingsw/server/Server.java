@@ -1,5 +1,9 @@
 package it.polimi.ingsw.server;
 
+import it.polimi.ingsw.constant.model.DevelopmentCard;
+import it.polimi.ingsw.constant.model.Game;
+import it.polimi.ingsw.constant.model.LeaderCard;
+import it.polimi.ingsw.constant.model.Player;
 import it.polimi.ingsw.server.controller.Controller;
 import it.polimi.ingsw.server.parse.Starter;
 import it.polimi.ingsw.server.model.*;
@@ -45,14 +49,14 @@ public class Server {
             ArrayList<String> keys = new ArrayList<>(waitingConnection.keySet());
             ClientConnection c1 = waitingConnection.get(keys.get(0));
             ClientConnection c2 = waitingConnection.get(keys.get(1));
-            Player player1 = new Player(keys.get(0));
-            Player player2 = new Player(keys.get(1));
+            PlayerExt player1 = new PlayerExt(keys.get(0));
+            PlayerExt player2 = new PlayerExt(keys.get(1));
 
             //instance of a new game
             ArrayList<MarbleColor> marble;
-            ArrayList<DevelopmentCard> developmentCards;
+            ArrayList<DevelopmentCardExt> developmentCards;
             ArrayList<SoloActionTokens> tokens;
-            ArrayList<LeaderCard> leaderCards;
+            ArrayList<LeaderCardExt> leaderCards;
             try {
                  marble = Starter.MarblesParser();
                 developmentCards = Starter.DevCardParser();
@@ -63,8 +67,8 @@ public class Server {
                 //TODO
                 return;
             }
-            ArrayList<Player> players = new ArrayList<>(); players.add(player1); players.add(player2);
-            Game game = new Game(players, new Market(marble), new Dashboard(developmentCards), tokens, leaderCards);
+            ArrayList<PlayerExt> players = new ArrayList<>(); players.add(player1); players.add(player2);
+            GameExt game = new GameExt(players, new MarketExt(marble), new DashboardExt(developmentCards), tokens, leaderCards);
 
             Controller controller = new Controller(game);
 
@@ -74,14 +78,14 @@ public class Server {
 
             for(View view : playersView){
                 //add model - view links
-                game.getMarketTray().addObserver(view);
-                game.getDashboard().addObserver(view);
+                ((MarketExt)game.getMarketTray()).addObserver(view);
+                ((DashboardExt)game.getDashboard()).addObserver(view);
                 game.addObserver(view);
                 for(Player player : game.getPlayers()){
-                    player.getPersonalBoard().addObserver(view);
-                    player.getFaithTrack().addObserver(view);
-                    player.getDepots().addObserver(view);
-                    player.addObserver(view);
+                    ((PersonalBoardExt)player.getPersonalBoard()).addObserver(view);
+                    ((FaithTrackExt)player.getFaithTrack()).addObserver(view);
+                    ((DepotsExt)player.getDepots()).addObserver(view);
+                    ((PlayerExt)player).addObserver(view);
                 }
 
                 //add controller - view links
