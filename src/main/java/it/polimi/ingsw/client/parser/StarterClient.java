@@ -2,8 +2,7 @@ package it.polimi.ingsw.client.parser;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import it.polimi.ingsw.client.modelClient.*;
-import it.polimi.ingsw.client.move.MoveType;
+import it.polimi.ingsw.constant.move.MoveType;
 import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.constant.MessageSerializer;
 import it.polimi.ingsw.constant.model.NumberOfResources;

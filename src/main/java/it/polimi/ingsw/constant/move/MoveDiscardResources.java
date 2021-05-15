@@ -1,4 +1,4 @@
-package it.polimi.ingsw.client.move;
+package it.polimi.ingsw.constant.move;
 
 import it.polimi.ingsw.constant.model.Game;
 import it.polimi.ingsw.constant.model.NumberOfResources;

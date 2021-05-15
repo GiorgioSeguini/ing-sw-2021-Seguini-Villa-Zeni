@@ -2,6 +2,7 @@ package it.polimi.ingsw.client.parser;
 
 import com.google.gson.*;
 import it.polimi.ingsw.client.move.*;
+import it.polimi.ingsw.constant.move.*;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;

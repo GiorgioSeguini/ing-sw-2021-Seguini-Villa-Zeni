@@ -56,6 +56,9 @@ public class Game {
         return players.indexOf(player);
     }
 
+    public int getInitialResources(int myID) {
+        return INITIAL_RESOURCES[getPlayerIndex(getPlayerFromID(myID))];
+    }
     /**
      * @return a reference to the only player witch state is Active
      */

@@ -1,8 +1,8 @@
 package it.polimi.ingsw.client.cli;
 
 import it.polimi.ingsw.constant.model.Game;
-import it.polimi.ingsw.client.move.MoveChoseLeaderCards;
-import it.polimi.ingsw.client.move.MoveType;
+import it.polimi.ingsw.constant.move.MoveChoseLeaderCards;
+import it.polimi.ingsw.constant.move.MoveType;
 
 import java.util.Scanner;
 

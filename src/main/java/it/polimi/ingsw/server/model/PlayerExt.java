@@ -58,6 +58,13 @@ public class PlayerExt extends Player implements Observable<Message> {
         return temp.size()>=toActive.getOfYourChoiceInput();
     }
 
+    public ProductionPower getToActive() {
+        return toActive;
+    }
+
+    public NumberOfResources getDiscounted() {
+        return discounted;
+    }
 
     /*Modifier*/
 

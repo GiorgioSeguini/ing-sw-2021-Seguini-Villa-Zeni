@@ -1,4 +1,4 @@
-package it.polimi.ingsw.client.move;
+package it.polimi.ingsw.constant.move;
 
 import it.polimi.ingsw.constant.model.Game;
 import it.polimi.ingsw.constant.enumeration.PlayerStatus;
@@ -17,6 +17,14 @@ public class MoveBuyDevCard extends MoveType {
     @Override
     public String getClassName() {
         return className;
+    }
+
+    public int getPos() {
+        return pos;
+    }
+
+    public int getIndexCardToBuy() {
+        return indexCardToBuy;
     }
 
     public void setPos(int pos) {

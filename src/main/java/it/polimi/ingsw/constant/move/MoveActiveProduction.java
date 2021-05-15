@@ -1,4 +1,4 @@
-package it.polimi.ingsw.client.move;
+package it.polimi.ingsw.constant.move;
 
 import it.polimi.ingsw.constant.model.Game;
 import it.polimi.ingsw.constant.model.ProductionPower;
@@ -21,12 +21,16 @@ public class MoveActiveProduction extends MoveType {
         return className;
     }
 
+    @Override
+    public boolean canPerform(Game game) {
+        return super.simpleCheck(game, allowedStatus);
+    }
+
     public void setToActive(ArrayList<ProductionPower> toActive) {
         this.toActive = toActive;
     }
 
-    @Override
-    public boolean canPerform(Game game) {
-        return super.simpleCheck(game, allowedStatus);
+    public ArrayList<ProductionPower> getToActive() {
+        return toActive;
     }
 }

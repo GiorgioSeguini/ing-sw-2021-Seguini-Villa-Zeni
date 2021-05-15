@@ -1,6 +1,5 @@
-package it.polimi.ingsw.client.move;
+package it.polimi.ingsw.constant.move;
 
-import it.polimi.ingsw.client.modelClient.GameClient;
 import it.polimi.ingsw.constant.model.Game;
 import it.polimi.ingsw.constant.enumeration.GameStatus;
 import it.polimi.ingsw.constant.enumeration.PlayerStatus;
@@ -21,7 +20,7 @@ public abstract class MoveType {
     }
 
 
-    public abstract boolean canPerform(GameClient game);
+    public abstract boolean canPerform(Game game);
 
     public void updateCLI(Game game, Scanner stdin){
         System.out.println("Move not yet implemented");
@@ -31,7 +30,7 @@ public abstract class MoveType {
     public abstract String getClassName();
 
 
-    protected boolean simpleCheck(GameClient game, PlayerStatus[] allowedStatus){
+    protected boolean simpleCheck(Game game, PlayerStatus[] allowedStatus){
         Player player = game.getPlayerFromID(idPlayer);
         if(player==null)
             return false;
@@ -39,7 +38,7 @@ public abstract class MoveType {
         if(game.getStatus()!= GameStatus.Running && game.getStatus()!=GameStatus.LastTurn){
             return false;
         }
-        if(!game.isMyTurn()) {
+        if(game.getCurrPlayer().getID() != idPlayer) {
             return false;
         }
 
@@ -53,7 +52,7 @@ public abstract class MoveType {
     }
 
 
-    protected boolean initialMove(GameClient game){
+    protected boolean initialMove(Game game){
         Player player = game.getPlayerFromID(idPlayer);
         if(player==null)
             return false;
@@ -62,7 +61,7 @@ public abstract class MoveType {
             return false;
         }
 
-        return game.isMyTurn();
+        return game.getCurrPlayer().getID() != idPlayer;
     }
     @Override
     public boolean equals(Object other){

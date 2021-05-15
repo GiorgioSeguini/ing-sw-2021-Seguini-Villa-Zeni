@@ -19,9 +19,6 @@ public class GameClient extends Game {
         return getCurrPlayer().getID()==this.myID;
     }
 
-    public int getInitialResources() {
-        return INITIAL_RESOURCES[getPlayerIndex(getPlayerFromID(myID))];
-    }
 
     public Player getMe(){
         return super.getPlayerFromID(myID);
