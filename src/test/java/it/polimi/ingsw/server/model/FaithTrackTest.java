@@ -1,6 +1,6 @@
 package it.polimi.ingsw.server.model;
 
-import it.polimi.ingsw.server.model.FaithTrack;
+import it.polimi.ingsw.server.model.FaithTrackExt;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -9,7 +9,7 @@ class FaithTrackTest{
 
     @Test
     void goodSetup(){
-        FaithTrack curr = new FaithTrack(0);
+        FaithTrackExt curr = new FaithTrackExt(0);
         System.out.println(curr);
         assertEquals(curr.getFaithPoints(), 0);
 
@@ -23,7 +23,7 @@ class FaithTrackTest{
 
     @Test
     void testAdd(){
-        FaithTrack curr = new FaithTrack(0);
+        FaithTrackExt curr = new FaithTrackExt(0);
         assertEquals(curr.getFaithPoints(), 0);
 
         for(int i=0; i<5; i++)

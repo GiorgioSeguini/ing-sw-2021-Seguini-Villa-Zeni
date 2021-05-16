@@ -1,5 +1,6 @@
 package it.polimi.ingsw.server.model;
 
+import it.polimi.ingsw.constant.model.NumberOfResources;
 import it.polimi.ingsw.server.parse.Starter;
 import it.polimi.ingsw.constant.enumeration.LeaderStatus;
 import it.polimi.ingsw.constant.enumeration.ResourceType;
@@ -15,7 +16,7 @@ class LeaderCardTest {
     @Test
     void Constructor(){
         DepotsAbility depotsAbility = new DepotsAbility(ResourceType.Stones);
-        LeaderCard leaderCard = new LeaderCard(new Requirements(new NumberOfResources(0,0,5,0)),depotsAbility,3);
+        LeaderCardExt leaderCard = new LeaderCardExt(new RequirementsExt(new NumberOfResources(0,0,5,0)),depotsAbility,3);
         assertNotNull(leaderCard.getStatus());
         assertTrue(leaderCard.getStatus()==LeaderStatus.Dead||leaderCard.getStatus()==LeaderStatus.onHand||leaderCard.getStatus()==LeaderStatus.Played);
         assertNotNull(leaderCard.getRequirements());
@@ -27,10 +28,10 @@ class LeaderCardTest {
     //TODO da rivedere
     @Test
     void SetPlayedTest() throws IOException{
-        ArrayList<LeaderCard> leaderCards;
+        ArrayList<LeaderCardExt> leaderCards;
         leaderCards = Starter.LeaderCardsParser();
-        LeaderCard leaderCard1;
-        LeaderCard leaderCard2;
+        LeaderCardExt leaderCard1;
+        LeaderCardExt leaderCard2;
         int n = (int) (Math.random() * 15.1);
         leaderCard1 = leaderCards.get(n);
         System.out.println(leaderCard1);
@@ -38,20 +39,20 @@ class LeaderCardTest {
         n=(int) (Math.random() * 14.1);
         leaderCard2 = leaderCards.get(n);
         leaderCards.remove(n);
-        LeaderCard[] leaderCardsOw = new LeaderCard[] {leaderCard1,leaderCard2};
+        LeaderCardExt[] leaderCardsOw = new LeaderCardExt[] {leaderCard1,leaderCard2};
 
-        PersonalBoard personalBoard = new PersonalBoard(0);
+        PersonalBoardExt personalBoard = new PersonalBoardExt(0);
         personalBoard.addLeaderCard(leaderCardsOw);
-        Player player = new Player("Fabio");
+        PlayerExt player = new PlayerExt("Fabio");
         player.getDepots().addResourceFromProduction(new NumberOfResources(100,100,100,100));
 
-        LeaderCard[] ownedLeaderCard = new LeaderCard[2];
+        LeaderCardExt[] ownedLeaderCard = new LeaderCardExt[2];
 
-        try {
+        //try {
             ownedLeaderCard = personalBoard.getLeaderCards();
-        } catch (NoMoreLeaderCardAliveException e) {
+        /*} catch (NoMoreLeaderCardAliveException e) {
             e.printStackTrace();
-        }
+        }*/
 
 
         for(int i=0; i<ownedLeaderCard.length; i++) {
@@ -66,7 +67,7 @@ class LeaderCardTest {
                 }
             }
         }
-        for (LeaderCard x: ownedLeaderCard) {
+        for (LeaderCardExt x: ownedLeaderCard) {
             if (x.getRequirements().match(player)) {
                 assertFalse(x.setPlayed(player));
                 assertNotEquals(LeaderStatus.onHand, x.getStatus());
@@ -79,32 +80,32 @@ class LeaderCardTest {
 
     @Test
     void SetDiscardTest() throws IOException{
-        ArrayList<LeaderCard> leaderCards;
+        ArrayList<LeaderCardExt> leaderCards;
         leaderCards = Starter.LeaderCardsParser();
-        LeaderCard leaderCard1;
-        LeaderCard leaderCard2;
+        LeaderCardExt leaderCard1;
+        LeaderCardExt leaderCard2;
         int n = (int) (Math.random() * 15.1);
         leaderCard1 = leaderCards.get(n);
         leaderCards.remove(n);
         n=(int) (Math.random() * 14.1);
         leaderCard2 = leaderCards.get(n);
         leaderCards.remove(n);
-        LeaderCard[] leaderCardsOw = new LeaderCard[] {leaderCard1,leaderCard2};
+        LeaderCardExt[] leaderCardsOw = new LeaderCardExt[] {leaderCard1,leaderCard2};
 
-        PersonalBoard personalBoard = new PersonalBoard(0);
+        PersonalBoardExt personalBoard = new PersonalBoardExt(0);
         personalBoard.addLeaderCard(leaderCardsOw);
-        Player player = new Player("Fabio");
+        PlayerExt player = new PlayerExt("Fabio");
         player.getDepots().addResourceFromProduction(new NumberOfResources(100,100,100,100));
         int faithpoints=player.getFaithTrack().getFaithPoints();
-        LeaderCard[] ownedLeaderCard = new LeaderCard[2];
+        LeaderCardExt[] ownedLeaderCard = new LeaderCardExt[2];
 
-        try {
+        //try {
             ownedLeaderCard = personalBoard.getLeaderCards();
-        } catch (NoMoreLeaderCardAliveException e) {
+        /*} catch (NoMoreLeaderCardAliveException e) {
             e.printStackTrace();
-        }
+        }*/
 
-        for(LeaderCard x: ownedLeaderCard){
+        for(LeaderCardExt x: ownedLeaderCard){
             if (x.setDiscard(player)){
                 assertEquals(player.getFaithTrack().getFaithPoints(), ++faithpoints);
                 assertFalse(player.getFaithTrack().getFaithPoints()<0 && player.getFaithTrack().getFaithPoints()>=25);
@@ -114,14 +115,14 @@ class LeaderCardTest {
                 assertNotSame(LeaderStatus.onHand, x.getStatus());
         }
 
-        for (LeaderCard x: ownedLeaderCard){
+        for (LeaderCardExt x: ownedLeaderCard){
             assertEquals(LeaderStatus.Dead,x.getStatus());
         }
 
-        try {
+        /*try {
             ownedLeaderCard = personalBoard.getLeaderCards();
             fail();
-        } catch (NoMoreLeaderCardAliveException ignored) {}
+        } catch (NoMoreLeaderCardAliveException ignored) {}*/
 
 
     }
@@ -131,11 +132,11 @@ class LeaderCardTest {
         //test equality
 
 
-        LeaderCard card1 = new LeaderCard(new Requirements(), new WhiteAbility(ResourceType.Coins), 0);
-        LeaderCard card2 = new LeaderCard(new Requirements(), new WhiteAbility(ResourceType.Coins), 0);
-        LeaderCard card3 = new LeaderCard(new Requirements(), new WhiteAbility(ResourceType.Coins), 1);
-        LeaderCard card4 = new LeaderCard(new Requirements(), new DepotsAbility(ResourceType.Coins), 0);
-        LeaderCard card5 = new LeaderCard(new Requirements(new NumberOfResources(3,3,3,3)), new WhiteAbility(ResourceType.Coins), 0);
+        LeaderCardExt card1 = new LeaderCardExt(new RequirementsExt(), new WhiteAbility(ResourceType.Coins), 0);
+        LeaderCardExt card2 = new LeaderCardExt(new RequirementsExt(), new WhiteAbility(ResourceType.Coins), 0);
+        LeaderCardExt card3 = new LeaderCardExt(new RequirementsExt(), new WhiteAbility(ResourceType.Coins), 1);
+        LeaderCardExt card4 = new LeaderCardExt(new RequirementsExt(), new DepotsAbility(ResourceType.Coins), 0);
+        LeaderCardExt card5 = new LeaderCardExt(new RequirementsExt(new NumberOfResources(3,3,3,3)), new WhiteAbility(ResourceType.Coins), 0);
 
         assertEquals(card1, card1);
         assertEquals(card2, card1);
@@ -144,16 +145,16 @@ class LeaderCardTest {
         assertNotEquals(card4, card1);
         assertNotEquals(card5, card1);
 
-        Player player = new Player("Pippo");
+        PlayerExt player = new PlayerExt("Pippo");
 
-        player.getPersonalBoard().addLeaderCard(new LeaderCard[]{card1, card3});
+        player.getPersonalBoard().addLeaderCard(new LeaderCardExt[]{card1, card3});
         card1.setDiscard(player);
 
-        try {
+        //try {
             assertEquals(1, player.getPersonalBoard().getLeaderCards().length);
-        } catch (NoMoreLeaderCardAliveException e) {
+       /* } catch (NoMoreLeaderCardAliveException e) {
             fail();
-        }
+        }*/
 
         assertFalse(card1.setDiscard(player));
 

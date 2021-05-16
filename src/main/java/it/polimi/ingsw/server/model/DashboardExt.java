@@ -16,7 +16,7 @@ import java.util.*;
 
 public class DashboardExt extends Dashboard implements Observable<Message> {
 
-    private final Stack<DevelopmentCard>[][] dashBoard;
+    private final Stack<DevelopmentCardExt>[][] dashBoard;
 
     /**
      * Default constructor, ensure correct classification of cards and randomness
@@ -32,7 +32,7 @@ public class DashboardExt extends Dashboard implements Observable<Message> {
         }
 
         //load cards
-        for(DevelopmentCard card: developmentCards){
+        for(DevelopmentCardExt card: developmentCards){
             dashBoard[card.getLevel().ordinal()][card.getColor().ordinal()].add(card);
         }
 
@@ -46,7 +46,7 @@ public class DashboardExt extends Dashboard implements Observable<Message> {
 
 
     @Override
-    public DevelopmentCard getTopDevCard(ColorDevCard color, Level level) {
+    public DevelopmentCardExt getTopDevCard(ColorDevCard color, Level level) {
         int size = dashBoard[level.ordinal()][color.ordinal()].size();
         if(size ==0) return null;
         return dashBoard[level.ordinal()][color.ordinal()].get(size -1);
@@ -71,7 +71,7 @@ public class DashboardExt extends Dashboard implements Observable<Message> {
      * @return the card you wnat to buy, and remove it from the dashboard
      * @throws IllegalArgumentException when the card required is no more available
      */
-    public DevelopmentCard buyDevCard(ColorDevCard color, Level level) throws IllegalArgumentException{
+    public DevelopmentCardExt buyDevCard(ColorDevCard color, Level level) throws IllegalArgumentException{
         /*DevelopmentCard result = getTopDevCard(color, level);
         dashBoard[level.ordinal()][color.ordinal()].remove(result);
         return result;*
@@ -103,10 +103,10 @@ public class DashboardExt extends Dashboard implements Observable<Message> {
         change();
     }
 
-    public DevelopmentCard findDevCard(int id){
+    public DevelopmentCardExt findDevCard(int id){
         for (Level l: Level.values()){
             for( ColorDevCard c: ColorDevCard.values()){
-                for (DevelopmentCard x: dashBoard[l.ordinal()][c.ordinal()]){
+                for (DevelopmentCardExt x: dashBoard[l.ordinal()][c.ordinal()]){
                     if(x.getId()==id){
                         return x;
                     }
@@ -118,7 +118,7 @@ public class DashboardExt extends Dashboard implements Observable<Message> {
 
 
     private void change(){
-        notify(new DashBoardMessage(Starter.toJson(this, Dashboard.class)));
+        notify(new DashBoardMessage(Starter.toJson(this, DashboardExt.class)));
     }
 
     //Observable implementation

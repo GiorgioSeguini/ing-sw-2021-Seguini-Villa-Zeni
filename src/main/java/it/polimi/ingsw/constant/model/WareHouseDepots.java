@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /*Last Edit: William Zeni*/
 public class WareHouseDepots {
 
-    private final ArrayList<Shelf> shelfs=new ArrayList<>();
+    private ArrayList<Shelf> shelfs=new ArrayList<>();
 
     /*Default constructor*/
     public WareHouseDepots(){
@@ -39,6 +39,9 @@ public class WareHouseDepots {
         return copy;
     }
 
+    public void setShelfs(ArrayList<Shelf> shelfs) {
+        this.shelfs = shelfs;
+    }
 
     @Override
     public String toString(){

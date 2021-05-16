@@ -1,5 +1,7 @@
 package it.polimi.ingsw.server.model;
 
+import it.polimi.ingsw.constant.model.NumberOfResources;
+import it.polimi.ingsw.constant.model.Shelf;
 import it.polimi.ingsw.server.model.*;
 import it.polimi.ingsw.constant.enumeration.ResourceType;
 import it.polimi.ingsw.server.model.exception.UnableToFillException;
@@ -23,7 +25,7 @@ public class AbilityTest{
         assertNotEquals(ability, new Object());
 
 
-        Player player= new Player("Pippo");
+        PlayerExt player= new PlayerExt("Pippo");
         try {
             player.getDepots().addResourcesFromMarket(new NumberOfResources(1,2,3,0));
         } catch (UnableToFillException e) {
@@ -34,7 +36,7 @@ public class AbilityTest{
 
         assertEquals(4, player.getDepots().getWareHouseDepots().getShelfs().size());
         for(Shelf x: player.getDepots().getWareHouseDepots().getShelfs()){
-            if(x.is_extra_shelf){
+            if(x.getIsExtra()){
                 assertEquals(ResourceType.Coins,x.getResType());
             }
         }
@@ -43,7 +45,7 @@ public class AbilityTest{
 
         assertEquals(5, player.getDepots().getWareHouseDepots().getShelfs().size());
         for(Shelf x: player.getDepots().getWareHouseDepots().getShelfs()){
-            if(x.is_extra_shelf){
+            if(x.getIsExtra()){
                 assertEquals(ResourceType.Coins,x.getResType());
             }
         }
@@ -63,7 +65,7 @@ public class AbilityTest{
         assertNotEquals(ability, new WhiteAbility(ResourceType.Servants));
         assertNotEquals(ability, new Object());
 
-        Player player= new Player("Pippo");
+        PlayerExt player= new PlayerExt("Pippo");
 
         ability.RunAbility(player);
         ability2.RunAbility(player);
@@ -77,7 +79,7 @@ public class AbilityTest{
     public void DiscountAbilityTest(){
         DiscountAbility ability=new DiscountAbility(ResourceType.Coins, 5);
         DiscountAbility ability2=new DiscountAbility(ResourceType.Servants, 2);
-        Player player= new Player("Pippo");
+        PlayerExt player= new PlayerExt("Pippo");
 
         //test getter
         assertEquals(ability.getTypeOfRes(), ResourceType.Coins);
@@ -93,13 +95,13 @@ public class AbilityTest{
         ability.RunAbility(player);
         ability2.RunAbility(player);
 
-        assertEquals(new NumberOfResources(2,0,5,0), player.getDiscount());
+        assertEquals(new NumberOfResources(2,0,5,0), player.getDiscounted());
     }
 
     @Test
     public void PowerProductionPlusAbilityTest(){
         ProductionPowerPlusAbility ability= new ProductionPowerPlusAbility(ResourceType.Coins);
-        Player player= new Player("Pippo");
+        PlayerExt player= new PlayerExt("Pippo");
 
         //test getter
         assertEquals(ability.getTypeOfRes(), ResourceType.Coins);

@@ -1,5 +1,6 @@
 package it.polimi.ingsw.server.model;
 
+import it.polimi.ingsw.constant.model.NumberOfResources;
 import it.polimi.ingsw.server.model.*;
 import it.polimi.ingsw.constant.enumeration.ColorDevCard;
 import it.polimi.ingsw.constant.enumeration.Level;
@@ -19,7 +20,7 @@ class RequirementsTest {
         NumberOfResources res0 = new NumberOfResources();
         NumberOfResources res1 = new NumberOfResources(0, 2, 2, 1);
         NumberOfResources res2 = new NumberOfResources( 0, 3, 1, 2);
-        ProductionPower power0 = new ProductionPower();
+        ProductionPowerExt power0 = new ProductionPowerExt();
 
         ArrayList<Map.Entry<ColorDevCard, Level>> req1 = new ArrayList<>();
         req1.add(new Map.Entry<ColorDevCard, Level>() {
@@ -39,15 +40,15 @@ class RequirementsTest {
             }
         });
 
-        Player owner = new Player("Pippo");
+        PlayerExt owner = new PlayerExt("Pippo");
         try {
             owner.getDepots().addResourcesFromMarket(res1);
         } catch (UnableToFillException e) {
             fail();
         }
 
-        Requirements test = new Requirements(res1);
-        Requirements test2 = new Requirements(req1);
+        RequirementsExt test = new RequirementsExt(res1);
+        RequirementsExt test2 = new RequirementsExt(req1);
 
         //getter test
         assertEquals(res1, test.getNumberOfResourceses());
@@ -55,14 +56,14 @@ class RequirementsTest {
 
         //equality test
         assertNotEquals(test, test2);
-        assertNotEquals(test, new Requirements());
+        assertNotEquals(test, new RequirementsExt());
 
-        assertFalse(test.match(new Player("Gio")));
+        assertFalse(test.match(new PlayerExt("Gio")));
         assertTrue(test.match(owner));
         assertFalse(test2.match(owner));
         try {
-            owner.getPersonalBoard().addDevCard(new DevelopmentCard(Level.ONE, ColorDevCard.GREEN, res0, power0, 0), 0);
-            owner.getPersonalBoard().addDevCard(new DevelopmentCard(Level.TWO, ColorDevCard.BLUE, res0, power0, 0), 0);
+            owner.getPersonalBoard().addDevCard(new DevelopmentCardExt(Level.ONE, ColorDevCard.GREEN, res0, power0, 0), 0);
+            owner.getPersonalBoard().addDevCard(new DevelopmentCardExt(Level.TWO, ColorDevCard.BLUE, res0, power0, 0), 0);
         } catch (NoSpaceException e) {
             fail();
         }
@@ -75,7 +76,7 @@ class RequirementsTest {
     public void test2(){
 
         //empty constructor test
-        Requirements requirements = new Requirements();
+        RequirementsExt requirements = new RequirementsExt();
         assertEquals(new NumberOfResources(), requirements.getNumberOfResourceses());
 
         for(int[] i: requirements.getMinNumber()){

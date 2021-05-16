@@ -16,14 +16,14 @@ class StarterTest {
 
     @Test
     public void DevCardParserTest(){
-        ArrayList<DevelopmentCard> devcards = new ArrayList<>();
+        ArrayList<DevelopmentCardExt> devcards = new ArrayList<>();
         try {
             devcards = Starter.DevCardParser();
         } catch (IOException e) {
             fail();
         }
 
-        Dashboard dashboard = new Dashboard(devcards);
+        DashboardExt dashboard = new DashboardExt(devcards);
 
         for(Level l: Level.values()){
             for(ColorDevCard c: ColorDevCard.values()){
@@ -113,7 +113,7 @@ class StarterTest {
 
     @Test
     public void LeaderCardsParserTest(){
-        ArrayList<LeaderCard>leaderCards=new ArrayList<>();
+        ArrayList<LeaderCardExt>leaderCards=new ArrayList<>();
         try {
             leaderCards=Starter.LeaderCardsParser();
         } catch (IOException  e) {
@@ -121,7 +121,7 @@ class StarterTest {
         }
         assertEquals(16,leaderCards.size());
 
-        for(LeaderCard x: leaderCards){
+        for(LeaderCardExt x: leaderCards){
             assertNotNull(x.getAbility());
             assertNotNull(x.getVictoryPoints());
             assertNotNull(x.getRequirements());

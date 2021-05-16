@@ -10,7 +10,19 @@ import it.polimi.ingsw.server.model.exception.OutOfResourcesException;
 
 public class ProductionPowerExt extends ProductionPower {
 
-    @Override
+    public ProductionPowerExt(int points, NumberOfResources outputRes, NumberOfResources inputRes, int ofYourChoiceInput, int ofYourChoiceOutput){
+        super(points, outputRes, inputRes, ofYourChoiceInput, ofYourChoiceOutput);
+    }
+    public ProductionPowerExt(int points, NumberOfResources outputRes, NumberOfResources inputRes){
+        super(points, outputRes, inputRes);
+    }
+    public ProductionPowerExt(NumberOfResources outputRes, NumberOfResources inputRes) {
+        super(outputRes, inputRes);
+    }
+    public ProductionPowerExt(){
+        super();
+    }
+        @Override
     public ProductionPowerExt add(ProductionPower other) {
         return (ProductionPowerExt) super.add(other);
     }

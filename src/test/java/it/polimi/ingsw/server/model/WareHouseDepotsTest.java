@@ -1,9 +1,9 @@
 package it.polimi.ingsw.server.model;
 
-import it.polimi.ingsw.server.model.NumberOfResources;
-import it.polimi.ingsw.server.model.Shelf;
-import it.polimi.ingsw.server.model.WareHouseDepots;
+
 import it.polimi.ingsw.constant.enumeration.ResourceType;
+import it.polimi.ingsw.constant.model.NumberOfResources;
+import it.polimi.ingsw.constant.model.Shelf;
 import it.polimi.ingsw.server.model.exception.OutOfResourcesException;
 import it.polimi.ingsw.server.model.exception.UnableToFillException;
 import org.junit.jupiter.api.Test;
@@ -13,7 +13,7 @@ public class WareHouseDepotsTest {
 
     @Test
     void getResourcesandAddExtraShelf(){
-        WareHouseDepots test= new WareHouseDepots();
+        WareHouseDepotsExt test= new WareHouseDepotsExt();
         assertEquals(test.getResources(),new NumberOfResources());
         Shelf x= new Shelf(ResourceType.Shields,0);
         x.setUsed(3);
@@ -42,7 +42,7 @@ public class WareHouseDepotsTest {
 
     @Test
     public void addResourceAndCleanTest(){
-        WareHouseDepots warehouse= new WareHouseDepots();
+        WareHouseDepotsExt warehouse= new WareHouseDepotsExt();
 
         try {
             warehouse.addResource(new NumberOfResources(2,2,3,0));
@@ -196,7 +196,7 @@ public class WareHouseDepotsTest {
             i++;
         }
 
-        warehouse=new WareHouseDepots();
+        warehouse=new WareHouseDepotsExt();
         warehouse.addExtraShelf(new Shelf(ResourceType.Stones, 2));
         warehouse.addExtraShelf(new Shelf(ResourceType.Shields, 2));
 
@@ -215,7 +215,7 @@ public class WareHouseDepotsTest {
 
     @Test
     public  void subResourceTest(){
-        WareHouseDepots warehouse= new WareHouseDepots();
+        WareHouseDepotsExt warehouse= new WareHouseDepotsExt();
         try {
             warehouse.addResource(new NumberOfResources(1,2,3,0));
         } catch (UnableToFillException e) {

@@ -8,6 +8,7 @@ import it.polimi.ingsw.constant.message.PersonalBoardMessage;
 import it.polimi.ingsw.constant.model.DevelopmentCard;
 import it.polimi.ingsw.constant.model.LeaderCard;
 import it.polimi.ingsw.constant.model.PersonalBoard;
+import it.polimi.ingsw.constant.model.ProductionPower;
 import it.polimi.ingsw.server.model.exception.NoMoreLeaderCardAliveException;
 import it.polimi.ingsw.server.model.exception.NoSpaceException;
 import it.polimi.ingsw.server.observer.Observable;
@@ -29,6 +30,10 @@ public class PersonalBoardExt extends PersonalBoard implements Observable<Messag
         this.ownerID=ownerID;
     }
 
+    @Override
+    public LeaderCardExt[] getLeaderCards() {
+        return (LeaderCardExt[]) super.getLeaderCards();
+    }
 
 
     /**This for add a DevCard in a specific position**/
@@ -49,7 +54,7 @@ public class PersonalBoardExt extends PersonalBoard implements Observable<Messag
      *
      * @param leaderCard array containing the choosen leader card
      */
-    public void addLeaderCard(LeaderCard[] leaderCard){
+    public void addLeaderCard(LeaderCardExt[] leaderCard){
         if(isReady()){
             throw new IllegalArgumentException();
         }
@@ -81,12 +86,12 @@ public class PersonalBoardExt extends PersonalBoard implements Observable<Messag
      * @see LeaderCard only class that call this methods
      */
     protected void change(){
-        Type type = new TypeToken<ArrayList<DevelopmentCard>[]>(){}.getType();
+        /*Type type = new TypeToken<ArrayList<DevelopmentCardExt>[]>(){}.getType();
         String devCards = Starter.toJson(super.getOwnedDevCards(), type);
 
-        Type type1 = new TypeToken<LeaderCard[]>(){}.getType();
+        Type type1 = new TypeToken<LeaderCardExt[]>(){}.getType();
         String leaderCards = Starter.toJson(super.getLeaderCards(), type1);
-        notify(new PersonalBoardMessage(devCards, leaderCards, this.ownerID));
+        notify(new PersonalBoardMessage(devCards, leaderCards, this.ownerID));*/
     }
 
     //Observable implementation

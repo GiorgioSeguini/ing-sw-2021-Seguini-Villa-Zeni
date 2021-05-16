@@ -1,5 +1,6 @@
 package it.polimi.ingsw.server.model;
 
+import it.polimi.ingsw.constant.model.NumberOfResources;
 import it.polimi.ingsw.server.parse.Starter;
 import it.polimi.ingsw.constant.enumeration.ColorDevCard;
 import it.polimi.ingsw.constant.enumeration.Level;
@@ -15,7 +16,7 @@ class DashboardTest {
 
     @Test
     void emptyDashboard(){
-        Dashboard d = new Dashboard(new ArrayList<>());
+        DashboardExt d = new DashboardExt(new ArrayList<>());
         for(ColorDevCard color : ColorDevCard.values())
             if(!d.isEmpty()) fail();
 
@@ -32,16 +33,16 @@ class DashboardTest {
 
     @Test
     void oneStackDashBoard() {
-        ArrayList<DevelopmentCard> cards = new ArrayList<>();
-        cards.add(new DevelopmentCard(Level.ONE, ColorDevCard.BLUE, new NumberOfResources(), new ProductionPower(), 0));
-        cards.add(new DevelopmentCard(Level.ONE, ColorDevCard.BLUE, new NumberOfResources(), new ProductionPower(), 1));
-        cards.add(new DevelopmentCard(Level.ONE, ColorDevCard.BLUE, new NumberOfResources(), new ProductionPower(), 2));
-        cards.add(new DevelopmentCard(Level.ONE, ColorDevCard.BLUE, new NumberOfResources(), new ProductionPower(), 3));
+        ArrayList<DevelopmentCardExt> cards = new ArrayList<>();
+        cards.add(new DevelopmentCardExt(Level.ONE, ColorDevCard.BLUE, new NumberOfResources(), new ProductionPowerExt(), 0));
+        cards.add(new DevelopmentCardExt(Level.ONE, ColorDevCard.BLUE, new NumberOfResources(), new ProductionPowerExt(), 1));
+        cards.add(new DevelopmentCardExt(Level.ONE, ColorDevCard.BLUE, new NumberOfResources(), new ProductionPowerExt(), 2));
+        cards.add(new DevelopmentCardExt(Level.ONE, ColorDevCard.BLUE, new NumberOfResources(), new ProductionPowerExt(), 3));
 
-        Dashboard d = new Dashboard(cards);
+        DashboardExt d = new DashboardExt(cards);
 
         //getter test
-        DevelopmentCard c1 = d.getTopDevCard(ColorDevCard.BLUE, Level.ONE);
+        DevelopmentCardExt c1 = d.getTopDevCard(ColorDevCard.BLUE, Level.ONE);
         if(!cards.contains(c1)) fail();
         assertEquals(c1, d.getTopDevCard(ColorDevCard.BLUE, Level.ONE));
 
@@ -68,25 +69,25 @@ class DashboardTest {
     @Test
     void removeCard() {
 
-        ArrayList<DevelopmentCard> cards = new ArrayList<>();
-        cards.add(new DevelopmentCard(Level.ONE, ColorDevCard.BLUE, new NumberOfResources(), new ProductionPower(), 0));
-        cards.add(new DevelopmentCard(Level.TWO, ColorDevCard.BLUE, new NumberOfResources(), new ProductionPower(), 1));
-        cards.add(new DevelopmentCard(Level.ONE, ColorDevCard.BLUE, new NumberOfResources(), new ProductionPower(), 2));
-        cards.add(new DevelopmentCard(Level.THREE, ColorDevCard.BLUE, new NumberOfResources(), new ProductionPower(), 3));
-        cards.add(new DevelopmentCard(Level.ONE, ColorDevCard.GREEN, new NumberOfResources(), new ProductionPower(), 0));
-        cards.add(new DevelopmentCard(Level.TWO, ColorDevCard.YELLOW, new NumberOfResources(), new ProductionPower(), 1));
-        cards.add(new DevelopmentCard(Level.ONE, ColorDevCard.PURPLE, new NumberOfResources(), new ProductionPower(), 2));
+        ArrayList<DevelopmentCardExt> cards = new ArrayList<>();
+        cards.add(new DevelopmentCardExt(Level.ONE, ColorDevCard.BLUE, new NumberOfResources(), new ProductionPowerExt(), 0));
+        cards.add(new DevelopmentCardExt(Level.TWO, ColorDevCard.BLUE, new NumberOfResources(), new ProductionPowerExt(), 1));
+        cards.add(new DevelopmentCardExt(Level.ONE, ColorDevCard.BLUE, new NumberOfResources(), new ProductionPowerExt(), 2));
+        cards.add(new DevelopmentCardExt(Level.THREE, ColorDevCard.BLUE, new NumberOfResources(), new ProductionPowerExt(), 3));
+        cards.add(new DevelopmentCardExt(Level.ONE, ColorDevCard.GREEN, new NumberOfResources(), new ProductionPowerExt(), 0));
+        cards.add(new DevelopmentCardExt(Level.TWO, ColorDevCard.YELLOW, new NumberOfResources(), new ProductionPowerExt(), 1));
+        cards.add(new DevelopmentCardExt(Level.ONE, ColorDevCard.PURPLE, new NumberOfResources(), new ProductionPowerExt(), 2));
 
 
-        Dashboard d = new Dashboard(cards);
+        DashboardExt d = new DashboardExt(cards);
 
         //getter test
-        DevelopmentCard c1 = d.getTopDevCard(ColorDevCard.BLUE, Level.ONE);
+        DevelopmentCardExt c1 = d.getTopDevCard(ColorDevCard.BLUE, Level.ONE);
         if(!cards.contains(c1)) fail();
         assertEquals(c1, d.getTopDevCard(ColorDevCard.BLUE, Level.ONE));
 
         //not modifying test
-        cards.add(new DevelopmentCard(Level.ONE, ColorDevCard.YELLOW, new NumberOfResources(), new ProductionPower(), 0));
+        cards.add(new DevelopmentCardExt(Level.ONE, ColorDevCard.YELLOW, new NumberOfResources(), new ProductionPowerExt(), 0));
         assertNull(d.getTopDevCard(ColorDevCard.YELLOW, Level.ONE));
 
 
@@ -104,9 +105,9 @@ class DashboardTest {
 
     @Test
     void findDevCard() throws IOException{
-        //int starting_point = DevelopmentCard.nextId.get()+1;
-        ArrayList<DevelopmentCard> developmentCards= Starter.DevCardParser();
-        Dashboard dashboard= new Dashboard(developmentCards);
+        //int starting_point = DevelopmentCardExt.nextId.get()+1;
+        ArrayList<DevelopmentCardExt> developmentCards= Starter.DevCardParser();
+        DashboardExt dashboard= new DashboardExt(developmentCards);
         Random rand= new Random();
 
         for (int i=0; i<48; i++){

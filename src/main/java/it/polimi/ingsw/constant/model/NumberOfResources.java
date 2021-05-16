@@ -81,6 +81,8 @@ public class NumberOfResources {
             for(ResourceType t: ResourceType.values()){
                 x[type.ordinal()]=this.getAmountOf(t);
             }
+            if(x[type.ordinal()]<tosub)
+                throw new OutOfResourcesException();
             x[type.ordinal()]-=tosub;
             NumberOfResources new_resources= new NumberOfResources(x[0],x[1],x[2],x[3]);;
             return new_resources;

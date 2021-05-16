@@ -1,5 +1,6 @@
 package it.polimi.ingsw.server.model;
 
+import it.polimi.ingsw.constant.model.NumberOfResources;
 import it.polimi.ingsw.server.parse.Starter;
 import it.polimi.ingsw.constant.enumeration.ColorDevCard;
 import it.polimi.ingsw.constant.enumeration.GameStatus;
@@ -20,13 +21,13 @@ class LorenzoSoloPlayerTest {
         ArrayList<SoloActionTokens> soloActionTokensArrayList;
 
         soloActionTokensArrayList = Starter.TokensParser();
-        ArrayList<LeaderCard> leaderCards;
+        ArrayList<LeaderCardExt> leaderCards;
 
         //player.getDepots().addResourceFromProduction(new NumberOfResources(100,100,100,100));
-        ArrayList<Player> playerArrayList = new ArrayList<>();
-        playerArrayList.add(new Player("Fabio"));
+        ArrayList<PlayerExt> playerArrayList = new ArrayList<>();
+        playerArrayList.add(new PlayerExt("Fabio"));
 
-        Game game = new Game(playerArrayList, new Market(Starter.MarblesParser()), new Dashboard(Starter.DevCardParser()), soloActionTokensArrayList, Starter.LeaderCardsParser());
+        GameExt game = new GameExt(playerArrayList, new MarketExt(Starter.MarblesParser()), new DashboardExt(Starter.DevCardParser()), soloActionTokensArrayList, Starter.LeaderCardsParser());
 
         assertNotNull(game.getSoloGame().getGame());
         assertNotNull(game.getSoloGame().getFaithTrack());
@@ -49,13 +50,13 @@ class LorenzoSoloPlayerTest {
         ArrayList<SoloActionTokens> soloActionTokensArrayList;
 
         soloActionTokensArrayList = Starter.TokensParser();
-        ArrayList<LeaderCard> leaderCards;
+        ArrayList<LeaderCardExt> leaderCards;
 
         //player.getDepots().addResourceFromProduction(new NumberOfResources(100,100,100,100));
-        ArrayList<Player> playerArrayList = new ArrayList<>();
-        playerArrayList.add(new Player("Fabio"));
+        ArrayList<PlayerExt> playerArrayList = new ArrayList<>();
+        playerArrayList.add(new PlayerExt("Fabio"));
 
-        Game game = new Game(playerArrayList, new Market(Starter.MarblesParser()), new Dashboard(Starter.DevCardParser()), soloActionTokensArrayList, Starter.LeaderCardsParser());
+        GameExt game = new GameExt(playerArrayList, new MarketExt(Starter.MarblesParser()), new DashboardExt(Starter.DevCardParser()), soloActionTokensArrayList, Starter.LeaderCardsParser());
 
         Collections.shuffle(soloActionTokensArrayList);
         game.getSoloGame().setSoloActionTokens(soloActionTokensArrayList);
@@ -74,13 +75,13 @@ class LorenzoSoloPlayerTest {
         ArrayList<SoloActionTokens> soloActionTokensArrayList;
 
         soloActionTokensArrayList = Starter.TokensParser();
-        ArrayList<LeaderCard> leaderCards;
+        ArrayList<LeaderCardExt> leaderCards;
 
         //player.getDepots().addResourceFromProduction(new NumberOfResources(100,100,100,100));
-        ArrayList<Player> playerArrayList = new ArrayList<>();
-        playerArrayList.add(new Player("Fabio"));
+        ArrayList<PlayerExt> playerArrayList = new ArrayList<>();
+        playerArrayList.add(new PlayerExt("Fabio"));
 
-        Game game = new Game(playerArrayList, new Market(Starter.MarblesParser()), new Dashboard(Starter.DevCardParser()), soloActionTokensArrayList, Starter.LeaderCardsParser());
+        GameExt game = new GameExt(playerArrayList, new MarketExt(Starter.MarblesParser()), new DashboardExt(Starter.DevCardParser()), soloActionTokensArrayList, Starter.LeaderCardsParser());
 
         int dim = game.getSoloGame().getSoloActionTokens().size();
         SoloActionTokens NextRevealedToken = game.getSoloGame().getSoloActionTokens().get(0);
@@ -92,7 +93,7 @@ class LorenzoSoloPlayerTest {
     }
 
     @Test
-    void singlePlayerGame() throws IOException{
+    void singlePlayerExtGame() throws IOException{
         ArrayList<SoloActionTokens> tokens = new ArrayList<>();
         tokens.add(new Move2());
         tokens.add(new MoveShuffle());
@@ -101,33 +102,33 @@ class LorenzoSoloPlayerTest {
 
 
         assertEquals(ColorDevCard.BLUE, (new Discard2(ColorDevCard.BLUE)).getColor());
-        ArrayList<Player> single = new ArrayList<>();
-        single.add(new Player("Pippo"));
+        ArrayList<PlayerExt> single = new ArrayList<>();
+        single.add(new PlayerExt("Pippo"));
 
-        ArrayList<DevelopmentCard> card = new ArrayList<>();
-        card.add(new DevelopmentCard(Level.ONE, ColorDevCard.BLUE, new NumberOfResources(), new ProductionPower(), 0));
-        card.add(new DevelopmentCard(Level.ONE, ColorDevCard.BLUE, new NumberOfResources(), new ProductionPower(), 1));
-        card.add(new DevelopmentCard(Level.TWO, ColorDevCard.BLUE, new NumberOfResources(), new ProductionPower(), 2));
-        card.add(new DevelopmentCard(Level.THREE, ColorDevCard.BLUE, new NumberOfResources(), new ProductionPower(), 0));
-        card.add(new DevelopmentCard(Level.ONE, ColorDevCard.YELLOW, new NumberOfResources(), new ProductionPower(), 0));
-        card.add(new DevelopmentCard(Level.TWO, ColorDevCard.PURPLE, new NumberOfResources(), new ProductionPower(), 0));
-        card.add(new DevelopmentCard(Level.THREE, ColorDevCard.GREEN, new NumberOfResources(), new ProductionPower(), 0));
+        ArrayList<DevelopmentCardExt> card = new ArrayList<>();
+        card.add(new DevelopmentCardExt(Level.ONE, ColorDevCard.BLUE, new NumberOfResources(), new ProductionPowerExt(), 0));
+        card.add(new DevelopmentCardExt(Level.ONE, ColorDevCard.BLUE, new NumberOfResources(), new ProductionPowerExt(), 1));
+        card.add(new DevelopmentCardExt(Level.TWO, ColorDevCard.BLUE, new NumberOfResources(), new ProductionPowerExt(), 2));
+        card.add(new DevelopmentCardExt(Level.THREE, ColorDevCard.BLUE, new NumberOfResources(), new ProductionPowerExt(), 0));
+        card.add(new DevelopmentCardExt(Level.ONE, ColorDevCard.YELLOW, new NumberOfResources(), new ProductionPowerExt(), 0));
+        card.add(new DevelopmentCardExt(Level.TWO, ColorDevCard.PURPLE, new NumberOfResources(), new ProductionPowerExt(), 0));
+        card.add(new DevelopmentCardExt(Level.THREE, ColorDevCard.GREEN, new NumberOfResources(), new ProductionPowerExt(), 0));
 
-        ArrayList<LeaderCard> leaderCards = new ArrayList<>();
-        leaderCards.add(new LeaderCard(new Requirements(), new WhiteAbility(ResourceType.Coins), 0));
-        leaderCards.add(new LeaderCard(new Requirements(), new WhiteAbility(ResourceType.Coins), 0));
-        leaderCards.add(new LeaderCard(new Requirements(), new WhiteAbility(ResourceType.Coins), 0));
-        leaderCards.add(new LeaderCard(new Requirements(), new WhiteAbility(ResourceType.Coins), 0));
+        ArrayList<LeaderCardExt> leaderCards = new ArrayList<>();
+        leaderCards.add(new LeaderCardExt(new RequirementsExt(), new WhiteAbility(ResourceType.Coins), 0));
+        leaderCards.add(new LeaderCardExt(new RequirementsExt(), new WhiteAbility(ResourceType.Coins), 0));
+        leaderCards.add(new LeaderCardExt(new RequirementsExt(), new WhiteAbility(ResourceType.Coins), 0));
+        leaderCards.add(new LeaderCardExt(new RequirementsExt(), new WhiteAbility(ResourceType.Coins), 0));
 
-        Market market = new Market(Starter.MarblesParser());
+        MarketExt market = new MarketExt(Starter.MarblesParser());
 
-        Game game = new Game(single, market, new Dashboard(card), tokens, leaderCards);
+        GameExt game = new GameExt(single, market, new DashboardExt(card), tokens, leaderCards);
         assertNotNull(game.getSoloGame());
 
         game.updateStatus();
         assertEquals(GameStatus.Initial, game.getStatus());
-        LeaderCard[] chosen = new LeaderCard[]{ leaderCards.get(0), leaderCards.get(3)};
-        game.getPlayer(0).getPersonalBoard().addLeaderCard(chosen);
+        LeaderCardExt[] chosen = new LeaderCardExt[]{ leaderCards.get(0), leaderCards.get(3)};
+        ((PlayerExt)game.getPlayers().get(0)).getPersonalBoard().addLeaderCard(chosen);
 
         game.updateStatus();
         //now game is running

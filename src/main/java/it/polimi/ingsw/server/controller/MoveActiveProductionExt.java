@@ -13,8 +13,9 @@ import java.util.ArrayList;
 
 public class MoveActiveProductionExt extends MoveActiveProduction implements Performable {
 
-    public MoveActiveProductionExt(int idPlayer) {
+    public MoveActiveProductionExt(int idPlayer, ArrayList<ProductionPowerExt> productionPowers) {
         super(idPlayer);
+        setToActive(new ArrayList<>(productionPowers));
     }
 
     @Override

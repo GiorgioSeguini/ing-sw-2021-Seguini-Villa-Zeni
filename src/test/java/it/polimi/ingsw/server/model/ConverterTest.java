@@ -1,4 +1,5 @@
 package it.polimi.ingsw.server.model;
+import it.polimi.ingsw.constant.model.NumberOfResources;
 import it.polimi.ingsw.server.parse.Starter;
 import it.polimi.ingsw.constant.enumeration.MarbleColor;
 import it.polimi.ingsw.constant.enumeration.ResourceType;
@@ -16,7 +17,7 @@ public class ConverterTest {
 
     @Test
     void CheckIntegrityToConvert() {
-        Player player=new Player("Pippo");
+        PlayerExt player=new PlayerExt("Pippo");
         Converter x=new Converter(player);
         x.setWhiteAbility(ResourceType.Stones);
         x.setWhiteAbility(ResourceType.Coins);
@@ -55,7 +56,7 @@ public class ConverterTest {
 
     @Test
     public void convertAllTest(){
-        Converter converter= new Converter(new Player("Pippo"));
+        Converter converter= new Converter(new PlayerExt("Pippo"));
         ArrayList<MarbleColor> marbles= new ArrayList<>();
         try {
             marbles= Starter.MarblesParser();
@@ -116,7 +117,7 @@ public class ConverterTest {
 
     @Test
     public void setResourcesTest(){
-        Player player= new Player("Pippo");
+        PlayerExt player= new PlayerExt("Pippo");
         NumberOfResources x= new NumberOfResources(1,2,3,4);
 
         player.getConverter().setResources(x);
@@ -125,7 +126,7 @@ public class ConverterTest {
 
     @Test
     public void IsWhiteAbilityActiveTest(){
-        Player player= new Player("Pippo");
+        PlayerExt player= new PlayerExt("Pippo");
         WhiteAbility whiteAbility= new WhiteAbility(ResourceType.Coins);
 
         whiteAbility.RunAbility(player);
@@ -140,7 +141,7 @@ public class ConverterTest {
 
     @Test
     public void WhiteMarbleConverterTest(){
-        Player player= new Player("Pippo");
+        PlayerExt player= new PlayerExt("Pippo");
 
         ArrayList<ResourceType> whites= new ArrayList<>();
         for(ResourceType x: ResourceType.values()){

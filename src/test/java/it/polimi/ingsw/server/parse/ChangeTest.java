@@ -1,7 +1,7 @@
 package it.polimi.ingsw.server.parse;
 
-import it.polimi.ingsw.server.model.Depots;
-import it.polimi.ingsw.server.model.NumberOfResources;
+import it.polimi.ingsw.constant.model.NumberOfResources;
+import it.polimi.ingsw.server.model.DepotsExt;
 import it.polimi.ingsw.server.model.exception.UnableToFillException;
 import org.junit.jupiter.api.Test;
 
@@ -11,9 +11,9 @@ public class ChangeTest{
 
     @Test
     public void test(){
-        Depots depots = new Depots(0);
+        DepotsExt depots = new DepotsExt(0);
 
-        System.out.println(Starter.toJson(depots, Depots.class));
+        System.out.println(Starter.toJson(depots, DepotsExt.class));
         
         depots.addResourceFromProduction(new NumberOfResources(1,2,3,4));
         try {
@@ -22,7 +22,7 @@ public class ChangeTest{
             fail();
         }
 
-        System.out.println(Starter.toJson(depots, Depots.class));
+        System.out.println(Starter.toJson(depots, DepotsExt.class));
 
 
     }

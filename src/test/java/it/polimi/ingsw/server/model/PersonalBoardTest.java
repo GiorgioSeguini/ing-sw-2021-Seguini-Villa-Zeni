@@ -1,5 +1,6 @@
 package it.polimi.ingsw.server.model;
 
+import it.polimi.ingsw.constant.model.NumberOfResources;
 import it.polimi.ingsw.server.model.*;
 import it.polimi.ingsw.constant.enumeration.ColorDevCard;
 import it.polimi.ingsw.constant.enumeration.Level;
@@ -15,12 +16,12 @@ public class PersonalBoardTest {
     @Test
     void test(){
 
-        Player player = new Player("Pippo");
-        PersonalBoard p = player.getPersonalBoard();
-        LeaderCard[] cards = new LeaderCard[]{new LeaderCard(new Requirements(), new WhiteAbility(ResourceType.Coins), 8), new LeaderCard(new Requirements(), new WhiteAbility(ResourceType.Stones), 8),};
+        PlayerExt player = new PlayerExt("Pippo");
+        PersonalBoardExt p = player.getPersonalBoard();
+        LeaderCardExt[] cards = new LeaderCardExt[]{new LeaderCardExt(new RequirementsExt(), new WhiteAbility(ResourceType.Coins), 8), new LeaderCardExt(new RequirementsExt(), new WhiteAbility(ResourceType.Stones), 8),};
 
         try{
-            p.addLeaderCard(new LeaderCard[3]);
+            p.addLeaderCard(new LeaderCardExt[3]);
             fail();
         }catch(IllegalArgumentException ignored){}
 
@@ -34,7 +35,7 @@ public class PersonalBoardTest {
         assertEquals(1, p.getProduction().size());
 
         try{
-            p.addDevCard(new DevelopmentCard(Level.ONE, ColorDevCard.GREEN, new NumberOfResources(), new ProductionPower(), 0), -2);
+            p.addDevCard(new DevelopmentCardExt(Level.ONE, ColorDevCard.GREEN, new NumberOfResources(), new ProductionPowerExt(), 0), -2);
             fail();
         }catch(IllegalArgumentException ignored){}
         catch(NoSpaceException e){
@@ -44,7 +45,7 @@ public class PersonalBoardTest {
         assertEquals(0, p.getVictoryPoints());
 
         try {
-            p.addDevCard(new DevelopmentCard(Level.ONE, ColorDevCard.GREEN, new NumberOfResources(), new ProductionPower(), 3), 0);
+            p.addDevCard(new DevelopmentCardExt(Level.ONE, ColorDevCard.GREEN, new NumberOfResources(), new ProductionPowerExt(), 3), 0);
         }catch(NoSpaceException e){
             fail();
         }
@@ -52,49 +53,49 @@ public class PersonalBoardTest {
         assertEquals(2, p.getProduction().size());
         assertEquals(3, p.getVictoryPoints());
 
-        try{
+        //try{
             assertEquals(2, p.getLeaderCards().length);
             cards[0].setDiscard(player);
             assertEquals(1, p.getLeaderCards().length);
-        }catch(NoMoreLeaderCardAliveException e){
+        /*}catch(NoMoreLeaderCardAliveException e){
             fail();
-        }
+        }*/
 
         cards[1].setDiscard(player);
-        try{
+        /*try{
             p.getLeaderCards();
             fail();
         }catch(NoMoreLeaderCardAliveException ignored){}
-
+        */
     }
 
     @Test
     void test2(){
-        Player player = new Player("Pippo");
-        PersonalBoard p = player.getPersonalBoard();
-        LeaderCard[] cards = new LeaderCard[]{new LeaderCard(new Requirements(), new WhiteAbility(ResourceType.Coins), 8), new LeaderCard(new Requirements(), new WhiteAbility(ResourceType.Stones), 8),};
+        PlayerExt player = new PlayerExt("Pippo");
+        PersonalBoardExt p = player.getPersonalBoard();
+        LeaderCardExt[] cards = new LeaderCardExt[]{new LeaderCardExt(new RequirementsExt(), new WhiteAbility(ResourceType.Coins), 8), new LeaderCardExt(new RequirementsExt(), new WhiteAbility(ResourceType.Stones), 8),};
 
 
         p.addLeaderCard(cards);
 
-        try{
+        //try{
             assertEquals(2, p.getLeaderCards().length);
             System.out.println(p);
             cards[1].setDiscard(player);
             assertEquals(1, p.getLeaderCards().length);
-        }catch(NoMoreLeaderCardAliveException e){
+        /*}catch(NoMoreLeaderCardAliveException e){
             fail();
-        }
+        }*/
 
 
         try {
-            p.addDevCard(new DevelopmentCard(Level.ONE, ColorDevCard.GREEN, new NumberOfResources(), new ProductionPower(), 3), 0);
+            p.addDevCard(new DevelopmentCardExt(Level.ONE, ColorDevCard.GREEN, new NumberOfResources(), new ProductionPowerExt(), 3), 0);
         }catch(NoSpaceException e){
             fail();
         }
 
         try {
-            p.addDevCard(new DevelopmentCard(Level.THREE, ColorDevCard.GREEN, new NumberOfResources(), new ProductionPower(), 3), 0);
+            p.addDevCard(new DevelopmentCardExt(Level.THREE, ColorDevCard.GREEN, new NumberOfResources(), new ProductionPowerExt(), 3), 0);
             fail();
         }catch(NoSpaceException e){
             assertTrue(true);

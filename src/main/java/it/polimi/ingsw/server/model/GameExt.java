@@ -72,6 +72,15 @@ public class GameExt extends Game implements Observable<Message> {
         return (PlayerExt)super.getPlayerFromID(id);
     }
 
+    public PlayerExt getPlayer(int index){
+        return (PlayerExt) super.getPlayers().get(index);
+    }
+
+    @Override
+    public PlayerExt getCurrPlayer() {
+        return (PlayerExt) super.getCurrPlayer();
+    }
+
     public void popesInspection(){
         int index = -1;
         if(super.getPlayers().size()==1){

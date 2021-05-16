@@ -19,33 +19,33 @@ public class GameTest {
 
     @Test
     public void test() throws FileNotFoundException {
-        ArrayList<Player> due = new ArrayList<>();
-        due.add(new Player("Pippo"));
-        due.add(new Player("Piero"));
+        ArrayList<PlayerExt> due = new ArrayList<>();
+        due.add(new PlayerExt("Pippo"));
+        due.add(new PlayerExt("Piero"));
 
 
-        ArrayList<LeaderCard> leaderCards = new ArrayList<>();
-        leaderCards.add(new LeaderCard(new Requirements(), new WhiteAbility(ResourceType.Coins), 0));
-        leaderCards.add(new LeaderCard(new Requirements(), new WhiteAbility(ResourceType.Coins), 1));
-        leaderCards.add(new LeaderCard(new Requirements(), new WhiteAbility(ResourceType.Coins), 2));
-        leaderCards.add(new LeaderCard(new Requirements(), new WhiteAbility(ResourceType.Coins), 3));
-        leaderCards.add(new LeaderCard(new Requirements(), new WhiteAbility(ResourceType.Coins), 4));
-        leaderCards.add(new LeaderCard(new Requirements(), new WhiteAbility(ResourceType.Coins), 5));
-        leaderCards.add(new LeaderCard(new Requirements(), new WhiteAbility(ResourceType.Coins), 6));
-        leaderCards.add(new LeaderCard(new Requirements(), new WhiteAbility(ResourceType.Coins), 7));
+        ArrayList<LeaderCardExt> leaderCards = new ArrayList<>();
+        leaderCards.add(new LeaderCardExt(new RequirementsExt(), new WhiteAbility(ResourceType.Coins), 0));
+        leaderCards.add(new LeaderCardExt(new RequirementsExt(), new WhiteAbility(ResourceType.Coins), 1));
+        leaderCards.add(new LeaderCardExt(new RequirementsExt(), new WhiteAbility(ResourceType.Coins), 2));
+        leaderCards.add(new LeaderCardExt(new RequirementsExt(), new WhiteAbility(ResourceType.Coins), 3));
+        leaderCards.add(new LeaderCardExt(new RequirementsExt(), new WhiteAbility(ResourceType.Coins), 4));
+        leaderCards.add(new LeaderCardExt(new RequirementsExt(), new WhiteAbility(ResourceType.Coins), 5));
+        leaderCards.add(new LeaderCardExt(new RequirementsExt(), new WhiteAbility(ResourceType.Coins), 6));
+        leaderCards.add(new LeaderCardExt(new RequirementsExt(), new WhiteAbility(ResourceType.Coins), 7));
 
-        Market market = new Market(Starter.MarblesParser());
-        Dashboard dashboard = new Dashboard(new ArrayList<DevelopmentCard>());
+        MarketExt market = new MarketExt(Starter.MarblesParser());
+        DashboardExt dashboard = new DashboardExt(new ArrayList<DevelopmentCardExt>());
 
-        Game game = new Game(due, market, dashboard, new ArrayList<SoloActionTokens>(), leaderCards);
+        GameExt game = new GameExt(due, market, dashboard, new ArrayList<SoloActionTokens>(), leaderCards);
 
-        System.out.println(Starter.toJson(game, Game.class));
+        System.out.println(Starter.toJson(game, GameExt.class));
 
         Client client= new Client("127.0.0.1", 12345);
 
-        String model = Starter.toJson(game, Game.class);
+        String model = Starter.toJson(game, GameExt.class);
         int myID = due.get(0).getID();
-        Type type = new TypeToken<ArrayList<LeaderCard>>(){}.getType();
+        Type type = new TypeToken<ArrayList<LeaderCardExt>>(){}.getType();
         String leaderCardsString = Starter.toJson(game.getActivableLeadCard(due.get(0)), type);
 
         Message msg = new InitialMessage(model, myID, leaderCardsString);

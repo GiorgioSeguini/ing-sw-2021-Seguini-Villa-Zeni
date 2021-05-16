@@ -16,13 +16,18 @@ public class LorenzoSoloPlayerExt extends LorenzoSoloPlayer {
 
 
     /*default constructor*/
-    public LorenzoSoloPlayerExt(Game game, FaithTrack faithTrack, ArrayList<SoloActionTokens> startSoloActionTokens) {
+    public LorenzoSoloPlayerExt(Game game, FaithTrackExt faithTrack, ArrayList<SoloActionTokens> startSoloActionTokens) {
         super(game, faithTrack);
         soloActionTokens = new ArrayList<SoloActionTokens>(startSoloActionTokens);
         Collections.shuffle(soloActionTokens);
 
         copyOfSoloActionTokens = new ArrayList<SoloActionTokens>(7);
         copyOfSoloActionTokens = (ArrayList<SoloActionTokens>) soloActionTokens.clone();
+    }
+
+    @Override
+    public FaithTrackExt getFaithTrack() {
+        return (FaithTrackExt) super.getFaithTrack();
     }
 
 

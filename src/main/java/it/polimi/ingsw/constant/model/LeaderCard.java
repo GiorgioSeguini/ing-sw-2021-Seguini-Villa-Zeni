@@ -5,14 +5,14 @@ import it.polimi.ingsw.constant.enumeration.LeaderStatus;
 public class LeaderCard extends Card {
 
     private LeaderStatus status;
-    private final Requirements requirements;
+    /*private final Requirements requirements;*/
 
 
     /*Default constructor*/
     public LeaderCard(Requirements requirements, int victoryPoints) {
         super(victoryPoints);
         this.status= LeaderStatus.onHand;
-        this.requirements=requirements;
+        //this.requirements=requirements;
     }
 
 
@@ -21,9 +21,9 @@ public class LeaderCard extends Card {
         return status;
     }
 
-    public Requirements getRequirements() {
+    /*public Requirements getRequirements() {
         return requirements;
-    }
+    }*/
 
     public void setStatus(LeaderStatus status) {
         this.status = status;
@@ -42,8 +42,8 @@ public class LeaderCard extends Card {
         if(this.getVictoryPoints() != other.getVictoryPoints())
             return false;
 
-        if(!requirements.equals(other.requirements))
-            return false;
+        /*if(!requirements.equals(other.requirements))
+            return false;*/
         return true;
     }
 

@@ -1,7 +1,6 @@
 package it.polimi.ingsw.server.model;
 
-import it.polimi.ingsw.server.model.Depots;
-import it.polimi.ingsw.server.model.NumberOfResources;
+import it.polimi.ingsw.constant.model.NumberOfResources;
 import it.polimi.ingsw.server.model.exception.OutOfResourcesException;
 import it.polimi.ingsw.server.model.exception.UnableToFillException;
 import org.junit.jupiter.api.Test;
@@ -13,7 +12,7 @@ class DepotsTest {
     @Test
     void goodSetup(){
 
-        Depots depots = new Depots(0);
+        DepotsExt depots = new DepotsExt(0);
 
         assertTrue(depots.getResources().isEmpty());
 
@@ -39,7 +38,7 @@ class DepotsTest {
     @Test
     void operationTest(){
 
-        Depots depots= new Depots(0);
+        DepotsExt depots= new DepotsExt(0);
 
         depots.addResourceFromProduction(new NumberOfResources(100, 100, 100, 100));
 
@@ -59,7 +58,7 @@ class DepotsTest {
 
     @Test
     void toStringTest() throws UnableToFillException {
-        Depots depots= new Depots(0);
+        DepotsExt depots= new DepotsExt(0);
         depots.addResourceFromProduction(new NumberOfResources(100, 100, 100, 100));
         depots.addResourcesFromMarket(new NumberOfResources(1,1,1,0));
         System.out.println(depots);

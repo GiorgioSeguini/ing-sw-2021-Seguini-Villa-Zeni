@@ -50,8 +50,10 @@ public class WareHouseDepotsExt extends WareHouseDepots {
 
     /**This method is called by ability Deposit, and can be called 2 times. Add an extra shelf to WareHouseDepots*/
     public void addExtraShelf(Shelf shelf){
-        this.getShelfs().add(shelf);
+        ArrayList<Shelf> shelves = this.getShelfs();
+        shelves.add(shelf);
         shelf.setIsExtra();
+        this.setShelfs(shelves);
     }
 
     /**This method clean all the shelf from their items (the number is set to zero and the type is cancelled).

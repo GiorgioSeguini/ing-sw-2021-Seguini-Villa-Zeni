@@ -8,10 +8,22 @@ import it.polimi.ingsw.constant.model.Requirements;
 public class LeaderCardExt extends LeaderCard {
 
     private final Ability ability;
+    private final RequirementsExt requirements;
 
-    public LeaderCardExt(Requirements requirements, int victoryPoints, Ability ability) {
+    public LeaderCardExt(RequirementsExt requirements,  Ability ability, int victoryPoints) {
         super(requirements, victoryPoints);
         this.ability = ability;
+        this.requirements = requirements;
+    }
+
+    public Ability getAbility() {
+        return ability;
+    }
+
+
+    public RequirementsExt getRequirements() {
+        //return (RequirementsExt) super.getRequirements();
+        return this.requirements;
     }
 
     /*Additional Methods*/
@@ -36,8 +48,8 @@ public class LeaderCardExt extends LeaderCard {
     public boolean setDiscard(PlayerExt owner){
         if(getStatus().equals(LeaderStatus.onHand)){
             setStatus(LeaderStatus.Dead);
-            ((FaithTrackExt)owner.getFaithTrack()).addPoint();
-            ((PersonalBoardExt)owner.getPersonalBoard()).change();
+            owner.getFaithTrack().addPoint();
+            owner.getPersonalBoard().change();
             return true;
         }
         return false;

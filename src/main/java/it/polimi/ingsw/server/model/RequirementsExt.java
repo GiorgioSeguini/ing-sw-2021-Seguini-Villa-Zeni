@@ -15,6 +15,23 @@ import java.util.*;
  */
 public class RequirementsExt extends Requirements {
 
+
+    public RequirementsExt(NumberOfResources resources, ArrayList<Map.Entry<ColorDevCard, Level>> requirements){
+        super(resources, requirements);
+    }
+
+    public RequirementsExt(){
+        super();
+    }
+
+    public RequirementsExt(NumberOfResources resources){
+        super(resources, new ArrayList<>());
+    }
+
+    public RequirementsExt(ArrayList<Map.Entry<ColorDevCard, Level>> requirements){
+        super(new NumberOfResources(), requirements);
+    }
+
     /**
      *
      * @param owner Leader Card's owner

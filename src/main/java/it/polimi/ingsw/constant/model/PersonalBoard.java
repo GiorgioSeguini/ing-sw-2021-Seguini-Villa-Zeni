@@ -87,6 +87,11 @@ public class PersonalBoard {
         extraProduction.add(productionPower);
     }
 
+
+    public ArrayList<ProductionPower> getExtraProduction() {
+        return extraProduction;
+    }
+
     /**
      *
      * @return an ArrayList containing all the activable productionPower

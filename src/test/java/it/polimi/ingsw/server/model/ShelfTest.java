@@ -1,6 +1,6 @@
 package it.polimi.ingsw.server.model;
 
-import it.polimi.ingsw.server.model.Shelf;
+import it.polimi.ingsw.constant.model.Shelf;
 import it.polimi.ingsw.constant.enumeration.ResourceType;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;

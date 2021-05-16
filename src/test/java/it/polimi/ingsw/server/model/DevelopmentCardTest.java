@@ -1,8 +1,6 @@
 package it.polimi.ingsw.server.model;
 
-import it.polimi.ingsw.server.model.DevelopmentCard;
-import it.polimi.ingsw.server.model.NumberOfResources;
-import it.polimi.ingsw.server.model.ProductionPower;
+import it.polimi.ingsw.constant.model.NumberOfResources;
 import it.polimi.ingsw.constant.enumeration.ColorDevCard;
 import it.polimi.ingsw.constant.enumeration.Level;
 import it.polimi.ingsw.server.parse.Starter;
@@ -17,9 +15,9 @@ class DevelopmentCardTest {
 
     @Test
     void easyTest(){
-        ProductionPower power = new ProductionPower(0, new NumberOfResources(0,1,2,3), new NumberOfResources(4,5,6,7));
+        ProductionPowerExt power = new ProductionPowerExt(0, new NumberOfResources(0,1,2,3), new NumberOfResources(4,5,6,7));
         NumberOfResources cost = new NumberOfResources(3,3,1,5);
-        DevelopmentCard card = new DevelopmentCard(Level.ONE, ColorDevCard.BLUE, cost, power, 3);
+        DevelopmentCardExt card = new DevelopmentCardExt(Level.ONE, ColorDevCard.BLUE, cost, power, 3);
 
         assertEquals(Level.ONE, card.getLevel());
         assertEquals(ColorDevCard.BLUE, card.getColor());
@@ -30,14 +28,14 @@ class DevelopmentCardTest {
 
     @Test
     void cliTest(){
-        ArrayList<DevelopmentCard> developmentCards= new ArrayList<>();
+        ArrayList<DevelopmentCardExt> developmentCards= new ArrayList<>();
         try {
             developmentCards= Starter.DevCardParser();
         } catch (FileNotFoundException e) {
             fail();
         }
 
-        Dashboard dashboard= new Dashboard(developmentCards);
+        DashboardExt dashboard= new DashboardExt(developmentCards);
 
         System.out.println(dashboard);
     }

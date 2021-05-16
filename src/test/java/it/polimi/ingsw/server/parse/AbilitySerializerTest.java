@@ -3,11 +3,10 @@ package it.polimi.ingsw.server.parse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import it.polimi.ingsw.constant.model.NumberOfResources;
 import it.polimi.ingsw.constant.parse.NumberOfResSerializer;
 import it.polimi.ingsw.server.model.Ability;
-import it.polimi.ingsw.server.model.LeaderCard;
-import it.polimi.ingsw.server.model.NumberOfResources;
-import it.polimi.ingsw.server.model.Requirements;
+import it.polimi.ingsw.server.model.LeaderCardExt;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -22,7 +21,7 @@ public class AbilitySerializerTest {
 
     @Test
     public void testx() {
-        ArrayList<LeaderCard> leaderCards = new ArrayList<>();
+        ArrayList<LeaderCardExt> leaderCards = new ArrayList<>();
         try {
             leaderCards = Starter.LeaderCardsParser();
         } catch (IOException e) {
@@ -34,12 +33,12 @@ public class AbilitySerializerTest {
         gsonBuilder.registerTypeAdapter(NumberOfResources.class, new NumberOfResSerializer());
         Gson gson = gsonBuilder.create();
 
-        Type LeaderListType = new TypeToken<ArrayList<LeaderCard>>() {}.getType();
+        Type LeaderListType = new TypeToken<ArrayList<LeaderCardExt>>() {}.getType();
         String message = gson.toJson(leaderCards, LeaderListType);
 
-        ArrayList<LeaderCard> leaderCards1 = gson.fromJson(message, LeaderListType);
+        ArrayList<LeaderCardExt> leaderCards1 = gson.fromJson(message, LeaderListType);
         int i=0;
-        for (LeaderCard card: leaderCards){
+        for (LeaderCardExt card: leaderCards){
             assertEquals(card,leaderCards1.get(i));
             i++;
         }
@@ -47,14 +46,14 @@ public class AbilitySerializerTest {
 
     @Test
     public void test() {
-        ArrayList<LeaderCard> leaderCards = new ArrayList<>();
+        ArrayList<LeaderCardExt> leaderCards = new ArrayList<>();
         try {
             leaderCards = Starter.LeaderCardsParser();
         } catch (IOException e) {
             fail();
         }
 
-        String message= Starter.toJson(leaderCards.get(5), LeaderCard.class);
+        String message= Starter.toJson(leaderCards.get(5), LeaderCardExt.class);
 
         System.out.println(message);
 
@@ -62,7 +61,7 @@ public class AbilitySerializerTest {
         builder.registerTypeAdapter(Ability.class, new AbilitySerializer());
         Gson gson= builder.create();
 
-        LeaderCard card=gson.fromJson(message, LeaderCard.class);
+        LeaderCardExt card=gson.fromJson(message, LeaderCardExt.class);
         assertEquals(leaderCards.get(5), card );
     }
 }

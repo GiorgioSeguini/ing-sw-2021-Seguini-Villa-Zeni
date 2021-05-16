@@ -1,8 +1,9 @@
 package it.polimi.ingsw.server.model;
 
+import it.polimi.ingsw.constant.enumeration.PlayerStatus;
+import it.polimi.ingsw.constant.model.NumberOfResources;
 import it.polimi.ingsw.server.parse.Starter;
 import it.polimi.ingsw.constant.enumeration.ErrorMessage;
-import it.polimi.ingsw.constant.enumeration.PlayerStatus;
 import it.polimi.ingsw.constant.enumeration.ResourceType;
 import it.polimi.ingsw.server.model.exception.NoMoreLeaderCardAliveException;
 import it.polimi.ingsw.server.model.exception.UnableToFillException;
@@ -17,22 +18,22 @@ public class PlayerTest {
 
     @Test
     void Constructor() throws IOException{
-        ArrayList<LeaderCard> leaderCards;
+        ArrayList<LeaderCardExt> leaderCards;
         leaderCards = Starter.LeaderCardsParser();
-        LeaderCard leaderCard1;
-        LeaderCard leaderCard2;
+        LeaderCardExt leaderCard1;
+        LeaderCardExt leaderCard2;
         int n = (int) (Math.random() * 15.1);
         leaderCard1 = leaderCards.get(n);
         leaderCards.remove(n);
         n=(int) (Math.random() * 14.1);
         leaderCard2 = leaderCards.get(n);
         leaderCards.remove(n);
-        LeaderCard[] leaderCardsOw = new LeaderCard[] {leaderCard1,leaderCard2};
+        LeaderCardExt[] leaderCardsOw = new LeaderCardExt[] {leaderCard1,leaderCard2};
 
-        //PersonalBoard personalBoard = new PersonalBoard(0);
+        //PersonalBoardExt personalBoard = new PersonalBoardExt(0);
         //personalBoard.addLeaderCard(leaderCardsOw);
 
-        Player player1 = new Player("Fabio1");
+        PlayerExt player1 = new PlayerExt("Fabio1");
         player1.getPersonalBoard().addLeaderCard(leaderCardsOw);
         System.out.println(player1);
         assertNotNull(player1.getUserName());
@@ -41,7 +42,7 @@ public class PlayerTest {
         assertNotNull(player1.getDepots().getResources());
         assertNotNull(player1.getFaithTrack());
         assertNotNull(player1.getConverter());
-        assertNotNull(player1.getDiscount());
+        assertNotNull(player1.getDiscounted());
         assertEquals(0,player1.getFaithTrack().getFaithPoints());
         assertTrue(player1.getVictoryPoints()>=0);
         assertEquals(0, player1.getDepots().getResources().size());
@@ -54,23 +55,23 @@ public class PlayerTest {
 
     @Test
     void GetterVictoryPoints() throws IOException, NoMoreLeaderCardAliveException {
-        Player player= new Player("Fabio");
+        PlayerExt player= new PlayerExt("Fabio");
         assertTrue(player.getVictoryPoints()==0);
         player.getDepots().addResourceFromProduction(new NumberOfResources(0,0,5,0));
         assertFalse(player.getVictoryPoints()==0);
-        ArrayList<LeaderCard> leaderCards;
+        ArrayList<LeaderCardExt> leaderCards;
         leaderCards = Starter.LeaderCardsParser();
-        LeaderCard leaderCard1;
-        LeaderCard leaderCard2;
+        LeaderCardExt leaderCard1;
+        LeaderCardExt leaderCard2;
         leaderCard1 = leaderCards.get(0);
         leaderCard2 = leaderCards.get(1);
-        LeaderCard[] leaderCardsOw = new LeaderCard[] {leaderCard1,leaderCard2};
+        LeaderCardExt[] leaderCardsOw = new LeaderCardExt[] {leaderCard1,leaderCard2};
 
         player.getPersonalBoard().addLeaderCard(leaderCardsOw);
 
-        LeaderCard[] leaderCardsOw2 = new LeaderCard[2];
+        LeaderCardExt[] leaderCardsOw2 = new LeaderCardExt[2];
         int i=0;
-        for (LeaderCard x: player.getPersonalBoard().getLeaderCards()) {
+        for (LeaderCardExt x: player.getPersonalBoard().getLeaderCards()) {
             leaderCardsOw2[i] = x;
             assertNotNull(leaderCardsOw2[i]);
             i++;
@@ -82,9 +83,9 @@ public class PlayerTest {
 
     @Test
     void discountTest(){
-        Player player = new Player("Pippo");
+        PlayerExt player = new PlayerExt("Pippo");
 
-        assertEquals(new NumberOfResources(), player.getDiscount());
+        assertEquals(new NumberOfResources(), player.getDiscounted());
 
         try{
             player.addDiscount(ResourceType.Coins, -1);
@@ -93,17 +94,17 @@ public class PlayerTest {
 
         player.addDiscount(ResourceType.Coins, 1);
 
-        assertEquals(new NumberOfResources(0, 0, 1, 0), player.getDiscount());
+        assertEquals(new NumberOfResources(0, 0, 1, 0), player.getDiscounted());
     }
 
     @Test
     void productionTest(){
-        Player player = new Player("Pippo");
+        PlayerExt player = new PlayerExt("Pippo");
 
         assertNull(player.getToActive());
 
         //test1
-        ProductionPower power = new ProductionPower(0, new NumberOfResources(1, 2, 3, 4), new NumberOfResources(1, 0, 0, 0));
+        ProductionPowerExt power = new ProductionPowerExt(0, new NumberOfResources(1, 2, 3, 4), new NumberOfResources(1, 0, 0, 0));
         player.setToActive(power);
 
         assertEquals(power, player.getToActive());
@@ -119,7 +120,7 @@ public class PlayerTest {
 
 
         //test2
-        ProductionPower power1 = new ProductionPower(0, new NumberOfResources(1, 2, 3, 4), new NumberOfResources(1, 0, 0, 0), 1, 0);
+        ProductionPowerExt power1 = new ProductionPowerExt(0, new NumberOfResources(1, 2, 3, 4), new NumberOfResources(1, 0, 0, 0), 1, 0);
         player.setToActive(power1);
 
         assertEquals(power1, player.getToActive());
@@ -136,7 +137,7 @@ public class PlayerTest {
 
     @Test
     void errorMessage(){
-        Player player = new Player("Pippo");
+        PlayerExt player = new PlayerExt("Pippo");
         assertEquals(ErrorMessage.NoError, player.getErrorMessage());
 
         player.setErrorMessage(ErrorMessage.MoveNotAllowed);

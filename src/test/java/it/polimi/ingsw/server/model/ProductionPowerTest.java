@@ -1,8 +1,6 @@
 package it.polimi.ingsw.server.model;
 
-import it.polimi.ingsw.server.model.NumberOfResources;
-import it.polimi.ingsw.server.model.Player;
-import it.polimi.ingsw.server.model.ProductionPower;
+import it.polimi.ingsw.constant.model.NumberOfResources;
 import it.polimi.ingsw.server.model.exception.ChoseResourcesException;
 import it.polimi.ingsw.server.model.exception.OutOfResourcesException;
 import it.polimi.ingsw.server.model.exception.UnableToFillException;
@@ -17,7 +15,7 @@ class ProductionPowerTest {
 
         NumberOfResources input = new NumberOfResources(0, 0, 3, 0);
         NumberOfResources output = new NumberOfResources(3, 3, 3, 3);
-        ProductionPower p = new ProductionPower(output, input);
+        ProductionPowerExt p = new ProductionPowerExt(output, input);
 
         assertEquals(p.getFaithPointsOut(), 0);
         assertEquals(input, p.getInputRes());
@@ -25,7 +23,7 @@ class ProductionPowerTest {
         assertEquals(0, p.getOfYourChoiceInput());
         assertEquals(0, p.getOfYourChoiceOutput());
 
-        Player owner = new Player("Pippo");
+        PlayerExt owner = new PlayerExt("Pippo");
 
         try {
             owner.getDepots().addResourcesFromMarket(input);
@@ -71,12 +69,12 @@ class ProductionPowerTest {
         NumberOfResources output = new NumberOfResources(0, 3, 3, 3);
 
         try{
-            new ProductionPower(-1, input, output);
+            new ProductionPowerExt(-1, input, output);
             fail();
         }catch(ArithmeticException ignored){}
 
         int faithPoints = 5;
-        ProductionPower p = new ProductionPower(faithPoints, output, input);
+        ProductionPowerExt p = new ProductionPowerExt(faithPoints, output, input);
 
         assertEquals(faithPoints, p.getFaithPointsOut());
         assertEquals(input, p.getInputRes());
@@ -84,7 +82,7 @@ class ProductionPowerTest {
         assertEquals(0, p.getOfYourChoiceInput());
         assertEquals(0, p.getOfYourChoiceOutput());
 
-        Player owner = new Player("Pippo");
+        PlayerExt owner = new PlayerExt("Pippo");
 
         try {
             owner.getDepots().addResourcesFromMarket(input);
@@ -133,12 +131,12 @@ class ProductionPowerTest {
         NumberOfResources output = new NumberOfResources(0, 3, 3, 3);
 
         try{
-            new ProductionPower(0, input, output, -1, 0);
+            new ProductionPowerExt(0, input, output, -1, 0);
             fail();
         }catch(ArithmeticException ignored){}
 
         try{
-            new ProductionPower(0, input, output, 0, -1);
+            new ProductionPowerExt(0, input, output, 0, -1);
             fail();
         }catch(ArithmeticException ignored){}
 
@@ -147,7 +145,7 @@ class ProductionPowerTest {
         int choiceOutput = 2;
         NumberOfResources choice1 = new NumberOfResources(0, 1, 0, 0);
         NumberOfResources choice2 = new NumberOfResources(0, 1, 1, 0);
-        ProductionPower p = new ProductionPower(faithPoints, output, input, choiceInput, choiceOutput);
+        ProductionPowerExt p = new ProductionPowerExt(faithPoints, output, input, choiceInput, choiceOutput);
 
         assertEquals(faithPoints, p.getFaithPointsOut());
         assertEquals(input, p.getInputRes());
@@ -155,7 +153,7 @@ class ProductionPowerTest {
         assertEquals(choiceInput, p.getOfYourChoiceInput());
         assertEquals(choiceOutput, p.getOfYourChoiceOutput());
 
-        Player owner = new Player("Pippo");
+        PlayerExt owner = new PlayerExt("Pippo");
 
         try {
             owner.getDepots().addResourcesFromMarket(input.add(choice1));
@@ -213,23 +211,23 @@ class ProductionPowerTest {
         NumberOfResources output = new NumberOfResources(0, 3, 3, 3);
         NumberOfResources output1 = new NumberOfResources();
 
-        ProductionPower power = new ProductionPower(0, input, output, 0, 0);
+        ProductionPowerExt power = new ProductionPowerExt(0, input, output, 0, 0);
 
         assertEquals(power, power);
-        assertEquals(new ProductionPower(), new ProductionPower());
-        assertEquals(power, new ProductionPower(0, input, output, 0, 0));
+        assertEquals(new ProductionPowerExt(), new ProductionPowerExt());
+        assertEquals(power, new ProductionPowerExt(0, input, output, 0, 0));
         assertNotEquals(power, new Object());
-        assertNotEquals(power, new ProductionPower(1, input, output, 0, 0));
-        assertNotEquals(power, new ProductionPower(0, input1, output, 0, 0));
-        assertNotEquals(power, new ProductionPower(0, input, output1, 0, 0));
-        assertNotEquals(power, new ProductionPower(0, input, output, 1, 0));
-        assertNotEquals(power, new ProductionPower(0, input, output, 0, 1));
+        assertNotEquals(power, new ProductionPowerExt(1, input, output, 0, 0));
+        assertNotEquals(power, new ProductionPowerExt(0, input1, output, 0, 0));
+        assertNotEquals(power, new ProductionPowerExt(0, input, output1, 0, 0));
+        assertNotEquals(power, new ProductionPowerExt(0, input, output, 1, 0));
+        assertNotEquals(power, new ProductionPowerExt(0, input, output, 0, 1));
 
         assertTrue(power.easyActive());
 
-        assertFalse(new ProductionPower(0, input, output, 1, 0).easyActive());
-        assertFalse(new ProductionPower(0, input, output, 0, 1).easyActive());
-        assertFalse(new ProductionPower(0, input, output, 1, 1).easyActive());
+        assertFalse(new ProductionPowerExt(0, input, output, 1, 0).easyActive());
+        assertFalse(new ProductionPowerExt(0, input, output, 0, 1).easyActive());
+        assertFalse(new ProductionPowerExt(0, input, output, 1, 1).easyActive());
     }
 
 

@@ -1,5 +1,7 @@
 package it.polimi.ingsw.server.model;
 
+import it.polimi.ingsw.constant.model.LeaderCard;
+import it.polimi.ingsw.constant.model.NumberOfResources;
 import it.polimi.ingsw.server.parse.Starter;
 import it.polimi.ingsw.constant.enumeration.*;
 import it.polimi.ingsw.server.model.exception.UnableToFillException;
@@ -15,25 +17,25 @@ class GameTest {
 
     @Test
     void multiplayer() throws IOException{
-        ArrayList<Player> due = new ArrayList<>();
-        due.add(new Player("Pippo"));
-        due.add(new Player("Piero"));
+        ArrayList<PlayerExt> due = new ArrayList<>();
+        due.add(new PlayerExt("Pippo"));
+        due.add(new PlayerExt("Piero"));
 
 
-        ArrayList<LeaderCard> leaderCards = new ArrayList<>();
-        leaderCards.add(new LeaderCard(new Requirements(), new WhiteAbility(ResourceType.Coins), 0));
-        leaderCards.add(new LeaderCard(new Requirements(), new WhiteAbility(ResourceType.Coins), 1));
-        leaderCards.add(new LeaderCard(new Requirements(), new WhiteAbility(ResourceType.Coins), 2));
-        leaderCards.add(new LeaderCard(new Requirements(), new WhiteAbility(ResourceType.Coins), 3));
-        leaderCards.add(new LeaderCard(new Requirements(), new WhiteAbility(ResourceType.Coins), 4));
-        leaderCards.add(new LeaderCard(new Requirements(), new WhiteAbility(ResourceType.Coins), 5));
-        leaderCards.add(new LeaderCard(new Requirements(), new WhiteAbility(ResourceType.Coins), 6));
-        leaderCards.add(new LeaderCard(new Requirements(), new WhiteAbility(ResourceType.Coins), 7));
+        ArrayList<LeaderCardExt> leaderCards = new ArrayList<>();
+        leaderCards.add(new LeaderCardExt(new RequirementsExt(), new WhiteAbility(ResourceType.Coins), 0));
+        leaderCards.add(new LeaderCardExt(new RequirementsExt(), new WhiteAbility(ResourceType.Coins), 1));
+        leaderCards.add(new LeaderCardExt(new RequirementsExt(), new WhiteAbility(ResourceType.Coins), 2));
+        leaderCards.add(new LeaderCardExt(new RequirementsExt(), new WhiteAbility(ResourceType.Coins), 3));
+        leaderCards.add(new LeaderCardExt(new RequirementsExt(), new WhiteAbility(ResourceType.Coins), 4));
+        leaderCards.add(new LeaderCardExt(new RequirementsExt(), new WhiteAbility(ResourceType.Coins), 5));
+        leaderCards.add(new LeaderCardExt(new RequirementsExt(), new WhiteAbility(ResourceType.Coins), 6));
+        leaderCards.add(new LeaderCardExt(new RequirementsExt(), new WhiteAbility(ResourceType.Coins), 7));
 
-        Market market = new Market(Starter.MarblesParser());
-        Dashboard dashboard = new Dashboard(new ArrayList<DevelopmentCard>());
+        MarketExt market = new MarketExt(Starter.MarblesParser());
+        DashboardExt dashboard = new DashboardExt(new ArrayList<DevelopmentCardExt>());
 
-        Game game = new Game(due, market, dashboard, new ArrayList<SoloActionTokens>(), leaderCards);
+        GameExt game = new GameExt(due, market, dashboard, new ArrayList<SoloActionTokens>(), leaderCards);
         System.out.println(game);
         assertEquals(market, game.getMarketTray());
         assertEquals(dashboard, game.getDashboard());
@@ -47,24 +49,24 @@ class GameTest {
 
         //check players
         assertEquals(2, game.getPlayers().size());
-        Player player1 = game.getPlayer(0);
+        PlayerExt player1 = game.getPlayer(0);
         assertTrue(due.contains(player1));
         assertEquals(0, game.getInitialResources(player1));
         assertEquals(0, game.getPlayerIndex(player1));
-        Player player2 = game.getPlayer(1);
+        PlayerExt player2 = game.getPlayer(1);
         assertTrue(due.contains(player2));
         assertEquals(1, game.getInitialResources(player2));
         assertEquals(1, game.getPlayerIndex(player2));
 
         //check fake player
-        Player fakePlayer = new Player("Fake");
-        assertEquals(-1, game.getPlayerIndex(fakePlayer));
+        PlayerExt fakePlayerExt = new PlayerExt("Fake");
+        assertEquals(-1, game.getPlayerIndex(fakePlayerExt));
         try{
-            game.getInitialResources(fakePlayer);
+            game.getInitialResources(fakePlayerExt);
             fail();
         }catch(IllegalArgumentException ignored){}
         try{
-            game.getActivableLeadCard(fakePlayer);
+            game.getActivableLeadCard(fakePlayerExt);
             fail();
         }catch(IllegalArgumentException ignored){}
 
@@ -81,8 +83,8 @@ class GameTest {
 
 
         //chose leader cards
-        LeaderCard[] chosen1 = new LeaderCard[]{ game.getActivableLeadCard(player1).get(0), game.getActivableLeadCard(player1).get(3)};
-        LeaderCard[] chosen2 = new LeaderCard[]{ game.getActivableLeadCard(player2).get(0), game.getActivableLeadCard(player2).get(3)};
+        LeaderCardExt[] chosen1 = new LeaderCardExt[]{(LeaderCardExt) game.getActivableLeadCard(player1).get(0), (LeaderCardExt) game.getActivableLeadCard(player1).get(3)};
+        LeaderCardExt[] chosen2 = new LeaderCardExt[]{(LeaderCardExt) game.getActivableLeadCard(player2).get(0), (LeaderCardExt) game.getActivableLeadCard(player2).get(3)};
         player1.getPersonalBoard().addLeaderCard(chosen1);
         game.updateStatus();
         assertEquals(GameStatus.Initial, game.getStatus());
@@ -125,22 +127,22 @@ class GameTest {
 
     @Test
     void illegalInitialization() throws IOException{
-        Market market = new Market(Starter.MarblesParser());
+        MarketExt market = new MarketExt(Starter.MarblesParser());
         try{
-            new Game(new ArrayList<>(), market, new Dashboard(new ArrayList<>()), new ArrayList<>(), new ArrayList<>());
+            new GameExt(new ArrayList<>(), market, new DashboardExt(new ArrayList<>()), new ArrayList<>(), new ArrayList<>());
             fail();
         }catch(IllegalArgumentException ignored){}
-        ArrayList<Player> player = new ArrayList<>();
-        player.add(new Player("Pippo"));
+        ArrayList<PlayerExt> player = new ArrayList<>();
+        player.add(new PlayerExt("Pippo"));
         try{
-            new Game(player, market, new Dashboard(new ArrayList<>()), new ArrayList<>(), new ArrayList<>());
+            new GameExt(player, market, new DashboardExt(new ArrayList<>()), new ArrayList<>(), new ArrayList<>());
             fail();
         }catch(IllegalArgumentException ignored){}
 
     }
 
     @Test
-    void singlePlayer() throws IOException{
+    void singlePlayerExt() throws IOException{
         ArrayList<SoloActionTokens> tokens = new ArrayList<>();
         tokens.add(new Move2());
         tokens.add(new MoveShuffle());
@@ -149,35 +151,35 @@ class GameTest {
 
 
         assertEquals(ColorDevCard.BLUE, (new Discard2(ColorDevCard.BLUE)).getColor());
-        ArrayList<Player> single = new ArrayList<>();
-        single.add(new Player("Pippo"));
+        ArrayList<PlayerExt> single = new ArrayList<>();
+        single.add(new PlayerExt("Pippo"));
 
-        ArrayList<DevelopmentCard> card = new ArrayList<>();
-        card.add(new DevelopmentCard(Level.ONE, ColorDevCard.BLUE, new NumberOfResources(), new ProductionPower(), 0));
-        card.add(new DevelopmentCard(Level.ONE, ColorDevCard.BLUE, new NumberOfResources(), new ProductionPower(), 1));
-        card.add(new DevelopmentCard(Level.TWO, ColorDevCard.BLUE, new NumberOfResources(), new ProductionPower(), 2));
-        card.add(new DevelopmentCard(Level.THREE, ColorDevCard.BLUE, new NumberOfResources(), new ProductionPower(), 0));
-        card.add(new DevelopmentCard(Level.ONE, ColorDevCard.YELLOW, new NumberOfResources(), new ProductionPower(), 0));
-        card.add(new DevelopmentCard(Level.TWO, ColorDevCard.PURPLE, new NumberOfResources(), new ProductionPower(), 0));
-        card.add(new DevelopmentCard(Level.THREE, ColorDevCard.GREEN, new NumberOfResources(), new ProductionPower(), 0));
+        ArrayList<DevelopmentCardExt> card = new ArrayList<>();
+        card.add(new DevelopmentCardExt(Level.ONE, ColorDevCard.BLUE, new NumberOfResources(), new ProductionPowerExt(), 0));
+        card.add(new DevelopmentCardExt(Level.ONE, ColorDevCard.BLUE, new NumberOfResources(), new ProductionPowerExt(), 1));
+        card.add(new DevelopmentCardExt(Level.TWO, ColorDevCard.BLUE, new NumberOfResources(), new ProductionPowerExt(), 2));
+        card.add(new DevelopmentCardExt(Level.THREE, ColorDevCard.BLUE, new NumberOfResources(), new ProductionPowerExt(), 0));
+        card.add(new DevelopmentCardExt(Level.ONE, ColorDevCard.YELLOW, new NumberOfResources(), new ProductionPowerExt(), 0));
+        card.add(new DevelopmentCardExt(Level.TWO, ColorDevCard.PURPLE, new NumberOfResources(), new ProductionPowerExt(), 0));
+        card.add(new DevelopmentCardExt(Level.THREE, ColorDevCard.GREEN, new NumberOfResources(), new ProductionPowerExt(), 0));
 
-        ArrayList<LeaderCard> leaderCards = new ArrayList<>();
-        leaderCards.add(new LeaderCard(new Requirements(), new WhiteAbility(ResourceType.Coins), 0));
-        leaderCards.add(new LeaderCard(new Requirements(), new WhiteAbility(ResourceType.Coins), 0));
-        leaderCards.add(new LeaderCard(new Requirements(), new WhiteAbility(ResourceType.Coins), 0));
-        leaderCards.add(new LeaderCard(new Requirements(), new WhiteAbility(ResourceType.Coins), 0));
+        ArrayList<LeaderCardExt> leaderCards = new ArrayList<>();
+        leaderCards.add(new LeaderCardExt(new RequirementsExt(), new WhiteAbility(ResourceType.Coins), 0));
+        leaderCards.add(new LeaderCardExt(new RequirementsExt(), new WhiteAbility(ResourceType.Coins), 0));
+        leaderCards.add(new LeaderCardExt(new RequirementsExt(), new WhiteAbility(ResourceType.Coins), 0));
+        leaderCards.add(new LeaderCardExt(new RequirementsExt(), new WhiteAbility(ResourceType.Coins), 0));
 
-        Market market = new Market(Starter.MarblesParser());
+        MarketExt market = new MarketExt(Starter.MarblesParser());
 
-        Game game = new Game(single, market, new Dashboard(card), tokens, leaderCards);
+        GameExt game = new GameExt(single, market, new DashboardExt(card), tokens, leaderCards);
         assertNotNull(game.getSoloGame());
 
-        Player player = game.getPlayer(0);
+        PlayerExt player = game.getPlayer(0);
         assertEquals("Pippo", player.getUserName());
         assertEquals(GameStatus.Initial, game.getStatus());
         game.updateStatus();
         assertEquals(GameStatus.Initial, game.getStatus());
-        LeaderCard[] chosen = new LeaderCard[]{ leaderCards.get(0), leaderCards.get(3)};
+        LeaderCardExt[] chosen = new LeaderCardExt[]{ leaderCards.get(0), leaderCards.get(3)};
         game.getPlayer(0).getPersonalBoard().addLeaderCard(chosen);
 
         game.updateStatus();
@@ -205,18 +207,18 @@ class GameTest {
 
     @Test
     void findLeaderCard() throws IOException{
-        ArrayList<LeaderCard> leaderCards= Starter.LeaderCardsParser();
-        ArrayList<DevelopmentCard> developmentCards= Starter.DevCardParser();
+        ArrayList<LeaderCardExt> leaderCards= Starter.LeaderCardsParser();
+        ArrayList<DevelopmentCardExt> developmentCards= Starter.DevCardParser();
         ArrayList<MarbleColor> marbles= Starter.MarblesParser();
-        ArrayList<Player> players= new ArrayList<>();
+        ArrayList<PlayerExt> players= new ArrayList<>();
         ArrayList<SoloActionTokens> tokens= new ArrayList<>();
-        Dashboard dashboard= new Dashboard(developmentCards);
-        Market market= new Market(marbles);
-        players.add(new Player("pippo"));
+        DashboardExt dashboard= new DashboardExt(developmentCards);
+        MarketExt market= new MarketExt(marbles);
+        players.add(new PlayerExt("pippo"));
         tokens.add(new Discard2(ColorDevCard.BLUE));
 
 
-        Game game= new Game(players,market,dashboard,tokens,leaderCards);
+        GameExt game= new GameExt(players,market,dashboard,tokens,leaderCards);
         Random rand= new Random();
         int id;
         for (int i=1; i<17; i++){

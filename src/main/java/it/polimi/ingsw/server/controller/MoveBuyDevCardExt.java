@@ -16,6 +16,12 @@ public class MoveBuyDevCardExt extends MoveBuyDevCard implements Performable {
         super(idPlayer);
     }
 
+    public MoveBuyDevCardExt(int idPlayer, int indexCardToBuy, int pos) {
+        super(idPlayer);
+        setIndexCardToBuy(indexCardToBuy);
+        setPos(pos);
+    }
+
     @Override
     public boolean canPerform(GameExt game){
 
