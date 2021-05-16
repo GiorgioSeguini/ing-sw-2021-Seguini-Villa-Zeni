@@ -31,6 +31,9 @@ public class PersonalBoard {
 
     /*Getter*/
     public LeaderCard[] getLeaderCards(){
+        if(!isReady()){
+            return new LeaderCard[0];
+        }
         int deadLeaderCards = 0;
         for(int i=0; i< OwnedLeaderCard.length; i++){
             if(OwnedLeaderCard[i].getStatus() == LeaderStatus.Dead) deadLeaderCards++;

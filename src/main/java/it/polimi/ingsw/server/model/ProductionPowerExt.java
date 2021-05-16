@@ -24,7 +24,11 @@ public class ProductionPowerExt extends ProductionPower {
     }
         @Override
     public ProductionPowerExt add(ProductionPower other) {
-        return (ProductionPowerExt) super.add(other);
+        return new ProductionPowerExt(this.getFaithPointsOut() + other.getFaithPointsOut(),
+                    this.getOutputRes().add(other.getOutputRes()),
+                    this.getInputRes().add(other.getInputRes()),
+                    this.getOfYourChoiceInput() + other.getOfYourChoiceInput(),
+                    this.getOfYourChoiceOutput() + other.getOfYourChoiceOutput());
     }
 
     /*Modifier*/
@@ -33,7 +37,7 @@ public class ProductionPowerExt extends ProductionPower {
     }
 
     public void active(PlayerExt owner, NumberOfResources choiceInput, NumberOfResources choiceOutput) throws OutOfResourcesException, ChoseResourcesException{
-        if(this.getOfYourChoiceInput() != choiceInput.size() || this.getOfYourChoiceInput() !=choiceOutput.size()){
+        if(this.getOfYourChoiceInput() != choiceInput.size() || this.getOfYourChoiceOutput() !=choiceOutput.size()){
             throw new ChoseResourcesException(this.getOfYourChoiceInput(), this.getOfYourChoiceOutput());
         }
 

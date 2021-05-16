@@ -79,10 +79,8 @@ public class NumberOfResources {
         else{
             int[] x= new int[4];
             for(ResourceType t: ResourceType.values()){
-                x[type.ordinal()]=this.getAmountOf(t);
+                x[t.ordinal()]=this.getAmountOf(t);
             }
-            if(x[type.ordinal()]<tosub)
-                throw new OutOfResourcesException();
             x[type.ordinal()]-=tosub;
             NumberOfResources new_resources= new NumberOfResources(x[0],x[1],x[2],x[3]);;
             return new_resources;
@@ -110,11 +108,12 @@ public class NumberOfResources {
     /**This method returns the resource type that has the bigger quantity. */
     public ResourceType Max_Resource_Type(){
         int max=0;
-        ResourceType out = null;
+        ResourceType out = ResourceType.values()[0];
 
         for(ResourceType type : ResourceType.values()){
             if(this.getAmountOf(type)>max){
                 out = type;
+                max = getAmountOf(type);
             }
         }
         return out;

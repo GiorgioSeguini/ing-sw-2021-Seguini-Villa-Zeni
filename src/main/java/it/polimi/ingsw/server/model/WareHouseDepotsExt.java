@@ -50,16 +50,14 @@ public class WareHouseDepotsExt extends WareHouseDepots {
 
     /**This method is called by ability Deposit, and can be called 2 times. Add an extra shelf to WareHouseDepots*/
     public void addExtraShelf(Shelf shelf){
-        ArrayList<Shelf> shelves = this.getShelfs();
-        shelves.add(shelf);
         shelf.setIsExtra();
-        this.setShelfs(shelves);
+        shelfs.add(shelf);
     }
 
     /**This method clean all the shelf from their items (the number is set to zero and the type is cancelled).
      * For the extra shelf the type is preserved.*/
     public void CleanShelf(){
-        for (Shelf x: getShelfs()){
+        for (Shelf x: shelfs){
             x.setUsed(0);
             if (!x.getIsExtra()){
                 x.setResType(null);
@@ -82,7 +80,7 @@ public class WareHouseDepotsExt extends WareHouseDepots {
     private void fill_correctly(NumberOfResources my_resources)throws UnableToFillException {
 
         /*This for checks just for the extra shelf*/
-        for(Shelf x: getShelfs()){
+        for(Shelf x: shelfs){
             if(x.getIsExtra()) {
                 if (my_resources.getAmountOf(x.getResType()) != 0) {
                     if (my_resources.getAmountOf(x.getResType()) > x.getMaxSize()) {
@@ -102,15 +100,15 @@ public class WareHouseDepotsExt extends WareHouseDepots {
         /*This for checks the first three shelfs*/
         if(check_NumberOfResources_Integrity_for_WareHouseDepots(my_resources)){
             for (int i=2;i>=0;i--){
-                if(getShelfs().get(i).getMaxSize()< my_resources.getAmountOf(my_resources.Max_Resource_Type())){
+                if(shelfs.get(i).getMaxSize()< my_resources.getAmountOf(my_resources.Max_Resource_Type())){
                     throw new UnableToFillException();
                 }
                 else{
                     if(my_resources.getAmountOf(my_resources.Max_Resource_Type())!=0) {
-                        getShelfs().get(i).setUsed(my_resources.getAmountOf(my_resources.Max_Resource_Type()));
-                        getShelfs().get(i).setResType(my_resources.Max_Resource_Type());
+                        shelfs.get(i).setUsed(my_resources.getAmountOf(my_resources.Max_Resource_Type()));
+                        shelfs.get(i).setResType(my_resources.Max_Resource_Type());
                         try {
-                            my_resources = my_resources.sub(getShelfs().get(i).getResType(), getShelfs().get(i).getUsed());
+                            my_resources = my_resources.sub(shelfs.get(i).getResType(), shelfs.get(i).getUsed());
                         } catch (OutOfResourcesException errorSub) {
                             //I don't expect to enter here.
                         }

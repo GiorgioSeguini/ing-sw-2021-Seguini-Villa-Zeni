@@ -7,8 +7,7 @@ import it.polimi.ingsw.constant.MessageSerializer;
 import it.polimi.ingsw.constant.enumeration.MarbleColor;
 
 import it.polimi.ingsw.constant.message.Message;
-import it.polimi.ingsw.constant.model.Dashboard;
-import it.polimi.ingsw.constant.model.NumberOfResources;
+import it.polimi.ingsw.constant.model.*;
 import it.polimi.ingsw.constant.move.MoveType;
 import it.polimi.ingsw.constant.parse.MoveTypeSerializer;
 import it.polimi.ingsw.constant.parse.NumberOfResSerializer;
@@ -40,6 +39,10 @@ public class Starter {
         builder.registerTypeAdapter(MoveType.class, new MoveTypeSerializer());
         builder.registerTypeAdapter(Dashboard.class, new DashBoardSerializer());
         builder.registerTypeAdapter(Performable.class, new PerformableSerializer());
+        builder.registerTypeAdapter(DevelopmentCard.class, new DevCardExtSerializer());
+        builder.registerTypeAdapter(LeaderCard.class, new LeaderCardExtSerializer());
+        builder.registerTypeAdapter(Requirements.class, new RequirementsExtSerializer());
+        builder.registerTypeAdapter(ProductionPower.class, new ProductionPowerExtSerializer());
         gson=builder.create();
         filePath = new File("").getAbsolutePath();
     }

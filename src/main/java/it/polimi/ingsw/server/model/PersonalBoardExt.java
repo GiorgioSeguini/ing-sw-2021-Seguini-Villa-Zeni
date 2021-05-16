@@ -32,7 +32,11 @@ public class PersonalBoardExt extends PersonalBoard implements Observable<Messag
 
     @Override
     public LeaderCardExt[] getLeaderCards() {
-        return (LeaderCardExt[]) super.getLeaderCards();
+        ArrayList<LeaderCardExt> result = new ArrayList<>();
+        for(LeaderCard card : super.getLeaderCards()){
+            result.add((LeaderCardExt) card);
+        }
+        return result.toArray(new LeaderCardExt[0]);
     }
 
 

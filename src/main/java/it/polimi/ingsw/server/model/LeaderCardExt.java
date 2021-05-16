@@ -8,12 +8,10 @@ import it.polimi.ingsw.constant.model.Requirements;
 public class LeaderCardExt extends LeaderCard {
 
     private final Ability ability;
-    private final RequirementsExt requirements;
 
     public LeaderCardExt(RequirementsExt requirements,  Ability ability, int victoryPoints) {
         super(requirements, victoryPoints);
         this.ability = ability;
-        this.requirements = requirements;
     }
 
     public Ability getAbility() {
@@ -21,9 +19,9 @@ public class LeaderCardExt extends LeaderCard {
     }
 
 
+    @Override
     public RequirementsExt getRequirements() {
-        //return (RequirementsExt) super.getRequirements();
-        return this.requirements;
+        return (RequirementsExt) super.getRequirements();
     }
 
     /*Additional Methods*/
@@ -55,5 +53,14 @@ public class LeaderCardExt extends LeaderCard {
         return false;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if(!super.equals(o))
+            return false;
 
+        if(!(o instanceof LeaderCardExt))
+            return false;
+
+        return this.ability.equals(((LeaderCardExt) o).ability);
+    }
 }

@@ -2,6 +2,7 @@ package it.polimi.ingsw.client.parser;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import it.polimi.ingsw.constant.model.Dashboard;
 import it.polimi.ingsw.constant.move.MoveType;
 import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.constant.MessageSerializer;
@@ -20,6 +21,7 @@ public class StarterClient{
         builder.registerTypeAdapter(Message.class, new MessageSerializer());
         builder.registerTypeAdapter(NumberOfResources.class, new NumberOfResSerializer());
         builder.registerTypeAdapter(MoveType.class, new MoveTypeSerializer());
+        builder.registerTypeAdapter(Dashboard.class, new DashBoardClientDeserializer());
         gson=builder.create();
     }
 
