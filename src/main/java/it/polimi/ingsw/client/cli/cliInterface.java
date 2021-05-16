@@ -1,5 +1,6 @@
 package it.polimi.ingsw.client.cli;
 
+import it.polimi.ingsw.client.modelClient.GameClient;
 import it.polimi.ingsw.constant.model.Game;
 import it.polimi.ingsw.constant.move.MoveType;
 
@@ -7,9 +8,9 @@ import java.util.Scanner;
 
 public interface cliInterface {
 
-    public MoveType updateCLI(Game game, Scanner stdin);
+    public MoveType updateCLI(GameClient game, Scanner stdin);
 
-    public boolean canPerform(Game game);
+    public boolean canPerform(GameClient game);
 
     String getName();
 

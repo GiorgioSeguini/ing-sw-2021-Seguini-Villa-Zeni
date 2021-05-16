@@ -1,5 +1,6 @@
 package it.polimi.ingsw.client.cli;
 
+import it.polimi.ingsw.client.modelClient.GameClient;
 import it.polimi.ingsw.constant.model.Game;
 import it.polimi.ingsw.constant.move.MoveChoseLeaderCards;
 import it.polimi.ingsw.constant.move.MoveType;
@@ -15,13 +16,13 @@ public class cliChoseLeaderCard implements cliInterface{
     }
 
     @Override
-    public MoveType updateCLI(Game game, Scanner stdin) {
+    public MoveType updateCLI(GameClient game, Scanner stdin) {
         //TODO
         return move;
     }
 
     @Override
-    public boolean canPerform(Game game) {
+    public boolean canPerform(GameClient game) {
         return move.canPerform(game);
     }
 

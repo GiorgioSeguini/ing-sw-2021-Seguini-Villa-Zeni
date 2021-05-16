@@ -61,7 +61,7 @@ public abstract class MoveType {
             return false;
         }
 
-        return game.getCurrPlayer().getID() != idPlayer;
+        return game.getCurrPlayer().getID() == idPlayer;
     }
     @Override
     public boolean equals(Object other){
