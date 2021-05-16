@@ -7,7 +7,7 @@ import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.constant.model.Game;
 import it.polimi.ingsw.constant.model.LeaderCard;
 import it.polimi.ingsw.constant.model.Player;
-import it.polimi.ingsw.server.controller.MoveType;
+import it.polimi.ingsw.server.controller.Performable;
 import it.polimi.ingsw.server.model.GameExt;
 import it.polimi.ingsw.server.observer.Observable;
 import it.polimi.ingsw.server.observer.Observer;
@@ -17,7 +17,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class View implements Observable<MoveType>, Observer<Message> {
+public abstract class View implements Observable<Performable>, Observer<Message> {
 
     private final Player player;
 
@@ -32,7 +32,7 @@ public abstract class View implements Observable<MoveType>, Observer<Message> {
 
     /*protected abstract void showMessage(Object message);*/
 
-    void handleMove(MoveType x) {
+    void handleMove(Performable x) {
         notify(x);
     }
 
@@ -48,19 +48,19 @@ public abstract class View implements Observable<MoveType>, Observer<Message> {
     }
 
     //Observable implementation
-    private transient final List<Observer<MoveType>> observers = new ArrayList<>();
+    private transient final List<Observer<Performable>> observers = new ArrayList<>();
 
     @Override
-    public void addObserver(Observer<MoveType> observer){
+    public void addObserver(Observer<Performable> observer){
         synchronized (observers) {
             observers.add(observer);
         }
     }
 
     @Override
-    public void notify(MoveType move) {
+    public void notify(Performable move) {
         synchronized (observers) {
-            for(Observer<MoveType> observer : observers){
+            for(Observer<Performable> observer : observers){
                 observer.update(move);
             }
         }

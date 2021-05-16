@@ -53,3 +53,29 @@ public interface cliInterface {
         }
         this.setIndexLeaderCards(choice);
     }*/
+
+    /*@Override
+    public void updateCLI(Game game, Scanner in) {
+        System.out.println(game.getMarketTray());
+        System.out.println("Vuoi comprare una riga(1) o una colonna(2)?");
+        int index = 0;
+        int c = in.nextInt();
+        if (c==1) {
+            System.out.println("Inserisci l'indice della riga desiderata");
+            int temp = in.nextInt();
+            if (temp <= 0 || temp > 3) {
+                System.out.println("Invalid choice");
+            }
+            index += temp+3;
+        }
+
+        if (c==2) {
+            System.out.println("Inserisci l'indice della colonna desiderata");
+            int temp = in.nextInt();
+            if (temp <= 0 || temp > 4) {
+                System.out.println("Invalid choice");
+            }
+            index += temp-1;
+        }
+        this.setIndexToBuy(index);
+    }*/

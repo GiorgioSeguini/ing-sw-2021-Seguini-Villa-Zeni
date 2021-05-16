@@ -10,6 +10,11 @@ import it.polimi.ingsw.server.model.exception.OutOfResourcesException;
 
 public class ProductionPowerExt extends ProductionPower {
 
+    @Override
+    public ProductionPowerExt add(ProductionPower other) {
+        return (ProductionPowerExt) super.add(other);
+    }
+
     /*Modifier*/
     public void active(PlayerExt owner) throws OutOfResourcesException, ChoseResourcesException{
             active(owner, new NumberOfResources(), new NumberOfResources());

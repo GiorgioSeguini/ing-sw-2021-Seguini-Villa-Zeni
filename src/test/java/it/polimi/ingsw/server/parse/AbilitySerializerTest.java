@@ -3,6 +3,7 @@ package it.polimi.ingsw.server.parse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import it.polimi.ingsw.constant.parse.NumberOfResSerializer;
 import it.polimi.ingsw.server.model.Ability;
 import it.polimi.ingsw.server.model.LeaderCard;
 import it.polimi.ingsw.server.model.NumberOfResources;

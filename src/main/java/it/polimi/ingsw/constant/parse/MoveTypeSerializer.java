@@ -1,7 +1,6 @@
-package it.polimi.ingsw.client.parser;
+package it.polimi.ingsw.constant.parse;
 
 import com.google.gson.*;
-import it.polimi.ingsw.client.move.*;
 import it.polimi.ingsw.constant.move.*;
 
 import java.lang.reflect.Type;
@@ -23,7 +22,7 @@ public class MoveTypeSerializer implements JsonSerializer<MoveType>, JsonDeseria
         moveNames.put(MoveDiscardResources.className, MoveDiscardResources.class);
         moveNames.put(MoveEndTurn.className, MoveEndTurn.class);
         moveNames.put(MoveLeader.className, MoveLeader.class);
-        moveNames.put(MovetypeMarket.className, MovetypeMarket.class);
+        moveNames.put(MoveTypeMarket.className, MoveTypeMarket.class);
         moveNames.put(MoveWhiteConversion.className, MoveWhiteConversion.class);
     }
 

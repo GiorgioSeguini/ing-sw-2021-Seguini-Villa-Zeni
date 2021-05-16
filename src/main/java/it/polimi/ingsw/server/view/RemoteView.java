@@ -3,6 +3,7 @@ package it.polimi.ingsw.server.view;
 
 import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.constant.model.Player;
+import it.polimi.ingsw.constant.move.MoveType;
 import it.polimi.ingsw.server.controller.*;
 import it.polimi.ingsw.server.observer.Observer;
 import it.polimi.ingsw.server.ClientConnection;
@@ -15,7 +16,7 @@ public class RemoteView extends View {
         @Override
         public void update(String info) {
             System.out.println("Received: " + info);
-            MoveType move= (MoveType) Starter.fromJson(info, MoveType.class);
+            Performable move= (Performable) Starter.fromJson(info, MoveType.class);
             handleMove(move);
         }
 

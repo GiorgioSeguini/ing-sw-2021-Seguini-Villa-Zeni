@@ -19,6 +19,14 @@ public class MoveChoseResources extends MoveType {
         return className;
     }
 
+    public NumberOfResources getOfYourChoiceInput() {
+        return ofYourChoiceInput;
+    }
+
+    public NumberOfResources getOfYourChoiceOutput() {
+        return ofYourChoiceOutput;
+    }
+
     public void setOfYourChoiceInput(NumberOfResources ofYourChoiceInput) {
         this.ofYourChoiceInput = ofYourChoiceInput;
     }

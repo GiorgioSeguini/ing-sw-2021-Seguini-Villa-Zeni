@@ -1,4 +1,4 @@
-package it.polimi.ingsw.client.parser;
+package it.polimi.ingsw.constant.parse;
 
 import com.google.gson.*;
 import it.polimi.ingsw.constant.enumeration.ResourceType;
@@ -13,9 +13,10 @@ public class NumberOfResSerializer implements JsonSerializer<NumberOfResources>,
     public JsonElement serialize(NumberOfResources src, Type typeOfSrc, JsonSerializationContext context) {
 
         JsonObject retValue = new JsonObject();
-        for(ResourceType type : ResourceType.values()){
-            retValue.addProperty(type.name(), src.getAmountOf(type));
-        }
+        retValue.addProperty("Servants", src.getAmountOf(ResourceType.Servants));
+        retValue.addProperty("Shields", src.getAmountOf(ResourceType.Shields));
+        retValue.addProperty("Coins", src.getAmountOf(ResourceType.Coins));
+        retValue.addProperty("Stones", src.getAmountOf(ResourceType.Stones));
         return retValue;
     }
 
@@ -23,10 +24,10 @@ public class NumberOfResSerializer implements JsonSerializer<NumberOfResources>,
     public NumberOfResources deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException  {
         JsonObject jsonObject = json.getAsJsonObject();
 
-        NumberOfResources result = new NumberOfResources();
-        for(ResourceType type : ResourceType.values()){
-            result = result.add(type, jsonObject.get(type.name()).getAsInt());
-        }
-        return result;
+        return new NumberOfResources(
+                jsonObject.get("Servants").getAsInt(),
+                jsonObject.get("Shields").getAsInt(),
+                jsonObject.get("Coins").getAsInt(),
+                jsonObject.get("Stones").getAsInt());
     }
 }

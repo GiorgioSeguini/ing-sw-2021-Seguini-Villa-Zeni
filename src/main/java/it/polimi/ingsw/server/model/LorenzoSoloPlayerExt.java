@@ -50,8 +50,11 @@ public class LorenzoSoloPlayerExt extends LorenzoSoloPlayer {
         SoloActionTokens soloActionTokensRevealed = soloActionTokens.get(0);
         //soloActionTokensDiscarded.add(soloActionTokensRevealed);
         soloActionTokens.remove(soloActionTokensRevealed);
-        soloActionTokensRevealed.ActivateToken(super.getGame());
+        soloActionTokensRevealed.ActivateToken(getGame());
     }
 
-
+    @Override
+    public GameExt getGame() {
+        return (GameExt) super.getGame();
+    }
 }

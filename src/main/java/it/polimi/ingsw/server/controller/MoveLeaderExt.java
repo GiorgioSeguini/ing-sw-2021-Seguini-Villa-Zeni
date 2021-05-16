@@ -1,46 +1,40 @@
 package it.polimi.ingsw.server.controller;
 
 import it.polimi.ingsw.constant.enumeration.ErrorMessage;
-import it.polimi.ingsw.constant.enumeration.PlayerStatus;
-import it.polimi.ingsw.server.model.Game;
-import it.polimi.ingsw.server.model.LeaderCard;
-import it.polimi.ingsw.server.model.Player;
+import it.polimi.ingsw.constant.model.LeaderCard;
+import it.polimi.ingsw.constant.move.MoveLeader;
+import it.polimi.ingsw.server.model.GameExt;
+import it.polimi.ingsw.server.model.LeaderCardExt;
+import it.polimi.ingsw.server.model.PlayerExt;
 import it.polimi.ingsw.server.model.exception.NoMoreLeaderCardAliveException;
 
 
-public class MoveLeader extends MoveType{
+public class MoveLeaderExt extends MoveLeader implements Performable {
 
-    int move;
-    int idLeaderCard;
-    public static final String className= "MoveLeader";
-    private static final PlayerStatus[] allowedStatus = new PlayerStatus[]{PlayerStatus.Active, PlayerStatus.MovePerformed};
-
-    public MoveLeader(int idPlayer, int move, int idLeaderCard) {
+    public MoveLeaderExt(int idPlayer) {
         super(idPlayer);
-        this.move = move;
-        this.idLeaderCard = idLeaderCard;
     }
 
     @Override
-    public boolean canPerform(Game game){
-        if(!super.simpleCheck(game, allowedStatus)) return false;
+    public boolean canPerform(GameExt game){
+        if(!super.canPerform(game)) return false;
 
-        LeaderCard leaderCard = game.findLeaderCard(idLeaderCard);
+        LeaderCard leaderCard = game.findLeaderCard(getIdLeaderCard());
         if(leaderCard==null) return false;
 
-        Player player =game.getPlayerFromID(getIdPlayer());
+        PlayerExt player =game.getPlayerFromID(getIdPlayer());
         boolean isPresent = false;
-        try {
+        //try {
             for (LeaderCard c : player.getPersonalBoard().getLeaderCards())
                 if (c.equals(leaderCard)) {
                     isPresent = true;
                     leaderCard = c;
                 }
-        } catch (NoMoreLeaderCardAliveException e) {
+        /*} catch (NoMoreLeaderCardAliveException e) {
             //Il player non ha più carte leader in mano
             player.setErrorMessage(e.getErrorMessage());
             return false;
-        }
+        }*/
 
         if (!isPresent) {
             player.setErrorMessage(ErrorMessage.CardNotOwned);
@@ -51,20 +45,20 @@ public class MoveLeader extends MoveType{
     }
 
     @Override
-    public void performMove(Game game) {
-        Player player =game.getPlayerFromID(getIdPlayer());
-        LeaderCard leaderCard = game.findLeaderCard(idLeaderCard);
+    public void performMove(GameExt game) {
+        PlayerExt player =game.getPlayerFromID(getIdPlayer());
+        LeaderCardExt leaderCard = game.findLeaderCard(getIdLeaderCard());
 
         player.setErrorMessage(ErrorMessage.NoError);
 
-        if (move == 0) {
+        if (getMove() == 0) {
             if (!leaderCard.setPlayed(player)) {
                 player.setErrorMessage(ErrorMessage.BadChoice);
                 return;
             }
         }
 
-        if (move == 1)
+        if (getMove() == 1)
             if (!leaderCard.setDiscard(player)) {
                 player.setErrorMessage(ErrorMessage.BadChoice);
                 //return;

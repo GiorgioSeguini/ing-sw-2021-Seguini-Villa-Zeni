@@ -175,8 +175,8 @@ public class GameExt extends Game implements Observable<Message> {
      * @param id to search for
      * @return a reference to the leader card with the wanted Id, null otherwise
      */
-    public LeaderCard findLeaderCard(int id){
-        for(LeaderCard x: leaderCards){
+    public LeaderCardExt findLeaderCard(int id){
+        for(LeaderCardExt x: leaderCards){
             if(x.getId()==id){
                 return x;
             }
@@ -184,8 +184,8 @@ public class GameExt extends Game implements Observable<Message> {
         return null;
     }
 
-    public ArrayList<LeaderCard> findMoreLeaderCard(ArrayList<Integer> cardId){
-        ArrayList<LeaderCard> leaderCards= new ArrayList<>();
+    public ArrayList<LeaderCardExt> findMoreLeaderCard(ArrayList<Integer> cardId){
+        ArrayList<LeaderCardExt> leaderCards= new ArrayList<>();
         for (int id: cardId){
             leaderCards.add(findLeaderCard(id));
 

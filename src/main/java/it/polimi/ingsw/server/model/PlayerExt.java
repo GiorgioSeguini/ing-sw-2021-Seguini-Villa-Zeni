@@ -5,9 +5,7 @@ import it.polimi.ingsw.constant.enumeration.PlayerStatus;
 import it.polimi.ingsw.constant.enumeration.ResourceType;
 import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.constant.message.PlayerMessage;
-import it.polimi.ingsw.constant.model.NumberOfResources;
-import it.polimi.ingsw.constant.model.Player;
-import it.polimi.ingsw.constant.model.ProductionPower;
+import it.polimi.ingsw.constant.model.*;
 import it.polimi.ingsw.server.model.exception.OutOfResourcesException;
 import it.polimi.ingsw.server.observer.Observable;
 import it.polimi.ingsw.server.observer.Observer;
@@ -23,14 +21,14 @@ public class PlayerExt extends Player implements Observable<Message> {
 
     private transient final Converter converter;
     private transient NumberOfResources discounted;
-    private transient ProductionPower toActive;
+    private transient ProductionPowerExt toActive;
 
     /*Default constructor*/
     public PlayerExt(String userName){
         super.setUserName(userName);
         super.setID(nextID.getAndIncrement());
         super.setPersonalBoard(new PersonalBoardExt(super.getID()));
-        super.setFaithtrack(new FaithTrackExt(super.getID()));
+        super.setFaithTrack(new FaithTrackExt(super.getID()));
         super.setDepots(new DepotsExt(super.getID()));
         super.setErrorMessage(ErrorMessage.NoError);
         super.setStatus(PlayerStatus.Waiting);
@@ -58,12 +56,27 @@ public class PlayerExt extends Player implements Observable<Message> {
         return temp.size()>=toActive.getOfYourChoiceInput();
     }
 
-    public ProductionPower getToActive() {
+    public ProductionPowerExt getToActive() {
         return toActive;
     }
 
     public NumberOfResources getDiscounted() {
         return discounted;
+    }
+
+    @Override
+    public FaithTrackExt getFaithTrack() {
+        return (FaithTrackExt) super.getFaithTrack();
+    }
+
+    @Override
+    public DepotsExt getDepots() {
+        return (DepotsExt) super.getDepots();
+    }
+
+    @Override
+    public PersonalBoardExt getPersonalBoard() {
+        return (PersonalBoardExt) super.getPersonalBoard();
     }
 
     /*Modifier*/
@@ -78,7 +91,7 @@ public class PlayerExt extends Player implements Observable<Message> {
         notify(new PlayerMessage(this.getStatus(), this.getID()));
     }
 
-    public void setToActive(ProductionPower toActive) {
+    public void setToActive(ProductionPowerExt toActive) {
         this.toActive = toActive;
     }
 

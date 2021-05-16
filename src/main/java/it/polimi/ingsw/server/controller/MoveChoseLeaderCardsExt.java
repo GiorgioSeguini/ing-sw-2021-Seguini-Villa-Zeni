@@ -1,12 +1,12 @@
 package it.polimi.ingsw.server.controller;
 
 import it.polimi.ingsw.constant.enumeration.ErrorMessage;
-import it.polimi.ingsw.constant.model.Game;
 import it.polimi.ingsw.constant.model.LeaderCard;
 import it.polimi.ingsw.constant.model.Player;
 import it.polimi.ingsw.constant.move.MoveChoseLeaderCards;
 import it.polimi.ingsw.server.model.GameExt;
-import it.polimi.ingsw.server.model.PersonalBoardExt;
+import it.polimi.ingsw.server.model.LeaderCardExt;
+import it.polimi.ingsw.server.model.PlayerExt;
 
 import java.util.ArrayList;
 
@@ -24,7 +24,7 @@ public class MoveChoseLeaderCardsExt extends MoveChoseLeaderCards implements Per
 
         Player player = game.getPlayerFromID(getIdPlayer());
 
-        ArrayList<LeaderCard> leaderCards = game.findMoreLeaderCard(getIndexLeaderCards());
+        ArrayList<LeaderCardExt> leaderCards = game.findMoreLeaderCard(getIndexLeaderCards());
         boolean goodChoice = true;
         for(LeaderCard card : leaderCards){
             if(!game.getActivableLeadCard(player).contains(card)){
@@ -42,12 +42,12 @@ public class MoveChoseLeaderCardsExt extends MoveChoseLeaderCards implements Per
 
     @Override
     public void performMove(GameExt game){
-        Player player =game.getPlayerFromID(getIdPlayer());
+        PlayerExt player =game.getPlayerFromID(getIdPlayer());
         player.setErrorMessage(ErrorMessage.NoError);
 
-        ArrayList<LeaderCard> leaderCards = game.findMoreLeaderCard(getIndexLeaderCards());
+        ArrayList<LeaderCardExt> leaderCards = game.findMoreLeaderCard(getIndexLeaderCards());
         try {
-            ((PersonalBoardExt)player.getPersonalBoard()).addLeaderCard(leaderCards.toArray(new LeaderCard[0]));
+            player.getPersonalBoard().addLeaderCard(leaderCards.toArray(new LeaderCardExt[2]));
         }catch (IndexOutOfBoundsException e){
             player.setErrorMessage(ErrorMessage.BadChoice);
             return;

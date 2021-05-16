@@ -18,6 +18,10 @@ public class MoveDiscardResources extends MoveType {
         return className;
     }
 
+    public NumberOfResources getToDiscard() {
+        return toDiscard;
+    }
+
     public void setToDiscard(NumberOfResources toDiscard) {
         this.toDiscard = toDiscard;
     }

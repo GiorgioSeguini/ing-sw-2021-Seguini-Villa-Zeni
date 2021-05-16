@@ -20,6 +20,10 @@ public class MoveWhiteConversion extends MoveType {
         return className;
     }
 
+    public ArrayList<ResourceType> getWhiteMarbles() {
+        return whiteMarbles;
+    }
+
     public void setWhiteMarbles(ArrayList<ResourceType> whiteMarbles) {
         this.whiteMarbles = new ArrayList<>();
         this.whiteMarbles.addAll(whiteMarbles);

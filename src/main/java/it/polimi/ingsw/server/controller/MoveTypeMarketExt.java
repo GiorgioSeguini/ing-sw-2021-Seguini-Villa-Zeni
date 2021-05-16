@@ -3,29 +3,21 @@ package it.polimi.ingsw.server.controller;
 import it.polimi.ingsw.constant.enumeration.ErrorMessage;
 import it.polimi.ingsw.constant.enumeration.MarbleColor;
 import it.polimi.ingsw.constant.enumeration.PlayerStatus;
-import it.polimi.ingsw.server.model.Game;
-import it.polimi.ingsw.server.model.Market;
-import it.polimi.ingsw.server.model.Player;
+import it.polimi.ingsw.constant.move.MoveTypeMarket;
+import it.polimi.ingsw.server.model.GameExt;
+import it.polimi.ingsw.server.model.MarketExt;
+import it.polimi.ingsw.server.model.PlayerExt;
 import it.polimi.ingsw.server.model.exception.HaveToChooseException;
 
 import java.util.ArrayList;
 
-public class MovetypeMarket extends MoveType{
+public class MoveTypeMarketExt extends MoveTypeMarket implements Performable{
 
-    private final int indexToBuy;
-    public static final String className= "MovetypeMarket";
-    private static final PlayerStatus[] allowedStatus = new PlayerStatus[]{PlayerStatus.Active};
-
-    public MovetypeMarket(int idPlayer, int indextobuy){
+    public MoveTypeMarketExt(int idPlayer) {
         super(idPlayer);
-        this.indexToBuy=indextobuy;
     }
 
-    public int getIndextobuy() {
-        return indexToBuy;
-    }
-
-    private ArrayList<MarbleColor> takeMarbles(int indexToBuy, Market market){
+    private ArrayList<MarbleColor> takeMarbles(int indexToBuy, MarketExt market){
         ArrayList<MarbleColor> buyedresources = null;
 
         /*Compro la colonna o la riga corretta*/
@@ -39,19 +31,19 @@ public class MovetypeMarket extends MoveType{
     }
 
     @Override
-    public boolean canPerform(Game game){
-        return super.simpleCheck(game, allowedStatus);
+    public boolean canPerform(GameExt game){
+        return super.canPerform(game);
     }
 
     /**This method tries to convert the Marble as the player asked. If it can it makes the conversion
      * and stores the converted resources in the Converter Class. Returns TRUE if the conversion ends correctly,
      * returns FALSE if it doesn't.*/
     @Override
-    public void performMove(Game game){
-        Player player =game.getPlayerFromID(getIdPlayer());
+    public void performMove(GameExt game){
+        PlayerExt player =game.getPlayerFromID(getIdPlayer());
         player.setErrorMessage(ErrorMessage.NoError);
 
-        ArrayList<MarbleColor> marbles = takeMarbles(indexToBuy, game.getMarketTray());
+        ArrayList<MarbleColor> marbles = takeMarbles(getIndexToBuy(), game.getMarketTray());
         if(marbles==null) {
             player.setErrorMessage(ErrorMessage.BadChoice);
             return;

@@ -1,18 +1,18 @@
 package it.polimi.ingsw.server.controller;
 
-import it.polimi.ingsw.constant.model.Game;
+import it.polimi.ingsw.server.model.GameExt;
 import it.polimi.ingsw.server.observer.Observer;
 
-public class Controller implements Observer<MoveType> {
+public class Controller implements Observer<Performable> {
 
-    private final Game game;
+    private final GameExt game;
 
-    public Controller(Game game) {
+    public Controller(GameExt game) {
         this.game = game;
     }
 
     @Override
-    public synchronized void update(MoveType x) {
+    public synchronized void update(Performable x) {
         if(x.canPerform(game)) {
             x.performMove(game);
         }else{

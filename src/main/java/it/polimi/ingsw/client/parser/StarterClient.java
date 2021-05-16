@@ -6,6 +6,8 @@ import it.polimi.ingsw.constant.move.MoveType;
 import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.constant.MessageSerializer;
 import it.polimi.ingsw.constant.model.NumberOfResources;
+import it.polimi.ingsw.constant.parse.MoveTypeSerializer;
+import it.polimi.ingsw.constant.parse.NumberOfResSerializer;
 
 
 import java.lang.reflect.Type;

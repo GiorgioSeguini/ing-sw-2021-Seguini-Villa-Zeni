@@ -3,6 +3,7 @@ package it.polimi.ingsw.server.model;
 import it.polimi.ingsw.constant.enumeration.ColorDevCard;
 import it.polimi.ingsw.constant.enumeration.Level;
 import it.polimi.ingsw.constant.model.DevelopmentCard;
+import it.polimi.ingsw.constant.model.NumberOfResources;
 import it.polimi.ingsw.constant.model.Requirements;
 import it.polimi.ingsw.server.model.exception.OutOfResourcesException;
 
@@ -21,7 +22,7 @@ public class RequirementsExt extends Requirements {
      */
     public boolean match(PlayerExt owner) {
         //match for the resources
-        NumberOfResourcesExt ownedRes = (NumberOfResourcesExt) owner.getDepots().getResources();
+        NumberOfResources ownedRes = owner.getDepots().getResources();
         try{
             ownedRes.sub(getNumberOfResourceses());
         }catch(OutOfResourcesException e){

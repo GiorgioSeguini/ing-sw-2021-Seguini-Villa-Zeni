@@ -27,6 +27,14 @@ public class MoveLeader extends MoveType {
         this.idLeaderCard = idLeaderCard;
     }
 
+    public int getMove() {
+        return move;
+    }
+
+    public int getIdLeaderCard() {
+        return idLeaderCard;
+    }
+
     @Override
     public boolean canPerform(Game game) {
         return simpleCheck(game, allowedStatus);

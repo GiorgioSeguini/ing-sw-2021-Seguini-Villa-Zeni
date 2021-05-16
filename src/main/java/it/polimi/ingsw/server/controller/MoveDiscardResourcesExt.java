@@ -1,45 +1,38 @@
 package it.polimi.ingsw.server.controller;
 
 import it.polimi.ingsw.constant.enumeration.ErrorMessage;
-import it.polimi.ingsw.server.model.Game;
-import it.polimi.ingsw.server.model.NumberOfResources;
-import it.polimi.ingsw.server.model.Player;
+import it.polimi.ingsw.constant.model.Player;
+import it.polimi.ingsw.constant.move.MoveDiscardResources;
+import it.polimi.ingsw.server.model.GameExt;
 import it.polimi.ingsw.constant.enumeration.PlayerStatus;
+import it.polimi.ingsw.server.model.PlayerExt;
 import it.polimi.ingsw.server.model.exception.OutOfResourcesException;
 import it.polimi.ingsw.server.model.exception.UnableToFillException;
 
 
-public class MoveDiscardResources extends MoveType{
-    private final NumberOfResources toDiscard;
-    public static final String className= "MoveDiscardResources";
-    private static final PlayerStatus[] allowedStatus = new PlayerStatus[]{PlayerStatus.NeedToStore};
+public class MoveDiscardResourcesExt extends MoveDiscardResources implements Performable {
 
-    public MoveDiscardResources(int idPlayer, NumberOfResources toDiscard){
+    public MoveDiscardResourcesExt(int idPlayer) {
         super(idPlayer);
-        this.toDiscard=toDiscard;
-    }
-
-    public NumberOfResources getToDiscard() {
-        return toDiscard;
     }
 
     @Override
-    public boolean canPerform(Game game){
-        return super.simpleCheck(game, allowedStatus);
+    public boolean canPerform(GameExt game){
+        return super.canPerform(game);
     }
 
     @Override
-    public void performMove(Game game) {
-        Player player =game.getPlayerFromID(getIdPlayer());
+    public void performMove(GameExt game) {
+        PlayerExt player =game.getPlayerFromID(getIdPlayer());
         player.setErrorMessage(ErrorMessage.NoError);
 
         try {
-            player.getConverter().setResources(player.getConverter().getResources().sub(toDiscard));
+            player.getConverter().setResources(player.getConverter().getResources().sub(getToDiscard()));
             player.getDepots().addResourcesFromMarket(player.getConverter().getResources());
             player.getConverter().CleanConverter();
-            for (int i = 0; i < toDiscard.size(); i++) {
+            for (int i = 0; i < getToDiscard().size(); i++) {
                 for (Player y : game.getPlayers()) {
-                    if (y != player) {
+                    if (!y.equals(player)) {
                         player.getFaithTrack().addPoint();
                     }
                 }

@@ -54,7 +54,7 @@ public class Player {
         this.userName = userName;
     }
 
-    public void setFaithtrack(FaithTrack faithTrack) {
+    public void setFaithTrack(FaithTrack faithTrack) {
         this.faithTrack = faithTrack;
     }
 
