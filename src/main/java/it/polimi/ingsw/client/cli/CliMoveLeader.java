@@ -24,7 +24,7 @@ public class CliMoveLeader implements CliInterface{
         if(m==1){
             System.out.println("Che carta leader vuoi scartare?\n");
             int i=1;
-            for(LeaderCardClient l: game.getCurrPlayer().getPersonalBoard().getLeaderCards()){
+            for(LeaderCardClient l: (LeaderCardClient[]) game.getMe().getPersonalBoard().getLeaderCards()){
                 System.out.println(""+i+".\n");
                 System.out.println("\t"+l);
                 i++;
@@ -34,7 +34,7 @@ public class CliMoveLeader implements CliInterface{
         }
         if (m==2){
             System.out.println("Che carta leader vuoi attivare?\n"+game.getLeaderCards());
-            for(LeaderCardClient leadercard: game.getLeaderCards()){
+            for(LeaderCardClient leadercard: (LeaderCardClient[]) game.getMe().getPersonalBoard().getLeaderCards()){
                 int i=1;
                 System.out.println("\t"+i+".");
                 System.out.println(""+leadercard);
@@ -43,6 +43,7 @@ public class CliMoveLeader implements CliInterface{
             int numcard = stdin.nextInt();
             move.setIdLeaderCard(game.getLeaderCards().get(numcard).getId());
         }*/
+        //TODO da discutere
 
         return move;
     }

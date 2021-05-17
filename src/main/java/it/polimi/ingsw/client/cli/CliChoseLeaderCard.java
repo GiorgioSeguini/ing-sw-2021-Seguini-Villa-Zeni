@@ -25,10 +25,12 @@ public class CliChoseLeaderCard implements CliInterface {
             System.out.println(card);
         }
         ArrayList<Integer> choice = new ArrayList<>();
+        int preindex=0;
         while(choice.size() < PersonalBoard.MAX_LEAD_CARD){
             int index = in.nextInt();
-            if(index>0 && index<game.getLeaderCards().size() && !choice.contains(index)){
-                choice.add(game.getLeaderCards().get(index).getId());
+            if(index>0 && index<=game.getLeaderCards().size() && !choice.contains(index) && preindex!=index){
+                choice.add(game.getLeaderCards().get(index-1).getId());
+                preindex = index;
             }else{
                 System.out.println("Indice non valido");
             }
