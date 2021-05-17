@@ -90,12 +90,12 @@ public class PersonalBoardExt extends PersonalBoard implements Observable<Messag
      * @see LeaderCard only class that call this methods
      */
     protected void change(){
-        /*Type type = new TypeToken<ArrayList<DevelopmentCardExt>[]>(){}.getType();
-        String devCards = Starter.toJson(super.getOwnedDevCards(), type);
+        Type type = new TypeToken<ArrayList<DevelopmentCard>[]>(){}.getType();
+        String devCards = Starter.toJson(super.OwnedDevCards, type);
 
         Type type1 = new TypeToken<LeaderCardExt[]>(){}.getType();
-        String leaderCards = Starter.toJson(super.getLeaderCards(), type1);
-        notify(new PersonalBoardMessage(devCards, leaderCards, this.ownerID));*/
+        String leaderCards = Starter.toJson(this.getLeaderCards(), type1);
+        notify(new PersonalBoardMessage(devCards, leaderCards, this.ownerID));
     }
 
     //Observable implementation

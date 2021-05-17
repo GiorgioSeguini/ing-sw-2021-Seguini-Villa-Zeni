@@ -43,11 +43,11 @@ public class cliMarketMove implements cliInterface{
 
     @Override
     public boolean canPerform(GameClient game) {
-        return false;
+        return move.canPerform(game);
     }
 
     @Override
     public String getName() {
-        return null;
+        return move.getClassName();
     }
 }

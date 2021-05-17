@@ -49,7 +49,7 @@ public class CLI implements Runnable{
             moves.clear();
             moves.add(new cliChoseLeaderCard(myID));
             moves.add(new cliMarketMove(myID));
-            //TODO
+            moves.add(new cliChoseInitialResources(myID));
 
             boolean goodchoice = false;
             int index = -1;

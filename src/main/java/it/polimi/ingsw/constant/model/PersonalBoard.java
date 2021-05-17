@@ -10,7 +10,7 @@ public class PersonalBoard {
     public static final int MAX_LEAD_CARD = 2;
     public static final int MAX_DEV_CARD = 7;
 
-    private ArrayList<DevelopmentCard>[] OwnedDevCards;
+    protected ArrayList<DevelopmentCard>[] OwnedDevCards;
 
     private LeaderCard[] OwnedLeaderCard;
 
