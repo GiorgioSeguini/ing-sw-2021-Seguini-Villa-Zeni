@@ -16,7 +16,7 @@ public class RemoteView extends View {
         @Override
         public void update(String info) {
             System.out.println("Received: " + info);
-            Performable move= (Performable) Starter.fromJson(info, MoveType.class);
+            Performable move= (Performable) Starter.fromJson(info, Performable.class);
             handleMove(move);
         }
 

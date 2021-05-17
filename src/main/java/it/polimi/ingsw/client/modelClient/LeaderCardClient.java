@@ -22,7 +22,7 @@ public class LeaderCardClient extends LeaderCard {
         String LC ="";
         LC += "Status: "+getStatus()+"\n";
         LC += "Requirements: \n";
-        LC += "\t"/* +getRequirements()*/;
+        LC += "\t" +getRequirements();
         LC += "Victory Points: "+getVictoryPoints()+"\n";
         LC += "Ability: \n";
         LC += "\t "+getAbility().getAbilityType()+"\tResources: "+getAbility().getResource()+"\n";
