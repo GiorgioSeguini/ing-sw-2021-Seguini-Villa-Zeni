@@ -8,11 +8,11 @@ import it.polimi.ingsw.constant.move.MoveType;
 
 import java.util.Scanner;
 
-public class cliChoseInitialResources implements cliInterface{
+public class CliChoseInitialResources implements CliInterface {
 
     MoveChoseInitialResources move;
 
-    public cliChoseInitialResources(int myId) {
+    public CliChoseInitialResources(int myId) {
         this.move = new MoveChoseInitialResources(myId);
     }
 

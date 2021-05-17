@@ -6,7 +6,7 @@ import it.polimi.ingsw.constant.move.MoveType;
 
 import java.util.Scanner;
 
-public interface cliInterface {
+public interface CliInterface {
 
     public MoveType updateCLI(GameClient game, Scanner stdin);
 

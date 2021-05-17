@@ -16,7 +16,7 @@ public class CLI implements Runnable{
     private GameClient game;
     Scanner in = new Scanner(System.in);
     DataOutputStream socket;
-    ArrayList<cliInterface> moves;
+    ArrayList<CliInterface> moves;
 
     public CLI(Client client, DataOutputStream writer) {
         this.client = client;
@@ -47,9 +47,17 @@ public class CLI implements Runnable{
         int myID = game.getMyID();
         if(game.isMyTurn()){
             moves.clear();
-            moves.add(new cliChoseLeaderCard(myID));
-            moves.add(new cliMarketMove(myID));
-            moves.add(new cliChoseInitialResources(myID));
+            moves.add(new CliChoseInitialResources(myID));
+            moves.add(new CliChoseLeaderCard(myID));
+            moves.add(new CliMoveActiveProduction(myID));
+            moves.add(new CliMoveBuyDevCard(myID));
+            moves.add(new CliMoveChoseResources(myID));
+            moves.add(new CliMoveDiscardResources(myID));
+            moves.add(new CliMoveEndTurn(myID));
+            moves.add(new CliMoveLeader(myID));
+            moves.add(new CliMoveTypeMarket(myID));
+            moves.add(new CliMoveWhiteConversion(myID));
+
 
             boolean goodchoice = false;
             int index = -1;
@@ -74,7 +82,7 @@ public class CLI implements Runnable{
             }while(!goodchoice);
 
             if(moveAviable) {
-                cliInterface cliInterface = moves.get(index);
+                CliInterface cliInterface = moves.get(index);
                 MoveType move = cliInterface.updateCLI(game, in);
                 send(move);
             }

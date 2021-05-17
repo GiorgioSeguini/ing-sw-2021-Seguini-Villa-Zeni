@@ -42,6 +42,11 @@ public class GameClient extends Game {
         this.leaderCards = leaderCards;
     }
 
+    @Override
+    public DashBoardClient getDashboard(){
+        return (DashBoardClient) super.getDashboard();
+    }
+
 
 
     @Override
