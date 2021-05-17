@@ -13,7 +13,7 @@ public class Controller implements Observer<Performable> {
 
     @Override
     public synchronized void update(Performable x) {
-        if(x.canPerform(game)) {
+        if(x.canPerformExt(game)) {
             x.performMove(game);
         }else{
             System.out.println("Move invalid");

@@ -31,7 +31,7 @@ public class MoveTypeMarketExt extends MoveTypeMarket implements Performable{
     }
 
     @Override
-    public boolean canPerform(GameExt game){
+    public boolean canPerformExt(GameExt game){
         return super.canPerform(game);
     }
 

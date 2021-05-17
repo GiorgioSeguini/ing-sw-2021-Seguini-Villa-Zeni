@@ -9,6 +9,7 @@ import it.polimi.ingsw.constant.model.LeaderCard;
 import it.polimi.ingsw.constant.model.Player;
 import it.polimi.ingsw.server.controller.Performable;
 import it.polimi.ingsw.server.model.GameExt;
+import it.polimi.ingsw.server.model.LeaderCardExt;
 import it.polimi.ingsw.server.observer.Observable;
 import it.polimi.ingsw.server.observer.Observer;
 import it.polimi.ingsw.server.parse.Starter;
@@ -41,7 +42,7 @@ public abstract class View implements Observable<Performable>, Observer<Message>
             return;
         String model = Starter.toJson(game, Game.class);
         int myID = this.player.getID();
-        Type type = new TypeToken<ArrayList<LeaderCard>>(){}.getType();
+        Type type = new TypeToken<ArrayList<LeaderCardExt>>(){}.getType();
         String leaderCards = Starter.toJson(game.getActivableLeadCard(player), type);
 
         this.update(new InitialMessage(model, myID, leaderCards));

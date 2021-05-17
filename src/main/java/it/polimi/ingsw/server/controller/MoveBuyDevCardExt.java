@@ -23,7 +23,7 @@ public class MoveBuyDevCardExt extends MoveBuyDevCard implements Performable {
     }
 
     @Override
-    public boolean canPerform(GameExt game){
+    public boolean canPerformExt(GameExt game){
 
         if(!super.canPerform(game)) return false;
         PlayerExt player = game.getPlayerFromID(getIdPlayer());

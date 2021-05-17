@@ -16,7 +16,7 @@ public class MoveLeaderExt extends MoveLeader implements Performable {
     }
 
     @Override
-    public boolean canPerform(GameExt game){
+    public boolean canPerformExt(GameExt game){
         if(!super.canPerform(game)) return false;
 
         LeaderCard leaderCard = game.findLeaderCard(getIdLeaderCard());

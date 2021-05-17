@@ -2,6 +2,7 @@ package it.polimi.ingsw.server.controller;
 
 import it.polimi.ingsw.constant.enumeration.ErrorMessage;
 import it.polimi.ingsw.constant.enumeration.PlayerStatus;
+import it.polimi.ingsw.constant.model.NumberOfResources;
 import it.polimi.ingsw.constant.model.Player;
 import it.polimi.ingsw.constant.model.ProductionPower;
 import it.polimi.ingsw.constant.move.MoveActiveProduction;
@@ -19,7 +20,7 @@ public class MoveActiveProductionExt extends MoveActiveProduction implements Per
     }
 
     @Override
-    public boolean canPerform(GameExt game){
+    public boolean canPerformExt(GameExt game){
         if(!super.canPerform(game)) return false;
         Player player = game.getPlayerFromID(getIdPlayer());
 
@@ -58,8 +59,7 @@ public class MoveActiveProductionExt extends MoveActiveProduction implements Per
 
         if(player.getToActive().easyActive()){
             //automatically perform the move if no choice is needed
-            //new MoveChoseResourcesExt(this.getIdPlayer(), new NumberOfResources(), new NumberOfResources()).performMove(game);
-            //TODO
+            new MoveChoseResourcesExt(this.getIdPlayer(), new NumberOfResources(), new NumberOfResources()).performMove(game);
         }
     }
 

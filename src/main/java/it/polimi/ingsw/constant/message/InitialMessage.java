@@ -3,6 +3,7 @@ package it.polimi.ingsw.constant.message;
 import com.google.gson.reflect.TypeToken;
 import it.polimi.ingsw.client.Client;
 import it.polimi.ingsw.client.modelClient.GameClient;
+import it.polimi.ingsw.client.modelClient.LeaderCardClient;
 import it.polimi.ingsw.constant.model.Game;
 import it.polimi.ingsw.constant.model.LeaderCard;
 import it.polimi.ingsw.client.parser.StarterClient;
@@ -30,8 +31,8 @@ public class InitialMessage implements Message{
         GameClient simpleGame = client.getSimpleGame();
         simpleGame.setMyID(yourID);
 
-        Type type = new TypeToken<ArrayList<LeaderCard>>(){}.getType();
-        ArrayList<LeaderCard> leaderCards = StarterClient.fromJson(leaderCardsString, type);
+        Type type = new TypeToken<ArrayList<LeaderCardClient>>(){}.getType();
+        ArrayList<LeaderCardClient> leaderCards = StarterClient.fromJson(leaderCardsString, type);
         simpleGame.setLeaderCards(leaderCards);
     }
 

@@ -19,7 +19,7 @@ public class MoveChoseLeaderCardsExt extends MoveChoseLeaderCards implements Per
     }
 
     @Override
-    public boolean canPerform(GameExt game){
+    public boolean canPerformExt(GameExt game){
         if(!super.canPerform(game)) return false;
 
         Player player = game.getPlayerFromID(getIdPlayer());

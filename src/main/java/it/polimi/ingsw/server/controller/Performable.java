@@ -5,5 +5,5 @@ import it.polimi.ingsw.server.model.GameExt;
 public interface Performable {
     void performMove(GameExt game);
 
-    public boolean canPerform(GameExt game);
+    boolean canPerformExt(GameExt game);
 }

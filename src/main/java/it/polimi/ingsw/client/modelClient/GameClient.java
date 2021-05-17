@@ -10,7 +10,7 @@ public class GameClient extends Game {
 
     //player related attribute
     private transient int myID;
-    private transient ArrayList<LeaderCard> leaderCards;
+    private transient ArrayList<LeaderCardClient> leaderCards;
 
 
     public boolean isMyTurn(){
@@ -29,7 +29,7 @@ public class GameClient extends Game {
         return myID;
     }
 
-    public ArrayList<LeaderCard> getLeaderCards() {
+    public ArrayList<LeaderCardClient> getLeaderCards() {
         return leaderCards;
     }
 
@@ -38,7 +38,7 @@ public class GameClient extends Game {
         this.myID = myID;
     }
 
-    public void setLeaderCards(ArrayList<LeaderCard> leaderCards) {
+    public void setLeaderCards(ArrayList<LeaderCardClient> leaderCards) {
         this.leaderCards = leaderCards;
     }
 
