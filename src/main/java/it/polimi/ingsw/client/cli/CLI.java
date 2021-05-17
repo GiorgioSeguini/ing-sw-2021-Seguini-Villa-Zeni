@@ -48,6 +48,7 @@ public class CLI implements Runnable{
         if(game.isMyTurn()){
             moves.clear();
             moves.add(new cliChoseLeaderCard(myID));
+            moves.add(new cliMarketMove(myID));
             //TODO
 
             boolean goodchoice = false;
