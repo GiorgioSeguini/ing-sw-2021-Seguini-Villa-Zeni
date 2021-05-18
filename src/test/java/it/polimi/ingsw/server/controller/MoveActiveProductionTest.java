@@ -77,7 +77,7 @@ public class MoveActiveProductionTest {
         }
         ((PlayerExt)game.getPlayers().get(1)).getDepots().addResourceFromProduction(new NumberOfResources(1,0,0,0));
         for(Player x : game.getPlayers()){
-            assertTrue(x.getDepots().getResources().size() == game.getInitialResources(x));
+            assertTrue(x.getDepots().getResources().size() == game.getInitialResources(x.getID()));
         }
         game.updateStatus();
         ColorDevCard colorDevCard = ColorDevCard.GREEN;

@@ -21,8 +21,10 @@ public class CliChoseLeaderCard implements CliInterface {
     @Override
     public MoveType updateCLI(GameClient game, Scanner in){
         System.out.println("Scegli "+ PersonalBoard.MAX_LEAD_CARD + " carte leader tra le seguenti:");
+        int t=1;
         for(LeaderCard card : game.getLeaderCards()){
-            System.out.println(card);
+            System.out.println(""+t+".\n"+card);
+            t++;
         }
         ArrayList<Integer> choice = new ArrayList<>();
         int preindex=0;

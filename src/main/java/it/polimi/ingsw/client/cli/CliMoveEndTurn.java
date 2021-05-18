@@ -1,6 +1,7 @@
 package it.polimi.ingsw.client.cli;
 
 import it.polimi.ingsw.client.modelClient.GameClient;
+import it.polimi.ingsw.constant.enumeration.PlayerStatus;
 import it.polimi.ingsw.constant.move.MoveEndTurn;
 import it.polimi.ingsw.constant.move.MoveType;
 
@@ -15,8 +16,22 @@ public class CliMoveEndTurn implements CliInterface{
     }
     @Override
     public MoveType updateCLI(GameClient game, Scanner stdin) {
-        //TODO
+        int c;
+        do {
+            System.out.println("Vuoi terminare il tuo turno?\n\t1. YES\t2. NO");
+            c = stdin.nextInt();
+            if (c != 1 && c != 2) {
+                System.out.println("Invalid index!");
+            } else {
+                if (c == 1) {
+                    move.updateCLI(game,stdin);
+                } else {
+                    break;
+                }
+            }
+        }while(c!=1&&c!=2);
         return move;
+        //TODO da discutere
     }
 
     @Override
