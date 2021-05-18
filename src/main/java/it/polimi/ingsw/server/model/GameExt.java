@@ -3,12 +3,10 @@ package it.polimi.ingsw.server.model;
 import it.polimi.ingsw.constant.enumeration.GameStatus;
 import it.polimi.ingsw.constant.enumeration.PlayerStatus;
 import it.polimi.ingsw.constant.message.GameMessage;
-import it.polimi.ingsw.constant.message.InitialMessage;
 import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.constant.model.*;
 import it.polimi.ingsw.server.observer.Observable;
 import it.polimi.ingsw.server.observer.Observer;
-import it.polimi.ingsw.server.parse.Starter;
 
 
 import java.util.*;
@@ -142,7 +140,7 @@ public class GameExt extends Game implements Observable<Message> {
         if(super.getStatus()==GameStatus.Initial) {
             boolean needToUpdate = true;
             for (Player p : super.getPlayers()) {
-                if(!p.getPersonalBoard().isReady()  || p.getDepots().getResources().size()!=getInitialResources(p))
+                if(!p.getPersonalBoard().isReady()  || p.getDepots().getResources().size()!=getInitialResources(p.getID()))
                     needToUpdate = false;
             }
             if(needToUpdate) {
@@ -150,7 +148,7 @@ public class GameExt extends Game implements Observable<Message> {
                 super.getPlayers().get(0).setStatus(PlayerStatus.Active);
                 super.setIndexPlayingPlayer(0);
                 change();
-            }else if(getCurrPlayer().getPersonalBoard().isReady()  && getCurrPlayer().getDepots().getResources().size()==getInitialResources(getCurrPlayer())){
+            }else if(getCurrPlayer().getPersonalBoard().isReady()  && getCurrPlayer().getDepots().getResources().size()==getInitialResources(getCurrPlayer().getID())){
                 super.increaseIndex();
                 change();
             }
@@ -171,13 +169,6 @@ public class GameExt extends Game implements Observable<Message> {
         return res;
     }
 
-    public int getInitialResources(Player player){
-        int index = super.getPlayerIndex(player);
-        if(index<0)
-            throw new IllegalArgumentException();
-
-        return INITIAL_RESOURCES[index];
-    }
 
     /**
      *

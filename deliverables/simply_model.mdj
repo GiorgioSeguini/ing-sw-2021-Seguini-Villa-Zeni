@@ -135,7 +135,7 @@
 											"top": 2694,
 											"width": 271,
 											"height": 13,
-											"text": "~player: Player",
+											"text": "-idPLayer: int",
 											"horizontalAlignment": 0
 										}
 									],
@@ -169,7 +169,7 @@
 											"top": 2717,
 											"width": 271,
 											"height": 13,
-											"text": "+getPlayer(): Player",
+											"text": "+getPlayerId(): int",
 											"horizontalAlignment": 0
 										},
 										{
@@ -25677,7 +25677,7 @@
 											"top": 6997,
 											"width": 271,
 											"height": 13,
-											"text": "~player: Player",
+											"text": "-idPLayer: int",
 											"horizontalAlignment": 0
 										}
 									],
@@ -25711,7 +25711,7 @@
 											"top": 7020,
 											"width": 271,
 											"height": 13,
-											"text": "+getPlayer(): Player",
+											"text": "+getPlayerId(): int",
 											"horizontalAlignment": 0
 										},
 										{
@@ -47195,7 +47195,7 @@
 											"top": 997,
 											"width": 271,
 											"height": 13,
-											"text": "~player: Player",
+											"text": "-idPLayer: int",
 											"horizontalAlignment": 0
 										}
 									],
@@ -47229,7 +47229,7 @@
 											"top": 1020,
 											"width": 271,
 											"height": 13,
-											"text": "+getPlayer(): Player",
+											"text": "+getPlayerId(): int",
 											"horizontalAlignment": 0
 										},
 										{
@@ -52050,9 +52050,9 @@
 							"_parent": {
 								"$ref": "AAAAAAF4rkgBOsJ1ohI="
 							},
-							"name": "player",
-							"visibility": "package",
-							"type": "Player"
+							"name": "idPLayer",
+							"visibility": "private",
+							"type": "int"
 						}
 					],
 					"operations": [
@@ -52062,7 +52062,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF4rkgBOsJ1ohI="
 							},
-							"name": "getPlayer",
+							"name": "getPlayerId",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -52070,7 +52070,7 @@
 									"_parent": {
 										"$ref": "AAAAAAF41jptEgO8hHE="
 									},
-									"type": "Player",
+									"type": "int",
 									"direction": "return"
 								}
 							]

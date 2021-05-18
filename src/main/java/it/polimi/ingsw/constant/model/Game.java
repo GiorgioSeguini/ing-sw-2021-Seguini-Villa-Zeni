@@ -8,7 +8,7 @@ import java.util.ArrayList;
 /**
  * Superclasse che gestisce tutto il gioco
  */
-public class Game {
+public abstract class Game {
 
     public static final int MAX_PLAYER = 4;
     public static final int INITIAL_LEADER_CARD = 4;
