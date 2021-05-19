@@ -140,6 +140,9 @@ public class PersonalBoard {
         for(int i=0; i<MAX_LEAD_CARD; i++){
             if(cards.size()>i){
                 OwnedLeaderCard[i] = cards.get(i);
+            }else{
+                //TODO
+                //OwnedLeaderCard[i] = null;
             }
         }
     }

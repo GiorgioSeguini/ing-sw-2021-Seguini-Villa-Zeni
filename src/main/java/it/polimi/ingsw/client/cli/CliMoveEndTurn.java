@@ -24,13 +24,13 @@ public class CliMoveEndTurn implements CliInterface{
                 System.out.println("Invalid index!");
             } else {
                 if (c == 1) {
-                    move.updateCLI(game,stdin);
+                    return move;
                 } else {
                     break;
                 }
             }
-        }while(c!=1&&c!=2);
-        return move;
+        }while(false);
+        return  move;
         //TODO da discutere
     }
 

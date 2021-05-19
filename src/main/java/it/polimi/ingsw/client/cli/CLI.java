@@ -3,6 +3,7 @@ package it.polimi.ingsw.client.cli;
 import it.polimi.ingsw.client.Client;
 import it.polimi.ingsw.client.modelClient.GameClient;
 import it.polimi.ingsw.client.parser.StarterClient;
+import it.polimi.ingsw.constant.enumeration.ErrorMessage;
 import it.polimi.ingsw.constant.move.MoveType;
 
 import java.io.*;
@@ -58,7 +59,9 @@ public class CLI implements Runnable{
             moves.add(new CliMoveTypeMarket(myID));
             moves.add(new CliMoveWhiteConversion(myID));
 
-
+            if(game.getMe().getErrorMessage()!= ErrorMessage.NoError){
+                System.out.println(game.getMe().getErrorMessage());
+            }
             boolean goodchoice = false;
             int index = -1;
             System.out.println("Hello");

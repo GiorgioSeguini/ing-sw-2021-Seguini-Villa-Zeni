@@ -45,6 +45,7 @@ public class MoveBuyDevCardExt extends MoveBuyDevCard implements Performable {
         if (!((DepotsExt)player.getDepots()).match(realCost)){
             //qui bisogna dire al player che non può comprare quella carta perchè non ha abbastazna risorse e quindi di sceglierne un'altra
             player.setErrorMessage(ErrorMessage.OutOfResourcesError);
+            return false;
         }
 
         return true;

@@ -20,6 +20,7 @@ public class LeaderCardClient extends LeaderCard {
     @Override
     public String toString(){
         String LC ="";
+        LC += "ID: "+getId()+"\n";
         LC += "Status: "+getStatus()+"\n";
         LC += "Requirements: \n";
         LC += "\t" +getRequirements();

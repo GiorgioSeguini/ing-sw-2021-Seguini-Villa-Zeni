@@ -2,6 +2,7 @@ package it.polimi.ingsw.client.cli;
 
 import it.polimi.ingsw.client.modelClient.GameClient;
 import it.polimi.ingsw.client.modelClient.LeaderCardClient;
+import it.polimi.ingsw.constant.model.LeaderCard;
 import it.polimi.ingsw.constant.move.MoveLeader;
 import it.polimi.ingsw.constant.move.MoveType;
 
@@ -16,7 +17,7 @@ public class CliMoveLeader implements CliInterface{
     }
     @Override
     public MoveType updateCLI(GameClient game, Scanner stdin) {
-        /*int m;
+        int m;
         do{
             System.out.println("Cosa vuoi fare?\n\t1. Scartare una carta leader.\n\t2. Attivare l'abilità di una carta leader.");
             m = stdin.nextInt();
@@ -24,25 +25,27 @@ public class CliMoveLeader implements CliInterface{
         if(m==1){
             System.out.println("Che carta leader vuoi scartare?\n");
             int i=1;
-            for(LeaderCardClient l: (LeaderCardClient[]) game.getMe().getPersonalBoard().getLeaderCards()){
+            for(LeaderCard l:  game.getMe().getPersonalBoard().getLeaderCards()){
                 System.out.println(""+i+".\n");
                 System.out.println("\t"+l);
                 i++;
             }
             int numcard = stdin.nextInt();
-            move.setIdLeaderCard(game.getLeaderCards().get(numcard).getId());
+            move.setIdLeaderCard(game.getLeaderCards().get(numcard-1).getId());
+            move.setMove(1);
         }
         if (m==2){
-            System.out.println("Che carta leader vuoi attivare?\n"+game.getLeaderCards());
-            for(LeaderCardClient leadercard: (LeaderCardClient[]) game.getMe().getPersonalBoard().getLeaderCards()){
+            System.out.println("Che carta leader vuoi attivare?\n");
+            for(LeaderCard leadercard: game.getMe().getPersonalBoard().getLeaderCards()){
                 int i=1;
                 System.out.println("\t"+i+".");
                 System.out.println(""+leadercard);
                 i++;
             }
             int numcard = stdin.nextInt();
-            move.setIdLeaderCard(game.getLeaderCards().get(numcard).getId());
-        }*/
+            move.setIdLeaderCard(game.getLeaderCards().get(numcard-1).getId());
+            move.setMove(0);
+        }
         //TODO da discutere
 
         return move;

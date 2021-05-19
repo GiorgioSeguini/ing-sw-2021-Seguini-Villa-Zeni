@@ -88,7 +88,13 @@ public class PlayerExt extends Player implements Observable<Message> {
     @Override
     public void setStatus(PlayerStatus status) {
         super.setStatus(status);
-        notify(new PlayerMessage(this.getStatus(), this.getID()));
+        notify(new PlayerMessage(this.getStatus(), this.getID(), this.getErrorMessage()));
+    }
+
+    @Override
+    public void setErrorMessage(ErrorMessage errorMessage) {
+        super.setErrorMessage(errorMessage);
+        notify(new PlayerMessage(this.getStatus(), this.getID(), this.getErrorMessage()));
     }
 
     public void setToActive(ProductionPowerExt toActive) {

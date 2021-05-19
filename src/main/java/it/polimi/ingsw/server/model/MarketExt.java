@@ -68,10 +68,10 @@ public class MarketExt extends Market implements Observable<Message> {
      */
     private void change() {
         ArrayList<MarbleColor> marbles = new ArrayList<MarbleColor>();
-        /*for(MarbleColor[] row : tray){
-            marbles.addAll(Arrays.asList(row));
+        for(int i=0; i<N_ROW; i++){
+            marbles.addAll(Arrays.asList(getRow(i)));
         }
-        marbles.add(externalMarble);*/
+        marbles.add(getExternalMarble());
         notify(new MarketMessage(marbles));
     }
 

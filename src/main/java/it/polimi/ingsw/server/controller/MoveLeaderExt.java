@@ -26,9 +26,8 @@ public class MoveLeaderExt extends MoveLeader implements Performable {
         boolean isPresent = false;
         //try {
             for (LeaderCard c : player.getPersonalBoard().getLeaderCards())
-                if (c.equals(leaderCard)) {
+                if (c.getId()==leaderCard.getId()) {
                     isPresent = true;
-                    leaderCard = c;
                 }
         /*} catch (NoMoreLeaderCardAliveException e) {
             //Il player non ha più carte leader in mano

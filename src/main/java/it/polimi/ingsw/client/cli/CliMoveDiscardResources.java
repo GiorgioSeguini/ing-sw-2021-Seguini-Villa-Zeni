@@ -1,6 +1,7 @@
 package it.polimi.ingsw.client.cli;
 
 import it.polimi.ingsw.client.modelClient.GameClient;
+import it.polimi.ingsw.constant.model.NumberOfResources;
 import it.polimi.ingsw.constant.move.MoveDiscardResources;
 import it.polimi.ingsw.constant.move.MoveType;
 
@@ -16,6 +17,7 @@ public class CliMoveDiscardResources implements CliInterface{
     @Override
     public MoveType updateCLI(GameClient game, Scanner stdin) {
         //TODO
+        move.setToDiscard(new NumberOfResources());
         return move;
     }
 
