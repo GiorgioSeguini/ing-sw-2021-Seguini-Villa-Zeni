@@ -2,6 +2,7 @@ package it.polimi.ingsw.constant.model;
 
 import it.polimi.ingsw.constant.enumeration.ErrorMessage;
 import it.polimi.ingsw.constant.enumeration.PlayerStatus;
+import it.polimi.ingsw.server.model.ProductionPowerExt;
 
 /*Last Edit: Fabio*/
 public class Player {
@@ -14,7 +15,8 @@ public class Player {
 
     private PlayerStatus status;
     private ErrorMessage errorMessage;
-
+    private Converter converter;
+    private ProductionPowerExt toActive;
 
     //smart getter
     public int getVictoryPoints(){
@@ -50,6 +52,16 @@ public class Player {
         return errorMessage;
     }
 
+    public Converter getConverter() {
+        return converter;
+    }
+
+    public ProductionPowerExt getToActive() {
+        return toActive;
+    }
+
+    //SETTER
+
     public void setUserName(String userName) {
         this.userName = userName;
     }
@@ -76,6 +88,14 @@ public class Player {
 
     public void setErrorMessage(ErrorMessage errorMessage) {
         this.errorMessage = errorMessage;
+    }
+
+    public void setConverter(Converter converter) {
+        this.converter = converter;
+    }
+
+    public void setToActive(ProductionPowerExt toActive) {
+        this.toActive = toActive;
     }
 
     @Override

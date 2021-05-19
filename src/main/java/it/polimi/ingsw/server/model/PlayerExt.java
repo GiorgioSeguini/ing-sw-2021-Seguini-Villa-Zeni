@@ -19,9 +19,7 @@ public class PlayerExt extends Player implements Observable<Message> {
 
     private static final AtomicInteger nextID = new AtomicInteger();
 
-    private transient final Converter converter;
     private transient NumberOfResources discounted;
-    private transient ProductionPowerExt toActive;
 
     /*Default constructor*/
     public PlayerExt(String userName){
@@ -32,8 +30,7 @@ public class PlayerExt extends Player implements Observable<Message> {
         super.setDepots(new DepotsExt(super.getID()));
         super.setErrorMessage(ErrorMessage.NoError);
         super.setStatus(PlayerStatus.Waiting);
-
-        this.converter = new Converter(this);
+        super.setConverter(new ConverterExt(this));
         this.discounted = new NumberOfResources();
     }
 
@@ -43,21 +40,17 @@ public class PlayerExt extends Player implements Observable<Message> {
      * @return true if the player own enough resources to active the power production chosen
      */
     public boolean isActivable(){
-        if(toActive==null)
+        if(getToActive()==null)
             return false;
 
         NumberOfResources temp = super.getDepots().getResources();
         try{
-            temp = temp.sub(toActive.getInputRes());
+            temp = temp.sub(getToActive().getInputRes());
         }catch (OutOfResourcesException e){
             return false;
         }
 
-        return temp.size()>=toActive.getOfYourChoiceInput();
-    }
-
-    public ProductionPowerExt getToActive() {
-        return toActive;
+        return temp.size()>= getToActive().getOfYourChoiceInput();
     }
 
     public NumberOfResources getDiscounted() {
@@ -97,12 +90,9 @@ public class PlayerExt extends Player implements Observable<Message> {
         notify(new PlayerMessage(this.getStatus(), this.getID(), this.getErrorMessage()));
     }
 
-    public void setToActive(ProductionPowerExt toActive) {
-        this.toActive = toActive;
-    }
-
-    public Converter getConverter() {
-        return converter;
+    @Override
+    public ConverterExt getConverter() {
+        return (ConverterExt) super.getConverter();
     }
 
     //Observable implementation

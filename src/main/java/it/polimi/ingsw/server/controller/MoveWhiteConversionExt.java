@@ -29,7 +29,7 @@ public class MoveWhiteConversionExt extends MoveWhiteConversion implements Perfo
         PlayerExt player =game.getPlayerFromID(getIdPlayer());
         player.setErrorMessage(ErrorMessage.NoError);
         player.getConverter().WhiteMarbleConverter(getWhiteMarbles());
-        player.setStatus(PlayerStatus.MovePerformed);
+        player.setStatus(PlayerStatus.NeedToStore);
     }
 
     @Override

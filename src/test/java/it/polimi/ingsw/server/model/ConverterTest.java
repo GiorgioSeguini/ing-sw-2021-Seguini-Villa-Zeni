@@ -1,4 +1,5 @@
 package it.polimi.ingsw.server.model;
+import it.polimi.ingsw.constant.model.Converter;
 import it.polimi.ingsw.constant.model.NumberOfResources;
 import it.polimi.ingsw.server.parse.Starter;
 import it.polimi.ingsw.constant.enumeration.MarbleColor;
@@ -7,8 +8,8 @@ import it.polimi.ingsw.server.model.exception.HaveToChooseException;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,7 +19,7 @@ public class ConverterTest {
     @Test
     void CheckIntegrityToConvert() {
         PlayerExt player=new PlayerExt("Pippo");
-        Converter x=new Converter(player);
+        ConverterExt x=new ConverterExt(player);
         x.setWhiteAbility(ResourceType.Stones);
         x.setWhiteAbility(ResourceType.Coins);
 
@@ -32,7 +33,7 @@ public class ConverterTest {
         test.add(ResourceType.Stones);
         test.add(ResourceType.Coins);
         test.add(ResourceType.Stones);
-        assertTrue(x.CheckIntegrityToConvert(test));
+        assertFalse(x.CheckIntegrityToConvert(test));
 
         test= new ArrayList<>();
         assertTrue(x.CheckIntegrityToConvert(test));
@@ -56,7 +57,7 @@ public class ConverterTest {
 
     @Test
     public void convertAllTest(){
-        Converter converter= new Converter(new PlayerExt("Pippo"));
+        ConverterExt converter= new ConverterExt(new PlayerExt("Pippo"));
         ArrayList<MarbleColor> marbles= new ArrayList<>();
         try {
             marbles= Starter.MarblesParser();
@@ -94,7 +95,7 @@ public class ConverterTest {
             converter.setWhiteAbility(ResourceType.Stones);
             fail();
         }
-        catch (IllegalArgumentException e){ }
+        catch (IllegalArgumentException ignored){ }
         assertEquals(1, converter.getToconvert().size());
 
         try {
@@ -108,7 +109,7 @@ public class ConverterTest {
         try {
             converter.convertAll(marbles);
             fail();
-        } catch (HaveToChooseException e) {}
+        } catch (HaveToChooseException ignored) {}
         assertEquals(new NumberOfResources(2,2,2,2),converter.getResources());
         assertEquals(3,converter.getOwner().getFaithTrack().getFaithPoints());
 
@@ -133,7 +134,7 @@ public class ConverterTest {
 
         assertTrue(player.getConverter().IsWhiteAbilityActive());
 
-        Converter converter= new Converter(player);
+        ConverterExt converter= new ConverterExt(player);
 
         assertFalse(converter.IsWhiteAbilityActive());
 
@@ -143,10 +144,7 @@ public class ConverterTest {
     public void WhiteMarbleConverterTest(){
         PlayerExt player= new PlayerExt("Pippo");
 
-        ArrayList<ResourceType> whites= new ArrayList<>();
-        for(ResourceType x: ResourceType.values()){
-            whites.add(x);
-        }
+        ArrayList<ResourceType> whites = new ArrayList<>(Arrays.asList(ResourceType.values()));
 
         player.getConverter().WhiteMarbleConverter(whites);
         assertEquals(new NumberOfResources(1,1,1,1), player.getConverter().getResources());

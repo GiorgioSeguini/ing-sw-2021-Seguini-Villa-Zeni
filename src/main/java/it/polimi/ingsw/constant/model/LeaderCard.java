@@ -2,7 +2,7 @@ package it.polimi.ingsw.constant.model;
 
 import it.polimi.ingsw.constant.enumeration.LeaderStatus;
 
-public class LeaderCard extends Card {
+public abstract class LeaderCard extends Card {
 
     private LeaderStatus status;
     private final Requirements requirements;

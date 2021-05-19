@@ -1,67 +1,48 @@
 package it.polimi.ingsw.server.model;
 
-/*Las Edit: William Zeni*/
-
 import it.polimi.ingsw.constant.enumeration.MarbleColor;
 import it.polimi.ingsw.constant.enumeration.ResourceType;
+import it.polimi.ingsw.constant.model.Converter;
 import it.polimi.ingsw.constant.model.NumberOfResources;
 import it.polimi.ingsw.server.model.exception.HaveToChooseException;
+
 import java.util.ArrayList;
 
-public class Converter {
-
-    private PlayerExt owner;
-    private NumberOfResources inwait;
-    private ArrayList<ResourceType> toconvert;
+public class ConverterExt extends Converter {
+    private transient final PlayerExt owner;
 
     /*Default Constructor*/
-    public Converter(PlayerExt owner){
-        this.toconvert=new ArrayList<>();
+    public ConverterExt(PlayerExt owner){
+        super(owner.getID());
         this.owner=owner;
-        this.inwait=new NumberOfResources();
     }
-
-    /*Getter*/
 
     public PlayerExt getOwner() {
         return owner;
     }
 
-    public ArrayList<ResourceType> getToconvert() {
-        return toconvert;
-    }
-
-    /**This method returns the Resources stored in Converter and it cleans them/. */
-    public NumberOfResources getResources(){
-       return inwait;
-    }
-
     /*Setter*/
     public void setWhiteAbility(ResourceType type){
-        for(ResourceType x: toconvert){
+        for(ResourceType x: getToconvert()){
             if(type==x){
                 throw new IllegalArgumentException();
             }
         }
-        this.toconvert.add(type);
-    }
-
-    public void setResources(NumberOfResources resources){
-      this.inwait=resources;
+        this.addToconvert(type);
     }
 
     /*Additional Methods*/
     /**Returns TRUE if the WhiteAbility is active*/
     public boolean IsWhiteAbilityActive(){
-        if(toconvert.size()!=0){
+        if(getToconvert().size()!=0){
             return true;
         }
         return false;
     }
 
     /**It converts bought marbles and it throws an exception if there are white marbles to convert. */
-    public void convertAll(ArrayList<MarbleColor> input) throws HaveToChooseException{
-        ArrayList<MarbleColor>without_white=new ArrayList<>();
+    public void convertAll(ArrayList<MarbleColor> input) throws HaveToChooseException {
+        ArrayList<MarbleColor> without_white=new ArrayList<>();
         int howmany=0;
 
         for (MarbleColor x: input){
@@ -72,14 +53,15 @@ public class Converter {
                 howmany++;
             }
         }
-        inwait=convert_resources(without_white);
+        setResources(convert_resources(without_white));
         if(howmany!=0){
-            if (toconvert.size()>1){
+            if (getToconvert().size()>1){
+                setWhite(howmany);
                 throw new HaveToChooseException();
             }
             else{
-                if(toconvert.size()==1){
-                    inwait=inwait.add(toconvert.get(0),howmany);
+                if(getToconvert().size()==1){
+                    setResources(getResources().add(getToconvert().get(0),howmany));
                 }
             }
         }
@@ -88,26 +70,22 @@ public class Converter {
     /**It just store the white resources chosen from the player. */
     public void WhiteMarbleConverter(ArrayList<ResourceType> whiteres){
         for(ResourceType x: whiteres){
-            inwait=inwait.add(x,1);
+            setResources(getResources().add(x, 1));
         }
     }
 
     public boolean CheckIntegrityToConvert(ArrayList<ResourceType> toconvert){
-        ArrayList<ResourceType>temp=new ArrayList<>();
-        for (ResourceType x: toconvert){
-            temp.add(x);
-        }
-        for(ResourceType x: this.toconvert){
-           while(temp.remove(x)){ }
-        }
-        if (temp.size()!=0){
+        if(toconvert.size()!=getWhite())
             return false;
+        for(ResourceType type: toconvert){
+            if(!getToconvert().contains(type))
+                return false;
         }
         return true;
     }
 
     public void CleanConverter(){
-        this.inwait=new NumberOfResources();
+        setResources(new NumberOfResources());
     }
 
     /*Private Methods*/
@@ -127,7 +105,7 @@ public class Converter {
         NumberOfResources output=new NumberOfResources();
         for(MarbleColor marble: input){
             if(marble.equals(MarbleColor.RED)){
-                ((FaithTrackExt)owner.getFaithTrack()).addPoint();
+                owner.getFaithTrack().addPoint();
             }
             else{
                 output=output.add(convert_single_marble(marble),1);
@@ -135,6 +113,4 @@ public class Converter {
         }
         return output;
     }
-
-
 }

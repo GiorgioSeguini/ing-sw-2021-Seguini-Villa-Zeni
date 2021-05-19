@@ -1,7 +1,7 @@
 package it.polimi.ingsw.constant.model;
 
 /*Last Edit: Fabio*/
-public class LorenzoSoloPlayer {
+public abstract class LorenzoSoloPlayer {
 
     private final FaithTrack faithTrack;
     private final Game game;
