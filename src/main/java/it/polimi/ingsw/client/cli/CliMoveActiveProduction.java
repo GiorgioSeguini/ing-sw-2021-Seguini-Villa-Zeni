@@ -5,6 +5,7 @@ import it.polimi.ingsw.constant.model.ProductionPower;
 import it.polimi.ingsw.constant.move.MoveActiveProduction;
 import it.polimi.ingsw.constant.move.MoveType;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CliMoveActiveProduction implements CliInterface{
@@ -15,19 +16,22 @@ public class CliMoveActiveProduction implements CliInterface{
     }
     @Override
     public MoveType updateCLI(GameClient game, Scanner stdin) {
-        int t=1;
-        int p;
+        ArrayList<ProductionPower> productionPowers = new ArrayList<ProductionPower>();
+        int i=1;
         for(ProductionPower pp: game.getMe().getPersonalBoard().getProduction()){
-            System.out.println(""+t+".\n"+pp);
-            t++;
+            System.out.println(i+".\t"+pp);
         }
-        t++;
-        System.out.println(""+t+".\tTUTTE");
-        p = stdin.nextInt();
-        if(p==t){
-            move.setToActive(game.getMe().getPersonalBoard().getProduction());
+        System.out.println("Quali produzioni vuoi attivare?\n\t(premi -1 per concludere).");
+        int p=stdin.nextInt();
+        while(p!=-1){
+            if(p>=1&&p<=6) {
+                productionPowers.add(game.getMe().getPersonalBoard().getProduction().get(p - 1));
+            }else{
+                System.out.println("Invalid index!\n\tRIPROVA!");
+            }
+            p = stdin.nextInt();
         }
-        //TODO da discutere e rivedere
+        move.setToActive(productionPowers);
         return move;
     }
 
