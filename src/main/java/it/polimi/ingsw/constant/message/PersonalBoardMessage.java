@@ -15,13 +15,13 @@ import java.util.ArrayList;
 public class PersonalBoardMessage implements Message{
 
     public static final String className = "PersonalBoardMessage";
-    String devCardsString;
-    String leaderCardString;
+    private final ArrayList<DevelopmentCard>[] devCards;
+    private final ArrayList<LeaderCard> leaderCards;
     int IDplayer;
 
-    public PersonalBoardMessage(String devCardsString, String leaderCardString, int IDplayer) {
-        this.devCardsString = devCardsString;
-        this.leaderCardString = leaderCardString;
+    public PersonalBoardMessage( ArrayList<DevelopmentCard>[] devCards, ArrayList<LeaderCard> leaderCards, int IDplayer) {
+        this.devCards = devCards;
+        this.leaderCards = leaderCards;
         this.IDplayer = IDplayer;
     }
 
@@ -30,12 +30,8 @@ public class PersonalBoardMessage implements Message{
         Game simpleGame = client.getSimpleGame();
         Player owner = simpleGame.getPlayerFromID(IDplayer);
 
-        Type type = new TypeToken<ArrayList<DevelopmentCard>[]>(){}.getType();
-        ArrayList<DevelopmentCard>[] developmentCards = StarterClient.fromJson(devCardsString, type);
-        owner.getPersonalBoard().setDevCards(developmentCards);
+        owner.getPersonalBoard().setDevCards(devCards);
 
-        Type type1 = new TypeToken<ArrayList<LeaderCard>>(){}.getType();
-        ArrayList<LeaderCard> leaderCards = StarterClient.fromJson(leaderCardString, type1);
         owner.getPersonalBoard().setLeaderCards(leaderCards);
     }
 

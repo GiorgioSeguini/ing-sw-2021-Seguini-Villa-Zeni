@@ -118,7 +118,7 @@ public class DashboardExt extends Dashboard implements Observable<Message> {
 
 
     private void change(){
-        notify(new DashBoardMessage(Starter.toJson(this, DashboardExt.class)));
+        notify(new DashBoardMessage(this));
     }
 
     //Observable implementation

@@ -68,7 +68,7 @@ public class FaithTrackExt extends FaithTrack implements Observable<Message> {
      */
     private void change(){
         String faithTrack = Starter.toJson(this, FaithTrackExt.class);
-        notify(new FaithTrackMessage(faithTrack, this.ownerID));
+        notify(new FaithTrackMessage(this, this.ownerID));
     }
 
     //Observable implementation

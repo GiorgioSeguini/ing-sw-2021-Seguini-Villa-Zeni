@@ -40,12 +40,9 @@ public abstract class View implements Observable<Performable>, Observer<Message>
     public void sendInitialMessage(GameExt game){
         if(game.getPlayerIndex(this.player)==-1)
             return;
-        String model = Starter.toJson(game, Game.class);
-        int myID = this.player.getID();
-        Type type = new TypeToken<ArrayList<LeaderCardExt>>(){}.getType();
-        String leaderCards = Starter.toJson(game.getActivableLeadCard(player), type);
 
-        this.update(new InitialMessage(model, myID, leaderCards));
+        int myID = this.player.getID();
+        this.update(new InitialMessage(game, myID, game.getActivableLeadCard(player)));
     }
 
     //Observable implementation
