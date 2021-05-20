@@ -23,8 +23,9 @@ public class CliMoveDiscardResources implements CliInterface{
         int stones;
         int[] numofres= new int[4];
         int i=0;
-        NumberOfResources totalres=game.getMe().getConverter().getResources().add(game.getMe().getDepots().getWareHouseDepots().getResources());
-        System.out.println("Risorse da posizionare:\n"+totalres);
+
+        System.out.println("Risorse da posizionare:\n"+game.getMe().getConverter().getResources());
+        System.out.println("Risorse nel WareHouseDepots: \n"+ game.getMe().getDepots().getWareHouseDepots().getResources());
         System.out.println("Quante risorse vuoi scartare?\n\t(inserisci 0 per non scartare nessuna quantità di quel tipo di risorsa).");
         for(ResourceType resourceType: ResourceType.values()){
             int num;
