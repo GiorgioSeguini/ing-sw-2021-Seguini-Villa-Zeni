@@ -124,12 +124,10 @@ public class GameExt extends Game implements Observable<Message> {
                 }
             }
             super.increaseIndex();
-            if (super.getCurrIndex() == 0) {
-                if (super.getStatus() == GameStatus.LastTurn) {
-                    super.setStatus(GameStatus.Ended);
-                } else {
-                    super.getCurrPlayer().setStatus(PlayerStatus.Active);
-                }
+            if (super.getCurrIndex() == 0 && super.getStatus() == GameStatus.LastTurn) {
+                super.setStatus(GameStatus.Ended);
+            } else {
+                super.getCurrPlayer().setStatus(PlayerStatus.Active);
             }
         }
         change();
