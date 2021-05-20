@@ -2,13 +2,18 @@ package it.polimi.ingsw.server.model;
 
 import it.polimi.ingsw.constant.enumeration.MarbleColor;
 import it.polimi.ingsw.constant.enumeration.ResourceType;
+import it.polimi.ingsw.constant.message.ConverterMessage;
+import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.constant.model.Converter;
 import it.polimi.ingsw.constant.model.NumberOfResources;
 import it.polimi.ingsw.server.model.exception.HaveToChooseException;
+import it.polimi.ingsw.server.observer.Observable;
+import it.polimi.ingsw.server.observer.Observer;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class ConverterExt extends Converter {
+public class ConverterExt extends Converter implements Observable<Message> {
     private transient final PlayerExt owner;
 
     /*Default Constructor*/
@@ -65,6 +70,7 @@ public class ConverterExt extends Converter {
                 }
             }
         }
+        notify(new ConverterMessage(this));
     }
 
     /**It just store the white resources chosen from the player. */
@@ -86,6 +92,7 @@ public class ConverterExt extends Converter {
 
     public void CleanConverter(){
         setResources(new NumberOfResources());
+        notify(new ConverterMessage(this));
     }
 
     /*Private Methods*/
@@ -112,5 +119,24 @@ public class ConverterExt extends Converter {
             }
         }
         return output;
+    }
+
+    //Observable implementation
+    private transient final List<Observer<Message>> observers = new ArrayList<>();
+
+    @Override
+    public void addObserver(Observer<Message> observer){
+        synchronized (observers) {
+            observers.add(observer);
+        }
+    }
+
+    @Override
+    public void notify(Message message) {
+        synchronized (observers) {
+            for(Observer<Message> observer : observers){
+                observer.update(message);
+            }
+        }
     }
 }

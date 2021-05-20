@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class Converter {
 
-    private int ownerId;
+    private final int ownerId;
     private NumberOfResources inwait;
     private final ArrayList<ResourceType> toconvert;
     private int white;
@@ -33,6 +33,10 @@ public class Converter {
     /**This method returns the Resources stored in Converter and it cleans them/. */
     public NumberOfResources getResources(){
        return inwait;
+    }
+
+    public int getOwnerId() {
+        return ownerId;
     }
 
     public void setResources(NumberOfResources resources){

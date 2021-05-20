@@ -74,14 +74,16 @@ public class Server {
 
                     for(View view : playersView){
                         //add model - view links
-                        ((MarketExt)game.getMarketTray()).addObserver(view);
-                        ((DashboardExt)game.getDashboard()).addObserver(view);
+                        game.getMarketTray().addObserver(view);
+                        game.getDashboard().addObserver(view);
                         game.addObserver(view);
                         for(Player player : game.getPlayers()){
-                            ((PersonalBoardExt)player.getPersonalBoard()).addObserver(view);
-                            ((FaithTrackExt)player.getFaithTrack()).addObserver(view);
-                            ((DepotsExt)player.getDepots()).addObserver(view);
-                            ((PlayerExt)player).addObserver(view);
+                            PlayerExt playerExt = (PlayerExt) player;
+                            playerExt.getPersonalBoard().addObserver(view);
+                            playerExt.getFaithTrack().addObserver(view);
+                            playerExt.getDepots().addObserver(view);
+                            playerExt.addObserver(view);
+                            playerExt.getConverter().addObserver(view);
                         }
 
                         //add controller - view links

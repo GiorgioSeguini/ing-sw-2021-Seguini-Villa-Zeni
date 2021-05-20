@@ -21,6 +21,7 @@ public class MessageSerializer implements JsonSerializer<Message>, JsonDeseriali
         mapNameClass.put(PersonalBoardMessage.className, PersonalBoardMessage.class);
         mapNameClass.put(DepotsMessage.className, DepotsMessage.class);
         mapNameClass.put(PlayerMessage.className, PlayerMessage.class);
+        mapNameClass.put(ConverterMessage.className, ConverterMessage.class);
 
     }
 
