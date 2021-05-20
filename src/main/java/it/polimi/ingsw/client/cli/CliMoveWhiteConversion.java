@@ -15,7 +15,8 @@ public class CliMoveWhiteConversion implements CliInterface{
     }
     @Override
     public MoveType updateCLI(GameClient game, Scanner stdin) {
-        //TODO
+        System.out.println("Come vuoi convertire le biglie bianche?");
+
         return move;
     }
 

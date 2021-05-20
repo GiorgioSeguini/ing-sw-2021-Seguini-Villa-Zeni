@@ -15,7 +15,9 @@ public class CliMoveChoseResources implements CliInterface{
     }
     @Override
     public MoveType updateCLI(GameClient game, Scanner stdin) {
-        //TODO
+        System.out.println("Scegli la risorsa!");
+
+
         return move;
     }
 

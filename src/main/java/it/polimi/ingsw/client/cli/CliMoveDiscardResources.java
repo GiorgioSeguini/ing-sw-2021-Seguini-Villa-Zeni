@@ -1,6 +1,7 @@
 package it.polimi.ingsw.client.cli;
 
 import it.polimi.ingsw.client.modelClient.GameClient;
+import it.polimi.ingsw.constant.enumeration.ResourceType;
 import it.polimi.ingsw.constant.model.NumberOfResources;
 import it.polimi.ingsw.constant.move.MoveDiscardResources;
 import it.polimi.ingsw.constant.move.MoveType;
@@ -16,8 +17,31 @@ public class CliMoveDiscardResources implements CliInterface{
     }
     @Override
     public MoveType updateCLI(GameClient game, Scanner stdin) {
-        //TODO
-        move.setToDiscard(new NumberOfResources());
+        int servants;
+        int shield;
+        int coins;
+        int stones;
+        int[] numofres= new int[4];
+        int i=0;
+        System.out.println(game.getMe().getConverter().getResources());
+        System.out.println("Quante risorse vuoi scartare?\n\t(inserisci 0 per non scartare nessuna quantità di quel tipo di risorsa).");
+        for(ResourceType resourceType: ResourceType.values()){
+            int num;
+            do{
+                System.out.println(resourceType+":");
+                num = stdin.nextInt();
+                if(num>game.getMe().getConverter().getResources().getAmountOf(resourceType)||num<0){
+                    System.out.println("Invalid index!");
+                }
+            }while(num>game.getMe().getConverter().getResources().getAmountOf(resourceType)&&num<0);
+            numofres[i]=num;
+            i++;
+        }
+        servants=numofres[0];
+        shield=numofres[1];
+        coins=numofres[2];
+        stones=numofres[3];
+        move.setToDiscard(new NumberOfResources(servants,shield,coins,stones));
         return move;
     }
 
