@@ -64,8 +64,9 @@ public class CLI implements Runnable{
             }
             boolean goodchoice = false;
             int index = -1;
-            System.out.println("Hello");
-            System.out.println("cosa desideri fare?");
+            clearScreen();
+            System.out.println("È il tuo turno!");
+            System.out.println("Cosa desideri fare?");
             do {
                 for (int i=0; i< moves.size(); i++) {
                     if (moves.get(i).canPerform(game)) {
@@ -91,6 +92,7 @@ public class CLI implements Runnable{
             }
         }
         else{
+            clearScreen();
             System.out.println("E' il turno di :" + game.getCurrPlayer().getUserName());
         }
     }
@@ -104,6 +106,12 @@ public class CLI implements Runnable{
             socket.flush();
         } catch (IOException e) {
             System.err.println(e.getMessage());
+        }
+    }
+
+    private void clearScreen(){
+        for (int i=0; i<100; i++){
+            System.out.println();
         }
     }
 }

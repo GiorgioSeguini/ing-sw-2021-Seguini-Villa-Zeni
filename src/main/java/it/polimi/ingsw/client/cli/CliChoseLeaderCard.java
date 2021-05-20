@@ -23,9 +23,11 @@ public class CliChoseLeaderCard implements CliInterface {
         System.out.println("Scegli "+ PersonalBoard.MAX_LEAD_CARD + " carte leader tra le seguenti:");
         int t=1;
         for(LeaderCard card : game.getLeaderCards()){
-            System.out.println(""+t+".\n"+card);
+            System.out.println("CARTA "+t+"\n"+card);
             t++;
         }
+        System.out.println("---> Ricorda! Per scegliere digita il numero della carta che vuoi selezionare e poi premi INVIO");
+
         ArrayList<Integer> choice = new ArrayList<>();
         while(choice.size() < PersonalBoard.MAX_LEAD_CARD){
             int index = in.nextInt();

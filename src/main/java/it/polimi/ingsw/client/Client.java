@@ -82,12 +82,13 @@ public class Client {
         DataInputStream socketIn = new DataInputStream(socket.getInputStream());
         DataOutputStream socketOut = new DataOutputStream(socket.getOutputStream());
         Scanner stdin = new Scanner(System.in);
-        System.out.println("Inserisci il tuo nome");
+        System.out.println("Inserisci il tuo nome e premi INVIO");
         //System.out.println(socketIn.nextLine());
         String name = stdin.nextLine();
         int x;
         do {
             System.out.println("Con quanti avversari vuoi giocare?\n 1. Da solo \n 2. Un avversario\n 3. Due avversari\n 4. Tre avversari\n");
+            System.out.println("--> Digita il numero dell'opzione che preferisci e premi INVIO");
             x=stdin.nextInt();
             if(x<1 || x>4){
                 System.out.println("Indice non valido!");

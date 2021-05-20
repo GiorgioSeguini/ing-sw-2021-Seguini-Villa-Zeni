@@ -21,11 +21,14 @@ public class CliChoseInitialResources implements CliInterface {
         System.out.println("Scegli le risorse iniziali:");
         NumberOfResources resources= new NumberOfResources();
 
+        int i=1;
         for(ResourceType type : ResourceType.values()){
-            System.out.println(type);
+            System.out.println(" "+i+". "+type);
+            i++;
         }
         while(resources.size()< game.getInitialResources(move.getIdPlayer())){
-            System.out.println("devi scegliere " + (game.getInitialResources(move.getIdPlayer()) - resources.size()) + " risorse");
+            System.out.println("--> devi scegliere " + (game.getInitialResources(move.getIdPlayer()) - resources.size()) + " risorse");
+            System.out.println("Ricorda! Digita il numero e poi premi INVIO");
             int index = in.nextInt() -1;
             if(index>=0 && index < ResourceType.values().length){
                 resources = resources.add(ResourceType.values()[index], 1);
@@ -34,7 +37,7 @@ public class CliChoseInitialResources implements CliInterface {
             }
         }
         move.setResources(resources);
-        System.out.println("ottima scelta");
+        System.out.println("Ottima scelta!");
         return move;
     }
 
