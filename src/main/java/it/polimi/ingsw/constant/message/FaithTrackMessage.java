@@ -9,10 +9,10 @@ import it.polimi.ingsw.client.parser.StarterClient;
 public class FaithTrackMessage implements Message{
 
     public static final String className = "FaithTrackMessage";
-    private final String faithTrack;
+    private final FaithTrack faithTrack;
     private final int ownerID;
 
-    public FaithTrackMessage(String faithTrack, int ownerID) {
+    public FaithTrackMessage(FaithTrack faithTrack, int ownerID) {
         this.faithTrack = faithTrack;
         this.ownerID = ownerID;
     }
@@ -21,7 +21,7 @@ public class FaithTrackMessage implements Message{
     public void handleMessage(Client client){
         Game simpleGame = client.getSimpleGame();
         Player owner = simpleGame.getPlayerFromID(ownerID);
-        owner.setFaithTrack(StarterClient.fromJson(faithTrack, FaithTrack.class));
+        owner.setFaithTrack(faithTrack);
     }
 
     @Override

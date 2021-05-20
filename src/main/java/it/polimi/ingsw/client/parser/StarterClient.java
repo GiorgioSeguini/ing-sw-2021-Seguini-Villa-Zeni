@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import it.polimi.ingsw.client.modelClient.Ability;
 import it.polimi.ingsw.constant.model.Dashboard;
+import it.polimi.ingsw.constant.model.Game;
 import it.polimi.ingsw.constant.model.LeaderCard;
 import it.polimi.ingsw.constant.move.MoveType;
 import it.polimi.ingsw.constant.message.Message;
@@ -26,6 +27,7 @@ public class StarterClient{
         builder.registerTypeAdapter(Dashboard.class, new DashBoardClientDeserializer());
         builder.registerTypeAdapter(Ability.class, new AbilitySerializer());
         builder.registerTypeAdapter(LeaderCard.class, new LeaderCardSerializer());
+        builder.registerTypeAdapter(Game.class, new GameCLientSerializer());
         gson=builder.create();
     }
 

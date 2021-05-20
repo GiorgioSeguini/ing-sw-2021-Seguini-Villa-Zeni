@@ -8,16 +8,16 @@ import it.polimi.ingsw.client.parser.StarterClient;
 public class DashBoardMessage implements Message{
 
     public static final String className = "DashBoardMessage";
-    private final String dashBoard;
+    private final Dashboard dashBoard;
 
-    public DashBoardMessage(String dashBoard){
+    public DashBoardMessage(Dashboard dashBoard){
         this.dashBoard= dashBoard;
     }
 
     @Override
     public void handleMessage(Client client){
         Game simpleGame = client.getSimpleGame();
-        simpleGame.setDashboard(StarterClient.fromJson(dashBoard, Dashboard.class));
+        simpleGame.setDashboard(dashBoard);
     }
 
     @Override

@@ -15,24 +15,22 @@ public class InitialMessage implements Message{
 
     public static final String className = "InitialMessage";
 
-    private final String model;
+    private final Game model;
     private final int yourID;
-    private final String leaderCardsString;
+    private final ArrayList<LeaderCard> leaderCards;
 
-    public InitialMessage(String model, int yourID, String leaderCards) {
+    public InitialMessage(Game model, int yourID, ArrayList<LeaderCard> leaderCards) {
         this.model = model;
         this.yourID = yourID;
-        this.leaderCardsString = leaderCards;
+        this.leaderCards = leaderCards;
     }
 
     @Override
     public void handleMessage(Client client){
-        client.setSimpleGame(StarterClient.fromJson(model, GameClient.class));
+        client.setSimpleGame((GameClient) model);
         GameClient simpleGame = client.getSimpleGame();
         simpleGame.setMyID(yourID);
 
-        Type type = new TypeToken<ArrayList<LeaderCardClient>>(){}.getType();
-        ArrayList<LeaderCardClient> leaderCards = StarterClient.fromJson(leaderCardsString, type);
         simpleGame.setLeaderCards(leaderCards);
     }
 

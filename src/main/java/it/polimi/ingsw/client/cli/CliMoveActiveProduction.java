@@ -20,6 +20,7 @@ public class CliMoveActiveProduction implements CliInterface{
         int i=1;
         for(ProductionPower pp: game.getMe().getPersonalBoard().getProduction()){
             System.out.println(i+".\t"+pp);
+            i++;
         }
         System.out.println("Quali produzioni vuoi attivare?\n\t(premi -1 per concludere).");
         int p=stdin.nextInt();

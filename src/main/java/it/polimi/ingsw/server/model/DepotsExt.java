@@ -105,8 +105,7 @@ public class DepotsExt extends Depots implements Observable<Message> {
      * This methods create an instance of FaithTrackMessage and notify observers
      */
     private void change(){
-        String depots = Starter.toJson(this, Depots.class);
-        notify(new DepotsMessage(depots, this.ownerID));
+        notify(new DepotsMessage(this, this.ownerID));
     }
 
     //Observable implementation
