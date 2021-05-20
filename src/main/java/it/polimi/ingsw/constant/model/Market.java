@@ -72,10 +72,12 @@ public class Market {
             for(MarbleColor x: marbleColors) {
                 tray += "\t"+x.getChar();
                 count++;
-                if(count==4) tray += "<-\n";
+                if(count==4) tray += " <- "+(i+1)+"\n";
             }
         }
         tray += "\t^\t^\t^\t^\t "+externalMarble.getChar()+"\n";
+        tray+="\t|\t|\t|\t|\n";
+        tray+="\t1\t2\t3\t4\n";
         return tray;
     }
 
