@@ -62,34 +62,37 @@ public class CLI implements Runnable{
             if(game.getMe().getErrorMessage()!= ErrorMessage.NoError){
                 System.out.println(game.getMe().getErrorMessage());
             }
-            boolean goodchoice = false;
+
             int index = -1;
+            int i=0;
+            ArrayList<CliInterface> ablemoves= new ArrayList<>();
             clearScreen();
             System.out.println("È il tuo turno!");
             System.out.println("Cosa desideri fare?");
             do {
-                for (int i=0; i< moves.size(); i++) {
-                    if (moves.get(i).canPerform(game)) {
-                        System.out.println((i + 1) + ": " + moves.get(i).getName());
-                        moveAviable = true;
+                ablemoves.clear();
+                i=1;
+                for (CliInterface clitype: moves){
+                    if(clitype.canPerform(game)){
+                        System.out.println(i+". "+clitype.getName());
+                        i++;
+                        ablemoves.add(clitype);
                     }
-                }
-                if(!moveAviable)
-                    break;
-                index = in.nextInt() -1;
-                try {
-                    if (moves.get(index).canPerform(game))
-                        goodchoice = true;
-                } catch (IndexOutOfBoundsException ignored) {
-                }
-                if (!goodchoice) System.out.println("Invalid index!");
-            }while(!goodchoice);
 
-            if(moveAviable) {
-                CliInterface cliInterface = moves.get(index);
-                MoveType move = cliInterface.updateCLI(game, in);
-                send(move);
-            }
+                }
+
+                index=in.nextInt();
+                if(index<1 || index>i){
+                    System.out.println("Indice non valido!");
+                }
+
+            }while(index<1 || index>i);
+
+            CliInterface cliInterface = ablemoves.get(index - 1);
+            MoveType move = cliInterface.updateCLI(game, in);
+            send(move);
+            //ho tolto l'ultimo if perchè ho sempre almeno una mossa da fare che è la endturn
+            //altrimenti qui mettiamo un if che riempe in automato la endturn
         }
         else{
             clearScreen();
