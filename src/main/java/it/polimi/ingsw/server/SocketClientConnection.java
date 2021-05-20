@@ -90,7 +90,8 @@ public class SocketClientConnection implements  Observable<String>, ClientConnec
             out = new DataOutputStream(socket.getOutputStream());
             //send("Welcome!\nWhat is your name?");
             String read = in.readUTF();
-            server.lobby(this, read);
+            int numofplayer= in.readInt();
+            server.lobby(this, read, numofplayer);
             while(isActive()){
                 read=in.readUTF();
                 notify(read);
@@ -101,6 +102,7 @@ public class SocketClientConnection implements  Observable<String>, ClientConnec
             close();
         }
     }
+
     //Observable implementation
     private transient final List<Observer<String>> observers = new ArrayList<>();
 
