@@ -16,7 +16,7 @@ public class Player {
     private PlayerStatus status;
     private ErrorMessage errorMessage;
     private Converter converter;
-    private ProductionPowerExt toActive;
+    private ProductionPower toActive;
 
     //smart getter
     public int getVictoryPoints(){
@@ -56,7 +56,7 @@ public class Player {
         return converter;
     }
 
-    public ProductionPowerExt getToActive() {
+    public ProductionPower getToActive() {
         return toActive;
     }
 
@@ -94,7 +94,7 @@ public class Player {
         this.converter = converter;
     }
 
-    public void setToActive(ProductionPowerExt toActive) {
+    public void setToActive(ProductionPower toActive) {
         this.toActive = toActive;
     }
 

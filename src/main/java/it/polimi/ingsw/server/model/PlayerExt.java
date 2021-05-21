@@ -58,6 +58,11 @@ public class PlayerExt extends Player implements Observable<Message> {
     }
 
     @Override
+    public ProductionPowerExt getToActive() {
+        return (ProductionPowerExt)super.getToActive();
+    }
+
+    @Override
     public FaithTrackExt getFaithTrack() {
         return (FaithTrackExt) super.getFaithTrack();
     }
@@ -81,13 +86,13 @@ public class PlayerExt extends Player implements Observable<Message> {
     @Override
     public void setStatus(PlayerStatus status) {
         super.setStatus(status);
-        notify(new PlayerMessage(this.getStatus(), this.getID(), this.getErrorMessage()));
+        notify(new PlayerMessage(this.getStatus(), this.getID(), this.getErrorMessage(), this.getToActive()));
     }
 
     @Override
     public void setErrorMessage(ErrorMessage errorMessage) {
         super.setErrorMessage(errorMessage);
-        notify(new PlayerMessage(this.getStatus(), this.getID(), this.getErrorMessage()));
+        notify(new PlayerMessage(this.getStatus(), this.getID(), this.getErrorMessage(), this.getToActive()));
     }
 
     @Override

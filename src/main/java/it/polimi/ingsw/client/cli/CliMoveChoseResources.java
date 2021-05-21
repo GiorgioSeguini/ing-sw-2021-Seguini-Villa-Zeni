@@ -7,6 +7,7 @@ import it.polimi.ingsw.constant.model.PersonalBoard;
 import it.polimi.ingsw.constant.move.MoveChoseResources;
 import it.polimi.ingsw.constant.move.MoveType;
 
+import javax.swing.*;
 import java.util.Scanner;
 
 public class CliMoveChoseResources implements CliInterface{
@@ -27,10 +28,10 @@ public class CliMoveChoseResources implements CliInterface{
         }else{
             System.out.println("Scegli le risorse in input!");
             printRes();
-            while(numberOfResources.size()==game.getMe().getToActive().getOfYourChoiceInput()){
+            while(numberOfResources.size()< game.getMe().getToActive().getOfYourChoiceInput()){
                 int res = stdin.nextInt();
                 if(res>0 && res<=ResourceType.values().length){
-                    numberOfResources.add(ResourceType.values()[res-1],1);
+                    numberOfResources=numberOfResources.add(ResourceType.values()[res-1],1);
 
                 }else{
                     System.out.println("Indice non valido");
@@ -41,8 +42,9 @@ public class CliMoveChoseResources implements CliInterface{
         System.out.println("Scegli la risorsa in output!");
         printRes();
         int res = stdin.nextInt();
-        move.setOfYourChoiceOutput(numberOfResources.add(ResourceType.values()[res-1],1));
+        move.setOfYourChoiceOutput(new NumberOfResources().add(ResourceType.values()[res-1],1));
         return move;
+        // TODO: 5/21/21 cambiare (ricordare che la produzione è comulativa, printare howmany productions)  
     }
 
     @Override
