@@ -41,8 +41,9 @@ public class GameClient extends Game {
 
     public void setLeaderCards(ArrayList<LeaderCard> leaderCards){
         ArrayList<LeaderCardClient> temp = new ArrayList<>();
-        for(LeaderCard c : leaderCards)
+        for(LeaderCard c : leaderCards){
             temp.add((LeaderCardClient) c);
+        }
         this.leaderCards= temp;
     }
 

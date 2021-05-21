@@ -36,9 +36,11 @@ public class CliMoveLeader implements CliInterface{
 
         int i=1;
         for(LeaderCard l:  game.getMe().getPersonalBoard().getLeaderCards()){
-            System.out.println(""+i+".\n");
-            System.out.println("\t"+l);
-            i++;
+            if(l.getStatus()==LeaderStatus.onHand){
+                System.out.println(""+i+".\n");
+                System.out.println("\t"+l);
+                i++;
+            }
         }
 
         int numcard = 0;
@@ -52,7 +54,12 @@ public class CliMoveLeader implements CliInterface{
 
     @Override
     public boolean canPerform(GameClient game) {
-        return move.canPerform(game);
+        for(LeaderCardClient card: game.getLeaderCards()){
+            if(card.getStatus()==LeaderStatus.onHand){
+                return move.canPerform(game);
+            }
+        }
+        return false;
     }
 
     @Override

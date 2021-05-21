@@ -38,7 +38,10 @@ public class CliMoveActiveProduction implements CliInterface{
 
     @Override
     public boolean canPerform(GameClient game) {
-        return move.canPerform(game);
+        if(game.getMe().getDepots().getResources().size()>=2){
+            return move.canPerform(game);
+        }
+        return false;
     }
 
     @Override

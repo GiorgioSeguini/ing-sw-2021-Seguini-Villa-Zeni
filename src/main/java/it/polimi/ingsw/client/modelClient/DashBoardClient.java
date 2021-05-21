@@ -4,6 +4,8 @@ import it.polimi.ingsw.constant.enumeration.ColorDevCard;
 import it.polimi.ingsw.constant.enumeration.Level;
 import it.polimi.ingsw.constant.model.Dashboard;
 import it.polimi.ingsw.constant.model.DevelopmentCard;
+import it.polimi.ingsw.server.model.exception.OutOfResourcesException;
+
 
 import java.util.ArrayList;
 
@@ -18,9 +20,21 @@ public class DashBoardClient extends Dashboard {
     public DashBoardClient(ArrayList<DevelopmentCard> developmentCards) {
         //initialization
         dashBoard = new DevelopmentCard[Level.size()][ColorDevCard.size()];
-
         //load cards
         setCards(developmentCards);
+    }
+
+
+    public boolean isSomethingBuyable(GameClient game){
+        for(Level l : Level.values()){
+            for(ColorDevCard c : ColorDevCard.values()){
+                try {
+                    game.getMe().getDepots().getResources().sub(dashBoard[l.ordinal()][c.ordinal()].getCost());
+                    return true;
+                } catch (OutOfResourcesException | NullPointerException e) {}
+            }
+        }
+        return false;
     }
 
     /**
@@ -40,6 +54,7 @@ public class DashBoardClient extends Dashboard {
             dashBoard[card.getLevel().ordinal()][card.getColor().ordinal()] = card;
         }
     }
+
 
     @Override
     public DevelopmentCard getTopDevCard(ColorDevCard color, Level level) {
