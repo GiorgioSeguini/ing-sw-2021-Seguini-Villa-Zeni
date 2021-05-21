@@ -9,6 +9,7 @@ import it.polimi.ingsw.constant.move.MoveType;
 import java.io.*;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
@@ -44,7 +45,6 @@ public class CLI implements Runnable{
         this.game = client.getSimpleGame();
         if(game==null) return;
 
-        boolean moveAviable = false;
         int myID = game.getMyID();
         if(game.isMyTurn()){
             moves.clear();
@@ -63,10 +63,10 @@ public class CLI implements Runnable{
                 System.out.println(game.getMe().getErrorMessage());
             }
 
-            int index = -1;
+            int index;
             int i=0;
             ArrayList<CliInterface> ablemoves= new ArrayList<>();
-            clearScreen();
+            System.out.println("----------------------------------------------------------");
             System.out.println("È il tuo turno!");
             System.out.println("Cosa desideri fare?");
             do {
@@ -82,11 +82,12 @@ public class CLI implements Runnable{
                 }
 
                 index=in.nextInt();
-                if(index<1 || index>i){
+
+                if(index<1 || index>i-1){
                     System.out.println("Indice non valido!");
                 }
 
-            }while(index<1 || index>i);
+            }while(index<1 || index>i-1);
 
             CliInterface cliInterface = ablemoves.get(index - 1);
             MoveType move = cliInterface.updateCLI(game, in);

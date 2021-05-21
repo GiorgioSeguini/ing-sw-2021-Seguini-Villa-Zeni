@@ -20,13 +20,14 @@ public class LeaderCardClient extends LeaderCard {
     @Override
     public String toString(){
         String LC ="";
-        LC += "ID: "+getId()+"\n";
-        LC += "Status: "+getStatus()+"\n";
+        //LC += "ID: "+getId()+"\n";
+        //LC += "Status: "+getStatus()+"\n";
         LC += "Requirements: \n";
         LC += "\t" +getRequirements();
         LC += "Victory Points: "+getVictoryPoints()+"\n";
         LC += "Ability: \n";
-        LC += "\t "+getAbility().getAbilityType()+"\tResources: "+getAbility().getResource()+"\n";
+        LC += "\t "+getAbility().getAbilityType();
+        LC+="\tResources: "+getAbility().getResource()+"\n";
         return LC;
     }
 }

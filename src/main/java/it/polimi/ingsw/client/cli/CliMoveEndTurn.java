@@ -16,22 +16,10 @@ public class CliMoveEndTurn implements CliInterface{
     }
     @Override
     public MoveType updateCLI(GameClient game, Scanner stdin) {
-        int c;
-        do {
-            System.out.println("Vuoi terminare il tuo turno?\n\t1. YES\t2. NO");
-            c = stdin.nextInt();
-            if (c != 1 && c != 2) {
-                System.out.println("Invalid index!");
-            } else {
-                if (c == 1) {
-                    return move;
-                } else {
-                    break;
-                }
-            }
-        }while(false);
+        System.out.println("Hai deciso di terminare il turno. Premi INVIO per far continuare il gioco.");
+        stdin.nextLine();
+        String todiscard=stdin.nextLine();
         return  move;
-        //TODO da discutere
     }
 
     @Override

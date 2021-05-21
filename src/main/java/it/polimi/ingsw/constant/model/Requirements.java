@@ -77,17 +77,34 @@ public class Requirements {
 
     @Override
     public String toString(){
+
         String req = "";
-        req += "Number of Resources: \n";
-        req += "\t"+getNumberOfResourceses();
-        req += "Number or Type of Development card: \n";
-        for(int i = 0; i< ColorDevCard.values().length; i++)
-            for(int j = 0; j< Level.values().length; j++)
-                if(this.minNumber[i][j] >0){
-                    req += "\t"+minNumber[i][j];
-                    req += "\t"+ColorDevCard.values()[i];
-                    req += "\tLevel: "+Level.values()[j]+"\n";
+        if(!getNumberOfResourceses().equals(new NumberOfResources())){
+            req += "Number of Resources: \n";
+            req += "\t"+getNumberOfResourceses();
+        }
+
+        boolean check=false;
+        for(int i = 0; i< ColorDevCard.values().length && check==false; i++) {
+            for (int j = 0; j < Level.values().length && check==false; j++) {
+                if (this.minNumber[i][j] > 0) {
+                    check=true;
                 }
+            }
+        }
+
+        if(check){
+            req += "Number or Type of Development card: \n";
+            for(int i = 0; i< ColorDevCard.values().length; i++) {
+                for (int j = 0; j < Level.values().length; j++) {
+                    if (this.minNumber[i][j] > 0) {
+                        req += "\t" + minNumber[i][j];
+                        req += "\t" + ColorDevCard.values()[i];
+                        req += "\tLevel: " + Level.values()[j] + "\n";
+                    }
+                }
+            }
+        }
 
         req += "\n";
         return req;

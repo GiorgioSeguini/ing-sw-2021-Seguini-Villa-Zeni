@@ -17,12 +17,7 @@ public class CliMoveDiscardResources implements CliInterface{
     }
     @Override
     public MoveType updateCLI(GameClient game, Scanner stdin) {
-        int servants;
-        int shield;
-        int coins;
-        int stones;
-        int[] numofres= new int[4];
-        int i=0;
+        NumberOfResources numOfRes= new NumberOfResources();
 
         System.out.println("Risorse da posizionare:\n"+game.getMe().getConverter().getResources());
         System.out.println("Risorse nel WareHouseDepots: \n"+ game.getMe().getDepots().getWareHouseDepots().getResources());
@@ -32,18 +27,15 @@ public class CliMoveDiscardResources implements CliInterface{
             do{
                 System.out.println(resourceType+":");
                 num = stdin.nextInt();
-                if(num>game.getMe().getConverter().getResources().getAmountOf(resourceType)||num<0){
+                if(num>game.getMe().getConverter().getResources().getAmountOf(resourceType) || num<0){
                     System.out.println("Invalid index!");
                 }
-            }while(num>game.getMe().getConverter().getResources().getAmountOf(resourceType)&&num<0);
-            numofres[i]=num;
-            i++;
+                else{
+                    numOfRes=numOfRes.add(resourceType,num);
+                }
+            }while(num>game.getMe().getConverter().getResources().getAmountOf(resourceType) || num<0);
         }
-        servants=numofres[0];
-        shield=numofres[1];
-        coins=numofres[2];
-        stones=numofres[3];
-        move.setToDiscard(new NumberOfResources(servants,shield,coins,stones));
+        move.setToDiscard(numOfRes);
         return move;
     }
 
