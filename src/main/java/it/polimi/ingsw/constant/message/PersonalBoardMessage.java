@@ -17,7 +17,7 @@ public class PersonalBoardMessage implements Message{
     public static final String className = "PersonalBoardMessage";
     private final ArrayList<DevelopmentCard>[] devCards;
     private final ArrayList<LeaderCard> leaderCards;
-    int IDplayer;
+    private final int IDplayer;
 
     public PersonalBoardMessage( ArrayList<DevelopmentCard>[] devCards, ArrayList<LeaderCard> leaderCards, int IDplayer) {
         this.devCards = devCards;
