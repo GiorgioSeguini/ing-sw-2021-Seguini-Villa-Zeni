@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import it.polimi.ingsw.constant.MessageSerializer;
+import it.polimi.ingsw.constant.enumeration.LeaderStatus;
 import it.polimi.ingsw.constant.enumeration.MarbleColor;
 
 import it.polimi.ingsw.constant.message.Message;
@@ -50,7 +51,11 @@ public class Starter {
     /*Methods to Initialize the Game*/
     public static ArrayList<LeaderCardExt> LeaderCardsParser() throws FileNotFoundException {
         Type LeaderListType = new TypeToken<ArrayList<LeaderCardExt>>(){}.getType();
-        return gson.fromJson(new FileReader(filePath + "/src/main/resources/LeaderCards.json"), LeaderListType);
+        ArrayList<LeaderCardExt> leaderCardExts= gson.fromJson(new FileReader(filePath + "/src/main/resources/LeaderCards.json"), LeaderListType);
+        for(LeaderCardExt card: leaderCardExts){
+            card.setStatus(LeaderStatus.onHand);
+        }
+        return leaderCardExts;
     }
 
     public static ArrayList<SoloActionTokens> TokensParser() throws FileNotFoundException{

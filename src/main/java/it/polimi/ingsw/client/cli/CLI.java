@@ -105,6 +105,7 @@ public class CLI implements Runnable{
     private void send(MoveType move) {
         try {
             String s = StarterClient.toJson(move, MoveType.class);
+            System.out.println(s); // TODO: 5/22/21 aggiunto ora 
             //out.reset();
             socket.writeUTF(s);
             socket.flush();

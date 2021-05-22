@@ -125,6 +125,7 @@ class StarterTest {
             assertNotNull(x.getAbility());
             assertNotNull(x.getVictoryPoints());
             assertNotNull(x.getRequirements());
+            assertNotNull(x.getStatus());
         }
     }
 
