@@ -43,7 +43,7 @@ public class Client {
                     String read;
                     while (true) {
                         read=socketIn.readUTF();
-                        //System.out.println(read);
+                        System.out.println(read);
                         Message received = StarterClient.fromJson(read, Message.class);
                         received.handleMessage(Client.this);
                         recived=true;

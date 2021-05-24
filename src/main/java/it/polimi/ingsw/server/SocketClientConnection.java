@@ -1,6 +1,7 @@
 package it.polimi.ingsw.server;
 
 import it.polimi.ingsw.constant.model.Game;
+import it.polimi.ingsw.server.model.GameExt;
 import it.polimi.ingsw.server.observer.Observable;
 import it.polimi.ingsw.server.observer.Observer;
 import it.polimi.ingsw.server.parse.Starter;
@@ -36,11 +37,6 @@ public class SocketClientConnection implements  Observable<String>, ClientConnec
     }
 
     private synchronized void send(String json) {
-        try {
-            Starter.fromJson(json, Game.class);
-        } catch(Exception e){
-            int breakpoint =1;
-        }
             try {
                 //out.reset();
                 //socket.getOutputStream().write(json.getBytes(StandardCharsets.UTF_8));
