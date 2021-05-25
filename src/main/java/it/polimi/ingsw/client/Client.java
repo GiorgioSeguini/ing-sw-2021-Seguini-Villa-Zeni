@@ -2,6 +2,7 @@ package it.polimi.ingsw.client;
 
 
 import it.polimi.ingsw.client.cli.CLI;
+import it.polimi.ingsw.client.gui.GUI;
 import it.polimi.ingsw.client.modelClient.GameClient;
 import it.polimi.ingsw.constant.model.Game;
 import it.polimi.ingsw.client.parser.StarterClient;
@@ -16,9 +17,11 @@ public class Client {
 
     private String ip;
     private int port;
-   public boolean recived;
+    private DataOutputStream socketOut;
+    public boolean recived;
     GameClient simpleGame;
     CLI cli;
+    private GUI gui;
 
     public Client(String ip, int port){
         this.ip = ip;
@@ -57,14 +60,13 @@ public class Client {
         return t;
     }
 
-    public Thread asyncWriteToSocket(final Scanner stdin, final DataOutputStream socketOut){
+    public Thread asyncWriteToSocket(String s){
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
                     while (isActive()) {
-                        String inputLine = stdin.nextLine();
-                        socketOut.writeUTF(inputLine);
+                        socketOut.writeUTF(s);
                         socketOut.flush();
                     }
                 }catch(Exception e){
@@ -80,7 +82,7 @@ public class Client {
         Socket socket = new Socket(ip, port);
         System.out.println("Connection established");
         DataInputStream socketIn = new DataInputStream(socket.getInputStream());
-        DataOutputStream socketOut = new DataOutputStream(socket.getOutputStream());
+        socketOut = new DataOutputStream(socket.getOutputStream());
         Scanner stdin = new Scanner(System.in);
         System.out.println("Inserisci il tuo nome e premi INVIO");
         //System.out.println(socketIn.nextLine());
@@ -122,6 +124,10 @@ public class Client {
 
     public GameClient getSimpleGame(){
         return this.simpleGame;
+    }
+
+    public void setNumber(String s){
+
     }
 
 }
