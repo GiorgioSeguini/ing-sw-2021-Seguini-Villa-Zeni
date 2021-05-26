@@ -28,6 +28,26 @@ public class CLI implements Runnable{
 
     @Override
     public void run() {
+        System.out.println("Inserisci il tuo nome e premi INVIO");
+        String name = in.nextLine();
+        int x;
+        do {
+            System.out.println("Con quanti avversari vuoi giocare?\n 1. Da solo \n 2. Un avversario\n 3. Due avversari\n 4. Tre avversari\n");
+            System.out.println("--> Digita il numero dell'opzione che preferisci e premi INVIO");
+            x=in.nextInt();
+            if(x<1 || x>4){
+                System.out.println("Indice non valido!");
+            }
+        }while(x<1 || x>4);
+        System.out.println("Ottimo "+name+"! Ti stiamo inserendo in una partita da "+x+" giocatori.\nRimani in attesa, la partita inizierà tra breve!");
+        try {
+            socket.writeUTF(name);
+            socket.flush();
+            socket.writeInt(x);
+            socket.flush();
+        }catch(IOException e){
+            e.printStackTrace();
+        }
         while(client.isActive()){
             try {
                 TimeUnit.MILLISECONDS.sleep(100);

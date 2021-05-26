@@ -5,10 +5,12 @@
 
 
 <?import javafx.scene.control.TextArea?>
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.gui.GUI">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.gui.InitialController">
    <children>
       <ImageView fitHeight="250.0" fitWidth="331.0" layoutX="136.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@../../../../../images/board/Masters of Renaissance_PlayerBoard (11_2020)-1.png" />
+      </ImageView>
+      <ImageView fx:id="imageView" fitHeight="250.0" fitWidth="331.0" layoutX="136.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true">
       </ImageView>
    </children>
 </AnchorPane>

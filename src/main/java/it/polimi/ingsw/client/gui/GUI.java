@@ -1,41 +1,72 @@
 package it.polimi.ingsw.client.gui;
 
 import it.polimi.ingsw.client.Client;
+import it.polimi.ingsw.client.modelClient.GameClient;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
+
 public class GUI extends Application {
 
     protected static Client client;
-    private Stage stage;
-    static ScreenController screenController;
 
-    public static void main(String[] args) {
-        client = new Client("127.0.0.1", 12345);
+    private final HashMap<String, Pane> screenMap = new HashMap<>();
+    private final HashMap<String, ControllerGuiInterface> controllerMap = new HashMap<>();
+    private Scene main;
+
+    public static void main(String[] args, Client client) {
+        GUI.client = client;
         launch(args);
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        this.stage=primaryStage;
         primaryStage.setTitle("Maestri del Rinascimento");
         Pane root = new Pane();
-        primaryStage.setScene(new Scene(root, 600, 400));
+        this.main = new Scene(root, 600, 400);
+        primaryStage.setScene(this.main);
 
-        screenController = new ScreenController(primaryStage.getScene());
-        screenController.addScreen("sample", FXMLLoader.load(getClass().getResource( "sample.fxml" )));
-        screenController.addScreen("initial", FXMLLoader.load(getClass().getResource( "initial.fxml" )));
-        screenController.activate("sample");
+        ArrayList<FXMLLoader> loaders = new ArrayList<>();
+        loaders.add(new FXMLLoader(getClass().getResource("sample.fxml")));
+        loaders.add(new FXMLLoader(getClass().getResource("initial.fxml")));
+
+        for (FXMLLoader loader : loaders) {
+            Pane pane = loader.load();
+            ControllerGuiInterface controller = loader.getController();
+            controller.setGUI(this);
+            this.controllerMap.put(controller.getName(), controller);
+            this.screenMap.put(controller.getName(), pane);
+        }
+        this.activate("sample");
 
         primaryStage.show();
     }
 
-    protected void setScene(String name){
-        screenController.activate(name);
+    public void activate(String name) {
+        this.controllerMap.get(name).update();
+        main.setRoot(screenMap.get(name));
     }
 
+    public void asyncWriteToSocket(String s){
+        client.asyncWriteToSocket(s);
+    }
 
+    public GameClient getModel(){
+        GameClient model = null;
+        while(model==null){
+            model = client.getSimpleGame();
+            try {
+                TimeUnit.MILLISECONDS.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        return client.getSimpleGame();
+    }
 }

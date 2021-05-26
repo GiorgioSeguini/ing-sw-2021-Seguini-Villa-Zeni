@@ -9,8 +9,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class SampleController {
+public class SampleController extends ControllerGuiInterface{
 
+    public static String className = "sample";
     private String name;
     private Integer number;
 
@@ -21,6 +22,10 @@ public class SampleController {
     @FXML
     Button button;
 
+    @FXML
+    public void initialize(){
+
+    }
     public void setName(){
         this.name=name_lable.getText();
         this.button.setDisable(notCanActive());
@@ -32,12 +37,22 @@ public class SampleController {
     }
 
     public void start(){
-        GUI.client.asyncWriteToSocket(name);
-        GUI.client.asyncWriteToSocket(number.toString());
-        GUI.screenController.activate("initial");
+        gui.asyncWriteToSocket(name);
+        gui.asyncWriteToSocket(number.toString());
+        gui.activate("initial");
     }
 
     private boolean notCanActive(){
         return name == null || number == null;
+    }
+
+    @Override
+    public void update() {
+        //nothing to do here
+    }
+
+    @Override
+    public String getName() {
+        return className;
     }
 }

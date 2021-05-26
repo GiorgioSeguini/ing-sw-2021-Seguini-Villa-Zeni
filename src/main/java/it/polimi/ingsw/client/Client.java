@@ -7,6 +7,7 @@ import it.polimi.ingsw.client.modelClient.GameClient;
 import it.polimi.ingsw.constant.model.Game;
 import it.polimi.ingsw.client.parser.StarterClient;
 import it.polimi.ingsw.constant.message.Message;
+import javafx.application.Application;
 
 import java.io.*;
 import java.net.Socket;
@@ -84,30 +85,21 @@ public class Client {
         DataInputStream socketIn = new DataInputStream(socket.getInputStream());
         socketOut = new DataOutputStream(socket.getOutputStream());
         Scanner stdin = new Scanner(System.in);
-        System.out.println("Inserisci il tuo nome e premi INVIO");
         //System.out.println(socketIn.nextLine());
-        String name = stdin.nextLine();
-        int x;
-        do {
-            System.out.println("Con quanti avversari vuoi giocare?\n 1. Da solo \n 2. Un avversario\n 3. Due avversari\n 4. Tre avversari\n");
-            System.out.println("--> Digita il numero dell'opzione che preferisci e premi INVIO");
-            x=stdin.nextInt();
-            if(x<1 || x>4){
-                System.out.println("Indice non valido!");
-            }
-        }while(x<1 || x>4);
-        System.out.println("Ottimo "+name+"! Ti stiamo inserendo in una partita da "+x+" giocatori.\nRimani in attesa, la partita inizierà tra breve!");
-        socketOut.writeUTF(name);
-        socketOut.flush();
-        socketOut.writeInt(x);
-        socketOut.flush();
+        System.out.println("insert 1 for CLI, 2 for GUI");
+        int i = stdin.nextInt();
         try{
-            cli = new CLI(this, socketOut);
-            Thread t1 = new Thread(cli);
-            t1.start();
+            if(i==1) {
+                cli = new CLI(this, socketOut);
+                Thread t1 = new Thread(cli);
+                t1.start();
+            }
+            else{
+                GUI.main(null, this);
+            }
             Thread t0 = asyncReadFromSocket(socketIn);
             t0.join();
-            t1.join();
+            //t1.join();
         } catch(InterruptedException | NoSuchElementException e){
             System.out.println("Connection closed from the client side");
         } finally {
