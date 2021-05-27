@@ -30,15 +30,6 @@ public class PersonalBoardExt extends PersonalBoard implements Observable<Messag
         this.ownerID=ownerID;
     }
 
-    @Override
-    public LeaderCardExt[] getLeaderCards() {
-        ArrayList<LeaderCardExt> result = new ArrayList<>();
-        for(LeaderCard card : super.getLeaderCards()){
-            result.add((LeaderCardExt) card);
-        }
-        return result.toArray(new LeaderCardExt[0]);
-    }
-
 
     /**This for add a DevCard in a specific position**/
     public void addDevCard(DevelopmentCard card, int pos) throws NoSpaceException {
@@ -69,8 +60,8 @@ public class PersonalBoardExt extends PersonalBoard implements Observable<Messag
 
         for(int i=0; i<MAX_LEAD_CARD; i++) {
             leaderCard[i].setStatus(LeaderStatus.onHand);
-            super.setLeaderCard(leaderCard[i], i);
         }
+        super.setLeaderCards(new ArrayList<>(Arrays.asList(leaderCard)));
         change();
     }
 
@@ -84,14 +75,17 @@ public class PersonalBoardExt extends PersonalBoard implements Observable<Messag
         return true;
     }
 
+    protected void setDiscard(LeaderCardExt card){
+        OwnedLeaderCard.remove(card);
+        change();
+    }
 
     /**
      * This methods create an instance of PersonalBoardMessage and notify observer
      * @see LeaderCard only class that call this methods
      */
     protected void change(){
-        ArrayList<LeaderCard> temp = new ArrayList<>(Arrays.asList(this.getLeaderCards()));
-        notify(new PersonalBoardMessage(super.OwnedDevCards, temp, this.ownerID));
+        notify(new PersonalBoardMessage(super.OwnedDevCards, super.OwnedLeaderCard, this.ownerID));
     }
 
     //Observable implementation

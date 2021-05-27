@@ -54,9 +54,9 @@ public class PersonalBoardTest {
         assertEquals(3, p.getVictoryPoints());
 
         //try{
-            assertEquals(2, p.getLeaderCards().length);
+            assertEquals(2, p.getLeaderCards().size());
             cards[0].setDiscard(player);
-            assertEquals(1, p.getLeaderCards().length);
+            assertEquals(1, p.getLeaderCards().size());
         /*}catch(NoMoreLeaderCardAliveException e){
             fail();
         }*/
@@ -79,10 +79,10 @@ public class PersonalBoardTest {
         p.addLeaderCard(cards);
 
         //try{
-            assertEquals(2, p.getLeaderCards().length);
+            assertEquals(2, p.getLeaderCards().size());
             System.out.println(p);
             cards[1].setDiscard(player);
-            assertEquals(1, p.getLeaderCards().length);
+            assertEquals(1, p.getLeaderCards().size());
         /*}catch(NoMoreLeaderCardAliveException e){
             fail();
         }*/

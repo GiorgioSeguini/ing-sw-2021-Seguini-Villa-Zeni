@@ -47,7 +47,7 @@ public class CliMoveLeader implements CliInterface{
         do{
             numcard=stdin.nextInt();
         }while(numcard<1 || numcard>(i-1));
-        move.setIdLeaderCard(game.getLeaderCards().get(numcard-1).getId());
+        move.setIdLeaderCard(game.getMe().getPersonalBoard().getLeaderCards().get(numcard-1).getId());
 
         return move;
     }

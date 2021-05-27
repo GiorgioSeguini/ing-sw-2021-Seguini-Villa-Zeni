@@ -1,6 +1,7 @@
 package it.polimi.ingsw.server.model;
 
 import it.polimi.ingsw.constant.enumeration.PlayerStatus;
+import it.polimi.ingsw.constant.model.LeaderCard;
 import it.polimi.ingsw.constant.model.NumberOfResources;
 import it.polimi.ingsw.server.parse.Starter;
 import it.polimi.ingsw.constant.enumeration.ErrorMessage;
@@ -71,13 +72,12 @@ public class PlayerTest {
 
         LeaderCardExt[] leaderCardsOw2 = new LeaderCardExt[2];
         int i=0;
-        for (LeaderCardExt x: player.getPersonalBoard().getLeaderCards()) {
-            leaderCardsOw2[i] = x;
-            assertNotNull(leaderCardsOw2[i]);
+        for (LeaderCard x: player.getPersonalBoard().getLeaderCards()) {
+            assertNotNull(x);
             i++;
         }
 
-        player.getPersonalBoard().getLeaderCards()[0].setPlayed(player);
+        ((LeaderCardExt)player.getPersonalBoard().getLeaderCards().get(0)).setPlayed(player);
         assertTrue(player.getVictoryPoints()>0);
     }
 

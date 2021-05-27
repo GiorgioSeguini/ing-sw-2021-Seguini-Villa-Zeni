@@ -1,5 +1,6 @@
 package it.polimi.ingsw.server.model;
 
+import it.polimi.ingsw.constant.model.LeaderCard;
 import it.polimi.ingsw.constant.model.NumberOfResources;
 import it.polimi.ingsw.server.parse.Starter;
 import it.polimi.ingsw.constant.enumeration.LeaderStatus;
@@ -46,28 +47,25 @@ class LeaderCardTest {
         PlayerExt player = new PlayerExt("Fabio");
         player.getDepots().addResourceFromProduction(new NumberOfResources(100,100,100,100));
 
-        LeaderCardExt[] ownedLeaderCard = new LeaderCardExt[2];
+        ArrayList<LeaderCard> ownedLeaderCard = personalBoard.getLeaderCards();
 
         //try {
-            ownedLeaderCard = personalBoard.getLeaderCards();
+         /*   ownedLeaderCard = personalBoard.getLeaderCards();
         /*} catch (NoMoreLeaderCardAliveException e) {
             e.printStackTrace();
         }*/
 
 
-        for(int i=0; i<ownedLeaderCard.length; i++) {
-            if (ownedLeaderCard[i].setPlayed(player)) {
-                assertEquals(LeaderStatus.Played, ownedLeaderCard[i].getStatus());
-            }else{
-                assertFalse(LeaderStatus.onHand == ownedLeaderCard[i].getStatus() & ownedLeaderCard[i].getRequirements().match(player));
-                if (ownedLeaderCard[i].getStatus()!=LeaderStatus.onHand){
-                    System.out.println("The card isn't onHand,\n The card is the one in position \n"+i);
-                }else{
-                    System.out.println("you don't have the right requirements,\n The card is the one in position \n"+i);
-                }
+        for (LeaderCard leaderCard : ownedLeaderCard) {
+            LeaderCardExt leaderCardExt = (LeaderCardExt) leaderCard;
+            if (leaderCardExt.setPlayed(player)) {
+                assertEquals(LeaderStatus.Played, leaderCardExt.getStatus());
+            } else {
+                assertFalse(LeaderStatus.onHand == leaderCardExt.getStatus() & leaderCardExt.getRequirements().match(player));
             }
         }
-        for (LeaderCardExt x: ownedLeaderCard) {
+        for (LeaderCard y: ownedLeaderCard) {
+            LeaderCardExt x = (LeaderCardExt) y;
             if (x.getRequirements().match(player)) {
                 assertFalse(x.setPlayed(player));
                 assertNotEquals(LeaderStatus.onHand, x.getStatus());
@@ -97,15 +95,11 @@ class LeaderCardTest {
         PlayerExt player = new PlayerExt("Fabio");
         player.getDepots().addResourceFromProduction(new NumberOfResources(100,100,100,100));
         int faithpoints=player.getFaithTrack().getFaithPoints();
-        LeaderCardExt[] ownedLeaderCard = new LeaderCardExt[2];
+        ArrayList<LeaderCard> ownedLeaderCard = personalBoard.getLeaderCards();
 
-        //try {
-            ownedLeaderCard = personalBoard.getLeaderCards();
-        /*} catch (NoMoreLeaderCardAliveException e) {
-            e.printStackTrace();
-        }*/
 
-        for(LeaderCardExt x: ownedLeaderCard){
+        for(LeaderCard y: ownedLeaderCard){
+            LeaderCardExt x =(LeaderCardExt) y;
             if (x.setDiscard(player)){
                 assertEquals(player.getFaithTrack().getFaithPoints(), ++faithpoints);
                 assertFalse(player.getFaithTrack().getFaithPoints()<0 && player.getFaithTrack().getFaithPoints()>=25);
@@ -115,14 +109,10 @@ class LeaderCardTest {
                 assertNotSame(LeaderStatus.onHand, x.getStatus());
         }
 
-        for (LeaderCardExt x: ownedLeaderCard){
+        for (LeaderCard x: ownedLeaderCard){
             assertEquals(LeaderStatus.Dead,x.getStatus());
         }
 
-        /*try {
-            ownedLeaderCard = personalBoard.getLeaderCards();
-            fail();
-        } catch (NoMoreLeaderCardAliveException ignored) {}*/
 
 
     }
@@ -151,7 +141,7 @@ class LeaderCardTest {
         card1.setDiscard(player);
 
         //try {
-            assertEquals(1, player.getPersonalBoard().getLeaderCards().length);
+            assertEquals(1, player.getPersonalBoard().getLeaderCards().size());
        /* } catch (NoMoreLeaderCardAliveException e) {
             fail();
         }*/

@@ -29,10 +29,10 @@ public class LeaderCardExt extends LeaderCard {
      * @return true if the card is really activated
      */
     public boolean setPlayed(PlayerExt owner) {
-        if(this.getStatus()==LeaderStatus.onHand && ((RequirementsExt)this.getRequirements()).match(owner)){
+        if(this.getStatus()==LeaderStatus.onHand && this.getRequirements().match(owner)){
                 ability.RunAbility(owner);
                 super.setStatus(LeaderStatus.Played);
-                ((PersonalBoardExt)owner.getPersonalBoard()).change();
+                owner.getPersonalBoard().change();
                 return true;
         }
         return false;
@@ -47,7 +47,7 @@ public class LeaderCardExt extends LeaderCard {
         if(getStatus().equals(LeaderStatus.onHand)){
             setStatus(LeaderStatus.Dead);
             owner.getFaithTrack().addPoint();
-            owner.getPersonalBoard().change();
+            owner.getPersonalBoard().setDiscard(this);
             return true;
         }
         return false;

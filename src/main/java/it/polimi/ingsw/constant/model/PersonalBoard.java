@@ -12,9 +12,9 @@ public class PersonalBoard {
 
     protected ArrayList<DevelopmentCard>[] OwnedDevCards;
 
-    private LeaderCard[] OwnedLeaderCard;
+    protected final ArrayList<LeaderCard> OwnedLeaderCard;
 
-    private ArrayList<ProductionPower> extraProduction;
+    private final ArrayList<ProductionPower> extraProduction;
 
     /*Default Constructor*/
     public PersonalBoard(){
@@ -23,30 +23,14 @@ public class PersonalBoard {
             OwnedDevCards[i] = new ArrayList<DevelopmentCard>();
         }
 
-        OwnedLeaderCard = new LeaderCard[2];
+        OwnedLeaderCard = new ArrayList<>();
         extraProduction = new ArrayList<>();
         extraProduction.add(new ProductionPower(0, new NumberOfResources(), new NumberOfResources(), 2, 1));
     }
 
 
     /*Getter*/
-    public LeaderCard[] getLeaderCards(){
-        if(!isReady()){
-            return new LeaderCard[0];
-        }
-        int deadLeaderCards = 0;
-        for(int i=0; i< OwnedLeaderCard.length; i++){
-            if(OwnedLeaderCard[i].getStatus() == LeaderStatus.Dead) deadLeaderCards++;
-        }
-        if (deadLeaderCards == 1) {
-            LeaderCard[] returnedLeaderCard = new LeaderCard[1];
-            if (OwnedLeaderCard[0].getStatus() == LeaderStatus.Dead) {
-                returnedLeaderCard[0] = OwnedLeaderCard[1];
-                return returnedLeaderCard;
-            }
-            returnedLeaderCard[0] = OwnedLeaderCard[0];
-            return returnedLeaderCard;
-        }
+    public ArrayList<LeaderCard> getLeaderCards(){
         return OwnedLeaderCard;
     }
 
@@ -120,13 +104,7 @@ public class PersonalBoard {
      * @return true if the leader card have already been chosen
      */
     public boolean isReady(){
-        boolean res = true;
-        for(LeaderCard card :OwnedLeaderCard){
-            if(card==null)
-                res=false;
-        }
-
-        return res;
+        return OwnedLeaderCard.size()==MAX_LEAD_CARD;
     }
 
     public void setDevCards(ArrayList<DevelopmentCard> cards[]){
@@ -137,14 +115,8 @@ public class PersonalBoard {
     }
 
     public void setLeaderCards(ArrayList<LeaderCard> cards){
-        for(int i=0; i<MAX_LEAD_CARD; i++){
-            if(cards.size()>i){
-                OwnedLeaderCard[i] = cards.get(i);
-            }else{
-                //TODO
-                //OwnedLeaderCard[i] = null;
-            }
-        }
+        OwnedLeaderCard.clear();
+        OwnedLeaderCard.addAll(cards);
     }
 
 
@@ -152,14 +124,11 @@ public class PersonalBoard {
         return OwnedDevCards[pos];
     }
 
-    public void setLeaderCard(LeaderCard card, int pos){
-        this.OwnedLeaderCard[pos]=card;
-    }
     @Override
     public String toString(){
         String PB = "";
         PB += "Card's victory points: "+getVictoryPoints()+"\n";
-        PB += "N° LeaderCard on hand or played: "+getLeaderCards().length+"\n";
+        PB += "N° LeaderCard on hand or played: "+getLeaderCards().size()+"\n";
 
         for(LeaderCard lc: getLeaderCards()) {
             PB += "\n" + lc + "\n";
