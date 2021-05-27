@@ -54,7 +54,7 @@ public class CliMoveLeader implements CliInterface{
 
     @Override
     public boolean canPerform(GameClient game) {
-        for(LeaderCardClient card: game.getLeaderCards()){
+        for(LeaderCard card: game.getMe().getPersonalBoard().getLeaderCards()){
             if(card.getStatus()==LeaderStatus.onHand){
                 return move.canPerform(game);
             }
