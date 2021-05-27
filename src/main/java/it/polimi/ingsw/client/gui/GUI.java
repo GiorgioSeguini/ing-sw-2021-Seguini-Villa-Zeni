@@ -2,12 +2,15 @@ package it.polimi.ingsw.client.gui;
 
 import it.polimi.ingsw.client.Client;
 import it.polimi.ingsw.client.modelClient.GameClient;
+import it.polimi.ingsw.client.parser.StarterClient;
+import it.polimi.ingsw.constant.move.MoveType;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
@@ -68,5 +71,15 @@ public class GUI extends Application {
             }
         }
         return client.getSimpleGame();
+    }
+
+    public void sendMove(MoveType move){
+        try {
+            client.socketOut.writeUTF(StarterClient.toJson(move, MoveType.class));
+            client.socketOut.flush();
+        }catch (IOException e){
+            e.printStackTrace();
+            //TODO
+        }
     }
 }
