@@ -1,6 +1,7 @@
 package it.polimi.ingsw.client.cli;
 
 import it.polimi.ingsw.client.Client;
+import it.polimi.ingsw.client.UI;
 import it.polimi.ingsw.client.modelClient.GameClient;
 import it.polimi.ingsw.client.parser.StarterClient;
 import it.polimi.ingsw.constant.enumeration.ErrorMessage;
@@ -13,7 +14,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
-public class CLI implements Runnable{
+public class CLI implements Runnable, UI {
     private final Client client;
     private GameClient game;
     Scanner in = new Scanner(System.in);
@@ -55,13 +56,13 @@ public class CLI implements Runnable{
                 e.printStackTrace();
             }
             if(client.recived){
-                update();
+                print();
                 client.recived=false;
             }
         }
     }
 
-    public void update(){
+    public void print(){
         this.game = client.getSimpleGame();
         if(game==null) return;
 
@@ -138,5 +139,10 @@ public class CLI implements Runnable{
         for (int i=0; i<100; i++){
             System.out.println();
         }
+    }
+
+    @Override
+    public void update() {
+        //TODO
     }
 }

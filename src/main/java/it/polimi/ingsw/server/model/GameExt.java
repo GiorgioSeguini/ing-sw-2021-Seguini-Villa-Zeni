@@ -3,6 +3,7 @@ package it.polimi.ingsw.server.model;
 import it.polimi.ingsw.constant.enumeration.GameStatus;
 import it.polimi.ingsw.constant.enumeration.PlayerStatus;
 import it.polimi.ingsw.constant.message.GameMessage;
+import it.polimi.ingsw.constant.message.LastMessage;
 import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.constant.model.*;
 import it.polimi.ingsw.server.observer.Observable;
@@ -196,7 +197,9 @@ public class GameExt extends Game implements Observable<Message> {
         notify(new GameMessage(getStatus(), getCurrIndex()));
     }
 
-
+    public void lastMessage(){
+        notify(new LastMessage());
+    }
     //Observable implementation
     private transient final List<Observer<Message>> observers = new ArrayList<>();
 

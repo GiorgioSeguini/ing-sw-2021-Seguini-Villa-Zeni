@@ -19,6 +19,7 @@ public class Controller implements Observer<Performable> {
             System.out.println("Move invalid");
             //x.getPlayer().setErrorMessage();
         }
+        game.lastMessage();
     }
 
 }

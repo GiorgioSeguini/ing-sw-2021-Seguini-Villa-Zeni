@@ -96,7 +96,7 @@ public class Client {
                 t1.start();
             }
             else{
-                Thread t1 = new Thread(()->GUI.main(null, this));
+                Thread t1 = new Thread(()->GUI.entry(null, this));
                 t1.start();
             }
             t0.join();
@@ -119,8 +119,13 @@ public class Client {
         return this.simpleGame;
     }
 
-    public void setNumber(String s){
-
+    public void setGui(GUI gui){
+        this.gui=gui;
     }
 
+    public UI getUI(){
+        if(gui==null)
+            return cli;
+        return gui;
+    }
 }

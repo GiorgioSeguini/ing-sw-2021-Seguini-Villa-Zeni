@@ -3,6 +3,7 @@ package it.polimi.ingsw.server.view;
 
 import com.google.gson.reflect.TypeToken;
 import it.polimi.ingsw.constant.message.InitialMessage;
+import it.polimi.ingsw.constant.message.LastMessage;
 import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.constant.model.Game;
 import it.polimi.ingsw.constant.model.LeaderCard;
@@ -43,6 +44,7 @@ public abstract class View implements Observable<Performable>, Observer<Message>
 
         int myID = this.player.getID();
         this.update(new InitialMessage(game, myID, game.getActivableLeadCard(player)));
+        this.update(new LastMessage());
     }
 
     //Observable implementation
