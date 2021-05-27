@@ -18,7 +18,7 @@ public class Client {
 
     private String ip;
     private int port;
-    private DataOutputStream socketOut;
+    public DataOutputStream socketOut;
     public boolean recived;
     GameClient simpleGame;
     CLI cli;
@@ -89,15 +89,16 @@ public class Client {
         System.out.println("insert 1 for CLI, 2 for GUI");
         int i = stdin.nextInt();
         try{
+            Thread t0 = asyncReadFromSocket(socketIn);
             if(i==1) {
                 cli = new CLI(this, socketOut);
                 Thread t1 = new Thread(cli);
                 t1.start();
             }
             else{
-                GUI.main(null, this);
+                Thread t1 = new Thread(()->GUI.main(null, this));
+                t1.start();
             }
-            Thread t0 = asyncReadFromSocket(socketIn);
             t0.join();
             //t1.join();
         } catch(InterruptedException | NoSuchElementException e){

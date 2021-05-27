@@ -7,6 +7,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.io.DataOutputStream;
 import java.io.IOException;
 
 public class SampleController extends ControllerGuiInterface{
@@ -37,8 +38,15 @@ public class SampleController extends ControllerGuiInterface{
     }
 
     public void start(){
-        gui.asyncWriteToSocket(name);
-        gui.asyncWriteToSocket(number.toString());
+        DataOutputStream socket = GUI.client.socketOut;
+        try {
+            socket.writeUTF(name);
+            socket.flush();
+            socket.writeInt(number);
+            socket.flush();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
         gui.activate("initial");
     }
 
