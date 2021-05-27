@@ -21,6 +21,8 @@ public class CLI implements Runnable, UI {
     DataOutputStream socket;
     ArrayList<CliInterface> moves;
 
+    private boolean moveHandled;
+
     public CLI(Client client, DataOutputStream writer) {
         this.client = client;
         this.socket = writer;
@@ -55,9 +57,9 @@ public class CLI implements Runnable, UI {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            if(client.recived){
+            if(isMoveHandled()){
                 print();
-                client.recived=false;
+                this.setMoveHandled(false);
             }
         }
     }
@@ -143,6 +145,14 @@ public class CLI implements Runnable, UI {
 
     @Override
     public void update() {
-        //TODO
+        setMoveHandled(true);
+    }
+
+    private synchronized boolean isMoveHandled() {
+        return moveHandled;
+    }
+
+    private synchronized void setMoveHandled(boolean moveHandled) {
+        this.moveHandled = moveHandled;
     }
 }

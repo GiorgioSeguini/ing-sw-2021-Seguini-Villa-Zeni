@@ -36,7 +36,7 @@ public class SocketClientConnection implements  Observable<String>, ClientConnec
         return active;
     }
 
-    private synchronized void send(String json) {
+    public void send(String json) {
             try {
                 //out.reset();
                 //socket.getOutputStream().write(json.getBytes(StandardCharsets.UTF_8));
@@ -67,7 +67,7 @@ public class SocketClientConnection implements  Observable<String>, ClientConnec
         System.out.println("Done!");
     }
 
-    @Override
+    /*@Override
     public void asyncSend(final String json){
         new Thread(new Runnable() {
             @Override
@@ -75,7 +75,7 @@ public class SocketClientConnection implements  Observable<String>, ClientConnec
                 send(json);
             }
         }).start();
-    }
+    }*/
 
     @Override
     public void run() {

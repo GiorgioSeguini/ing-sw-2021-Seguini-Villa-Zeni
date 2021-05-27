@@ -4,6 +4,7 @@ import it.polimi.ingsw.client.Client;
 import it.polimi.ingsw.client.UI;
 import it.polimi.ingsw.client.modelClient.GameClient;
 import it.polimi.ingsw.client.parser.StarterClient;
+import it.polimi.ingsw.constant.enumeration.GameStatus;
 import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.constant.move.MoveType;
 import javafx.application.Application;
@@ -47,6 +48,10 @@ public class GUI extends Application implements UI {
         loaders.add(new FXMLLoader(getClass().getResource("sample.fxml")));
         loaders.add(new FXMLLoader(getClass().getResource("initial.fxml")));
         loaders.add(new FXMLLoader(getClass().getResource("waiting.fxml")));
+        loaders.add(new FXMLLoader(getClass().getResource("initialRes.fxml")));
+        loaders.add(new FXMLLoader(getClass().getResource("base.fxml")));
+        loaders.add(new FXMLLoader(getClass().getResource("market.fxml")));
+
 
         for (FXMLLoader loader : loaders) {
             Pane pane = loader.load();
@@ -66,12 +71,19 @@ public class GUI extends Application implements UI {
             this.activate("waiting");
             myTurn=false;
         }else {
-            if(myTurn) {
-                current.update();
-            }
-            else{
-                myTurn=true;
-                activate("initial");
+            if(this.getModel().getStatus()== GameStatus.Initial){
+                if(!this.getModel().getMe().getPersonalBoard().isReady()){
+                    activate("initial");
+                }else{
+                    activate("initialRes");
+                }
+            }else{
+                if(myTurn){
+                    current.update();
+                }else{
+                    activate("base");
+                    myTurn=true;
+                }
             }
         }
     }
@@ -83,7 +95,7 @@ public class GUI extends Application implements UI {
     }
 
     public GameClient getModel(){
-        GameClient model = null;
+        GameClient model = client.getSimpleGame();
         while(model==null){
             model = client.getSimpleGame();
             try {
@@ -92,7 +104,7 @@ public class GUI extends Application implements UI {
                 e.printStackTrace();
             }
         }
-        return client.getSimpleGame();
+        return model;
     }
 
     public void sendMove(MoveType move){

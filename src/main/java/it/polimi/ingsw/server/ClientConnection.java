@@ -8,5 +8,5 @@ public interface ClientConnection{
 
     void addObserver(Observer<String> observer);
 
-    void asyncSend(String json);
+    void send(String json);
 }
