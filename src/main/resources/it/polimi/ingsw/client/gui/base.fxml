@@ -11,6 +11,6 @@
             <Image url="@../../../../../images/board/Masters_of_Renaissance_PlayerBoard.png" />
          </image>
       </ImageView>
-      <Button layoutX="38.0" layoutY="35.0" mnemonicParsing="false" text="vai al mercato" />
+      <Button layoutX="38.0" layoutY="35.0" mnemonicParsing="false" text="vai al mercato" onAction="#goToMarket" />
    </children>
 </AnchorPane>

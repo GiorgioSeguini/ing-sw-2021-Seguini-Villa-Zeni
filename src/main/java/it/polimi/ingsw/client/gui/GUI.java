@@ -10,6 +10,7 @@ import it.polimi.ingsw.constant.move.MoveType;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -38,6 +39,7 @@ public class GUI extends Application implements UI {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
+        primaryStage.getIcons().add(new Image("/images/punchboard/calamaio.png"));
         client.setGui(this);
         primaryStage.setTitle("Maestri del Rinascimento");
         Pane root = new Pane();

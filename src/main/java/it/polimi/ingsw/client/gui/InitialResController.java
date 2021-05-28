@@ -22,13 +22,13 @@ public class InitialResController extends ControllerGuiInterface{
     public static String className = "initialRes";
 
     @FXML
-    ChoiceBox<Integer> box0;
+    ChoiceBox<Integer> boxCoin;
     @FXML
-    ChoiceBox<Integer> box1;
+    ChoiceBox<Integer> boxServant;
     @FXML
-    ChoiceBox<Integer> box2;
+    ChoiceBox<Integer> boxShield;
     @FXML
-    ChoiceBox<Integer> box3;
+    ChoiceBox<Integer> boxStone;
     @FXML
     Label label;
     @FXML
@@ -38,10 +38,11 @@ public class InitialResController extends ControllerGuiInterface{
     private NumberOfResources resources = new NumberOfResources();
     @FXML
     public void initialize(){
-        boxes.add(box0);
-        boxes.add(box1);
-        boxes.add(box2);
-        boxes.add(box3);
+        //TODO it's important to keep the same order as ResourceType
+        boxes.add(boxServant);
+        boxes.add(boxShield);
+        boxes.add(boxCoin);
+        boxes.add(boxStone);
     }
 
     @Override
@@ -72,11 +73,7 @@ public class InitialResController extends ControllerGuiInterface{
 
     public void onTextUpdate(ActionEvent actionEvent) {
         ResourceType type = ResourceType.values()[boxes.indexOf((ChoiceBox) actionEvent.getSource())];
-        int new_value = 0;
-        if(((ChoiceBox) actionEvent.getSource()).getValue()!=null){
-            new_value = (Integer)((ChoiceBox) actionEvent.getSource()).getValue();
-        }
-        ((ChoiceBox) actionEvent.getSource()).setValue(new_value);
+        int new_value = (Integer)((ChoiceBox) actionEvent.getSource()).getValue();
         int delta = new_value - this.resources.getAmountOf(type);
         if(delta>0)
             this.resources = this.resources.add(type, delta);

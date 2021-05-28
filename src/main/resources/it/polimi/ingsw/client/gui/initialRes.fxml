@@ -27,10 +27,10 @@
             <Image url="@../../../../../images/punchboard/stone.png" />
          </image>
       </ImageView>
-      <Button fx:id="button" layoutX="490.0" layoutY="321.0" mnemonicParsing="false" text="Button" onAction="#onButton"/>
-      <ChoiceBox fx:id="box0" layoutX="46.0" layoutY="334.0" prefHeight="25.0" prefWidth="105.0" onAction="#onTextUpdate"/>
-      <ChoiceBox fx:id="box1" layoutX="50.0" layoutY="188.0" prefHeight="25.0" prefWidth="96.0" onAction="#onTextUpdate"/>
-      <ChoiceBox fx:id="box2" layoutX="311.0" layoutY="188.0" prefHeight="18.0" prefWidth="105.0" onAction="#onTextUpdate"/>
-      <ChoiceBox fx:id="box3" layoutX="311.0" layoutY="334.0" prefHeight="17.0" prefWidth="105.0" onAction="#onTextUpdate"/>
+      <Button fx:id="button" layoutX="490.0" layoutY="321.0" mnemonicParsing="false" onAction="#onButton" text="Button" />
+      <ChoiceBox fx:id="boxShield" layoutX="46.0" layoutY="334.0" onAction="#onTextUpdate" prefHeight="25.0" prefWidth="105.0" value="0" />
+      <ChoiceBox fx:id="boxCoin" layoutX="50.0" layoutY="188.0" onAction="#onTextUpdate" prefHeight="25.0" prefWidth="96.0" value="0" />
+      <ChoiceBox fx:id="boxServant" layoutX="311.0" layoutY="188.0" onAction="#onTextUpdate" prefHeight="18.0" prefWidth="105.0" value="0" />
+      <ChoiceBox fx:id="boxStone" layoutX="311.0" layoutY="334.0" onAction="#onTextUpdate" prefHeight="17.0" prefWidth="105.0" value="0" />
    </children>
 </AnchorPane>
