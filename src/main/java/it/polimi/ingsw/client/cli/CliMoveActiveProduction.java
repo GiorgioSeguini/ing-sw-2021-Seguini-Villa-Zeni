@@ -17,21 +17,22 @@ public class CliMoveActiveProduction implements CliInterface{
     @Override
     public MoveType updateCLI(GameClient game, Scanner stdin) {
         ArrayList<ProductionPower> productionPowers = new ArrayList<ProductionPower>();
-        int i=1;
+        int i=0;
         for(ProductionPower pp: game.getMe().getPersonalBoard().getProduction()){
-            System.out.println(i+".\t"+pp);
             i++;
+            System.out.println(i+".\t"+pp);
         }
+        System.out.println("Risorse attuali totali: "+ game.getMe().getDepots().getResources());
         System.out.println("Quali produzioni vuoi attivare?\n\t(premi -1 per concludere).");
-        int p=stdin.nextInt();
-        while(p!=-1){
-            if(p>=1&&p<=6) {
+        int p;
+        do{
+            p = stdin.nextInt();
+            if(p>0 && p<=i ) {
                 productionPowers.add(game.getMe().getPersonalBoard().getProduction().get(p - 1));
-            }else{
+            }else if(p!=-1){
                 System.out.println("Invalid index!\n\tRIPROVA!");
             }
-            p = stdin.nextInt();
-        }
+        }while(p!=-1);
         move.setToActive(productionPowers);
         return move;
     }

@@ -20,6 +20,7 @@ public class CliMoveChoseResources implements CliInterface{
     @Override
     public MoveType updateCLI(GameClient game, Scanner stdin) {
         NumberOfResources numberOfResources = new NumberOfResources();
+        System.out.println("Risorse attuali totali: "+ game.getMe().getDepots().getResources());
         if(game.getMe().getToActive().getOfYourChoiceInput()==1){
             System.out.println("Scegli la risorsa in input!");
             printRes();
