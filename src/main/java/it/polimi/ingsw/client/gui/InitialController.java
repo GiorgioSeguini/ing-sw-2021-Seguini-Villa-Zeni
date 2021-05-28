@@ -113,7 +113,7 @@ public class InitialController extends ControllerGuiInterface{
             lable4.setText("selected");
         }else{
             choice.remove((Integer) gui.getModel().getLeaderCards().get(3).getId());
-            lable3.setText("");
+            lable4.setText("");
         }
         chosen[3]=!chosen[3];
         imageView4.setSmooth(chosen[3]);

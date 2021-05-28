@@ -11,6 +11,8 @@ public class InitialResController extends ControllerGuiInterface{
 
     @Override
     public void update() {
-        //TODO
+        //nothing to do here
     }
+
+
 }

@@ -1,11 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.gui.InitialResController">
    <children>
-      <Label layoutX="164.0" layoutY="86.0" prefHeight="40.0" prefWidth="219.0" text="Scegli le risorse iniziali" />
+      <Label layoutX="238.0" layoutY="14.0" prefHeight="40.0" prefWidth="125.0" text="Scegli le risorse iniziali" />
+      <ImageView fitHeight="90.0" fitWidth="125.0" layoutX="45.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../images/punchboard/coin.png" />
+         </image>
+      </ImageView>
+      <TextField layoutX="76.0" layoutY="346.0" prefHeight="25.0" prefWidth="44.0" />
+      <ImageView fitHeight="90.0" fitWidth="125.0" layoutX="313.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../images/punchboard/servant.png" />
+         </image>
+      </ImageView>
+      <TextField layoutX="353.0" layoutY="333.0" prefHeight="25.0" prefWidth="44.0" />
+      <ImageView fitHeight="90.0" fitWidth="125.0" layoutX="59.0" layoutY="231.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../images/punchboard/shield.png" />
+         </image>
+      </ImageView>
+      <TextField layoutX="76.0" layoutY="187.0" prefHeight="25.0" prefWidth="44.0" />
+      <ImageView fitHeight="90.0" fitWidth="125.0" layoutX="315.0" layoutY="231.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../images/punchboard/stone.png" />
+         </image>
+      </ImageView>
+      <TextField layoutX="341.0" layoutY="187.0" prefHeight="25.0" prefWidth="44.0" />
    </children>
 </AnchorPane>

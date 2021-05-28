@@ -5,7 +5,10 @@ import it.polimi.ingsw.constant.enumeration.Level;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+
+import java.util.ArrayList;
 
 public class DashboardController extends ControllerGuiInterface{
 
@@ -40,13 +43,20 @@ public class DashboardController extends ControllerGuiInterface{
     @FXML
     public ImageView imageView12;
 
-    public ImageView[] imageViews = new ImageView[] {imageView1,imageView2,imageView3,imageView4,imageView5,imageView6,imageView7,imageView8,imageView9,imageView10,imageView11,imageView12};
+    private final ArrayList<ImageView> imageViews = new ArrayList<>();
 
     @Override
     public String getName() {
         return className;
     }
 
+    @FXML
+    public void initialize(){
+        imageViews.add(imageView1);
+        imageViews.add(imageView2);
+        imageViews.add(imageView3);
+
+    }
     @Override
     public void update() {
         Image[] image = new Image[12];
@@ -55,10 +65,16 @@ public class DashboardController extends ControllerGuiInterface{
             for (ColorDevCard c : ColorDevCard.values()) {
                 int id = gui.getModel().getDashboard().getTopDevCard(c, l).getId() + 1;
                 image[i] = new Image("/images/front/Masters of Renaissance_Cards_FRONT_3mmBleed_1-"+ id +"-1.png");
-                imageViews[i].setImage(image[i]);
+                imageViews.get(i).setImage(image[i]);
                 i++;
             }
         }
     }
+
+    public void onMouseClicked(MouseEvent mouseEvent) {
+        int index = imageViews.indexOf((ImageView) mouseEvent.getSource());
+
+    }
     //TODO:  devo rivederla tutta
+
 }
