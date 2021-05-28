@@ -23,6 +23,7 @@ public class CliMoveBuyDevCard implements CliInterface{
         int index;
         System.out.println(""+game.getDashboard());
         do {
+            System.out.println("Risorse attuali totali: "+ game.getMe().getDepots().getResources());
             int l;
             do {
                 System.out.println("Scegli il livello della carta sviluppo che vuoi comprare!\n");
@@ -41,7 +42,7 @@ public class CliMoveBuyDevCard implements CliInterface{
             System.out.println("Vuoi comprare questa carta sviluppo?\n\t1. YES \t2. NO\n"+game.getDashboard().getTopDevCard(ColorDevCard.values()[c-1],Level.values()[l-1]));
             check = stdin.nextInt();
             index = game.getDashboard().getTopDevCard(ColorDevCard.values()[c-1],Level.values()[l-1]).getId();
-        }while(check == 2);
+        }while(check !=1);
         move.setIndexCardToBuy(index);
         return move;
     }
