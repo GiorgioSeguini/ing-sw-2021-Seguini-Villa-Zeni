@@ -53,6 +53,7 @@ public class GUI extends Application implements UI {
         loaders.add(new FXMLLoader(getClass().getResource("initialRes.fxml")));
         loaders.add(new FXMLLoader(getClass().getResource("base.fxml")));
         loaders.add(new FXMLLoader(getClass().getResource("market.fxml")));
+        loaders.add(new FXMLLoader((getClass().getResource("lobby.fxml"))));
 
 
         for (FXMLLoader loader : loaders) {
@@ -69,6 +70,8 @@ public class GUI extends Application implements UI {
 
     @Override
     public void update(){
+        if(getModel()==null)
+            return;
         if(!this.getModel().isMyTurn()){
             this.activate("waiting");
             myTurn=false;
@@ -97,16 +100,7 @@ public class GUI extends Application implements UI {
     }
 
     public GameClient getModel(){
-        GameClient model = client.getSimpleGame();
-        while(model==null){
-            model = client.getSimpleGame();
-            try {
-                TimeUnit.MILLISECONDS.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-        return model;
+        return client.getSimpleGame();
     }
 
     public void sendMove(MoveType move){

@@ -47,7 +47,7 @@ public class SampleController extends ControllerGuiInterface{
         }catch (IOException e){
             e.printStackTrace();
         }
-        gui.update();
+        gui.activate("lobby");
     }
 
     private boolean notCanActive(){
