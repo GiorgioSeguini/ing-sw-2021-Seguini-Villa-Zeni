@@ -22,7 +22,6 @@ public class Server {
     private static final int PORT = 12345;
     private static final int NUMOFPOSSIBLEGAMES= 4;
     private final ServerSocket serverSocket;
-    private final ExecutorService executor = Executors.newFixedThreadPool(128);
     private final ArrayList<Map<String, ClientConnection>> waitingConnections = new ArrayList<>();
     private final Map<ClientConnection, ClientConnection> playingConnection = new HashMap<>();
 
@@ -154,7 +153,7 @@ public class Server {
             try {
                 Socket newSocket = serverSocket.accept();
                 SocketClientConnection socketConnection = new SocketClientConnection(newSocket, this);
-                executor.submit(socketConnection);
+                new Thread(socketConnection).start();
             } catch (IOException e) {
                 System.out.println("Connection Error!");
             }
