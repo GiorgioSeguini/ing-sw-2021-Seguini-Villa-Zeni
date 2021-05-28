@@ -7,7 +7,6 @@ import it.polimi.ingsw.client.modelClient.GameClient;
 import it.polimi.ingsw.constant.model.Game;
 import it.polimi.ingsw.client.parser.StarterClient;
 import it.polimi.ingsw.constant.message.Message;
-import javafx.application.Application;
 
 import java.io.*;
 import java.net.Socket;
@@ -96,7 +95,7 @@ public class Client {
                 t1.start();
             }
             else{
-                Thread t1 = new Thread(()->GUI.entry(null, this));
+                Thread t1 = new Thread(()->GUI.entry(this));
                 t1.start();
             }
             t0.join();

@@ -13,12 +13,9 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-
-import java.io.DataInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.concurrent.TimeUnit;
 
 public class GUI extends Application implements UI {
 
@@ -30,10 +27,10 @@ public class GUI extends Application implements UI {
     private ControllerGuiInterface current;
     private boolean myTurn=false;
 
-    public static void entry(String[] args, Client client) {
+    public static void entry(Client client) {
 
         GUI.client = client;
-        launch(args);
+        launch((String) null);
     }
 
     @Override
