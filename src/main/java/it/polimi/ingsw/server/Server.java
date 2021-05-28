@@ -43,10 +43,13 @@ public class Server {
     }
 
     //Wait for another player
-    public synchronized void lobby(ClientConnection c, String name, int numofplayer){
+    public synchronized boolean lobby(ClientConnection c, String name, int numofplayer){
 
         if(numofplayer<1 || numofplayer>4){
             throw  new IllegalArgumentException();
+        }
+        if(waitingConnections.get(numofplayer-1).containsKey(name)){
+            return false;
         }
         waitingConnections.get(numofplayer-1).put(name,c);
 
@@ -109,7 +112,7 @@ public class Server {
             }
 
         }
-
+        return true;
     }
 
     private ArrayList<View> instanceViews(Map<String, ClientConnection> waitingConnection, ArrayList<Player> players) {

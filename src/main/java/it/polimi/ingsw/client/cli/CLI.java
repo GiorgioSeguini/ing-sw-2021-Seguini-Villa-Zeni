@@ -155,4 +155,9 @@ public class CLI implements Runnable, UI {
     private synchronized void setMoveHandled(boolean moveHandled) {
         this.moveHandled = moveHandled;
     }
+
+    @Override
+    public void setActive() {
+        //TODO
+    }
 }

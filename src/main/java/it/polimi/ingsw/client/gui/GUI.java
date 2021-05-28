@@ -26,6 +26,7 @@ public class GUI extends Application implements UI {
     private Scene main;
     private ControllerGuiInterface current;
     private boolean myTurn=false;
+    private boolean active = false;
 
     public static void entry(Client client) {
 
@@ -67,8 +68,11 @@ public class GUI extends Application implements UI {
 
     @Override
     public void update(){
-        if(getModel()==null)
+        if(getModel()==null) {
+            if(active)
+                this.activate("lobby");
             return;
+        }
         if(!this.getModel().isMyTurn()){
             this.activate("waiting");
             myTurn=false;
@@ -110,4 +114,8 @@ public class GUI extends Application implements UI {
         }
     }
 
+    @Override
+    public void setActive() {
+        active=true;
+    }
 }

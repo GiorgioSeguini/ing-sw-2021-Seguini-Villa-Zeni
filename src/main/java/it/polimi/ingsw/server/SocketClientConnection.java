@@ -1,5 +1,8 @@
 package it.polimi.ingsw.server;
 
+import it.polimi.ingsw.constant.message.AcceptMessage;
+import it.polimi.ingsw.constant.message.Message;
+import it.polimi.ingsw.constant.message.RejectMessage;
 import it.polimi.ingsw.constant.model.Game;
 import it.polimi.ingsw.server.model.GameExt;
 import it.polimi.ingsw.server.observer.Observable;
@@ -84,10 +87,17 @@ public class SocketClientConnection implements  Observable<String>, ClientConnec
         try{
             in = new DataInputStream(socket.getInputStream());
             out = new DataOutputStream(socket.getOutputStream());
-            //send("Welcome!\nWhat is your name?");
-            String read = in.readUTF();
-            int numofplayer= in.readInt();
-            server.lobby(this, read, numofplayer);
+            boolean accepted = false;
+            String read;
+            do {
+                read = in.readUTF();
+                int numofplayer = in.readInt();
+                accepted = server.lobby(this, read, numofplayer);
+                if(!accepted){
+                    send(Starter.toJson(new RejectMessage(), Message.class));
+                }
+            }while(!accepted);
+            send(Starter.toJson(new AcceptMessage(), Message.class));
             while(isActive()){
                 read=in.readUTF();
                 notify(read);
