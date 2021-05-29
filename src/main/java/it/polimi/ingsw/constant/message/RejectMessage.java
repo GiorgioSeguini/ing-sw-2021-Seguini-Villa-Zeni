@@ -7,7 +7,7 @@ public class RejectMessage implements Message{
 
     @Override
     public void handleMessage(Client client) {
-        //TODO
+        client.getUI().update();
     }
 
     @Override

@@ -89,15 +89,17 @@ public class SocketClientConnection implements  Observable<String>, ClientConnec
             out = new DataOutputStream(socket.getOutputStream());
             boolean accepted = false;
             String read;
+            int numofplayer;
             do {
                 read = in.readUTF();
-                int numofplayer = in.readInt();
-                accepted = server.lobby(this, read, numofplayer);
+                numofplayer = in.readInt();
+                accepted = server.checkName(read, numofplayer);
                 if(!accepted){
                     send(Starter.toJson(new RejectMessage(), Message.class));
                 }
             }while(!accepted);
             send(Starter.toJson(new AcceptMessage(), Message.class));
+            server.lobby(this, read, numofplayer);
             while(isActive()){
                 read=in.readUTF();
                 notify(read);

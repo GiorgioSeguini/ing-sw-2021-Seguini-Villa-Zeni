@@ -22,6 +22,8 @@ public class CLI implements Runnable, UI {
     ArrayList<CliInterface> moves;
 
     private boolean moveHandled;
+    private boolean connectionAccepted= false;
+
 
     public CLI(Client client, DataOutputStream writer) {
         this.client = client;
@@ -31,26 +33,41 @@ public class CLI implements Runnable, UI {
 
     @Override
     public void run() {
-        System.out.println("Inserisci il tuo nome e premi INVIO");
-        String name = in.nextLine();
+        String name;
         int x;
         do {
-            System.out.println("Con quanti avversari vuoi giocare?\n 1. Da solo \n 2. Un avversario\n 3. Due avversari\n 4. Tre avversari\n");
-            System.out.println("--> Digita il numero dell'opzione che preferisci e premi INVIO");
-            x=in.nextInt();
-            if(x<1 || x>4){
-                System.out.println("Indice non valido!");
+            this.setMoveHandled(false);
+            System.out.println("Inserisci il tuo nome e premi INVIO");
+            name = in.nextLine();
+            do {
+                System.out.println("Con quanti avversari vuoi giocare?\n 1. Da solo \n 2. Un avversario\n 3. Due avversari\n 4. Tre avversari\n");
+                System.out.println("--> Digita il numero dell'opzione che preferisci e premi INVIO");
+                x = in.nextInt();
+                if (x < 1 || x > 4) {
+                    System.out.println("Indice non valido!");
+                }
+            } while (x < 1 || x > 4);
+            try {
+                socket.writeUTF(name);
+                socket.flush();
+                socket.writeInt(x);
+                socket.flush();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        }while(x<1 || x>4);
+            while (!isMoveHandled()){
+                try {
+                    TimeUnit.MILLISECONDS.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            if(!getActive()){
+                System.out.println("Nome già in uso, per favore scegli un altro nome\n");
+                in.nextLine();      //non so perchè ma senza non va
+            }
+        }while (!getActive());
         System.out.println("Ottimo "+name+"! Ti stiamo inserendo in una partita da "+x+" giocatori.\nRimani in attesa, la partita inizierà tra breve!");
-        try {
-            socket.writeUTF(name);
-            socket.flush();
-            socket.writeInt(x);
-            socket.flush();
-        }catch(IOException e){
-            e.printStackTrace();
-        }
         while(client.isActive()){
             try {
                 TimeUnit.MILLISECONDS.sleep(100);
@@ -157,7 +174,11 @@ public class CLI implements Runnable, UI {
     }
 
     @Override
-    public void setActive() {
-        //TODO
+    public synchronized void setActive() {
+        connectionAccepted = true;
+    }
+
+    public synchronized boolean getActive(){
+        return connectionAccepted;
     }
 }

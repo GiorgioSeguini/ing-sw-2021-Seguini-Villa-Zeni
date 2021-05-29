@@ -42,14 +42,15 @@ public class Server {
         //}
     }
 
+    public synchronized boolean checkName(String name, int numofplayer){
+        return !waitingConnections.get(numofplayer - 1).containsKey(name);
+    }
+
     //Wait for another player
     public synchronized boolean lobby(ClientConnection c, String name, int numofplayer){
 
         if(numofplayer<1 || numofplayer>4){
             throw  new IllegalArgumentException();
-        }
-        if(waitingConnections.get(numofplayer-1).containsKey(name)){
-            return false;
         }
         waitingConnections.get(numofplayer-1).put(name,c);
 
