@@ -1,14 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="it.polimi.ingsw.client.gui.MarketController"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.gui.MarketController">
+   <children>
+      <ImageView fitHeight="346.0" fitWidth="332.0" layoutX="300.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../images/punchboard/plancia_portabiglie.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="returnback" layoutX="40.0" layoutY="48.0" mnemonicParsing="false" onAction="#returnBack" text="Plancia" />
+      <GridPane fx:id="grid" layoutX="380.0" layoutY="94.0" prefHeight="115.0" prefWidth="120.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="ALWAYS" minWidth="15.0" prefWidth="15.0" />
+          <ColumnConstraints hgrow="ALWAYS" minWidth="15.0" prefWidth="15.0" />
+          <ColumnConstraints hgrow="ALWAYS" minWidth="15.0" prefWidth="15.0" />
+          <ColumnConstraints hgrow="ALWAYS" minWidth="15.0" prefWidth="15.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="15.0" prefHeight="15.0" vgrow="ALWAYS" />
+          <RowConstraints minHeight="15.0" prefHeight="15.0" vgrow="ALWAYS" />
+          <RowConstraints minHeight="15.0" prefHeight="15.0" vgrow="ALWAYS" />
+        </rowConstraints>
+      </GridPane>
+       <ImageView fx:id="imageView00" fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+       <ImageView fx:id="imageView01" fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+       <ImageView fx:id="imageView02" fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+       <ImageView fx:id="imageView03" fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+       <ImageView fx:id="imageView10" fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+       <ImageView fx:id="imageView11" fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+       <ImageView fx:id="imageView12" fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+       <ImageView fx:id="imageView13" fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+       <ImageView fx:id="imageView20" fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+       <ImageView fx:id="imageView21" fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+       <ImageView fx:id="imageView22" fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+       <ImageView fx:id="imageView23" fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+       <ImageView fx:id="imageViewExtMarble" fitHeight="15" fitWidth="15" layoutX="488.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true" />
 
+       <Button fx:id="marketMove" layoutX="40.0" layoutY="94.0" mnemonicParsing="false" onAction="#MarketMove" prefHeight="41.0" prefWidth="113.0" text="Attiva Mossa Mercato" textOverrun="CLIP" />
+   </children>
 </AnchorPane>

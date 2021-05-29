@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class MoveTypeMarket extends MoveType {
 
-    private int indexToBuy;
+    private int indexToBuy; //from 0 to 6- from 0 to 3 for columns - from 4 to 6 for rows
     public static final String className = "MovetypeMarket";
     private static final PlayerStatus[] allowedStatus = new PlayerStatus[]{PlayerStatus.Active};
 
