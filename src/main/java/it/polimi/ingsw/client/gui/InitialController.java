@@ -9,6 +9,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.input.ZoomEvent;
+import javafx.scene.layout.GridPane;
 
 import java.util.ArrayList;
 
@@ -40,27 +42,37 @@ public class InitialController extends ControllerGuiInterface{
     public Label lable4;
 
     @FXML
+    public GridPane grid;
+
+    private ArrayList<ImageView> imageViews = new ArrayList<>();
+    private ArrayList<Label> labels = new ArrayList<>();
+
+    @FXML
     public void initialize(){
         confirmButton.setDisable(true);
+
+        imageViews.add(imageView1);
+        imageViews.add(imageView2);
+        imageViews.add(imageView3);
+        imageViews.add(imageView4);
+
+        labels.add(lable1);
+        labels.add(lable2);
+        labels.add(lable3);
+        labels.add(lable4);
+
+        for(ImageView imageView : imageViews) {
+            imageView.fitWidthProperty().bind(grid.widthProperty().divide(5));
+            imageView.fitHeightProperty().bind(grid.heightProperty().divide(2));
+        }
     }
 
     @Override
     public void update() {
-        int id1 = gui.getModel().getLeaderCards().get(0).getId() +1;
-        Image image1 = new Image("/images/front/Masters of Renaissance_Cards_FRONT_3mmBleed_1-"+ id1 +"-1.png");
-        imageView1.setImage(image1);
-
-        int id2 = gui.getModel().getLeaderCards().get(1).getId() +1;
-        Image image2 = new Image("/images/front/Masters of Renaissance_Cards_FRONT_3mmBleed_1-"+ id2 +"-1.png");
-        imageView2.setImage(image2);
-
-        int id3 = gui.getModel().getLeaderCards().get(2).getId() +1;
-        Image image3 = new Image("/images/front/Masters of Renaissance_Cards_FRONT_3mmBleed_1-"+ id3 +"-1.png");
-        imageView3.setImage(image3);
-
-        int id4 = gui.getModel().getLeaderCards().get(3).getId() +1;
-        Image image4 = new Image("/images/front/Masters of Renaissance_Cards_FRONT_3mmBleed_1-"+ id4 +"-1.png");
-        imageView4.setImage(image4);
+        for(int i=0; i<imageViews.size(); i++){
+            int id = gui.getModel().getLeaderCards().get(i).getId() +1;
+            imageViews.get(i).setImage(new Image("/images/front/Masters of Renaissance_Cards_FRONT_3mmBleed_1-"+ id +"-1.png"));
+        }
     }
 
     @Override
@@ -68,55 +80,16 @@ public class InitialController extends ControllerGuiInterface{
         return className;
     }
 
-    public void selectCard0(MouseEvent mouseEvent) {
-        if(!chosen[0]) {
-            choice.add(gui.getModel().getLeaderCards().get(0).getId());
-            lable1.setText("selected");
+    public void selectCard(MouseEvent mouseEvent){
+        int index = imageViews.indexOf((ImageView) mouseEvent.getSource());
+        if(!chosen[index]) {
+            choice.add(gui.getModel().getLeaderCards().get(index).getId());
+            labels.get(index).setText("selected");
         }else{
-            choice.remove((Integer) gui.getModel().getLeaderCards().get(0).getId());
-            lable1.setText("");
+            choice.remove((Integer) gui.getModel().getLeaderCards().get(index).getId());
+            labels.get(index).setText("");
         }
-        chosen[0]=!chosen[0];
-        imageView1.setSmooth(chosen[0]);
-        checkButton();
-    }
-
-    public void selectCard1(MouseEvent mouseEvent) {
-        if(!chosen[1]) {
-            choice.add(gui.getModel().getLeaderCards().get(1).getId());
-            lable2.setText("selected");
-        }else{
-            choice.remove((Integer) gui.getModel().getLeaderCards().get(1).getId());
-            lable2.setText("");
-        }
-        chosen[1]=!chosen[1];
-        imageView2.setSmooth(chosen[1]);
-        checkButton();
-    }
-
-    public void selectCard2(MouseEvent mouseEvent) {
-        if(!chosen[2]) {
-            choice.add(gui.getModel().getLeaderCards().get(2).getId());
-            lable3.setText("selected");
-        }else{
-            choice.remove((Integer) gui.getModel().getLeaderCards().get(2).getId());
-            lable3.setText("");
-        }
-        chosen[2]=!chosen[2];
-        imageView3.setSmooth(chosen[2]);
-        checkButton();
-    }
-
-    public void selectCard3(MouseEvent mouseEvent) {
-        if(!chosen[3]) {
-            choice.add(gui.getModel().getLeaderCards().get(3).getId());
-            lable4.setText("selected");
-        }else{
-            choice.remove((Integer) gui.getModel().getLeaderCards().get(3).getId());
-            lable4.setText("");
-        }
-        chosen[3]=!chosen[3];
-        imageView4.setSmooth(chosen[3]);
+        chosen[index]=!chosen[index];
         checkButton();
     }
 
@@ -130,4 +103,5 @@ public class InitialController extends ControllerGuiInterface{
     private void checkButton(){
         this.confirmButton.setDisable(choice.size()!=2);
     }
+
 }
