@@ -19,4 +19,8 @@ public class BaseController extends ControllerGuiInterface{
     public void goToMarket(ActionEvent actionEvent) {
         gui.activate(MarketController.className);
     }
+    public void goToDashboard(ActionEvent actionEvent) {
+        gui.activate(DashboardController.className);
+    }
+
 }
