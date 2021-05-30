@@ -12,8 +12,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 
+import javax.swing.border.LineBorder;
+import java.awt.*;
 import java.util.ArrayList;
 
 public class DashboardController extends ControllerGuiInterface{
@@ -22,8 +26,6 @@ public class DashboardController extends ControllerGuiInterface{
     private int  indexToBuy;
     private final boolean[] selected = new boolean[12];
 
-    @FXML
-    public GridPane grid;
 
     @FXML
     public Button confirmButton;
@@ -79,9 +81,34 @@ public class DashboardController extends ControllerGuiInterface{
     public Label label11;
     @FXML
     public Label label12;
+    @FXML
+    public BorderPane BPane1;
+    @FXML
+    public BorderPane BPane2;
+    @FXML
+    public BorderPane BPane3;
+    @FXML
+    public BorderPane BPane4;
+    @FXML
+    public BorderPane BPane5;
+    @FXML
+    public BorderPane BPane6;
+    @FXML
+    public BorderPane BPane7;
+    @FXML
+    public BorderPane BPane8;
+    @FXML
+    public BorderPane BPane9;
+    @FXML
+    public BorderPane BPane10;
+    @FXML
+    public BorderPane BPane11;
+    @FXML
+    public BorderPane BPane12;
 
     private final ArrayList<ImageView> imageViews = new ArrayList<>();
     private final ArrayList<Label> labels = new ArrayList<>();
+    private final ArrayList<BorderPane> borderPanes = new ArrayList<>();
 
     @FXML
     public void initialize(){
@@ -113,11 +140,24 @@ public class DashboardController extends ControllerGuiInterface{
         labels.add(label11);
         labels.add(label12);
 
+        borderPanes.add(BPane1);
+        borderPanes.add(BPane2);
+        borderPanes.add(BPane3);
+        borderPanes.add(BPane4);
+        borderPanes.add(BPane5);
+        borderPanes.add(BPane6);
+        borderPanes.add(BPane7);
+        borderPanes.add(BPane8);
+        borderPanes.add(BPane9);
+        borderPanes.add(BPane10);
+        borderPanes.add(BPane11);
+        borderPanes.add(BPane12);
 
-        for(ImageView imageView : imageViews) {
+
+        /*for(ImageView imageView : imageViews) {
             imageView.fitWidthProperty().bind(grid.widthProperty().divide(5));
             imageView.fitHeightProperty().bind(grid.heightProperty().divide(2));
-        }
+        }*/
 
     }
     @Override
@@ -142,29 +182,31 @@ public class DashboardController extends ControllerGuiInterface{
     public void onMouseClicked(MouseEvent mouseEvent) {
 
         int index = imageViews.indexOf((ImageView) mouseEvent.getSource());
-        if(check(index)) {
+        if(!check(index)) {
             indexToBuy = gui.getModel().getDashboard().getTopDevCard(ColorDevCard.values()[index%4],Level.values()[index/4]).getId();
             labels.get(index).setText("selected");
         }else{
             indexToBuy = -1;
             labels.get(index).setText("");
         }
-       if(indexToBuy<0){
-           confirmButton.setDisable(true);
-       }
+        confirmButton.setDisable(indexToBuy < 0);
 
     }
 
-    public void buttonClick(ActionEvent actionEvent){
-        if(confirmButton.isPressed()){
-            MoveBuyDevCard move = new MoveBuyDevCard(gui.getModel().getMyID());
-            move.setIndexCardToBuy(indexToBuy);
-            gui.sendMove(move);
-        }
-        if (baseButton.isPressed()){
+    public void confirm(ActionEvent actionEvent){
+        MoveBuyDevCard move = new MoveBuyDevCard(gui.getModel().getMyID());
+        move.setIndexCardToBuy(indexToBuy);
+        gui.sendMove(move);
+        gui.activate(BaseController.className);
+    }
+    public void baseButton(ActionEvent actionEvent){
             gui.activate(BaseController.className);
-        }
     }
+
+    /*public void onMouseClickedBorderPane(MouseEvent mouseEvent){
+        int index = borderPanes.indexOf((BorderPane) mouseEvent.getSource());
+        borderPanes.get(index).set;
+    }*/
 
     //solo per evitare codice duplicato
     private boolean check(int pos){

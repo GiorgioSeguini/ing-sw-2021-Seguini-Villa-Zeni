@@ -3,58 +3,106 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="611.0" prefWidth="738.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.gui.DashboardController">
+<AnchorPane prefHeight="600.0" prefWidth="862.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.gui.DashboardController">
    <children>
-      <Button fx:id="confirmButton" layoutX="76.0" layoutY="26.0" mnemonicParsing="false" onAction="#buttonClick" prefHeight="58.0" prefWidth="145.0" text="Compra" />
-      <TextField alignment="CENTER" layoutX="294.0" layoutY="31.0" prefHeight="49.0" prefWidth="182.0" text="Dashboard">
-         <font>
-            <Font name="Bodoni MT Bold Italic" size="25.0" />
-         </font>
-      </TextField>
-      <Button fx:id="baseButton" layoutX="702.0" layoutY="13.0" mnemonicParsing="false" onAction="#buttonClick" prefHeight="22.0" prefWidth="24.0" text="X" />
-      <GridPane fx:id="grid" layoutX="22.0" layoutY="128.0" prefHeight="463.0" prefWidth="694.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints maxHeight="223.20000000000002" minHeight="10.0" prefHeight="120.59998474121093" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="140.4" minHeight="0.0" prefHeight="33.00001525878906" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="174.40000000000003" minHeight="10.0" prefHeight="125.4" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="174.40000000000003" minHeight="10.0" prefHeight="30.600000000000023" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="125.19999999999999" minHeight="10.0" prefHeight="125.19999999999999" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="93.39999999999998" minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <Label fx:id="label1" prefHeight="18.0" prefWidth="172.0" GridPane.rowIndex="1" />
-            <Label fx:id="label2" prefHeight="18.0" prefWidth="172.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label fx:id="label3" prefHeight="18.0" prefWidth="173.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Label fx:id="label4" prefHeight="18.0" prefWidth="171.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <Label fx:id="label5" prefHeight="18.0" prefWidth="173.0" GridPane.rowIndex="3" />
-            <Label fx:id="label6" prefHeight="18.0" prefWidth="172.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Label fx:id="label7" prefHeight="18.0" prefWidth="174.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <Label fx:id="label8" prefHeight="18.0" prefWidth="172.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-            <Label fx:id="label9" prefHeight="18.0" prefWidth="173.0" GridPane.rowIndex="5" />
-            <Label fx:id="label10" prefHeight="18.0" prefWidth="173.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <Label fx:id="label11" prefHeight="18.0" prefWidth="173.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-            <Label fx:id="label12" prefHeight="18.0" prefWidth="172.0" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-            <ImageView fx:id="imageView1" fitHeight="122.0" fitWidth="173.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="imageView2" fitHeight="122.0" fitWidth="173.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
-            <ImageView fx:id="imageView3" fitHeight="122.0" fitWidth="173.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
-            <ImageView fx:id="imageView4" fitHeight="122.0" fitWidth="173.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" />
-            <ImageView fx:id="imageView5" fitHeight="122.0" fitWidth="173.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2" />
-            <ImageView fx:id="imageView6" fitHeight="122.0" fitWidth="173.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <ImageView fx:id="imageView7" fitHeight="122.0" fitWidth="173.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <ImageView fx:id="imageView8" fitHeight="122.0" fitWidth="173.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-            <ImageView fx:id="imageView9" fitHeight="122.0" fitWidth="173.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4" />
-            <ImageView fx:id="imageView10" fitHeight="122.0" fitWidth="173.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <ImageView fx:id="imageView11" fitHeight="122.0" fitWidth="173.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <ImageView fx:id="imageView12" fitHeight="122.0" fitWidth="173.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-         </children>
-      </GridPane>
+      <Button fx:id="baseButton" layoutX="838.0" layoutY="1.0" mnemonicParsing="false" onAction="#baseButton" prefHeight="22.0" prefWidth="24.0" text="X" />
+      <BorderPane fx:id="BPane1" layoutX="40.0" layoutY="27.0" onMouseClicked="#onMouseClicked" prefHeight="180.0" prefWidth="180.0">
+         <center>
+            <ImageView fx:id="imageView1" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+         </center>
+         <bottom>
+            <Label fx:id="label1" prefHeight="26.0" prefWidth="116.0" BorderPane.alignment="CENTER" />
+         </bottom>
+      </BorderPane>
+      <BorderPane fx:id="BPane2" layoutX="220.0" layoutY="27.0" prefHeight="180.0" prefWidth="180.0">
+         <center>
+            <ImageView fx:id="imageView2" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+         </center>
+         <bottom>
+            <Label fx:id="label2" BorderPane.alignment="CENTER" />
+         </bottom>
+      </BorderPane>
+      <BorderPane fx:id="BPane3" layoutX="400.0" layoutY="27.0" prefHeight="180.0" prefWidth="180.0">
+         <center>
+            <ImageView fx:id="imageView3" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+         </center>
+         <bottom>
+            <Label fx:id="label3" BorderPane.alignment="CENTER" />
+         </bottom>
+      </BorderPane>
+      <BorderPane fx:id="BPane4" layoutX="580.0" layoutY="27.0" prefHeight="180.0" prefWidth="180.0">
+         <center>
+            <ImageView fx:id="imageView4" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+         </center>
+         <bottom>
+            <Label fx:id="label4" BorderPane.alignment="CENTER" />
+         </bottom>
+      </BorderPane>
+      <BorderPane fx:id="BPane5" layoutX="40.0" layoutY="207.0" prefHeight="180.0" prefWidth="180.0">
+         <center>
+            <ImageView fx:id="imageView5" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+         </center>
+         <bottom>
+            <Label fx:id="label5" BorderPane.alignment="CENTER" />
+         </bottom>
+      </BorderPane>
+      <BorderPane fx:id="BPane6" layoutX="220.0" layoutY="207.0" prefHeight="180.0" prefWidth="180.0">
+         <center>
+            <ImageView fx:id="imageView6" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+         </center>
+         <bottom>
+            <Label fx:id="label6" BorderPane.alignment="CENTER" />
+         </bottom>
+      </BorderPane>
+      <BorderPane fx:id="BPane7" layoutX="400.0" layoutY="207.0" prefHeight="180.0" prefWidth="180.0">
+         <center>
+            <ImageView fx:id="imageView7" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+         </center>
+         <bottom>
+            <Label fx:id="label7" BorderPane.alignment="CENTER" />
+         </bottom>
+      </BorderPane>
+      <BorderPane fx:id="BPane8" layoutX="580.0" layoutY="207.0" prefHeight="180.0" prefWidth="180.0">
+         <center>
+            <ImageView fx:id="imageView8" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+         </center>
+         <bottom>
+            <Label fx:id="label8" BorderPane.alignment="CENTER" />
+         </bottom>
+      </BorderPane>
+      <BorderPane fx:id="BPane9" layoutX="40.0" layoutY="390.0" prefHeight="180.0" prefWidth="180.0">
+         <center>
+            <ImageView fx:id="imageView9" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+         </center>
+         <bottom>
+            <Label fx:id="label9" BorderPane.alignment="CENTER" />
+         </bottom>
+      </BorderPane>
+      <BorderPane fx:id="BPane10" layoutX="220.0" layoutY="390.0" prefHeight="180.0" prefWidth="180.0">
+         <center>
+            <ImageView fx:id="imageView10" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+         </center>
+         <bottom>
+            <Label fx:id="label10" BorderPane.alignment="CENTER" />
+         </bottom>
+      </BorderPane>
+      <BorderPane fx:id="BPane11" layoutX="400.0" layoutY="390.0" prefHeight="180.0" prefWidth="180.0">
+         <center>
+            <ImageView fx:id="imageView11" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+         </center>
+         <bottom>
+            <Label fx:id="label11" BorderPane.alignment="CENTER" />
+         </bottom>
+      </BorderPane>
+      <BorderPane fx:id="BPane12" layoutX="580.0" layoutY="390.0" prefHeight="180.0" prefWidth="180.0">
+         <center>
+            <ImageView fx:id="imageView12" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+         </center>
+         <bottom>
+            <Label fx:id="label12" BorderPane.alignment="CENTER" />
+         </bottom>
+      </BorderPane>
+      <Button fx:id="confirmButton" layoutX="766.0" layoutY="1.0" mnemonicParsing="false" onAction="#confirm" text="Compra" />
    </children>
 </AnchorPane>
