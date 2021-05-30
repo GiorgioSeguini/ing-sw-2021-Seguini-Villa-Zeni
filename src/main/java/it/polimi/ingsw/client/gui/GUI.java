@@ -52,7 +52,7 @@ public class GUI extends Application implements UI {
         loaders.add(new FXMLLoader(getClass().getResource("base.fxml")));
         loaders.add(new FXMLLoader(getClass().getResource("market.fxml")));
         loaders.add(new FXMLLoader((getClass().getResource("lobby.fxml"))));
-        //loaders.add(new FXMLLoader((getClass().getResource("dashboard.fxml"))));
+        loaders.add(new FXMLLoader((getClass().getResource("dashboard.fxml"))));
 
 
         for (FXMLLoader loader : loaders) {
