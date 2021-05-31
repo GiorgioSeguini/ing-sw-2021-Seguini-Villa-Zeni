@@ -11,7 +11,7 @@
             <Image url="@../../../../../images/punchboard/plancia_portabiglie.png" />
          </image>
       </ImageView>
-      <Button fx:id="returnback" layoutX="40.0" layoutY="48.0" mnemonicParsing="false" onAction="#returnBack" text="Plancia" />
+      <Button fx:id="returnback" layoutX="186.0" layoutY="49.0" mnemonicParsing="false" onAction="#returnBack" prefHeight="27.0" prefWidth="75.0" text="Plancia" />
       <GridPane fx:id="grid" layoutX="380.0" layoutY="94.0" prefHeight="115.0" prefWidth="120.0">
         <columnConstraints>
           <ColumnConstraints hgrow="ALWAYS" minWidth="15.0" prefWidth="15.0" />
@@ -40,8 +40,8 @@
         </children>
       </GridPane>
 
-       <ImageView fx:id="imageViewExtMarble" fitHeight="15" fitWidth="15" layoutX="488.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true" />
+       <ImageView fx:id="imageViewExtMarble" fitHeight="15" fitWidth="15" layoutX="500.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true" />
 
-       <Button fx:id="marketMove" layoutX="40.0" layoutY="94.0" mnemonicParsing="false" onAction="#MarketMove" prefHeight="41.0" prefWidth="113.0" text="Attiva Mossa Mercato" textOverrun="CLIP" />
+       <Button fx:id="marketMoveConfirm" layoutX="40.0" layoutY="51.0" mnemonicParsing="false" onAction="#MarketMoveConfirm" prefHeight="27.0" prefWidth="113.0" text="Attiva Mossa Mercato" textOverrun="CLIP" />
    </children>
 </AnchorPane>

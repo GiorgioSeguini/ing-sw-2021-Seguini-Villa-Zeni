@@ -1,20 +1,16 @@
 package it.polimi.ingsw.client.gui;
 
-import it.polimi.ingsw.client.cli.CliMoveTypeMarket;
 import it.polimi.ingsw.constant.enumeration.MarbleColor;
-import it.polimi.ingsw.constant.move.MoveChoseLeaderCards;
-import it.polimi.ingsw.constant.move.MoveType;
 import it.polimi.ingsw.constant.move.MoveTypeMarket;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 
-import java.util.ArrayList;
-
-public class MarketController extends ControllerGuiInterface{
+public class MarketController extends ControllerGuiInterface implements EventHandler<ActionEvent> {
 
     public static String className = "market";
     private static int nCol=4;
@@ -55,7 +51,7 @@ public class MarketController extends ControllerGuiInterface{
     private ImageView imageViewExtMarble;
 
     @FXML
-    private Button marketMove;
+    private Button marketMoveConfirm;
 
     @FXML
     private Button returnback;
@@ -66,7 +62,9 @@ public class MarketController extends ControllerGuiInterface{
     @FXML
     public void initialize(){
         returnback.setDisable(false);
-        marketMove.setDisable(false);
+        marketMoveConfirm.setDisable(false);
+        returnback.setVisible(true);
+        marketMoveConfirm.setVisible(true);
         marbleImages[0][0]= imageView00;
         marbleImages[0][1]= imageView01;
         marbleImages[0][2]= imageView02;
@@ -83,20 +81,23 @@ public class MarketController extends ControllerGuiInterface{
 
     @Override
     public void update() {
+        System.out.println(gui.getModel().getMarketTray());
         for(int i=0; i<nRow; i++){
             for (int j=0; j<nCol; j++){
                 MarbleColor color= gui.getModel().getMarketTray().gettMarble(i,j);
-                marbleImages[i][j].setImage(new Image("/images/marbles/"+color+".png"));
+                marbleImages[i][j].setImage(new Image(getImagePath(color)));
             }
         }
+
         MarbleColor extMarble=gui.getModel().getMarketTray().getExternalMarble();
-        imageViewExtMarble.setImage(new Image("/images/marbles/"+extMarble+".png"));
+        imageViewExtMarble.setImage(new Image(getImagePath(extMarble)));
 
     }
 
-    public void MarketMove(ActionEvent actionEvent) {
-        System.out.println("Forse ho capito come funziona");
-
+    public void MarketMoveConfirm(ActionEvent actionEvent) {
+        Button button= new Button("Ok");
+        button.setOnAction(this);
+        AlertBox.display("Mossa Market", "Stai scegliendo di comprare risorse dal mercato. Se decidi di continuare non potrai tornare indietro", button);
     }
 
 
@@ -108,5 +109,25 @@ public class MarketController extends ControllerGuiInterface{
         MoveTypeMarket move = new MoveTypeMarket(gui.getModel().getMyID());
         move.setIndexToBuy(index);// TODO: 5/29/21 raccogliere index ancora non so bene come, pensavo a dei bottoni sulle frecce 
         gui.sendMove(move);
+    }
+
+    private String getImagePath(MarbleColor color){
+        String path="/images/marbles/"+color+".png";
+        return path;
+    }
+
+    @Override
+    public void handle(ActionEvent event) {
+        System.out.println("Sto facendo la mossa");
+        returnback.setDisable(false);
+        marketMoveConfirm.setDisable(false);
+        returnback.setVisible(true);
+        marketMoveConfirm.setVisible(true);
+        AlertBox.getWindow().close();
+        makeMove();
+    }
+
+    private void makeMove() {
+
     }
 }
