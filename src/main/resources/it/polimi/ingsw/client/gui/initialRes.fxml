@@ -9,22 +9,22 @@
       <Label fx:id="label" layoutX="238.0" layoutY="14.0" prefHeight="40.0" prefWidth="125.0" text="Scegli le risorse iniziali" />
       <ImageView fitHeight="90.0" fitWidth="125.0" layoutX="45.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../images/punchboard/coin.png" />
+            <Image url="@../../../../../images/punchboard/Coins.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="90.0" fitWidth="125.0" layoutX="313.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../images/punchboard/servant.png" />
+            <Image url="@../../../../../images/punchboard/Servants.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="90.0" fitWidth="125.0" layoutX="59.0" layoutY="231.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../images/punchboard/shield.png" />
+            <Image url="@../../../../../images/punchboard/Shields.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="90.0" fitWidth="125.0" layoutX="315.0" layoutY="231.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../images/punchboard/stone.png" />
+            <Image url="@../../../../../images/punchboard/Stones.png" />
          </image>
       </ImageView>
       <Button fx:id="button" layoutX="490.0" layoutY="321.0" mnemonicParsing="false" onAction="#onButton" text="Button" />
