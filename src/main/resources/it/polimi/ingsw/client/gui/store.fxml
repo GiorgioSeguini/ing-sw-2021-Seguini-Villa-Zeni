@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane fx:id="grid" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.gui.StoreResourcesController">
+    <columnConstraints>
+        <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="5.0" />
+        <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="120.0" />
+        <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="10.0" />
+        <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="80.0" />
+        <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="5.0" />
+        <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="80.0" />
+        <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="5.0" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints minHeight="5.0" prefHeight="5.0" vgrow="ALWAYS" />
+        <RowConstraints minHeight="10.0" prefHeight="100.0" vgrow="ALWAYS" />
+        <RowConstraints minHeight="5.0" prefHeight="5.0" vgrow="ALWAYS" />
+        <RowConstraints minHeight="10.0" prefHeight="100.0" vgrow="ALWAYS" />
+        <RowConstraints minHeight="5.0" prefHeight="5.0" vgrow="ALWAYS" />
+        <RowConstraints minHeight="5.0" prefHeight="5.0" vgrow="ALWAYS" />
+    </rowConstraints>
+   <children>
+      <ImageView fitHeight="228.0" fitWidth="162.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Image url="@../../../../../images/board/Depots.png" />
+      </ImageView>
+      <ImageView fitHeight="95.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1">
+            <Image url="@../../../../../images/punchboard/Coins.png" />
+      </ImageView>
+       <ImageView fitHeight="95.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="1">
+           <Image url="@../../../../../images/punchboard/Servants.png" />
+       </ImageView>
+       <ImageView fitHeight="95.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="3">
+           <Image url="@../../../../../images/punchboard/Shields.png" />
+       </ImageView>
+       <ImageView fitHeight="95.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="3">
+           <Image url="@../../../../../images/punchboard/Stones.png" />
+       </ImageView>
+      <ChoiceBox fx:id="coins" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+      <ChoiceBox fx:id="servants" prefWidth="150.0" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+      <ChoiceBox fx:id="shields" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+      <ChoiceBox fx:id="stones" prefWidth="150.0" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+      <Button mnemonicParsing="false" text="Conferma" GridPane.columnIndex="6" GridPane.rowIndex="5" onAction="#onAction"/>
+   </children>
+</GridPane>
