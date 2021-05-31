@@ -5,6 +5,7 @@ import it.polimi.ingsw.client.UI;
 import it.polimi.ingsw.client.modelClient.GameClient;
 import it.polimi.ingsw.client.parser.StarterClient;
 import it.polimi.ingsw.constant.enumeration.GameStatus;
+import it.polimi.ingsw.constant.enumeration.PlayerStatus;
 import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.constant.move.MoveType;
 import javafx.application.Application;
@@ -53,6 +54,7 @@ public class GUI extends Application implements UI {
         loaders.add(new FXMLLoader(getClass().getResource("market.fxml")));
         loaders.add(new FXMLLoader((getClass().getResource("lobby.fxml"))));
         loaders.add(new FXMLLoader((getClass().getResource("dashboard.fxml"))));
+        loaders.add(new FXMLLoader((getClass().getResource("store.fxml"))));
 
 
         for (FXMLLoader loader : loaders) {
@@ -88,6 +90,9 @@ public class GUI extends Application implements UI {
                 if(myTurn){
                     current.update();
                 }else{
+                    if(this.getModel().getMe().getStatus()== PlayerStatus.NeedToStore){
+                        activate(StoreResourcesController.className);
+                    }
                     activate("base");
                     myTurn=true;
                 }
