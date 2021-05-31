@@ -189,7 +189,7 @@ public class MarketController extends ControllerGuiInterface{
     public void selectRowCol(MouseEvent mouseEvent){
         index=rowcol.indexOf((ImageView) mouseEvent.getSource());
         if(index<4){
-            print(new Text("\nHai scelto la "+ (index+1)+"colonna."));
+            print(new Text("\nHai scelto la "+ (index+1)+"colonna.")); //todo forse meglio un label, il click funziona bene ma la print è un po' rinco
             System.out.println("colonna "+ (index+1));
         }else {
             print(new Text("\n Hai scelto la "+ (index-3)+ "riga."));
