@@ -9,20 +9,47 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 
-
 public class AlertBox {
-    private static Stage window;
+    private Stage window;
+    private String boxTitle;
+    private String boxMessage;
+    private VBox layout;
 
-    public static Stage getWindow() {
-        return window;
+    public AlertBox(String boxTitle, String boxMessage){
+        window= new Stage();
+        this.boxTitle= boxTitle;
+        this.boxMessage= boxMessage;
+        layout=createAlertBox();
     }
 
-    private static VBox createAlertBox(String boxTitle, String boxMessage){
+    public AlertBox(String boxTitle, String boxMessage, Button button){
+        window= new Stage();
+        this.boxTitle= boxTitle;
+        this.boxMessage= boxMessage;
+        layout=createAlertBox();
+        addButton(button);
+    }
+
+    public void addButton(Button button){
+        layout.getChildren().addAll(button);
+    }
+
+    public void display(){
+        Scene scene= new Scene(layout);
+        window.setScene(scene);
+        window.showAndWait();
+    }
+
+    public void closeBox(){
+        window.close();
+    }
+
+    private VBox createAlertBox(){
         window= new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle(boxTitle);
-        window.setMinWidth(250);
-        window.setMaxHeight(250);
+        window.setMinWidth(400);
+        window.setMaxHeight(400);
 
         Label label= new Label();
         label.setText(boxMessage);
@@ -34,20 +61,5 @@ public class AlertBox {
         layout.setAlignment(Pos.CENTER);
 
         return layout;
-    }
-
-    public static void display(String boxTitle, String boxMessage){
-        VBox layout=createAlertBox(boxTitle,boxMessage);
-        Scene scene= new Scene(layout);
-        window.setScene(scene);
-        window.showAndWait();
-    }
-
-    public static void display(String boxTitle, String boxMessage, Button button){
-        VBox layout=createAlertBox(boxTitle,boxMessage);
-        layout.getChildren().addAll(button);
-        Scene scene= new Scene(layout);
-        window.setScene(scene);
-        window.showAndWait();
     }
 }

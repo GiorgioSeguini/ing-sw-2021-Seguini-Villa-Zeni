@@ -10,13 +10,14 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 
-public class MarketController extends ControllerGuiInterface implements EventHandler<ActionEvent> {
+public class MarketController extends ControllerGuiInterface{
 
     public static String className = "market";
     private static int nCol=4;
     private static int nRow=3;
     private ImageView[][] marbleImages= new ImageView[nRow][nCol];
     private int index;
+    private AlertBox box;
 
     @Override
     public String getName() {
@@ -95,9 +96,23 @@ public class MarketController extends ControllerGuiInterface implements EventHan
     }
 
     public void MarketMoveConfirm(ActionEvent actionEvent) {
+        box= new AlertBox("Mossa Market", "Stai scegliendo di comprare risorse dal mercato. Se decidi di continuare non potrai tornare indietro");
         Button button= new Button("Ok");
-        button.setOnAction(this);
-        AlertBox.display("Mossa Market", "Stai scegliendo di comprare risorse dal mercato. Se decidi di continuare non potrai tornare indietro", button);
+        EventHandler<ActionEvent> event = new
+                EventHandler<ActionEvent>() {
+                    public void handle(ActionEvent e)
+                    {
+                        returnback.setDisable(true);
+                        marketMoveConfirm.setDisable(true);
+                        returnback.setVisible(false);
+                        marketMoveConfirm.setVisible(false);
+                        box.closeBox();
+                        makeMove();
+                    }
+                };
+        button.setOnAction(event);
+        box.addButton(button);
+        box.display();
     }
 
 
@@ -116,18 +131,8 @@ public class MarketController extends ControllerGuiInterface implements EventHan
         return path;
     }
 
-    @Override
-    public void handle(ActionEvent event) {
-        System.out.println("Sto facendo la mossa");
-        returnback.setDisable(false);
-        marketMoveConfirm.setDisable(false);
-        returnback.setVisible(true);
-        marketMoveConfirm.setVisible(true);
-        AlertBox.getWindow().close();
-        makeMove();
-    }
-
     private void makeMove() {
-
+        System.out.println("Sto facendo la mossa");
     }
+
 }
