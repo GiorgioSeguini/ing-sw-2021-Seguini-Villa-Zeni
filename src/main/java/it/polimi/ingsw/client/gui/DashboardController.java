@@ -24,7 +24,8 @@ public class DashboardController extends ControllerGuiInterface{
 
     public static String className = "dashboard";
     private int  indexToBuy;
-    private final boolean[] selected = new boolean[12];
+    private final ArrayList<Integer> choice = new ArrayList<>();
+    private final boolean[] chosen =new boolean[12];
 
 
     @FXML
@@ -154,11 +155,6 @@ public class DashboardController extends ControllerGuiInterface{
         borderPanes.add(BPane12);
 
 
-        /*for(ImageView imageView : imageViews) {
-            imageView.fitWidthProperty().bind(grid.widthProperty().divide(5));
-            imageView.fitHeightProperty().bind(grid.heightProperty().divide(2));
-        }*/
-
     }
     @Override
     public String getName() {
@@ -182,20 +178,20 @@ public class DashboardController extends ControllerGuiInterface{
     public void onMouseClicked(MouseEvent mouseEvent) {
 
         int index = imageViews.indexOf((ImageView) mouseEvent.getSource());
-        if(!check(index)) {
-            indexToBuy = gui.getModel().getDashboard().getTopDevCard(ColorDevCard.values()[index%4],Level.values()[index/4]).getId();
+        if(!chosen[index]) {
+            choice.add(gui.getModel().getDashboard().getTopDevCard(ColorDevCard.values()[index%4],Level.values()[index/4]).getId());
             labels.get(index).setText("selected");
         }else{
-            indexToBuy = -1;
+            choice.remove((Integer)gui.getModel().getDashboard().getTopDevCard(ColorDevCard.values()[index%4],Level.values()[index/4]).getId());
             labels.get(index).setText("");
         }
-        confirmButton.setDisable(indexToBuy < 0);
-
+        chosen[index]=!chosen[index];
+        checkButton();
     }
 
     public void confirm(ActionEvent actionEvent){
         MoveBuyDevCard move = new MoveBuyDevCard(gui.getModel().getMyID());
-        move.setIndexCardToBuy(indexToBuy);
+        move.setIndexCardToBuy(choice.get(0));
         gui.sendMove(move);
         gui.activate(BaseController.className);
     }
@@ -203,14 +199,8 @@ public class DashboardController extends ControllerGuiInterface{
             gui.activate(BaseController.className);
     }
 
-    /*public void onMouseClickedBorderPane(MouseEvent mouseEvent){
-        int index = borderPanes.indexOf((BorderPane) mouseEvent.getSource());
-        borderPanes.get(index).set;
-    }*/
-
-    //solo per evitare codice duplicato
-    private boolean check(int pos){
-        return selected[pos];
+    private void checkButton(){
+        this.confirmButton.setDisable(choice.size()!=1);
     }
 
     //TODO:  devo rivederla tutta
