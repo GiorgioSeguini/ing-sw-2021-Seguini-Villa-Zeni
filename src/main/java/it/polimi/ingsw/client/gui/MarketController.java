@@ -90,7 +90,7 @@ public class MarketController extends ControllerGuiInterface{
             }
         }
         MarbleColor extMarble=gui.getModel().getMarketTray().getExternalMarble();
-        //imageViewExtMarble.setImage(new Image("/image/marbles/"+extMarble+".png")); TODO perchè cazzo non funzioni?
+        imageViewExtMarble.setImage(new Image("/images/marbles/"+extMarble+".png"));
 
     }
 

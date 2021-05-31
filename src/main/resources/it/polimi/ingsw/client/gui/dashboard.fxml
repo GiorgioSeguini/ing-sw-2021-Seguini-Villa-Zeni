@@ -17,7 +17,7 @@
       </BorderPane>
       <BorderPane fx:id="BPane2" layoutX="220.0" layoutY="27.0" prefHeight="180.0" prefWidth="180.0">
          <center>
-            <ImageView fx:id="imageView2" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+            <ImageView fx:id="imageView2" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
          </center>
          <bottom>
             <Label fx:id="label2" BorderPane.alignment="CENTER" />
@@ -25,7 +25,7 @@
       </BorderPane>
       <BorderPane fx:id="BPane3" layoutX="400.0" layoutY="27.0" prefHeight="180.0" prefWidth="180.0">
          <center>
-            <ImageView fx:id="imageView3" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+            <ImageView fx:id="imageView3" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
          </center>
          <bottom>
             <Label fx:id="label3" BorderPane.alignment="CENTER" />
@@ -33,7 +33,7 @@
       </BorderPane>
       <BorderPane fx:id="BPane4" layoutX="580.0" layoutY="27.0" prefHeight="180.0" prefWidth="180.0">
          <center>
-            <ImageView fx:id="imageView4" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+            <ImageView fx:id="imageView4" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
          </center>
          <bottom>
             <Label fx:id="label4" BorderPane.alignment="CENTER" />
@@ -41,7 +41,7 @@
       </BorderPane>
       <BorderPane fx:id="BPane5" layoutX="40.0" layoutY="207.0" prefHeight="180.0" prefWidth="180.0">
          <center>
-            <ImageView fx:id="imageView5" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+            <ImageView fx:id="imageView5" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
          </center>
          <bottom>
             <Label fx:id="label5" BorderPane.alignment="CENTER" />
@@ -49,7 +49,7 @@
       </BorderPane>
       <BorderPane fx:id="BPane6" layoutX="220.0" layoutY="207.0" prefHeight="180.0" prefWidth="180.0">
          <center>
-            <ImageView fx:id="imageView6" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+            <ImageView fx:id="imageView6" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
          </center>
          <bottom>
             <Label fx:id="label6" BorderPane.alignment="CENTER" />
@@ -57,7 +57,7 @@
       </BorderPane>
       <BorderPane fx:id="BPane7" layoutX="400.0" layoutY="207.0" prefHeight="180.0" prefWidth="180.0">
          <center>
-            <ImageView fx:id="imageView7" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+            <ImageView fx:id="imageView7" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
          </center>
          <bottom>
             <Label fx:id="label7" BorderPane.alignment="CENTER" />
@@ -65,7 +65,7 @@
       </BorderPane>
       <BorderPane fx:id="BPane8" layoutX="580.0" layoutY="207.0" prefHeight="180.0" prefWidth="180.0">
          <center>
-            <ImageView fx:id="imageView8" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+            <ImageView fx:id="imageView8" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
          </center>
          <bottom>
             <Label fx:id="label8" BorderPane.alignment="CENTER" />
@@ -73,7 +73,7 @@
       </BorderPane>
       <BorderPane fx:id="BPane9" layoutX="40.0" layoutY="390.0" prefHeight="180.0" prefWidth="180.0">
          <center>
-            <ImageView fx:id="imageView9" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+            <ImageView fx:id="imageView9" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
          </center>
          <bottom>
             <Label fx:id="label9" BorderPane.alignment="CENTER" />
@@ -81,7 +81,7 @@
       </BorderPane>
       <BorderPane fx:id="BPane10" layoutX="220.0" layoutY="390.0" prefHeight="180.0" prefWidth="180.0">
          <center>
-            <ImageView fx:id="imageView10" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+            <ImageView fx:id="imageView10" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
          </center>
          <bottom>
             <Label fx:id="label10" BorderPane.alignment="CENTER" />
@@ -89,7 +89,7 @@
       </BorderPane>
       <BorderPane fx:id="BPane11" layoutX="400.0" layoutY="390.0" prefHeight="180.0" prefWidth="180.0">
          <center>
-            <ImageView fx:id="imageView11" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+            <ImageView fx:id="imageView11" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
          </center>
          <bottom>
             <Label fx:id="label11" BorderPane.alignment="CENTER" />
@@ -97,7 +97,7 @@
       </BorderPane>
       <BorderPane fx:id="BPane12" layoutX="580.0" layoutY="390.0" prefHeight="180.0" prefWidth="180.0">
          <center>
-            <ImageView fx:id="imageView12" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+            <ImageView fx:id="imageView12" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
          </center>
          <bottom>
             <Label fx:id="label12" BorderPane.alignment="CENTER" />
