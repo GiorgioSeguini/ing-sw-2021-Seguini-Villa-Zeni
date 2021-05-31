@@ -8,7 +8,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class MarketController extends ControllerGuiInterface{
 
@@ -16,6 +22,7 @@ public class MarketController extends ControllerGuiInterface{
     private static int nCol=4;
     private static int nRow=3;
     private ImageView[][] marbleImages= new ImageView[nRow][nCol];
+    private ArrayList<ImageView> rowcol= new ArrayList<>();
     private int index;
     private AlertBox box;
 
@@ -52,13 +59,33 @@ public class MarketController extends ControllerGuiInterface{
     private ImageView imageViewExtMarble;
 
     @FXML
-    private Button marketMoveConfirm;
+    private ImageView row1;
+    @FXML
+    private ImageView row2;
+    @FXML
+    private ImageView row3;
+    @FXML
+    private ImageView col1;
+    @FXML
+    private ImageView col2;
+    @FXML
+    private ImageView col3;
+    @FXML
+    private ImageView col4;
+
 
     @FXML
+    private Button marketMoveConfirm;
+    @FXML
     private Button returnback;
+    @FXML
+    private Button confirm;
 
     @FXML
     private GridPane grid;
+
+    @FXML
+    private TextFlow infos;
 
     @FXML
     public void initialize(){
@@ -66,6 +93,10 @@ public class MarketController extends ControllerGuiInterface{
         marketMoveConfirm.setDisable(false);
         returnback.setVisible(true);
         marketMoveConfirm.setVisible(true);
+        infos.setDisable(true);
+        infos.setVisible(false);
+        confirm.setVisible(false);
+        confirm.setDisable(true);
         marbleImages[0][0]= imageView00;
         marbleImages[0][1]= imageView01;
         marbleImages[0][2]= imageView02;
@@ -78,11 +109,21 @@ public class MarketController extends ControllerGuiInterface{
         marbleImages[2][1]= imageView21;
         marbleImages[2][2]= imageView22;
         marbleImages[2][3]= imageView23;
+        rowcol.add(col1);
+        rowcol.add(col2);
+        rowcol.add(col3);
+        rowcol.add(col4);
+        rowcol.add(row1);
+        rowcol.add(row2);
+        rowcol.add(row3);
+
+        for(ImageView image: rowcol){
+            image.setDisable(true);
+        }
     }
 
     @Override
     public void update() {
-        System.out.println(gui.getModel().getMarketTray());
         for(int i=0; i<nRow; i++){
             for (int j=0; j<nCol; j++){
                 MarbleColor color= gui.getModel().getMarketTray().gettMarble(i,j);
@@ -122,7 +163,7 @@ public class MarketController extends ControllerGuiInterface{
 
     public void confirm(ActionEvent actionEvent) {
         MoveTypeMarket move = new MoveTypeMarket(gui.getModel().getMyID());
-        move.setIndexToBuy(index);// TODO: 5/29/21 raccogliere index ancora non so bene come, pensavo a dei bottoni sulle frecce 
+        move.setIndexToBuy(index);
         gui.sendMove(move);
     }
 
@@ -131,8 +172,32 @@ public class MarketController extends ControllerGuiInterface{
         return path;
     }
 
-    private void makeMove() {
-        System.out.println("Sto facendo la mossa");
+    private void print(Text text){
+        infos.getChildren().addAll(text);
     }
+
+    private void makeMove() {
+        infos.setDisable(false);
+        infos.setVisible(true);
+        confirm.setVisible(true);
+        for(ImageView image: rowcol){
+            image.setDisable(false);
+        }
+        print(new Text("Hai scelto di comprare al mercato!\n\nClicca su una delle frecce del mercato per fare la tua scelta\n"));
+    }
+
+    public void selectRowCol(MouseEvent mouseEvent){
+        index=rowcol.indexOf((ImageView) mouseEvent.getSource());
+        if(index<4){
+            print(new Text("\nHai scelto la "+ (index+1)+"colonna."));
+            System.out.println("colonna "+ (index+1));
+        }else {
+            print(new Text("\n Hai scelto la "+ (index-3)+ "riga."));
+            System.out.println("riga "+ (index-3));
+        }
+
+        confirm.setDisable(false);
+    }
+
 
 }
