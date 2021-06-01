@@ -41,6 +41,13 @@ public class PersonalBoard {
         return result;
     }
 
+    public ArrayList<DevelopmentCard> getActiveOwnedDevCards() {
+        ArrayList<DevelopmentCard> result = new ArrayList<DevelopmentCard>();
+        for(int i=0; i< 3; i++)
+            result.add(OwnedDevCards[i].get(OwnedDevCards[i].size()-1));
+        return result;
+    }
+
 
     /**This return the sum of card's victory points**/
     public int getVictoryPoints() {

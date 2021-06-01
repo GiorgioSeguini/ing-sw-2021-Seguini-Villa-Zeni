@@ -16,6 +16,13 @@ public class FaithTrack {
     private int faithPoints;
     private final PopesFavorStates[] popesFavor;
 
+    public int[] getPopesFavorPosition() {
+         return popesFavorPosition;
+    }
+
+    public int[] getPopesFavorInitialPositionPosition() {
+        return popesFavorInitialPosition;
+    }
     /**
      * Default constructor
      */
