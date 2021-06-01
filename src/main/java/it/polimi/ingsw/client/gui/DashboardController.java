@@ -18,8 +18,6 @@ import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 
-import javax.swing.border.LineBorder;
-import java.awt.*;
 import java.util.ArrayList;
 
 public class DashboardController extends ControllerGuiInterface{
@@ -27,9 +25,8 @@ public class DashboardController extends ControllerGuiInterface{
     public static String className = "dashboard";
     private int  indexToBuy;
     private final ArrayList<Integer> choice = new ArrayList<>();
-    private final boolean[] chosen =new boolean[12];
-    MoveBuyDevCard move = new MoveBuyDevCard(gui.getModel().getMyID());
-
+    private boolean[] chosen =new boolean[12];
+    //MoveBuyDevCard move = new MoveBuyDevCard(gui.getModel().getMyID());
 
     @FXML
     public Button confirmButton;
@@ -208,11 +205,20 @@ public class DashboardController extends ControllerGuiInterface{
                 i++;
             }
         }
+
+        DevelopmentCard[] activeDevCard=gui.getModel().getMe().getPersonalBoard().getActiveOwnedDevCardsArray();
+        for(i=1; i<4; i++){
+            if (activeDevCard[i-1]!=null) {
+                imageViewsBoard.get(i).setImage(new Image("/images/front/Masters of Renaissance_Cards_FRONT_3mmBleed_1-" + activeDevCard[i-1].getId() + "-1.png"));
+            }
+        } // TODO: 6/1/21 necessario per printare le immagini, servirà poi aggiungere anche quella appena comprata ma puoi farlo solo dopo la prima scelta 
     }
 
-    public MoveBuyDevCard getMove(){
+    /*public MoveBuyDevCard getMove(){
         return move;
     }
+
+     */
 
     public void onMouseClicked(MouseEvent mouseEvent) {
 
@@ -231,12 +237,15 @@ public class DashboardController extends ControllerGuiInterface{
     public void confirm(ActionEvent actionEvent){
         hideFirstScreen(true);
         hideSecondScreen(false);
-        move.setIndexCardToBuy(choice.get(0));
-
     }
 
     public void baseButton(ActionEvent actionEvent){
-            gui.activate(BaseController.className);
+        choice.removeAll(choice);
+        for(Label label: labels){
+            label.setText("");
+        }
+        chosen=new boolean[12];// TODO: 6/1/21 ho aggiunto questo pezzettino di codice così se torni alla schermata iniziale e poi di nuovo a questa ti si resetta la schermata 
+        gui.activate(BaseController.className);
     }
 
     private void checkButton(){
@@ -274,6 +283,7 @@ public class DashboardController extends ControllerGuiInterface{
         int index=-1;
         if (button1.equals(actionEvent.getSource())) {
             index=0;
+            System.out.println(index);
         }
         if (button2.equals(actionEvent.getSource())) {
             index=1;
@@ -281,9 +291,16 @@ public class DashboardController extends ControllerGuiInterface{
         if (button3.equals(actionEvent.getSource())) {
             index=2;
         }
+        System.out.println(index);
+        /*MoveBuyDevCard move= new MoveBuyDevCard(gui.getModel().getMyID());
+        move.setIndexCardToBuy(choice.get(0));
         move.setPos(index);
-        gui.sendMove(move);
+        gui.sendMove(move);*/ // TODO: 6/1/21 al momento per qualche motivo da errore anche se il serve riceve la mossa correttamente e la println funziona.
+        // TODO: 6/1/21  ho dovuto mettere qui la move perchè se no la gui non parte, non puoi fare gui.getModel se non esiste ancora la gui 
     }
-    //TODO:  devo rivederla tutta
+
+    // TODO: 6/1/21 di per se secondo me il codice complessivamente funziona, ma c'è qualcosa di grafico come layout che da errore. Ho tolto l'immagine della board dalla griglia 
+    // TODO: 6/1/21 per evitare che mi dia errore nel printarla dato che la dimensione dell'immagine è molto maggiore di quella della cella, ma non ha risolto l'errore.  
+    // TODO: 6/1/21 se provi a giocare comprare la carta da  Exception in thread "JavaFX Application Thread" java.lang.RuntimeException: ImageView.layoutX : A bound value cannot be set. 
 
 }

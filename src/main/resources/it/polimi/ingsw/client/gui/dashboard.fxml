@@ -104,6 +104,11 @@
          </bottom>
       </BorderPane>
       <Button fx:id="confirmButton" layoutX="766.0" layoutY="1.0" mnemonicParsing="false" onAction="#confirm" text="Compra" />
+      <ImageView fx:id="imageViewBoard" fitHeight="353.0" fitWidth="434.0" layoutX="34.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../images/board/Masters_of_Renaissance_PlayerBoard_DevCard.jpg" />
+         </image>
+      </ImageView>
       <GridPane fx:id="gridPane" layoutX="34.0" layoutY="68.0" prefHeight="504.0" prefWidth="683.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="132.0" minWidth="7.999996185302734" prefWidth="7.999996185302734" />
@@ -120,13 +125,9 @@
             <RowConstraints maxHeight="98.39999999999998" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Button fx:id="button1" onAction="#choseNumber" mnemonicParsing="false" text="1" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Button fx:id="button2" onAction="#choseNumber" mnemonicParsing="false" text="2" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <Button fx:id="button3" onAction="#choseNumber" mnemonicParsing="false" text="3" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-            <ImageView fx:id="imageViewBoard" fitHeight="339.0" fitWidth="581.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <image>
-                  <Image url="@../../../../../images/board/Masters_of_Renaissance_PlayerBoard_DevCard.jpg" />
-               </image></ImageView>
+            <Button fx:id="button1" mnemonicParsing="false" onAction="#choseNumber" text="1" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Button fx:id="button2" mnemonicParsing="false" onAction="#choseNumber" text="2" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Button fx:id="button3" mnemonicParsing="false" onAction="#choseNumber" text="3" GridPane.columnIndex="3" GridPane.rowIndex="3" />
             <ImageView fx:id="imageViewBoardCard1" fitHeight="237.0" fitWidth="142.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <ImageView fx:id="imageViewBoardCard2" fitHeight="237.0" fitWidth="142.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             <ImageView fx:id="imageViewBoardCard3" fitHeight="237.0" fitWidth="142.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1" />
