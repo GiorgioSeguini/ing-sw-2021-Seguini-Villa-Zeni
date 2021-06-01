@@ -1,10 +1,12 @@
 package it.polimi.ingsw.client.gui;
 
 import it.polimi.ingsw.constant.enumeration.ColorDevCard;
+import it.polimi.ingsw.constant.enumeration.ErrorMessage;
 import it.polimi.ingsw.constant.enumeration.Level;
 import it.polimi.ingsw.constant.model.DevelopmentCard;
 import it.polimi.ingsw.constant.move.MoveBuyDevCard;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -193,7 +195,7 @@ public class DashboardController extends ControllerGuiInterface{
         MoveBuyDevCard move = new MoveBuyDevCard(gui.getModel().getMyID());
         move.setIndexCardToBuy(choice.get(0));
         gui.sendMove(move);
-        gui.activate(BaseController.className);
+
     }
     public void baseButton(ActionEvent actionEvent){
             gui.activate(BaseController.className);

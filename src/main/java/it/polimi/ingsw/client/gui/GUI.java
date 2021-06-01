@@ -96,6 +96,12 @@ public class GUI extends Application implements UI {
             this.activate("waiting");
             myTurn=false;
         }else {
+            if(!this.getModel().getMe().getErrorMessage().equals(ErrorMessage.NoError)){
+                AlertBox outOfResourcesBox = new AlertBox("ATTENTO: Mancano delle risorse!", "Non hai abbastanza risorse per comprare quella carta.\n Scegliene un'altra, compra nuove risorse dal mercato o attiva una produzione!");
+                outOfResourcesBox.display();
+                current.update();
+                return;
+            }
             if(this.getModel().getStatus()== GameStatus.Initial){
                 if(!this.getModel().getMe().getPersonalBoard().isReady()){
                     activate("initial");
