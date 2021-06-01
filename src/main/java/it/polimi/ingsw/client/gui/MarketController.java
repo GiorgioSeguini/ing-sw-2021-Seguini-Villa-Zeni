@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -85,7 +86,9 @@ public class MarketController extends ControllerGuiInterface{
     private GridPane grid;
 
     @FXML
-    private TextFlow infos;
+    private Label infos;
+    @FXML
+    private Label chose;
 
     @FXML
     public void initialize(){
@@ -95,6 +98,8 @@ public class MarketController extends ControllerGuiInterface{
         marketMoveConfirm.setVisible(true);
         infos.setDisable(true);
         infos.setVisible(false);
+        chose.setDisable(true);
+        chose.setVisible(false);
         confirm.setVisible(false);
         confirm.setDisable(true);
         marbleImages[0][0]= imageView00;
@@ -172,30 +177,26 @@ public class MarketController extends ControllerGuiInterface{
         return path;
     }
 
-    private void print(Text text){
-        infos.getChildren().addAll(text);
-    }
 
     private void makeMove() {
         infos.setDisable(false);
         infos.setVisible(true);
+        chose.setDisable(false);
+        chose.setVisible(true);
         confirm.setVisible(true);
         for(ImageView image: rowcol){
             image.setDisable(false);
         }
-        print(new Text("Hai scelto di comprare al mercato!\n\nClicca su una delle frecce del mercato per fare la tua scelta\n"));
+
     }
 
     public void selectRowCol(MouseEvent mouseEvent){
         index=rowcol.indexOf((ImageView) mouseEvent.getSource());
         if(index<4){
-            print(new Text("\nHai scelto la "+ (index+1)+"colonna.")); //todo forse meglio un label, il click funziona bene ma la print è un po' rinco
-            System.out.println("colonna "+ (index+1));
+            chose.setText("\nHai scelto la "+ (index+1)+"colonna.");
         }else {
-            print(new Text("\n Hai scelto la "+ (index-3)+ "riga."));
-            System.out.println("riga "+ (index-3));
+            chose.setText("\n Hai scelto la "+ (index-3)+ "riga.");
         }
-
         confirm.setDisable(false);
     }
 

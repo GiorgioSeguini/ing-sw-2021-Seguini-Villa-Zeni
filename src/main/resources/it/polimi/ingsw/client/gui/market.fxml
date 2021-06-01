@@ -3,7 +3,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.gui.MarketController">
    <children>
@@ -54,7 +53,8 @@
        <ImageView fx:id="imageViewExtMarble" fitHeight="20" fitWidth="20" layoutX="500.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true" />
 
        <Button fx:id="marketMoveConfirm" layoutX="40.0" layoutY="51.0" mnemonicParsing="false" onAction="#MarketMoveConfirm" prefHeight="27.0" prefWidth="113.0" text="Attiva Mossa Mercato" textOverrun="CLIP" />
-      <TextFlow fx:id="infos" layoutX="40.0" layoutY="27.0" prefHeight="200.0" prefWidth="200.0" />
-      <Button fx:id="confirm" onAction="#confirm" layoutX="35.0" layoutY="337.0" mnemonicParsing="false" text="Conferma selezione" />
+      <Label fx:id="infos" layoutX="24.0" layoutY="33.0" prefHeight="86.0" prefWidth="258.0" text="Hai scelto di comprare al mercato! Clicca su una delle frecce del mercato per fare la tua scelta." wrapText="true" />
+      <Button fx:id="confirm" layoutX="35.0" layoutY="337.0" mnemonicParsing="false" onAction="#confirm" text="Conferma selezione" />
+      <Label fx:id="chose" layoutX="40.0" layoutY="138.0" prefHeight="86.0" prefWidth="238.0" wrapText="true" />
    </children>
 </AnchorPane>
