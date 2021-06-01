@@ -21,8 +21,13 @@ public class MoveActiveProductionExt extends MoveActiveProduction implements Per
 
     @Override
     public boolean canPerformExt(GameExt game){
-        if(!super.canPerform(game)) return false;
         Player player = game.getPlayerFromID(getIdPlayer());
+        if(!super.canPerform(game)){
+            if(player!=null)
+                player.setErrorMessage(ErrorMessage.MoveNotAllowed);
+            return false;
+        }
+
 
         //check if current player really own the productionPowers that want to active
         ArrayList<ProductionPower> productionOwned = player.getPersonalBoard().getProduction();

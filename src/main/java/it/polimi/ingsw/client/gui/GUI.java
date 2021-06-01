@@ -4,13 +4,17 @@ import it.polimi.ingsw.client.Client;
 import it.polimi.ingsw.client.UI;
 import it.polimi.ingsw.client.modelClient.GameClient;
 import it.polimi.ingsw.client.parser.StarterClient;
+import it.polimi.ingsw.constant.enumeration.ErrorMessage;
 import it.polimi.ingsw.constant.enumeration.GameStatus;
 import it.polimi.ingsw.constant.enumeration.PlayerStatus;
 import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.constant.move.MoveType;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -71,11 +75,23 @@ public class GUI extends Application implements UI {
 
     @Override
     public void update(){
+        //check initialization
         if(getModel()==null) {
             if(active)
                 this.activate("lobby");
             return;
         }
+        //check error
+        if(getModel().getMe().getErrorMessage()!= ErrorMessage.NoError){
+            AlertBox box = new AlertBox("Errore", getModel().getMe().getErrorMessage().toString());
+            Button button= new Button("Ok");
+            EventHandler<ActionEvent> event = e -> box.closeBox();
+            button.setOnAction(event);
+            box.addButton(button);
+            box.display();
+        }
+
+        //show correct scene
         if(!this.getModel().isMyTurn()){
             this.activate("waiting");
             myTurn=false;
@@ -87,15 +103,12 @@ public class GUI extends Application implements UI {
                     activate("initialRes");
                 }
             }else{
-                if(myTurn){
-                    current.update();
-                }else{
-                    if(this.getModel().getMe().getStatus()== PlayerStatus.NeedToStore){
-                        activate(StoreResourcesController.className);
-                    }
+                if(this.getModel().getMe().getStatus()== PlayerStatus.NeedToStore){
+                    activate(StoreResourcesController.className);
+                }else {
                     activate("base");
-                    myTurn=true;
                 }
+                myTurn=true;
             }
         }
     }

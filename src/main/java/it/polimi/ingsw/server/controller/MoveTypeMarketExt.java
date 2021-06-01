@@ -3,6 +3,7 @@ package it.polimi.ingsw.server.controller;
 import it.polimi.ingsw.constant.enumeration.ErrorMessage;
 import it.polimi.ingsw.constant.enumeration.MarbleColor;
 import it.polimi.ingsw.constant.enumeration.PlayerStatus;
+import it.polimi.ingsw.constant.model.Player;
 import it.polimi.ingsw.constant.move.MoveTypeMarket;
 import it.polimi.ingsw.server.model.GameExt;
 import it.polimi.ingsw.server.model.MarketExt;
@@ -32,7 +33,13 @@ public class MoveTypeMarketExt extends MoveTypeMarket implements Performable{
 
     @Override
     public boolean canPerformExt(GameExt game){
-        return super.canPerform(game);
+        Player player = game.getPlayerFromID(getIdPlayer());
+        if(!super.canPerform(game)){
+            if(player!=null)
+                player.setErrorMessage(ErrorMessage.MoveNotAllowed);
+            return false;
+        }
+        return true;
     }
 
     /**This method tries to convert the Marble as the player asked. If it can it makes the conversion

@@ -9,8 +9,9 @@
       <ImageView fx:id="board" layoutX="20.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
             <Image url="@../../../../../images/board/Masters_of_Renaissance_PlayerBoard.png" />
       </ImageView>
-      <Button fx:id="market"    layoutX="20.0" layoutY="0.0" mnemonicParsing="false" onAction="#goToMarket" text="vai al mercato" />
-      <Button fx:id="dashboard" layoutX="100.0" layoutY="0.0" mnemonicParsing="false" onAction="#goToDashboard" text="vai alla Dashboard" />
+      <Button fx:id="market"    layoutX="20.0" mnemonicParsing="false" onAction="#goToMarket" text="mercato" />
+      <Button fx:id="dashboard" layoutX="150.0" mnemonicParsing="false" onAction="#goToDashboard" text="Dashboard" />
+      <Button fx:id="endTurn" layoutX="250.0" mnemonicParsing="false" onAction="#endTurn" text="Fine" />
       <ImageView fx:id="marble0" pickOnBounds="true" preserveRatio="true"/>
       <ImageView fx:id="marble1" pickOnBounds="true" preserveRatio="true"/>
       <ImageView fx:id="marble2" pickOnBounds="true" preserveRatio="true"/>

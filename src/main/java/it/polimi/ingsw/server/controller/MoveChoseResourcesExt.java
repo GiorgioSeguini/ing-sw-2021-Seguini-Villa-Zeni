@@ -3,6 +3,7 @@ package it.polimi.ingsw.server.controller;
 import it.polimi.ingsw.constant.enumeration.ErrorMessage;
 import it.polimi.ingsw.constant.enumeration.PlayerStatus;
 import it.polimi.ingsw.constant.model.NumberOfResources;
+import it.polimi.ingsw.constant.model.Player;
 import it.polimi.ingsw.constant.move.MoveChoseResources;
 import it.polimi.ingsw.server.model.GameExt;
 import it.polimi.ingsw.server.model.PlayerExt;
@@ -20,7 +21,13 @@ public class MoveChoseResourcesExt extends MoveChoseResources implements Perform
 
     @Override
     public boolean canPerformExt(GameExt game){
-        return super.canPerform(game);
+        Player player = game.getPlayerFromID(getIdPlayer());
+        if(!super.canPerform(game)){
+            if(player!=null)
+                player.setErrorMessage(ErrorMessage.MoveNotAllowed);
+            return false;
+        }
+        return true;
     }
 
     @Override
