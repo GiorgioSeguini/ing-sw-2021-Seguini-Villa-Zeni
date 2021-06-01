@@ -129,6 +129,7 @@ public class MarketController extends ControllerGuiInterface{
 
     @Override
     public void update() {
+        chose.setText("");
         for(int i=0; i<nRow; i++){
             for (int j=0; j<nCol; j++){
                 MarbleColor color= gui.getModel().getMarketTray().gettMarble(i,j);
