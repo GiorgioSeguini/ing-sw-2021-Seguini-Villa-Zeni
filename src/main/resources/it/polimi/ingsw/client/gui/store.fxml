@@ -42,6 +42,6 @@
       <ChoiceBox fx:id="servants" prefWidth="150.0" GridPane.columnIndex="5" GridPane.rowIndex="2" />
       <ChoiceBox fx:id="shields" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
       <ChoiceBox fx:id="stones" prefWidth="150.0" GridPane.columnIndex="5" GridPane.rowIndex="4" />
-      <Button mnemonicParsing="false" text="Conferma" GridPane.columnIndex="6" GridPane.rowIndex="5" onAction="#onAction"/>
+      <Button mnemonicParsing="false" onAction="#onAction" text="Conferma" GridPane.columnIndex="6" GridPane.rowIndex="5" />
    </children>
 </GridPane>

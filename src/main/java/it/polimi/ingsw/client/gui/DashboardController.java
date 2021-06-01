@@ -28,6 +28,7 @@ public class DashboardController extends ControllerGuiInterface{
     private int  indexToBuy;
     private final ArrayList<Integer> choice = new ArrayList<>();
     private final boolean[] chosen =new boolean[12];
+    MoveBuyDevCard move = new MoveBuyDevCard(gui.getModel().getMyID());
 
 
     @FXML
@@ -108,10 +109,30 @@ public class DashboardController extends ControllerGuiInterface{
     public BorderPane BPane11;
     @FXML
     public BorderPane BPane12;
+    @FXML
+    public GridPane gridPane;
+    @FXML
+    public ImageView imageViewBoard;
+    @FXML
+    public ImageView imageViewBoardCard1;
+    @FXML
+    public ImageView imageViewBoardCard2;
+    @FXML
+    public ImageView imageViewBoardCard3;
+    @FXML
+    public ImageView imageViewCardBuyed;
+    @FXML
+    public Button button1;
+    @FXML
+    public Button button2;
+    @FXML
+    public Button button3;
 
     private final ArrayList<ImageView> imageViews = new ArrayList<>();
+    private final ArrayList<ImageView> imageViewsBoard = new ArrayList<>();
     private final ArrayList<Label> labels = new ArrayList<>();
     private final ArrayList<BorderPane> borderPanes = new ArrayList<>();
+    private final ArrayList<Button> buttons = new ArrayList<>();
 
     @FXML
     public void initialize(){
@@ -129,6 +150,16 @@ public class DashboardController extends ControllerGuiInterface{
         imageViews.add(imageView10);
         imageViews.add(imageView11);
         imageViews.add(imageView12);
+
+        imageViewsBoard.add(imageViewBoard);
+        imageViewsBoard.add(imageViewBoardCard1);
+        imageViewsBoard.add(imageViewBoardCard2);
+        imageViewsBoard.add(imageViewBoardCard3);
+        imageViewsBoard.add(imageViewCardBuyed);
+
+        buttons.add(button1);
+        buttons.add(button2);
+        buttons.add(button3);
 
         labels.add(label1);
         labels.add(label2);
@@ -165,6 +196,8 @@ public class DashboardController extends ControllerGuiInterface{
 
     @Override
     public void update() {
+        hideSecondScreen(true);
+        hideFirstScreen(false);
         Image[] image = new Image[12];
         int i=0;
         for(Level l: Level.values()) {
@@ -175,6 +208,10 @@ public class DashboardController extends ControllerGuiInterface{
                 i++;
             }
         }
+    }
+
+    public MoveBuyDevCard getMove(){
+        return move;
     }
 
     public void onMouseClicked(MouseEvent mouseEvent) {
@@ -192,11 +229,12 @@ public class DashboardController extends ControllerGuiInterface{
     }
 
     public void confirm(ActionEvent actionEvent){
-        MoveBuyDevCard move = new MoveBuyDevCard(gui.getModel().getMyID());
+        hideFirstScreen(true);
+        hideSecondScreen(false);
         move.setIndexCardToBuy(choice.get(0));
-        gui.sendMove(move);
 
     }
+
     public void baseButton(ActionEvent actionEvent){
             gui.activate(BaseController.className);
     }
@@ -205,6 +243,47 @@ public class DashboardController extends ControllerGuiInterface{
         this.confirmButton.setDisable(choice.size()!=1);
     }
 
+    private void hideSecondScreen(boolean b){
+        gridPane.setVisible(!b);
+        gridPane.setDisable(b);
+        for(ImageView imageView: imageViewsBoard){
+            imageView.setVisible(!b);
+            imageView.setDisable(b);
+        }
+        for(Button button: buttons){
+            button.setVisible(!b);
+            button.setDisable(b);
+        }
+    }
+    private void hideFirstScreen(boolean b) {
+        for (BorderPane borderPane : borderPanes) {
+            borderPane.setVisible(!b);
+            borderPane.setDisable(b);
+        }
+        for (Label label : labels) {
+            label.setVisible(!b);
+            label.setDisable(b);
+        }
+        confirmButton.setDisable(b);
+        baseButton.setDisable(b);
+        confirmButton.setVisible(!b);
+        baseButton.setVisible(!b);
+    }
+
+    public void choseNumber(ActionEvent actionEvent) {
+        int index=-1;
+        if (button1.equals(actionEvent.getSource())) {
+            index=0;
+        }
+        if (button2.equals(actionEvent.getSource())) {
+            index=1;
+        }
+        if (button3.equals(actionEvent.getSource())) {
+            index=2;
+        }
+        move.setPos(index);
+        gui.sendMove(move);
+    }
     //TODO:  devo rivederla tutta
 
 }
