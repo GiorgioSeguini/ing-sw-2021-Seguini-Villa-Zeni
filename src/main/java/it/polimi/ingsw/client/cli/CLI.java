@@ -5,6 +5,7 @@ import it.polimi.ingsw.client.UI;
 import it.polimi.ingsw.client.modelClient.GameClient;
 import it.polimi.ingsw.client.parser.StarterClient;
 import it.polimi.ingsw.constant.enumeration.ErrorMessage;
+import it.polimi.ingsw.constant.message.LastMessage;
 import it.polimi.ingsw.constant.move.MoveType;
 
 import java.io.*;
@@ -98,39 +99,43 @@ public class CLI implements Runnable, UI {
             moves.add(new CliMoveLeader(myID));
             moves.add(new CliMoveTypeMarket(myID));
             moves.add(new CliMoveWhiteConversion(myID));
+            moves.add(new CliPrint());
 
             if(game.getMe().getErrorMessage()!= ErrorMessage.NoError){
                 System.out.println(game.getMe().getErrorMessage());
             }
 
-            int index;
-            int i=0;
-            ArrayList<CliInterface> ablemoves= new ArrayList<>();
-            System.out.println("----------------------------------------------------------");
-            System.out.println("È il tuo turno!");
-            System.out.println("Cosa desideri fare?");
+            MoveType move;
             do {
-                ablemoves.clear();
-                i=1;
-                for (CliInterface clitype: moves){
-                    if(clitype.canPerform(game)){
-                        System.out.println(i+". "+clitype.getName());
-                        i++;
-                        ablemoves.add(clitype);
+                int index;
+                int i = 0;
+                ArrayList<CliInterface> ablemoves = new ArrayList<>();
+                System.out.println("----------------------------------------------------------");
+                System.out.println("È il tuo turno!");
+                System.out.println("Cosa desideri fare?");
+                do {
+                    ablemoves.clear();
+                    i = 1;
+                    for (CliInterface clitype : moves) {
+                        if (clitype.canPerform(game)) {
+                            System.out.println(i + ". " + clitype.getName());
+                            i++;
+                            ablemoves.add(clitype);
+                        }
+
                     }
 
-                }
+                    index = in.nextInt();
 
-                index=in.nextInt();
+                    if (index < 1 || index > i - 1) {
+                        System.out.println("Indice non valido!");
+                    }
 
-                if(index<1 || index>i-1){
-                    System.out.println("Indice non valido!");
-                }
+                } while (index < 1 || index > i - 1);
 
-            }while(index<1 || index>i-1);
-
-            CliInterface cliInterface = ablemoves.get(index - 1);
-            MoveType move = cliInterface.updateCLI(game, in);
+                CliInterface cliInterface = ablemoves.get(index - 1);
+                move = cliInterface.updateCLI(game, in);
+            }while (move==null);
             send(move);
             //ho tolto l'ultimo if perchè ho sempre almeno una mossa da fare che è la endturn
             //altrimenti qui mettiamo un if che riempe in automato la endturn

@@ -92,16 +92,6 @@ public class MarketController extends ControllerGuiInterface{
 
     @FXML
     public void initialize(){
-        returnback.setDisable(false);
-        marketMoveConfirm.setDisable(false);
-        returnback.setVisible(true);
-        marketMoveConfirm.setVisible(true);
-        infos.setDisable(true);
-        infos.setVisible(false);
-        chose.setDisable(true);
-        chose.setVisible(false);
-        confirm.setVisible(false);
-        confirm.setDisable(true);
         marbleImages[0][0]= imageView00;
         marbleImages[0][1]= imageView01;
         marbleImages[0][2]= imageView02;
@@ -129,6 +119,17 @@ public class MarketController extends ControllerGuiInterface{
 
     @Override
     public void update() {
+        returnback.setDisable(false);
+        marketMoveConfirm.setDisable(false);
+        returnback.setVisible(true);
+        marketMoveConfirm.setVisible(true);
+        infos.setDisable(true);
+        infos.setVisible(false);
+        chose.setDisable(true);
+        chose.setVisible(false);
+        confirm.setVisible(false);
+        confirm.setDisable(true);
+        chose.setText("");
         for(int i=0; i<nRow; i++){
             for (int j=0; j<nCol; j++){
                 MarbleColor color= gui.getModel().getMarketTray().gettMarble(i,j);
@@ -142,22 +143,27 @@ public class MarketController extends ControllerGuiInterface{
     }
 
     public void MarketMoveConfirm(ActionEvent actionEvent) {
-        box= new AlertBox("Mossa Market", "Stai scegliendo di comprare risorse dal mercato. Se decidi di continuare non potrai tornare indietro");
-        Button button= new Button("Ok");
-        EventHandler<ActionEvent> event = new
-                EventHandler<ActionEvent>() {
-                    public void handle(ActionEvent e)
-                    {
-                        returnback.setDisable(true);
-                        marketMoveConfirm.setDisable(true);
-                        returnback.setVisible(false);
-                        marketMoveConfirm.setVisible(false);
-                        box.closeBox();
-                        makeMove();
-                    }
-                };
-        button.setOnAction(event);
-        box.addButton(button);
+        if(new MoveTypeMarket(gui.getModel().getMyID()).canPerform(gui.getModel())){
+            box= new AlertBox("Mossa Market", "Stai scegliendo di comprare risorse dal mercato. Se decidi di continuare non potrai tornare indietro");
+            Button button= new Button("Ok");
+            EventHandler<ActionEvent> event = new
+                    EventHandler<ActionEvent>() {
+                        public void handle(ActionEvent e)
+                        {
+                            returnback.setDisable(true);
+                            marketMoveConfirm.setDisable(true);
+                            returnback.setVisible(false);
+                            marketMoveConfirm.setVisible(false);
+                            box.closeBox();
+                            makeMove();
+                        }
+                    };
+            button.setOnAction(event);
+            box.addButton(button);
+        }
+        else{
+            box= new AlertBox("Mossa Market", "Stai scegliendo di comprare risorse dal mercato, ma al momento questa mossa non è disponibile");
+        }
         box.display();
     }
 
