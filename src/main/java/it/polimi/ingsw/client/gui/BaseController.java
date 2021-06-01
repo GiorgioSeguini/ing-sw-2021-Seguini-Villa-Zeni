@@ -4,6 +4,8 @@ import it.polimi.ingsw.constant.enumeration.MarbleColor;
 import it.polimi.ingsw.constant.enumeration.PopesFavorStates;
 import it.polimi.ingsw.constant.enumeration.ResourceType;
 import it.polimi.ingsw.constant.model.DevelopmentCard;
+import it.polimi.ingsw.constant.move.MoveEndTurn;
+import it.polimi.ingsw.constant.move.MoveType;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -63,6 +65,8 @@ public class BaseController extends ControllerGuiInterface{
     Button market;
     @FXML
     Button dashboard;
+    @FXML
+    Button endTurn;
 
     private final ImageView[][] devCards = new ImageView[3][3];
     @FXML
@@ -211,7 +215,10 @@ public class BaseController extends ControllerGuiInterface{
                 j++;
             }
         }
-
+        checkEndTurn();
+        market.setVisible(true);
+        dashboard.setVisible(true);
+        endTurn.setVisible(true);
     }
 
     public void goToMarket(ActionEvent actionEvent) {
@@ -220,7 +227,14 @@ public class BaseController extends ControllerGuiInterface{
     public void goToDashboard(ActionEvent actionEvent) {
         gui.activate(DashboardController.className);
     }
+    public void endTurn(ActionEvent actionEvent) {
+        gui.sendMove(new MoveEndTurn(gui.getModel().getMyID()));
+    }
 
+    private void checkEndTurn(){
+        MoveType move = new MoveEndTurn(gui.getModel().getMyID());
+        endTurn.setDisable(!move.canPerform(gui.getModel()));
+    }
 
     @Override
     public String getName() {

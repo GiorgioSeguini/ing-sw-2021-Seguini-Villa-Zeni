@@ -18,7 +18,13 @@ public class MoveDiscardResourcesExt extends MoveDiscardResources implements Per
 
     @Override
     public boolean canPerformExt(GameExt game){
-        return super.canPerform(game);
+        Player player = game.getPlayerFromID(getIdPlayer());
+        if(!super.canPerform(game)){
+            if(player!=null)
+                player.setErrorMessage(ErrorMessage.MoveNotAllowed);
+            return false;
+        }
+        return true;
     }
 
     @Override

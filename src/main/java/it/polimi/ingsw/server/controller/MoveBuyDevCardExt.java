@@ -4,6 +4,7 @@ import it.polimi.ingsw.constant.enumeration.ErrorMessage;
 import it.polimi.ingsw.constant.enumeration.PlayerStatus;
 import it.polimi.ingsw.constant.model.DevelopmentCard;
 import it.polimi.ingsw.constant.model.NumberOfResources;
+import it.polimi.ingsw.constant.model.Player;
 import it.polimi.ingsw.constant.move.MoveBuyDevCard;
 import it.polimi.ingsw.server.model.*;
 import it.polimi.ingsw.server.model.exception.NoSpaceException;
@@ -24,9 +25,12 @@ public class MoveBuyDevCardExt extends MoveBuyDevCard implements Performable {
 
     @Override
     public boolean canPerformExt(GameExt game){
-
-        if(!super.canPerform(game)) return false;
         PlayerExt player = game.getPlayerFromID(getIdPlayer());
+        if(!super.canPerform(game)){
+            if(player!=null)
+                player.setErrorMessage(ErrorMessage.MoveNotAllowed);
+            return false;
+        }
 
         DevelopmentCard cardToBuy = game.getDashboard().findDevCard(getIndexCardToBuy());
 

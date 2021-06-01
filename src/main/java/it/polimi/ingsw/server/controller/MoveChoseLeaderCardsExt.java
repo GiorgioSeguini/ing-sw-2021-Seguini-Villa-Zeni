@@ -20,9 +20,12 @@ public class MoveChoseLeaderCardsExt extends MoveChoseLeaderCards implements Per
 
     @Override
     public boolean canPerformExt(GameExt game){
-        if(!super.canPerform(game)) return false;
-
         Player player = game.getPlayerFromID(getIdPlayer());
+        if(!super.canPerform(game)){
+            if(player!=null)
+                player.setErrorMessage(ErrorMessage.MoveNotAllowed);
+            return false;
+        }
 
         ArrayList<LeaderCardExt> leaderCards = game.findMoreLeaderCard(getIndexLeaderCards());
         boolean goodChoice = true;
