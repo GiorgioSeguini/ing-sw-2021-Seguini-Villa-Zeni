@@ -106,18 +106,32 @@ public class DashboardController extends ControllerGuiInterface{
     public BorderPane BPane11;
     @FXML
     public BorderPane BPane12;
-    @FXML
-    public GridPane gridPane;
+
     @FXML
     public ImageView imageViewBoard;
+
     @FXML
-    public ImageView imageViewBoardCard1;
+    public ImageView devcard00;
     @FXML
-    public ImageView imageViewBoardCard2;
+    public ImageView devcard01;
     @FXML
-    public ImageView imageViewBoardCard3;
+    public ImageView devcard02;
     @FXML
-    public ImageView imageViewCardBuyed;
+    public ImageView devcard10;
+    @FXML
+    public ImageView devcard11;
+    @FXML
+    public ImageView devcard12;
+    @FXML
+    public ImageView devcard20;
+    @FXML
+    public ImageView devcard21;
+    @FXML
+    public ImageView devcard22;
+
+    // TODO: 6/2/21 aggiungere la carta appena comprata 
+
+
     @FXML
     public Button button1;
     @FXML
@@ -126,7 +140,7 @@ public class DashboardController extends ControllerGuiInterface{
     public Button button3;
 
     private final ArrayList<ImageView> imageViews = new ArrayList<>();
-    private final ArrayList<ImageView> imageViewsBoard = new ArrayList<>();
+    private final ImageView[][] devCards = new ImageView[3][3];
     private final ArrayList<Label> labels = new ArrayList<>();
     private final ArrayList<BorderPane> borderPanes = new ArrayList<>();
     private final ArrayList<Button> buttons = new ArrayList<>();
@@ -137,6 +151,7 @@ public class DashboardController extends ControllerGuiInterface{
         baseButton.setDisable(false);
         imageViews.add(imageView1);
         imageViews.add(imageView2);
+
         imageViews.add(imageView3);
         imageViews.add(imageView4);
         imageViews.add(imageView5);
@@ -148,11 +163,15 @@ public class DashboardController extends ControllerGuiInterface{
         imageViews.add(imageView11);
         imageViews.add(imageView12);
 
-        imageViewsBoard.add(imageViewBoard);
-        imageViewsBoard.add(imageViewBoardCard1);
-        imageViewsBoard.add(imageViewBoardCard2);
-        imageViewsBoard.add(imageViewBoardCard3);
-        imageViewsBoard.add(imageViewCardBuyed);
+        devCards[0][0]= devcard00;
+        devCards[0][1]= devcard01;
+        devCards[0][2]= devcard02;
+        devCards[1][0]= devcard10;
+        devCards[1][1]= devcard11;
+        devCards[1][2]= devcard12;
+        devCards[2][0]= devcard20;
+        devCards[2][1]= devcard21;
+        devCards[2][2]= devcard22;
 
         buttons.add(button1);
         buttons.add(button2);
@@ -206,12 +225,13 @@ public class DashboardController extends ControllerGuiInterface{
             }
         }
 
-        DevelopmentCard[] activeDevCard=gui.getModel().getMe().getPersonalBoard().getActiveOwnedDevCardsArray();
-        for(i=1; i<4; i++){
-            if (activeDevCard[i-1]!=null) {
-                imageViewsBoard.get(i).setImage(new Image("/images/front/Masters of Renaissance_Cards_FRONT_3mmBleed_1-" + activeDevCard[i-1].getId() + "-1.png"));
+        for(i=0; i<3; i++){
+            int j=0;
+            for(DevelopmentCard devCard : gui.getModel().getMe().getPersonalBoard().getPos(i)){
+                devCards[i][j].setImage(new Image("images/front/Masters of Renaissance_Cards_FRONT_3mmBleed_1-"+devCard.getId()+"-1.png"));
+                j++;
             }
-        } // TODO: 6/1/21 necessario per printare le immagini, servirà poi aggiungere anche quella appena comprata ma puoi farlo solo dopo la prima scelta 
+        }
     }
 
     /*public MoveBuyDevCard getMove(){
@@ -253,17 +273,20 @@ public class DashboardController extends ControllerGuiInterface{
     }
 
     private void hideSecondScreen(boolean b){
-        gridPane.setVisible(!b);
-        gridPane.setDisable(b);
-        for(ImageView imageView: imageViewsBoard){
-            imageView.setVisible(!b);
-            imageView.setDisable(b);
+        imageViewBoard.setVisible(!b);
+
+        for(int i=0; i<devCards.length; i++){
+            for(int j=0; j<devCards[i].length; j++){
+                devCards[i][j].setVisible(!b);
+            }
         }
+
         for(Button button: buttons){
             button.setVisible(!b);
             button.setDisable(b);
         }
     }
+
     private void hideFirstScreen(boolean b) {
         for (BorderPane borderPane : borderPanes) {
             borderPane.setVisible(!b);
@@ -292,10 +315,10 @@ public class DashboardController extends ControllerGuiInterface{
             index=2;
         }
         System.out.println(index);
-        /*MoveBuyDevCard move= new MoveBuyDevCard(gui.getModel().getMyID());
+        MoveBuyDevCard move= new MoveBuyDevCard(gui.getModel().getMyID());
         move.setIndexCardToBuy(choice.get(0));
         move.setPos(index);
-        gui.sendMove(move);*/ // TODO: 6/1/21 al momento per qualche motivo da errore anche se il serve riceve la mossa correttamente e la println funziona.
+        gui.sendMove(move); // TODO: 6/1/21 al momento per qualche motivo da errore anche se il serve riceve la mossa correttamente e la println funziona.
         // TODO: 6/1/21  ho dovuto mettere qui la move perchè se no la gui non parte, non puoi fare gui.getModel se non esiste ancora la gui 
     }
 

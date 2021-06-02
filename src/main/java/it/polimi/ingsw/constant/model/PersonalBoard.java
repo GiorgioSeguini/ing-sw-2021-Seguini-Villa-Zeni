@@ -50,16 +50,6 @@ public class PersonalBoard {
         return result;
     }
 
-    public DevelopmentCard[] getActiveOwnedDevCardsArray() {
-        DevelopmentCard[] developmentCards = new DevelopmentCard[3];
-        for (int i = 0; i < OwnedDevCards.length; i++){
-            if (OwnedDevCards[i].size() > 0) {
-                developmentCards[i] = OwnedDevCards[i].get(OwnedDevCards[i].size() - 1);
-            }
-        }
-        return developmentCards;
-    }
-
 
     /**This return the sum of card's victory points**/
     public int getVictoryPoints() {
