@@ -23,7 +23,6 @@ import java.util.ArrayList;
 public class DashboardController extends ControllerGuiInterface{
 
     public static String className = "dashboard";
-    private int  indexToBuy;
     private final ArrayList<Integer> choice = new ArrayList<>();
     private boolean[] chosen =new boolean[12];
     //MoveBuyDevCard move = new MoveBuyDevCard(gui.getModel().getMyID());
@@ -110,24 +109,15 @@ public class DashboardController extends ControllerGuiInterface{
     @FXML
     public ImageView imageViewBoard;
 
+
     @FXML
-    public ImageView devcard00;
+    public ImageView devcard1;
     @FXML
-    public ImageView devcard01;
+    public ImageView devcard2;
     @FXML
-    public ImageView devcard02;
+    public ImageView devcard3;
     @FXML
-    public ImageView devcard10;
-    @FXML
-    public ImageView devcard11;
-    @FXML
-    public ImageView devcard12;
-    @FXML
-    public ImageView devcard20;
-    @FXML
-    public ImageView devcard21;
-    @FXML
-    public ImageView devcard22;
+    public ImageView devcardBuyed;
 
     // TODO: 6/2/21 aggiungere la carta appena comprata 
 
@@ -140,7 +130,7 @@ public class DashboardController extends ControllerGuiInterface{
     public Button button3;
 
     private final ArrayList<ImageView> imageViews = new ArrayList<>();
-    private final ImageView[][] devCards = new ImageView[3][3];
+    private final ArrayList<ImageView> devCards = new ArrayList<>();
     private final ArrayList<Label> labels = new ArrayList<>();
     private final ArrayList<BorderPane> borderPanes = new ArrayList<>();
     private final ArrayList<Button> buttons = new ArrayList<>();
@@ -149,9 +139,9 @@ public class DashboardController extends ControllerGuiInterface{
     public void initialize(){
         confirmButton.setDisable(true);
         baseButton.setDisable(false);
+
         imageViews.add(imageView1);
         imageViews.add(imageView2);
-
         imageViews.add(imageView3);
         imageViews.add(imageView4);
         imageViews.add(imageView5);
@@ -163,15 +153,11 @@ public class DashboardController extends ControllerGuiInterface{
         imageViews.add(imageView11);
         imageViews.add(imageView12);
 
-        devCards[0][0]= devcard00;
-        devCards[0][1]= devcard01;
-        devCards[0][2]= devcard02;
-        devCards[1][0]= devcard10;
-        devCards[1][1]= devcard11;
-        devCards[1][2]= devcard12;
-        devCards[2][0]= devcard20;
-        devCards[2][1]= devcard21;
-        devCards[2][2]= devcard22;
+        devCards.add(imageViewBoard);
+        devCards.add(devcard1);
+        devCards.add(devcard2);
+        devCards.add(devcard3);
+        devCards.add(devcardBuyed);
 
         buttons.add(button1);
         buttons.add(button2);
@@ -226,19 +212,14 @@ public class DashboardController extends ControllerGuiInterface{
         }
 
         for(i=0; i<3; i++){
-            int j=0;
-            for(DevelopmentCard devCard : gui.getModel().getMe().getPersonalBoard().getPos(i)){
-                devCards[i][j].setImage(new Image("images/front/Masters of Renaissance_Cards_FRONT_3mmBleed_1-"+devCard.getId()+"-1.png"));
+            int j=1;
+            for(DevelopmentCard devCard : gui.getModel().getMe().getPersonalBoard().getTopDevCard()){
+                devCards.get(j).setImage(new Image("images/front/Masters of Renaissance_Cards_FRONT_3mmBleed_1-"+devCard.getId()+"-1.png"));
                 j++;
             }
+
         }
     }
-
-    /*public MoveBuyDevCard getMove(){
-        return move;
-    }
-
-     */
 
     public void onMouseClicked(MouseEvent mouseEvent) {
 
@@ -275,10 +256,9 @@ public class DashboardController extends ControllerGuiInterface{
     private void hideSecondScreen(boolean b){
         imageViewBoard.setVisible(!b);
 
-        for(int i=0; i<devCards.length; i++){
-            for(int j=0; j<devCards[i].length; j++){
-                devCards[i][j].setVisible(!b);
-            }
+        for(int i=0; i<devCards.size(); i++){
+            devCards.get(i).setVisible(!b);
+
         }
 
         for(Button button: buttons){
@@ -296,7 +276,7 @@ public class DashboardController extends ControllerGuiInterface{
             label.setVisible(!b);
             label.setDisable(b);
         }
-        confirmButton.setDisable(b);
+        checkButton();
         baseButton.setDisable(b);
         confirmButton.setVisible(!b);
         baseButton.setVisible(!b);

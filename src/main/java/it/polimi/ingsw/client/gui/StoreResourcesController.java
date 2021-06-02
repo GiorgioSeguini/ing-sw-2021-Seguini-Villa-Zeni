@@ -38,11 +38,11 @@ public class StoreResourcesController extends ControllerGuiInterface{
     public void update() {
         NumberOfResources res = gui.getModel().getMe().getConverter().getResources();
         for(ResourceType type : ResourceType.values()){
-            ObservableList<Integer> arary = FXCollections.observableList(new ArrayList<>());
+            ObservableList<Integer> array = FXCollections.observableList(new ArrayList<>());
             for(int i=0; i<=res.getAmountOf(type); i++){
-                arary.addAll(i);
+                array.addAll(i);
             }
-            boxes[type.ordinal()].setItems(arary);
+            boxes[type.ordinal()].setItems(array);
             boxes[type.ordinal()].setValue(0);
         }
     }
