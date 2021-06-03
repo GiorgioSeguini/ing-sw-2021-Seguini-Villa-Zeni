@@ -16,6 +16,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import java.io.IOException;
@@ -142,5 +143,29 @@ public class GUI extends Application implements UI {
     @Override
     public void setActive() {
         active=true;
+    }
+
+    /**
+     *  For a given image view ad a given set of images fix their relative position in a resizable scene
+     *  On al images will be set preserve ratio
+     * @param back - of type ImageView reference to the background image
+     * @param backHeight - of type Double height of the original image in background
+     * @param images - of type ImageView[] array containing all the image ypu want to fix
+     * @param x - of type Double[] array containing coordinate x of the wanted position
+     * @param y- of type Double[] array containing coordinate y of the wanted position
+     * @param imageHeight - of type Double[] height of all the image with the respect to the background original image
+     */
+    public static void fixImages(final ImageView back, final Double backHeight, final ImageView[] images, final Double[] x, final Double[] y, final Double imageHeight){
+        if(images.length!=x.length)
+            return;
+        if(images.length!=y.length)
+            return;
+        for(int i=0; i<images.length; i++){
+            int finalI = i;
+            back.fitHeightProperty().addListener((observableValue, oldValue, newValue) -> images[finalI].setLayoutX(back.getLayoutX() + (Double)newValue * x[finalI]/ backHeight));
+            back.fitHeightProperty().addListener((observableValue, oldValue, newValue) -> images[finalI].setLayoutY(back.getLayoutY() + (Double)newValue * y[finalI]/ backHeight));
+            images[finalI].fitHeightProperty().bind(back.fitHeightProperty().divide(backHeight / imageHeight));
+            images[finalI].setPreserveRatio(true);
+        }
     }
 }

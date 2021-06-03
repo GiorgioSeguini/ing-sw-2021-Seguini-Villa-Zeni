@@ -12,23 +12,5 @@
       <Button fx:id="market"    layoutX="20.0" mnemonicParsing="false" onAction="#goToMarket" text="mercato" />
       <Button fx:id="dashboard" layoutX="150.0" mnemonicParsing="false" onAction="#goToDashboard" text="Dashboard" />
       <Button fx:id="endTurn" layoutX="250.0" mnemonicParsing="false" onAction="#endTurn" text="Fine" />
-      <ImageView fx:id="marble0" pickOnBounds="true" preserveRatio="true"/>
-      <ImageView fx:id="marble1" pickOnBounds="true" preserveRatio="true"/>
-      <ImageView fx:id="marble2" pickOnBounds="true" preserveRatio="true"/>
-      <ImageView fx:id="marble3" pickOnBounds="true" preserveRatio="true"/>
-      <ImageView fx:id="marble4" pickOnBounds="true" preserveRatio="true"/>
-      <ImageView fx:id="marble5" pickOnBounds="true" preserveRatio="true"/>
-      <ImageView fx:id="pope0" pickOnBounds="true" preserveRatio="true"/>
-      <ImageView fx:id="pope1" pickOnBounds="true" preserveRatio="true"/>
-      <ImageView fx:id="pope2" pickOnBounds="true" preserveRatio="true"/>
-      <ImageView fx:id="devCard00" pickOnBounds="true" preserveRatio="true"/>
-      <ImageView fx:id="devCard01" pickOnBounds="true" preserveRatio="true"/>
-      <ImageView fx:id="devCard02" pickOnBounds="true" preserveRatio="true"/>
-      <ImageView fx:id="devCard10" pickOnBounds="true" preserveRatio="true"/>
-      <ImageView fx:id="devCard11" pickOnBounds="true" preserveRatio="true"/>
-      <ImageView fx:id="devCard12" pickOnBounds="true" preserveRatio="true"/>
-      <ImageView fx:id="devCard20" pickOnBounds="true" preserveRatio="true"/>
-      <ImageView fx:id="devCard21" pickOnBounds="true" preserveRatio="true"/>
-      <ImageView fx:id="devCard22" pickOnBounds="true" preserveRatio="true"/>
    </children>
 </AnchorPane>
