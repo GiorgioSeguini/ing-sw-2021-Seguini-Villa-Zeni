@@ -87,51 +87,7 @@ public class BaseController extends ControllerGuiInterface{
 
     @Override
     public void update() {
-        int  n0 = gui.getModel().getMe().getDepots().getWareHouseDepots().getShelfs().get(0).getUsed();
-        if(n0>0){
-            ResourceType type = gui.getModel().getMe().getDepots().getWareHouseDepots().getShelfs().get(0).getResType();
-            resources[0].setImage(new Image("/images/punchboard/" + type + ".png"));
-            resources[0].setVisible(true);
-        }else{
-            resources[0].setVisible(false);
-        }
-
-        int n1 = gui.getModel().getMe().getDepots().getWareHouseDepots().getShelfs().get(1).getUsed();
-        if(n1>0){
-            ResourceType type = gui.getModel().getMe().getDepots().getWareHouseDepots().getShelfs().get(1).getResType();
-            resources[1].setImage(new Image("/images/punchboard/" + type + ".png"));
-            resources[1].setVisible(true);
-            if(n1>1){
-                resources[2].setImage(new Image("/images/punchboard/" + type + ".png"));
-                resources[2].setVisible(true);
-            }else{
-                resources[2].setVisible(false);
-            }
-        }else{
-            resources[1].setVisible(false);
-            resources[2].setVisible(false);
-        }
-
-        int n2 = gui.getModel().getMe().getDepots().getWareHouseDepots().getShelfs().get(2).getUsed();
-        ResourceType type2 = gui.getModel().getMe().getDepots().getWareHouseDepots().getShelfs().get(2).getResType();
-        if(n2>0) {
-            resources[3].setImage(new Image("/images/punchboard/" + type2 + ".png"));
-            resources[3].setVisible(true);
-        }else {
-            resources[3].setVisible(false);
-        }
-        if(n2>1){
-            resources[4].setImage(new Image("/images/punchboard/" + type2 + ".png"));
-            resources[4].setVisible(true);
-        }else{
-            resources[4].setVisible(false);
-        }
-        if(n2>2){
-            resources[5].setImage(new Image("/images/punchboard/" + type2 + ".png"));
-            resources[5].setVisible(true);
-        }else{
-            resources[5].setVisible(false);
-        }
+        gui.printDepots(resources, gui.getModel().getMe().getDepots());
 
         for(int i=0; i<3; i++) {
             if (gui.getModel().getMe().getFaithTrack().getPopesFavor(i) == PopesFavorStates.FaceDown) {

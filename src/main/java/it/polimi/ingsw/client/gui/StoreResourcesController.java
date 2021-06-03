@@ -9,11 +9,19 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 
 import java.util.ArrayList;
 
 public class StoreResourcesController extends ControllerGuiInterface{
     public static final String className = "store";
+
+    private static final Double[] RES_X = {289.0, 231.0, 320.0, 187.0, 274.0, 365.0};
+    private static final Double[] RES_Y = {173.0, 315.0, 315.0, 467.0, 467.0, 467.0};
+    private static final Double RES_SIZE = 80.0;
+    private static final Double DEPOTS_HEIGHT = 1017.0;
 
     @FXML
     private ChoiceBox<Integer> coins;
@@ -23,8 +31,15 @@ public class StoreResourcesController extends ControllerGuiInterface{
     private ChoiceBox<Integer> shields;
     @FXML
     private ChoiceBox<Integer> stones;
+    @FXML
+    private AnchorPane anchorPane;
+    @FXML
+    private GridPane gridPane;
+    @FXML
+    private ImageView depots;
 
     private final ChoiceBox<Integer>[] boxes = new ChoiceBox[4];
+    private final ImageView[] resources = new ImageView[6];
 
     @FXML
     public void initialize(){
@@ -32,6 +47,17 @@ public class StoreResourcesController extends ControllerGuiInterface{
         boxes[ResourceType.Servants.ordinal()] = servants;
         boxes[ResourceType.Shields.ordinal()] = shields;
         boxes[ResourceType.Stones.ordinal()] = stones;
+
+
+        for(int i=0; i< resources.length; i++){
+            resources[i] = new ImageView();
+            anchorPane.getChildren().add(resources[i]);
+            /*GridPane.setColumnIndex(resources[i], GridPane.getColumnIndex(depots));
+            GridPane.setRowIndex(resources[i], GridPane.getRowIndex(depots));*/
+        }
+        GUI.fixImages(depots, DEPOTS_HEIGHT, resources, RES_X, RES_Y, RES_SIZE);
+
+        //depots.fitHeightProperty().bind(gridPane.heightProperty().divide(2.0));
     }
 
     @Override
@@ -45,6 +71,8 @@ public class StoreResourcesController extends ControllerGuiInterface{
             boxes[type.ordinal()].setItems(array);
             boxes[type.ordinal()].setValue(0);
         }
+
+        gui.printDepots(resources, gui.getModel().getMe().getDepots());
     }
 
     @Override
@@ -56,7 +84,7 @@ public class StoreResourcesController extends ControllerGuiInterface{
         NumberOfResources resources = new NumberOfResources();
         for(ResourceType type : ResourceType.values()){
             Integer v = boxes[type.ordinal()].getValue();
-            if(v!=null) {     //TODO
+            if(v!=null) {
                 resources = resources.add(type, v);
             }
         }

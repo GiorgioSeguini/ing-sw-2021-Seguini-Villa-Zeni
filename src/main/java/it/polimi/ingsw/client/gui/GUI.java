@@ -7,7 +7,9 @@ import it.polimi.ingsw.client.parser.StarterClient;
 import it.polimi.ingsw.constant.enumeration.ErrorMessage;
 import it.polimi.ingsw.constant.enumeration.GameStatus;
 import it.polimi.ingsw.constant.enumeration.PlayerStatus;
+import it.polimi.ingsw.constant.enumeration.ResourceType;
 import it.polimi.ingsw.constant.message.Message;
+import it.polimi.ingsw.constant.model.Depots;
 import it.polimi.ingsw.constant.move.MoveType;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -34,11 +36,21 @@ public class GUI extends Application implements UI {
     private ControllerGuiInterface current;
     private boolean myTurn=false;
     private boolean active = false;
+    private final Image[] resImage = new Image[ResourceType.values().length];
 
     public static void entry(Client client) {
 
         GUI.client = client;
         launch((String) null);
+    }
+
+    public GUI(){
+        super();
+        //image caching
+        for(ResourceType type : ResourceType.values()){
+            resImage[type.ordinal()]= new Image("/images/punchboard/" + type + ".png");
+        }
+
     }
 
     @Override
@@ -174,6 +186,55 @@ public class GUI extends Application implements UI {
             back.fitHeightProperty().addListener((observableValue, oldValue, newValue) -> images[finalI].setLayoutY(back.getLayoutY() + (Double)newValue * y[finalI]/ backHeight));
             images[finalI].fitHeightProperty().bind(back.fitHeightProperty().divide(backHeight / imageHeight));
             images[finalI].setPreserveRatio(true);
+        }
+    }
+
+
+    public void printDepots(ImageView[] resources, Depots depots){
+        int  n0 = depots.getWareHouseDepots().getShelfs().get(0).getUsed();
+        if(n0>0){
+            ResourceType type = depots.getWareHouseDepots().getShelfs().get(0).getResType();
+            resources[0].setImage(resImage[type.ordinal()]);
+            resources[0].setVisible(true);
+        }else{
+            resources[0].setVisible(false);
+        }
+
+        int n1 = depots.getWareHouseDepots().getShelfs().get(1).getUsed();
+        if(n1>0){
+            ResourceType type = depots.getWareHouseDepots().getShelfs().get(1).getResType();
+            resources[1].setImage(resImage[type.ordinal()]);
+            resources[1].setVisible(true);
+            if(n1>1){
+                resources[2].setImage(resImage[type.ordinal()]);
+                resources[2].setVisible(true);
+            }else{
+                resources[2].setVisible(false);
+            }
+        }else{
+            resources[1].setVisible(false);
+            resources[2].setVisible(false);
+        }
+
+        int n2 = depots.getWareHouseDepots().getShelfs().get(2).getUsed();
+        ResourceType type2 = depots.getWareHouseDepots().getShelfs().get(2).getResType();
+        if(n2>0) {
+            resources[3].setImage(resImage[type2.ordinal()]);
+            resources[3].setVisible(true);
+        }else {
+            resources[3].setVisible(false);
+        }
+        if(n2>1){
+            resources[4].setImage(resImage[type2.ordinal()]);
+            resources[4].setVisible(true);
+        }else{
+            resources[4].setVisible(false);
+        }
+        if(n2>2){
+            resources[5].setImage(resImage[type2.ordinal()]);
+            resources[5].setVisible(true);
+        }else{
+            resources[5].setVisible(false);
         }
     }
 }
