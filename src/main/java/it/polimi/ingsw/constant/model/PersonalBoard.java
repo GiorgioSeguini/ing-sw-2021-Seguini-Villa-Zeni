@@ -37,7 +37,9 @@ public class PersonalBoard {
         ArrayList<DevelopmentCard> cards = new ArrayList<>();
         if (!getOwnedDevCards().isEmpty()) {
             for (int i = 0; i < 3; i++) {
-                cards.add(OwnedDevCards[i].get(0));
+                if(!OwnedDevCards[i].isEmpty()){
+                    cards.add(OwnedDevCards[i].get(0));
+                }
             }
         }
         return cards;
