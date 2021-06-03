@@ -6,16 +6,32 @@
 
 <?import java.lang.Integer?>
 <?import javafx.collections.FXCollections?>
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.gui.SampleController">
+<GridPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.gui.SampleController">
+   <columnConstraints>
+      <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="200.0" />
+      <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="200.0" halignment="CENTER"/>
+      <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="50.0" />
+      <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="50.0" halignment="CENTER"/>
+      <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="50.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints vgrow="ALWAYS" minHeight="10.0" prefHeight="50.0"/>
+      <RowConstraints vgrow="ALWAYS" minHeight="10.0" prefHeight="150.0" valignment="CENTER"/>
+      <RowConstraints vgrow="ALWAYS" minHeight="10.0" prefHeight="20.0"/>
+      <RowConstraints vgrow="ALWAYS" minHeight="10.0" prefHeight="40.0" valignment="CENTER"/>
+      <RowConstraints vgrow="ALWAYS" minHeight="10.0" prefHeight="20.0"/>
+      <RowConstraints vgrow="ALWAYS" minHeight="10.0" prefHeight="40.0" valignment="CENTER"/>
+      <RowConstraints vgrow="ALWAYS" minHeight="10.0" prefHeight="20.0"/>
+      <RowConstraints vgrow="ALWAYS" minHeight="10.0" prefHeight="40.0" valignment="CENTER"/>
+      <RowConstraints vgrow="ALWAYS" minHeight="10.0" prefHeight="20.0"/>
+   </rowConstraints>
    <children>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="242.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
-         <image>
+      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
             <Image url="@../../../../../images/punchboard/calamaio.png" />
-         </image>
       </ImageView>
-      <TextField fx:id="name_lable" layoutX="232.0" layoutY="253.0" onAction="#setName" prefWidth="150.0" promptText="Insert your name" />
-      <Button fx:id="button" layoutX="476.0" layoutY="341.0" mnemonicParsing="false" onAction="#start" text="Start" disable="true"/>
-      <ChoiceBox fx:id="number_lable" layoutX="225.0" layoutY="296.0" prefWidth="150.0"  onAction="#setNumber" accessibleText="Start" >
+      <TextField fx:id="name_lable" onAction="#setName" prefWidth="150.0" promptText="Insert your name" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+      <Button fx:id="button"  mnemonicParsing="false" onAction="#start" text="Start" disable="true"     GridPane.columnIndex="3" GridPane.rowIndex="7"/>
+      <ChoiceBox fx:id="number_lable" prefWidth="150.0"  onAction="#setNumber" accessibleText="Start"   GridPane.columnIndex="1" GridPane.rowIndex="5">
               <items>
                  <FXCollections fx:factory="observableArrayList">
                  <Integer fx:value = "1" />
@@ -26,4 +42,4 @@
               </items>
       </ChoiceBox>
    </children>
-</AnchorPane>
+</GridPane>
