@@ -197,11 +197,12 @@ public class DashboardController extends ControllerGuiInterface{
 
     @Override
     public void update() {
+        resetChoice();
         hideSecondScreen(true);
         hideFirstScreen(false);
         checkButton();
         Image[] image = new Image[12];
-        int i=0;
+        int i=0,j;
         for(Level l: Level.values()) {
             for (ColorDevCard c : ColorDevCard.values()) {
                 int id = gui.getModel().getDashboard().getTopDevCard(c, l).getId() + 1;
@@ -212,14 +213,10 @@ public class DashboardController extends ControllerGuiInterface{
         }
 
         for(i=0; i<3; i++){
-            int j=1;
             if(gui.getModel().getMe().getPersonalBoard().getPos(i).size()>0) {
-                for (DevelopmentCard devCard : gui.getModel().getMe().getPersonalBoard().getPos(i)) {
-                    devCards.get(j).setImage(new Image("images/front/Masters of Renaissance_Cards_FRONT_3mmBleed_1-" + (devCard.getId() + 1) + "-1.png"));
-                    j++;
-                }
+                DevelopmentCard devCard= gui.getModel().getMe().getPersonalBoard().getPos(i).get(0);
+                devCards.get(i+1).setImage(new Image("images/front/Masters of Renaissance_Cards_FRONT_3mmBleed_1-" + (devCard.getId() + 1) + "-1.png"));
             }
-
         }
     }
 
@@ -246,11 +243,7 @@ public class DashboardController extends ControllerGuiInterface{
     }
 
     public void baseButton(ActionEvent actionEvent){
-        choice.removeAll(choice);
-        for(Label label: labels){
-            label.setText("");
-        }
-        chosen=new boolean[12];// TODO: 6/1/21 ho aggiunto questo pezzettino di codice così se torni alla schermata iniziale e poi di nuovo a questa ti si resetta la schermata
+        resetChoice();
         gui.activate(BaseController.className);
     }
 
@@ -308,12 +301,15 @@ public class DashboardController extends ControllerGuiInterface{
         MoveBuyDevCard move= new MoveBuyDevCard(gui.getModel().getMyID());
         move.setIndexCardToBuy(choice.get(0));
         move.setPos(index);
-        gui.sendMove(move); // TODO: 6/1/21 al momento per qualche motivo da errore anche se il serve riceve la mossa correttamente e la println funziona.
-        // TODO: 6/1/21  ho dovuto mettere qui la move perchè se no la gui non parte, non puoi fare gui.getModel se non esiste ancora la gui 
+        gui.sendMove(move);
     }
 
-    // TODO: 6/1/21 di per se secondo me il codice complessivamente funziona, ma c'è qualcosa di grafico come layout che da errore. Ho tolto l'immagine della board dalla griglia 
-    // TODO: 6/1/21 per evitare che mi dia errore nel printarla dato che la dimensione dell'immagine è molto maggiore di quella della cella, ma non ha risolto l'errore.  
-    // TODO: 6/1/21 se provi a giocare comprare la carta da  Exception in thread "JavaFX Application Thread" java.lang.RuntimeException: ImageView.layoutX : A bound value cannot be set. 
+    private void resetChoice(){
+        choice.removeAll(choice);
+        for(Label label: labels){
+            label.setText("");
+        }
+        chosen=new boolean[12];
+    }
 
 }
