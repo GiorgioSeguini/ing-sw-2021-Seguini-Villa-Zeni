@@ -82,6 +82,16 @@ class NumberOfResourcesTest {
             fail();
         }
         assertEquals(test,new NumberOfResources(0,1,0,0));
+
+        test2= new NumberOfResources(1, 1, 1, 1);
+        NumberOfResources test3= new NumberOfResources(1, 0, 0, 1);
+        try {
+            test2=test2.sub(test3);
+        } catch (OutOfResourcesException e) {
+            fail();
+        }
+
+        assertEquals(new NumberOfResources(0,1,1,0), test2);
     }
 
     @Test
