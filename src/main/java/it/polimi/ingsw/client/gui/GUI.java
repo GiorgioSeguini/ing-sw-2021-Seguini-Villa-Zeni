@@ -10,6 +10,7 @@ import it.polimi.ingsw.constant.enumeration.PlayerStatus;
 import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.constant.move.MoveType;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -75,7 +76,14 @@ public class GUI extends Application implements UI {
     }
 
     @Override
-    public void update(){
+    public void update() {
+        //called by background thread - the one contained in Client class for reading socket
+        Platform.runLater(this::internalUpdate);
+    }
+
+    private void internalUpdate(){
+        //always executed by javaFX thread
+
         //check initialization
         if(getModel()==null) {
             if(active)
