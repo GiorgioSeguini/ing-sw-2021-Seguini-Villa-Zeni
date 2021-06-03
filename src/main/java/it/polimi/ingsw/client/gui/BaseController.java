@@ -24,7 +24,7 @@ public class BaseController extends ControllerGuiInterface{
     private static final double CARD_OFFSET = 60;
     private static final Double[] RES_X = {289.0, 231.0, 320.0, 187.0, 274.0, 365.0};
     private static final Double[] RES_Y = {763.0, 905.0, 905.0, 1057.0, 1057.0, 1057.0};
-    private static final Double[] POPES_X = {607.0, 1186.0, 1814.0};
+    private static final Double[] POPES_X = {607.0, 1186.0, 1884.0};
     private static final Double[] POPES_Y = {250.0, 132.0, 250.0};
     private static final Double[] DEV_X = {935.0, 935.0, 935.0, 1398.0, 1398.0, 1398.0, 1861.0, 1861.0, 1861.0};
     private static final Double[] DEV_Y = {873.0, 933.0, 993.0, 873.0, 933.0, 993.0, 873.0, 933.0, 993.0};
@@ -43,6 +43,19 @@ public class BaseController extends ControllerGuiInterface{
     private final ImageView[] resources = new ImageView[6];
     private final ImageView[] popes = new ImageView[3];
     private final ImageView[] devCards = new ImageView[9];
+
+    private final Image[][] popesImage = new Image[3][2];
+
+    public BaseController(){
+        super();
+        //preloading images
+        popesImage[0][0] = new Image("/images/punchboard/miss_2.png");
+        popesImage[0][1] = new Image("/images/punchboard/pope_favor1_front.png");
+        popesImage[1][0] = new Image("/images/punchboard/miss_3.png");
+        popesImage[1][1] = new Image("/images/punchboard/pope_favor2_front.png");
+        popesImage[2][0] = new Image("/images/punchboard/miss_4.png");
+        popesImage[2][1] = new Image("/images/punchboard/pope_favor3_front.png");
+    }
 
     @FXML
     public void initialize(){
@@ -120,16 +133,15 @@ public class BaseController extends ControllerGuiInterface{
             resources[5].setVisible(false);
         }
 
-        if(gui.getModel().getMe().getFaithTrack().getPopesFavor(0).equals(PopesFavorStates.Discarded)){
-            popes[0].setImage(new Image("images/punchboard/miss_2"));
+        for(int i=0; i<3; i++) {
+            if (gui.getModel().getMe().getFaithTrack().getPopesFavor(i) == PopesFavorStates.FaceDown) {
+                popes[i].setImage(popesImage[i][0]);
+            } else if (gui.getModel().getMe().getFaithTrack().getPopesFavor(i) == PopesFavorStates.FaceUp) {
+                popes[i].setImage(popesImage[i][1]);
+            } else {
+                popes[i].setVisible(false);
+            }
         }
-        if(gui.getModel().getMe().getFaithTrack().getPopesFavor(1).equals(PopesFavorStates.Discarded)){
-            popes[1].setImage(new Image("images/punchboard/miss_3"));
-        }
-        if(gui.getModel().getMe().getFaithTrack().getPopesFavor(2).equals(PopesFavorStates.Discarded)){
-            popes[2].setImage(new Image("images/punchboard/miss_4"));
-        }
-        //TODO mancano immagini del retro e dei conquistati
 
         for(int i=0; i<3; i++){
             int j=0;
