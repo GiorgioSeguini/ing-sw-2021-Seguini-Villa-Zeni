@@ -213,9 +213,11 @@ public class DashboardController extends ControllerGuiInterface{
 
         for(i=0; i<3; i++){
             int j=1;
-            for(DevelopmentCard devCard : gui.getModel().getMe().getPersonalBoard().getTopDevCard()){
-                devCards.get(j).setImage(new Image("images/front/Masters of Renaissance_Cards_FRONT_3mmBleed_1-"+(devCard.getId()+1)+"-1.png"));
-                j++;
+            if(gui.getModel().getMe().getPersonalBoard().getPos(i).size()>0) {
+                for (DevelopmentCard devCard : gui.getModel().getMe().getPersonalBoard().getPos(i)) {
+                    devCards.get(j).setImage(new Image("images/front/Masters of Renaissance_Cards_FRONT_3mmBleed_1-" + (devCard.getId() + 1) + "-1.png"));
+                    j++;
+                }
             }
 
         }

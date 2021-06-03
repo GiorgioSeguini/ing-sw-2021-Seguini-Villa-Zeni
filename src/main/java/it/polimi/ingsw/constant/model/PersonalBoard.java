@@ -33,17 +33,6 @@ public class PersonalBoard {
     public ArrayList<LeaderCard> getLeaderCards(){
         return OwnedLeaderCard;
     }
-    public ArrayList<DevelopmentCard> getTopDevCard(){
-        ArrayList<DevelopmentCard> cards = new ArrayList<>();
-        if (!getOwnedDevCards().isEmpty()) {
-            for (int i = 0; i < 3; i++) {
-                if(!OwnedDevCards[i].isEmpty()){
-                    cards.add(OwnedDevCards[i].get(0));
-                }
-            }
-        }
-        return cards;
-    }
 
     public ArrayList<DevelopmentCard> getOwnedDevCards() {
         ArrayList<DevelopmentCard> result = new ArrayList<DevelopmentCard>();
