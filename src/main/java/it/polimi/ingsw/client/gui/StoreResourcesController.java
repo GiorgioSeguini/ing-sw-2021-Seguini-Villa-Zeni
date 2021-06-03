@@ -57,7 +57,7 @@ public class StoreResourcesController extends ControllerGuiInterface{
         for(ResourceType type : ResourceType.values()){
             Integer v = boxes[type.ordinal()].getValue();
             if(v!=null) {     //TODO
-                resources.add(type, v);
+                resources = resources.add(type, v);
             }
         }
         MoveDiscardResources move = new MoveDiscardResources(gui.getModel().getMyID());
