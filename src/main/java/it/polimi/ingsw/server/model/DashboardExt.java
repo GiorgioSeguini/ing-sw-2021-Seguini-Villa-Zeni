@@ -79,9 +79,9 @@ public class DashboardExt extends Dashboard implements Observable<Message> {
          */
         if(dashBoard[level.ordinal()][color.ordinal()].empty())
             throw new IllegalArgumentException();
-
+        DevelopmentCardExt cardRemoved = dashBoard[level.ordinal()][color.ordinal()].pop();
         change();
-        return dashBoard[level.ordinal()][color.ordinal()].pop();
+        return cardRemoved;
     }
 
     /**

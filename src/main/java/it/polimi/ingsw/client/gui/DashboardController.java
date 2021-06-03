@@ -28,6 +28,8 @@ public class DashboardController extends ControllerGuiInterface{
     //MoveBuyDevCard move = new MoveBuyDevCard(gui.getModel().getMyID());
 
     @FXML
+    public GridPane gridSecondScreen;
+    @FXML
     public Button confirmButton;
     @FXML
     public Button baseButton;
@@ -119,7 +121,6 @@ public class DashboardController extends ControllerGuiInterface{
     @FXML
     public ImageView devcardBuyed;
 
-    // TODO: 6/2/21 aggiungere la carta appena comprata 
 
 
     @FXML
@@ -137,8 +138,6 @@ public class DashboardController extends ControllerGuiInterface{
 
     @FXML
     public void initialize(){
-        confirmButton.setDisable(true);
-        baseButton.setDisable(false);
 
         imageViews.add(imageView1);
         imageViews.add(imageView2);
@@ -200,6 +199,7 @@ public class DashboardController extends ControllerGuiInterface{
     public void update() {
         hideSecondScreen(true);
         hideFirstScreen(false);
+        checkButton();
         Image[] image = new Image[12];
         int i=0;
         for(Level l: Level.values()) {
@@ -214,7 +214,7 @@ public class DashboardController extends ControllerGuiInterface{
         for(i=0; i<3; i++){
             int j=1;
             for(DevelopmentCard devCard : gui.getModel().getMe().getPersonalBoard().getTopDevCard()){
-                devCards.get(j).setImage(new Image("images/front/Masters of Renaissance_Cards_FRONT_3mmBleed_1-"+devCard.getId()+"-1.png"));
+                devCards.get(j).setImage(new Image("images/front/Masters of Renaissance_Cards_FRONT_3mmBleed_1-"+(devCard.getId()+1)+"-1.png"));
                 j++;
             }
 
@@ -224,20 +224,23 @@ public class DashboardController extends ControllerGuiInterface{
     public void onMouseClicked(MouseEvent mouseEvent) {
 
         int index = imageViews.indexOf((ImageView) mouseEvent.getSource());
-        if(!chosen[index]) {
-            choice.add(gui.getModel().getDashboard().getTopDevCard(ColorDevCard.values()[index%4],Level.values()[index/4]).getId());
-            labels.get(index).setText("selected");
-        }else{
-            choice.remove((Integer)gui.getModel().getDashboard().getTopDevCard(ColorDevCard.values()[index%4],Level.values()[index/4]).getId());
-            labels.get(index).setText("");
+        if(new MoveBuyDevCard(gui.getModel().getMyID()).canPerform(gui.getModel())&&gui.getModel().getDashboard().isSomethingBuyable(gui.getModel())) {
+            if (!chosen[index]) {
+                choice.add(gui.getModel().getDashboard().getTopDevCard(ColorDevCard.values()[index % 4], Level.values()[index / 4]).getId());
+                labels.get(index).setText("selected");
+            } else {
+                choice.remove((Integer) gui.getModel().getDashboard().getTopDevCard(ColorDevCard.values()[index % 4], Level.values()[index / 4]).getId());
+                labels.get(index).setText("");
+            }
+            chosen[index] = !chosen[index];
+            checkButton();
         }
-        chosen[index]=!chosen[index];
-        checkButton();
     }
 
     public void confirm(ActionEvent actionEvent){
         hideFirstScreen(true);
         hideSecondScreen(false);
+        devCards.get(4).setImage(new Image("images/front/Masters of Renaissance_Cards_FRONT_3mmBleed_1-"+(choice.get(0)+1)+"-1.png"));
     }
 
     public void baseButton(ActionEvent actionEvent){
@@ -245,15 +248,17 @@ public class DashboardController extends ControllerGuiInterface{
         for(Label label: labels){
             label.setText("");
         }
-        chosen=new boolean[12];// TODO: 6/1/21 ho aggiunto questo pezzettino di codice così se torni alla schermata iniziale e poi di nuovo a questa ti si resetta la schermata 
+        chosen=new boolean[12];// TODO: 6/1/21 ho aggiunto questo pezzettino di codice così se torni alla schermata iniziale e poi di nuovo a questa ti si resetta la schermata
         gui.activate(BaseController.className);
     }
 
     private void checkButton(){
-        this.confirmButton.setDisable(choice.size()!=1);
+        this.confirmButton.setDisable(choice.size()!=1||!(new MoveBuyDevCard(gui.getModel().getMyID()).canPerform(gui.getModel()))||!(gui.getModel().getDashboard().isSomethingBuyable(gui.getModel())));
     }
 
     private void hideSecondScreen(boolean b){
+        gridSecondScreen.setVisible(!b);
+        gridSecondScreen.setDisable(b);
         imageViewBoard.setVisible(!b);
 
         for(int i=0; i<devCards.size(); i++){
@@ -268,6 +273,8 @@ public class DashboardController extends ControllerGuiInterface{
     }
 
     private void hideFirstScreen(boolean b) {
+        gridSecondScreen.setDisable(!b);
+        gridSecondScreen.setVisible(b);
         for (BorderPane borderPane : borderPanes) {
             borderPane.setVisible(!b);
             borderPane.setDisable(b);
@@ -279,6 +286,7 @@ public class DashboardController extends ControllerGuiInterface{
         checkButton();
         baseButton.setDisable(b);
         confirmButton.setVisible(!b);
+        confirmButton.setDisable(b);
         baseButton.setVisible(!b);
     }
 

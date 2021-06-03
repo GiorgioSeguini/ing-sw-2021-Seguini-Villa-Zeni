@@ -102,7 +102,7 @@ public class BaseController extends ControllerGuiInterface{
         for(int i=0; i<3; i++){
             int j=0;
             for(DevelopmentCard devCard : gui.getModel().getMe().getPersonalBoard().getPos(i)){
-                devCards[i*3 +j].setImage(new Image("images/front/Masters of Renaissance_Cards_FRONT_3mmBleed_1-"+devCard.getId()+"-1.png"));
+                devCards[i*3 +j].setImage(new Image("images/front/Masters of Renaissance_Cards_FRONT_3mmBleed_1-"+(devCard.getId()+1)+"-1.png"));
                 j++;
             }
         }

@@ -68,7 +68,7 @@ public class InitialController extends ControllerGuiInterface{
     @Override
     public void update() {
         for(int i=0; i<imageViews.size(); i++){
-            int id = gui.getModel().getLeaderCards().get(i).getId() +1;
+            int id = gui.getModel().getLeaderCards().get(i).getId() +49;
             imageViews.get(i).setImage(new Image("/images/front/Masters of Renaissance_Cards_FRONT_3mmBleed_1-"+ id +"-1.png"));
         }
     }

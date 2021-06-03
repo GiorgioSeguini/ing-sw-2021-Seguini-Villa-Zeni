@@ -7,7 +7,7 @@
 <AnchorPane prefHeight="600.0" prefWidth="862.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.gui.DashboardController">
    <children>
       <Button fx:id="baseButton" layoutX="838.0" layoutY="1.0" mnemonicParsing="false" onAction="#baseButton" prefHeight="22.0" prefWidth="24.0" text="X" />
-      <BorderPane fx:id="BPane1" layoutX="40.0" layoutY="27.0" onMouseClicked="#onMouseClicked" prefHeight="180.0" prefWidth="180.0">
+      <BorderPane fx:id="BPane1" layoutX="40.0" layoutY="27.0" prefHeight="180.0" prefWidth="180.0">
          <center>
             <ImageView fx:id="imageView1" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
          </center>
@@ -104,7 +104,7 @@
          </bottom>
       </BorderPane>
       <Button fx:id="confirmButton" layoutX="766.0" layoutY="1.0" mnemonicParsing="false" onAction="#confirm" text="Compra" />
-      <GridPane layoutX="33.0" layoutY="42.0" prefHeight="591.0" prefWidth="721.0">
+      <GridPane fx:id="gridSecondScreen" layoutX="33.0" layoutY="42.0" prefHeight="591.0" prefWidth="721.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="128.0" minWidth="0.0" prefWidth="10.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="266.0" minWidth="10.0" prefWidth="158.4" />
