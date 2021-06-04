@@ -1,5 +1,6 @@
 package it.polimi.ingsw.client.gui;
 
+import it.polimi.ingsw.constant.enumeration.PlayerStatus;
 import it.polimi.ingsw.constant.enumeration.PopesFavorStates;
 import it.polimi.ingsw.constant.model.DevelopmentCard;
 import it.polimi.ingsw.constant.model.ProductionPower;
@@ -24,7 +25,6 @@ public class BaseController extends ControllerGuiInterface{
     private static final double RES_SIZE = 80;
     private static final double POPE_SIZE = 145;
     private static final double CARD_HEIGHT = 737;
-    private static final double CARD_OFFSET = 60;
     private static final Double[] RES_X = {289.0, 231.0, 320.0, 187.0, 274.0, 365.0};
     private static final Double[] RES_Y = {763.0, 905.0, 905.0, 1057.0, 1057.0, 1057.0};
     private static final Double[] POPES_X = {607.0, 1186.0, 1884.0};
@@ -34,7 +34,9 @@ public class BaseController extends ControllerGuiInterface{
     private static final Double[] BASE_PROD_X = {579.0};
     private static final Double[] BASE_PROD_Y = {1156.0};
     private static final Double BASE_PROD_HEIGHT = 286.0;
-
+    private static final Double[] LEAD_X = {2420.0, 2420.0};
+    private static final Double[] LEAD_Y = {100.0, 980.0};
+    private static final Double[] LABEL_Y = { 50.0, 930.0};
 
     @FXML
     ImageView board;
@@ -56,6 +58,8 @@ public class BaseController extends ControllerGuiInterface{
     private final ImageView[] resources = new ImageView[6];
     private final ImageView[] popes = new ImageView[3];
     private final ImageView[] devCards = new ImageView[9];
+    private final ImageView[] leaderCards = new ImageView[2];
+    private final Label[] leaderCardsLabels = new Label[2];
 
     private final Image[][] popesImage = new Image[3][2];
     private final Label[] labels = new Label[3];
@@ -88,8 +92,16 @@ public class BaseController extends ControllerGuiInterface{
             devCards[i] = new ImageView();
             anchorPane.getChildren().add(devCards[i]);
         }
-
+        for(int i=0; i< leaderCards.length; i++){
+            leaderCards[i] = new ImageView();
+            anchorPane.getChildren().add(leaderCards[i]);
+        }
+        for(int i=0; i< leaderCardsLabels.length; i++){
+            leaderCardsLabels[i] = new Label();
+            anchorPane.getChildren().add(leaderCardsLabels[i]);
+        }
         board.fitHeightProperty().bind(anchorPane.heightProperty().divide(1.1));
+        //board.fitWidthProperty().bind(anchorPane.widthProperty().divide(1.4));
         /*board.layoutXProperty().bind(anchorPane.heightProperty().divide(10.0));
         board.layoutYProperty().bind(anchorPane.heightProperty().divide(10.0));*/
 
@@ -99,6 +111,7 @@ public class BaseController extends ControllerGuiInterface{
         GUI.fixImages(board, BOARD_HEIGHT, resources, RES_X, RES_Y, RES_SIZE);
         GUI.fixImages(board, BOARD_HEIGHT, popes, POPES_X, POPES_Y, POPE_SIZE);
         GUI.fixImages(board, BOARD_HEIGHT, devCards, DEV_X, DEV_Y, CARD_HEIGHT);
+
 
         //base production
         baseProduction.setImage(new Image("/images/board/extraProd.png"));
@@ -114,6 +127,8 @@ public class BaseController extends ControllerGuiInterface{
             board.fitHeightProperty().addListener((observableValue, oldValue, newValue) -> labels[finalI].setLayoutX((Double)newValue * BOARD_HEIGHT / DEV_X[finalI*3]));
         }
 
+        //leadercard
+        GUI.fixImages(board, BOARD_HEIGHT, leaderCards, LEAD_X, LEAD_Y, CARD_HEIGHT);
 
         chosen.clear();
     }
@@ -139,9 +154,16 @@ public class BaseController extends ControllerGuiInterface{
                 j++;
             }
         }
+
+        for(int i=0; i< leaderCards.length; i++){
+            int id = gui.getModel().getMe().getPersonalBoard().getLeaderCards().get(i).getId() +49;
+            leaderCards[i].setImage(new Image("/images/front/Masters of Renaissance_Cards_FRONT_3mmBleed_1-"+ id +"-1.png"));
+            leaderCardsLabels[i].setText( gui.getModel().getMe().getPersonalBoard().getLeaderCards().get(i).getStatus().toString());
+        }
         checkButtons(true);
     }
 
+    //onAction functions
     public void goToMarket(ActionEvent actionEvent) {
         gui.activate(MarketController.className);
     }
@@ -169,6 +191,7 @@ public class BaseController extends ControllerGuiInterface{
         }
     }
 
+    //onActionProductions
     public void selectCard(MouseEvent actionEvent){
         int index =-1;
         for(int i=0; i<9; i++){
@@ -192,21 +215,6 @@ public class BaseController extends ControllerGuiInterface{
         checkConfirm();
     }
 
-
-    private void checkEndTurn(){
-        MoveType move = new MoveEndTurn(gui.getModel().getMyID());
-        endTurn.setDisable(!move.canPerform(gui.getModel()));
-    }
-
-    private void checkConfirm(){
-        confirm.setDisable(chosen.size()==0);
-    }
-
-    @Override
-    public String getName() {
-        return className;
-    }
-
     public void exitProduction(ActionEvent actionEvent) {
         checkButtons(true);
 
@@ -226,6 +234,8 @@ public class BaseController extends ControllerGuiInterface{
         chosen.clear();
     }
 
+    //private checkButton
+
     /**
      *
      * @param base of type boolean, true if in base, false if in active production
@@ -236,7 +246,11 @@ public class BaseController extends ControllerGuiInterface{
         market.setVisible(base);
         market.setDisable(!base);
         production.setVisible(base);
-        production.setDisable(!base);
+        if(base) {
+            checkProduction();
+        }else{
+            production.setDisable(true);
+        }
         endTurn.setVisible(base);
         if(base){
             checkEndTurn();
@@ -252,5 +266,23 @@ public class BaseController extends ControllerGuiInterface{
         }else{
             confirm.setDisable(true);
         }
+    }
+
+    private void checkEndTurn(){
+        MoveType move = new MoveEndTurn(gui.getModel().getMyID());
+        endTurn.setDisable(!move.canPerform(gui.getModel()));
+    }
+
+    private void checkConfirm(){
+        confirm.setDisable(chosen.size()==0);
+    }
+
+    private void checkProduction(){
+        production.setDisable(!new MoveActiveProduction(gui.getModel().getMyID()).canPerform(gui.getModel()));
+    }
+
+    @Override
+    public String getName() {
+        return className;
     }
 }

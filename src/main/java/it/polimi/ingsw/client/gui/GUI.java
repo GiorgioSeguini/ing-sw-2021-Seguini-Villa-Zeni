@@ -18,6 +18,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -60,7 +61,7 @@ public class GUI extends Application implements UI {
         client.setGui(this);
         primaryStage.setTitle("Maestri del Rinascimento");
         Pane root = new Pane();
-        this.main = new Scene(root, 600, 400);
+        this.main = new Scene(root, 1280, 692);
         primaryStage.setScene(this.main);
 
         ArrayList<FXMLLoader> loaders = new ArrayList<>();
@@ -84,7 +85,9 @@ public class GUI extends Application implements UI {
             this.screenMap.put(pane, controller.getName());
         }
         this.activate("sample");
-
+        primaryStage.minHeightProperty().bind(primaryStage.widthProperty().multiply(9.0 / 16.0));
+        primaryStage.maxHeightProperty().bind(primaryStage.widthProperty().multiply(9.0 / 16.0));
+        primaryStage.setMinWidth(600.0);
         primaryStage.show();
     }
 
