@@ -81,7 +81,6 @@ public class MarketController extends ControllerGuiInterface{
 
     public MarketController(){
         super();
-        market.setImage(new Image("/images/punchboard/plancia_portabiglie.png"));
 
         marblesColor=new Image[MarbleColor.values().length];
         for(MarbleColor color: MarbleColor.values()){
@@ -102,6 +101,7 @@ public class MarketController extends ControllerGuiInterface{
 
     @FXML
     public void initialize(){
+        market.setImage(new Image("/images/punchboard/plancia_portabiglie.png"));
         for (int i=0; i<nCol+nRow; i++){
             rowcol.add(new ImageView());
             anchorPane.getChildren().add(rowcol.get(i));
@@ -110,12 +110,12 @@ public class MarketController extends ControllerGuiInterface{
         for(int i=0; i<nRow; i++){
             for (int j=0; j<nCol; j++){
                 marbleImages[i][j]= new ImageView();
+                anchorPane.getChildren().add(marbleImages[i][j]);
             }
         }
         for (int i=0; i<nRow; i++){
             GUI.fixImages(market, marketH, marbleImages[i],x, new Double[]{y[i],y[i],y[i],y[i]}, (boardH/nRow)-5 );
         }
-
     }
 
     @Override
@@ -125,7 +125,6 @@ public class MarketController extends ControllerGuiInterface{
             for (int j=0; j<nCol; j++){
                 MarbleColor color= gui.getModel().getMarketTray().gettMarble(i,j);
                 marbleImages[i][j].setImage(marblesColor[color.ordinal()]);
-                anchorPane.getChildren().add(marbleImages[i][j]);
                 marbleImages[i][j].setVisible(true);
             }
         }

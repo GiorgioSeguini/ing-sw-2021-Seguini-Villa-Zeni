@@ -180,9 +180,9 @@ public class GUI extends Application implements UI {
      */
     public static void fixImages(final ImageView back, final Double backHeight, final ImageView[] images, final Double[] x, final Double[] y, final Double imageHeight){
         if(images.length!=x.length)
-            return;
+            throw new ArithmeticException();
         if(images.length!=y.length)
-            return;
+            throw new ArithmeticException();
         for(int i=0; i<images.length; i++){
             int finalI = i;
             back.fitHeightProperty().addListener((observableValue, oldValue, newValue) -> images[finalI].setLayoutX(back.getLayoutX() + (Double)newValue * x[finalI]/ backHeight));
