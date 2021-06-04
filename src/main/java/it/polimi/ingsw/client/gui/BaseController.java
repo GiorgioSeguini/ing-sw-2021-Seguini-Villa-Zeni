@@ -1,18 +1,21 @@
 package it.polimi.ingsw.client.gui;
 
-import it.polimi.ingsw.constant.enumeration.MarbleColor;
 import it.polimi.ingsw.constant.enumeration.PopesFavorStates;
-import it.polimi.ingsw.constant.enumeration.ResourceType;
 import it.polimi.ingsw.constant.model.DevelopmentCard;
+import it.polimi.ingsw.constant.model.ProductionPower;
+import it.polimi.ingsw.constant.move.MoveActiveProduction;
 import it.polimi.ingsw.constant.move.MoveEndTurn;
 import it.polimi.ingsw.constant.move.MoveType;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.geometry.HPos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+
+import java.util.ArrayList;
 
 public class BaseController extends ControllerGuiInterface{
 
@@ -28,6 +31,10 @@ public class BaseController extends ControllerGuiInterface{
     private static final Double[] POPES_Y = {250.0, 132.0, 250.0};
     private static final Double[] DEV_X = {935.0, 935.0, 935.0, 1398.0, 1398.0, 1398.0, 1861.0, 1861.0, 1861.0};
     private static final Double[] DEV_Y = {873.0, 933.0, 993.0, 873.0, 933.0, 993.0, 873.0, 933.0, 993.0};
+    private static final Double[] BASE_PROD_X = {579.0};
+    private static final Double[] BASE_PROD_Y = {1156.0};
+    private static final Double BASE_PROD_HEIGHT = 286.0;
+
 
     @FXML
     ImageView board;
@@ -39,12 +46,21 @@ public class BaseController extends ControllerGuiInterface{
     Button dashboard;
     @FXML
     Button endTurn;
+    @FXML
+    private Button production;
+    @FXML
+    private Button confirm;
+    @FXML
+    private Button exit;
 
     private final ImageView[] resources = new ImageView[6];
     private final ImageView[] popes = new ImageView[3];
     private final ImageView[] devCards = new ImageView[9];
 
     private final Image[][] popesImage = new Image[3][2];
+    private final Label[] labels = new Label[3];
+    private final ImageView baseProduction = new ImageView();
+    private final ArrayList<ProductionPower> chosen = new ArrayList<>();
 
     public BaseController(){
         super();
@@ -83,6 +99,23 @@ public class BaseController extends ControllerGuiInterface{
         GUI.fixImages(board, BOARD_HEIGHT, resources, RES_X, RES_Y, RES_SIZE);
         GUI.fixImages(board, BOARD_HEIGHT, popes, POPES_X, POPES_Y, POPE_SIZE);
         GUI.fixImages(board, BOARD_HEIGHT, devCards, DEV_X, DEV_Y, CARD_HEIGHT);
+
+        //base production
+        baseProduction.setImage(new Image("/images/board/extraProd.png"));
+        anchorPane.getChildren().add(baseProduction);
+        GUI.fixImages(board, BOARD_HEIGHT, new ImageView[]{baseProduction}, BASE_PROD_X, BASE_PROD_Y, BASE_PROD_HEIGHT);
+        baseProduction.fitWidthProperty().bind(board.fitHeightProperty().divide(BOARD_HEIGHT / BASE_PROD_HEIGHT));
+
+        for(int i=0; i<3; i++){
+            int finalI = i;
+            labels[i]= new Label();
+            anchorPane.getChildren().add(labels[i]);
+            anchorPane.heightProperty().addListener((observableValue, oldValue, newValue) -> labels[finalI].setLayoutY((Double)newValue - 10.0));
+            board.fitHeightProperty().addListener((observableValue, oldValue, newValue) -> labels[finalI].setLayoutX((Double)newValue * BOARD_HEIGHT / DEV_X[finalI*3]));
+        }
+
+
+        chosen.clear();
     }
 
     @Override
@@ -121,14 +154,103 @@ public class BaseController extends ControllerGuiInterface{
     public void endTurn(ActionEvent actionEvent) {
         gui.sendMove(new MoveEndTurn(gui.getModel().getMyID()));
     }
+    public void activeProduction(ActionEvent actionEvent){
+        dashboard.setVisible(false);
+        dashboard.setDisable(true);
+        market.setVisible(false);
+        market.setDisable(true);
+        endTurn.setVisible(false);
+        endTurn.setDisable(true);
+        production.setDisable(true);
+        production.setVisible(false);
+
+        exit.setVisible(true);
+        exit.setDisable(false);
+        confirm.setVisible(true);
+        checkConfirm();
+
+        for(int i=0; i<3; i++){
+            if(devCards[i*3].getImage()!=null){
+                int j=0;
+                while(devCards[i*3 + j].getImage()!=null) j++;
+                j--;
+                devCards[i*3 + j].setOnMouseClicked(this::selectCard);
+            }
+        }
+        baseProduction.setOnMouseClicked(this::selectCard);
+
+        for(int i=0; i<3; i++){
+            labels[i].setVisible(true);
+        }
+    }
+
+    public void selectCard(MouseEvent actionEvent){
+        int index =-1;
+        for(int i=0; i<9; i++){
+            if(actionEvent.getSource().equals(devCards[i])){
+                index = i;
+            }
+        }
+        ProductionPower p;
+        if(index>=0){
+            p = gui.getModel().getMe().getPersonalBoard().getTopDevCard(index/3).getProductionPower();
+        }else{
+            p = gui.getModel().getMe().getPersonalBoard().getProduction().get( gui.getModel().getMe().getPersonalBoard().getProduction().size() -1);
+        }
+        if(chosen.contains(p)){
+            chosen.remove(p);
+            if(index>=0) labels[index/3].setText("");
+        }else{
+            chosen.add(p);
+            if(index>=0) labels[index/3].setText("selected");
+        }
+        checkConfirm();
+    }
+
 
     private void checkEndTurn(){
         MoveType move = new MoveEndTurn(gui.getModel().getMyID());
         endTurn.setDisable(!move.canPerform(gui.getModel()));
     }
 
+    private void checkConfirm(){
+        confirm.setDisable(chosen.size()==0);
+    }
+
     @Override
     public String getName() {
         return className;
     }
+
+    public void exitProduction(ActionEvent actionEvent) {
+        dashboard.setVisible(true);
+        dashboard.setDisable(false);
+        market.setVisible(true);
+        market.setDisable(false);
+        endTurn.setVisible(true);
+        checkEndTurn();
+
+        exit.setVisible(false);
+        exit.setDisable(true);
+        confirm.setVisible(false);
+        confirm.setDisable(true);
+        production.setDisable(false);
+        production.setVisible(true);
+
+        for(int i=0; i<9; i++){
+            devCards[i].setOnMouseClicked(null);
+        }
+        for(int i=0; i<3; i++){
+            labels[i].setVisible(false);
+        }
+        baseProduction.setOnMouseClicked(null);
+    }
+
+    public void confirmProduction(ActionEvent actionEvent) {
+        MoveActiveProduction activeProduction = new MoveActiveProduction(gui.getModel().getMyID());
+        activeProduction.setToActive(chosen);
+        gui.sendMove(activeProduction);
+        chosen.clear();
+    }
+
 }

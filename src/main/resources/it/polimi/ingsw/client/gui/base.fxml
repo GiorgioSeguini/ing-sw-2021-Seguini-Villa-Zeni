@@ -9,8 +9,11 @@
       <ImageView fx:id="board" layoutX="20.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
             <Image url="@../../../../../images/board/Masters_of_Renaissance_PlayerBoard.png" />
       </ImageView>
-      <Button fx:id="market"    layoutX="20.0" mnemonicParsing="false" onAction="#goToMarket" text="mercato" />
+      <Button fx:id="market"    layoutX="20.0" mnemonicParsing="false" onAction="#goToMarket" text="Mercato" />
       <Button fx:id="dashboard" layoutX="150.0" mnemonicParsing="false" onAction="#goToDashboard" text="Dashboard" />
-      <Button fx:id="endTurn" layoutX="250.0" mnemonicParsing="false" onAction="#endTurn" text="Fine" />
+      <Button fx:id="production" layoutX="220.0" mnemonicParsing="false" onAction="#activeProduction" text="Produci" />
+      <Button fx:id="exit" layoutX="220.0" mnemonicParsing="false" onAction="#exitProduction" text="Esci" visible="false" disable="true"/>
+      <Button fx:id="confirm" layoutX="20.0" mnemonicParsing="false" onAction="#confirmProduction" text="Conferma" visible="false" disable="true"/>
+      <Button fx:id="endTurn" layoutX="320.0" mnemonicParsing="false" onAction="#endTurn" text="Fine" />
    </children>
 </AnchorPane>

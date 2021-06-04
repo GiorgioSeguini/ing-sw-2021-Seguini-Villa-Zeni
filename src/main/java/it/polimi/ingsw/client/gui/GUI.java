@@ -73,6 +73,7 @@ public class GUI extends Application implements UI {
         loaders.add(new FXMLLoader((getClass().getResource("lobby.fxml"))));
         loaders.add(new FXMLLoader((getClass().getResource("dashboard.fxml"))));
         loaders.add(new FXMLLoader((getClass().getResource("store.fxml"))));
+        loaders.add(new FXMLLoader((getClass().getResource("choseRes.fxml"))));
 
 
         for (FXMLLoader loader : loaders) {
@@ -130,8 +131,10 @@ public class GUI extends Application implements UI {
                     activate("initialRes");
                 }
             }else{
-                if(this.getModel().getMe().getStatus()== PlayerStatus.NeedToStore){
+                if(this.getModel().getMe().getStatus()== PlayerStatus.NeedToStore) {
                     activate(StoreResourcesController.className);
+                }else if(this.getModel().getMe().getStatus()== PlayerStatus.NeedToChoseRes){
+                    activate(ChoseResController.className);
                 }else {
                     activate("base");
                 }

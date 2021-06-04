@@ -40,6 +40,12 @@ public class PersonalBoard {
             result.addAll(OwnedDevCards[i]);
         return result;
     }
+    public DevelopmentCard getTopDevCard(int index){
+        if(index<0 || index>3){
+            return null;
+        }
+        return OwnedDevCards[index].get(OwnedDevCards[index].size() -1);
+    }
 
     public ArrayList<DevelopmentCard> getActiveOwnedDevCards() {
         ArrayList<DevelopmentCard> result = new ArrayList<DevelopmentCard>();
