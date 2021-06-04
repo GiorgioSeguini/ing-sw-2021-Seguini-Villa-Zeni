@@ -139,10 +139,7 @@ public class BaseController extends ControllerGuiInterface{
                 j++;
             }
         }
-        checkEndTurn();
-        market.setVisible(true);
-        dashboard.setVisible(true);
-        endTurn.setVisible(true);
+        checkButtons(true);
     }
 
     public void goToMarket(ActionEvent actionEvent) {
@@ -155,19 +152,7 @@ public class BaseController extends ControllerGuiInterface{
         gui.sendMove(new MoveEndTurn(gui.getModel().getMyID()));
     }
     public void activeProduction(ActionEvent actionEvent){
-        dashboard.setVisible(false);
-        dashboard.setDisable(true);
-        market.setVisible(false);
-        market.setDisable(true);
-        endTurn.setVisible(false);
-        endTurn.setDisable(true);
-        production.setDisable(true);
-        production.setVisible(false);
-
-        exit.setVisible(true);
-        exit.setDisable(false);
-        confirm.setVisible(true);
-        checkConfirm();
+        checkButtons(false);
 
         for(int i=0; i<3; i++){
             if(devCards[i*3].getImage()!=null){
@@ -195,7 +180,7 @@ public class BaseController extends ControllerGuiInterface{
         if(index>=0){
             p = gui.getModel().getMe().getPersonalBoard().getTopDevCard(index/3).getProductionPower();
         }else{
-            p = gui.getModel().getMe().getPersonalBoard().getProduction().get( gui.getModel().getMe().getPersonalBoard().getProduction().size() -1);
+            p = gui.getModel().getMe().getPersonalBoard().getProduction().get(0);
         }
         if(chosen.contains(p)){
             chosen.remove(p);
@@ -223,19 +208,7 @@ public class BaseController extends ControllerGuiInterface{
     }
 
     public void exitProduction(ActionEvent actionEvent) {
-        dashboard.setVisible(true);
-        dashboard.setDisable(false);
-        market.setVisible(true);
-        market.setDisable(false);
-        endTurn.setVisible(true);
-        checkEndTurn();
-
-        exit.setVisible(false);
-        exit.setDisable(true);
-        confirm.setVisible(false);
-        confirm.setDisable(true);
-        production.setDisable(false);
-        production.setVisible(true);
+        checkButtons(true);
 
         for(int i=0; i<9; i++){
             devCards[i].setOnMouseClicked(null);
@@ -253,4 +226,31 @@ public class BaseController extends ControllerGuiInterface{
         chosen.clear();
     }
 
+    /**
+     *
+     * @param base of type boolean, true if in base, false if in active production
+     */
+    private void checkButtons(boolean base){
+        dashboard.setVisible(base);
+        dashboard.setDisable(!base);
+        market.setVisible(base);
+        market.setDisable(!base);
+        production.setVisible(base);
+        production.setDisable(!base);
+        endTurn.setVisible(base);
+        if(base){
+            checkEndTurn();
+        }else {
+            endTurn.setDisable(true);
+        }
+
+        exit.setVisible(!base);
+        exit.setDisable(base);
+        confirm.setVisible(!base);
+        if(!base) {
+            checkConfirm();
+        }else{
+            confirm.setDisable(true);
+        }
+    }
 }
