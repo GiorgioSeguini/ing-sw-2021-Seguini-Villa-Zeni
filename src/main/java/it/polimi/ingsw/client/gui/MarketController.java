@@ -10,140 +10,134 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 
 import java.util.ArrayList;
 import java.util.Collection;
+/*
+----------------------------------------------------------------
+                                                                |
+                        spaceH                                  |
+                                                                |
+spaceL       ---------------------------                        |
+             |                          |                       |
+             |                          |                       |
+             |                          | boardH                |
+             |                          |                       | marketH
+             |                          |                       |
+             ---------------------------                        |
+                      boardL                                    |
+                                                                |
+                                                                |
+                                                                |
+-----------------------------------------------------------------
+                    marketL
+*/
 
 public class MarketController extends ControllerGuiInterface{
 
     public static String className = "market";
     private static int nCol=4;
     private static int nRow=3;
-    private ImageView[][] marbleImages= new ImageView[nRow][nCol];
+    private ImageView[][] marbleImages=new ImageView[nRow][nCol];
     private ArrayList<ImageView> rowcol= new ArrayList<>();
+    private Image[] marblesColor;
     private int index;
     private AlertBox box;
+    private static final double marketH=2522;
+    private static final double marketL=1951;
+    private static final double boardH=1000;
+    private static final double boardL=750;
+    private static final double spaceH=530;
+    private static final double spaceL=510;
+    private final Double[] x;
+    private final Double[] y;
 
     @Override
     public String getName() {
         return className;
     }
 
-    @FXML
-    private ImageView imageView00;
-    @FXML
-    private ImageView imageView01;
-    @FXML
-    private ImageView imageView02;
-    @FXML
-    private ImageView imageView03;
-    @FXML
-    private ImageView imageView10;
-    @FXML
-    private ImageView imageView11;
-    @FXML
-    private ImageView imageView12;
-    @FXML
-    private ImageView imageView13;
-    @FXML
-    private ImageView imageView20;
-    @FXML
-    private ImageView imageView21;
-    @FXML
-    private ImageView imageView22;
-    @FXML
-    private ImageView imageView23;
-    @FXML
-    private ImageView imageViewExtMarble;
 
     @FXML
-    private ImageView row1;
-    @FXML
-    private ImageView row2;
-    @FXML
-    private ImageView row3;
-    @FXML
-    private ImageView col1;
-    @FXML
-    private ImageView col2;
-    @FXML
-    private ImageView col3;
-    @FXML
-    private ImageView col4;
-
-
+    private AnchorPane anchorPane;
     @FXML
     private Button marketMoveConfirm;
     @FXML
     private Button returnback;
     @FXML
     private Button confirm;
-
-    @FXML
-    private GridPane grid;
-
     @FXML
     private Label infos;
     @FXML
     private Label chose;
+    @FXML
+    private ImageView market= new ImageView();
+
+    private ImageView imageViewExtMarble;
+
+    public MarketController(){
+        super();
+        market.setImage(new Image("/images/punchboard/plancia_portabiglie.png"));
+
+        marblesColor=new Image[MarbleColor.values().length];
+        for(MarbleColor color: MarbleColor.values()){
+            marblesColor[color.ordinal()]= new Image(getImagePath(color));
+        }
+
+        x = new Double[nCol];
+        for (int i=0; i<nCol; i++){
+            x[i]=spaceL+boardL/(nCol*2)+ i*boardL/nCol;
+        }
+
+        y = new Double[nRow];
+        for (int i=0; i<nRow; i++){
+            x[i]=spaceH+boardL/(nRow*2)+ i*boardL/nRow;
+        }
+    }
+
 
     @FXML
     public void initialize(){
-        marbleImages[0][0]= imageView00;
-        marbleImages[0][1]= imageView01;
-        marbleImages[0][2]= imageView02;
-        marbleImages[0][3]= imageView03;
-        marbleImages[1][0]= imageView10;
-        marbleImages[1][1]= imageView11;
-        marbleImages[1][2]= imageView12;
-        marbleImages[1][3]= imageView13;
-        marbleImages[2][0]= imageView20;
-        marbleImages[2][1]= imageView21;
-        marbleImages[2][2]= imageView22;
-        marbleImages[2][3]= imageView23;
-        rowcol.add(col1);
-        rowcol.add(col2);
-        rowcol.add(col3);
-        rowcol.add(col4);
-        rowcol.add(row1);
-        rowcol.add(row2);
-        rowcol.add(row3);
-
-        for(ImageView image: rowcol){
-            image.setDisable(true);
+        for (int i=0; i<nCol+nRow; i++){
+            rowcol.add(new ImageView());
+            anchorPane.getChildren().add(rowcol.get(i));
         }
+
+        for(int i=0; i<nRow; i++){
+            for (int j=0; j<nCol; j++){
+                marbleImages[i][j]= new ImageView();
+            }
+        }
+        for (int i=0; i<nRow; i++){
+            GUI.fixImages(market, marketH, marbleImages[i],x, new Double[]{y[i],y[i],y[i],y[i]}, (boardH/nRow)-5 );
+        }
+
     }
 
     @Override
     public void update() {
-        returnback.setDisable(false);
-        marketMoveConfirm.setDisable(false);
-        returnback.setVisible(true);
-        marketMoveConfirm.setVisible(true);
-        infos.setDisable(true);
-        infos.setVisible(false);
-        chose.setDisable(true);
-        chose.setVisible(false);
-        confirm.setVisible(false);
-        confirm.setDisable(true);
-        chose.setText("");
+        HideFirstScreen(false);
         for(int i=0; i<nRow; i++){
             for (int j=0; j<nCol; j++){
                 MarbleColor color= gui.getModel().getMarketTray().gettMarble(i,j);
-                marbleImages[i][j].setImage(new Image(getImagePath(color)));
+                marbleImages[i][j].setImage(marblesColor[color.ordinal()]);
+                anchorPane.getChildren().add(marbleImages[i][j]);
+                marbleImages[i][j].setVisible(true);
             }
         }
 
-        MarbleColor extMarble=gui.getModel().getMarketTray().getExternalMarble();
-        imageViewExtMarble.setImage(new Image(getImagePath(extMarble)));
+        market.setVisible(true);
 
+        //MarbleColor extMarble=gui.getModel().getMarketTray().getExternalMarble();
+        //imageViewExtMarble=marblesColor[extMarble.ordinal()];
     }
 
     public void MarketMoveConfirm(ActionEvent actionEvent) {
-        if(new MoveTypeMarket(gui.getModel().getMyID()).canPerform(gui.getModel())){
+        /*if(new MoveTypeMarket(gui.getModel().getMyID()).canPerform(gui.getModel())){
             box= new AlertBox("Mossa Market", "Stai scegliendo di comprare risorse dal mercato. Se decidi di continuare non potrai tornare indietro");
             Button button= new Button("Ok");
             EventHandler<ActionEvent> event = new
@@ -164,7 +158,7 @@ public class MarketController extends ControllerGuiInterface{
         else{
             box= new AlertBox("Mossa Market", "Stai scegliendo di comprare risorse dal mercato, ma al momento questa mossa non è disponibile");
         }
-        box.display();
+        box.display();*/
     }
 
 
@@ -173,9 +167,9 @@ public class MarketController extends ControllerGuiInterface{
     }
 
     public void confirm(ActionEvent actionEvent) {
-        MoveTypeMarket move = new MoveTypeMarket(gui.getModel().getMyID());
+        /*MoveTypeMarket move = new MoveTypeMarket(gui.getModel().getMyID());
         move.setIndexToBuy(index);
-        gui.sendMove(move);
+        gui.sendMove(move);*/
     }
 
     private String getImagePath(MarbleColor color){
@@ -183,20 +177,7 @@ public class MarketController extends ControllerGuiInterface{
         return path;
     }
 
-
-    private void makeMove() {
-        infos.setDisable(false);
-        infos.setVisible(true);
-        chose.setDisable(false);
-        chose.setVisible(true);
-        confirm.setVisible(true);
-        for(ImageView image: rowcol){
-            image.setDisable(false);
-        }
-
-    }
-
-    public void selectRowCol(MouseEvent mouseEvent){
+    /*public void selectRowCol(MouseEvent mouseEvent){
         index=rowcol.indexOf((ImageView) mouseEvent.getSource());
         if(index<4){
             chose.setText("\nHai scelto la "+ (index+1)+"colonna.");
@@ -204,6 +185,28 @@ public class MarketController extends ControllerGuiInterface{
             chose.setText("\n Hai scelto la "+ (index-3)+ "riga.");
         }
         confirm.setDisable(false);
+    }*/
+
+    private void HideFirstScreen(boolean b){
+        returnback.setDisable(b);
+        returnback.setVisible(!b);
+        marketMoveConfirm.setDisable(b);
+        marketMoveConfirm.setVisible(!b);
+        HideSecondScreen(!b);
+    }
+
+    private void HideSecondScreen(boolean b){
+        infos.setDisable(b);
+        infos.setVisible(!b);
+        chose.setDisable(b);
+        chose.setVisible(!b);
+        chose.setText("");
+        confirm.setDisable(b);
+        confirm.setVisible(!b);
+        for(ImageView image: rowcol){
+            image.setDisable(b);
+        }
+
     }
 
 
