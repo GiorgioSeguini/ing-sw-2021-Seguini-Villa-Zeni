@@ -36,6 +36,12 @@ public class ConverterExt extends Converter implements Observable<Message> {
         this.addToconvert(type);
     }
 
+    @Override
+    public void setResources(NumberOfResources resources) {
+        super.setResources(resources);
+        notify(new ConverterMessage(this));
+    }
+
     /*Additional Methods*/
     /**Returns TRUE if the WhiteAbility is active*/
     public boolean IsWhiteAbilityActive(){
