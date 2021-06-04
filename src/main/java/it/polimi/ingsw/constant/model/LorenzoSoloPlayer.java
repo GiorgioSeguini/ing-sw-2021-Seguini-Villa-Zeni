@@ -4,14 +4,12 @@ package it.polimi.ingsw.constant.model;
 public abstract class LorenzoSoloPlayer {
 
     private final FaithTrack faithTrack;
-    private final Game game;
     private boolean isWinner;
 
 
 
     /*default constructor*/
-    public LorenzoSoloPlayer(Game game, FaithTrack faithTrack) {
-        this.game = game;
+    public LorenzoSoloPlayer(FaithTrack faithTrack) {
         this.faithTrack = faithTrack;
         this.isWinner=false;
     }
@@ -20,10 +18,6 @@ public abstract class LorenzoSoloPlayer {
     /*Getter*/
     public FaithTrack getFaithTrack() {
         return faithTrack;
-    }
-
-    public Game getGame() {
-        return game;
     }
 
     public boolean isWinner(){

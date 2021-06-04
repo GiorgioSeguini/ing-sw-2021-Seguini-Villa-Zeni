@@ -54,62 +54,52 @@ public class Server {
         }
         waitingConnections.get(numofplayer-1).put(name,c);
 
-        if(waitingConnections.get(0).size()>=1){
-            // TODO: 5/20/21 start lorenzo solo game
-        }
-        else{
-            boolean check=true;
-            for(int i=1;i<NUMOFPOSSIBLEGAMES && check; i++ ){
+        int i= numofplayer-1;
+        if (waitingConnections.get(i).size()>=i+1) {
+            ArrayList<PlayerExt> players=getPlayersforGame(waitingConnections.get(i),i+1);
+            GameExt game = null;
 
-                if (waitingConnections.get(i).size()>=i+1) {
-                    check=false;
-                    ArrayList<PlayerExt> players=getPlayersforGame(waitingConnections.get(i),i+1);
-                    GameExt game = null;
+            try {
+                game=new GameExt(players, new MarketExt(Starter.MarblesParser()), new DashboardExt(Starter.DevCardParser()), Starter.TokensParser(), Starter.LeaderCardsParser());
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+                //TODO
+            }
+            Controller controller = new Controller(game);
+            ArrayList<View> playersView = instanceViews(waitingConnections.get(i),game.getPlayers());
 
-                    try {
-                        game=new GameExt(players, new MarketExt(Starter.MarblesParser()), new DashboardExt(Starter.DevCardParser()), Starter.TokensParser(), Starter.LeaderCardsParser());
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
-                        //TODO
-                    }
-                    Controller controller = new Controller(game);
-                    ArrayList<View> playersView = instanceViews(waitingConnections.get(i),game.getPlayers());
-
-                    for(View view : playersView){
-                        //add model - view links
-                        game.getMarketTray().addObserver(view);
-                        game.getDashboard().addObserver(view);
-                        game.addObserver(view);
-                        for(Player player : game.getPlayers()){
-                            PlayerExt playerExt = (PlayerExt) player;
-                            playerExt.getPersonalBoard().addObserver(view);
-                            playerExt.getFaithTrack().addObserver(view);
-                            playerExt.getDepots().addObserver(view);
-                            playerExt.addObserver(view);
-                            playerExt.getConverter().addObserver(view);
-                        }
-
-                        //add controller - view links
-                        view.addObserver(controller);
-                    }
-
-                    ArrayList<ClientConnection> connections= getConnectionforGame(waitingConnections.get(i), game.getPlayers());
-                    for(int j=0;j<connections.size();j++){
-                        for (int k=0;k<connections.size();k++){
-                            if(j!=k){
-                                playingConnection.put(connections.get(j),connections.get(k));
-                            }
-                        }
-                    }
-
-                    waitingConnections.get(i).clear();
-
-                    //send initial message
-                    for(View view : playersView){
-                        view.sendInitialMessage(game);
-                    }
+            for(View view : playersView){
+                //add model - view links
+                game.getMarketTray().addObserver(view);
+                game.getDashboard().addObserver(view);
+                game.addObserver(view);
+                for(Player player : game.getPlayers()){
+                    PlayerExt playerExt = (PlayerExt) player;
+                    playerExt.getPersonalBoard().addObserver(view);
+                    playerExt.getFaithTrack().addObserver(view);
+                    playerExt.getDepots().addObserver(view);
+                    playerExt.addObserver(view);
+                    playerExt.getConverter().addObserver(view);
                 }
 
+                //add controller - view links
+                view.addObserver(controller);
+            }
+
+            ArrayList<ClientConnection> connections= getConnectionforGame(waitingConnections.get(i), game.getPlayers());
+            for(int j=0;j<connections.size();j++){
+                for (int k=0;k<connections.size();k++){
+                    if(j!=k){
+                        playingConnection.put(connections.get(j),connections.get(k));
+                    }
+                }
+            }
+
+            waitingConnections.get(i).clear();
+
+            //send initial message
+            for(View view : playersView) {
+                view.sendInitialMessage(game);
             }
 
         }

@@ -9,15 +9,16 @@ import java.util.*;
 /*Last Edit: Fabio*/
 public class LorenzoSoloPlayerExt extends LorenzoSoloPlayer {
 
-
+    private transient final GameExt game;
     private transient ArrayList<SoloActionTokens> soloActionTokens;
     private ArrayList<SoloActionTokens> copyOfSoloActionTokens;
     //private ArrayList<SoloActionTokens> soloActionTokensDiscarded;
 
 
     /*default constructor*/
-    public LorenzoSoloPlayerExt(Game game, FaithTrackExt faithTrack, ArrayList<SoloActionTokens> startSoloActionTokens) {
-        super(game, faithTrack);
+    public LorenzoSoloPlayerExt(GameExt game, FaithTrackExt faithTrack, ArrayList<SoloActionTokens> startSoloActionTokens) {
+        super(faithTrack);
+        this.game = game;
         soloActionTokens = new ArrayList<SoloActionTokens>(startSoloActionTokens);
         Collections.shuffle(soloActionTokens);
 
@@ -58,8 +59,7 @@ public class LorenzoSoloPlayerExt extends LorenzoSoloPlayer {
         soloActionTokensRevealed.ActivateToken(getGame());
     }
 
-    @Override
     public GameExt getGame() {
-        return (GameExt) super.getGame();
+        return game;
     }
 }
