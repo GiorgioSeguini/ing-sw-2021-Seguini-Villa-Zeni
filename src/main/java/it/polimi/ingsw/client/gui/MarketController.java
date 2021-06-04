@@ -89,12 +89,13 @@ public class MarketController extends ControllerGuiInterface{
 
         x = new Double[nCol];
         for (int i=0; i<nCol; i++){
-            x[i]=spaceL+boardL/(nCol*2)+ i*boardL/nCol;
+            x[i]=spaceL+(i*boardL)/nCol;
+
         }
 
         y = new Double[nRow];
         for (int i=0; i<nRow; i++){
-            x[i]=spaceH+boardL/(nRow*2)+ i*boardL/nRow;
+            y[i]=spaceH+ i*boardL/nRow;
         }
     }
 
@@ -102,6 +103,8 @@ public class MarketController extends ControllerGuiInterface{
     @FXML
     public void initialize(){
         market.setImage(new Image("/images/punchboard/plancia_portabiglie.png"));
+        market.fitHeightProperty().bind(anchorPane.heightProperty().divide(1.3));
+        anchorPane.widthProperty().addListener((observableValue, oldValue, newValue) -> market.setLayoutX((Double) newValue/2));
         for (int i=0; i<nCol+nRow; i++){
             rowcol.add(new ImageView());
             anchorPane.getChildren().add(rowcol.get(i));
@@ -114,7 +117,7 @@ public class MarketController extends ControllerGuiInterface{
             }
         }
         for (int i=0; i<nRow; i++){
-            GUI.fixImages(market, marketH, marbleImages[i],x, new Double[]{y[i],y[i],y[i],y[i]}, (boardH/nRow)-5 );
+            GUI.fixImages(market, marketH, marbleImages[i],x, new Double[]{y[i],y[i],y[i],y[i]}, boardH/(nRow+1) );
         }
     }
 
@@ -136,6 +139,7 @@ public class MarketController extends ControllerGuiInterface{
     }
 
     public void MarketMoveConfirm(ActionEvent actionEvent) {
+        System.out.println("ciao");
         /*if(new MoveTypeMarket(gui.getModel().getMyID()).canPerform(gui.getModel())){
             box= new AlertBox("Mossa Market", "Stai scegliendo di comprare risorse dal mercato. Se decidi di continuare non potrai tornare indietro");
             Button button= new Button("Ok");
