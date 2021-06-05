@@ -96,8 +96,13 @@ public class MarketController extends ControllerGuiInterface implements EventHan
     @FXML
     public void initialize(){
         market.setImage(new Image("/images/punchboard/plancia_portabiglie.png"));
-        market.fitHeightProperty().bind(anchorPane.heightProperty().divide(1.3));
+        market.fitHeightProperty().bind(anchorPane.heightProperty().divide(1.6));
         anchorPane.widthProperty().addListener((observableValue, oldValue, newValue) -> market.setLayoutX((Double) newValue/2));
+        anchorPane.heightProperty().addListener((observableValue, oldValue, newValue) -> confirm.setLayoutY((Double) newValue/2));
+        //chorPane.heightProperty().addListener((observableValue, oldValue, newValue) -> confirm.setLayoutY((Double) newValue/1.2));
+        //confirm.heightProperty().addListener((observableValue, oldValue, newValue) -> chose.setLayoutY((Double) newValue/2));
+        //confirm.heightProperty().addListener((observableValue, oldValue, newValue) -> returnback.setLayoutX((Double) newValue/2));
+
         anchorPane.getChildren().add(imageViewExtMarble);
 
         for (int i=0; i<nRow; i++){
