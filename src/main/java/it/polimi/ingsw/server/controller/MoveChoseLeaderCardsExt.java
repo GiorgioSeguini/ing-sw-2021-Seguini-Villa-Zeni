@@ -51,7 +51,7 @@ public class MoveChoseLeaderCardsExt extends MoveChoseLeaderCards implements Per
         ArrayList<LeaderCardExt> leaderCards = game.findMoreLeaderCard(getIndexLeaderCards());
         try {
             player.getPersonalBoard().addLeaderCard(leaderCards.toArray(new LeaderCardExt[2]));
-        }catch (IndexOutOfBoundsException e){
+        }catch (IllegalArgumentException e){
             player.setErrorMessage(ErrorMessage.BadChoice);
             return;
         }
