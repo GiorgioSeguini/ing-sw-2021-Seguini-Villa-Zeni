@@ -61,7 +61,7 @@ public class GUI extends Application implements UI {
         client.setGui(this);
         primaryStage.setTitle("Maestri del Rinascimento");
         Pane root = new Pane();
-        this.main = new Scene(root, 1920, 1080);
+        this.main = new Scene(root, 1280, 692);                //do NOT change
         primaryStage.setScene(this.main);
 
         ArrayList<FXMLLoader> loaders = new ArrayList<>();
