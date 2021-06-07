@@ -4,7 +4,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="862.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.gui.DashboardController">
+<AnchorPane fx:id="anchorPane" prefHeight="600.0" prefWidth="862.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.gui.DashboardController">
    <children>
       <Button fx:id="baseButton" layoutX="838.0" layoutY="1.0" mnemonicParsing="false" onAction="#baseButton" prefHeight="22.0" prefWidth="24.0" text="X" />
       <BorderPane fx:id="BPane1" layoutX="40.0" layoutY="27.0" prefHeight="180.0" prefWidth="180.0">
