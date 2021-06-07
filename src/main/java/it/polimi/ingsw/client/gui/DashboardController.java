@@ -28,6 +28,8 @@ public class DashboardController extends ControllerGuiInterface{
     //MoveBuyDevCard move = new MoveBuyDevCard(gui.getModel().getMyID());
 
     @FXML
+    public AnchorPane anchorPane;
+    @FXML
     public GridPane gridSecondScreen;
     @FXML
     public Button confirmButton;
@@ -188,6 +190,18 @@ public class DashboardController extends ControllerGuiInterface{
         borderPanes.add(BPane11);
         borderPanes.add(BPane12);
 
+
+        for(ImageView imageView : imageViews) {
+            imageView.fitWidthProperty().bind(anchorPane.widthProperty().divide(5));
+            imageView.fitHeightProperty().bind(anchorPane.heightProperty().divide(4));
+
+        }
+
+        imageViewBoard.fitWidthProperty().bind(gridSecondScreen.widthProperty().divide(2));
+        devcardBuyed.fitWidthProperty().bind(gridSecondScreen.widthProperty().divide(3));
+        devcard1.fitWidthProperty().bind(gridSecondScreen.widthProperty().divide(4));
+        devcard2.fitWidthProperty().bind(gridSecondScreen.widthProperty().divide(4));
+        devcard3.fitWidthProperty().bind(gridSecondScreen.widthProperty().divide(4));
 
     }
     @Override
