@@ -23,7 +23,7 @@ public class MoveChoseInitialResourcesExt extends MoveChoseInitialResources impl
                 player.setErrorMessage(ErrorMessage.MoveNotAllowed);
             return false;
         }
-        return true;
+        return game.getInitialResources(getIdPlayer()) == getResources().size();
     }
 
     @Override
