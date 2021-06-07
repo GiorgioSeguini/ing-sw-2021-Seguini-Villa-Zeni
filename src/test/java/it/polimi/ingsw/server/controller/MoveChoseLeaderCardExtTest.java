@@ -37,7 +37,7 @@ public class MoveChoseLeaderCardExtTest {
     @Test
     public void canPerform() {
         MoveChoseLeaderCardsExt move= new MoveChoseLeaderCardsExt(players.get(0).getID());
-        game.setIndex(players.get(0).getID());
+        game.setIndex(game.getPlayerIndex(players.get(0)));
         ArrayList<LeaderCard> cards= game.getActivableLeadCard(players.get(0));
         ArrayList<Integer> ids= new ArrayList<>();
         ids.add(cards.get(0).getId());
@@ -66,7 +66,7 @@ public class MoveChoseLeaderCardExtTest {
     @Test
     public void performMove() throws FileNotFoundException {
         MoveChoseLeaderCardsExt move= new MoveChoseLeaderCardsExt(players.get(0).getID());
-        game.setIndex(players.get(0).getID());
+        game.setIndex(game.getPlayerIndex(players.get(0)));
         ArrayList<LeaderCardExt> cards= Starter.LeaderCardsParser();
         ArrayList<Integer> ids= new ArrayList<>();
         ids.add(cards.get(0).getId());

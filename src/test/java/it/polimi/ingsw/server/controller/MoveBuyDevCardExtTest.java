@@ -32,7 +32,7 @@ public class MoveBuyDevCardExtTest {
     @Test
     public void CanPerform() throws UnableToFillException, FileNotFoundException {
         game.setStatus(GameStatus.Running);
-        game.setIndex(players.get(0).getID());
+        game.setIndex(game.getPlayerIndex(players.get(0)));
         DevelopmentCardExt cardtobuy= game.getDashboard().getTopDevCard(ColorDevCard.YELLOW,Level.ONE);
         MoveBuyDevCardExt move= new MoveBuyDevCardExt(players.get(0).getID());
         move.setIndexCardToBuy(cardtobuy.getId());
@@ -57,5 +57,34 @@ public class MoveBuyDevCardExtTest {
         assertFalse(move.canPerformExt(game));
     }
 
+    @Test
+    public void PerformMove() throws UnableToFillException {
+        game.setStatus(GameStatus.Running);
+        game.setIndex(game.getPlayerIndex(players.get(1)));
+        players.get(1).setStatus(PlayerStatus.Active);
+        players.get(0).setStatus(PlayerStatus.Waiting);
+
+        MoveBuyDevCardExt move= new MoveBuyDevCardExt(players.get(1).getID());
+        DevelopmentCardExt card= game.getDashboard().getTopDevCard(ColorDevCard.BLUE, Level.ONE);
+        players.get(1).getDepots().addResourcesFromMarket(card.getCost());
+
+        move.setIndexCardToBuy(card.getId());
+        move.setPos(0);
+
+        move.performMove(game);
+
+        assertEquals(new NumberOfResources(), game.getPlayerFromID(players.get(1).getID()).getDepots().getResources());
+        assertEquals(1, game.getPlayerFromID(players.get(1).getID()).getPersonalBoard().getOwnedDevCards().size());
+        assertEquals(card,game.getPlayerFromID(players.get(1).getID()).getPersonalBoard().getOwnedDevCards().get(0));
+
+        card= game.getDashboard().getTopDevCard(ColorDevCard.BLUE, Level.ONE);
+        players.get(1).getDepots().addResourcesFromMarket(card.getCost());
+        move.setIndexCardToBuy(card.getId());
+        move.setPos(0);
+
+        move.performMove(game);
+
+        assertEquals(ErrorMessage.NoSpaceError, game.getPlayerFromID(players.get(1).getID()).getErrorMessage());
+    }
 
 }
