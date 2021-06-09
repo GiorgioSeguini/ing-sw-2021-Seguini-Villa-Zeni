@@ -58,6 +58,7 @@ public class ChoseResController extends ControllerGuiInterface{
         }
 
         label.setText("Scegli "+ input + " risorse in input");
+        status = false;
 
     }
 

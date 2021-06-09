@@ -205,8 +205,13 @@ public class GUI extends Application implements UI {
         for(int i=0; i<images.length; i++){
             int finalI = i;
             images[finalI].fitHeightProperty().bind(pane.heightProperty().divide(paneHeight / imageHeight));
-            pane.widthProperty().addListener((observableValue, oldValue, newValue) -> images[finalI].setLayoutX((Double)newValue * x[finalI]/ paneWidth));
-            pane.heightProperty().addListener((observableValue, oldValue, newValue) -> images[finalI].setLayoutY((Double)newValue * y[finalI]/ paneHeight));
+            pane.widthProperty().addListener((observableValue, oldValue, newValue) -> {
+                images[finalI].setLayoutX((Double)newValue * x[finalI]/ paneWidth);
+                images[finalI].setLayoutY((Double)newValue * y[finalI] / paneWidth);
+            });
+
+
+            //pane.heightProperty().addListener((observableValue, oldValue, newValue) -> images[finalI].setLayoutY((Double)newValue * y[finalI]/ paneHeight));
             images[finalI].setPreserveRatio(true);
         }
     }
