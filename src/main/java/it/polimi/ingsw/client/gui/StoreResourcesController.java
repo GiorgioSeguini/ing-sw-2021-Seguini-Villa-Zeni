@@ -59,7 +59,7 @@ public class StoreResourcesController extends ControllerGuiInterface{
             GridPane.setRowIndex(resources[i], GridPane.getRowIndex(depots));*/
         }
 
-        GUI.fixImages(anchorPane, 692.0, new ImageView[]{depots}, DEPOTS_X, DEPOTS_Y, DEPOTS_REAL);
+        GUI.fixImagesToPane(anchorPane, 692.0, 1280.0, new ImageView[]{depots}, DEPOTS_X, DEPOTS_Y, DEPOTS_REAL);
         anchorPane.widthProperty().addListener(
                 (observableValue, oldValue, newValue) -> {
                     gridPane.setLayoutX((Double)newValue / 2.0);
