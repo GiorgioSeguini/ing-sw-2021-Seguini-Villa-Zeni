@@ -39,7 +39,7 @@ public class MoveDiscardResourcesExt extends MoveDiscardResources implements Per
             for (int i = 0; i < getToDiscard().size(); i++) {
                 for (Player y : game.getPlayers()) {
                     if (!y.equals(player)) {
-                        player.getFaithTrack().addPoint();
+                        ((PlayerExt)y).getFaithTrack().addPoint();
                     }
                 }
                 game.popesInspection();
