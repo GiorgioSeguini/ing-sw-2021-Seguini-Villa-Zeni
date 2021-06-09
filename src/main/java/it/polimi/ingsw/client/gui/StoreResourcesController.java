@@ -22,6 +22,9 @@ public class StoreResourcesController extends ControllerGuiInterface{
     private static final Double[] RES_Y = {173.0, 315.0, 315.0, 467.0, 467.0, 467.0};
     private static final Double RES_SIZE = 80.0;
     private static final Double DEPOTS_HEIGHT = 1017.0;
+    private static final Double[] DEPOTS_X = {220.0};
+    private static final Double[] DEPOTS_Y = {146.0};
+    private static final Double DEPOTS_REAL = 400.0;
 
     @FXML
     private ChoiceBox<Integer> coins;
@@ -34,9 +37,9 @@ public class StoreResourcesController extends ControllerGuiInterface{
     @FXML
     private AnchorPane anchorPane;
     @FXML
-    private GridPane gridPane;
-    @FXML
     private ImageView depots;
+    @FXML
+    private GridPane gridPane;
 
     private final ChoiceBox<Integer>[] boxes = new ChoiceBox[4];
     private final ImageView[] resources = new ImageView[6];
@@ -55,9 +58,15 @@ public class StoreResourcesController extends ControllerGuiInterface{
             /*GridPane.setColumnIndex(resources[i], GridPane.getColumnIndex(depots));
             GridPane.setRowIndex(resources[i], GridPane.getRowIndex(depots));*/
         }
-        GUI.fixImages(depots, DEPOTS_HEIGHT, resources, RES_X, RES_Y, RES_SIZE);
 
-        //depots.fitHeightProperty().bind(gridPane.heightProperty().divide(2.0));
+        GUI.fixImages(anchorPane, 692.0, new ImageView[]{depots}, DEPOTS_X, DEPOTS_Y, DEPOTS_REAL);
+        anchorPane.widthProperty().addListener(
+                (observableValue, oldValue, newValue) -> {
+                    gridPane.setLayoutX((Double)newValue / 2.0);
+                    gridPane.setPrefWidth((Double)newValue / 2.0);
+                });
+        gridPane.prefHeightProperty().bind(anchorPane.heightProperty());
+        GUI.fixImages(depots, DEPOTS_HEIGHT, resources, RES_X, RES_Y, RES_SIZE);
     }
 
     @Override
