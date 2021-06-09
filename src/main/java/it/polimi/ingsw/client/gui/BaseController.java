@@ -43,6 +43,9 @@ public class BaseController extends ControllerGuiInterface{
     private static final Double[] LEAD_BUTTON_X = {2480.0, 2600.0, 2480.0, 2600.0};
     private static final Double[] LEAD_BUTTON_Y = {45.0, 45.0, 900.0, 900.0};
     private static final Double LEAD_BUTTON_SIZE = 45.0;
+    private static final Double[] FAITH_X = { 95.0, 212.0, 329.0, 329.0, 329.0, 446.0, 563.0, 680.0, 797.0, 914.0, 914.0, 914.0, 1031.0, 1148.0, 1265.0, 1382.0, 1499.0, 1499.0, 1499.0, 1616.0, 1733.0, 1850.0, 1967.0, 2084.0, 2201.0};
+    private static final Double[] FAITH_Y = {338.0, 338.0, 338.0, 221.0, 104.0, 104.0, 104.0, 104.0, 104.0, 104.0, 221.0, 338.0,  338.0,  338.0,  338.0,  338.0,  338.0,  221.0,  104.0,  104.0,  104.0,  104.0,  104.0,  104.0,  104.0};
+    private static final Double FAITH_HEIGHT = 100.0;
 
     @FXML
     ImageView board;
@@ -65,10 +68,12 @@ public class BaseController extends ControllerGuiInterface{
     private final ImageView[] popes = new ImageView[3];
     private final ImageView[] devCards = new ImageView[9];
     private final ImageView[] leaderCards = new ImageView[2];
+    private final ImageView[] faithTrack = new ImageView[25];
     private final Label[] leaderCardsLabels = new Label[2];
     private final Button[] leaderButton = new Button[4];
 
     private final Image[][] popesImage = new Image[3][2];
+    private final Image faith;
     private final Label[] labels = new Label[3];
     private final ImageView baseProduction = new ImageView();
     private final ArrayList<ProductionPower> chosen = new ArrayList<>();
@@ -82,27 +87,18 @@ public class BaseController extends ControllerGuiInterface{
         popesImage[1][1] = new Image("/images/punchboard/pope_favor2_front.png");
         popesImage[2][0] = new Image("/images/punchboard/miss_4.png");
         popesImage[2][1] = new Image("/images/punchboard/pope_favor3_front.png");
+
+        faith = new Image("/images/punchboard/faith.png");
     }
 
     @FXML
     public void initialize(){
-        //initialize images
-        for(int i=0; i< resources.length; i++){
-            resources[i] = new ImageView();
-            anchorPane.getChildren().add(resources[i]);
-        }
-        for(int i=0; i< popes.length; i++){
-            popes[i] = new ImageView();
-            anchorPane.getChildren().add(popes[i]);
-        }
-        for(int i=0; i< devCards.length; i++){
-            devCards[i] = new ImageView();
-            anchorPane.getChildren().add(devCards[i]);
-        }
-        for(int i=0; i< leaderCards.length; i++){
-            leaderCards[i] = new ImageView();
-            anchorPane.getChildren().add(leaderCards[i]);
-        }
+        //initialize imageViews
+        imageArrayInitializer(anchorPane, resources);
+        imageArrayInitializer(anchorPane, popes);
+        imageArrayInitializer(anchorPane, devCards);
+        imageArrayInitializer(anchorPane, leaderCards);
+        imageArrayInitializer(anchorPane, faithTrack);
         for(int i=0; i< leaderCardsLabels.length; i++){
             leaderCardsLabels[i] = new Label();
             anchorPane.getChildren().add(leaderCardsLabels[i]);
@@ -113,6 +109,7 @@ public class BaseController extends ControllerGuiInterface{
             leaderButton[i].setText(i%2==0 ? "active" : "scarta");
             anchorPane.getChildren().add(leaderButton[i]);
         }
+
         board.fitHeightProperty().bind(anchorPane.heightProperty().divide(1.1));
         //board.fitWidthProperty().bind(anchorPane.widthProperty().divide(1.4));
         /*board.layoutXProperty().bind(anchorPane.heightProperty().divide(10.0));
@@ -124,6 +121,7 @@ public class BaseController extends ControllerGuiInterface{
         GUI.fixImages(board, BOARD_HEIGHT, resources, RES_X, RES_Y, RES_SIZE);
         GUI.fixImages(board, BOARD_HEIGHT, popes, POPES_X, POPES_Y, POPE_SIZE);
         GUI.fixImages(board, BOARD_HEIGHT, devCards, DEV_X, DEV_Y, CARD_HEIGHT);
+        GUI.fixImages(board, BOARD_HEIGHT, faithTrack, FAITH_X, FAITH_Y, FAITH_HEIGHT);
 
 
         //base production
@@ -179,6 +177,11 @@ public class BaseController extends ControllerGuiInterface{
                 leaderCardsLabels[i].setVisible(false);
             }
         }
+
+        for(ImageView cell: faithTrack){
+            cell.setImage(null);
+        }
+        faithTrack[gui.getModel().getMe().getFaithTrack().getFaithPoints()].setImage(faith);
         checkButtons(true);
     }
 
@@ -353,6 +356,14 @@ public class BaseController extends ControllerGuiInterface{
             }
         }
     }
+
+    private void imageArrayInitializer(AnchorPane pane, ImageView[] imageViews){
+        for(int i=0; i<imageViews.length; i++){
+            imageViews[i]= new ImageView();
+            anchorPane.getChildren().add(imageViews[i]);
+        }
+    }
+
     @Override
     public String getName() {
         return className;
