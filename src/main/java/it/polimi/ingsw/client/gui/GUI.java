@@ -16,8 +16,10 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -192,6 +194,20 @@ public class GUI extends Application implements UI {
             back.fitHeightProperty().addListener((observableValue, oldValue, newValue) -> images[finalI].setLayoutY(back.getLayoutY() + (Double)newValue * y[finalI]/ backHeight));
             images[finalI].fitHeightProperty().bind(back.fitHeightProperty().divide(backHeight / imageHeight));
             images[finalI].setPreserveRatio(true);
+        }
+    }
+
+    public static void fixLabels(final ImageView back, final Double backHeight, final Control[] labels, final Double[] x, final Double[] y, final Double size){
+        if(labels.length!=x.length)
+            throw new RuntimeException();
+        if(labels.length!=y.length)
+            throw new RuntimeException();
+        for(int i=0; i<labels.length; i++){
+            int finalI = i;
+            back.fitHeightProperty().addListener((observableValue, oldValue, newValue) -> labels[finalI].setLayoutX(back.getLayoutX() + (Double)newValue * x[finalI]/ backHeight));
+            back.fitHeightProperty().addListener((observableValue, oldValue, newValue) -> labels[finalI].setLayoutY(back.getLayoutY() + (Double)newValue * y[finalI]/ backHeight));
+            back.fitHeightProperty().addListener((observableValue, oldValue, newValue) -> labels[finalI].setMinSize((Double) newValue * size / backHeight , (Double) newValue * size / backHeight));
+
         }
     }
 

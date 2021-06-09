@@ -3,9 +3,11 @@ package it.polimi.ingsw.client.gui;
 import it.polimi.ingsw.constant.enumeration.PlayerStatus;
 import it.polimi.ingsw.constant.enumeration.PopesFavorStates;
 import it.polimi.ingsw.constant.model.DevelopmentCard;
+import it.polimi.ingsw.constant.model.LeaderCard;
 import it.polimi.ingsw.constant.model.ProductionPower;
 import it.polimi.ingsw.constant.move.MoveActiveProduction;
 import it.polimi.ingsw.constant.move.MoveEndTurn;
+import it.polimi.ingsw.constant.move.MoveLeader;
 import it.polimi.ingsw.constant.move.MoveType;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -36,7 +38,11 @@ public class BaseController extends ControllerGuiInterface{
     private static final Double BASE_PROD_HEIGHT = 286.0;
     private static final Double[] LEAD_X = {2420.0, 2420.0};
     private static final Double[] LEAD_Y = {100.0, 980.0};
-    private static final Double[] LABEL_Y = { 50.0, 930.0};
+    private static final Double[] LABEL_Y = {45.0, 900.0};
+    private static final Double LABEL_SIZE = 45.0 ;
+    private static final Double[] LEAD_BUTTON_X = {2480.0, 2600.0, 2480.0, 2600.0};
+    private static final Double[] LEAD_BUTTON_Y = {45.0, 45.0, 900.0, 900.0};
+    private static final Double LEAD_BUTTON_SIZE = 45.0;
 
     @FXML
     ImageView board;
@@ -60,6 +66,7 @@ public class BaseController extends ControllerGuiInterface{
     private final ImageView[] devCards = new ImageView[9];
     private final ImageView[] leaderCards = new ImageView[2];
     private final Label[] leaderCardsLabels = new Label[2];
+    private final Button[] leaderButton = new Button[4];
 
     private final Image[][] popesImage = new Image[3][2];
     private final Label[] labels = new Label[3];
@@ -100,6 +107,12 @@ public class BaseController extends ControllerGuiInterface{
             leaderCardsLabels[i] = new Label();
             anchorPane.getChildren().add(leaderCardsLabels[i]);
         }
+        for(int i=0; i< leaderButton.length; i++){
+            leaderButton[i] = new Button();
+            leaderButton[i].setOnMouseClicked(this::onLeadButton);
+            leaderButton[i].setText(i%2==0 ? "active" : "scarta");
+            anchorPane.getChildren().add(leaderButton[i]);
+        }
         board.fitHeightProperty().bind(anchorPane.heightProperty().divide(1.1));
         //board.fitWidthProperty().bind(anchorPane.widthProperty().divide(1.4));
         /*board.layoutXProperty().bind(anchorPane.heightProperty().divide(10.0));
@@ -129,7 +142,8 @@ public class BaseController extends ControllerGuiInterface{
 
         //leadercard
         GUI.fixImages(board, BOARD_HEIGHT, leaderCards, LEAD_X, LEAD_Y, CARD_HEIGHT);
-
+        GUI.fixLabels(board, BOARD_HEIGHT, leaderCardsLabels, LEAD_X, LABEL_Y, LABEL_SIZE);
+        GUI.fixLabels(board, BOARD_HEIGHT, leaderButton, LEAD_BUTTON_X, LEAD_BUTTON_Y, LEAD_BUTTON_SIZE);
         chosen.clear();
     }
 
@@ -156,9 +170,14 @@ public class BaseController extends ControllerGuiInterface{
         }
 
         for(int i=0; i< leaderCards.length; i++){
-            int id = gui.getModel().getMe().getPersonalBoard().getLeaderCards().get(i).getId() +49;
-            leaderCards[i].setImage(new Image("/images/front/Masters of Renaissance_Cards_FRONT_3mmBleed_1-"+ id +"-1.png"));
-            leaderCardsLabels[i].setText( gui.getModel().getMe().getPersonalBoard().getLeaderCards().get(i).getStatus().toString());
+            if(i<gui.getModel().getMe().getPersonalBoard().getLeaderCards().size()){
+                int id = gui.getModel().getMe().getPersonalBoard().getLeaderCards().get(i).getId() +49;
+                leaderCards[i].setImage(new Image("/images/front/Masters of Renaissance_Cards_FRONT_3mmBleed_1-"+ id +"-1.png"));
+                leaderCardsLabels[i].setText( gui.getModel().getMe().getPersonalBoard().getLeaderCards().get(i).getStatus().toString());
+            }else{
+                leaderCards[i].setImage(null);
+                leaderCardsLabels[i].setVisible(false);
+            }
         }
         checkButtons(true);
     }
@@ -234,6 +253,17 @@ public class BaseController extends ControllerGuiInterface{
         chosen.clear();
     }
 
+    public void onLeadButton(MouseEvent mouseEvent){
+        MoveLeader move = new MoveLeader(gui.getModel().getMyID());
+        for(int i=0; i< leaderButton.length; i++){
+            if(leaderButton[i].equals(mouseEvent.getSource())){
+                move.setIdLeaderCard(gui.getModel().getMe().getPersonalBoard().getLeaderCards().get(i/2).getId());
+                move.setMove(i%2);
+            }
+        }
+        gui.sendMove(move);
+    }
+
     //private checkButton
 
     /**
@@ -266,6 +296,17 @@ public class BaseController extends ControllerGuiInterface{
         }else{
             confirm.setDisable(true);
         }
+        if(base) {
+            checkLeaderButton();
+        }else{
+            for(Button b : leaderButton) {
+                b.setDisable(true);
+                b.setVisible(false);
+            }
+            for(Label l : leaderCardsLabels){
+                l.setVisible(false);
+            }
+        }
     }
 
     private void checkEndTurn(){
@@ -281,6 +322,37 @@ public class BaseController extends ControllerGuiInterface{
         production.setDisable(!new MoveActiveProduction(gui.getModel().getMyID()).canPerform(gui.getModel()));
     }
 
+    private void checkLeaderButton(){
+        for(Button b : leaderButton) {
+            b.setVisible(true);
+        }
+        for(int i=0; i<2; i++){
+            if(i<gui.getModel().getMe().getPersonalBoard().getLeaderCards().size()) {
+                switch (gui.getModel().getMe().getPersonalBoard().getLeaderCards().get(i).getStatus()) {
+                    case Dead -> {
+                        leaderButton[i * 2].setDisable(true);
+                        leaderButton[i * 2 + 1].setDisable(true);
+                    }
+                    case onHand -> {
+                        leaderButton[i * 2].setDisable(false);
+                        leaderButton[i * 2 + 1].setDisable(false);
+                    }
+                    case Played -> {
+                        leaderButton[i * 2].setDisable(true);
+                        leaderButton[i * 2 + 1].setDisable(false);
+                    }
+                }
+                leaderCardsLabels[i].setVisible(true);
+            }
+            else{
+                leaderButton[i * 2].setDisable(true);
+                leaderButton[i * 2 + 1].setDisable(true);
+                leaderButton[i * 2].setVisible(false);
+                leaderButton[i * 2 + 1].setVisible(false);
+                leaderCardsLabels[i].setVisible(false);
+            }
+        }
+    }
     @Override
     public String getName() {
         return className;
