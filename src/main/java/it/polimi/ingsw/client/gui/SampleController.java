@@ -37,7 +37,8 @@ public class SampleController extends ControllerGuiInterface{
         this.button.setDisable(notCanActive());
     }
 
-    public void start(){
+    public void start() throws IOException {
+        GUI.client.setOnline();
         DataOutputStream socket = GUI.client.socketOut;
         try {
             socket.writeUTF(name);

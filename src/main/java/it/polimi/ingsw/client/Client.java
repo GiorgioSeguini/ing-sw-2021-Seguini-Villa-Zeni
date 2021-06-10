@@ -4,6 +4,7 @@ package it.polimi.ingsw.client;
 import it.polimi.ingsw.client.cli.CLI;
 import it.polimi.ingsw.client.gui.GUI;
 import it.polimi.ingsw.client.modelClient.GameClient;
+import it.polimi.ingsw.constant.message.GameMessage;
 import it.polimi.ingsw.constant.message.InitialMessage;
 import it.polimi.ingsw.constant.message.LastMessage;
 import it.polimi.ingsw.constant.model.Game;
@@ -33,8 +34,13 @@ public class Client {
 
     private String ip;
     private int port;
-    private boolean online = true;
+    private Boolean online = false;
+    private boolean chose = false;      //true when either online or offline game is started
+    private final Object locker = new Object();
     public DataOutputStream socketOut;
+    private DataInputStream socketIn;
+    private Socket socket;
+    Thread readingThread;
     public boolean recived;
     GameClient simpleGame;
     CLI cli;
@@ -78,53 +84,37 @@ public class Client {
         return t;
     }
 
-    public Thread asyncWriteToSocket(String s){
-        Thread t = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    while (isActive()) {
-                        socketOut.writeUTF(s);
-                        socketOut.flush();
-                    }
-                }catch(Exception e){
-                    setActive(false);
-                }
-            }
-        });
-        t.start();
-        return t;
-    }
 
     public void run() throws IOException {
-        Socket socket = new Socket(ip, port);
-        System.out.println("Connection established");
-        DataInputStream socketIn = new DataInputStream(socket.getInputStream());
-        socketOut = new DataOutputStream(socket.getOutputStream());
         Scanner stdin = new Scanner(System.in);
         //System.out.println(socketIn.nextLine());
         System.out.println("insert 1 for CLI, 2 for GUI");
         int i = stdin.nextInt();
         try{
-            Thread t0 = asyncReadFromSocket(socketIn);
             if(i==1) {
-                cli = new CLI(this, socketOut);
+                cli = new CLI(this);
                 Thread t1 = new Thread(cli);
                 t1.start();
             }
             else{
-                Thread t1 = new Thread(()->GUI.entry(this));
-                t1.start();
+                GUI.entry(this);
             }
-            t0.join();
+            synchronized (locker) {
+                while (!chose) {
+                    locker.wait();
+                }
+            }
+            readingThread.join();
             //t1.join();
         } catch(InterruptedException | NoSuchElementException e){
             System.out.println("Connection closed from the client side");
         } finally {
+            if(online) {
+                socketIn.close();
+                socketOut.close();
+                socket.close();
+            }
             stdin.close();
-            socketIn.close();
-            socketOut.close();
-            socket.close();
         }
     }
 
@@ -164,7 +154,6 @@ public class Client {
     }
 
     public void startOffline(String name){
-        online = false;
         ArrayList<PlayerExt> players = new ArrayList<>();
         players.add(new PlayerExt(name));
         GameExt game = null;
@@ -205,6 +194,20 @@ public class Client {
         observer.update(new InitialMessage(game, myID, game.getActivableLeadCard(players.get(0))));
         observer.update(new LastMessage());
 
+        online = false;
+        chose = true;
+        //synchronized (locker){locker.notifyAll();} /TODO
+    }
+
+    public void setOnline() throws IOException {
+        this.socket = new Socket(ip, port);
+        System.out.println("Connection established");
+        this.socketIn = new DataInputStream(socket.getInputStream());
+        this.socketOut = new DataOutputStream(socket.getOutputStream());
+        readingThread = asyncReadFromSocket(socketIn);
+        online = true;
+        chose = true;
+        synchronized (locker){locker.notifyAll();}
     }
 
 }

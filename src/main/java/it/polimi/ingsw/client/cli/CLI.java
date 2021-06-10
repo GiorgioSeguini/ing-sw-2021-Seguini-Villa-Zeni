@@ -19,16 +19,15 @@ public class CLI implements Runnable, UI {
     private final Client client;
     private GameClient game;
     Scanner in = new Scanner(System.in);
-    DataOutputStream socket;
     ArrayList<CliInterface> moves;
 
     private boolean moveHandled;
-    private boolean connectionAccepted= false;
+    private final Object locker = new Object();
+    private boolean connectionAccepted = false;
 
 
-    public CLI(Client client, DataOutputStream writer) {
+    public CLI(Client client) {
         this.client = client;
-        this.socket = writer;
         this.moves = new ArrayList<>();
     }
 
@@ -38,52 +37,66 @@ public class CLI implements Runnable, UI {
         int x;
 
         this.setMoveHandled(false);
-        System.out.println("Inserisci il tuo nome e premi INVIO");
-        name = in.nextLine();
         System.out.println("Inserisci offline per giocare in single player offline");
         String temp = in.nextLine();
         if(temp.equals("offline")) {
+            System.out.println("Inserisci il tuo nome e premi INVIO");
+            name = in.nextLine();
             client.startOffline(name);
         }else{
-            do {
-                System.out.println("Con quanti avversari vuoi giocare?\n 1. Da solo \n 2. Un avversario\n 3. Due avversari\n 4. Tre avversari\n");
-                System.out.println("--> Digita il numero dell'opzione che preferisci e premi INVIO");
-                x = in.nextInt();
-                if (x < 1 || x > 4) {
-                    System.out.println("Indice non valido!");
-                }
-            } while (x < 1 || x > 4);
             try {
-                socket.writeUTF(name);
-                socket.flush();
-                socket.writeInt(x);
-                socket.flush();
+                client.setOnline();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            while (!isMoveHandled()){
+            do {
+                do {
+                    System.out.println("Inserisci il tuo nome e premi INVIO");
+                    name = in.nextLine();
+                    System.out.println("Con quanti avversari vuoi giocare?\n 1. Da solo \n 2. Un avversario\n 3. Due avversari\n 4. Tre avversari\n");
+                    System.out.println("--> Digita il numero dell'opzione che preferisci e premi INVIO");
+                    x = in.nextInt();
+                    if (x < 1 || x > 4) {
+                        System.out.println("Indice non valido!");
+                    }
+                } while (x < 1 || x > 4);
                 try {
-                    TimeUnit.MILLISECONDS.sleep(100);
-                } catch (InterruptedException e) {
+                    client.socketOut.writeUTF(name);
+                    client.socketOut.flush();
+                    client.socketOut.writeInt(x);
+                    client.socketOut.flush();
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
-            }
-            if(!getActive()){
-                System.out.println("Nome già in uso, per favore scegli un altro nome\n");
-                in.nextLine();      //non so perchè ma senza non va
-            }
+                synchronized (locker) {
+                    while (!isMoveHandled()) {
+                        try {
+                            locker.wait();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    setMoveHandled(false);
+                }
+                if (!getActive()) {
+                    System.out.println("Nome già in uso, per favore scegli un altro nome\n");
+                    in.nextLine();      //non so perchè ma senza non va
+                }
+            }while(!getActive());
             System.out.println("Ottimo "+name+"! Ti stiamo inserendo in una partita da "+x+" giocatori.\nRimani in attesa, la partita inizierà tra breve!");
         }
         while(client.isActive()){
-            try {
-                TimeUnit.MILLISECONDS.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            if(isMoveHandled()){
-                print();
+            synchronized (locker){
+                while(!isMoveHandled()) {
+                    try {
+                        locker.wait();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
                 this.setMoveHandled(false);
             }
+            print();
         }
     }
 
@@ -164,7 +177,17 @@ public class CLI implements Runnable, UI {
 
     @Override
     public void update() {
-        setMoveHandled(true);
+        synchronized (locker) {
+            while(isMoveHandled()) {
+                try {
+                    locker.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            setMoveHandled(true);
+        }
+        synchronized (locker) {locker.notifyAll();}
     }
 
     private synchronized boolean isMoveHandled() {
