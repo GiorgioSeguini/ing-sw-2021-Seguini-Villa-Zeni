@@ -116,6 +116,7 @@ public class GameExt extends Game implements Observable<Message> {
                 super.setStatus(GameStatus.Ended);
                 super.getSoloGame().setWinner();
             }
+            super.getCurrPlayer().setStatus(PlayerStatus.Active);
         }
         else {
             if(super.getStatus() == GameStatus.Running){
