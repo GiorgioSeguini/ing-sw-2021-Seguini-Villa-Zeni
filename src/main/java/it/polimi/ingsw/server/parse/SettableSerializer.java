@@ -1,8 +1,10 @@
 package it.polimi.ingsw.server.parse;
 
 import com.google.gson.*;
+import it.polimi.ingsw.constant.setupper.LinkToRoomSetupper;
 import it.polimi.ingsw.server.network.CreateRoomSetupperExt;
 import it.polimi.ingsw.server.network.JoinWaitingListSetupperExt;
+import it.polimi.ingsw.server.network.LinkToRoomSetupperExt;
 import it.polimi.ingsw.server.network.Settable;
 
 import java.lang.reflect.Type;
@@ -17,6 +19,7 @@ public class SettableSerializer implements JsonDeserializer<Settable> {
     static {
         setupperName.put(CreateRoomSetupperExt.className, CreateRoomSetupperExt.class);
         setupperName.put(JoinWaitingListSetupperExt.className, JoinWaitingListSetupperExt.class);
+        setupperName.put(LinkToRoomSetupperExt.className,LinkToRoomSetupperExt.class);
     }
 
     @Override

@@ -9,6 +9,7 @@ import it.polimi.ingsw.constant.message.LastMessage;
 import it.polimi.ingsw.constant.move.MoveType;
 import it.polimi.ingsw.constant.setupper.CreateRoomSetupper;
 import it.polimi.ingsw.constant.setupper.JoinWaitngListSetupper;
+import it.polimi.ingsw.constant.setupper.LinkToRoomSetupper;
 import it.polimi.ingsw.constant.setupper.SetUp;
 
 import java.io.*;
@@ -189,7 +190,7 @@ public class CLI implements Runnable, UI {
                 setupper= new CreateRoomSetupper(name, room, numOfPlayers);
             }
             else{
-                // TODO: 6/10/21 add setupper aggiunta di giocatori alla stanza
+                setupper= new LinkToRoomSetupper(name, room);
             }
             send(setupper);
             synchronized (locker) {

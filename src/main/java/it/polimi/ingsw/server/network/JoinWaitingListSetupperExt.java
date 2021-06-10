@@ -16,9 +16,6 @@ public class JoinWaitingListSetupperExt extends JoinWaitngListSetupper implement
 
     @Override
     public boolean canSetAction(Server server, SetUp setupper) {
-        if(server.checkPlayerName(setupper.getPlayerName())){
-            return server.checkRoomsName(setupper.getRoomName());
-        }
-        return false;
+        return server.checkPlayerName(setupper.getPlayerName());
     }
 }

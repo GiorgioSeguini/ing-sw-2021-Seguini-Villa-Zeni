@@ -20,7 +20,7 @@ public class CreateRoomSetupperExt extends CreateRoomSetupper implements Settabl
     @Override
     public boolean canSetAction(Server server, SetUp setupper) {
         if(server.checkPlayerName(setupper.getPlayerName())){
-            return server.checkRoomsName(setupper.getRoomName());
+            return !server.findRoom(setupper.getRoomName());
         }
         return false;
     }

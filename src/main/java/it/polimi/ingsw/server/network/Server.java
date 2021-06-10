@@ -18,10 +18,12 @@ public class Server {
     private static final int PORT = 12345;
     private static final int NUMOFPOSSIBLEGAMES= 4;
     private final ServerSocket serverSocket;
-    private final ArrayList<Map<String, ClientConnection>> waitingConnections = new ArrayList<>();
+    private final ArrayList<HashMap<String, ClientConnection>> waitingConnections = new ArrayList<>();
     private final Map<ClientConnection, ClientConnection> playingConnection = new HashMap<>();
     private ArrayList<String> playersNickNames= new ArrayList<>();
     private ArrayList<Room> rooms= new ArrayList<>();
+    private ArrayList<Room> activeRooms= new ArrayList<>();
+    private int id;
 
     //Deregister connection
     public synchronized void deregisterConnection(ClientConnection c) {
@@ -49,13 +51,27 @@ public class Server {
         return true;
     }
 
-    public synchronized boolean checkRoomsName(String name){
+    public synchronized boolean findRoom(String name){
         for(Room x: rooms ){
             if(x.getRoomName().equals(name)){
-                return false;
+                return true;
             }
         }
-        return true;
+        for(Room x: activeRooms){
+            if(x.getRoomName().equals(name)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public synchronized boolean findActiveRoom(String name){
+        for(Room x: activeRooms){
+            if(x.getRoomName().equals(name)){
+                return true;
+            }
+        }
+        return false;
     }
 
     //Wait for another player
@@ -68,13 +84,16 @@ public class Server {
         playersNickNames.add(name);
 
         if (waitingConnections.get(numofplayer-1).size()>=numofplayer) {
-            startGame(waitingConnections.get(numofplayer-1));
+            Room room= new Room("Room"+id,numofplayer,waitingConnections.get(numofplayer-1));
+            startGame(room);
+            addActiveRoom(room);
+            waitingConnections.get(numofplayer-1).clear();
         }
         return true;
     }
 
-    private void startGame(Map<String, ClientConnection> waitingConnection){
-        ArrayList<PlayerExt> players=getPlayersforGame(waitingConnection);
+    public void startGame(Room room){
+        ArrayList<PlayerExt> players=getPlayersforGame(room.getConnections());
         GameExt game = null;
 
         try {
@@ -84,20 +103,19 @@ public class Server {
             //TODO
         }
         Controller controller = new Controller(game);
-        ArrayList<View> playersView = instanceViews(waitingConnection,game.getPlayers());
+        ArrayList<View> playersView = instanceViews(room.getConnections(),game.getPlayers());
 
         addObserverGame(playersView, game, controller);
 
-
-        ArrayList<ClientConnection> connections= getConnectionforGame(waitingConnection, game.getPlayers());
+        ArrayList<ClientConnection> connections= getConnectionforGame(room.getConnections(), game.getPlayers());
         makeConnection(connections);
-
-        waitingConnection.clear();
 
         //send initial message
         for(View view : playersView) {
             view.sendInitialMessage(game);
         }
+
+        // TODO: 6/10/21 cambiare struttura, mettere le connessioni attive all'interno della stessa room
     }
 
     private void addObserverGame(ArrayList<View> playersView, GameExt game, Controller controller) {
@@ -179,7 +197,34 @@ public class Server {
         System.out.println(room);
     }
 
-    public void addPlayerNickName(String playerName) {
+    public void addActiveRoom(Room room){
+        activeRooms.add(room);
+    }
+
+    public void removeRoom(Room room){
+        rooms.remove(room);
+    }
+
+    public void removeActiveRooms(Room room){
+        activeRooms.remove(room);
+    }
+
+    public synchronized void addPlayerNickName(String playerName) {
         playersNickNames.add(playerName);
     }
+
+    public synchronized Room getRoomFromName(String roomName){
+        for(Room room: rooms){
+            if(room.getRoomName().equals(roomName)){
+                return room;
+            }
+        }
+        for(Room room: activeRooms){
+            if(room.getRoomName().equals(roomName)){
+                return room;
+            }
+        }
+        return null;
+    }
+
 }
