@@ -1,8 +1,7 @@
 package it.polimi.ingsw.client.parser;
 
 import com.google.gson.*;
-import it.polimi.ingsw.client.modelClient.Ability;
-import it.polimi.ingsw.client.modelClient.LorenzoSoloPlayerClient;
+import it.polimi.ingsw.client.modelClient.*;
 import it.polimi.ingsw.constant.model.*;
 import it.polimi.ingsw.constant.move.MoveType;
 import it.polimi.ingsw.constant.message.Message;
@@ -21,10 +20,11 @@ public class StarterClient{
         builder.registerTypeAdapter(Message.class, new MessageSerializer());
         builder.registerTypeAdapter(NumberOfResources.class, new NumberOfResSerializer());
         builder.registerTypeAdapter(MoveType.class, new MoveTypeSerializer());
-        builder.registerTypeAdapter(Dashboard.class, new DashBoardClientDeserializer());
         builder.registerTypeAdapter(Ability.class, new AbilitySerializer());
-        builder.registerTypeAdapter(LeaderCard.class, new LeaderCardSerializer());
-        builder.registerTypeAdapter(Game.class, new GameCLientSerializer());
+
+        builder.registerTypeAdapter(Dashboard.class, (JsonDeserializer<Dashboard>) (json, type, context) -> context.deserialize(json, DashBoardClient.class));
+        builder.registerTypeAdapter(LeaderCard.class,(JsonDeserializer<LeaderCard>) (json, type, context) -> context.deserialize(json, LeaderCardClient.class));
+        builder.registerTypeAdapter(Game.class,(JsonDeserializer<Game>) (json, type, context) -> context.deserialize(json, GameClient.class));
         builder.registerTypeAdapter(LorenzoSoloPlayer.class, (JsonDeserializer<LorenzoSoloPlayer>) (json, type, context) -> context.deserialize(json, LorenzoSoloPlayerClient.class));
         gson=builder.create();
     }
