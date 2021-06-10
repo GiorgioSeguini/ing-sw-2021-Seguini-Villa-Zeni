@@ -1,11 +1,9 @@
-package it.polimi.ingsw.server;
+package it.polimi.ingsw.server.network;
 
-import it.polimi.ingsw.constant.model.NumberOfResources;
 import it.polimi.ingsw.constant.model.Player;
 import it.polimi.ingsw.server.controller.Controller;
 import it.polimi.ingsw.server.parse.Starter;
 import it.polimi.ingsw.server.model.*;
-import it.polimi.ingsw.constant.enumeration.MarbleColor;
 import it.polimi.ingsw.server.view.RemoteView;
 import it.polimi.ingsw.server.view.View;
 
@@ -14,8 +12,6 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.*;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class Server {
 
@@ -24,6 +20,8 @@ public class Server {
     private final ServerSocket serverSocket;
     private final ArrayList<Map<String, ClientConnection>> waitingConnections = new ArrayList<>();
     private final Map<ClientConnection, ClientConnection> playingConnection = new HashMap<>();
+    private ArrayList<String> playersNickNames= new ArrayList<>();
+    private ArrayList<Room> rooms= new ArrayList<>();
 
     //Deregister connection
     public synchronized void deregisterConnection(ClientConnection c) {
@@ -42,8 +40,22 @@ public class Server {
         //}
     }
 
-    public synchronized boolean checkName(String name, int numofplayer){
-        return !waitingConnections.get(numofplayer - 1).containsKey(name);
+    public synchronized boolean checkPlayerName(String name){
+        for(String x: playersNickNames){
+            if(x.equals(name)){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public synchronized boolean checkRoomsName(String name){
+        for(Room x: rooms ){
+            if(x.getRoomName().equals(name)){
+                return false;
+            }
+        }
+        return true;
     }
 
     //Wait for another player
@@ -52,7 +64,9 @@ public class Server {
         if(numofplayer<1 || numofplayer>4){
             throw  new IllegalArgumentException();
         }
+
         waitingConnections.get(numofplayer-1).put(name,c);
+        playersNickNames.add(name);
 
         int i= numofplayer-1;
         if (waitingConnections.get(i).size()>=i+1) {
@@ -131,10 +145,6 @@ public class Server {
         return players;
     }
 
-    private void startLorenzoGame(){
-        // TODO: 5/20/21
-    }
-
     public Server() throws IOException {
         this.serverSocket = new ServerSocket(PORT);
         for(int i=0; i<NUMOFPOSSIBLEGAMES;i++){
@@ -154,4 +164,12 @@ public class Server {
         }
     }
 
+    public void addRoom(Room room) {
+        rooms.add(room);
+        System.out.println(room);
+    }
+
+    public void addPlayerNickName(String playerName) {
+        playersNickNames.add(playerName);
+    }
 }

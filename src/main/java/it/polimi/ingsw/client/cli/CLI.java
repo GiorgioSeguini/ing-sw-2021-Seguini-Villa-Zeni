@@ -7,6 +7,8 @@ import it.polimi.ingsw.client.parser.StarterClient;
 import it.polimi.ingsw.constant.enumeration.ErrorMessage;
 import it.polimi.ingsw.constant.message.LastMessage;
 import it.polimi.ingsw.constant.move.MoveType;
+import it.polimi.ingsw.constant.setupper.CreateRoomSetupper;
+import it.polimi.ingsw.constant.setupper.SetUp;
 
 import java.io.*;
 
@@ -33,7 +35,8 @@ public class CLI implements Runnable, UI {
 
     @Override
     public void run() {
-        String name;
+        String name = null;
+        SetUp setupper;
         int x;
 
         this.setMoveHandled(false);
@@ -43,48 +46,32 @@ public class CLI implements Runnable, UI {
             System.out.println("Inserisci il tuo nome e premi INVIO");
             name = in.nextLine();
             client.startOffline(name);
-        }else{
+        }
+        else{
             try {
                 client.setOnline();
             } catch (IOException e) {
                 e.printStackTrace();
             }
             do {
-                do {
-                    System.out.println("Inserisci il tuo nome e premi INVIO");
-                    name = in.nextLine();
-                    System.out.println("Con quanti avversari vuoi giocare?\n 1. Da solo \n 2. Un avversario\n 3. Due avversari\n 4. Tre avversari\n");
-                    System.out.println("--> Digita il numero dell'opzione che preferisci e premi INVIO");
-                    x = in.nextInt();
-                    if (x < 1 || x > 4) {
-                        System.out.println("Indice non valido!");
-                    }
-                } while (x < 1 || x > 4);
-                try {
-                    client.socketOut.writeUTF(name);
-                    client.socketOut.flush();
-                    client.socketOut.writeInt(x);
-                    client.socketOut.flush();
-                } catch (IOException e) {
-                    e.printStackTrace();
+                System.out.println("Benvenuto in Maestro del Rinascimento - Gioco made by CranioGames");
+                System.out.println("Puoi decidere di creare una partita privata o di entrare in lista d'attesa per una partita pubblica. Come vuoi procedere? ");
+                System.out.println("\t1. Partita privata.");
+                System.out.println("\t2. Partita pubblica.");
+                x = in.nextInt();
+                in.nextLine();
+                if (x < 1 || x > 2) {
+                    System.out.println("Indice non valido!");
                 }
-                synchronized (locker) {
-                    while (!isMoveHandled()) {
-                        try {
-                            locker.wait();
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                    setMoveHandled(false);
-                }
-                if (!getActive()) {
-                    System.out.println("Nome già in uso, per favore scegli un altro nome\n");
-                    in.nextLine();      //non so perchè ma senza non va
-                }
-            }while(!getActive());
-            System.out.println("Ottimo "+name+"! Ti stiamo inserendo in una partita da "+x+" giocatori.\nRimani in attesa, la partita inizierà tra breve!");
+            } while (x < 1 || x > 2);
+
+            if(x==1){
+                RoomGame();
+            }else {
+                PublicGame();
+            }
         }
+
         while(client.isActive()){
             synchronized (locker){
                 while(!isMoveHandled()) {
@@ -164,9 +151,115 @@ public class CLI implements Runnable, UI {
         }
     }
 
+    
+    private void RoomGame(){
+        int x;
+        String name;
+        String room=null;
+        SetUp setupper = null;
+        System.out.println("Ottimo! Hai deciso di giocare una partita privata!");
+        do {
+            do {
+                System.out.println("Puoi decidere se creare una nuova stanza di gioco o unirti ad una esistente. Come vogliamo procedere? ");
+                System.out.println("\t1. Crea nuova stanza. ");
+                System.out.println("\t2. Unisciti ad una stanza.");
+                x = in.nextInt();
+                in.nextLine();
+                if(x<1||x>2) System.out.println("Indice non valido");
+            }while (x<1||x>2);
+            if(x==1){
+                System.out.println("Ok! Creiamo una nuova stanza!");
+            }else{
+                System.out.println("Ok! Uniamoci ad una stanza!");
+            }
+
+            System.out.print("Inserisci il tuo nome: ");
+            name= in.nextLine();
+            System.out.print("Inserisci il nome della stanza: ");
+            room= in.nextLine();
+            if(x==1){
+                int numOfPlayers;
+                do{
+                    System.out.print("Quanti giocatori vuoi unire alla stanza? (da 1 a 4 giocatori): ");
+                    numOfPlayers=in.nextInt();
+                    in.nextLine();
+                    if(numOfPlayers<1||numOfPlayers>4) System.out.println("Indice non valido");
+                }while(numOfPlayers<1 || numOfPlayers>4);
+                setupper= new CreateRoomSetupper(name, room, numOfPlayers);
+            }
+            else{
+                // TODO: 6/10/21 add setupper aggiunta di giocatori alla stanza
+            }
+            send(setupper);
+            synchronized (locker) {
+                while (!isMoveHandled()) {
+                    try {
+                        locker.wait();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                setMoveHandled(false);
+            }
+            if (!getActive()) {
+                if(x==1){
+                    System.out.println("Ops! Qualcosa è andato storto! Sembra che il tuo nome o il nome della stanza siano già in uso.\n");
+                }
+                else {
+                    System.out.println("Ops! Qualcosa è andato storto! Il tuo nome è già in uso o non abbiamo trovato la stanza desiderata!");
+                }
+                in.nextLine();      //non so perchè ma senza non va
+            }
+        }while(!getActive());
+        System.out.println("Ottimo "+name+"! Ti stiamo inserendo in una partita da "+x+" giocatori.\nRimani in attesa, la partita inizierà tra breve!");
+
+        if(x==1){
+            System.out.println("Per invitare i tuoi amici comunicagli il nome della stanza! --> "+room);
+        }
+
+
+    }
+    
+    private void PublicGame(){
+        String name= null;
+        int x= 0;
+        do {
+            do{
+                System.out.println("Inserisci il tuo nome e premi INVIO");
+                name = in.nextLine();
+                System.out.println("Con quanti avversari vuoi giocare?\n 1. Da solo \n 2. Un avversario\n 3. Due avversari\n 4. Tre avversari\n");
+                System.out.println("--> Digita il numero dell'opzione che preferisci e premi INVIO");
+                x = in.nextInt();
+                if (x < 1 || x > 4) {
+                    System.out.println("Indice non valido!");
+                }
+            }while (x < 1 || x > 4);
+            //send();
+            // TODO: 6/10/21 setter add in wait list
+            synchronized (locker) {
+                while (!isMoveHandled()) {
+                    try {
+                        locker.wait();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                setMoveHandled(false);
+            }
+            if (!getActive()) {
+                System.out.println("Ops! Qualcosa è andato storto! Il tuo nome è già in uso!");
+                in.nextLine();      //non so perchè ma senza non va
+            }
+        }while(!getActive());
+        System.out.println("Ottimo "+name+"! Ti stiamo inserendo in una partita da "+x+" giocatori.\nRimani in attesa, la partita inizierà tra breve!");
+    }
 
     private void send(MoveType move) {
         client.sendMove(move);
+    }
+
+    private void send(SetUp setupper){
+        client.sendSetupper(setupper);
     }
 
     private void clearScreen(){

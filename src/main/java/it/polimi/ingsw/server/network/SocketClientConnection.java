@@ -1,10 +1,11 @@
-package it.polimi.ingsw.server;
+package it.polimi.ingsw.server.network;
 
 import it.polimi.ingsw.constant.message.AcceptMessage;
 import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.constant.message.RejectMessage;
-import it.polimi.ingsw.constant.model.Game;
-import it.polimi.ingsw.server.model.GameExt;
+import it.polimi.ingsw.constant.setupper.SetUp;
+import it.polimi.ingsw.server.network.ClientConnection;
+import it.polimi.ingsw.server.network.Server;
 import it.polimi.ingsw.server.observer.Observable;
 import it.polimi.ingsw.server.observer.Observer;
 import it.polimi.ingsw.server.parse.Starter;
@@ -13,11 +14,9 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
-import it.polimi.ingsw.server.observer.Observable;
 
 /**
  * Each instance is a connection to a specific client
@@ -87,19 +86,22 @@ public class SocketClientConnection implements  Observable<String>, ClientConnec
         try{
             in = new DataInputStream(socket.getInputStream());
             out = new DataOutputStream(socket.getOutputStream());
-            boolean accepted = false;
             String read;
-            int numofplayer;
+            boolean confirm= true;
+            int numofplayer = 0;
+            Settable setupper;
             do {
                 read = in.readUTF();
-                numofplayer = in.readInt();
-                accepted = server.checkName(read, numofplayer);
-                if(!accepted){
+                setupper= (Settable) Starter.fromJson(read, Settable.class);
+               // accepted = server.checkPlayerName(setupper.getPlayerName());
+                confirm=setupper.canSetAction(this.server,(SetUp) setupper);
+                if(!confirm){
                     send(Starter.toJson(new RejectMessage(), Message.class));
                 }
-            }while(!accepted);
+            }while(!confirm);
             send(Starter.toJson(new AcceptMessage(), Message.class));
-            server.lobby(this, read, numofplayer);
+            setupper.setAction(server, this, (SetUp) setupper);
+            //server.lobby(this, read, numofplayer);
             while(isActive()){
                 read=in.readUTF();
                 notify(read);

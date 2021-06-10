@@ -5,9 +5,11 @@ import it.polimi.ingsw.client.modelClient.*;
 import it.polimi.ingsw.constant.model.*;
 import it.polimi.ingsw.constant.move.MoveType;
 import it.polimi.ingsw.constant.message.Message;
-import it.polimi.ingsw.constant.MessageSerializer;
+import it.polimi.ingsw.constant.parse.MessageSerializer;
 import it.polimi.ingsw.constant.parse.MoveTypeSerializer;
 import it.polimi.ingsw.constant.parse.NumberOfResSerializer;
+import it.polimi.ingsw.constant.parse.SetupperSerializer;
+import it.polimi.ingsw.constant.setupper.SetUp;
 
 
 import java.lang.reflect.Type;
@@ -21,7 +23,7 @@ public class StarterClient{
         builder.registerTypeAdapter(NumberOfResources.class, new NumberOfResSerializer());
         builder.registerTypeAdapter(MoveType.class, new MoveTypeSerializer());
         builder.registerTypeAdapter(Ability.class, new AbilitySerializer());
-
+        builder.registerTypeAdapter(SetUp.class, new SetupperSerializer());
         builder.registerTypeAdapter(Dashboard.class, (JsonDeserializer<Dashboard>) (json, type, context) -> context.deserialize(json, DashBoardClient.class));
         builder.registerTypeAdapter(LeaderCard.class,(JsonDeserializer<LeaderCard>) (json, type, context) -> context.deserialize(json, LeaderCardClient.class));
         builder.registerTypeAdapter(Game.class,(JsonDeserializer<Game>) (json, type, context) -> context.deserialize(json, GameClient.class));

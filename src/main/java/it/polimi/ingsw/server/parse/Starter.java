@@ -3,7 +3,7 @@ package it.polimi.ingsw.server.parse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import it.polimi.ingsw.constant.MessageSerializer;
+import it.polimi.ingsw.constant.parse.MessageSerializer;
 import it.polimi.ingsw.constant.enumeration.LeaderStatus;
 import it.polimi.ingsw.constant.enumeration.MarbleColor;
 
@@ -12,8 +12,11 @@ import it.polimi.ingsw.constant.model.*;
 import it.polimi.ingsw.constant.move.MoveType;
 import it.polimi.ingsw.constant.parse.MoveTypeSerializer;
 import it.polimi.ingsw.constant.parse.NumberOfResSerializer;
+import it.polimi.ingsw.constant.parse.SetupperSerializer;
+import it.polimi.ingsw.constant.setupper.SetUp;
 import it.polimi.ingsw.server.controller.Performable;
 import it.polimi.ingsw.server.model.*;
+import it.polimi.ingsw.server.network.Settable;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -44,6 +47,8 @@ public class Starter {
         builder.registerTypeAdapter(LeaderCard.class, new LeaderCardExtSerializer());
         builder.registerTypeAdapter(Requirements.class, new RequirementsExtSerializer());
         builder.registerTypeAdapter(ProductionPower.class, new ProductionPowerExtSerializer());
+        builder.registerTypeAdapter(SetUp.class, new SetupperSerializer());
+        builder.registerTypeAdapter(Settable.class, new SettableSerializer());
         gson=builder.create();
         filePath = new File("").getAbsolutePath();
     }

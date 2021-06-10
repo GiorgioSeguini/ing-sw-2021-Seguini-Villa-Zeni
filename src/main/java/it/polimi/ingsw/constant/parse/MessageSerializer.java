@@ -1,4 +1,4 @@
-package it.polimi.ingsw.constant;
+package it.polimi.ingsw.constant.parse;
 
 import com.google.gson.*;
 import it.polimi.ingsw.constant.message.*;
