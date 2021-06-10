@@ -64,60 +64,60 @@ public class Server {
         if(numofplayer<1 || numofplayer>4){
             throw  new IllegalArgumentException();
         }
-
         waitingConnections.get(numofplayer-1).put(name,c);
         playersNickNames.add(name);
 
-        int i= numofplayer-1;
-        if (waitingConnections.get(i).size()>=i+1) {
-            ArrayList<PlayerExt> players=getPlayersforGame(waitingConnections.get(i),i+1);
-            GameExt game = null;
-
-            try {
-                game=new GameExt(players, new MarketExt(Starter.MarblesParser()), new DashboardExt(Starter.DevCardParser()), Starter.TokensParser(), Starter.LeaderCardsParser());
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-                //TODO
-            }
-            Controller controller = new Controller(game);
-            ArrayList<View> playersView = instanceViews(waitingConnections.get(i),game.getPlayers());
-
-            for(View view : playersView){
-                //add model - view links
-                game.getMarketTray().addObserver(view);
-                game.getDashboard().addObserver(view);
-                game.addObserver(view);
-                for(Player player : game.getPlayers()){
-                    PlayerExt playerExt = (PlayerExt) player;
-                    playerExt.getPersonalBoard().addObserver(view);
-                    playerExt.getFaithTrack().addObserver(view);
-                    playerExt.getDepots().addObserver(view);
-                    playerExt.addObserver(view);
-                    playerExt.getConverter().addObserver(view);
-                }
-
-                //add controller - view links
-                view.addObserver(controller);
-            }
-
-            ArrayList<ClientConnection> connections= getConnectionforGame(waitingConnections.get(i), game.getPlayers());
-            for(int j=0;j<connections.size();j++){
-                for (int k=0;k<connections.size();k++){
-                    if(j!=k){
-                        playingConnection.put(connections.get(j),connections.get(k));
-                    }
-                }
-            }
-
-            waitingConnections.get(i).clear();
-
-            //send initial message
-            for(View view : playersView) {
-                view.sendInitialMessage(game);
-            }
-
+        if (waitingConnections.get(numofplayer-1).size()>=numofplayer) {
+            startGame(waitingConnections.get(numofplayer-1));
         }
         return true;
+    }
+
+    private void startGame(Map<String, ClientConnection> waitingConnection){
+        ArrayList<PlayerExt> players=getPlayersforGame(waitingConnection);
+        GameExt game = null;
+
+        try {
+            game=new GameExt(players, new MarketExt(Starter.MarblesParser()), new DashboardExt(Starter.DevCardParser()), Starter.TokensParser(), Starter.LeaderCardsParser());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            //TODO
+        }
+        Controller controller = new Controller(game);
+        ArrayList<View> playersView = instanceViews(waitingConnection,game.getPlayers());
+
+        addObserverGame(playersView, game, controller);
+
+
+        ArrayList<ClientConnection> connections= getConnectionforGame(waitingConnection, game.getPlayers());
+        makeConnection(connections);
+
+        waitingConnection.clear();
+
+        //send initial message
+        for(View view : playersView) {
+            view.sendInitialMessage(game);
+        }
+    }
+
+    private void addObserverGame(ArrayList<View> playersView, GameExt game, Controller controller) {
+        for(View view : playersView){
+            //add model - view links
+            game.getMarketTray().addObserver(view);
+            game.getDashboard().addObserver(view);
+            game.addObserver(view);
+            for(Player player : game.getPlayers()){
+                PlayerExt playerExt = (PlayerExt) player;
+                playerExt.getPersonalBoard().addObserver(view);
+                playerExt.getFaithTrack().addObserver(view);
+                playerExt.getDepots().addObserver(view);
+                playerExt.addObserver(view);
+                playerExt.getConverter().addObserver(view);
+            }
+
+            //add controller - view links
+            view.addObserver(controller);
+        }
     }
 
     private ArrayList<View> instanceViews(Map<String, ClientConnection> waitingConnection, ArrayList<Player> players) {
@@ -136,10 +136,20 @@ public class Server {
         return connections;
     }
 
-    private ArrayList<PlayerExt> getPlayersforGame(Map<String, ClientConnection> waitingConnection, int typeconnection) {
+    private void makeConnection(ArrayList<ClientConnection> connections) {
+        for(int j=0;j<connections.size();j++){
+            for (int k=0;k<connections.size();k++){
+                if(j!=k){
+                    playingConnection.put(connections.get(j),connections.get(k));
+                }
+            }
+        }
+    }
+
+    private ArrayList<PlayerExt> getPlayersforGame(Map<String, ClientConnection> waitingConnection) {
         ArrayList<PlayerExt> players= new ArrayList<>();
         ArrayList<String> keys = new ArrayList<>(waitingConnection.keySet());
-        for (int i=0; i<typeconnection; i++){
+        for (int i=0; i<waitingConnection.size(); i++){
             players.add(new PlayerExt(keys.get(i)));
         }
         return players;

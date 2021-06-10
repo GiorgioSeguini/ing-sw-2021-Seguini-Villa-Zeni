@@ -5,10 +5,12 @@ public abstract class SetUp {
     public static String className= "SetUp";
     private final String playerName;
     private final String roomName;
+    private final int numOfPlayers;
 
-    public SetUp(String playerName, String roomName) {
+    public SetUp(String playerName, String roomName, int numOfPlayers) {
         this.playerName=playerName;
         this.roomName=roomName;
+        this.numOfPlayers=numOfPlayers;
     }
 
     public String getPlayerName() {
@@ -24,8 +26,7 @@ public abstract class SetUp {
     }
 
     public int getNumOfPlayers(){
-        return 0;
-        // TODO: overraide this method
+        return numOfPlayers;
     }
 
 }

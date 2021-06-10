@@ -8,6 +8,7 @@ import it.polimi.ingsw.constant.enumeration.ErrorMessage;
 import it.polimi.ingsw.constant.message.LastMessage;
 import it.polimi.ingsw.constant.move.MoveType;
 import it.polimi.ingsw.constant.setupper.CreateRoomSetupper;
+import it.polimi.ingsw.constant.setupper.JoinWaitngListSetupper;
 import it.polimi.ingsw.constant.setupper.SetUp;
 
 import java.io.*;
@@ -158,6 +159,7 @@ public class CLI implements Runnable, UI {
         String room=null;
         SetUp setupper = null;
         System.out.println("Ottimo! Hai deciso di giocare una partita privata!");
+        int numOfPlayers = 0;
         do {
             do {
                 System.out.println("Puoi decidere se creare una nuova stanza di gioco o unirti ad una esistente. Come vogliamo procedere? ");
@@ -178,7 +180,6 @@ public class CLI implements Runnable, UI {
             System.out.print("Inserisci il nome della stanza: ");
             room= in.nextLine();
             if(x==1){
-                int numOfPlayers;
                 do{
                     System.out.print("Quanti giocatori vuoi unire alla stanza? (da 1 a 4 giocatori): ");
                     numOfPlayers=in.nextInt();
@@ -211,7 +212,7 @@ public class CLI implements Runnable, UI {
                 in.nextLine();      //non so perchè ma senza non va
             }
         }while(!getActive());
-        System.out.println("Ottimo "+name+"! Ti stiamo inserendo in una partita da "+x+" giocatori.\nRimani in attesa, la partita inizierà tra breve!");
+        System.out.println("Ottimo "+name+"! Ti stiamo inserendo in una partita da "+numOfPlayers+" giocatori.\nRimani in attesa, la partita inizierà tra breve!");
 
         if(x==1){
             System.out.println("Per invitare i tuoi amici comunicagli il nome della stanza! --> "+room);
@@ -234,8 +235,7 @@ public class CLI implements Runnable, UI {
                     System.out.println("Indice non valido!");
                 }
             }while (x < 1 || x > 4);
-            //send();
-            // TODO: 6/10/21 setter add in wait list
+            send(new JoinWaitngListSetupper(name,x));
             synchronized (locker) {
                 while (!isMoveHandled()) {
                     try {

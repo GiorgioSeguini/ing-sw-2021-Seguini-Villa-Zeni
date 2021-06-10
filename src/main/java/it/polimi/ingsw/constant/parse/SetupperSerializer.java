@@ -2,6 +2,7 @@ package it.polimi.ingsw.constant.parse;
 
 import com.google.gson.*;
 import it.polimi.ingsw.constant.setupper.CreateRoomSetupper;
+import it.polimi.ingsw.constant.setupper.JoinWaitngListSetupper;
 import it.polimi.ingsw.constant.setupper.SetUp;
 
 import java.lang.reflect.Type;
@@ -15,6 +16,7 @@ public class SetupperSerializer implements JsonSerializer<SetUp> , JsonDeseriali
 
     static{
         mapNameClass.put(CreateRoomSetupper.className, CreateRoomSetupper.class);
+        mapNameClass.put(JoinWaitngListSetupper.className, JoinWaitngListSetupper.class);
     }
 
     @Override
