@@ -119,33 +119,39 @@ public class GUI extends Application implements UI {
         }
 
         //show correct scene
-        if(!this.getModel().isMyTurn()){
-            this.activate("waiting");
-            myTurn=false;
-        }else {
-            /*if(this.getModel().getMe().getErrorMessage().equals(ErrorMessage.OutOfResourcesError)){
-                AlertBox outOfResourcesBox = new AlertBox("ATTENTO: Mancano delle risorse!", "Non hai abbastanza risorse per comprare quella carta.\n Scegliene un'altra, compra nuove risorse dal mercato o attiva una produzione!");
-                outOfResourcesBox.display();
-                current.update();
-                return;
-            }*/
-            if(this.getModel().getStatus()== GameStatus.Initial){
-                if(!this.getModel().getMe().getPersonalBoard().isReady()){
+        //initial status
+        if(this.getModel().getStatus()== GameStatus.Initial) {
+            if (!this.getModel().isMyTurn()) {
+                this.activate("waiting");
+            } else {
+                if (!this.getModel().getMe().getPersonalBoard().isReady()) {
                     activate("initial");
-                }else{
+                } else {
                     activate("initialRes");
                 }
-            }else{
-                if(this.getModel().getMe().getStatus()== PlayerStatus.NeedToStore) {
+            }
+            return;
+        }
+        if(this.getModel().getStatus() != GameStatus.Ended){
+                if(!this.getModel().isMyTurn()) {
+                    activate(BaseController.className);
+                }else if(this.getModel().getMe().getStatus()== PlayerStatus.NeedToStore) {
                     activate(StoreResourcesController.className);
                 }else if(this.getModel().getMe().getStatus()== PlayerStatus.NeedToChoseRes){
                     activate(ChoseResController.className);
+                }else if(this.getModel().getMe().getStatus()== PlayerStatus.NeedToConvert) {
+                    //TODO
+                    activate("");
                 }else {
-                    activate("base");
+                    activate(BaseController.className);
                 }
                 myTurn=true;
-            }
+        }else{
+            //GAME ENDED
+            //TODO
+            activate("");
         }
+
     }
     public void activate(String name) {
         FXMLLoader loader = this.loaderMap.get(name);

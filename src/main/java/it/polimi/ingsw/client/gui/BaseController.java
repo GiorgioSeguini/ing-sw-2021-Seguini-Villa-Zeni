@@ -1,9 +1,7 @@
 package it.polimi.ingsw.client.gui;
 
-import it.polimi.ingsw.constant.enumeration.PlayerStatus;
 import it.polimi.ingsw.constant.enumeration.PopesFavorStates;
 import it.polimi.ingsw.constant.model.DevelopmentCard;
-import it.polimi.ingsw.constant.model.LeaderCard;
 import it.polimi.ingsw.constant.model.ProductionPower;
 import it.polimi.ingsw.constant.move.MoveActiveProduction;
 import it.polimi.ingsw.constant.move.MoveEndTurn;
@@ -41,12 +39,16 @@ public class BaseController extends ControllerGuiInterface{
     private static final Double[] LABEL_Y = {45.0, 900.0};
     private static final Double LABEL_SIZE = 45.0 ;
     private static final Double[] LEAD_BUTTON_X = {2550.0, 2700.0, 2550.0, 2700.0};
-    private static final Double[] LEAD_BUTTON_Y = {45.0, 45.0, 900.0, 900.0};
+    private static final Double[] LEAD_BUTTON_Y = {40.0, 40.0, 900.0, 900.0};
     private static final Double LEAD_BUTTON_HEIGHT = 45.0;
     private static final Double LEAD_BUTTON_WIDTH = 145.0;
     private static final Double[] FAITH_X = { 95.0, 212.0, 329.0, 329.0, 329.0, 446.0, 563.0, 680.0, 797.0, 914.0, 914.0, 914.0, 1031.0, 1148.0, 1265.0, 1382.0, 1499.0, 1499.0, 1499.0, 1616.0, 1733.0, 1850.0, 1967.0, 2084.0, 2201.0};
     private static final Double[] FAITH_Y = {338.0, 338.0, 338.0, 221.0, 104.0, 104.0, 104.0, 104.0, 104.0, 104.0, 221.0, 338.0,  338.0,  338.0,  338.0,  338.0,  338.0,  221.0,  104.0,  104.0,  104.0,  104.0,  104.0,  104.0,  104.0};
     private static final Double FAITH_HEIGHT = 100.0;
+    private static final Double[] GAME_STATUS_X = {2950.0};
+    private static final Double[] GAME_STATUS_Y = {10.0};
+    private static final Double GAME_STATUS_HEIGHT = 100.0;
+    private static final Double GAME_STATUS_WIDTH = 500.0;
 
     @FXML
     ImageView board;
@@ -65,16 +67,23 @@ public class BaseController extends ControllerGuiInterface{
     @FXML
     private Button exit;
 
+    //gamestatus
+    private final Label gameStatusLabel = new Label();
+    //depots
     private final ImageView[] resources = new ImageView[6];
-    private final ImageView[] popes = new ImageView[3];
+    //devcard
     private final ImageView[] devCards = new ImageView[9];
+    //leadercard
     private final ImageView[] leaderCards = new ImageView[2];
-    private final ImageView[] faithTrack = new ImageView[25];
     private final Label[] leaderCardsLabels = new Label[2];
     private final Button[] leaderButton = new Button[4];
 
+    //faithtrack
     private final Image[][] popesImage = new Image[3][2];
     private final Image faith;
+    private final ImageView[] faithTrack = new ImageView[25];
+    private final ImageView[] popes = new ImageView[3];
+    //production
     private final Label[] labels = new Label[3];
     private final ImageView baseProduction = new ImageView();
     private final ArrayList<ProductionPower> chosen = new ArrayList<>();
@@ -110,7 +119,7 @@ public class BaseController extends ControllerGuiInterface{
             leaderButton[i].setText(i%2==0 ? "active" : "scarta");
             anchorPane.getChildren().add(leaderButton[i]);
         }
-
+        anchorPane.getChildren().add(gameStatusLabel);
         board.fitHeightProperty().bind(anchorPane.heightProperty().divide(1.1));
         //board.fitWidthProperty().bind(anchorPane.widthProperty().divide(1.4));
         /*board.layoutXProperty().bind(anchorPane.heightProperty().divide(10.0));
@@ -143,11 +152,24 @@ public class BaseController extends ControllerGuiInterface{
         GUI.fixImages(board, BOARD_HEIGHT, leaderCards, LEAD_X, LEAD_Y, CARD_HEIGHT);
         GUI.fixLabels(board, BOARD_HEIGHT, leaderCardsLabels, LEAD_X, LABEL_Y, LABEL_SIZE, LABEL_SIZE*3.0);
         GUI.fixLabels(board, BOARD_HEIGHT, leaderButton, LEAD_BUTTON_X, LEAD_BUTTON_Y, LEAD_BUTTON_HEIGHT, LEAD_BUTTON_WIDTH);
-        chosen.clear();
+        //gamestatus
+        GUI.fixLabels(board, BOARD_HEIGHT, new Label[]{gameStatusLabel}, GAME_STATUS_X,   GAME_STATUS_Y,  GAME_STATUS_HEIGHT,  GAME_STATUS_WIDTH);
+
     }
 
     @Override
     public void update() {
+        String text = "";
+        if(gui.getModel().isMyTurn()){
+            text += "E' il tuo turno\n";
+            text += gui.getModel().getMe().getStatus().getTextForMe();
+        }else{
+            text += "E' il turno del giocatore: " + gui.getModel().getCurrPlayer().getUserName() +"\n";
+            text += gui.getModel().getMe().getStatus().getTextForOther();
+        }
+        gameStatusLabel.setText(text);
+        gameStatusLabel.setVisible(true);
+
         gui.printDepots(resources, gui.getModel().getMe().getDepots());
 
         for(int i=0; i<3; i++) {
@@ -183,6 +205,8 @@ public class BaseController extends ControllerGuiInterface{
             cell.setImage(null);
         }
         faithTrack[gui.getModel().getMe().getFaithTrack().getFaithPoints()].setImage(faith);
+
+        chosen.clear();
         checkButtons(true);
     }
 
@@ -311,6 +335,7 @@ public class BaseController extends ControllerGuiInterface{
                 l.setVisible(false);
             }
         }
+        gameStatusLabel.setVisible(base);
     }
 
     private void checkEndTurn(){
@@ -356,9 +381,14 @@ public class BaseController extends ControllerGuiInterface{
                 leaderCardsLabels[i].setVisible(false);
             }
         }
+        if(!gui.getModel().isMyTurn()){
+            for(Button b : leaderButton) {
+                b.setDisable(true);
+            }
+        }
     }
 
-    private void imageArrayInitializer(AnchorPane pane, ImageView[] imageViews){
+    private void imageArrayInitializer(AnchorPane anchorPane, ImageView[] imageViews){
         for(int i=0; i<imageViews.length; i++){
             imageViews[i]= new ImageView();
             anchorPane.getChildren().add(imageViews[i]);
