@@ -1,10 +1,13 @@
 package it.polimi.ingsw.client.gui;
 
+import com.sun.jdi.Value;
 import it.polimi.ingsw.constant.enumeration.ColorDevCard;
 import it.polimi.ingsw.constant.enumeration.ErrorMessage;
 import it.polimi.ingsw.constant.enumeration.Level;
 import it.polimi.ingsw.constant.model.DevelopmentCard;
 import it.polimi.ingsw.constant.move.MoveBuyDevCard;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -25,6 +28,10 @@ public class DashboardController extends ControllerGuiInterface{
     public static String className = "dashboard";
     private final ArrayList<Integer> choice = new ArrayList<>();
     private boolean[] chosen =new boolean[12];
+    private static Double[] IMAGE_X = {38.0, 250.0, 462.0, 674.0, 38.0, 250.0, 462.0, 674.0, 38.0, 250.0, 462.0, 674.0};
+    private static Double[] IMAGE_Y = {27.0, 27.0, 27.0, 27.0, 225.0, 225.0, 225.0, 225.0, 414.0, 414.0, 414.0, 414.0};
+    private static final Double IMAGE_REAL = 150.0;
+    private static final ImageView[] IMAGE_VIEWS = new ImageView[12];
     //MoveBuyDevCard move = new MoveBuyDevCard(gui.getModel().getMyID());
 
     @FXML
@@ -85,30 +92,6 @@ public class DashboardController extends ControllerGuiInterface{
     public Label label11;
     @FXML
     public Label label12;
-    @FXML
-    public BorderPane BPane1;
-    @FXML
-    public BorderPane BPane2;
-    @FXML
-    public BorderPane BPane3;
-    @FXML
-    public BorderPane BPane4;
-    @FXML
-    public BorderPane BPane5;
-    @FXML
-    public BorderPane BPane6;
-    @FXML
-    public BorderPane BPane7;
-    @FXML
-    public BorderPane BPane8;
-    @FXML
-    public BorderPane BPane9;
-    @FXML
-    public BorderPane BPane10;
-    @FXML
-    public BorderPane BPane11;
-    @FXML
-    public BorderPane BPane12;
 
     @FXML
     public ImageView imageViewBoard;
@@ -135,7 +118,6 @@ public class DashboardController extends ControllerGuiInterface{
     private final ArrayList<ImageView> imageViews = new ArrayList<>();
     private final ArrayList<ImageView> devCards = new ArrayList<>();
     private final ArrayList<Label> labels = new ArrayList<>();
-    private final ArrayList<BorderPane> borderPanes = new ArrayList<>();
     private final ArrayList<Button> buttons = new ArrayList<>();
 
     @FXML
@@ -153,6 +135,9 @@ public class DashboardController extends ControllerGuiInterface{
         imageViews.add(imageView10);
         imageViews.add(imageView11);
         imageViews.add(imageView12);
+        for(int i=0; i<IMAGE_VIEWS.length; i++){
+            IMAGE_VIEWS[i] = imageViews.get(i);
+        }
 
         devCards.add(imageViewBoard);
         devCards.add(devcard1);
@@ -177,32 +162,16 @@ public class DashboardController extends ControllerGuiInterface{
         labels.add(label11);
         labels.add(label12);
 
-        borderPanes.add(BPane1);
-        borderPanes.add(BPane2);
-        borderPanes.add(BPane3);
-        borderPanes.add(BPane4);
-        borderPanes.add(BPane5);
-        borderPanes.add(BPane6);
-        borderPanes.add(BPane7);
-        borderPanes.add(BPane8);
-        borderPanes.add(BPane9);
-        borderPanes.add(BPane10);
-        borderPanes.add(BPane11);
-        borderPanes.add(BPane12);
+
+        GUI.fixImagesToPane(anchorPane,692.0,1280.0,IMAGE_VIEWS,IMAGE_X,IMAGE_Y,IMAGE_REAL);
 
 
-        for(ImageView imageView : imageViews) {
-            imageView.fitWidthProperty().bind(anchorPane.widthProperty().divide(5));
-            imageView.fitHeightProperty().bind(anchorPane.heightProperty().divide(4));
-
-        }
 
         imageViewBoard.fitWidthProperty().bind(gridSecondScreen.widthProperty().divide(2));
         devcardBuyed.fitWidthProperty().bind(gridSecondScreen.widthProperty().divide(3));
         devcard1.fitWidthProperty().bind(gridSecondScreen.widthProperty().divide(4));
         devcard2.fitWidthProperty().bind(gridSecondScreen.widthProperty().divide(4));
         devcard3.fitWidthProperty().bind(gridSecondScreen.widthProperty().divide(4));
-
     }
     @Override
     public String getName() {
@@ -284,9 +253,9 @@ public class DashboardController extends ControllerGuiInterface{
     private void hideFirstScreen(boolean b) {
         gridSecondScreen.setDisable(!b);
         gridSecondScreen.setVisible(b);
-        for (BorderPane borderPane : borderPanes) {
-            borderPane.setVisible(!b);
-            borderPane.setDisable(b);
+        for (ImageView imageView : imageViews) {
+            imageView.setVisible(!b);
+            imageView.setDisable(b);
         }
         for (Label label : labels) {
             label.setVisible(!b);

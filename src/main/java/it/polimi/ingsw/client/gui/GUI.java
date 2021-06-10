@@ -23,6 +23,7 @@ import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import java.io.IOException;
@@ -215,6 +216,7 @@ public class GUI extends Application implements UI {
             images[finalI].setPreserveRatio(true);
         }
     }
+
 
     public static void fixLabels(final ImageView back, final Double backHeight, final Control[] labels, final Double[] x, final Double[] y, final Double height, final Double width){
         if(labels.length!=x.length)
