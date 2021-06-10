@@ -8,7 +8,7 @@ import java.util.Collections;
 /*Last Edit: Fabio*/
 public class MoveShuffle implements SoloActionTokens {
 
-    public static final String name = "MoveShuffle";
+    public static final String name = "MOVE_SHUFFLE";
     private transient ArrayList<SoloActionTokens> shuffledDeck;
 
     /*Default constructor*/
@@ -20,14 +20,14 @@ public class MoveShuffle implements SoloActionTokens {
     /**This apply the effect of a MoveShuffleToken**/
     @Override
     public void ActivateToken(GameExt game) {
-        ((FaithTrackExt)game.getSoloGame().getFaithTrack()).addPoint();
+        game.getSoloGame().getFaithTrack().addPoint();
         game.popesInspection();
 
         shuffledDeck = new ArrayList<>(7);
-        shuffledDeck = ((LorenzoSoloPlayerExt)game.getSoloGame()).getCopyOfSoloActionTokensInit();
+        shuffledDeck = game.getSoloGame().getCopyOfSoloActionTokensInit();
         Collections.shuffle(shuffledDeck);
         //shuffledDeck = Shuffle(game.getSoloGame().getCopyOfSoloActionTokensInit());
-        ((LorenzoSoloPlayerExt)game.getSoloGame()).setSoloActionTokens(shuffledDeck);
+        game.getSoloGame().setSoloActionTokens(shuffledDeck);
     }
 
     @Override
@@ -57,11 +57,7 @@ public class MoveShuffle implements SoloActionTokens {
 
         MoveShuffle other = (MoveShuffle) o;
 
-        if(!this.getName().equals(other.getName())){
-            return false;
-        }
-
-        return true;
+        return this.getName().equals(other.getName());
     }
 
 }

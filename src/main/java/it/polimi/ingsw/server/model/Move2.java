@@ -3,7 +3,7 @@ package it.polimi.ingsw.server.model;
 /*Last Edit: Fabio*/
 public class Move2 implements SoloActionTokens {
 
-    public static final String name = "Move2";
+    public static final String name = "MOVE2";
 
     /*Default constructor*/
     public Move2() {
@@ -13,7 +13,7 @@ public class Move2 implements SoloActionTokens {
     @Override
     public void ActivateToken(GameExt game) {
         for(int i=0; i<2; i++){
-            ((FaithTrackExt)game.getSoloGame().getFaithTrack()).addPoint();
+            game.getSoloGame().getFaithTrack().addPoint();
         }
         game.popesInspection();
     }

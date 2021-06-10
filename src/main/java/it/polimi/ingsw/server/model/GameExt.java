@@ -112,7 +112,7 @@ public class GameExt extends Game implements Observable<Message> {
                 super.setStatus(GameStatus.Ended);
             }
             ((LorenzoSoloPlayerExt)super.getSoloGame()).revealToken();
-            if(((FaithTrackExt)super.getSoloGame().getFaithTrack()).isEnd() || ((DashboardExt)getDashboard()).isEmpty()){
+            if(((FaithTrackExt)super.getSoloGame().getFaithTrack()).isEnd() || getDashboard().isEmpty()){
                 super.setStatus(GameStatus.Ended);
                 super.getSoloGame().setWinner();
             }
@@ -195,7 +195,7 @@ public class GameExt extends Game implements Observable<Message> {
     }
 
     private void change(){
-        notify(new GameMessage(getStatus(), getCurrIndex()));
+        notify(new GameMessage(getStatus(), getCurrIndex(), this.getSoloGame()));
     }
 
     public void lastMessage(){

@@ -1,36 +1,36 @@
 [
   {
-    "CLASSNAME": "Move2",
+    "CLASSNAME": "MOVE2",
     "INSTANCE": {}
   },
   {
-    "CLASSNAME": "Move2",
+    "CLASSNAME": "MOVE2",
     "INSTANCE": {}
   },
   {
-    "CLASSNAME": "MoveShuffle",
+    "CLASSNAME": "MOVE_SHUFFLE",
     "INSTANCE": {}
   },
   {
-    "CLASSNAME": "Discard2",
+    "CLASSNAME": "DISCARD2",
     "INSTANCE": {
       "color": "GREEN"
     }
   },
   {
-    "CLASSNAME": "Discard2",
+    "CLASSNAME": "DISCARD2",
     "INSTANCE": {
       "color": "YELLOW"
     }
   },
   {
-    "CLASSNAME": "Discard2",
+    "CLASSNAME": "DISCARD2",
     "INSTANCE": {
       "color": "PURPLE"
     }
   },
   {
-    "CLASSNAME": "Discard2",
+    "CLASSNAME": "DISCARD2",
     "INSTANCE": {
       "color": "BLUE"
     }
