@@ -133,6 +133,11 @@ public class GUI extends Application implements UI {
             }
             return;
         }
+        if(this.getModel().getStatus() != GameStatus.Ended && this.getModel().isSinglePlayer()){
+            activate("");
+            //TODO
+            return;
+        }
         if(this.getModel().getStatus() != GameStatus.Ended){
                 if(!this.getModel().isMyTurn()) {
                     activate(BaseController.className);

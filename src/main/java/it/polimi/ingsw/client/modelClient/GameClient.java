@@ -2,6 +2,7 @@ package it.polimi.ingsw.client.modelClient;
 
 import it.polimi.ingsw.constant.model.Game;
 import it.polimi.ingsw.constant.model.LeaderCard;
+import it.polimi.ingsw.constant.model.LorenzoSoloPlayer;
 import it.polimi.ingsw.constant.model.Player;
 
 import java.util.ArrayList;
@@ -31,6 +32,11 @@ public class GameClient extends Game {
 
     public ArrayList<LeaderCardClient> getLeaderCards() {
         return leaderCards;
+    }
+
+    @Override
+    public LorenzoSoloPlayerClient getSoloGame() {
+        return (LorenzoSoloPlayerClient) super.getSoloGame();
     }
 
     //setter
