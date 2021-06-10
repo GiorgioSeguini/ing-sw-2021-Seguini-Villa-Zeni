@@ -1,6 +1,7 @@
 package it.polimi.ingsw.client.gui;
 
 import it.polimi.ingsw.client.Client;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -22,6 +23,8 @@ public class SampleController extends ControllerGuiInterface{
     ChoiceBox<Integer> number_lable;
     @FXML
     Button button;
+    @FXML
+    Button offline;
 
     @FXML
     public void initialize(){
@@ -30,11 +33,13 @@ public class SampleController extends ControllerGuiInterface{
     public void setName(){
         this.name=name_lable.getText();
         this.button.setDisable(notCanActive());
+        checkOffline();
     }
 
     public void setNumber(){
         this.number=number_lable.getValue();
         this.button.setDisable(notCanActive());
+        checkOffline();
     }
 
     public void start() throws IOException {
@@ -55,13 +60,23 @@ public class SampleController extends ControllerGuiInterface{
         return name == null || number == null;
     }
 
+    private void checkOffline(){
+        if(number==null) return;
+        offline.setVisible(number==1);
+        offline.setDisable(notCanActive());
+    }
     @Override
     public void update() {
-        //nothing to do here
+        offline.setDisable(true);
+        offline.setVisible(false);
     }
 
     @Override
     public String getName() {
         return className;
+    }
+
+    public void offline(ActionEvent actionEvent) {
+        GUI.client.startOffline(name);
     }
 }
