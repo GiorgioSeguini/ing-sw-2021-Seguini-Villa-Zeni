@@ -216,7 +216,7 @@ public class GUI extends Application implements UI {
         }
     }
 
-    public static void fixLabels(final ImageView back, final Double backHeight, final Control[] labels, final Double[] x, final Double[] y, final Double size){
+    public static void fixLabels(final ImageView back, final Double backHeight, final Control[] labels, final Double[] x, final Double[] y, final Double height, final Double width){
         if(labels.length!=x.length)
             throw new RuntimeException();
         if(labels.length!=y.length)
@@ -225,7 +225,7 @@ public class GUI extends Application implements UI {
             int finalI = i;
             back.fitHeightProperty().addListener((observableValue, oldValue, newValue) -> labels[finalI].setLayoutX(back.getLayoutX() + (Double)newValue * x[finalI]/ backHeight));
             back.fitHeightProperty().addListener((observableValue, oldValue, newValue) -> labels[finalI].setLayoutY(back.getLayoutY() + (Double)newValue * y[finalI]/ backHeight));
-            back.fitHeightProperty().addListener((observableValue, oldValue, newValue) -> labels[finalI].setMinSize((Double) newValue * size / backHeight , (Double) newValue * size / backHeight));
+            back.fitHeightProperty().addListener((observableValue, oldValue, newValue) -> labels[finalI].setPrefSize((Double) newValue * width / backHeight , (Double) newValue * height / backHeight));
 
         }
     }

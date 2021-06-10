@@ -40,9 +40,10 @@ public class BaseController extends ControllerGuiInterface{
     private static final Double[] LEAD_Y = {100.0, 980.0};
     private static final Double[] LABEL_Y = {45.0, 900.0};
     private static final Double LABEL_SIZE = 45.0 ;
-    private static final Double[] LEAD_BUTTON_X = {2480.0, 2600.0, 2480.0, 2600.0};
+    private static final Double[] LEAD_BUTTON_X = {2550.0, 2700.0, 2550.0, 2700.0};
     private static final Double[] LEAD_BUTTON_Y = {45.0, 45.0, 900.0, 900.0};
-    private static final Double LEAD_BUTTON_SIZE = 45.0;
+    private static final Double LEAD_BUTTON_HEIGHT = 45.0;
+    private static final Double LEAD_BUTTON_WIDTH = 145.0;
     private static final Double[] FAITH_X = { 95.0, 212.0, 329.0, 329.0, 329.0, 446.0, 563.0, 680.0, 797.0, 914.0, 914.0, 914.0, 1031.0, 1148.0, 1265.0, 1382.0, 1499.0, 1499.0, 1499.0, 1616.0, 1733.0, 1850.0, 1967.0, 2084.0, 2201.0};
     private static final Double[] FAITH_Y = {338.0, 338.0, 338.0, 221.0, 104.0, 104.0, 104.0, 104.0, 104.0, 104.0, 221.0, 338.0,  338.0,  338.0,  338.0,  338.0,  338.0,  221.0,  104.0,  104.0,  104.0,  104.0,  104.0,  104.0,  104.0};
     private static final Double FAITH_HEIGHT = 100.0;
@@ -140,8 +141,8 @@ public class BaseController extends ControllerGuiInterface{
 
         //leadercard
         GUI.fixImages(board, BOARD_HEIGHT, leaderCards, LEAD_X, LEAD_Y, CARD_HEIGHT);
-        GUI.fixLabels(board, BOARD_HEIGHT, leaderCardsLabels, LEAD_X, LABEL_Y, LABEL_SIZE);
-        GUI.fixLabels(board, BOARD_HEIGHT, leaderButton, LEAD_BUTTON_X, LEAD_BUTTON_Y, LEAD_BUTTON_SIZE);
+        GUI.fixLabels(board, BOARD_HEIGHT, leaderCardsLabels, LEAD_X, LABEL_Y, LABEL_SIZE, LABEL_SIZE*3.0);
+        GUI.fixLabels(board, BOARD_HEIGHT, leaderButton, LEAD_BUTTON_X, LEAD_BUTTON_Y, LEAD_BUTTON_HEIGHT, LEAD_BUTTON_WIDTH);
         chosen.clear();
     }
 
