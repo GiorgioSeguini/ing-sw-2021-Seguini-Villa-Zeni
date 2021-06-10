@@ -165,13 +165,7 @@ public class GUI extends Application implements UI {
     }
 
     public void sendMove(MoveType move){
-        try {
-            client.socketOut.writeUTF(StarterClient.toJson(move, MoveType.class));
-            client.socketOut.flush();
-        }catch (IOException e){
-            e.printStackTrace();
-            //TODO
-        }
+        client.sendMove(move);
     }
 
     @Override

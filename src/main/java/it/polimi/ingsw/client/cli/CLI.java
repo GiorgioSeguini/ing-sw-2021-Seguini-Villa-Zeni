@@ -36,10 +36,15 @@ public class CLI implements Runnable, UI {
     public void run() {
         String name;
         int x;
-        do {
-            this.setMoveHandled(false);
-            System.out.println("Inserisci il tuo nome e premi INVIO");
-            name = in.nextLine();
+
+        this.setMoveHandled(false);
+        System.out.println("Inserisci il tuo nome e premi INVIO");
+        name = in.nextLine();
+        System.out.println("Inserisci offline per giocare in single player offline");
+        String temp = in.nextLine();
+        if(temp.equals("offline")) {
+            client.startOffline(name);
+        }else{
             do {
                 System.out.println("Con quanti avversari vuoi giocare?\n 1. Da solo \n 2. Un avversario\n 3. Due avversari\n 4. Tre avversari\n");
                 System.out.println("--> Digita il numero dell'opzione che preferisci e premi INVIO");
@@ -67,8 +72,8 @@ public class CLI implements Runnable, UI {
                 System.out.println("Nome già in uso, per favore scegli un altro nome\n");
                 in.nextLine();      //non so perchè ma senza non va
             }
-        }while (!getActive());
-        System.out.println("Ottimo "+name+"! Ti stiamo inserendo in una partita da "+x+" giocatori.\nRimani in attesa, la partita inizierà tra breve!");
+            System.out.println("Ottimo "+name+"! Ti stiamo inserendo in una partita da "+x+" giocatori.\nRimani in attesa, la partita inizierà tra breve!");
+        }
         while(client.isActive()){
             try {
                 TimeUnit.MILLISECONDS.sleep(100);
@@ -148,15 +153,7 @@ public class CLI implements Runnable, UI {
 
 
     private void send(MoveType move) {
-        try {
-            String s = StarterClient.toJson(move, MoveType.class);
-            System.out.println(s); // TODO: 5/22/21 aggiunto ora 
-            //out.reset();
-            socket.writeUTF(s);
-            socket.flush();
-        } catch (IOException e) {
-            System.err.println(e.getMessage());
-        }
+        client.sendMove(move);
     }
 
     private void clearScreen(){

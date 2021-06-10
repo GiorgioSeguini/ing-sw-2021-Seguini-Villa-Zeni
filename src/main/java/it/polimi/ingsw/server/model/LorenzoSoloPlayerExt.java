@@ -11,7 +11,7 @@ public class LorenzoSoloPlayerExt extends LorenzoSoloPlayer {
 
     private transient final GameExt game;
     private transient ArrayList<SoloActionTokens> soloActionTokens;
-    private ArrayList<SoloActionTokens> copyOfSoloActionTokens;
+    private transient ArrayList<SoloActionTokens> copyOfSoloActionTokens;
     //private ArrayList<SoloActionTokens> soloActionTokensDiscarded;
 
 

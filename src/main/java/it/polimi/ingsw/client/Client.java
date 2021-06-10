@@ -4,12 +4,28 @@ package it.polimi.ingsw.client;
 import it.polimi.ingsw.client.cli.CLI;
 import it.polimi.ingsw.client.gui.GUI;
 import it.polimi.ingsw.client.modelClient.GameClient;
+import it.polimi.ingsw.constant.message.InitialMessage;
+import it.polimi.ingsw.constant.message.LastMessage;
 import it.polimi.ingsw.constant.model.Game;
 import it.polimi.ingsw.client.parser.StarterClient;
 import it.polimi.ingsw.constant.message.Message;
+import it.polimi.ingsw.constant.model.Player;
+import it.polimi.ingsw.constant.move.MoveType;
+import it.polimi.ingsw.server.ClientConnection;
+import it.polimi.ingsw.server.controller.Controller;
+import it.polimi.ingsw.server.controller.Performable;
+import it.polimi.ingsw.server.model.DashboardExt;
+import it.polimi.ingsw.server.model.GameExt;
+import it.polimi.ingsw.server.model.MarketExt;
+import it.polimi.ingsw.server.model.PlayerExt;
+import it.polimi.ingsw.server.observer.Observable;
+import it.polimi.ingsw.server.observer.Observer;
+import it.polimi.ingsw.server.parse.Starter;
+import it.polimi.ingsw.server.view.View;
 
 import java.io.*;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -17,11 +33,13 @@ public class Client {
 
     private String ip;
     private int port;
+    private boolean online = true;
     public DataOutputStream socketOut;
     public boolean recived;
     GameClient simpleGame;
     CLI cli;
     private GUI gui;
+    private Controller controller;
 
     public Client(String ip, int port){
         this.ip = ip;
@@ -127,4 +145,66 @@ public class Client {
             return cli;
         return gui;
     }
+
+    public void sendMove(MoveType move){
+        if(online) {
+            try {
+                socketOut.writeUTF(StarterClient.toJson(move, MoveType.class));
+                socketOut.flush();
+            } catch (IOException e) {
+                e.printStackTrace();
+                //TODO
+            }
+        }else{
+            String s = StarterClient.toJson(move, MoveType.class);
+            Performable performable = Starter.fromJson(s, Performable.class);
+            this.controller.update(performable);
+        }
+
+    }
+
+    public void startOffline(String name){
+        online = false;
+        ArrayList<PlayerExt> players = new ArrayList<>();
+        players.add(new PlayerExt(name));
+        GameExt game = null;
+
+        try {
+            game=new GameExt(players, new MarketExt(Starter.MarblesParser()), new DashboardExt(Starter.DevCardParser()), Starter.TokensParser(), Starter.LeaderCardsParser());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            //TODO
+        }
+        Controller controller = new Controller(game);
+
+        Observer<Message> observer = message -> {
+            String json = Starter.toJson(message, Message.class);
+            Message clientMessage = StarterClient.fromJson(json, Message.class);
+            System.out.println(json);
+            clientMessage.handleMessage(Client.this);
+        };
+        //add model - view links
+        game.getMarketTray().addObserver(observer);
+        game.getDashboard().addObserver(observer);
+        game.addObserver(observer);
+        for(Player player : game.getPlayers()){
+            PlayerExt playerExt = (PlayerExt) player;
+            playerExt.getPersonalBoard().addObserver(observer);
+            playerExt.getFaithTrack().addObserver(observer);
+            playerExt.getDepots().addObserver(observer);
+            playerExt.addObserver(observer);
+            playerExt.getConverter().addObserver(observer);
+        }
+
+
+        //add controller - view links
+        this.controller = controller;
+
+        //send initial message
+        int myID = players.get(0).getID();
+        observer.update(new InitialMessage(game, myID, game.getActivableLeadCard(players.get(0))));
+        observer.update(new LastMessage());
+
+    }
+
 }
