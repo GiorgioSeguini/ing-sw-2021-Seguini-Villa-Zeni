@@ -19,7 +19,7 @@ public class Server {
     private static final int NUMOFPOSSIBLEGAMES= 4;
     private final ServerSocket serverSocket;
     private final ArrayList<HashMap<String, ClientConnection>> waitingConnections = new ArrayList<>();
-    private final Map<ClientConnection, ClientConnection> playingConnection = new HashMap<>();
+    //private final Map<ClientConnection, ClientConnection> playingConnection = new HashMap<>();
     private ArrayList<String> playersNickNames= new ArrayList<>();
     private ArrayList<Room> rooms= new ArrayList<>();
     private ArrayList<Room> activeRooms= new ArrayList<>();
@@ -27,12 +27,12 @@ public class Server {
 
     //Deregister connection
     public synchronized void deregisterConnection(ClientConnection c) {
-        ClientConnection opponent = playingConnection.get(c);
+        ClientConnection opponent = null;//= playingConnection.get(c);
         if(opponent != null) {
             opponent.closeConnection();
         }
-        playingConnection.remove(c);
-        playingConnection.remove(opponent);
+        //playingConnection.remove(c);
+        //playingConnection.remove(opponent);
         //Iterator<String> iterator = waitingConnection.keySet().iterator();
        // while(iterator.hasNext()){
             //if(waitingConnection.get(iterator.next())==c){
@@ -112,8 +112,8 @@ public class Server {
 
         addObserverGame(playersView, game, controller);
 
-        ArrayList<ClientConnection> connections= getConnectionforGame(room.getConnections(), game.getPlayers());
-        makeConnection(connections);
+        //ArrayList<ClientConnection> connections= getConnectionforGame(room.getConnections(), game.getPlayers());
+        //makeConnection(connections);
 
         //send initial message
         for(View view : playersView) {
@@ -163,7 +163,7 @@ public class Server {
         for(int j=0;j<connections.size();j++){
             for (int k=0;k<connections.size();k++){
                 if(j!=k){
-                    playingConnection.put(connections.get(j),connections.get(k));
+                    //playingConnection.put(connections.get(j),connections.get(k));
                 }
             }
         }

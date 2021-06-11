@@ -8,6 +8,7 @@ public class Room {
     private String roomName;
     private int numOfPlayers;
     private HashMap<String,ClientConnection> connections= new HashMap<>();
+    private HashMap<String, ClientConnection> disconnectedConnections= new HashMap<>();
 
     public Room(String roomName, int numOfPlayers) {
         this.roomName = roomName;
@@ -25,6 +26,19 @@ public class Room {
     }
 
 
+    public void disconnectConnection(String nickname, ClientConnection connection){
+        if(connections.remove(nickname)!=null){
+            disconnectedConnections.put(nickname,connection);
+        }
+        else throw new IllegalArgumentException();
+    }
+
+    public void reconnectConnection(String nickname,ClientConnection connection ){
+        if(disconnectedConnections.remove(nickname)!=null){
+            connections.put(nickname,connection);
+        }
+        else throw new IllegalArgumentException();
+    }
 
     public String getRoomName() {
         return roomName;

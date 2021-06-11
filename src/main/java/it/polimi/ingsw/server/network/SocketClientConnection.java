@@ -28,6 +28,7 @@ public class SocketClientConnection implements  Observable<String>, ClientConnec
     private Server server;
 
     private boolean active = true;
+    private boolean standby= false;
 
     public SocketClientConnection(Socket socket, Server server) {
         this.socket = socket;
@@ -36,6 +37,10 @@ public class SocketClientConnection implements  Observable<String>, ClientConnec
 
     private synchronized boolean isActive(){
         return active;
+    }
+
+    private synchronized boolean isStandby(){
+        return standby;
     }
 
     public void send(String json) {
@@ -103,10 +108,11 @@ public class SocketClientConnection implements  Observable<String>, ClientConnec
             }while(!confirm);
             send(Starter.toJson(new AcceptMessage(), Message.class));
             setupper.setAction(server, this, (SetUp) setupper);
-            //server.lobby(this, read, numofplayer);
-            while(isActive()){
-                read=in.readUTF();
-                notify(read);
+            while(!isStandby()) {
+                while (isActive()) {
+                    read = in.readUTF();
+                    notify(read);
+                }
             }
         } catch (IOException | NoSuchElementException e) {
             System.err.println("Error!" + e.getMessage());

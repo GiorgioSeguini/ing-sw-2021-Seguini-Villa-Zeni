@@ -40,6 +40,8 @@ public class Client {
     public boolean recived;
     GameClient simpleGame;
     CLI cli;
+
+    private String roomName;
     private GUI gui;
     private Controller controller;
 
