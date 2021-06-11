@@ -45,10 +45,13 @@ public class BaseController extends ControllerGuiInterface{
     private static final Double[] FAITH_X = { 95.0, 212.0, 329.0, 329.0, 329.0, 446.0, 563.0, 680.0, 797.0, 914.0, 914.0, 914.0, 1031.0, 1148.0, 1265.0, 1382.0, 1499.0, 1499.0, 1499.0, 1616.0, 1733.0, 1850.0, 1967.0, 2084.0, 2201.0};
     private static final Double[] FAITH_Y = {338.0, 338.0, 338.0, 221.0, 104.0, 104.0, 104.0, 104.0, 104.0, 104.0, 221.0, 338.0,  338.0,  338.0,  338.0,  338.0,  338.0,  221.0,  104.0,  104.0,  104.0,  104.0,  104.0,  104.0,  104.0};
     private static final Double FAITH_HEIGHT = 100.0;
-    private static final Double[] GAME_STATUS_X = {2950.0};
+    private static final Double[] GAME_STATUS_X = {3000.0};
     private static final Double[] GAME_STATUS_Y = {10.0};
     private static final Double GAME_STATUS_HEIGHT = 100.0;
     private static final Double GAME_STATUS_WIDTH = 500.0;
+    private static final Double[] TOKEN_X = {3000.0, 3000.0};
+    private static final Double[] TOKEN_Y = {250.0, 700.0};
+    private static final Double TOKEN_SIZE = 300.0;
 
     @FXML
     ImageView board;
@@ -81,12 +84,17 @@ public class BaseController extends ControllerGuiInterface{
     //faithtrack
     private final Image[][] popesImage = new Image[3][2];
     private final Image faith;
+    private final Image blackCross;
     private final ImageView[] faithTrack = new ImageView[25];
     private final ImageView[] popes = new ImageView[3];
     //production
     private final Label[] labels = new Label[3];
     private final ImageView baseProduction = new ImageView();
     private final ArrayList<ProductionPower> chosen = new ArrayList<>();
+    //single player
+    private final Image[] tokens;
+    private final ImageView retro = new ImageView();
+    private final ImageView revealed = new ImageView();
 
     public BaseController(){
         super();
@@ -99,6 +107,13 @@ public class BaseController extends ControllerGuiInterface{
         popesImage[2][1] = new Image("/images/punchboard/pope_favor3_front.png");
 
         faith = new Image("/images/punchboard/faith.png");
+        blackCross = new Image("/images/punchboard/croce.png");
+
+        tokens = new Image[6];
+        for(int i=1; i<=6; i++){
+            tokens[i-1]=new Image("/images/punchboard/cerchio"+i+".png");
+        }
+        retro.setImage(new Image("/images/punchboard/retro_cerchi.png"));
     }
 
     @FXML
@@ -155,6 +170,10 @@ public class BaseController extends ControllerGuiInterface{
         //gamestatus
         GUI.fixLabels(board, BOARD_HEIGHT, new Label[]{gameStatusLabel}, GAME_STATUS_X,   GAME_STATUS_Y,  GAME_STATUS_HEIGHT,  GAME_STATUS_WIDTH);
 
+        //single player
+        anchorPane.getChildren().add(retro);
+        anchorPane.getChildren().add(revealed);
+        GUI.fixImages(board, BOARD_HEIGHT, new ImageView[]{retro, revealed}, TOKEN_X, TOKEN_Y, TOKEN_SIZE);
     }
 
     @Override
@@ -205,6 +224,20 @@ public class BaseController extends ControllerGuiInterface{
             cell.setImage(null);
         }
         faithTrack[gui.getModel().getMe().getFaithTrack().getFaithPoints()].setImage(faith);
+
+        if(gui.getModel().isSinglePlayer()){
+            faithTrack[gui.getModel().getSoloGame().getFaithTrack().getFaithPoints()].setImage(blackCross);
+            if(gui.getModel().getSoloGame().getRevealed()!=null) {
+                revealed.setImage(tokens[gui.getModel().getSoloGame().getRevealed().ordinal()]);
+                revealed.setVisible(true);
+            }else {
+                revealed.setVisible(false);
+            }
+        }else{
+            retro.setVisible(false);
+            revealed.setVisible(false);
+        }
+
 
         chosen.clear();
         checkButtons(true);
