@@ -84,7 +84,12 @@ public class Server {
         playersNickNames.add(name);
 
         if (waitingConnections.get(numofplayer-1).size()>=numofplayer) {
-            Room room= new Room("Room"+id,numofplayer,waitingConnections.get(numofplayer-1));
+            String roomName;
+            do {
+                roomName="Room"+id;
+                id++;
+            }while (findRoom(roomName));
+            Room room= new Room(roomName,numofplayer,waitingConnections.get(numofplayer-1));
             startGame(room);
             addActiveRoom(room);
             waitingConnections.get(numofplayer-1).clear();
