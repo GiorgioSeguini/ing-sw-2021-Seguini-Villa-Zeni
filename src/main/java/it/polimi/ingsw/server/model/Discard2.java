@@ -30,6 +30,11 @@ public class Discard2 implements SoloActionTokens {
 
     @Override
     public String getName(){
+        return name;
+    }
+
+    @Override
+    public String getEnum() {
         return name + "_" + color;
     }
 

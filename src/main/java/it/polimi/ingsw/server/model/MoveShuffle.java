@@ -35,6 +35,11 @@ public class MoveShuffle implements SoloActionTokens {
         return name;
     }
 
+    @Override
+    public String getEnum() {
+        return name;
+    }
+
     /**This shuffle randomly the SoloActionToken's stack**/
     /*private ArrayList<SoloActionTokens> Shuffle(ArrayList<SoloActionTokens> soloActionTokens){
         for(int i=0; i<7; i++) {
