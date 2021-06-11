@@ -100,7 +100,7 @@ public class Client {
                     locker.wait();
                 }
             }
-            readingThread.join();
+            if(online) readingThread.join();
             //t1.join();
         } catch(InterruptedException | NoSuchElementException e){
             System.out.println("Connection closed from the client side");

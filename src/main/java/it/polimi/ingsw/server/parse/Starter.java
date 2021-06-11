@@ -1,9 +1,13 @@
 package it.polimi.ingsw.server.parse;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
+//<<<<<<< DisconnectionHandler
 import it.polimi.ingsw.constant.parse.MessageSerializer;
+//=======
+import it.polimi.ingsw.client.modelClient.TokenType;
+import it.polimi.ingsw.constant.MessageSerializer;
+//>>>>>>> master
 import it.polimi.ingsw.constant.enumeration.LeaderStatus;
 import it.polimi.ingsw.constant.enumeration.MarbleColor;
 
@@ -38,7 +42,7 @@ public class Starter {
         GsonBuilder builder= new GsonBuilder();
         builder.registerTypeAdapter(NumberOfResources.class, new NumberOfResSerializer());
         builder.registerTypeAdapter(Ability.class, new AbilitySerializer());
-        builder.registerTypeAdapter(SoloActionTokens.class, new TokensSerializer());
+        //builder.registerTypeAdapter(SoloActionTokens.class, new TokensSerializer());
         builder.registerTypeAdapter(Message.class, new MessageSerializer());
         builder.registerTypeAdapter(MoveType.class, new MoveTypeSerializer());
         builder.registerTypeAdapter(Dashboard.class, new DashBoardSerializer());
@@ -47,8 +51,12 @@ public class Starter {
         builder.registerTypeAdapter(LeaderCard.class, new LeaderCardExtSerializer());
         builder.registerTypeAdapter(Requirements.class, new RequirementsExtSerializer());
         builder.registerTypeAdapter(ProductionPower.class, new ProductionPowerExtSerializer());
+//<<<<<<< DisconnectionHandler
         builder.registerTypeAdapter(SetUp.class, new SetupperSerializer());
         builder.registerTypeAdapter(Settable.class, new SettableSerializer());
+//=======
+        builder.registerTypeAdapter(SoloActionTokens.class, (JsonSerializer<SoloActionTokens>) (soloActionTokens, type, context) -> soloActionTokens==null ? context.serialize(null) :context.serialize(TokenType.valueOf(soloActionTokens.getName()), TokenType.class));
+//>>>>>>> master
         gson=builder.create();
         filePath = new File("").getAbsolutePath();
     }
@@ -65,7 +73,9 @@ public class Starter {
 
     public static ArrayList<SoloActionTokens> TokensParser() throws FileNotFoundException{
         Type TokensListType = new TypeToken<ArrayList<SoloActionTokens>>(){}.getType();
-        return gson.fromJson(new FileReader(filePath + "/src/main/resources/SoloActionTokens.json"), TokensListType);
+        GsonBuilder localBuilder = new GsonBuilder();
+        localBuilder.registerTypeAdapter(SoloActionTokens.class, new TokensSerializer());
+        return localBuilder.create().fromJson(new FileReader(filePath + "/src/main/resources/SoloActionTokens.json"), TokensListType);
     }
 
     public static ArrayList<MarbleColor> MarblesParser() throws FileNotFoundException {

@@ -6,7 +6,7 @@ import it.polimi.ingsw.constant.enumeration.ColorDevCard;
 
 public class Discard2 implements SoloActionTokens {
 
-    public static final String name = "Discard2";
+    public static final String name = "DISCARD2";
     private final ColorDevCard color;
 
 
@@ -23,14 +23,14 @@ public class Discard2 implements SoloActionTokens {
     @Override
     public void ActivateToken(GameExt game) {
         try {
-            ((DashboardExt)game.getDashboard()).removeCard(color, 2);
-        }catch(IllegalArgumentException ignored){};
+            game.getDashboard().removeCard(color, 2);
+        }catch(IllegalArgumentException ignored){}
 
     }
 
     @Override
     public String getName(){
-        return name;
+        return name + "_" + color;
     }
 
     @Override

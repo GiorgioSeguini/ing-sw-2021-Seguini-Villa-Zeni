@@ -1,29 +1,31 @@
 package it.polimi.ingsw.server.model;
 
+import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.constant.model.FaithTrack;
 import it.polimi.ingsw.constant.model.Game;
 import it.polimi.ingsw.constant.model.LorenzoSoloPlayer;
+import it.polimi.ingsw.server.observer.Observable;
+import it.polimi.ingsw.server.observer.Observer;
 
 import java.util.*;
 
 /*Last Edit: Fabio*/
-public class LorenzoSoloPlayerExt extends LorenzoSoloPlayer {
+public class LorenzoSoloPlayerExt extends LorenzoSoloPlayer implements Observable<Message> {
 
     private transient final GameExt game;
     private transient ArrayList<SoloActionTokens> soloActionTokens;
     private transient ArrayList<SoloActionTokens> copyOfSoloActionTokens;
-    //private ArrayList<SoloActionTokens> soloActionTokensDiscarded;
-
+    private SoloActionTokens revealed;
 
     /*default constructor*/
     public LorenzoSoloPlayerExt(GameExt game, FaithTrackExt faithTrack, ArrayList<SoloActionTokens> startSoloActionTokens) {
         super(faithTrack);
         this.game = game;
-        soloActionTokens = new ArrayList<SoloActionTokens>(startSoloActionTokens);
+        soloActionTokens = new ArrayList<>(startSoloActionTokens);
         Collections.shuffle(soloActionTokens);
 
-        copyOfSoloActionTokens = new ArrayList<SoloActionTokens>(7);
-        copyOfSoloActionTokens = (ArrayList<SoloActionTokens>) soloActionTokens.clone();
+        copyOfSoloActionTokens = new ArrayList<>(7);
+        copyOfSoloActionTokens = new ArrayList<>(soloActionTokens);
     }
 
     @Override
@@ -35,12 +37,12 @@ public class LorenzoSoloPlayerExt extends LorenzoSoloPlayer {
     /*Getter*/
 
     public ArrayList<SoloActionTokens> getSoloActionTokens() {
-        return (ArrayList<SoloActionTokens>) soloActionTokens.clone();
+        return new ArrayList<>(soloActionTokens);
     }
 
 
     public ArrayList<SoloActionTokens> getCopyOfSoloActionTokensInit() {
-        return (ArrayList<SoloActionTokens>) copyOfSoloActionTokens.clone();
+        return new ArrayList<>(copyOfSoloActionTokens);
     }
 
 
@@ -57,9 +59,29 @@ public class LorenzoSoloPlayerExt extends LorenzoSoloPlayer {
         //soloActionTokensDiscarded.add(soloActionTokensRevealed);
         soloActionTokens.remove(soloActionTokensRevealed);
         soloActionTokensRevealed.ActivateToken(getGame());
+        this.revealed = soloActionTokensRevealed;
     }
 
     public GameExt getGame() {
         return game;
+    }
+
+    //Observable implementation
+    private transient final List<it.polimi.ingsw.server.observer.Observer<Message>> observers = new ArrayList<>();
+
+    @Override
+    public void addObserver(it.polimi.ingsw.server.observer.Observer<Message> observer){
+        synchronized (observers) {
+            observers.add(observer);
+        }
+    }
+
+    @Override
+    public void notify(Message message) {
+        synchronized (observers) {
+            for(Observer<Message> observer : observers){
+                observer.update(message);
+            }
+        }
     }
 }
