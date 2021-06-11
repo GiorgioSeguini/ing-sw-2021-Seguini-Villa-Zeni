@@ -50,7 +50,7 @@ public class Starter {
         builder.registerTypeAdapter(SetUp.class, new SetupperSerializer());
         builder.registerTypeAdapter(Settable.class, new SettableSerializer());
 
-        builder.registerTypeAdapter(SoloActionTokens.class, (JsonSerializer<SoloActionTokens>) (soloActionTokens, type, context) -> soloActionTokens==null ? context.serialize(null) :context.serialize(TokenType.valueOf(soloActionTokens.getName()), TokenType.class));
+        builder.registerTypeAdapter(SoloActionTokens.class, (JsonSerializer<SoloActionTokens>) (soloActionTokens, type, context) -> soloActionTokens==null ? context.serialize(null) :context.serialize(TokenType.valueOf(soloActionTokens.getEnum()), TokenType.class));
 
         gson=builder.create();
         filePath = new File("").getAbsolutePath();
@@ -137,7 +137,10 @@ public class Starter {
         ArrayList<SoloActionTokens> tokens= new ArrayList<>();
 
         try {
-            tokens=gson.fromJson(new FileReader(filePath + "/src/main/resources/SoloActionTokens.json"), TokensListType);
+            GsonBuilder localBuilder = new GsonBuilder();
+            localBuilder.registerTypeAdapter(SoloActionTokens.class, new TokensSerializer());
+            tokens = localBuilder.create().fromJson(new FileReader(filePath + "/src/main/resources/SoloActionTokens.json"), TokensListType);
+            //tokens=gson.fromJson(new FileReader(filePath + "/src/main/resources/SoloActionTokens.json"), TokensListType);
         } catch (FileNotFoundException e) {
             return false;
         }

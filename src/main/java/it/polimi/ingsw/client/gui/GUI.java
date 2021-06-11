@@ -196,6 +196,23 @@ public class GUI extends Application implements UI {
         }
     }
 
+    // da testare
+    public static void fixImages(final Pane pane, final ImageView[] images){
+        double backHeight = pane.getHeight();
+        for(int i=0; i<images.length; i++){
+            int finalI = i;
+            double x = images[i].getLayoutX();
+            double y = images[i].getLayoutY();
+            double imageHeight = images[i].getFitHeight();
+            pane.heightProperty().addListener((observableValue, oldValue, newValue) -> {
+                images[finalI].setLayoutX(pane.getLayoutX() + (Double)newValue * x/ backHeight);
+                images[finalI].setLayoutY(pane.getLayoutY() + (Double)newValue * y/ backHeight);
+            });
+            images[finalI].fitHeightProperty().bind(pane.heightProperty().divide(backHeight / imageHeight));
+            images[finalI].setPreserveRatio(true);
+        }
+    }
+
     public static void fixImagesToPane(final Pane pane, final Double paneHeight, final Double paneWidth, final ImageView[] images, final Double[] x, final Double[] y, final Double imageHeight){
         if(images.length!=x.length)
             throw new ArithmeticException();

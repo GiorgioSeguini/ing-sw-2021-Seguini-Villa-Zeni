@@ -24,6 +24,11 @@ public class Move2 implements SoloActionTokens {
     }
 
     @Override
+    public String getEnum() {
+        return name;
+    }
+
+    @Override
     public boolean equals(Object o){
         if(o==this)
             return true;
