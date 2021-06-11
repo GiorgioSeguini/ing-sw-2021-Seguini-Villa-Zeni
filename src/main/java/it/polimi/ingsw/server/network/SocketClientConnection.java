@@ -87,12 +87,14 @@ public class SocketClientConnection implements  Observable<String>, ClientConnec
             in = new DataInputStream(socket.getInputStream());
             out = new DataOutputStream(socket.getOutputStream());
             String read;
-            boolean confirm= true;
+            boolean confirm= false;
             int numofplayer = 0;
             Settable setupper;
             do {
                 read = in.readUTF();
+                System.out.println("Recived: "+read);
                 setupper= (Settable) Starter.fromJson(read, Settable.class);
+
                // accepted = server.checkPlayerName(setupper.getPlayerName());
                 confirm=setupper.canSetAction(this.server,(SetUp) setupper);
                 if(!confirm){

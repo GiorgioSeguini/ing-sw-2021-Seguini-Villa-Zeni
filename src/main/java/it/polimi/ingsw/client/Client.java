@@ -208,7 +208,9 @@ public class Client {
 
     public void sendSetupper(SetUp setupper) {
         try {
-            socketOut.writeUTF(StarterClient.toJson(setupper, SetUp.class));
+            String json= StarterClient.toJson(setupper, SetUp.class);
+            System.out.println("Sent :"+json);
+            socketOut.writeUTF(json);
             socketOut.flush();
         } catch (IOException e) {
             e.printStackTrace();

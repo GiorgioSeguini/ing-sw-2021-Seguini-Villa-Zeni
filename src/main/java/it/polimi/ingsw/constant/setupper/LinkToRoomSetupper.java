@@ -6,4 +6,9 @@ public class LinkToRoomSetupper extends SetUp{
     public LinkToRoomSetupper(String playerName, String roomName) {
         super(playerName, roomName, 0);
     }
+
+    @Override
+    public String getClassName() {
+        return className;
+    }
 }

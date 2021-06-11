@@ -213,10 +213,13 @@ public class CLI implements Runnable, UI {
                 in.nextLine();      //non so perchè ma senza non va
             }
         }while(!getActive());
-        System.out.println("Ottimo "+name+"! Ti stiamo inserendo in una partita da "+numOfPlayers+" giocatori.\nRimani in attesa, la partita inizierà tra breve!");
 
         if(x==1){
-            System.out.println("Per invitare i tuoi amici comunicagli il nome della stanza! --> "+room);
+            System.out.println("Ottimo "+name+"! Ti stiamo inserendo in una partita da "+numOfPlayers+" giocatori.\nRimani in attesa, la partita inizierà tra breve!\n");
+            System.out.println("RICORDA! Per invitare i tuoi amici comunicagli il nome della stanza! --> "+room);
+        }
+        else {
+            System.out.println("Ottimo "+name+"! Sei stato inserito all'interno della stanza "+room+"\nRimani in attesa, la partita inizierà tra breve!\n");
         }
 
 
@@ -232,6 +235,7 @@ public class CLI implements Runnable, UI {
                 System.out.println("Con quanti avversari vuoi giocare?\n 1. Da solo \n 2. Un avversario\n 3. Due avversari\n 4. Tre avversari\n");
                 System.out.println("--> Digita il numero dell'opzione che preferisci e premi INVIO");
                 x = in.nextInt();
+                in.nextLine();
                 if (x < 1 || x > 4) {
                     System.out.println("Indice non valido!");
                 }
