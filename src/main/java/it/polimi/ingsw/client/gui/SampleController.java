@@ -1,16 +1,11 @@
 package it.polimi.ingsw.client.gui;
 
-import it.polimi.ingsw.client.Client;
-//<<<<<<< DisconnectionHandler
 import it.polimi.ingsw.constant.setupper.JoinWaitngListSetupper;
-//=======
 import javafx.event.ActionEvent;
-//>>>>>>> master
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 import java.io.DataOutputStream;
 import java.io.IOException;

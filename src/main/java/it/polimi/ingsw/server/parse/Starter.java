@@ -2,12 +2,8 @@ package it.polimi.ingsw.server.parse;
 
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
-//<<<<<<< DisconnectionHandler
 import it.polimi.ingsw.constant.parse.MessageSerializer;
-//=======
 import it.polimi.ingsw.client.modelClient.TokenType;
-import it.polimi.ingsw.constant.MessageSerializer;
-//>>>>>>> master
 import it.polimi.ingsw.constant.enumeration.LeaderStatus;
 import it.polimi.ingsw.constant.enumeration.MarbleColor;
 
@@ -51,12 +47,11 @@ public class Starter {
         builder.registerTypeAdapter(LeaderCard.class, new LeaderCardExtSerializer());
         builder.registerTypeAdapter(Requirements.class, new RequirementsExtSerializer());
         builder.registerTypeAdapter(ProductionPower.class, new ProductionPowerExtSerializer());
-//<<<<<<< DisconnectionHandler
         builder.registerTypeAdapter(SetUp.class, new SetupperSerializer());
         builder.registerTypeAdapter(Settable.class, new SettableSerializer());
-//=======
+
         builder.registerTypeAdapter(SoloActionTokens.class, (JsonSerializer<SoloActionTokens>) (soloActionTokens, type, context) -> soloActionTokens==null ? context.serialize(null) :context.serialize(TokenType.valueOf(soloActionTokens.getName()), TokenType.class));
-//>>>>>>> master
+
         gson=builder.create();
         filePath = new File("").getAbsolutePath();
     }
