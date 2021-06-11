@@ -16,7 +16,7 @@
     <ImageView fx:id="retro" >
     <Image url="@../../../../../images/punchboard/retro_cerchi.png" />
     </ImageView>
-    <ImageView fx:id="faithtrack">
-        <Image url="@../../../../../images/punchboard/retro_cerchi.png"/>
+    <ImageView fx:id="faithTrack">
+        <Image url="@../../../../../images/punchboard/FaithTrack.png"/>
     </ImageView>
 </AnchorPane>
