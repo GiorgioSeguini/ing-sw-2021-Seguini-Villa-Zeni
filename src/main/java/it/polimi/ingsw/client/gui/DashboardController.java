@@ -166,6 +166,11 @@ public class DashboardController extends ControllerGuiInterface{
         GUI.fixImagesToPane(anchorPane,692.0,1280.0,IMAGE_VIEWS,IMAGE_X,IMAGE_Y,IMAGE_REAL);
 
 
+        /*for(int i=0;i<imageViews.size(); i++){
+            imageViews.get(i).fitHeightProperty().bind(labels.get(i).heightProperty().divide(12));
+            imageViews.get(i).fitWidthProperty().bind(labels.get(i).widthProperty());
+        }*/
+
 
         imageViewBoard.fitWidthProperty().bind(gridSecondScreen.widthProperty().divide(2));
         devcardBuyed.fitWidthProperty().bind(gridSecondScreen.widthProperty().divide(3));

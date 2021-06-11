@@ -108,15 +108,17 @@ public class GameExt extends Game implements Observable<Message> {
         super.getCurrPlayer().setStatus(PlayerStatus.Waiting);
         if(super.isSinglePlayer()){
             //single player
+            super.getCurrPlayer().setStatus(PlayerStatus.Active);
             if(((FaithTrackExt)super.getCurrPlayer().getFaithTrack()).isEnd() || super.getCurrPlayer().getPersonalBoard().isFull()){
                 super.setStatus(GameStatus.Ended);
+                getPlayer(0).setStatus(PlayerStatus.Waiting);
             }
             ((LorenzoSoloPlayerExt)super.getSoloGame()).revealToken();
             if(((FaithTrackExt)super.getSoloGame().getFaithTrack()).isEnd() || getDashboard().isEmpty()){
                 super.setStatus(GameStatus.Ended);
                 super.getSoloGame().setWinner();
+                getPlayer(0).setStatus(PlayerStatus.Waiting);
             }
-            super.getCurrPlayer().setStatus(PlayerStatus.Active);
         }
         else {
             if(super.getStatus() == GameStatus.Running){
