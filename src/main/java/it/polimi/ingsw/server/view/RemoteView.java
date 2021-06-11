@@ -4,6 +4,8 @@ package it.polimi.ingsw.server.view;
 import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.constant.model.Player;
 import it.polimi.ingsw.server.controller.*;
+import it.polimi.ingsw.server.network.Settable;
+import it.polimi.ingsw.server.network.SocketClientConnection;
 import it.polimi.ingsw.server.observer.Observer;
 import it.polimi.ingsw.server.network.ClientConnection;
 import it.polimi.ingsw.server.parse.Starter;
@@ -16,7 +18,14 @@ public class RemoteView extends View {
         public void update(String info) {
             System.out.println("Received: " + info);
             Performable move= (Performable) Starter.fromJson(info, Performable.class);
-            handleMove(move);
+            if(move!=null){
+                handleMove(move);
+            }
+            else{
+                Settable setupper=(Settable) Starter.fromJson(info,Settable.class);
+                SocketClientConnection connection= (SocketClientConnection)clientConnection;
+                connection.handleSetupper(setupper);
+            }
         }
 
     }

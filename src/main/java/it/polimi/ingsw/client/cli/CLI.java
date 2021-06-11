@@ -6,11 +6,9 @@ import it.polimi.ingsw.client.modelClient.GameClient;
 import it.polimi.ingsw.client.parser.StarterClient;
 import it.polimi.ingsw.constant.enumeration.ErrorMessage;
 import it.polimi.ingsw.constant.message.LastMessage;
+import it.polimi.ingsw.constant.move.MoveEndTurn;
 import it.polimi.ingsw.constant.move.MoveType;
-import it.polimi.ingsw.constant.setupper.CreateRoomSetupper;
-import it.polimi.ingsw.constant.setupper.JoinWaitngListSetupper;
-import it.polimi.ingsw.constant.setupper.LinkToRoomSetupper;
-import it.polimi.ingsw.constant.setupper.SetUp;
+import it.polimi.ingsw.constant.setupper.*;
 
 import java.io.*;
 
@@ -150,6 +148,21 @@ public class CLI implements Runnable, UI {
         else{
             clearScreen();
             System.out.println("E' il turno di :" + game.getCurrPlayer().getUserName());
+            /*System.out.println("Vuoi per caso uscire dal gioco? ");
+            int index = 0;
+            do{
+                System.out.println("\t 1. SI, voglio uscire dal gioco.");
+                System.out.println("\t 2. NO.");
+                index=in.nextInt();
+                in.nextLine();
+                if(index<1||index>2) System.out.println("Indice non valido.");
+            }while (index<1|| index>2);
+
+            if (index==1){
+                send(new DisconnectConnectionSetupper(game.getMe().getUserName(), client.getRoomName()));
+            }
+
+             */
         }
     }
 

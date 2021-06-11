@@ -39,8 +39,17 @@ public class SocketClientConnection implements  Observable<String>, ClientConnec
         return active;
     }
 
-    private synchronized boolean isStandby(){
+    /*public synchronized void setActive(boolean status){
+        active=status;
+    }
+     */
+
+    public synchronized boolean isStandby(){
         return standby;
+    }
+
+    public synchronized void setStandby(boolean status){
+        active=status;
     }
 
     public void send(String json) {
@@ -137,6 +146,15 @@ public class SocketClientConnection implements  Observable<String>, ClientConnec
             for(Observer<String> observer : observers){
                 observer.update(message);
             }
+        }
+    }
+
+    public void handleSetupper(Settable setupper) {
+        if(setupper.canSetAction(server,(SetUp) setupper)){
+            SetUp set= (SetUp) setupper;
+            setupper.setAction(server,this,set);
+        }else {
+            send(Starter.toJson(new RejectMessage(), RejectMessage.class));
         }
     }
 }

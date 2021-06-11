@@ -48,7 +48,7 @@ public class GameTest {
         Type type = new TypeToken<ArrayList<LeaderCardExt>>(){}.getType();
         String leaderCardsString = Starter.toJson(game.getActivableLeadCard(due.get(0)), type);
 
-        Message msg = new InitialMessage(game, myID, game.getActivableLeadCard(due.get(0)));
+        Message msg = new InitialMessage(game, myID, game.getActivableLeadCard(due.get(0)), "room");
 
         String packet = Starter.toJson(msg, Message.class);
         System.out.println(packet);

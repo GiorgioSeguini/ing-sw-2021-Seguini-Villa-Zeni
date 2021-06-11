@@ -38,12 +38,12 @@ public abstract class View implements Observable<Performable>, Observer<Message>
         notify(x);
     }
 
-    public void sendInitialMessage(GameExt game){
+    public void sendInitialMessage(GameExt game, String roomName){
         if(game.getPlayerIndex(this.player)==-1)
             return;
 
         int myID = this.player.getID();
-        this.update(new InitialMessage(game, myID, game.getActivableLeadCard(player)));
+        this.update(new InitialMessage(game, myID, game.getActivableLeadCard(player),roomName));
         this.update(new LastMessage());
     }
 

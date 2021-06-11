@@ -40,7 +40,6 @@ public class Client {
     public boolean recived;
     GameClient simpleGame;
     CLI cli;
-
     private String roomName;
     private GUI gui;
     private Controller controller;
@@ -120,6 +119,14 @@ public class Client {
         this.simpleGame = game;
     }
 
+    public void setRoomName(String roomName){
+        this.roomName= roomName;
+    }
+
+    public String getRoomName() {
+        return roomName;
+    }
+
     public GameClient getSimpleGame(){
         return this.simpleGame;
     }
@@ -189,7 +196,7 @@ public class Client {
 
         //send initial message
         int myID = players.get(0).getID();
-        observer.update(new InitialMessage(game, myID, game.getActivableLeadCard(players.get(0))));
+        observer.update(new InitialMessage(game, myID, game.getActivableLeadCard(players.get(0)), "LocalRoom"));
         observer.update(new LastMessage());
 
         online = false;

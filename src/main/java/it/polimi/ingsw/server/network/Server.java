@@ -41,7 +41,7 @@ public class Server {
         // TODO: 5/20/21
         //}
     }
-
+    /**Returns false if it finds the nickname*/
     public synchronized boolean checkPlayerName(String name){
         for(String x: playersNickNames){
             if(x.equals(name)){
@@ -117,7 +117,7 @@ public class Server {
 
         //send initial message
         for(View view : playersView) {
-            view.sendInitialMessage(game);
+            view.sendInitialMessage(game, room.getRoomName());
         }
 
         // TODO: 6/10/21 cambiare struttura, mettere le connessioni attive all'interno della stessa room

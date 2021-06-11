@@ -12,8 +12,10 @@ public class LinkToRoomSetupperExt extends LinkToRoomSetupper implements Settabl
     @Override
     public void setAction(Server server, SocketClientConnection socket, SetUp setupper) {
         Room room= server.getRoomFromName(setupper.getRoomName());
+
         if(server.findActiveRoom(room.getRoomName())){
-            //todo player in un game già avviato riconnessione
+            room.reconnectConnection(setupper.getPlayerName(),socket);
+            socket.setStandby(false);
         }
         else {
             room.addConnection(setupper.getPlayerName(),socket);

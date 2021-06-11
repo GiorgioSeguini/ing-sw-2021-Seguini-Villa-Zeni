@@ -18,11 +18,13 @@ public class InitialMessage implements Message{
     private final Game model;
     private final int yourID;
     private final ArrayList<LeaderCard> leaderCards;
+    private final String roomName;
 
-    public InitialMessage(Game model, int yourID, ArrayList<LeaderCard> leaderCards) {
+    public InitialMessage(Game model, int yourID, ArrayList<LeaderCard> leaderCards, String roomName) {
         this.model = model;
         this.yourID = yourID;
         this.leaderCards = leaderCards;
+        this.roomName= roomName;
     }
 
     @Override
@@ -30,7 +32,7 @@ public class InitialMessage implements Message{
         client.setSimpleGame((GameClient) model);
         GameClient simpleGame = client.getSimpleGame();
         simpleGame.setMyID(yourID);
-
+        client.setRoomName(roomName);
         simpleGame.setLeaderCards(leaderCards);
     }
 
