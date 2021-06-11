@@ -1,7 +1,10 @@
 package it.polimi.ingsw.server.network;
 
+import it.polimi.ingsw.constant.message.InitialMessage;
 import it.polimi.ingsw.constant.setupper.LinkToRoomSetupper;
 import it.polimi.ingsw.constant.setupper.SetUp;
+
+import java.util.ArrayList;
 
 public class LinkToRoomSetupperExt extends LinkToRoomSetupper implements Settable {
 
@@ -16,6 +19,7 @@ public class LinkToRoomSetupperExt extends LinkToRoomSetupper implements Settabl
         if(server.findActiveRoom(room.getRoomName())){
             if(room.findDisconnectedPlayer(setupper.getPlayerName())){
                 room.reconnectConnection(setupper.getPlayerName(),socket);
+                room.getGame().notify(new InitialMessage(room.getGame(),room.getGame().getPlayerIdfromNickname(getPlayerName()), new ArrayList<>(), room.getRoomName()));
             }
         }
         else {

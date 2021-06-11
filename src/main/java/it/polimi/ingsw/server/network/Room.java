@@ -1,5 +1,12 @@
 package it.polimi.ingsw.server.network;
 
+import it.polimi.ingsw.constant.model.Player;
+import it.polimi.ingsw.server.controller.Controller;
+import it.polimi.ingsw.server.model.GameExt;
+import it.polimi.ingsw.server.model.PlayerExt;
+import it.polimi.ingsw.server.view.RemoteView;
+import it.polimi.ingsw.server.view.View;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -8,8 +15,11 @@ public class Room {
 
     private String roomName;
     private int numOfPlayers;
+    private GameExt game;
+    private Controller controller;
     private HashMap<String,ClientConnection> connections= new HashMap<>();
     private ArrayList<String> disconnectedPlayers= new ArrayList<>();
+
 
     public Room(String roomName, int numOfPlayers) {
         this.roomName = roomName;
@@ -20,6 +30,22 @@ public class Room {
         this.roomName= roomName;
         this.numOfPlayers= numOfPlayers;
         this.connections=connections;
+    }
+
+    public Controller getController() {
+        return controller;
+    }
+
+    public void setController(Controller controller) {
+        this.controller = controller;
+    }
+
+    public void setGame(GameExt game) {
+        this.game = game;
+    }
+
+    public GameExt getGame() {
+        return game;
     }
 
     public void addConnection(String nickname, ClientConnection connection){
@@ -37,6 +63,9 @@ public class Room {
     public void reconnectConnection(String nickname, ClientConnection connection){
         if(disconnectedPlayers.indexOf(nickname)!=-1){
             connections.put(nickname,connection);
+            RemoteView view= new RemoteView(game.getPlayerFromNickname(nickname),connection);
+            Server.instanceSingleView(view,game, controller);
+            view.sendInitialMessage(game, getRoomName());
             disconnectedPlayers.remove(nickname);
         }
         else throw new IllegalArgumentException();

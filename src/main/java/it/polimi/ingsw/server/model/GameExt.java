@@ -171,7 +171,24 @@ public class GameExt extends Game implements Observable<Message> {
         return res;
     }
 
+    /**@return the player Id from his nickname, -1 otherwise*/
+    public int getPlayerIdfromNickname(String nickName){
+        for (Player player: getPlayers()){
+            if(player.getUserName().equals(nickName)){
+                return player.getID();
+            }
+        }
+        return -1;
+    }
 
+    public Player getPlayerFromNickname(String nickName){
+        for (Player player: getPlayers()){
+            if(player.getUserName().equals(nickName)){
+                return player;
+            }
+        }
+        return null;
+    }
     /**
      *
      * @param id to search for

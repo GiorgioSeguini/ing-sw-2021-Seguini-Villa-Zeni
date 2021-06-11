@@ -94,45 +94,50 @@ public class Server {
             //TODO
         }
         Controller controller = new Controller(game);
-        ArrayList<View> playersView = instanceViews(room.getConnections(),game.getPlayers());
+        HashMap<String,View> playersView = instanceViews(room.getConnections(),game.getPlayers());
 
-        addObserverGame(playersView, game, controller);
+        addObserverGame(new ArrayList<>(playersView.values()), game, controller);
 
         //ArrayList<ClientConnection> connections= getConnectionforGame(room.getConnections(), game.getPlayers());
         //makeConnection(connections);
 
         //send initial message
-        for(View view : playersView) {
+        for(View view : playersView.values()) {
             view.sendInitialMessage(game, room.getRoomName());
         }
 
-        // TODO: 6/10/21 cambiare struttura, mettere le connessioni attive all'interno della stessa room
+        room.setGame(game);
+        room.setController(controller);
     }
 
     private void addObserverGame(ArrayList<View> playersView, GameExt game, Controller controller) {
         for(View view : playersView){
             //add model - view links
-            game.getMarketTray().addObserver(view);
-            game.getDashboard().addObserver(view);
-            game.addObserver(view);
-            for(Player player : game.getPlayers()){
-                PlayerExt playerExt = (PlayerExt) player;
-                playerExt.getPersonalBoard().addObserver(view);
-                playerExt.getFaithTrack().addObserver(view);
-                playerExt.getDepots().addObserver(view);
-                playerExt.addObserver(view);
-                playerExt.getConverter().addObserver(view);
-            }
-
-            //add controller - view links
-            view.addObserver(controller);
+            instanceSingleView(view, game, controller);
         }
     }
 
-    private ArrayList<View> instanceViews(Map<String, ClientConnection> waitingConnection, ArrayList<Player> players) {
-        ArrayList<View> playersView =new ArrayList<>();
+    public static void instanceSingleView(View view, GameExt game, Controller controller){
+        game.getMarketTray().addObserver(view);
+        game.getDashboard().addObserver(view);
+        game.addObserver(view);
+        for(Player player : game.getPlayers()){
+            PlayerExt playerExt = (PlayerExt) player;
+            playerExt.getPersonalBoard().addObserver(view);
+            playerExt.getFaithTrack().addObserver(view);
+            playerExt.getDepots().addObserver(view);
+            playerExt.addObserver(view);
+            playerExt.getConverter().addObserver(view);
+        }
+
+        //add controller - view links
+        view.addObserver(controller);
+    }
+
+    private HashMap<String,View> instanceViews(Map<String, ClientConnection> waitingConnection, ArrayList<Player> players) {
+        HashMap <String, View> playersView =new HashMap<>();
         for(Player player: players){
-            playersView.add(new RemoteView(player,waitingConnection.get(player.getUserName())));
+            playersView.put(player.getUserName(), new RemoteView(player,waitingConnection.get(player.getUserName())));
         }
         return playersView;
     }
