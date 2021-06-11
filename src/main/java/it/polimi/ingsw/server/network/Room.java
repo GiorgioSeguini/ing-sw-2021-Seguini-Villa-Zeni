@@ -1,5 +1,6 @@
 package it.polimi.ingsw.server.network;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,7 +9,7 @@ public class Room {
     private String roomName;
     private int numOfPlayers;
     private HashMap<String,ClientConnection> connections= new HashMap<>();
-    private HashMap<String, ClientConnection> disconnectedConnections= new HashMap<>();
+    private ArrayList<String> disconnectedPlayers= new ArrayList<>();
 
     public Room(String roomName, int numOfPlayers) {
         this.roomName = roomName;
@@ -26,16 +27,17 @@ public class Room {
     }
 
 
-    public void disconnectConnection(String nickname, ClientConnection connection){
+    public void disconnectConnection(String nickname){
         if(connections.remove(nickname)!=null){
-            disconnectedConnections.put(nickname,connection);
+            disconnectedPlayers.add(nickname);
         }
         else throw new IllegalArgumentException();
     }
 
-    public void reconnectConnection(String nickname,ClientConnection connection ){
-        if(disconnectedConnections.remove(nickname)!=null){
+    public void reconnectConnection(String nickname, ClientConnection connection){
+        if(disconnectedPlayers.indexOf(nickname)!=-1){
             connections.put(nickname,connection);
+            disconnectedPlayers.remove(nickname);
         }
         else throw new IllegalArgumentException();
     }
@@ -52,6 +54,13 @@ public class Room {
         return connections;
     }
 
+    public boolean findPlayer(String name){
+        return connections.keySet().contains(name);
+    }
+
+    public boolean findDisconnectedPlayer(String name){
+        return disconnectedPlayers.indexOf(name)!=-1;
+    }
 
     @Override
     public String toString() {

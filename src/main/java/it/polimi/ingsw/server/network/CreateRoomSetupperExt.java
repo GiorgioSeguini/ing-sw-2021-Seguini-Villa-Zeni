@@ -14,14 +14,10 @@ public class CreateRoomSetupperExt extends CreateRoomSetupper implements Settabl
         Room room= new Room(setupper.getRoomName(), setupper.getNumOfPlayers());
         room.addConnection(setupper.getPlayerName(), socket);
         server.addRoom(room);
-        server.addPlayerNickName(setupper.getPlayerName());
     }
 
     @Override
     public boolean canSetAction(Server server, SetUp setupper) {
-        if(server.checkPlayerName(setupper.getPlayerName())){
-            return !server.findRoom(setupper.getRoomName());
-        }
-        return false;
+        return !server.findRoom(setupper.getRoomName());
     }
 }

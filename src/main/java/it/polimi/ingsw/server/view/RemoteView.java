@@ -17,11 +17,10 @@ public class RemoteView extends View {
         @Override
         public void update(String info) {
             System.out.println("Received: " + info);
-            Performable move= (Performable) Starter.fromJson(info, Performable.class);
-            if(move!=null){
+            try{
+                Performable move= (Performable) Starter.fromJson(info, Performable.class);
                 handleMove(move);
-            }
-            else{
+            }catch (NullPointerException e){
                 Settable setupper=(Settable) Starter.fromJson(info,Settable.class);
                 SocketClientConnection connection= (SocketClientConnection)clientConnection;
                 connection.handleSetupper(setupper);

@@ -20,37 +20,24 @@ public class Server {
     private final ServerSocket serverSocket;
     private final ArrayList<HashMap<String, ClientConnection>> waitingConnections = new ArrayList<>();
     //private final Map<ClientConnection, ClientConnection> playingConnection = new HashMap<>();
-    private ArrayList<String> playersNickNames= new ArrayList<>();
     private ArrayList<Room> rooms= new ArrayList<>();
     private ArrayList<Room> activeRooms= new ArrayList<>();
     private int id;
 
     //Deregister connection
-    public synchronized void deregisterConnection(ClientConnection c) {
-        ClientConnection opponent = null;//= playingConnection.get(c);
-        if(opponent != null) {
-            opponent.closeConnection();
-        }
-        //playingConnection.remove(c);
-        //playingConnection.remove(opponent);
-        //Iterator<String> iterator = waitingConnection.keySet().iterator();
-       // while(iterator.hasNext()){
-            //if(waitingConnection.get(iterator.next())==c){
-         //       iterator.remove();
-            //}
-        // TODO: 5/20/21
-        //}
-    }
-    /**Returns false if it finds the nickname*/
-    public synchronized boolean checkPlayerName(String name){
-        for(String x: playersNickNames){
-            if(x.equals(name)){
-                return false;
-            }
-        }
-        return true;
+    public synchronized void deregisterConnection() {
+        // TODO: 6/11/21
+
     }
 
+    /**Returns true if it finds the name in the specified waitinglist (form 1 to 4)*/
+    public synchronized boolean findName(String playerName, int listIndex){
+        if(listIndex<5 && listIndex>0)
+            return waitingConnections.get(listIndex-1).containsKey(playerName);
+        return false;
+    }
+
+    /**Return true if it finds the room in the list of rooms or active rooms*/
     public synchronized boolean findRoom(String name){
         for(Room x: rooms ){
             if(x.getRoomName().equals(name)){
@@ -81,7 +68,6 @@ public class Server {
             throw  new IllegalArgumentException();
         }
         waitingConnections.get(numofplayer-1).put(name,c);
-        playersNickNames.add(name);
 
         if (waitingConnections.get(numofplayer-1).size()>=numofplayer) {
             String roomName;
@@ -214,9 +200,6 @@ public class Server {
         activeRooms.remove(room);
     }
 
-    public synchronized void addPlayerNickName(String playerName) {
-        playersNickNames.add(playerName);
-    }
 
     public synchronized Room getRoomFromName(String roomName){
         for(Room room: rooms){

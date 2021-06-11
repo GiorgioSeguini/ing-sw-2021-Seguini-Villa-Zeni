@@ -142,27 +142,25 @@ public class CLI implements Runnable, UI {
                 move = cliInterface.updateCLI(game, in);
             }while (move==null);
             send(move);
-            //ho tolto l'ultimo if perchè ho sempre almeno una mossa da fare che è la endturn
-            //altrimenti qui mettiamo un if che riempe in automato la endturn
+            if(move instanceof MoveEndTurn){
+                System.out.println("Vuoi per caso uscire dal gioco? ");
+                int index = 0;
+                do{
+                    System.out.println("\t 1. SI, voglio uscire dal gioco.");
+                    System.out.println("\t 2. NO.");
+                    index=in.nextInt();
+                    in.nextLine();
+                    if(index<1||index>2) System.out.println("Indice non valido.");
+                }while (index<1|| index>2);
+
+                if (index==1){
+                    send(new DisconnectConnectionSetupper(game.getMe().getUserName(), client.getRoomName()));
+                }
+            }
         }
         else{
             clearScreen();
             System.out.println("E' il turno di :" + game.getCurrPlayer().getUserName());
-            /*System.out.println("Vuoi per caso uscire dal gioco? ");
-            int index = 0;
-            do{
-                System.out.println("\t 1. SI, voglio uscire dal gioco.");
-                System.out.println("\t 2. NO.");
-                index=in.nextInt();
-                in.nextLine();
-                if(index<1||index>2) System.out.println("Indice non valido.");
-            }while (index<1|| index>2);
-
-            if (index==1){
-                send(new DisconnectConnectionSetupper(game.getMe().getUserName(), client.getRoomName()));
-            }
-
-             */
         }
     }
 

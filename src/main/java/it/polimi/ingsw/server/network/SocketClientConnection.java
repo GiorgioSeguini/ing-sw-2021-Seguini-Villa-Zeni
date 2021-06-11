@@ -4,8 +4,6 @@ import it.polimi.ingsw.constant.message.AcceptMessage;
 import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.constant.message.RejectMessage;
 import it.polimi.ingsw.constant.setupper.SetUp;
-import it.polimi.ingsw.server.network.ClientConnection;
-import it.polimi.ingsw.server.network.Server;
 import it.polimi.ingsw.server.observer.Observable;
 import it.polimi.ingsw.server.observer.Observer;
 import it.polimi.ingsw.server.parse.Starter;
@@ -44,13 +42,6 @@ public class SocketClientConnection implements  Observable<String>, ClientConnec
     }
      */
 
-    public synchronized boolean isStandby(){
-        return standby;
-    }
-
-    public synchronized void setStandby(boolean status){
-        active=status;
-    }
 
     public void send(String json) {
             try {
@@ -67,19 +58,19 @@ public class SocketClientConnection implements  Observable<String>, ClientConnec
 
     @Override
     public synchronized void closeConnection() {
-        send("Connection closed!");
         try {
             socket.close();
         } catch (IOException e) {
             System.err.println("Error when closing socket!");
         }
+        send("Connection closed!");
         active = false;
     }
 
-    private void close() {
+    public void close() {
         closeConnection();
-        System.out.println("Deregistering client...");
-        server.deregisterConnection(this);
+        //System.out.println("Deregistering client...");
+        // server.deregisterConnection();
         System.out.println("Done!");
     }
 
@@ -100,16 +91,14 @@ public class SocketClientConnection implements  Observable<String>, ClientConnec
         try{
             in = new DataInputStream(socket.getInputStream());
             out = new DataOutputStream(socket.getOutputStream());
+            Settable setupper;
             String read;
             boolean confirm= false;
             int numofplayer = 0;
-            Settable setupper;
             do {
                 read = in.readUTF();
                 System.out.println("Recived: "+read);
                 setupper= (Settable) Starter.fromJson(read, Settable.class);
-
-               // accepted = server.checkPlayerName(setupper.getPlayerName());
                 confirm=setupper.canSetAction(this.server,(SetUp) setupper);
                 if(!confirm){
                     send(Starter.toJson(new RejectMessage(), Message.class));
@@ -117,11 +106,9 @@ public class SocketClientConnection implements  Observable<String>, ClientConnec
             }while(!confirm);
             send(Starter.toJson(new AcceptMessage(), Message.class));
             setupper.setAction(server, this, (SetUp) setupper);
-            while(!isStandby()) {
-                while (isActive()) {
-                    read = in.readUTF();
-                    notify(read);
-                }
+            while(isActive()) {
+                read = in.readUTF();
+                notify(read);
             }
         } catch (IOException | NoSuchElementException e) {
             System.err.println("Error!" + e.getMessage());
