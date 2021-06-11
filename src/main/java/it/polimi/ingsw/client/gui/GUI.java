@@ -43,7 +43,6 @@ public class GUI extends Application implements UI {
     private final Image[] resImage = new Image[ResourceType.values().length];
 
     public static void entry(Client client) {
-
         GUI.client = client;
         launch((String) null);
     }
@@ -54,7 +53,6 @@ public class GUI extends Application implements UI {
         for(ResourceType type : ResourceType.values()){
             resImage[type.ordinal()]= new Image("/images/punchboard/" + type + ".png");
         }
-
     }
 
     @Override

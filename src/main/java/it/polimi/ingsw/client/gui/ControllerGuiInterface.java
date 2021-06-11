@@ -13,4 +13,5 @@ public abstract class ControllerGuiInterface {
     public abstract String getName();
 
     public abstract void update();
+
 }

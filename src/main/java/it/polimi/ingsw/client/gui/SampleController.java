@@ -1,7 +1,11 @@
 package it.polimi.ingsw.client.gui;
 
 import it.polimi.ingsw.client.Client;
+//<<<<<<< DisconnectionHandler
+import it.polimi.ingsw.constant.setupper.JoinWaitngListSetupper;
+//=======
 import javafx.event.ActionEvent;
+//>>>>>>> master
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -45,14 +49,7 @@ public class SampleController extends ControllerGuiInterface{
     public void start() throws IOException {
         GUI.client.setOnline();
         DataOutputStream socket = GUI.client.socketOut;
-        try {
-            socket.writeUTF(name);
-            socket.flush();
-            socket.writeInt(number);
-            socket.flush();
-        }catch (IOException e){
-            e.printStackTrace();
-        }
+        GUI.client.sendSetupper(new JoinWaitngListSetupper(name, number));
         //gui.activate("lobby");
     }
 

@@ -4,25 +4,21 @@ package it.polimi.ingsw.client;
 import it.polimi.ingsw.client.cli.CLI;
 import it.polimi.ingsw.client.gui.GUI;
 import it.polimi.ingsw.client.modelClient.GameClient;
-import it.polimi.ingsw.constant.message.GameMessage;
 import it.polimi.ingsw.constant.message.InitialMessage;
 import it.polimi.ingsw.constant.message.LastMessage;
-import it.polimi.ingsw.constant.model.Game;
 import it.polimi.ingsw.client.parser.StarterClient;
 import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.constant.model.Player;
 import it.polimi.ingsw.constant.move.MoveType;
-import it.polimi.ingsw.server.ClientConnection;
+import it.polimi.ingsw.constant.setupper.SetUp;
 import it.polimi.ingsw.server.controller.Controller;
 import it.polimi.ingsw.server.controller.Performable;
 import it.polimi.ingsw.server.model.DashboardExt;
 import it.polimi.ingsw.server.model.GameExt;
 import it.polimi.ingsw.server.model.MarketExt;
 import it.polimi.ingsw.server.model.PlayerExt;
-import it.polimi.ingsw.server.observer.Observable;
 import it.polimi.ingsw.server.observer.Observer;
 import it.polimi.ingsw.server.parse.Starter;
-import it.polimi.ingsw.server.view.View;
 
 import java.io.*;
 import java.net.Socket;
@@ -210,4 +206,15 @@ public class Client {
         synchronized (locker){locker.notifyAll();}
     }
 
+    public void sendSetupper(SetUp setupper) {
+        try {
+            String json= StarterClient.toJson(setupper, SetUp.class);
+            System.out.println("Sent :"+json);
+            socketOut.writeUTF(json);
+            socketOut.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+            //TODO
+        }
+    }
 }
