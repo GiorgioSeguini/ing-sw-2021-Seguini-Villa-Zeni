@@ -23,6 +23,15 @@ public abstract class View implements Observable<Performable>, Observer<Message>
 
     private final Player player;
 
+    private boolean offline = false;
+
+    public boolean isOffline() {
+        return offline;
+    }
+
+    public void setOffline(boolean offline) {
+        this.offline = offline;
+    }
 
     protected View(Player player){
         this.player = player;

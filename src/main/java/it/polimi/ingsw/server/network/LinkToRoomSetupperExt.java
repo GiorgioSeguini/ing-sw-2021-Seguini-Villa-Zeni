@@ -19,7 +19,9 @@ public class LinkToRoomSetupperExt extends LinkToRoomSetupper implements Settabl
         if(server.findActiveRoom(room.getRoomName())){
             if(room.findDisconnectedPlayer(setupper.getPlayerName())){
                 room.reconnectConnection(setupper.getPlayerName(),socket);
-                //room.getGame().notify(new InitialMessage(room.getGame(),room.getGame().getPlayerIdfromNickname(getPlayerName()), new ArrayList<>(), room.getRoomName()));
+            }
+            else{
+                // TODO: 6/12/21 send error message
             }
         }
         else {

@@ -10,8 +10,8 @@ public class DisconnectConnectionSetupperExt extends DisconnectConnectionSetuppe
 
     @Override
     public void setAction(Server server, SocketClientConnection socket, SetUp setupper) {
-        server.getRoomFromName(setupper.getRoomName()).disconnectConnection(setupper.getPlayerName());
-        socket.close();
+        //server.getRoomFromName(setupper.getRoomName()).disconnectConnection(setupper.getPlayerName());
+        socket.setActive(false);
         // TODO: 6/11/21  
     }
 

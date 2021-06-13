@@ -18,6 +18,7 @@ public class Room {
     private GameExt game;
     private Controller controller;
     private HashMap<String,ClientConnection> connections= new HashMap<>();
+    private HashMap<String, View> playersview= new HashMap<>();
     private ArrayList<String> disconnectedPlayers= new ArrayList<>();
 
 
@@ -30,6 +31,10 @@ public class Room {
         this.roomName= roomName;
         this.numOfPlayers= numOfPlayers;
         this.connections=connections;
+    }
+
+    public void setPlayersview(HashMap<String, View> playersview) {
+        this.playersview = playersview;
     }
 
     public Controller getController() {
@@ -50,12 +55,15 @@ public class Room {
 
     public void addConnection(String nickname, ClientConnection connection){
         connections.put(nickname, connection);
+        ((SocketClientConnection)connection).setNickName(nickname);
+        ((SocketClientConnection)connection).setRoom(this);
     }
 
 
-    public void disconnectConnection(String nickname){
+    public void  disconnectConnection(String nickname){
         if(connections.remove(nickname)!=null){
             disconnectedPlayers.add(nickname);
+            playersview.get(nickname).setOffline(true);
         }
         else throw new IllegalArgumentException();
     }
@@ -63,9 +71,13 @@ public class Room {
     public void reconnectConnection(String nickname, ClientConnection connection){
         if(disconnectedPlayers.indexOf(nickname)!=-1){
             connections.put(nickname,connection);
-            RemoteView view= new RemoteView(game.getPlayerFromNickname(nickname),connection);
-            Server.instanceSingleView(view,game, controller);
-            view.sendInitialMessage(game, getRoomName());
+            //RemoteView view= new RemoteView(game.getPlayerFromNickname(nickname),connection);
+            playersview.get(nickname).setOffline(false);
+
+            ((RemoteView)playersview.get(nickname)).setClientConnection(connection);
+            //Server.instanceSingleView(playersview.get(nickname), game, controller);
+            //Server.instanceSingleView(view,game, controller);
+            playersview.get(nickname).sendInitialMessage(game, getRoomName());
             disconnectedPlayers.remove(nickname);
         }
         else throw new IllegalArgumentException();

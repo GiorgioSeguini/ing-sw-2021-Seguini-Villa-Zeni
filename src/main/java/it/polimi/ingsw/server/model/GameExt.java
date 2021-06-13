@@ -8,6 +8,7 @@ import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.constant.model.*;
 import it.polimi.ingsw.server.observer.Observable;
 import it.polimi.ingsw.server.observer.Observer;
+import it.polimi.ingsw.server.view.View;
 
 
 import java.util.*;

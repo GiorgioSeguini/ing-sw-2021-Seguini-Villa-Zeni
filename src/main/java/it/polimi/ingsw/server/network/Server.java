@@ -22,7 +22,7 @@ public class Server {
     //private final Map<ClientConnection, ClientConnection> playingConnection = new HashMap<>();
     private ArrayList<Room> rooms= new ArrayList<>();
     private ArrayList<Room> activeRooms= new ArrayList<>();
-    private int id;
+    private int id=1;
 
     //Deregister connection
     public synchronized void deregisterConnection() {
@@ -34,7 +34,7 @@ public class Server {
     public synchronized boolean findName(String playerName, int listIndex){
         if(listIndex<5 && listIndex>0)
             return waitingConnections.get(listIndex-1).containsKey(playerName);
-        return false;
+        throw new IllegalArgumentException();
     }
 
     /**Return true if it finds the room in the list of rooms or active rooms*/
@@ -108,6 +108,7 @@ public class Server {
 
         room.setGame(game);
         room.setController(controller);
+        room.setPlayersview(playersView);
     }
 
     private void addObserverGame(ArrayList<View> playersView, GameExt game, Controller controller) {

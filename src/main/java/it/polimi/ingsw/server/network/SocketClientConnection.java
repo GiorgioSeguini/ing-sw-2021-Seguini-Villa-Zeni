@@ -1,5 +1,6 @@
 package it.polimi.ingsw.server.network;
 
+import com.google.gson.JsonElement;
 import it.polimi.ingsw.constant.message.AcceptMessage;
 import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.constant.message.RejectMessage;
@@ -24,6 +25,8 @@ public class SocketClientConnection implements  Observable<String>, ClientConnec
     private Socket socket;
     private DataOutputStream out;
     private Server server;
+    private String nickName;
+    private Room room;
 
     private boolean active = true;
     private boolean standby= false;
@@ -35,6 +38,14 @@ public class SocketClientConnection implements  Observable<String>, ClientConnec
 
     private synchronized boolean isActive(){
         return active;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
     }
 
     /*public synchronized void setActive(boolean status){
@@ -59,19 +70,22 @@ public class SocketClientConnection implements  Observable<String>, ClientConnec
     @Override
     public synchronized void closeConnection() {
         try {
+            send("Connection closed");
             socket.close();
         } catch (IOException e) {
             System.err.println("Error when closing socket!");
         }
-        send("Connection closed!");
-        active = false;
     }
 
-    public void close() {
-        closeConnection();
-        //System.out.println("Deregistering client...");
-        // server.deregisterConnection();
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public void close(String playerName, Room room) {
+        System.out.println("Deregistering client...");
+        room.disconnectConnection(playerName);
         System.out.println("Done!");
+        closeConnection();
     }
 
     /*@Override
@@ -113,7 +127,8 @@ public class SocketClientConnection implements  Observable<String>, ClientConnec
         } catch (IOException | NoSuchElementException e) {
             System.err.println("Error!" + e.getMessage());
         }finally{
-            close();
+            setActive(false);
+            close(nickName,room);
         }
     }
 

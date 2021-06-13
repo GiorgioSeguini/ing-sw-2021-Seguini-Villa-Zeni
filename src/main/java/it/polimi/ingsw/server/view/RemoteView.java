@@ -29,12 +29,17 @@ public class RemoteView extends View {
 
     }
 
-    private final ClientConnection clientConnection;
+    private ClientConnection clientConnection;
+
 
     public RemoteView(Player player, ClientConnection c) {
         super(player);
         this.clientConnection = c;
         c.addObserver(new MessageReceiver());
+    }
+
+    public void setClientConnection(ClientConnection clientConnection) {
+        this.clientConnection = clientConnection;
     }
 
     /*@Override
@@ -44,7 +49,9 @@ public class RemoteView extends View {
 
     @Override
     public void update(Message message){
-        clientConnection.send(Starter.toJson(message, Message.class));
+        if(!this.isOffline()){
+            clientConnection.send(Starter.toJson(message, Message.class));
+        }
     }
 
 }
