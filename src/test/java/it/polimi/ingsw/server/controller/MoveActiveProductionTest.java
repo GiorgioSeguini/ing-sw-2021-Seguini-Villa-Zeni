@@ -79,12 +79,12 @@ public class MoveActiveProductionTest {
         for(Player x : game.getPlayers()){
             assertTrue(x.getDepots().getResources().size() == game.getInitialResources(x.getID()));
         }
-        game.updateStatus();
+        /*game.updateStatus();
         ColorDevCard colorDevCard = ColorDevCard.GREEN;
         Level level = Level.ONE;
         ((PlayerExt)game.getPlayers().get(0)).getDepots().addResourceFromProduction(new NumberOfResources(10,10,10,10));
         ((PlayerExt)game.getPlayers().get(0)).getPersonalBoard().addDevCard(dashboard.buyDevCard(colorDevCard, level),0);
-        /*ArrayList<ProductionPowerExt> productionOwned = ((PlayerExt)game.getPlayers().get(0)).getPersonalBoard().getProduction();
+        ArrayList<ProductionPowerExt> productionOwned = ((PlayerExt)game.getPlayers().get(0)).getPersonalBoard().getProduction();
         MoveActiveProductionExt moveActiveProduction = new MoveActiveProductionExt(game.getCurrPlayer().getID(), productionOwned);
         assertTrue(moveActiveProduction.canPerform(game));
 
