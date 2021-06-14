@@ -8,6 +8,7 @@ import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.constant.model.Game;
 import it.polimi.ingsw.constant.model.LeaderCard;
 import it.polimi.ingsw.constant.model.Player;
+import it.polimi.ingsw.server.controller.MoveAutoPlay;
 import it.polimi.ingsw.server.controller.Performable;
 import it.polimi.ingsw.server.model.GameExt;
 import it.polimi.ingsw.server.model.LeaderCardExt;
@@ -31,6 +32,7 @@ public abstract class View implements Observable<Performable>, Observer<Message>
 
     public void setOffline(boolean offline) {
         this.offline = offline;
+        notify(new MoveAutoPlay(player.getID()));
     }
 
     protected View(Player player){

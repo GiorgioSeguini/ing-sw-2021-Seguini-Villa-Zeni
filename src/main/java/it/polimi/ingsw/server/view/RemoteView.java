@@ -1,6 +1,7 @@
 package it.polimi.ingsw.server.view;
 
 
+import it.polimi.ingsw.constant.message.LastMessage;
 import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.constant.model.Player;
 import it.polimi.ingsw.server.controller.*;
@@ -40,6 +41,7 @@ public class RemoteView extends View {
 
     public void setClientConnection(ClientConnection clientConnection) {
         this.clientConnection = clientConnection;
+        clientConnection.addObserver(new MessageReceiver());
     }
 
     /*@Override
@@ -51,6 +53,10 @@ public class RemoteView extends View {
     public void update(Message message){
         if(!this.isOffline()){
             clientConnection.send(Starter.toJson(message, Message.class));
+        }else{
+            if(message instanceof LastMessage){
+                notify(new MoveAutoPlay(getPlayer().getID()));
+            }
         }
     }
 

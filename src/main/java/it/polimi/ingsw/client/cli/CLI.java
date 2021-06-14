@@ -81,9 +81,10 @@ public class CLI implements Runnable, UI {
                         e.printStackTrace();
                     }
                 }
+                print();
                 this.setMoveHandled(false);
+                locker.notifyAll();
             }
-            print();
         }
     }
 
@@ -295,8 +296,8 @@ public class CLI implements Runnable, UI {
                 }
             }
             setMoveHandled(true);
+            locker.notifyAll();
         }
-        synchronized (locker) {locker.notifyAll();}
     }
 
     private synchronized boolean isMoveHandled() {
