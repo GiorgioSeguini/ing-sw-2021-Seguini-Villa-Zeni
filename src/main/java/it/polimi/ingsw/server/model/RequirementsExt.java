@@ -55,13 +55,15 @@ public class RequirementsExt extends Requirements {
                 Level l1 = l;
                 while(missing>0){
                     //search for a match
+                    ArrayList<DevelopmentCard> toRemove = new ArrayList<>();
                     for (DevelopmentCard dev : ownedDevCard) {
                         if (dev.getColor().equals(c) && dev.getLevel().equals(l1)) {
-                            ownedDevCard.remove(dev);
+                            toRemove.add(dev);
                             missing--;
                             if(missing == 0) break;
                         }
                     }
+                    ownedDevCard.removeAll(toRemove);
                     try{ l1 = l1.getNext(); }catch(IllegalArgumentException e){break;}
                 }
                 if(missing>0)  return false;

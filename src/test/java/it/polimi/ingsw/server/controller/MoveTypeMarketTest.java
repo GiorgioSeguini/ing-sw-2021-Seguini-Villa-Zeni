@@ -1,4 +1,6 @@
 package it.polimi.ingsw.server.controller;
+import it.polimi.ingsw.client.modelClient.Ability;
+import it.polimi.ingsw.constant.model.LeaderCard;
 import it.polimi.ingsw.constant.model.NumberOfResources;
 import it.polimi.ingsw.constant.model.Player;
 import it.polimi.ingsw.constant.model.ProductionPower;
@@ -81,22 +83,34 @@ public class MoveTypeMarketTest {
         marketExt.performMove(game);
         assertEquals(ErrorMessage.BadChoice,game.getCurrPlayer().getErrorMessage());
 
-        LeaderCardExt leaderCardExt1 = Starter.LeaderCardsParser().get(0);
+        game.getCurrPlayer().setStatus(PlayerStatus.Active);
+        game.setStatus(GameStatus.Running);
+        LeaderCardExt leaderCardExt1 = new LeaderCardExt(new RequirementsExt(), new WhiteAbility(ResourceType.Coins), 0);
         LeaderCardExt leaderCardExt2 = Starter.LeaderCardsParser().get(10);
         game.getCurrPlayer().getPersonalBoard().addLeaderCard(new LeaderCardExt[]{leaderCardExt1,leaderCardExt2});
-        game.getCurrPlayer().getPersonalBoard().getLeaderCards().get(1);
         DevelopmentCardExt developmentCardExt1 = Starter.DevCardParser().get(3);
         DevelopmentCardExt developmentCardExt2 = Starter.DevCardParser().get(2);
         DevelopmentCardExt developmentCardExt3 = Starter.DevCardParser().get(6);
         game.getCurrPlayer().getPersonalBoard().addDevCard(developmentCardExt1,0);
         game.getCurrPlayer().getPersonalBoard().addDevCard(developmentCardExt2,1);
         game.getCurrPlayer().getPersonalBoard().addDevCard(developmentCardExt3,2);
-        MoveLeaderExt moveLeaderExt = new MoveLeaderExt(game.getCurrPlayer().getID());
-        moveLeaderExt.setMove(0);
-        moveLeaderExt.setIdLeaderCard(10);
-        moveLeaderExt.performMove(game);
-        marketExt.setIndexToBuy(2);
-        marketExt.performMove(game);
-        //assertEquals(PlayerStatus.NeedToConvert, game.getCurrPlayer().getStatus());
+        leaderCardExt1.setPlayed(players.get(0));
+        leaderCardExt2.setPlayed(players.get(0));
+        for(int i=0; i<3; i++){
+            for(int j=0; j<4; j++){
+                game.getMarketTray().setMarble(i,j,MarbleColor.WHITE);
+            }
+        }
+        MoveTypeMarketExt marketExt2 = new MoveTypeMarketExt(game.getCurrPlayer().getID());
+        marketExt2.setIndexToBuy(3);
+        marketExt2.performMove(game);
+        assertEquals(PlayerStatus.NeedToConvert, game.getCurrPlayer().getStatus());
+    }
+
+    @Test
+    public void GetClassNameTest(){
+        MoveTypeMarketExt marketExt2 = new MoveTypeMarketExt(game.getCurrPlayer().getID());
+        assertNotNull(marketExt2.getClassName());
+        assertEquals("MovetypeMarket",marketExt2.getClassName());
     }
 }
