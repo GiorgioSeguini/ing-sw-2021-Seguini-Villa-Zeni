@@ -1,7 +1,11 @@
 package it.polimi.ingsw.client.gui;
 
+import it.polimi.ingsw.client.modelClient.AbilityType;
+import it.polimi.ingsw.client.modelClient.LeaderCardClient;
+import it.polimi.ingsw.constant.enumeration.LeaderStatus;
 import it.polimi.ingsw.constant.enumeration.PopesFavorStates;
 import it.polimi.ingsw.constant.model.DevelopmentCard;
+import it.polimi.ingsw.constant.model.LeaderCard;
 import it.polimi.ingsw.constant.model.ProductionPower;
 import it.polimi.ingsw.constant.move.MoveActiveProduction;
 import it.polimi.ingsw.constant.move.MoveEndTurn;
@@ -265,6 +269,13 @@ public class BaseController extends ControllerGuiInterface{
             }
         }
         baseProduction.setOnMouseClicked(this::selectCard);
+        int j=0;
+        for(LeaderCard card : gui.getModel().getMe().getPersonalBoard().getLeaderCards()){
+            if(((LeaderCardClient) card).getAbility().getAbilityType() == AbilityType.ProductionPowerPlusAbility && card.getStatus() == LeaderStatus.Played){
+                leaderCards[j].setOnMouseClicked(this::selectCard);
+            }
+            j++;
+        }
 
         for(int i=0; i<3; i++){
             labels[i].setVisible(true);
@@ -283,7 +294,13 @@ public class BaseController extends ControllerGuiInterface{
         if(index>=0){
             p = gui.getModel().getMe().getPersonalBoard().getTopDevCard(index/3).getProductionPower();
         }else{
-            p = gui.getModel().getMe().getPersonalBoard().getProduction().get(0);
+            index=0;
+            for(int i=0; i<2; i++){
+                if(actionEvent.getSource().equals(leaderCards[i])){
+                    index = i +1;
+                }
+            }
+            p = gui.getModel().getMe().getPersonalBoard().getProduction().get(index);
         }
         if(chosen.contains(p)){
             chosen.remove(p);
@@ -305,6 +322,9 @@ public class BaseController extends ControllerGuiInterface{
             labels[i].setVisible(false);
         }
         baseProduction.setOnMouseClicked(null);
+        for(ImageView image : leaderCards){
+            image.setOnMouseClicked(null);
+        }
     }
 
     public void confirmProduction(ActionEvent actionEvent) {
