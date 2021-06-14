@@ -16,6 +16,6 @@ public class JoinWaitingListSetupperExt extends JoinWaitngListSetupper implement
 
     @Override
     public boolean canSetAction(Server server, SetUp setupper) {
-        return server.findName(setupper.getPlayerName(),getNumOfPlayers());
+        return !server.findName(setupper.getPlayerName(),getNumOfPlayers());
     }
 }

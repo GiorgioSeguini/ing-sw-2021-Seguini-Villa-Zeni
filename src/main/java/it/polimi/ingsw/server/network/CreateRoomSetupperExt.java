@@ -12,8 +12,14 @@ public class CreateRoomSetupperExt extends CreateRoomSetupper implements Settabl
     @Override
     public void setAction(Server server, SocketClientConnection socket, SetUp setupper) {
         Room room= new Room(setupper.getRoomName(), setupper.getNumOfPlayers());
-        room.addConnection(setupper.getPlayerName(), socket);
         server.addRoom(room);
+        room.addConnection(setupper.getPlayerName(), socket);
+        if(room.getNumOfPlayers()==1){
+            server.startGame(room);
+            room.setActive();
+            server.removeRoom(room);
+            server.addActiveRoom(room);
+        }
     }
 
     @Override

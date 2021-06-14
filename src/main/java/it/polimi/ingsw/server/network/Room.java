@@ -1,5 +1,6 @@
 package it.polimi.ingsw.server.network;
 
+import it.polimi.ingsw.constant.enumeration.GameStatus;
 import it.polimi.ingsw.constant.model.Player;
 import it.polimi.ingsw.server.controller.Controller;
 import it.polimi.ingsw.server.model.GameExt;
@@ -20,6 +21,7 @@ public class Room {
     private HashMap<String,ClientConnection> connections= new HashMap<>();
     private HashMap<String, View> playersview= new HashMap<>();
     private ArrayList<String> disconnectedPlayers= new ArrayList<>();
+    private boolean active= false;
 
 
     public Room(String roomName, int numOfPlayers) {
@@ -30,7 +32,17 @@ public class Room {
     public Room(String roomName, int numOfPlayers, HashMap <String, ClientConnection> connections){
         this.roomName= roomName;
         this.numOfPlayers= numOfPlayers;
-        this.connections=connections;
+        for(String playerName: connections.keySet()){
+            addConnection(playerName, connections.get(playerName));
+        }
+    }
+
+    public boolean isActive(){
+        return active;
+    }
+
+    public void setActive(){
+        active=true;
     }
 
     public void setPlayersview(HashMap<String, View> playersview) {
@@ -60,12 +72,24 @@ public class Room {
     }
 
 
-    public void  disconnectConnection(String nickname){
+    public boolean disconnectConnection(String nickname){
         if(connections.remove(nickname)!=null){
             disconnectedPlayers.add(nickname);
-            playersview.get(nickname).setOffline(true);
+
+            if (connections.size()==0){
+                game.close();
+                game=null;
+                controller=null;
+                return true;
+            }
+            try{
+                playersview.get(nickname).setOffline(true);//if the connections size is 0 here enters an infinite loop because of autoplay
+            }catch (NullPointerException ignored){//when the match isn't started yet I dont have any views
+            }
         }
         else throw new IllegalArgumentException();
+
+        return false;
     }
 
     public void reconnectConnection(String nickname, ClientConnection connection){

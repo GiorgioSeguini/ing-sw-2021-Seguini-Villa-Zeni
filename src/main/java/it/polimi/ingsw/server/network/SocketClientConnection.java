@@ -83,7 +83,13 @@ public class SocketClientConnection implements  Observable<String>, ClientConnec
 
     public void close(String playerName, Room room) {
         System.out.println("Deregistering client...");
-        room.disconnectConnection(playerName);
+        if(room!=null && server.findRoom(room.getRoomName())){
+            if(room.disconnectConnection(playerName)){
+                server.removeRoom(room);
+            }
+        }
+        // TODO: 6/14/21 rimuovere dalla waiting list il player che si è sconnesso ma senza iniziare la partita pubblica
+        // TODO: 6/14/21 rimuovere la room non startata
         System.out.println("Done!");
         closeConnection();
     }

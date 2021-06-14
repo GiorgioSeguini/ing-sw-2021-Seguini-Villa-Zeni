@@ -24,12 +24,6 @@ public class Server {
     private ArrayList<Room> activeRooms= new ArrayList<>();
     private int id=1;
 
-    //Deregister connection
-    public synchronized void deregisterConnection() {
-        // TODO: 6/11/21
-
-    }
-
     /**Returns true if it finds the name in the specified waitinglist (form 1 to 4)*/
     public synchronized boolean findName(String playerName, int listIndex){
         if(listIndex<5 && listIndex>0)
@@ -77,6 +71,7 @@ public class Server {
             }while (findRoom(roomName));
             Room room= new Room(roomName,numofplayer,waitingConnections.get(numofplayer-1));
             startGame(room);
+            room.setActive();
             addActiveRoom(room);
             waitingConnections.get(numofplayer-1).clear();
         }
@@ -91,15 +86,11 @@ public class Server {
             game=new GameExt(players, new MarketExt(Starter.MarblesParser()), new DashboardExt(Starter.DevCardParser()), Starter.TokensParser(), Starter.LeaderCardsParser());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-            //TODO
         }
         Controller controller = new Controller(game);
         HashMap<String,View> playersView = instanceViews(room.getConnections(),game.getPlayers());
 
         addObserverGame(new ArrayList<>(playersView.values()), game, controller);
-
-        //ArrayList<ClientConnection> connections= getConnectionforGame(room.getConnections(), game.getPlayers());
-        //makeConnection(connections);
 
         //send initial message
         for(View view : playersView.values()) {
@@ -199,7 +190,12 @@ public class Server {
     }
 
     public void removeRoom(Room room){
-        rooms.remove(room);
+        if(findActiveRoom(room.getRoomName())){
+            activeRooms.remove(room);
+        }
+        else{
+            rooms.remove(room);
+        }
     }
 
     public void removeActiveRooms(Room room){

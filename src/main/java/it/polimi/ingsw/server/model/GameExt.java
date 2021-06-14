@@ -224,6 +224,12 @@ public class GameExt extends Game implements Observable<Message> {
     //Observable implementation
     private transient final List<Observer<Message>> observers = new ArrayList<>();
 
+    public void close(){
+        for(Observer<Message> observer: observers){
+            observer=null;
+        }
+    }
+
     @Override
     public void addObserver(Observer<Message> observer){
        synchronized (observers) {

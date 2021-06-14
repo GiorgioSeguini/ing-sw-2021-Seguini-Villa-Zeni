@@ -17,19 +17,15 @@ public class LinkToRoomSetupperExt extends LinkToRoomSetupper implements Settabl
         Room room= server.getRoomFromName(setupper.getRoomName());
 
         if(server.findActiveRoom(room.getRoomName())){
-            if(room.findDisconnectedPlayer(setupper.getPlayerName())){
-                room.reconnectConnection(setupper.getPlayerName(),socket);
-            }
-            else{
-                // TODO: 6/12/21 send error message
-            }
+            room.reconnectConnection(setupper.getPlayerName(),socket);
         }
         else {
             room.addConnection(setupper.getPlayerName(),socket);
             if(room.getConnections().size()==room.getNumOfPlayers()){
                 server.startGame(room);
-                server.addActiveRoom(room);
+                room.setActive();
                 server.removeRoom(room);
+                server.addActiveRoom(room);
             }
         }
 
@@ -37,6 +33,14 @@ public class LinkToRoomSetupperExt extends LinkToRoomSetupper implements Settabl
 
     @Override
     public boolean canSetAction(Server server, SetUp setupper) {
-        return server.findRoom(setupper.getRoomName());
+        if(server.findActiveRoom(setupper.getRoomName())){
+            return server.getRoomFromName(setupper.getRoomName()).findDisconnectedPlayer(setupper.getPlayerName());
+        }
+        else{
+            if(server.findRoom(setupper.getRoomName())){
+                return !server.getRoomFromName(setupper.getRoomName()).findPlayer(setupper.getPlayerName());
+            }
+        }
+        return false;
     }
 }

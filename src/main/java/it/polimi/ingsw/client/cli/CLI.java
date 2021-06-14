@@ -117,7 +117,7 @@ public class CLI implements Runnable, UI {
                 int i = 0;
                 ArrayList<CliInterface> ablemoves = new ArrayList<>();
                 System.out.println("----------------------------------------------------------");
-                System.out.println("È il tuo turno!");
+                System.out.println("È il tuo turno! Sei all'interno della stanza "+client.getRoomName());
                 System.out.println("Cosa desideri fare?");
                 do {
                     ablemoves.clear();
@@ -217,7 +217,7 @@ public class CLI implements Runnable, UI {
             }
             if (!getActive()) {
                 if(x==1){
-                    System.out.println("Ops! Qualcosa è andato storto! Sembra che il tuo nome o il nome della stanza siano già in uso.\n");
+                    System.out.println("Ops! Qualcosa è andato storto! Sembra che il nome della stanza sia già in uso.\n");
                 }
                 else {
                     System.out.println("Ops! Qualcosa è andato storto! Il tuo nome è già in uso o non abbiamo trovato la stanza desiderata!");
