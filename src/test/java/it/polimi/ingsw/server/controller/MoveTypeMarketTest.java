@@ -81,35 +81,46 @@ public class MoveTypeMarketTest {
         assertEquals(ErrorMessage.NoError, game.getCurrPlayer().getErrorMessage());
         assertEquals(PlayerStatus.NeedToStore, game.getCurrPlayer().getStatus());
         //per entrare nel buycolumn di takesmarbles
-        marketExt.setIndexToBuy(6);
-        marketExt.performMove(game);
+        MoveTypeMarketExt marketExt2 = new MoveTypeMarketExt(game.getCurrPlayer().getID());
+        marketExt2.setIndexToBuy(6);
+        marketExt2.performMove(game);
         //per avere badchoice
-        marketExt.setIndexToBuy(7);
-        marketExt.performMove(game);
+        MoveTypeMarketExt marketExt3 = new MoveTypeMarketExt(game.getCurrPlayer().getID());
+        marketExt3.setIndexToBuy(7);
+        marketExt3.performMove(game);
         assertEquals(ErrorMessage.BadChoice,game.getCurrPlayer().getErrorMessage());
+        //creating a new game
+        ArrayList<PlayerExt> players2= new ArrayList<>();
+        GameExt game2;
 
-        game.getCurrPlayer().setStatus(PlayerStatus.Active);
-        game.setStatus(GameStatus.Running);
+        PlayerExt player12= new PlayerExt("pippo");
+        PlayerExt player22= new PlayerExt("pluto");
+        players2.add(player12);
+        players2.add(player22);
+        game2= new GameExt(players2, new MarketExt(Starter.MarblesParser()), new DashboardExt(Starter.DevCardParser()),Starter.TokensParser(),Starter.LeaderCardsParser());
+        //testing needToConvert branch
+        game2.getCurrPlayer().setStatus(PlayerStatus.Active);
+        game2.setStatus(GameStatus.Running);
         LeaderCardExt leaderCardExt1 = new LeaderCardExt(new RequirementsExt(), new WhiteAbility(ResourceType.Coins), 0);
         LeaderCardExt leaderCardExt2 = Starter.LeaderCardsParser().get(10);
-        game.getCurrPlayer().getPersonalBoard().addLeaderCard(new LeaderCardExt[]{leaderCardExt1,leaderCardExt2});
+        game2.getCurrPlayer().getPersonalBoard().addLeaderCard(new LeaderCardExt[]{leaderCardExt1,leaderCardExt2});
         DevelopmentCardExt developmentCardExt1 = Starter.DevCardParser().get(3);
         DevelopmentCardExt developmentCardExt2 = Starter.DevCardParser().get(2);
         DevelopmentCardExt developmentCardExt3 = Starter.DevCardParser().get(6);
-        game.getCurrPlayer().getPersonalBoard().addDevCard(developmentCardExt1,0);
-        game.getCurrPlayer().getPersonalBoard().addDevCard(developmentCardExt2,1);
-        game.getCurrPlayer().getPersonalBoard().addDevCard(developmentCardExt3,2);
-        leaderCardExt1.setPlayed(players.get(0));
-        leaderCardExt2.setPlayed(players.get(0));
+        game2.getCurrPlayer().getPersonalBoard().addDevCard(developmentCardExt1,0);
+        game2.getCurrPlayer().getPersonalBoard().addDevCard(developmentCardExt2,1);
+        game2.getCurrPlayer().getPersonalBoard().addDevCard(developmentCardExt3,2);
+        leaderCardExt1.setPlayed(game2.getCurrPlayer());
+        leaderCardExt2.setPlayed(game2.getCurrPlayer());
         for(int i=0; i<3; i++){
             for(int j=0; j<4; j++){
-                game.getMarketTray().setMarble(i,j,MarbleColor.WHITE);
+                game2.getMarketTray().setMarble(i,j,MarbleColor.WHITE);
             }
         }
-        MoveTypeMarketExt marketExt2 = new MoveTypeMarketExt(game.getCurrPlayer().getID());
-        marketExt2.setIndexToBuy(3);
-        marketExt2.performMove(game);
-        assertEquals(PlayerStatus.NeedToConvert, game.getCurrPlayer().getStatus());
+        MoveTypeMarketExt marketExt4 = new MoveTypeMarketExt(game2.getCurrPlayer().getID());
+        marketExt4.setIndexToBuy(3);
+        marketExt4.performMove(game2);
+        assertEquals(PlayerStatus.NeedToConvert, game2.getCurrPlayer().getStatus());
     }
 
     @Test

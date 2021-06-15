@@ -38,7 +38,16 @@ public class MoveLeaderExtTest {
     }
 
     @Test
-    public void CanPerformExtTest(){
+    public void CanPerformExtTest() throws FileNotFoundException {
+        ArrayList<PlayerExt> players= new ArrayList<>();
+        GameExt game;
+
+        PlayerExt player1= new PlayerExt("pippo");
+        PlayerExt player2= new PlayerExt("pluto");
+        players.add(player1);
+        players.add(player2);
+        game= new GameExt(players, new MarketExt(Starter.MarblesParser()), new DashboardExt(Starter.DevCardParser()),Starter.TokensParser(),Starter.LeaderCardsParser());
+
         LeaderCardExt leaderCardExt1 = new LeaderCardExt(new RequirementsExt(), new DepotsAbility(ResourceType.Coins), 0);
         LeaderCardExt leaderCardExt2 = new LeaderCardExt(new RequirementsExt(), new DepotsAbility(ResourceType.Coins), 0);
         game.getCurrPlayer().getPersonalBoard().addLeaderCard(new LeaderCardExt[] {leaderCardExt1,leaderCardExt2});
