@@ -29,4 +29,77 @@ public class MoveLeaderExtTest {
             fail();
         }
     }
+
+    @Test
+    public void ConstructorTest(){
+        int idPlayer=0;
+        MoveLeaderExt moveLeaderExt = new MoveLeaderExt(idPlayer);
+        assertNotNull(moveLeaderExt);
+    }
+
+    @Test
+    public void CanPerformExtTest(){
+        LeaderCardExt leaderCardExt1 = new LeaderCardExt(new RequirementsExt(), new DepotsAbility(ResourceType.Coins), 0);
+        LeaderCardExt leaderCardExt2 = new LeaderCardExt(new RequirementsExt(), new DepotsAbility(ResourceType.Coins), 0);
+        game.getCurrPlayer().getPersonalBoard().addLeaderCard(new LeaderCardExt[] {leaderCardExt1,leaderCardExt2});
+        //game isn't start yet
+        MoveLeaderExt moveLeaderExt = new MoveLeaderExt(game.getCurrPlayer().getID());
+        moveLeaderExt.setIdLeaderCard(game.getCurrPlayer().getPersonalBoard().getLeaderCards().get(0).getId());
+        moveLeaderExt.setMove(0);
+        assertFalse(moveLeaderExt.canPerformExt(game));
+        //right working
+        game.setStatus(GameStatus.Running);
+        game.getCurrPlayer().getPersonalBoard().getLeaderCards().get(1).setStatus(LeaderStatus.Dead);
+        game.getCurrPlayer().setStatus(PlayerStatus.Active);
+        moveLeaderExt = new MoveLeaderExt(game.getCurrPlayer().getID());
+        moveLeaderExt.setIdLeaderCard(game.getCurrPlayer().getPersonalBoard().getLeaderCards().get(0).getId());
+        moveLeaderExt.setMove(0);
+        assertTrue(moveLeaderExt.canPerformExt(game));
+        //card not owned
+        moveLeaderExt = new MoveLeaderExt(game.getCurrPlayer().getID());
+        moveLeaderExt.setMove(0);
+        moveLeaderExt.setIdLeaderCard(3);
+        assertFalse(moveLeaderExt.canPerformExt(game));
+    }
+
+    @Test
+    public void PerformMoveTest() throws FileNotFoundException {
+        LeaderCardExt leaderCardExt1 = Starter.LeaderCardsParser().get(0);
+        LeaderCardExt leaderCardExt2 = Starter.LeaderCardsParser().get(1);
+        game.getCurrPlayer().getPersonalBoard().addLeaderCard(new LeaderCardExt[]{leaderCardExt1,leaderCardExt2});
+        game.setStatus(GameStatus.Running);
+        game.getCurrPlayer().setStatus(PlayerStatus.Active);
+        game.getCurrPlayer().getDepots().addResourceFromProduction(new NumberOfResources(10,10,10,10));
+        //right work on move 0
+        MoveLeaderExt moveLeaderExt = new MoveLeaderExt(game.getCurrPlayer().getID());
+        moveLeaderExt.setMove(0);
+        moveLeaderExt.setIdLeaderCard(game.getCurrPlayer().getPersonalBoard().getLeaderCards().get(0).getId());
+        moveLeaderExt.performMove(game);
+        assertEquals(ErrorMessage.NoError, game.getCurrPlayer().getErrorMessage());
+        //trying to play a card already played
+        moveLeaderExt = new MoveLeaderExt(game.getCurrPlayer().getID());
+        moveLeaderExt.setMove(0);
+        moveLeaderExt.setIdLeaderCard(game.getCurrPlayer().getPersonalBoard().getLeaderCards().get(0).getId());
+        moveLeaderExt.performMove(game);
+        assertEquals(ErrorMessage.BadChoice, game.getCurrPlayer().getErrorMessage());
+        //right work on move 1
+        moveLeaderExt = new MoveLeaderExt(game.getCurrPlayer().getID());
+        moveLeaderExt.setMove(1);
+        moveLeaderExt.setIdLeaderCard(game.getCurrPlayer().getPersonalBoard().getLeaderCards().get(1).getId());
+        moveLeaderExt.performMove(game);
+        assertEquals(ErrorMessage.NoError, game.getCurrPlayer().getErrorMessage());
+        //trying to discard a card not on hand
+        moveLeaderExt = new MoveLeaderExt(game.getCurrPlayer().getID());
+        moveLeaderExt.setMove(1);
+        moveLeaderExt.setIdLeaderCard(game.getCurrPlayer().getPersonalBoard().getLeaderCards().get(0).getId());
+        moveLeaderExt.performMove(game);
+        assertEquals(ErrorMessage.BadChoice, game.getCurrPlayer().getErrorMessage());
+    }
+
+    @Test
+    public void GetClassNameTest(){
+        MoveLeaderExt moveLeaderExt = new MoveLeaderExt(game.getCurrPlayer().getID());
+        assertNotNull(moveLeaderExt.getClassName());
+        assertEquals("MoveLeader",moveLeaderExt.getClassName());
+    }
 }

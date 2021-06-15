@@ -18,20 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 public class MoveTypeMarketTest {
-    private static ArrayList<PlayerExt> players= new ArrayList<>();
-    private static GameExt game;
 
-    static {
-        PlayerExt player1= new PlayerExt("pippo");
-        PlayerExt player2= new PlayerExt("pluto");
-        players.add(player1);
-        players.add(player2);
-        try {
-            game= new GameExt(players, new MarketExt(Starter.MarblesParser()), new DashboardExt(Starter.DevCardParser()),Starter.TokensParser(),Starter.LeaderCardsParser());
-        } catch (FileNotFoundException e) {
-            fail();
-        }
-    }
 
     @Test
     public void ConstructorTest(){
@@ -60,7 +47,16 @@ public class MoveTypeMarketTest {
     }*/
 
     @Test
-    public void CanPerformExtTest(){
+    public void CanPerformExtTest() throws FileNotFoundException {
+        ArrayList<PlayerExt> players= new ArrayList<>();
+        GameExt game;
+
+        PlayerExt player1= new PlayerExt("pippo");
+        PlayerExt player2= new PlayerExt("pluto");
+        players.add(player1);
+        players.add(player2);
+        game= new GameExt(players, new MarketExt(Starter.MarblesParser()), new DashboardExt(Starter.DevCardParser()),Starter.TokensParser(),Starter.LeaderCardsParser());
+
         MoveTypeMarketExt marketExt = new MoveTypeMarketExt(game.getCurrPlayer().getID());
         assertFalse(marketExt.canPerformExt(game));
         assertEquals(ErrorMessage.MoveNotAllowed,game.getPlayerFromID(game.getCurrPlayer().getID()).getErrorMessage());
@@ -71,6 +67,15 @@ public class MoveTypeMarketTest {
 
     @Test
     public void PerformMoveExtTest() throws FileNotFoundException, NoSpaceException {
+        ArrayList<PlayerExt> players= new ArrayList<>();
+        GameExt game;
+
+        PlayerExt player1= new PlayerExt("pippo");
+        PlayerExt player2= new PlayerExt("pluto");
+        players.add(player1);
+        players.add(player2);
+        game= new GameExt(players, new MarketExt(Starter.MarblesParser()), new DashboardExt(Starter.DevCardParser()),Starter.TokensParser(),Starter.LeaderCardsParser());
+
         MoveTypeMarketExt marketExt = new MoveTypeMarketExt(game.getCurrPlayer().getID());
         marketExt.performMove(game);
         assertEquals(ErrorMessage.NoError, game.getCurrPlayer().getErrorMessage());
@@ -108,7 +113,16 @@ public class MoveTypeMarketTest {
     }
 
     @Test
-    public void GetClassNameTest(){
+    public void GetClassNameTest() throws FileNotFoundException {
+        ArrayList<PlayerExt> players= new ArrayList<>();
+        GameExt game;
+
+        PlayerExt player1= new PlayerExt("pippo");
+        PlayerExt player2= new PlayerExt("pluto");
+        players.add(player1);
+        players.add(player2);
+        game= new GameExt(players, new MarketExt(Starter.MarblesParser()), new DashboardExt(Starter.DevCardParser()),Starter.TokensParser(),Starter.LeaderCardsParser());
+
         MoveTypeMarketExt marketExt2 = new MoveTypeMarketExt(game.getCurrPlayer().getID());
         assertNotNull(marketExt2.getClassName());
         assertEquals("MovetypeMarket",marketExt2.getClassName());
