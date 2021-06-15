@@ -74,18 +74,17 @@ public class Room {
 
     public boolean disconnectConnection(String nickname){
         if(connections.remove(nickname)!=null){
-            disconnectedPlayers.add(nickname);
+            if(isActive()){
+                disconnectedPlayers.add(nickname);
+            }
 
             if (connections.size()==0){
-                game.close();
-                game=null;
-                controller=null;
+                clear();
                 return true;
             }
             try{
                 playersview.get(nickname).setOffline(true);//if the connections size is 0 here enters an infinite loop because of autoplay
-            }catch (NullPointerException ignored){//when the match isn't started yet I dont have any views
-            }
+            }catch (NullPointerException ignored){/*when the match isn't started yet I dont have any views*/}
         }
         else throw new IllegalArgumentException();
 
@@ -127,6 +126,10 @@ public class Room {
         return disconnectedPlayers.indexOf(name)!=-1;
     }
 
+    public boolean isFull(){
+        return connections.size()==numOfPlayers;
+    }
+
     @Override
     public String toString() {
         String x="";
@@ -137,5 +140,17 @@ public class Room {
         }
 
         return x;
+    }
+
+    public void clear() {
+        if(game!=null){
+            game.close();
+            game=null;
+            controller=null;
+        }
+        connections.clear();
+        playersview.clear();
+        disconnectedPlayers.clear();
+        active=false;
     }
 }

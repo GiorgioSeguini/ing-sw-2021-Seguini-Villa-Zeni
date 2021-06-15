@@ -117,7 +117,7 @@ public class CLI implements Runnable, UI {
                 int i = 0;
                 ArrayList<CliInterface> ablemoves = new ArrayList<>();
                 System.out.println("----------------------------------------------------------");
-                System.out.println("È il tuo turno! Sei all'interno della stanza "+client.getRoomName());
+                System.out.println("È il tuo turno "+ game.getMe().getUserName()+"! Sei all'interno della stanza "+client.getRoomName());
                 System.out.println("Cosa desideri fare?");
                 do {
                     ablemoves.clear();
@@ -220,7 +220,10 @@ public class CLI implements Runnable, UI {
                     System.out.println("Ops! Qualcosa è andato storto! Sembra che il nome della stanza sia già in uso.\n");
                 }
                 else {
-                    System.out.println("Ops! Qualcosa è andato storto! Il tuo nome è già in uso o non abbiamo trovato la stanza desiderata!");
+                    System.out.println("Ops! Qualcosa è andato storto! Verifica i seguenti problemi:");
+                    System.out.println("\t1. La stanza nella quale vuoi accedere ha una partita già in corso");
+                    System.out.println("\t2. La stanza che stai cercando è inesistente");
+                    System.out.println("\t3. Il nome con la quale stai provando ad accedere è già stato usato da un altro utente in questa stanza");
                 }
                 in.nextLine();      //non so perchè ma senza non va
             }

@@ -1,5 +1,6 @@
 package it.polimi.ingsw.server.network;
 
+import it.polimi.ingsw.constant.model.NumberOfResources;
 import it.polimi.ingsw.constant.model.Player;
 import it.polimi.ingsw.server.controller.Controller;
 import it.polimi.ingsw.server.parse.Starter;
@@ -18,16 +19,24 @@ public class Server {
     private static final int PORT = 12345;
     private static final int NUMOFPOSSIBLEGAMES= 4;
     private final ServerSocket serverSocket;
-    private final ArrayList<HashMap<String, ClientConnection>> waitingConnections = new ArrayList<>();
+    //private final ArrayList<HashMap<String, ClientConnection>> waitingConnections = new ArrayList<>();
+    private final ArrayList<Room>  defaultRooms= new ArrayList<>();
     //private final Map<ClientConnection, ClientConnection> playingConnection = new HashMap<>();
     private ArrayList<Room> rooms= new ArrayList<>();
     private ArrayList<Room> activeRooms= new ArrayList<>();
     private int id=1;
 
-    /**Returns true if it finds the name in the specified waitinglist (form 1 to 4)*/
+    public Server() throws IOException {
+        this.serverSocket = new ServerSocket(PORT);
+        for(int i=1; i<=NUMOFPOSSIBLEGAMES;i++){
+            defaultRooms.add(new Room("defaultRoom"+i,i));
+        }
+    }
+
+    /**Returns true if it finds the name in the specified defaultRoom (form 1 to 4)*/
     public synchronized boolean findName(String playerName, int listIndex){
         if(listIndex<5 && listIndex>0)
-            return waitingConnections.get(listIndex-1).containsKey(playerName);
+            return defaultRooms.get(listIndex-1).findPlayer(playerName);
         throw new IllegalArgumentException();
     }
 
@@ -39,6 +48,12 @@ public class Server {
             }
         }
         for(Room x: activeRooms){
+            if(x.getRoomName().equals(name)){
+                return true;
+            }
+        }
+
+        for(Room x: defaultRooms){
             if(x.getRoomName().equals(name)){
                 return true;
             }
@@ -61,9 +76,23 @@ public class Server {
         if(numofplayer<1 || numofplayer>4){
             throw  new IllegalArgumentException();
         }
-        waitingConnections.get(numofplayer-1).put(name,c);
 
-        if (waitingConnections.get(numofplayer-1).size()>=numofplayer) {
+        defaultRooms.get(numofplayer-1).addConnection(name,c);
+        //waitingConnections.get(numofplayer-1).put(name,c);
+
+        if(defaultRooms.get(numofplayer-1).isFull()){
+            String roomName;
+            do {
+                roomName="Room"+id;
+                id++;
+            }while (findRoom(roomName));
+            Room room= new Room(roomName,numofplayer,defaultRooms.get(numofplayer-1).getConnections());
+            startGame(room);
+            room.setActive();
+            addActiveRoom(room);
+            defaultRooms.get(numofplayer-1).clear();
+        }
+       /* if (waitingConnections.get(numofplayer-1).size()>=numofplayer) {
             String roomName;
             do {
                 roomName="Room"+id;
@@ -74,7 +103,7 @@ public class Server {
             room.setActive();
             addActiveRoom(room);
             waitingConnections.get(numofplayer-1).clear();
-        }
+        }*/
         return true;
     }
 
@@ -161,12 +190,6 @@ public class Server {
         return players;
     }
 
-    public Server() throws IOException {
-        this.serverSocket = new ServerSocket(PORT);
-        for(int i=0; i<NUMOFPOSSIBLEGAMES;i++){
-            waitingConnections.add(new HashMap<>());
-        }
-    }
 
     public void run(){
         while(true){

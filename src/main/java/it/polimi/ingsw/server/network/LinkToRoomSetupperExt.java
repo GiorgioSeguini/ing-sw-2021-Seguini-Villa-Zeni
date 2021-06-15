@@ -21,7 +21,7 @@ public class LinkToRoomSetupperExt extends LinkToRoomSetupper implements Settabl
         }
         else {
             room.addConnection(setupper.getPlayerName(),socket);
-            if(room.getConnections().size()==room.getNumOfPlayers()){
+            if(room.isFull()){
                 server.startGame(room);
                 room.setActive();
                 server.removeRoom(room);
@@ -38,7 +38,10 @@ public class LinkToRoomSetupperExt extends LinkToRoomSetupper implements Settabl
         }
         else{
             if(server.findRoom(setupper.getRoomName())){
-                return !server.getRoomFromName(setupper.getRoomName()).findPlayer(setupper.getPlayerName());
+                try{
+                    return !server.getRoomFromName(setupper.getRoomName()).findPlayer(setupper.getPlayerName());
+
+                }catch (NullPointerException ignored){ /*if it enters here it is why he has tryed to enter a defaultRoom manually*/}
             }
         }
         return false;

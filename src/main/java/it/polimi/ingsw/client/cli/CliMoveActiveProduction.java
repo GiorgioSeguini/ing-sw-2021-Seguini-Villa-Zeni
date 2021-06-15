@@ -23,7 +23,7 @@ public class CliMoveActiveProduction implements CliInterface{
             System.out.println(i+".\t"+pp);
         }
         System.out.println("Risorse attuali totali: "+ game.getMe().getDepots().getResources());
-        System.out.println("Quali produzioni vuoi attivare?\n\t(premi -1 per concludere).");
+        System.out.println("Quali produzioni vuoi attivare?\n------> Inserisci le produzioni e premi -1 per terminare. Se hai cambiato idea e vuoi tornare alle scelte iniziali premi direttamente -1.");
         int p;
         do{
             p = stdin.nextInt();
@@ -33,6 +33,7 @@ public class CliMoveActiveProduction implements CliInterface{
                 System.out.println("Invalid index!\n\tRIPROVA!");
             }
         }while(p!=-1);
+        if(productionPowers.size()==0) return null;
         move.setToActive(productionPowers);
         return move;
     }
