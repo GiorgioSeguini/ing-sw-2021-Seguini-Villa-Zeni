@@ -6,6 +6,6 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.gui.LobbyController">
    <children>
-      <Label layoutX="159.0" layoutY="146.0" prefHeight="101.0" prefWidth="237.0" text="Sei nella lobby, aspetta per altri giocatori" />
+      <Label layoutX="159.0" layoutY="146.0" prefHeight="101.0" prefWidth="400.0" text="Sei nella lobby, aspetta per altri giocatori" />
    </children>
 </AnchorPane>

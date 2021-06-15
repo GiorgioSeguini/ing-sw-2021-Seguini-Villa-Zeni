@@ -23,6 +23,7 @@ public class CliPrint implements CliInterface{
         prints.add("Carte Sviluppo Acquistate");
         prints.add("DashBoard");
         prints.add("Market");
+        prints.add("Lo stato di un altro giocatore");
     }
 
     @Override
@@ -48,6 +49,7 @@ public class CliPrint implements CliInterface{
                 case 4: printOwnedDevCard(game); break;
                 case 5: printDashBoard(game); break;
                 case 6: printMarket(game); break;
+                case 7: printPlayer(game); break;
                 default: break;
             }
 
@@ -82,6 +84,28 @@ public class CliPrint implements CliInterface{
             i++;
             System.out.println("\t"+i+". "+print);
         }
+    }
+
+    private void printPlayer(GameClient game) {
+        Scanner scanner= new Scanner(System.in);
+        ArrayList<Player> enemies= new ArrayList<>();
+        System.out.println("Hai deciso di stampare un altro giocatore. Che giocatore vuoi stampare? ");
+        int i;
+        do{
+            i=1;
+            for(Player player: game.getPlayers()){
+                if(!player.equals(game.getMe())){
+                    System.out.println("\t"+i+". "+player.getUserName());
+                    enemies.add(player);
+                    i++;
+                }
+            }
+            i=scanner.nextInt();
+            if(i<0 || i>game.getPlayers().size()-1){
+                System.out.println("Indice non valido.");
+            }
+        }while (i<0 || i>game.getPlayers().size()-1);
+        System.out.println(enemies.get(i-1));
     }
 
     private void printMarket(GameClient game) {

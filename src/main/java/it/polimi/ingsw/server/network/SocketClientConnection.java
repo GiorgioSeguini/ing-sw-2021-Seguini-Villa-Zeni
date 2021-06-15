@@ -88,8 +88,6 @@ public class SocketClientConnection implements  Observable<String>, ClientConnec
                 server.removeRoom(room);
             }
         }
-        // TODO: 6/14/21 rimuovere dalla waiting list il player che si è sconnesso ma senza iniziare la partita pubblica
-        // TODO: 6/14/21 rimuovere la room non startata
         System.out.println("Done!");
         closeConnection();
     }
