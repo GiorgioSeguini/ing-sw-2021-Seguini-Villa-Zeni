@@ -54,7 +54,7 @@ public class MoveAutoPlay implements Performable{
                 NumberOfResources resIn = new NumberOfResources();
                 int typeNum = 0;
                 while (resIn.size() < input) {
-                    if (game.getPlayerFromID(myID).getDepots().getResources().getAmountOf(ResourceType.values()[typeNum]) > 0) {
+                    if (game.getPlayerFromID(myID).getDepots().getResources().getAmountOf(ResourceType.values()[typeNum]) > 0 && resIn.getAmountOf(ResourceType.values()[typeNum])<game.getPlayerFromID(myID).getDepots().getResources().getAmountOf(ResourceType.values()[typeNum])) {
                         resIn = resIn.add(ResourceType.values()[typeNum], 1);
                     } else {
                         typeNum++;
