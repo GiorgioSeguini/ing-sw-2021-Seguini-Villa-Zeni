@@ -19,7 +19,7 @@ import java.util.*;
 /*Last Edit: Fabio*/
 public class PersonalBoardExt extends PersonalBoard implements Observable<Message> {
 
-    private final int ownerID;
+    private final transient int ownerID;
 
 
     /*Default Constructor*/
@@ -84,7 +84,7 @@ public class PersonalBoardExt extends PersonalBoard implements Observable<Messag
      * @see LeaderCard only class that call this methods
      */
     protected void change(){
-        notify(new PersonalBoardMessage(super.OwnedDevCards, super.OwnedLeaderCard, this.ownerID));
+        notify(new PersonalBoardMessage(this, this.ownerID));
     }
 
     //Observable implementation
