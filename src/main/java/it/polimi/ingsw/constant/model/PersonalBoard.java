@@ -25,7 +25,7 @@ public class PersonalBoard {
 
         OwnedLeaderCard = new ArrayList<>();
         extraProduction = new ArrayList<>();
-        extraProduction.add(new ProductionPower(0, new NumberOfResources(), new NumberOfResources(), 2, 1));
+        //extraProduction.add(new ProductionPower(0, new NumberOfResources(), new NumberOfResources(), 2, 1));
     }
 
 

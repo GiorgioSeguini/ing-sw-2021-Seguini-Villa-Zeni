@@ -5,10 +5,7 @@ import it.polimi.ingsw.constant.enumeration.LeaderStatus;
 import it.polimi.ingsw.constant.enumeration.Level;
 import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.constant.message.PersonalBoardMessage;
-import it.polimi.ingsw.constant.model.DevelopmentCard;
-import it.polimi.ingsw.constant.model.LeaderCard;
-import it.polimi.ingsw.constant.model.PersonalBoard;
-import it.polimi.ingsw.constant.model.ProductionPower;
+import it.polimi.ingsw.constant.model.*;
 import it.polimi.ingsw.server.model.exception.NoMoreLeaderCardAliveException;
 import it.polimi.ingsw.server.model.exception.NoSpaceException;
 import it.polimi.ingsw.server.observer.Observable;
@@ -29,6 +26,7 @@ public class PersonalBoardExt extends PersonalBoard implements Observable<Messag
     public PersonalBoardExt(int ownerID){
         super();
         this.ownerID=ownerID;
+        super.addExtraProduction(new ProductionPowerExt(0, new NumberOfResources(), new NumberOfResources(), 2, 1));
     }
 
 
