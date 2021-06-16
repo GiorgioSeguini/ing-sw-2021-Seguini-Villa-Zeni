@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class MoveBuyDevCardExtTest {
-    private static ArrayList<PlayerExt> players= new ArrayList<>();
+    /*private static ArrayList<PlayerExt> players= new ArrayList<>();
     private static GameExt game;
 
     static {
@@ -27,10 +27,19 @@ public class MoveBuyDevCardExtTest {
         } catch (FileNotFoundException e) {
             fail();
         }
-    }
+    }*/
 
     @Test
     public void CanPerform() throws UnableToFillException, FileNotFoundException {
+        ArrayList<PlayerExt> players= new ArrayList<>();
+        GameExt game;
+
+        PlayerExt player1= new PlayerExt("pippo");
+        PlayerExt player2= new PlayerExt("pluto");
+        players.add(player1);
+        players.add(player2);
+        game= new GameExt(players, new MarketExt(Starter.MarblesParser()), new DashboardExt(Starter.DevCardParser()),Starter.TokensParser(),Starter.LeaderCardsParser());
+
         game.setStatus(GameStatus.Running);
         game.setIndex(game.getPlayerIndex(players.get(0)));
         DevelopmentCardExt cardtobuy= game.getDashboard().getTopDevCard(ColorDevCard.YELLOW,Level.ONE);
@@ -58,7 +67,16 @@ public class MoveBuyDevCardExtTest {
     }
 
     @Test
-    public void PerformMove() throws UnableToFillException {
+    public void PerformMove() throws UnableToFillException, FileNotFoundException {
+        ArrayList<PlayerExt> players= new ArrayList<>();
+        GameExt game;
+
+        PlayerExt player1= new PlayerExt("pippo");
+        PlayerExt player2= new PlayerExt("pluto");
+        players.add(player1);
+        players.add(player2);
+        game= new GameExt(players, new MarketExt(Starter.MarblesParser()), new DashboardExt(Starter.DevCardParser()),Starter.TokensParser(),Starter.LeaderCardsParser());
+
         game.setStatus(GameStatus.Running);
         game.setIndex(game.getPlayerIndex(players.get(1)));
         players.get(1).setStatus(PlayerStatus.Active);
