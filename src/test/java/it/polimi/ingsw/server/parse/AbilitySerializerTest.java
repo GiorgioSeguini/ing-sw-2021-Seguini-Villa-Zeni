@@ -53,7 +53,7 @@ public class AbilitySerializerTest {
             fail();
         }
 
-        String message= Starter.toJson(leaderCards.get(5), LeaderCardExt.class);
+        String message= Starter.toJson(leaderCards.get(1), LeaderCardExt.class);
 
         System.out.println(message);
 
@@ -62,6 +62,6 @@ public class AbilitySerializerTest {
         Gson gson= builder.create();
 
         LeaderCardExt card=gson.fromJson(message, LeaderCardExt.class);
-        assertEquals(leaderCards.get(5), card );
+        assertEquals(leaderCards.get(1), card );
     }
 }

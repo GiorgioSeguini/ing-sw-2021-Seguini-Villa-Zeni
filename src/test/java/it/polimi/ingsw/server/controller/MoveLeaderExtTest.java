@@ -68,8 +68,8 @@ public class MoveLeaderExtTest {
 
     @Test
     public void PerformMoveTest() throws FileNotFoundException {
-        LeaderCardExt leaderCardExt1 = Starter.LeaderCardsParser().get(0);
-        LeaderCardExt leaderCardExt2 = Starter.LeaderCardsParser().get(1);
+        LeaderCardExt leaderCardExt1 = Starter.LeaderCardsParser().get(4);
+        LeaderCardExt leaderCardExt2 = Starter.LeaderCardsParser().get(5);
         game.getCurrPlayer().getPersonalBoard().addLeaderCard(new LeaderCardExt[]{leaderCardExt1,leaderCardExt2});
         game.setStatus(GameStatus.Running);
         game.getCurrPlayer().setStatus(PlayerStatus.Active);
