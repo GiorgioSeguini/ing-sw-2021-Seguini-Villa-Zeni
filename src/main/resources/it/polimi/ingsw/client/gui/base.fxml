@@ -4,16 +4,17 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="692.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.gui.BaseController">
+<AnchorPane fx:id="anchorPane" prefHeight="692.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.gui.BaseMeController">
    <children>
-      <ImageView fx:id="board" layoutX="20.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true" fitHeight="629.0">
+      <ImageView fx:id="board" fitHeight="629.0" layoutX="20.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
             <Image url="@../../../../../images/board/Masters_of_Renaissance_PlayerBoard.png" />
       </ImageView>
-      <Button fx:id="market"      layoutX="24.0"  layoutY="10.0" mnemonicParsing="false" onAction="#goToMarket" text="Mercato" />
-      <Button fx:id="dashboard"   layoutX="107.0" layoutY="10.0" mnemonicParsing="false" onAction="#goToDashboard" text="Dashboard" />
-      <Button fx:id="production"  layoutX="210.0" layoutY="10.0" mnemonicParsing="false" onAction="#activeProduction" text="Produci" />
-      <Button fx:id="exit"        layoutX="220.0" layoutY="10.0" mnemonicParsing="false" onAction="#exitProduction" text="Esci" visible="false" disable="true" />
-      <Button fx:id="confirm"     layoutX="20.0"  layoutY="10.0" mnemonicParsing="false" onAction="#confirmProduction" text="Conferma" visible="false"  disable="true"/>
-      <Button fx:id="endTurn"     layoutX="315.0" layoutY="10.0" mnemonicParsing="false" onAction="#endTurn" text="Fine" />
+      <Button fx:id="market" layoutX="24.0" layoutY="10.0" mnemonicParsing="false" onAction="#goToMarket" text="Mercato" />
+      <Button fx:id="dashboard" layoutX="107.0" layoutY="10.0" mnemonicParsing="false" onAction="#goToDashboard" text="Dashboard" />
+      <Button fx:id="production" layoutX="210.0" layoutY="10.0" mnemonicParsing="false" onAction="#activeProduction" text="Produci" />
+      <Button fx:id="exit" disable="true" layoutX="220.0" layoutY="10.0" mnemonicParsing="false" onAction="#exitProduction" text="Esci" visible="false" />
+      <Button fx:id="confirm" disable="true" layoutX="20.0" layoutY="10.0" mnemonicParsing="false" onAction="#confirmProduction" text="Conferma" visible="false" />
+      <Button fx:id="endTurn" layoutX="378.0" layoutY="10.0" mnemonicParsing="false" onAction="#endTurn" text="Fine" />
+      <Button fx:id="other" layoutX="301.0" layoutY="10.0" mnemonicParsing="false" text="Altri" onAction="#goToOther"/>
    </children>
 </AnchorPane>

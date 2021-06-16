@@ -1,36 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.gui.InitialResController">
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<GridPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.gui.InitialResController">
+   <columnConstraints>
+      <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="30.0" />
+      <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="120.0" />
+      <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="60.0" />
+      <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="120.0" />
+      <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="30.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints minHeight="5.0" prefHeight="5.0" vgrow="ALWAYS" />
+      <RowConstraints minHeight="10.0" prefHeight="120.0" vgrow="ALWAYS" />
+      <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="ALWAYS" />
+      <RowConstraints minHeight="5.0" prefHeight="25.0" vgrow="ALWAYS" />
+      <RowConstraints minHeight="10.0" prefHeight="120.0" vgrow="ALWAYS" />
+      <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="ALWAYS" />
+      <RowConstraints minHeight="5.0" prefHeight="5.0" vgrow="ALWAYS" />
+   </rowConstraints>
    <children>
-      <Label fx:id="label" layoutX="238.0" layoutY="14.0" prefHeight="40.0" prefWidth="125.0" text="Scegli le risorse iniziali" />
-      <ImageView fitHeight="90.0" fitWidth="125.0" layoutX="45.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../images/punchboard/Coins.png" />
-         </image>
+      <ImageView fitHeight="95.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <Image url="@../../../../../images/punchboard/Coins.png" />
       </ImageView>
-      <ImageView fitHeight="90.0" fitWidth="125.0" layoutX="313.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../images/punchboard/Servants.png" />
-         </image>
+      <ImageView fitHeight="95.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1">
+         <Image url="@../../../../../images/punchboard/Servants.png" />
       </ImageView>
-      <ImageView fitHeight="90.0" fitWidth="125.0" layoutX="59.0" layoutY="231.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../images/punchboard/Shields.png" />
-         </image>
+      <ImageView fitHeight="95.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
+         <Image url="@../../../../../images/punchboard/Shields.png" />
       </ImageView>
-      <ImageView fitHeight="90.0" fitWidth="125.0" layoutX="315.0" layoutY="231.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../images/punchboard/Stones.png" />
-         </image>
+      <ImageView fitHeight="95.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="4">
+         <Image url="@../../../../../images/punchboard/Stones.png" />
       </ImageView>
-      <Button fx:id="button" layoutX="490.0" layoutY="321.0" mnemonicParsing="false" onAction="#onButton" text="Button" />
-      <ChoiceBox fx:id="boxShield" layoutX="46.0" layoutY="334.0" onAction="#onTextUpdate" prefHeight="25.0" prefWidth="105.0" value="0" />
-      <ChoiceBox fx:id="boxCoin" layoutX="50.0" layoutY="188.0" onAction="#onTextUpdate" prefHeight="25.0" prefWidth="96.0" value="0" />
-      <ChoiceBox fx:id="boxServant" layoutX="311.0" layoutY="188.0" onAction="#onTextUpdate" prefHeight="18.0" prefWidth="105.0" value="0" />
-      <ChoiceBox fx:id="boxStone" layoutX="311.0" layoutY="334.0" onAction="#onTextUpdate" prefHeight="17.0" prefWidth="105.0" value="0" />
+      <ChoiceBox fx:id="coins" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2"     onAction="#boxAction"/>
+      <ChoiceBox fx:id="servants" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="2"  onAction="#boxAction"/>
+      <ChoiceBox fx:id="shields" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5"   onAction="#boxAction"/>
+      <ChoiceBox fx:id="stones" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="5"    onAction="#boxAction"/>
+      <Button fx:id="confirm" mnemonicParsing="false" onAction="#onAction" text="Conferma" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+      <Label fx:id="label" text="prova" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
    </children>
-</AnchorPane>
+</GridPane>
