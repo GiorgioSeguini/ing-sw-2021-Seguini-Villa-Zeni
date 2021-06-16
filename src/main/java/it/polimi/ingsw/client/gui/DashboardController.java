@@ -232,7 +232,7 @@ public class DashboardController extends ControllerGuiInterface{
 
     public void baseButton(ActionEvent actionEvent){
         resetChoice();
-        gui.activate(BaseController.className);
+        gui.activate(BaseMeController.className);
     }
 
     private void checkButton(){

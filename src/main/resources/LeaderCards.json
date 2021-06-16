@@ -4,102 +4,6 @@
       "numberOfResourceses":{
         "Servants":0,
         "Shields":0,
-        "Coins":5,
-        "Stones":0
-      },
-      "minNumber":[
-        [0,0,0],
-        [0,0,0],
-        [0,0,0],
-        [0,0,0]
-      ]
-    },
-    "ability":{
-      "CLASSNAME":"DepotsAbility",
-      "INSTANCE":{
-        "typeOfRes":"Stones"
-      }
-    },
-    "victoryPoints":3,
-    "id":0
-  },
-  {
-    "requirements":{
-      "numberOfResourceses":{
-        "Servants":0,
-        "Shields":0,
-        "Coins":0,
-        "Stones":5
-      },
-      "minNumber":[
-        [0,0,0],
-        [0,0,0],
-        [0,0,0],
-        [0,0,0]
-      ]
-    },
-    "ability":{
-      "CLASSNAME":"DepotsAbility",
-      "INSTANCE":{
-        "typeOfRes":"Servants"
-      }
-    },
-    "victoryPoints":3,
-    "id":1
-  },
-  {
-    "requirements": {
-      "numberOfResourceses":{
-        "Servants":5,
-        "Shields":0,
-        "Coins":0,
-        "Stones":0
-      },
-      "minNumber":[
-        [0,0,0],
-        [0,0,0],
-        [0,0,0],
-        [0,0,0]
-      ]
-    },
-    "ability":{
-      "CLASSNAME":"DepotsAbility",
-      "INSTANCE":{
-        "typeOfRes":"Shields"
-      }
-    },
-    "victoryPoints":3,
-    "id":2
-  },
-  {
-    "requirements": {
-      "numberOfResourceses":{
-        "Servants":0,
-        "Shields":5,
-        "Coins":0,
-        "Stones":0
-      },
-      "minNumber":[
-        [0,0,0],
-        [0,0,0],
-        [0,0,0],
-        [0,0,0]
-      ]
-    },
-    "ability":{
-      "CLASSNAME":"DepotsAbility",
-      "INSTANCE":{
-        "typeOfRes":"Coins"
-      }
-    },
-    "victoryPoints":3,
-    "id":3
-  },
-  {
-    "requirements":{
-      "numberOfResourceses":{
-        "Servants":0,
-        "Shields":0,
         "Coins":0,
         "Stones":0
       },
@@ -118,7 +22,7 @@
       }
     },
     "victoryPoints":2,
-    "id":4
+    "id":0
   },
   {
     "requirements":{
@@ -142,7 +46,7 @@
       }
     },
     "victoryPoints":2,
-    "id":5
+    "id":1
   },
   {
     "requirements":{
@@ -167,7 +71,7 @@
       }
     },
     "victoryPoints":2,
-    "id":6
+    "id":2
   },
   {
     "requirements":{
@@ -192,6 +96,102 @@
       }
     },
     "victoryPoints":2,
+    "id":3
+  },
+  {
+    "requirements":{
+      "numberOfResourceses":{
+        "Servants":0,
+        "Shields":0,
+        "Coins":5,
+        "Stones":0
+      },
+      "minNumber":[
+        [0,0,0],
+        [0,0,0],
+        [0,0,0],
+        [0,0,0]
+      ]
+    },
+    "ability":{
+      "CLASSNAME":"DepotsAbility",
+      "INSTANCE":{
+        "typeOfRes":"Stones"
+      }
+    },
+    "victoryPoints":3,
+    "id":4
+  },
+  {
+    "requirements":{
+      "numberOfResourceses":{
+        "Servants":0,
+        "Shields":0,
+        "Coins":0,
+        "Stones":5
+      },
+      "minNumber":[
+        [0,0,0],
+        [0,0,0],
+        [0,0,0],
+        [0,0,0]
+      ]
+    },
+    "ability":{
+      "CLASSNAME":"DepotsAbility",
+      "INSTANCE":{
+        "typeOfRes":"Servants"
+      }
+    },
+    "victoryPoints":3,
+    "id":5
+  },
+  {
+    "requirements": {
+      "numberOfResourceses":{
+        "Servants":5,
+        "Shields":0,
+        "Coins":0,
+        "Stones":0
+      },
+      "minNumber":[
+        [0,0,0],
+        [0,0,0],
+        [0,0,0],
+        [0,0,0]
+      ]
+    },
+    "ability":{
+      "CLASSNAME":"DepotsAbility",
+      "INSTANCE":{
+        "typeOfRes":"Shields"
+      }
+    },
+    "victoryPoints":3,
+    "id":6
+  },
+  {
+    "requirements": {
+      "numberOfResourceses":{
+        "Servants":0,
+        "Shields":5,
+        "Coins":0,
+        "Stones":0
+      },
+      "minNumber":[
+        [0,0,0],
+        [0,0,0],
+        [0,0,0],
+        [0,0,0]
+      ]
+    },
+    "ability":{
+      "CLASSNAME":"DepotsAbility",
+      "INSTANCE":{
+        "typeOfRes":"Coins"
+      }
+    },
+    "victoryPoints":3,
     "id":7
   },
   {

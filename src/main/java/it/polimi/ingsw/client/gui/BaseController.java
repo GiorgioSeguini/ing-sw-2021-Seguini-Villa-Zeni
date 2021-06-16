@@ -38,8 +38,9 @@ public class BaseController  extends ControllerGuiInterface{
     private static final Double[] FAITH_Y = {338.0, 338.0, 338.0, 221.0, 104.0, 104.0, 104.0, 104.0, 104.0, 104.0, 221.0, 338.0,  338.0,  338.0,  338.0,  338.0,  338.0,  221.0,  104.0,  104.0,  104.0,  104.0,  104.0,  104.0,  104.0};
     private static final Double FAITH_HEIGHT = 100.0;
     private static final Double LEAD_ORIGINAL_HEIGHT = 698.0;
-    private static final Double[] LEAD_DEPOTS_X = {107.0, 280.0};
-    private static final Double[] LEAD_DEPOTS_Y = {569.0, 569.0};
+    private static final Double[] LEAD_DEPOTS_X = {2519.0, 2682.0};
+    private static final Double[] LEAD_DEPOTS_Y = {680.0, 680.0};
+    private static final Double[] LEAD_DEPOTS_Y2 = {1560.0, 1560.0};
     private static final Double[] GAME_STATUS_X = {3000.0};
     private static final Double[] GAME_STATUS_Y = {10.0};
     private static final Double GAME_STATUS_HEIGHT = 100.0;
@@ -127,8 +128,8 @@ public class BaseController  extends ControllerGuiInterface{
                 anchorPane.getChildren().add(leaderDepots[i][j]);
             }
         }
-        GUI.fixImages(leaderCards[0], LEAD_ORIGINAL_HEIGHT, leaderDepots[0], LEAD_DEPOTS_X, LEAD_DEPOTS_Y, RES_SIZE);
-        GUI.fixImages(leaderCards[1], LEAD_ORIGINAL_HEIGHT, leaderDepots[1], LEAD_DEPOTS_X, LEAD_DEPOTS_Y, RES_SIZE);
+        GUI.fixImages(board, BOARD_HEIGHT, leaderDepots[0], LEAD_DEPOTS_X, LEAD_DEPOTS_Y, RES_SIZE);
+        GUI.fixImages(board, BOARD_HEIGHT, leaderDepots[1], LEAD_DEPOTS_X, LEAD_DEPOTS_Y2, RES_SIZE);
 
         //gamestatus
         anchorPane.getChildren().add(gameStatusLabel);
