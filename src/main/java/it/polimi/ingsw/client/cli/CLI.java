@@ -27,6 +27,8 @@ public class CLI implements Runnable, UI {
     private final Object locker = new Object();
     private boolean connectionAccepted = false;
 
+    private boolean printLorenzoMove=false;
+
 
     public CLI(Client client) {
         this.client = client;
@@ -91,7 +93,6 @@ public class CLI implements Runnable, UI {
     public void print(){
         this.game = client.getSimpleGame();
         if(game==null) return;
-
         int myID = game.getMyID();
         if(game.isMyTurn()){
             moves.clear();
@@ -109,6 +110,10 @@ public class CLI implements Runnable, UI {
 
             if(game.getMe().getErrorMessage()!= ErrorMessage.NoError){
                 System.out.println(game.getMe().getErrorMessage());
+            }
+            if(game!=null && game.isSinglePlayer() && game.getSoloGame().getRevealed()!=null && printLorenzoMove){
+                System.out.println("MOSSA DI LORENZO");
+                System.out.println(game.getSoloGame().getRevealed().getTextToPrint());
             }
 
             MoveType move;
@@ -143,7 +148,9 @@ public class CLI implements Runnable, UI {
                 move = cliInterface.updateCLI(game, in);
             }while (move==null);
             send(move);
+            printLorenzoMove=false;
             if(move instanceof MoveEndTurn){
+                printLorenzoMove=true;
                 System.out.println("Vuoi per caso uscire dal gioco? ");
                 int index = 0;
                 do{
