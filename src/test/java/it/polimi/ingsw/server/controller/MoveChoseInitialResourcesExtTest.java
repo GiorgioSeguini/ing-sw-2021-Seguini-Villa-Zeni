@@ -108,4 +108,11 @@ public class MoveChoseInitialResourcesExtTest {
         }
         assertEquals(move.getResources(), game.getCurrPlayer().getDepots().getResources());
     }
+
+    @Test
+    public void GetClassNameTest(){
+        MoveChoseInitialResourcesExt moveChoseInitialResourcesExt = new MoveChoseInitialResourcesExt(game.getCurrPlayer().getID());
+        assertNotNull(moveChoseInitialResourcesExt.getClassName());
+        assertEquals("MoveChoseInitialResources",moveChoseInitialResourcesExt.getClassName());
+    }
 }
