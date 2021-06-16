@@ -107,6 +107,7 @@ public class CLI implements Runnable, UI {
             moves.add(new CliMoveTypeMarket(myID));
             moves.add(new CliMoveWhiteConversion(myID));
             moves.add(new CliPrint());
+            moves.add(new CliDisconnect(client));
 
             if(game.getMe().getErrorMessage()!= ErrorMessage.NoError){
                 System.out.println(game.getMe().getErrorMessage());
@@ -151,19 +152,6 @@ public class CLI implements Runnable, UI {
             printLorenzoMove=false;
             if(move instanceof MoveEndTurn){
                 printLorenzoMove=true;
-                System.out.println("Vuoi per caso uscire dal gioco? ");
-                int index = 0;
-                do{
-                    System.out.println("\t 1. SI, voglio uscire dal gioco.");
-                    System.out.println("\t 2. NO.");
-                    index=in.nextInt();
-                    in.nextLine();
-                    if(index<1||index>2) System.out.println("Indice non valido.");
-                }while (index<1|| index>2);
-
-                if (index==1){
-                    send(new DisconnectConnectionSetupper(game.getMe().getUserName(), client.getRoomName()));
-                }
             }
         }
         else{
