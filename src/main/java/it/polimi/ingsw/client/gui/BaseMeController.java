@@ -295,8 +295,10 @@ public class BaseMeController extends BaseController{
             }
         }
         gameStatusLabel.setVisible(base);
-        other.setVisible(base);
-        other.setDisable(!base);
+        if(!gui.getModel().isSinglePlayer()) {
+            other.setVisible(base);
+            other.setDisable(!base);
+        }
     }
 
     private void checkEndTurn(){
@@ -319,16 +321,12 @@ public class BaseMeController extends BaseController{
         for(int i=0; i<2; i++){
             if(i<gui.getModel().getMe().getPersonalBoard().getLeaderCards().size()) {
                 switch (gui.getModel().getMe().getPersonalBoard().getLeaderCards().get(i).getStatus()) {
-                    case Dead -> {
+                    case Dead, Played -> {
                         leaderButton[i * 2].setDisable(true);
                         leaderButton[i * 2 + 1].setDisable(true);
                     }
                     case onHand -> {
                         leaderButton[i * 2].setDisable(false);
-                        leaderButton[i * 2 + 1].setDisable(false);
-                    }
-                    case Played -> {
-                        leaderButton[i * 2].setDisable(true);
                         leaderButton[i * 2 + 1].setDisable(false);
                     }
                 }

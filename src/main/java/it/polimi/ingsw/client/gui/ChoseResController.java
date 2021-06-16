@@ -3,6 +3,7 @@ package it.polimi.ingsw.client.gui;
 import it.polimi.ingsw.constant.enumeration.ResourceType;
 import it.polimi.ingsw.constant.model.NumberOfResources;
 import it.polimi.ingsw.constant.move.MoveChoseResources;
+import it.polimi.ingsw.server.model.exception.OutOfResourcesException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -49,6 +50,9 @@ public class ChoseResController extends ControllerGuiInterface{
     @Override
     public void update() {
         NumberOfResources owned = gui.getModel().getMe().getDepots().getResources();
+        try {
+            owned = owned.sub(gui.getModel().getMe().getToActive().getInputRes());
+        } catch (OutOfResourcesException ignored) {}
         int input = gui.getModel().getMe().getToActive().getOfYourChoiceInput();
 
 

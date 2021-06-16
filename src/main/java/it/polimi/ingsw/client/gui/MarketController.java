@@ -174,7 +174,7 @@ public class MarketController extends ControllerGuiInterface implements EventHan
     }
 
     public void returnBack(ActionEvent actionEvent) {
-        gui.activate(BaseController.className);
+        gui.activate(BaseMeController.className);
     }
 
     public void confirm(ActionEvent actionEvent) {
