@@ -89,23 +89,28 @@ public class CliPrint implements CliInterface{
     private void printPlayer(GameClient game) {
         Scanner scanner= new Scanner(System.in);
         ArrayList<Player> enemies= new ArrayList<>();
-        System.out.println("Hai deciso di stampare un altro giocatore. Che giocatore vuoi stampare? ");
+        System.out.println("Hai deciso di stampare un altro giocatore.");
         int i;
-        do{
-            i=1;
-            for(Player player: game.getPlayers()){
-                if(!player.equals(game.getMe())){
-                    System.out.println("\t"+i+". "+player.getUserName());
-                    enemies.add(player);
-                    i++;
+        if(game.isSinglePlayer()){
+            System.out.println("\nLorenzo\n"+game.getSoloGame().getFaithTrack());
+        }else {
+            do{
+                System.out.println("Che giocatore vuoi stampare?");
+                i=1;
+                for(Player player: game.getPlayers()){
+                    if(!player.equals(game.getMe())){
+                        System.out.println("\t"+i+". "+player.getUserName());
+                        enemies.add(player);
+                        i++;
+                    }
                 }
-            }
-            i=scanner.nextInt();
-            if(i<0 || i>game.getPlayers().size()-1){
-                System.out.println("Indice non valido.");
-            }
-        }while (i<0 || i>game.getPlayers().size()-1);
-        System.out.println(enemies.get(i-1));
+                i=scanner.nextInt();
+                if(i<0 || i>game.getPlayers().size()-1){
+                    System.out.println("Indice non valido.");
+                }
+            }while (i<0 || i>game.getPlayers().size()-1);
+            System.out.println(enemies.get(i-1));
+        }
     }
 
     private void printMarket(GameClient game) {

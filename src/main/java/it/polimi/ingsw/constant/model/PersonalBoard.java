@@ -143,7 +143,7 @@ public class PersonalBoard {
     public String toString(){
         String PB = "";
         PB += "Card's victory points: "+getVictoryPoints()+"\n";
-        PB += "N° LeaderCard on hand or played: "+getLeaderCards().size()+"\n";
+        PB += "N° LeaderCard played: "+getLeaderCards().size()+"\n";
 
         for(LeaderCard lc: getLeaderCards()) {
             PB += "\n" + lc + "\n";
