@@ -3,46 +3,54 @@ package it.polimi.ingsw.client.gui;
 import it.polimi.ingsw.constant.enumeration.ResourceType;
 import it.polimi.ingsw.constant.model.NumberOfResources;
 import it.polimi.ingsw.constant.move.MoveChoseInitialResources;
-import it.polimi.ingsw.server.controller.MoveChoseInitialResourcesExt;
-import it.polimi.ingsw.server.model.exception.OutOfResourcesException;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableIntegerArray;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 
 import java.util.ArrayList;
 
 public class InitialResController extends ControllerGuiInterface{
 
-    public static String className = "initialRes";
+    public static final String className = "initialRes";
 
     @FXML
-    ChoiceBox<Integer> boxCoin;
+    private ChoiceBox<Integer> coins;
     @FXML
-    ChoiceBox<Integer> boxServant;
+    private ChoiceBox<Integer> servants;
     @FXML
-    ChoiceBox<Integer> boxShield;
+    private ChoiceBox<Integer> shields;
     @FXML
-    ChoiceBox<Integer> boxStone;
+    private ChoiceBox<Integer> stones;
     @FXML
-    Label label;
+    private Label label;
     @FXML
-    Button button;
+    private Button confirm;
 
-    private final ArrayList<ChoiceBox> boxes = new ArrayList<>();
-    private NumberOfResources resources = new NumberOfResources();
+    private final ChoiceBox<Integer>[] boxes = new ChoiceBox[4];
+    private int max;
+
     @FXML
     public void initialize(){
-        //TODO it's important to keep the same order as ResourceType
-        boxes.add(boxServant);
-        boxes.add(boxShield);
-        boxes.add(boxCoin);
-        boxes.add(boxStone);
+        boxes[ResourceType.Coins.ordinal()] = coins;
+        boxes[ResourceType.Servants.ordinal()] = servants;
+        boxes[ResourceType.Shields.ordinal()] = shields;
+        boxes[ResourceType.Stones.ordinal()] = stones;
+    }
+
+
+    @Override
+    public void update() {
+        this.max = gui.getModel().getInitialResources(gui.getModel().getMyID());
+
+        for(ResourceType type : ResourceType.values()){
+             fillBox(type, max);
+        }
+
+        label.setText("Scegli "+ max + " risorse iniziali");
     }
 
     @Override
@@ -50,47 +58,39 @@ public class InitialResController extends ControllerGuiInterface{
         return className;
     }
 
-
-
-    @Override
-    public void update() {
-        label.setText("Scegli "+ gui.getModel().getInitialResources(gui.getModel().getMyID())+" risorse");
-        ObservableList<Integer> arary = FXCollections.observableList(new ArrayList<>());
-        int missing = gui.getModel().getInitialResources(gui.getModel().getMyID()) - resources.size();
-        for(int i=0; i<=missing; i++){
-            arary.addAll(i);
-        }
-        for(ChoiceBox<Integer> box : boxes){
-            box.setItems(arary);
-        }
-        checkButton();
-    }
-
-
-    private void checkButton(){
-        button.setDisable(resources.size()!=gui.getModel().getInitialResources(gui.getModel().getMyID()));
-    }
-
-    public void onTextUpdate(ActionEvent actionEvent) {
-        ResourceType type = ResourceType.values()[boxes.indexOf((ChoiceBox) actionEvent.getSource())];
-        int new_value = (Integer)((ChoiceBox) actionEvent.getSource()).getValue();
-        int delta = new_value - this.resources.getAmountOf(type);
-        if(delta>0)
-            this.resources = this.resources.add(type, delta);
-        else {
-            try {
-                this.resources = this.resources.sub(type, -delta);
-            } catch (OutOfResourcesException e) {
-                e.printStackTrace();
+    public void onAction(ActionEvent actionEvent) {
+        NumberOfResources resources = new NumberOfResources();
+        for(ResourceType type : ResourceType.values()){
+            Integer v = boxes[type.ordinal()].getValue();
+            if(v!=null) {
+                resources = resources.add(type, v);
             }
         }
-        //update();
-        checkButton();
+        MoveChoseInitialResources move = new MoveChoseInitialResources(gui.getModel().getMyID());
+        move.setResources(resources);
+        gui.sendMove(move);
     }
 
-    public void onButton(){
-        MoveChoseInitialResources move =new MoveChoseInitialResourcesExt(gui.getModel().getMyID());
-        move.setResources(this.resources);
-        gui.sendMove(move);
+    private void fillBox(ResourceType type, int max) {
+        ObservableList<Integer> array = FXCollections.observableList(new ArrayList<>());
+        for(int i=0; i<=max; i++){
+            array.addAll(i);
+        }
+        boxes[type.ordinal()].setItems(array);
+        boxes[type.ordinal()].setValue(0);
+    }
+
+    private void checkConfirm(){
+        int total =0;
+        for(ChoiceBox<Integer> box : boxes){
+            Integer v = box.getValue();
+            if(v!=null)
+                total += v;
+        }
+        confirm.setDisable(total!=max);
+    }
+
+    public void boxAction(ActionEvent actionEvent) {
+        checkConfirm();
     }
 }

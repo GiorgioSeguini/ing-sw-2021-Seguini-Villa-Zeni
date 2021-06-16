@@ -76,6 +76,7 @@ public class GUI extends Application implements UI {
         loaders.add(new FXMLLoader((getClass().getResource("dashboard.fxml"))));
         loaders.add(new FXMLLoader((getClass().getResource("store.fxml"))));
         loaders.add(new FXMLLoader((getClass().getResource("choseRes.fxml"))));
+        loaders.add(new FXMLLoader((getClass().getResource("other.fxml"))));
 
 
         for (FXMLLoader loader : loaders) {
@@ -133,7 +134,10 @@ public class GUI extends Application implements UI {
         }
         if(this.getModel().getStatus() != GameStatus.Ended){
                 if(!this.getModel().isMyTurn()) {
-                    activate(BaseController.className);
+                    if(current instanceof BaseController)
+                        current.update();
+                    else
+                        activate(BaseMeController.className);
                 }else if(this.getModel().getMe().getStatus()== PlayerStatus.NeedToStore) {
                     activate(StoreResourcesController.className);
                 }else if(this.getModel().getMe().getStatus()== PlayerStatus.NeedToChoseRes){
@@ -142,7 +146,7 @@ public class GUI extends Application implements UI {
                     //TODO
                     activate("");
                 }else {
-                    activate(BaseController.className);
+                    activate(BaseMeController.className);
                 }
                 myTurn=true;
         }else{
