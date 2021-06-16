@@ -15,11 +15,11 @@ public class Controller implements Observer<Performable> {
     public synchronized void update(Performable x) {
         if(x.canPerformExt(game)) {
             x.performMove(game);
+            game.lastMessage();
         }else{
             System.out.println("Move invalid");
             //x.getPlayer().setErrorMessage();
         }
-        game.lastMessage();
     }
 
 }
