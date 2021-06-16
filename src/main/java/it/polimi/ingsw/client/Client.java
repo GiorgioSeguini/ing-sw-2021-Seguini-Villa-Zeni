@@ -1,6 +1,7 @@
 package it.polimi.ingsw.client;
 
 
+import com.sun.prism.shader.Texture_Color_AlphaTest_Loader;
 import it.polimi.ingsw.client.cli.CLI;
 import it.polimi.ingsw.client.gui.GUI;
 import it.polimi.ingsw.client.modelClient.GameClient;
@@ -25,6 +26,9 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
 
 public class Client {
 
@@ -43,6 +47,7 @@ public class Client {
     private String roomName;
     private GUI gui;
     private Controller controller;
+    private ExecutorService executor;
 
     public Client(String ip, int port){
         this.ip = ip;
@@ -151,9 +156,11 @@ public class Client {
                 //TODO
             }
         }else{
-            String s = StarterClient.toJson(move, MoveType.class);
-            Performable performable = Starter.fromJson(s, Performable.class);
-            this.controller.update(performable);
+            executor.submit(()->{
+                String s = StarterClient.toJson(move, MoveType.class);
+                Performable performable = Starter.fromJson(s, Performable.class);
+                this.controller.update(performable);
+            });
         }
 
     }
@@ -201,6 +208,7 @@ public class Client {
 
         online = false;
         chose = true;
+        executor= Executors.newFixedThreadPool(1);
         //synchronized (locker){locker.notifyAll();} /TODO
     }
 
