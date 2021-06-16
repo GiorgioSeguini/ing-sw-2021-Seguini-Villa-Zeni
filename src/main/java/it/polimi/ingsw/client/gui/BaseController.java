@@ -4,8 +4,10 @@ import it.polimi.ingsw.client.modelClient.AbilityType;
 import it.polimi.ingsw.client.modelClient.LeaderCardClient;
 import it.polimi.ingsw.constant.enumeration.LeaderStatus;
 import it.polimi.ingsw.constant.enumeration.PopesFavorStates;
+import it.polimi.ingsw.constant.enumeration.ResourceType;
 import it.polimi.ingsw.constant.model.DevelopmentCard;
 import it.polimi.ingsw.constant.model.LeaderCard;
+import it.polimi.ingsw.constant.model.NumberOfResources;
 import it.polimi.ingsw.constant.model.ProductionPower;
 import it.polimi.ingsw.constant.move.MoveActiveProduction;
 import it.polimi.ingsw.constant.move.MoveEndTurn;
@@ -56,6 +58,9 @@ public class BaseController extends ControllerGuiInterface{
     private static final Double[] TOKEN_X = {3000.0, 3000.0};
     private static final Double[] TOKEN_Y = {250.0, 700.0};
     private static final Double TOKEN_SIZE = 300.0;
+    private static final Double LEAD_ORIGINAL_HEIGHT = 698.0;
+    private static final Double[] LEAD_DEPOTS_X = {107.0, 280.0};
+    private static final Double[] LEAD_DEPOTS_Y = {569.0, 569.0};
 
     @FXML
     ImageView board;
@@ -99,6 +104,11 @@ public class BaseController extends ControllerGuiInterface{
     private final Image[] tokens;
     private final ImageView retro = new ImageView();
     private final ImageView revealed = new ImageView();
+    //leder card depots
+    private final ImageView[][] leaderDepots = new ImageView[2][2];
+    //resources images
+    private final Image[] resImage = new Image[ResourceType.values().length];
+
 
     public BaseController(){
         super();
@@ -118,6 +128,10 @@ public class BaseController extends ControllerGuiInterface{
             tokens[i-1]=new Image("/images/punchboard/cerchio"+i+".png");
         }
         retro.setImage(new Image("/images/punchboard/retro_cerchi.png"));
+
+        for(ResourceType type : ResourceType.values()){
+            resImage[type.ordinal()]= new Image("/images/punchboard/" + type + ".png");
+        }
     }
 
     @FXML
@@ -178,6 +192,16 @@ public class BaseController extends ControllerGuiInterface{
         anchorPane.getChildren().add(retro);
         anchorPane.getChildren().add(revealed);
         GUI.fixImages(board, BOARD_HEIGHT, new ImageView[]{retro, revealed}, TOKEN_X, TOKEN_Y, TOKEN_SIZE);
+
+        //leadercard depots
+        for(int i=0; i<2; i++){
+            for(int j=0; j<2; j++){
+                leaderDepots[i][j]=new ImageView();
+                anchorPane.getChildren().add(leaderDepots[i][j]);
+            }
+        }
+        GUI.fixImages(leaderCards[0], LEAD_ORIGINAL_HEIGHT, leaderDepots[0], LEAD_DEPOTS_X, LEAD_DEPOTS_Y, RES_SIZE);
+        GUI.fixImages(leaderCards[1], LEAD_ORIGINAL_HEIGHT, leaderDepots[1], LEAD_DEPOTS_X, LEAD_DEPOTS_Y, RES_SIZE);
     }
 
     @Override
@@ -242,6 +266,21 @@ public class BaseController extends ControllerGuiInterface{
             revealed.setVisible(false);
         }
 
+        //leader depots
+        for(int k=3; k<5; k++) {
+            if (gui.getModel().getMe().getDepots().getWareHouseDepots().getShelfs().size() > k) {
+                ResourceType type = gui.getModel().getMe().getDepots().getWareHouseDepots().getShelfs().get(k).getResType();
+                int onShelf = gui.getModel().getMe().getDepots().getWareHouseDepots().getShelfs().get(k).getUsed();
+                int i = 0;
+                for (LeaderCard card : gui.getModel().getMe().getPersonalBoard().getLeaderCards()) {
+                    if (card.getStatus() == LeaderStatus.Played && ((LeaderCardClient) card).getAbility().getAbilityType() == AbilityType.DepotsAbility && ((LeaderCardClient) card).getAbility().getResource() == type) {
+                        leaderDepots[i][0].setImage(onShelf > 0 ? resImage[type.ordinal()] : null);
+                        leaderDepots[i][1].setImage(onShelf > 1 ? resImage[type.ordinal()] : null);
+                    }
+                    i++;
+                }
+            }
+        }
 
         chosen.clear();
         checkButtons(true);
@@ -294,13 +333,13 @@ public class BaseController extends ControllerGuiInterface{
         if(index>=0){
             p = gui.getModel().getMe().getPersonalBoard().getTopDevCard(index/3).getProductionPower();
         }else{
-            index=0;
+            p = gui.getModel().getMe().getPersonalBoard().getProduction().get(0);
             for(int i=0; i<2; i++){
                 if(actionEvent.getSource().equals(leaderCards[i])){
-                    index = i +1;
+                    NumberOfResources input = new NumberOfResources().add(((LeaderCardClient)gui.getModel().getMe().getPersonalBoard().getLeaderCards().get(i)).getAbility().getResource(), 1);
+                    p = new ProductionPower(0, input, new NumberOfResources(), 1, 1);
                 }
             }
-            p = gui.getModel().getMe().getPersonalBoard().getProduction().get(index);
         }
         if(chosen.contains(p)){
             chosen.remove(p);
@@ -329,7 +368,7 @@ public class BaseController extends ControllerGuiInterface{
 
     public void confirmProduction(ActionEvent actionEvent) {
         MoveActiveProduction activeProduction = new MoveActiveProduction(gui.getModel().getMyID());
-        activeProduction.setToActive(chosen);
+        activeProduction.setToActive(new ArrayList<>(chosen));
         gui.sendMove(activeProduction);
         chosen.clear();
     }
