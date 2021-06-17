@@ -50,10 +50,9 @@ public class CLI implements Runnable, UI {
             client.startOffline(name);
         }
         else{
-            try {
-                client.setOnline();
-            } catch (IOException e) {
-                e.printStackTrace();
+            if(!client.setOnline()){
+                System.out.println("Oh no! Non siamo riusciti a contattare il server\n Riprova più tardi o controlla la tua connessione internet");
+                return;
             }
             do {
                 System.out.println("Benvenuto in Maestro del Rinascimento - Gioco made by CranioGames");

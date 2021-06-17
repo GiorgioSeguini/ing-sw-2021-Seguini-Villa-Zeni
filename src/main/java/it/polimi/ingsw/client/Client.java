@@ -32,11 +32,11 @@ import java.util.concurrent.ThreadPoolExecutor;
 
 public class Client {
 
-    private String ip;
-    private int port;
+    private final String ip;
+    private final int port;
     private Boolean online = false;
     private boolean chose = false;      //true when either online or offline game is started
-    private final Object locker = new Object();
+    private final Object choseLocker = new Object();
     public DataOutputStream socketOut;
     private DataInputStream socketIn;
     private Socket socket;
@@ -70,7 +70,7 @@ public class Client {
             public void run() {
                 try {
                     String read;
-                    while (true) {
+                    while (isActive()) {
                         read=socketIn.readUTF();
                         System.out.println(read);
                         Message received = StarterClient.fromJson(read, Message.class);
@@ -101,12 +101,17 @@ public class Client {
             else{
                 GUI.entry(this);
             }
-            synchronized (locker) {
+            synchronized (choseLocker) {
                 while (!chose) {
-                    locker.wait();
+                    choseLocker.wait();
                 }
             }
-            if(online) readingThread.join();
+            //chose has been made
+            synchronized (this){
+                while (isActive()){
+                    this.wait();
+                }
+            }
             //t1.join();
         } catch(InterruptedException | NoSuchElementException e){
             System.out.println("Connection closed from the client side");
@@ -209,29 +214,47 @@ public class Client {
         online = false;
         chose = true;
         executor= Executors.newFixedThreadPool(1);
-        //synchronized (locker){locker.notifyAll();} /TODO
+        synchronized (choseLocker){
+            chose = true;
+            choseLocker.notifyAll();
+        }
     }
 
-    public void setOnline() throws IOException {
-        this.socket = new Socket(ip, port);
-        System.out.println("Connection established");
-        this.socketIn = new DataInputStream(socket.getInputStream());
-        this.socketOut = new DataOutputStream(socket.getOutputStream());
-        readingThread = asyncReadFromSocket(socketIn);
-        online = true;
-        chose = true;
-        synchronized (locker){locker.notifyAll();}
+    public boolean setOnline() {
+        try{
+            this.socket = new Socket(ip, port);
+            System.out.println("Connection established");
+            this.socketIn = new DataInputStream(socket.getInputStream());
+            this.socketOut = new DataOutputStream(socket.getOutputStream());
+            readingThread = asyncReadFromSocket(socketIn);
+            online = true;
+        }catch (IOException e){
+            setActive(false);
+            return false;
+        }
+        finally {
+            synchronized (choseLocker){
+                chose = true;
+                choseLocker.notifyAll();
+            }
+        }
+        return true;
     }
 
     public void sendSetupper(SetUp setupper) {
-        try {
-            String json= StarterClient.toJson(setupper, SetUp.class);
-            System.out.println("Sent :"+json);
-            socketOut.writeUTF(json);
-            socketOut.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-            //TODO
+        if(online) {
+            try {
+                String json = StarterClient.toJson(setupper, SetUp.class);
+                System.out.println("Sent :" + json);
+                socketOut.writeUTF(json);
+                socketOut.flush();
+            } catch (IOException e) {
+                e.printStackTrace();
+                //TODO
+            }
+        }else{
+            this.setActive(false);
+            synchronized (this){this.notifyAll();}
         }
     }
 }
