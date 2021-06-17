@@ -190,11 +190,15 @@ public class DashboardController extends ControllerGuiInterface{
         hideFirstScreen(false);
         checkButton();
         Image[] image = new Image[12];
-        int i=0,j;
+        int i=0;
         for(Level l: Level.values()) {
             for (ColorDevCard c : ColorDevCard.values()) {
-                int id = gui.getModel().getDashboard().getTopDevCard(c, l).getId() + 1;
-                image[i] = new Image("/images/front/Masters of Renaissance_Cards_FRONT_3mmBleed_1-"+ id +"-1.png");
+                if(gui.getModel().getDashboard().getTopDevCard(c,l) == null){
+                    image[i] = new Image("/images/back/RETRO-"+l+"-"+c+".png");
+                }else {
+                    int id = gui.getModel().getDashboard().getTopDevCard(c, l).getId() + 1;
+                    image[i] = new Image("/images/front/Masters of Renaissance_Cards_FRONT_3mmBleed_1-" + id + "-1.png");
+                }
                 imageViews.get(i).setImage(image[i]);
                 i++;
             }
