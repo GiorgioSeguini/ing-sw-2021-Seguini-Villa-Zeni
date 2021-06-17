@@ -176,6 +176,17 @@ public class GUI extends Application implements UI {
         active=true;
     }
 
+    @Override
+    public void stop(){
+        System.out.println("Stage is closing");
+        // Save file
+        synchronized (client){
+            client.setActive(false);
+            client.notifyAll();
+        }
+        System.out.println("Stage closed");
+    }
+
     /**
      *  For a given image view ad a given set of images fix their relative position in a resizable scene
      *  On al images will be set preserve ratio
