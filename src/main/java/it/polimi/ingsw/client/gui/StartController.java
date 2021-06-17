@@ -25,16 +25,16 @@ public class StartController extends ControllerGuiInterface{
     }
 
     public void publicGame(ActionEvent event) {
-        gui.activate(publicLoginController.className);
+        gui.activate(PublicLoginController.className);
     }
 
 
     public void privateGame(ActionEvent event) {
-        gui.activate(privateLoginController.className);
+        gui.activate(PrivateLoginController.className);
     }
 
     public void soloGameOff(ActionEvent event) {
-        gui.activate("fuck");
+        gui.activate(SingleLoginCotroller.className);
     }
 
 

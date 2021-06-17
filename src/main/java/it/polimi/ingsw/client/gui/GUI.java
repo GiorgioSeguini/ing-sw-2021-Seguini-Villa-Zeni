@@ -25,6 +25,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -57,7 +58,7 @@ public class GUI extends Application implements UI {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        //primaryStage.getIcons().add(new Image("/images/punchboard/calamaio.png"));
+        primaryStage.getIcons().add(new Image("/images/punchboard/calamaio.png"));
         client.setGui(this);
         primaryStage.setTitle("Maestri del Rinascimento");
         Pane root = new Pane();
@@ -78,6 +79,7 @@ public class GUI extends Application implements UI {
         loaders.add(new FXMLLoader((getClass().getResource("other.fxml"))));
         loaders.add(new FXMLLoader((getClass().getResource("start.fxml"))));
         loaders.add(new FXMLLoader((getClass().getResource("privateLogin.fxml"))));
+        loaders.add(new FXMLLoader((getClass().getResource("singleLogin.fxml"))));
 
 
         for (FXMLLoader loader : loaders) {
@@ -212,22 +214,6 @@ public class GUI extends Application implements UI {
         }
     }
 
-    // da testare
-    public static void fixImages(final Pane pane, final ImageView[] images){
-        double backHeight = pane.getHeight();
-        for(int i=0; i<images.length; i++){
-            int finalI = i;
-            double x = images[i].getLayoutX();
-            double y = images[i].getLayoutY();
-            double imageHeight = images[i].getFitHeight();
-            pane.heightProperty().addListener((observableValue, oldValue, newValue) -> {
-                images[finalI].setLayoutX(pane.getLayoutX() + (Double)newValue * x/ backHeight);
-                images[finalI].setLayoutY(pane.getLayoutY() + (Double)newValue * y/ backHeight);
-            });
-            images[finalI].fitHeightProperty().bind(pane.heightProperty().divide(backHeight / imageHeight));
-            images[finalI].setPreserveRatio(true);
-        }
-    }
 
     public static void fixImagesToPane(final Pane pane, final Double paneHeight, final Double paneWidth, final ImageView[] images, final Double[] x, final Double[] y, final Double imageHeight){
         if(images.length!=x.length)
@@ -235,17 +221,19 @@ public class GUI extends Application implements UI {
         if(images.length!=y.length)
             throw new ArithmeticException();
         for(int i=0; i<images.length; i++){
-            int finalI = i;
-            images[finalI].fitHeightProperty().bind(pane.heightProperty().divide(paneHeight / imageHeight));
-            pane.widthProperty().addListener((observableValue, oldValue, newValue) -> {
-                images[finalI].setLayoutX((Double)newValue * x[finalI]/ paneWidth);
-                images[finalI].setLayoutY((Double)newValue * y[finalI] / paneWidth);
-            });
-
-
-            //pane.heightProperty().addListener((observableValue, oldValue, newValue) -> images[finalI].setLayoutY((Double)newValue * y[finalI]/ paneHeight));
-            images[finalI].setPreserveRatio(true);
+            fixImagesToPane(pane, paneHeight, paneWidth, images[i], x[i], y[i], imageHeight);
         }
+    }
+
+    public static void fixImagesToPane(final Pane pane, final Double paneHeight, final Double paneWidth, final ImageView image, final Double x, final Double y, final Double imageHeight){
+        image.fitHeightProperty().bind(pane.heightProperty().divide(paneHeight / imageHeight));
+        pane.widthProperty().addListener((observableValue, oldValue, newValue) -> {
+            image.setLayoutX((Double)newValue * x / paneWidth);
+            image.setLayoutY((Double)newValue * y / paneWidth);
+        });
+
+        //pane.heightProperty().addListener((observableValue, oldValue, newValue) -> images[finalI].setLayoutY((Double)newValue * y[finalI]/ paneHeight));
+        image.setPreserveRatio(true);
     }
 
 
@@ -256,13 +244,44 @@ public class GUI extends Application implements UI {
             throw new RuntimeException();
         for(int i=0; i<labels.length; i++){
             int finalI = i;
-            back.fitHeightProperty().addListener((observableValue, oldValue, newValue) -> labels[finalI].setLayoutX(back.getLayoutX() + (Double)newValue * x[finalI]/ backHeight));
-            back.fitHeightProperty().addListener((observableValue, oldValue, newValue) -> labels[finalI].setLayoutY(back.getLayoutY() + (Double)newValue * y[finalI]/ backHeight));
-            back.fitHeightProperty().addListener((observableValue, oldValue, newValue) -> labels[finalI].setPrefSize((Double) newValue * width / backHeight , (Double) newValue * height / backHeight));
+            back.fitHeightProperty().addListener((observableValue, oldValue, newValue) -> {
+                labels[finalI].setLayoutX(back.getLayoutX() + (Double)newValue * x[finalI]/ backHeight);
+                labels[finalI].setLayoutY(back.getLayoutY() + (Double)newValue * y[finalI]/ backHeight);
+                labels[finalI].setPrefSize((Double) newValue * width / backHeight , (Double) newValue * height / backHeight);
+            });
 
         }
     }
 
+    public static void fixButton(final ImageView back, final Double backHeight, final Button[] buttons, final Double[] x, final Double[] y, final Double height, final Double width){
+        if(buttons.length!=x.length)
+            throw new RuntimeException();
+        if(buttons.length!=y.length)
+            throw new RuntimeException();
+        for(int i=0; i<buttons.length; i++){
+            int finalI = i;
+            back.fitHeightProperty().addListener((observableValue, oldValue, newValue) -> {
+                buttons[finalI].setLayoutX(back.getLayoutX() + (Double)newValue * x[finalI]/ backHeight);
+                buttons[finalI].setLayoutY(back.getLayoutY() + (Double)newValue * y[finalI]/ backHeight);
+                buttons[finalI].setPrefWidth((Double) newValue * width / backHeight);
+                buttons[finalI].setFont(new Font(buttons[finalI].getFont().getName(), height / backHeight));
+            });
+        }
+    }
+
+    public static void fixButtonToPane(final Pane back, final Double backHeight, final Button button, final Double x, final Double y, final Double height, final Double width) {
+        back.heightProperty().addListener((observableValue, oldValue, newValue) -> {
+            button.setLayoutX(back.getLayoutX() + (Double)newValue * x/ backHeight);
+            button.setLayoutY(back.getLayoutY() + (Double)newValue * y/ backHeight);
+            button.setPrefWidth((Double) newValue * width / backHeight);
+        });
+
+    }
+
+    public static void fixButtonToPane(final Pane back, final Button button) {
+        fixButtonToPane(back, back.getPrefHeight(), button, button.getLayoutX(), button.getLayoutY(), button.getPrefHeight(), button.getPrefWidth());
+
+    }
 
     public void printDepots(ImageView[] resources, Depots depots){
         int  n0 = depots.getWareHouseDepots().getShelfs().get(0).getUsed();

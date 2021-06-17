@@ -9,7 +9,7 @@ import javafx.scene.control.*;
 
 import java.io.DataOutputStream;
 
-public class privateLoginController extends ControllerGuiInterface{
+public class PrivateLoginController extends ControllerGuiInterface{
 
     public static String className = "privateLogin";
     private String name;

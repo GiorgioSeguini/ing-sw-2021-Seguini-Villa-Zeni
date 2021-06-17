@@ -4,10 +4,8 @@
     linear-gradient(#b4a552,  #f1db75);
     -fx-background-insets: 0, 1, 2;
     -fx-background-radius: 3, 2, 1;
-    -fx-text-fill: black;
     -fx-font-family: "Helvetica";
     -fx-font-size: 12 pt;
-    -fx-text-alignment: center;
 }
 
 .basePane{
@@ -17,7 +15,6 @@
 }
 
 .baseLabel{
-    -fx-text-alignment: center;
 }
 
 #imageViewClicked{

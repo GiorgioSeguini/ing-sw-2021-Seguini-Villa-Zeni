@@ -11,7 +11,7 @@ import javafx.scene.control.TextField;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
-public class publicLoginController extends ControllerGuiInterface{
+public class PublicLoginController extends ControllerGuiInterface{
 
     public static String className = "publicLogin";
     private String name;
