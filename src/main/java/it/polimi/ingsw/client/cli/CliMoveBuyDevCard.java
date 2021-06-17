@@ -44,6 +44,14 @@ public class CliMoveBuyDevCard implements CliInterface{
             index = game.getDashboard().getTopDevCard(ColorDevCard.values()[c-1],Level.values()[l-1]).getId();
         }while(check !=1);
         move.setIndexCardToBuy(index);
+        int pos;
+        do{
+            System.out.println("In che posizione vuoi mettere la carta appena comprata?\n");
+            System.out.println("\t1. Slot 1 della PersonalBoard\n\t2. Slot 2 della PersonalBoard\n\t3. Slot 3 della PersonalBoard\n");
+            pos = stdin.nextInt();
+            if(pos<1||pos>3) System.out.println("Invalid Choise!");
+        }while(pos<1||pos>3);
+        move.setPos(pos-1);
         return move;
     }
 
