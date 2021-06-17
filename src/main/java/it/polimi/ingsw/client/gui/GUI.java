@@ -57,8 +57,7 @@ public class GUI extends Application implements UI {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-
-        primaryStage.getIcons().add(new Image("/images/punchboard/calamaio.png"));
+        //primaryStage.getIcons().add(new Image("/images/punchboard/calamaio.png"));
         client.setGui(this);
         primaryStage.setTitle("Maestri del Rinascimento");
         Pane root = new Pane();
@@ -66,7 +65,7 @@ public class GUI extends Application implements UI {
         primaryStage.setScene(this.main);
 
         ArrayList<FXMLLoader> loaders = new ArrayList<>();
-        loaders.add(new FXMLLoader(getClass().getResource("sample.fxml")));
+        loaders.add(new FXMLLoader(getClass().getResource("publicLogin.fxml")));
         loaders.add(new FXMLLoader(getClass().getResource("initial.fxml")));
         loaders.add(new FXMLLoader(getClass().getResource("waiting.fxml")));
         loaders.add(new FXMLLoader(getClass().getResource("initialRes.fxml")));
@@ -77,6 +76,8 @@ public class GUI extends Application implements UI {
         loaders.add(new FXMLLoader((getClass().getResource("store.fxml"))));
         loaders.add(new FXMLLoader((getClass().getResource("choseRes.fxml"))));
         loaders.add(new FXMLLoader((getClass().getResource("other.fxml"))));
+        loaders.add(new FXMLLoader((getClass().getResource("start.fxml"))));
+        loaders.add(new FXMLLoader((getClass().getResource("privateLogin.fxml"))));
 
 
         for (FXMLLoader loader : loaders) {
@@ -86,7 +87,7 @@ public class GUI extends Application implements UI {
             this.loaderMap.put(controller.getName(), loader);
             this.screenMap.put(pane, controller.getName());
         }
-        this.activate("sample");
+        this.activate(StartController.className);
         primaryStage.minHeightProperty().bind(primaryStage.widthProperty().multiply(9.0 / 16.0));
         primaryStage.maxHeightProperty().bind(primaryStage.widthProperty().multiply(9.0 / 16.0));
         primaryStage.setMinWidth(600.0);
