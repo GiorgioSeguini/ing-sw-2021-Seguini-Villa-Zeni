@@ -1,33 +1,27 @@
 .baseButton {
     -fx-background-color:
-            #a69c7e,
-    linear-gradient(#a69c7e, #a47e3c);
+            #f1db75,
+    linear-gradient(#b4a552,  #f1db75);
     -fx-background-insets: 0, 1, 2;
     -fx-background-radius: 3, 2, 1;
     -fx-text-fill: black;
     -fx-font-family: "Helvetica";
-    -fx-font-size: 18 pt;
+    -fx-font-size: 12 pt;
+    -fx-text-alignment: center;
 }
 
 .basePane{
     -fx-background-color:
-            #86c8ee,
-    linear-gradient(#86c8ee, #0088cc);
-}
-
-.baseButton {
-    -fx-background-color:
             #a69c7e,
             linear-gradient(#a69c7e, #a47e3c);
-    -fx-background-insets: 0, 1, 2;
-    -fx-background-radius: 3, 2, 1;
-    -fx-text-fill: black;
-    -fx-font-family: "Helvetica";
-    -fx-font-size: 14 pt;
+}
+
+.baseLabel{
+    -fx-text-alignment: center;
 }
 
 #imageViewClicked{
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,3), 15, 0, 0, 0);
+    -fx-effect: dropshadow(three-pass-box, rgba(5,0,0,3), 15, 0, 0, 0);
 }
 
 #imageView1{

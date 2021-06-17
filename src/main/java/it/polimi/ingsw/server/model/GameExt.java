@@ -230,9 +230,7 @@ public class GameExt extends Game implements Observable<Message> {
     private transient final List<Observer<Message>> observers = new ArrayList<>();
 
     public void close(){
-        for(Observer<Message> observer: observers){
-            observer=null;
-        }
+        observers.clear();
     }
 
     @Override

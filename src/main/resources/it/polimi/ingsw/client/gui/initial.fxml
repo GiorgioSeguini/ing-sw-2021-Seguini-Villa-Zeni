@@ -4,7 +4,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane fx:id="grid" alignment="CENTER" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.gui.InitialController" stylesheets="@Style.css">
+<GridPane fx:id="grid" alignment="CENTER" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.gui.InitialController" stylesheets="@Style.css" styleClass="basePane">
 <columnConstraints>
     <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="15.0" />
     <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="130.0" />
@@ -32,6 +32,6 @@
     <Label fx:id="lable2" prefHeight="17.0" prefWidth="55.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
     <Label fx:id="lable3" prefHeight="17.0" prefWidth="55.0" GridPane.columnIndex="5" GridPane.rowIndex="3" />
     <Label fx:id="lable4" prefHeight="17.0" prefWidth="55.0" GridPane.columnIndex="7" GridPane.rowIndex="3" />
-     <Button fx:id="confirmButton" layoutX="493.0" layoutY="25.0" mnemonicParsing="false" onAction="#confirm" prefHeight="35.0" prefWidth="64.0" text="Conferma" GridPane.columnIndex="7" GridPane.rowIndex="0" />
+     <Button fx:id="confirmButton" layoutX="493.0" layoutY="25.0" mnemonicParsing="false" onAction="#confirm" prefHeight="35.0" prefWidth="64.0" text="Conferma" GridPane.columnIndex="7" GridPane.rowIndex="0"  styleClass="baseButton"/>
  </children>
 </GridPane>

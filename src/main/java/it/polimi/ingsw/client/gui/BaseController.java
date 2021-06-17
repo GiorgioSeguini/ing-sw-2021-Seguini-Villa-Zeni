@@ -134,6 +134,8 @@ public class BaseController  extends ControllerGuiInterface{
         //gamestatus
         anchorPane.getChildren().add(gameStatusLabel);
         GUI.fixLabels(board, BOARD_HEIGHT, new Label[]{gameStatusLabel}, GAME_STATUS_X,   GAME_STATUS_Y,  GAME_STATUS_HEIGHT,  GAME_STATUS_WIDTH);
+        gameStatusLabel.getStyleClass().clear();
+        gameStatusLabel.getStyleClass().add("baseLabel");
     }
 
 

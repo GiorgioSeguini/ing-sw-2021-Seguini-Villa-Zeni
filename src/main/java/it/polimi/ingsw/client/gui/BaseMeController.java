@@ -33,8 +33,8 @@ public class BaseMeController extends BaseController{
     private static final Double BASE_PROD_HEIGHT = 286.0;
     private static final Double[] LEAD_BUTTON_X = {2550.0, 2700.0, 2550.0, 2700.0};
     private static final Double[] LEAD_BUTTON_Y = {40.0, 40.0, 900.0, 900.0};
-    private static final Double LEAD_BUTTON_HEIGHT = 45.0;
-    private static final Double LEAD_BUTTON_WIDTH = 145.0;
+    private static final Double LEAD_BUTTON_HEIGHT = 70.0;
+    private static final Double LEAD_BUTTON_WIDTH = 120.0;
     private static final Double[] TOKEN_X = {3000.0, 3000.0};
     private static final Double[] TOKEN_Y = {250.0, 700.0};
     private static final Double TOKEN_SIZE = 300.0;
@@ -59,7 +59,6 @@ public class BaseMeController extends BaseController{
 
     private final Button[] leaderButton = new Button[4];
     //production
-    private final Label[] labels = new Label[3];
     private final ImageView baseProduction = new ImageView();
     private final ArrayList<ProductionPower> chosen = new ArrayList<>();
     //single player
@@ -87,6 +86,8 @@ public class BaseMeController extends BaseController{
             leaderButton[i].setOnMouseClicked(this::onLeadButton);
             leaderButton[i].setText(i%2==0 ? "active" : "scarta");
             anchorPane.getChildren().add(leaderButton[i]);
+            leaderButton[i].getStyleClass().clear();
+            leaderButton[i].getStyleClass().add("baseButton");
         }
 
 
@@ -96,13 +97,6 @@ public class BaseMeController extends BaseController{
         GUI.fixImages(board, BOARD_HEIGHT, new ImageView[]{baseProduction}, BASE_PROD_X, BASE_PROD_Y, BASE_PROD_HEIGHT);
         baseProduction.fitWidthProperty().bind(board.fitHeightProperty().divide(BOARD_HEIGHT / BASE_PROD_HEIGHT));
 
-        for(int i=0; i<3; i++){
-            int finalI = i;
-            labels[i]= new Label();
-            anchorPane.getChildren().add(labels[i]);
-            anchorPane.heightProperty().addListener((observableValue, oldValue, newValue) -> labels[finalI].setLayoutY((Double)newValue - 10.0));
-            board.fitHeightProperty().addListener((observableValue, oldValue, newValue) -> labels[finalI].setLayoutX((Double)newValue * BOARD_HEIGHT / DEV_X[finalI*3]));
-        }
 
         //leadercard button
         GUI.fixLabels(board, BOARD_HEIGHT, leaderButton, LEAD_BUTTON_X, LEAD_BUTTON_Y, LEAD_BUTTON_HEIGHT, LEAD_BUTTON_WIDTH);
@@ -183,9 +177,6 @@ public class BaseMeController extends BaseController{
             j++;
         }
 
-        for(int i=0; i<3; i++){
-            labels[i].setVisible(true);
-        }
     }
 
     //onActionProductions
@@ -210,10 +201,10 @@ public class BaseMeController extends BaseController{
         }
         if(chosen.contains(p)){
             chosen.remove(p);
-            if(index>=0) labels[index/3].setText("");
+            ((ImageView) actionEvent.getSource()).setId("imageView1");
         }else{
             chosen.add(p);
-            if(index>=0) labels[index/3].setText("selected");
+            ((ImageView) actionEvent.getSource()).setId("imageViewClicked");
         }
         checkConfirm();
     }
@@ -223,13 +214,13 @@ public class BaseMeController extends BaseController{
 
         for(int i=0; i<9; i++){
             devCards[i].setOnMouseClicked(null);
-        }
-        for(int i=0; i<3; i++){
-            labels[i].setVisible(false);
+            devCards[i].setId("imageView1");
         }
         baseProduction.setOnMouseClicked(null);
+        baseProduction.setId("imageView1");
         for(ImageView image : leaderCards){
             image.setOnMouseClicked(null);
+            image.setId("imageView1");
         }
     }
 

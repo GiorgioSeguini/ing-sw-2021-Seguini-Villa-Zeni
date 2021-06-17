@@ -6,7 +6,7 @@
 
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
-<GridPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.gui.ChoseResController">
+<GridPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.gui.ChoseResController" stylesheets="@Style.css"  styleClass="basePane">
    <columnConstraints>
       <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="30.0" />
       <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="120.0" />
@@ -36,11 +36,11 @@
       <ImageView fitHeight="95.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="4">
          <Image url="@../../../../../images/punchboard/Stones.png" />
       </ImageView>
-      <ChoiceBox fx:id="coins" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2"     onAction="#boxAction"/>
-      <ChoiceBox fx:id="servants" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="2"  onAction="#boxAction"/>
-      <ChoiceBox fx:id="shields" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5"   onAction="#boxAction"/>
-      <ChoiceBox fx:id="stones" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="5"    onAction="#boxAction"/>
-      <Button fx:id="confirm" mnemonicParsing="false" onAction="#onAction" text="Conferma" GridPane.columnIndex="4" GridPane.rowIndex="5" />
-      <Label fx:id="label" text="prova" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+      <ChoiceBox fx:id="coins" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2"     onAction="#boxAction" styleClass="baseButton"/>
+      <ChoiceBox fx:id="servants" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="2"  onAction="#boxAction" styleClass="baseButton"/>
+      <ChoiceBox fx:id="shields" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5"   onAction="#boxAction" styleClass="baseButton"/>
+      <ChoiceBox fx:id="stones" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="5"    onAction="#boxAction" styleClass="baseButton"/>
+      <Button fx:id="confirm" mnemonicParsing="false" onAction="#onAction" text="Conferma" GridPane.columnIndex="4" GridPane.rowIndex="5" styleClass="baseButton"/>
+      <Label fx:id="label" text="prova" GridPane.columnIndex="2" GridPane.rowIndex="0" styleClass="baseLabel"/>
    </children>
 </GridPane>

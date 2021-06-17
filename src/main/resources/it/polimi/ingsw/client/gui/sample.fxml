@@ -29,7 +29,7 @@
       </ImageView>
       <TextField fx:id="name_lable" onAction="#setName" prefWidth="150.0" maxWidth="250.0" promptText="Insert your name"    GridPane.columnIndex="1" GridPane.rowIndex="3"/>
       <Button fx:id="button" mnemonicParsing="false" onAction="#start" text="Start" disable="true" GridPane.columnIndex="2" GridPane.rowIndex="7"  styleClass="baseButton"/>
-      <Button fx:id="offline"  mnemonicParsing="false" onAction="#offline" text="Offline" disable="true"   GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+      <Button fx:id="offline"  mnemonicParsing="false" onAction="#offline" text="Offline" disable="true"   GridPane.columnIndex="0" GridPane.rowIndex="7"  styleClass="baseButton"/>
       <ChoiceBox fx:id="number_lable" prefWidth="250.0"  onAction="#setNumber" accessibleText="Start"      GridPane.columnIndex="1" GridPane.rowIndex="5" styleClass="baseButton">
               <items>
                  <FXCollections fx:factory="observableArrayList">
