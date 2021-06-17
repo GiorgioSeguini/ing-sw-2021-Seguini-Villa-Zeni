@@ -28,6 +28,7 @@ public class Converter {
 
     public void addToconvert(ResourceType type){
         this.toconvert.add(type);
+        if(toconvert.size()>2) throw new IllegalArgumentException();
     }
 
     /**This method returns the Resources stored in Converter and it cleans them/. */
@@ -43,6 +44,9 @@ public class Converter {
       this.inwait=resources;
     }
 
+    public boolean isWhiteAbilityActive(){
+        return toconvert.size()>0;
+    }
 
     public int getWhite() {
         return white;

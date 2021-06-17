@@ -6,12 +6,32 @@ public enum ErrorMessage {
     FinalTurnError,
     HaveToChooseError,
     NoMoreLeaderCardAliveError,
-    NoSpaceError,
-    OutOfResourcesError,
-    UnableToFillError,
+    NoSpaceError("Non c'è spazio in questo slot!"),
+    OutOfResourcesError("Non hai le risorse per effettuare questa azione!\n"),
+    UnableToFillError("Non è possibile disporre le risorse come richiesto, scarta qualcos'altro!\n"),
     MoveNotAllowed,
     NotYourTurn,
     CardNotOwned,
-    BadChoice
+    BadChoice("Questa scelta non può essere fatta");
+
+    private String text=null;
+
+    ErrorMessage(){
+    }
+
+    ErrorMessage(String text){
+        this.text= text;
+    }
+
+    @Override
+    public String toString() {
+        if(text==null){
+            return super.toString();
+        }
+        else{
+            return text;
+        }
+    }
+
 
 }

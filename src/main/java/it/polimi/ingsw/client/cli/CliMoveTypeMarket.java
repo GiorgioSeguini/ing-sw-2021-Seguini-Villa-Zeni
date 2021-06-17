@@ -1,6 +1,7 @@
 package it.polimi.ingsw.client.cli;
 
 import it.polimi.ingsw.client.modelClient.GameClient;
+import it.polimi.ingsw.constant.enumeration.ResourceType;
 import it.polimi.ingsw.constant.move.MoveType;
 import it.polimi.ingsw.constant.move.MoveTypeMarket;
 
@@ -18,6 +19,14 @@ public class CliMoveTypeMarket implements CliInterface {
     public MoveType updateCLI(GameClient game, Scanner in) {
         System.out.println(game.getMarketTray());
         int c;
+        if(game.getMe().getConverter().isWhiteAbilityActive()){
+            System.out.println("La conversione delle biglie bianche è attiva.");
+            System.out.print("Le biglie saranno convertite in: ");
+            for(ResourceType x: game.getMe().getConverter().getToconvert()){
+                System.out.println("\t"+x);
+            }
+        }
+
         do{
             System.out.println("Cosa vuoi fare?\n");
             System.out.println("1. Compra una riga.\n2. Compra una colonna.");
