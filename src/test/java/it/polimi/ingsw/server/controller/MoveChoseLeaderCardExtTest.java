@@ -59,7 +59,7 @@ public class MoveChoseLeaderCardExtTest {
         cards.remove(0);
         move2.setIndexLeaderCards(ids);
         assertFalse(move2.canPerformExt(game));
-        game.setIndex(players.get(1).getID());
+        game.setIndex(game.getPlayerIndex(players.get(0)));
         assertFalse(move2.canPerformExt(game));
     }
 
