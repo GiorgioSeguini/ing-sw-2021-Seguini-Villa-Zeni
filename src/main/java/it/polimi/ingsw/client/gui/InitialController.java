@@ -79,12 +79,15 @@ public class InitialController extends ControllerGuiInterface{
     }
 
     public void selectCard(MouseEvent mouseEvent){
+        ((ImageView) mouseEvent.getSource()).setId("imageViewClicked");
         int index = imageViews.indexOf((ImageView) mouseEvent.getSource());
         if(!chosen[index]) {
             choice.add(gui.getModel().getLeaderCards().get(index).getId());
+            ((ImageView) mouseEvent.getSource()).setId("imageViewClicked");
             labels.get(index).setText("selected");
         }else{
             choice.remove((Integer) gui.getModel().getLeaderCards().get(index).getId());
+            ((ImageView) mouseEvent.getSource()).setId("imageView1");
             labels.get(index).setText("");
         }
         chosen[index]=!chosen[index];
