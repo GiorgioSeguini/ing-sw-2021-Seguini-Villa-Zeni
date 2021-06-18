@@ -30,7 +30,7 @@ public class CliMoveWhiteConversion implements CliInterface{
                         System.out.println(i + ". " + resourceType);
                         i++;
                     }
-                    typeofres = stdin.nextInt();
+                    typeofres = CLI.ReadFromKeyboard(stdin);
                 } while (typeofres <= 0 || typeofres > game.getMe().getConverter().getToconvert().size());
                 howMuchMarbles--;
                 resourceTypes.add(game.getMe().getConverter().getToconvert().get(typeofres - 1));
@@ -41,12 +41,12 @@ public class CliMoveWhiteConversion implements CliInterface{
                     System.out.println(i + ". " + resourceType);
                     i++;
                 }
-                int typeofres = stdin.nextInt();
+                int typeofres = CLI.ReadFromKeyboard(stdin);
                 if (typeofres <= 0 || typeofres > i) {
                     System.out.println("Invalid index!");
                 } else {
                     System.out.println("Quante biglie vuoi convertire in " + game.getMe().getConverter().getToconvert().get(typeofres - 1) + "?");
-                    int num = stdin.nextInt();
+                    int num = CLI.ReadFromKeyboard(stdin);
                     if (num < 0 || howMuchMarbles - num < 0) {
                         System.out.println("Invalid index!");
                     } else {
@@ -60,7 +60,7 @@ public class CliMoveWhiteConversion implements CliInterface{
             if(howMuchMarbles==0){
                 if(game.getMe().getConverter().getWhite()==1){
                     System.out.println("Hai scelto di convertire la biglia bianca in "+resourceTypes.get(0)+"\n\tConfermi?\n1. YES\t2. NO");
-                    int confirm=stdin.nextInt();
+                    int confirm=CLI.ReadFromKeyboard(stdin);
                     if(confirm==1){
                         move.setWhiteMarbles(resourceTypes);
                     }else{
@@ -77,7 +77,7 @@ public class CliMoveWhiteConversion implements CliInterface{
                         System.out.println(count+" "+r);
                     }
                     System.out.println("Confermi?\n1. YES\t2. NO");
-                    int confirm=stdin.nextInt();
+                    int confirm=CLI.ReadFromKeyboard(stdin);
                     if(confirm==1){
                         move.setWhiteMarbles(resourceTypes);
                     }else{

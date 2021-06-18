@@ -21,7 +21,7 @@ public class CliMoveLeader implements CliInterface{
         int m=0;
         do{
             System.out.println("Cosa vuoi fare?\n\t1. Scartare una carta leader.\n\t2. Attivare l'abilità di una carta leader.");
-            m = stdin.nextInt();
+            m = CLI.ReadFromKeyboard(stdin);
         }while(m!=1 && m!=2);
 
         if(m==1){
@@ -45,7 +45,7 @@ public class CliMoveLeader implements CliInterface{
 
         int numcard = 0;
         do{
-            numcard=stdin.nextInt();
+            numcard=CLI.ReadFromKeyboard(stdin);
         }while(numcard<1 || numcard>(i-1));
         move.setIdLeaderCard(game.getMe().getPersonalBoard().getLeaderCards().get(numcard-1).getId());
 

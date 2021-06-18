@@ -36,7 +36,7 @@ public class CliPrint implements CliInterface{
             }
             showPrints();
             do {
-                index=stdin.nextInt();
+                index=CLI.ReadFromKeyboard(stdin);
                 if(index<0 || index>prints.size()){
                     System.out.println("Indice non valido. Riprova");
                 }
@@ -54,7 +54,7 @@ public class CliPrint implements CliInterface{
             }
 
             System.out.println("\nVuoi terminare la stampa? \n\t1. SI\n\t2. NO");
-            index=stdin.nextInt();
+            index=CLI.ReadFromKeyboard(stdin);
             if (index==1){
                 end=true;
             }
@@ -104,7 +104,7 @@ public class CliPrint implements CliInterface{
                         i++;
                     }
                 }
-                i=scanner.nextInt();
+                i=CLI.ReadFromKeyboard(scanner);
                 if(i<0 || i>game.getPlayers().size()-1){
                     System.out.println("Indice non valido.");
                 }

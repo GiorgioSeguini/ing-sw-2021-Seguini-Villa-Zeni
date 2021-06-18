@@ -59,7 +59,7 @@ public class CLI implements Runnable, UI {
                 System.out.println("Puoi decidere di creare una partita privata o di entrare in lista d'attesa per una partita pubblica. Come vuoi procedere? ");
                 System.out.println("\t1. Partita privata.");
                 System.out.println("\t2. Partita pubblica.");
-                x = in.nextInt();
+                x = ReadFromKeyboard(in);
                 in.nextLine();
                 if (x < 1 || x > 2) {
                     System.out.println("Indice non valido!");
@@ -136,7 +136,7 @@ public class CLI implements Runnable, UI {
 
                     }
 
-                    index = in.nextInt();
+                    index = ReadFromKeyboard(in);
 
                     if (index < 1 || index > i - 1) {
                         System.out.println("Indice non valido!");
@@ -172,7 +172,7 @@ public class CLI implements Runnable, UI {
                 System.out.println("Puoi decidere se creare una nuova stanza di gioco o unirti ad una esistente. Come vogliamo procedere? ");
                 System.out.println("\t1. Crea nuova stanza. ");
                 System.out.println("\t2. Unisciti ad una stanza.");
-                x = in.nextInt();
+                x = ReadFromKeyboard(in);
                 in.nextLine();
                 if(x<1||x>2) System.out.println("Indice non valido");
             }while (x<1||x>2);
@@ -189,7 +189,7 @@ public class CLI implements Runnable, UI {
             if(x==1){
                 do{
                     System.out.print("Quanti giocatori vuoi unire alla stanza? (da 1 a 4 giocatori): ");
-                    numOfPlayers=in.nextInt();
+                    numOfPlayers=ReadFromKeyboard(in);
                     in.nextLine();
                     if(numOfPlayers<1||numOfPlayers>4) System.out.println("Indice non valido");
                 }while(numOfPlayers<1 || numOfPlayers>4);
@@ -243,7 +243,7 @@ public class CLI implements Runnable, UI {
                 name = in.nextLine();
                 System.out.println("Con quanti avversari vuoi giocare?\n 1. Da solo \n 2. Un avversario\n 3. Due avversari\n 4. Tre avversari\n");
                 System.out.println("--> Digita il numero dell'opzione che preferisci e premi INVIO");
-                x = in.nextInt();
+                x = ReadFromKeyboard(in);
                 in.nextLine();
                 if (x < 1 || x > 4) {
                     System.out.println("Indice non valido!");
@@ -312,5 +312,24 @@ public class CLI implements Runnable, UI {
 
     public synchronized boolean getActive(){
         return connectionAccepted;
+    }
+
+    public static int ReadFromKeyboard(Scanner stdin){
+        boolean check = false;
+        String input;
+        int INTinput=0;
+        do{
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            try{
+                input = br.readLine();
+                INTinput = Integer.parseInt(input);
+                check=true;
+            }
+            catch(Exception e){
+                System.out.println("Write an integer number");
+            }
+
+        }while(!check);
+        return INTinput;
     }
 }

@@ -24,13 +24,13 @@ public class CliMoveChoseResources implements CliInterface{
         if(game.getMe().getToActive().getOfYourChoiceInput()==1){
             System.out.println("Scegli la risorsa in input!");
             printRes();
-            int res = stdin.nextInt();
+            int res = CLI.ReadFromKeyboard(stdin);
             move.setOfYourChoiceInput(numberOfResources.add(ResourceType.values()[res-1],1));
         }else{
             System.out.println("Scegli le risorse in input!");
             printRes();
             while(numberOfResources.size()< game.getMe().getToActive().getOfYourChoiceInput()){
-                int res = stdin.nextInt();
+                int res = CLI.ReadFromKeyboard(stdin);
                 if(res>0 && res<=ResourceType.values().length){
                     numberOfResources=numberOfResources.add(ResourceType.values()[res-1],1);
 
@@ -42,7 +42,7 @@ public class CliMoveChoseResources implements CliInterface{
         }
         System.out.println("Scegli la risorsa in output!");
         printRes();
-        int res = stdin.nextInt();
+        int res = CLI.ReadFromKeyboard(stdin);
         move.setOfYourChoiceOutput(new NumberOfResources().add(ResourceType.values()[res-1],1));
         return move;
         // TODO: 5/21/21 cambiare (ricordare che la produzione è comulativa, printare howmany productions)  

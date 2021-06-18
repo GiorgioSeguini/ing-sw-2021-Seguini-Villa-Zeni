@@ -26,7 +26,7 @@ public class CliMoveDiscardResources implements CliInterface{
             int num;
             do{
                 System.out.println(resourceType+":");
-                num = stdin.nextInt();
+                num = CLI.ReadFromKeyboard(stdin);
                 if(num>game.getMe().getConverter().getResources().getAmountOf(resourceType) || num<0){
                     System.out.println("Invalid index!");
                 }

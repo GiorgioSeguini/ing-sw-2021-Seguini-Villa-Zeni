@@ -31,7 +31,7 @@ public class CliChoseLeaderCard implements CliInterface {
 
         ArrayList<Integer> choice = new ArrayList<>();
         while(choice.size() < PersonalBoard.MAX_LEAD_CARD){
-            int index = in.nextInt();
+            int index = CLI.ReadFromKeyboard(in);
             if(index>0 && index<=game.getLeaderCards().size() && !choice.contains(game.getLeaderCards().get(index-1).getId())){
                 choice.add(game.getLeaderCards().get(index-1).getId());
 

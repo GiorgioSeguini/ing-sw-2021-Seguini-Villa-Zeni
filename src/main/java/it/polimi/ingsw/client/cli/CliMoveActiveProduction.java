@@ -26,7 +26,7 @@ public class CliMoveActiveProduction implements CliInterface{
         System.out.println("Quali produzioni vuoi attivare?\n------> Inserisci le produzioni e premi -1 per terminare. Se hai cambiato idea e vuoi tornare alle scelte iniziali premi direttamente -1.");
         int p;
         do{
-            p = stdin.nextInt();
+            p = CLI.ReadFromKeyboard(stdin);
             if(p>0 && p<=i ) {
                 productionPowers.add(game.getMe().getPersonalBoard().getProduction().get(p - 1));
             }else if(p!=-1){

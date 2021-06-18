@@ -29,7 +29,7 @@ public class CliChoseInitialResources implements CliInterface {
         while(resources.size()< game.getInitialResources(move.getIdPlayer())){
             System.out.println("--> devi scegliere " + (game.getInitialResources(move.getIdPlayer()) - resources.size()) + " risorse");
             System.out.println("Ricorda! Digita il numero e poi premi INVIO");
-            int index = in.nextInt() -1;
+            int index = CLI.ReadFromKeyboard(in) -1;
             if(index>=0 && index < ResourceType.values().length){
                 resources = resources.add(ResourceType.values()[index], 1);
             }else{

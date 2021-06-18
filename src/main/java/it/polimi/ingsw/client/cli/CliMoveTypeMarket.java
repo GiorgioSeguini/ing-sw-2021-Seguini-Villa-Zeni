@@ -30,7 +30,7 @@ public class CliMoveTypeMarket implements CliInterface {
         do{
             System.out.println("Cosa vuoi fare?\n");
             System.out.println("1. Compra una riga.\n2. Compra una colonna.");
-            c = in.nextInt();
+            c = CLI.ReadFromKeyboard(in);
         }while(c!=1 && c!=2);
 
         int index = 0;
@@ -38,7 +38,7 @@ public class CliMoveTypeMarket implements CliInterface {
             int temp;
             do {
                 System.out.println("Inserisci l'indice della riga desiderata");
-                temp = in.nextInt();
+                temp = CLI.ReadFromKeyboard(in);
                 if (temp <= 0 || temp > 3) {
                     System.out.println("Invalid choice");
                 }
@@ -50,7 +50,7 @@ public class CliMoveTypeMarket implements CliInterface {
             int temp;
             do {
                 System.out.println("Inserisci l'indice della colonna desiderata");
-                temp = in.nextInt();
+                temp = CLI.ReadFromKeyboard(in);
                 if (temp <= 0 || temp > 4) {
                     System.out.println("Invalid choice");
                 }
