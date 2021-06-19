@@ -59,6 +59,7 @@ public class PublicLoginController extends ControllerGuiInterface{
     @Override
     public void update() {
         name=null;
+        name_lable.setText("");
         button.setDisable(notCanActive());
     }
 

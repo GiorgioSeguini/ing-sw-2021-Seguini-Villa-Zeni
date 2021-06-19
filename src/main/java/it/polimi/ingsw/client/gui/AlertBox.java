@@ -48,12 +48,12 @@ public class AlertBox {
         window= new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle(boxTitle);
-        window.setMinWidth(400);
-        window.setMaxHeight(400);
+        window.setMinWidth(600);
+        window.setMaxHeight(600);
 
         Label label= new Label();
         label.setText(boxMessage);
-        Button closeButton= new Button("Cancel");
+        Button closeButton= new Button("Ok");
         closeButton.setOnAction(e->window.close());
 
         VBox layout= new VBox(10);

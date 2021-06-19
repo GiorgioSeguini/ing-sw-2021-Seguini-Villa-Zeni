@@ -13,9 +13,12 @@ public class PrivateLoginController extends ControllerGuiInterface{
 
     public static String className = "privateLogin";
     private String name;
-    private Integer number;
+    private Integer number=0;
     private String roomName;
     private boolean addinroom=false;
+
+    private static String addInroom= "Accedi ad una stanza";
+    private static String createroom="Crea una stanza";
 
     @FXML
     TextField name_lable;
@@ -42,29 +45,33 @@ public class PrivateLoginController extends ControllerGuiInterface{
     @Override
     public void update() {
         name=null;
+        name_lable.setText("");
         roomName=null;
-        number_lable.setVisible(notCanActiveCreate());
+        roomName_lable.setText("");
         addinroom=false;
+        name_lable.setVisible(false);
+        roomName_lable.setVisible(false);
+        number_lable.setVisible(false);
+        button.setDisable(true);
+
+        menuChoice.setText("Seleziona l'azione");
+        addInRoom.setText(addInroom);
+        createRoom.setText(createroom);
     }
 
     public void setName(){
         this.name=name_lable.getText();
-        if(addinroom){
-            this.button.setDisable(notCanActive());
-        }
-        else {
-            this.button.setDisable(notCanActiveCreate());
-        }
+        CheckValues();
     }
 
     public void setNumber(){
         this.number=number_lable.getValue();
-        if(addinroom){
-            this.button.setDisable(notCanActive());
-        }
-        else {
-            this.button.setDisable(notCanActiveCreate());
-        }
+        CheckValues();
+    }
+
+    public void setRoomName() {
+        this.roomName=roomName_lable.getText();
+        CheckValues();
     }
 
     public void start(ActionEvent event) {
@@ -81,33 +88,36 @@ public class PrivateLoginController extends ControllerGuiInterface{
         gui.activate(StartController.className);
     }
 
-    public void setRoomName() {
-        this.roomName=roomName_lable.getText();
-        if(addinroom){
-            this.button.setDisable(notCanActive());
-        }
-        else {
-            this.button.setDisable(notCanActiveCreate());
-        }
-    }
 
     public void needNumber(ActionEvent event) {
+        name_lable.setVisible(true);
+        roomName_lable.setVisible(true);
         if(event.getSource().equals(addInRoom)) {
             number_lable.setVisible(false);
             addinroom = true;
+            menuChoice.setText(addInRoom.getText());
         }
         else{
             number_lable.setVisible(true);
             addinroom = false;
+            menuChoice.setText(createRoom.getText());
         }
     }
 
-    private boolean notCanActive(){
-        return name == null || roomName==null;
-    }
-
-    private boolean notCanActiveCreate(){
-        if (notCanActive()) return number==null;
-        return false;
+    private void CheckValues(){
+        if(addinroom){
+            if(name!=null && roomName!=null){
+                button.setDisable(false);
+            }else{
+                button.setDisable(true);
+            }
+        }else{
+            if(name!=null && roomName!=null && number!=0){
+                button.setDisable(false);
+            }
+            else{
+                button.setDisable(true);
+            }
+        }
     }
 }

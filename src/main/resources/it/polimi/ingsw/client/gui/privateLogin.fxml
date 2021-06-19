@@ -40,10 +40,10 @@
                 </FXCollections>
             </items>
         </ChoiceBox>
-      <MenuButton fx:id="menuChoice" mnemonicParsing="false" text="Scegli l'azione" GridPane.rowIndex="3" GridPane.columnIndex="0">
+      <MenuButton fx:id="menuChoice" mnemonicParsing="false" GridPane.rowIndex="3" GridPane.columnIndex="0">
         <items>
-          <MenuItem fx:id="addInRoom" mnemonicParsing="false" text="Aggiungiti ad una stanza" onAction="#needNumber"/>
-          <MenuItem fx:id="createRoom" mnemonicParsing="false" text="Crea una stanza" onAction="#needNumber" />
+          <MenuItem fx:id="addInRoom" mnemonicParsing="false"  onAction="#needNumber"/>
+          <MenuItem fx:id="createRoom" mnemonicParsing="false" onAction="#needNumber" />
         </items>
       </MenuButton>
     </children>

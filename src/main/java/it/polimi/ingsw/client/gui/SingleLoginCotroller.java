@@ -13,13 +13,13 @@ public class SingleLoginCotroller extends ControllerGuiInterface{
     private String name;
 
     @FXML
-    AnchorPane anchorPane;
+    private AnchorPane anchorPane;
     @FXML
-    TextField name_lable;
+    private TextField name_lable;
     @FXML
-    Button button;
+    private Button button;
     @FXML
-    Button ComeBack;
+    private Button ComeBack;
 
     @FXML
     public void initialize() {
@@ -47,6 +47,7 @@ public class SingleLoginCotroller extends ControllerGuiInterface{
     @Override
     public void update() {
         name = null;
+        name_lable.setText("");
         button.setDisable(notCanActive());
     }
 

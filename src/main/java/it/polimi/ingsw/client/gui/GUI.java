@@ -42,6 +42,10 @@ public class GUI extends Application implements UI {
     private boolean myTurn=false;
     private boolean active = false;
     private final Image[] resImage = new Image[ResourceType.values().length];
+    private final static String errorConnectionMessage="Ops! Qualcosa è andato storto! Verifica i seguenti problemi:\n" +
+            "\t1. La stanza nella quale vuoi accedere ha una partita già in corso.\n" +
+            "\t2. La stanza che stai cercando è inesistente.\n" +
+            "\t3. Il nome con la quale stai provando ad accedere è già stato usato da un altro utente in questa stanza";
 
     public static void entry(Client client) {
         GUI.client = client;
@@ -109,15 +113,19 @@ public class GUI extends Application implements UI {
         if(getModel()==null) {
             if(active)
                 this.activate("lobby");
+            else{
+                AlertBox box= new AlertBox("Errore",errorConnectionMessage);
+                box.display();
+            }
             return;
         }
         //check error
         if(getModel().getMe().getErrorMessage()!= ErrorMessage.NoError){
             AlertBox box = new AlertBox("Errore", getModel().getMe().getErrorMessage().toString());
-            Button button= new Button("Ok");
-            EventHandler<ActionEvent> event = e -> box.closeBox();
-            button.setOnAction(event);
-            box.addButton(button);
+            //Button button= new Button("Ok");
+            //EventHandler<ActionEvent> event = e -> box.closeBox();
+            //button.setOnAction(event);
+           // box.addButton(button);
             box.display();
         }
 
