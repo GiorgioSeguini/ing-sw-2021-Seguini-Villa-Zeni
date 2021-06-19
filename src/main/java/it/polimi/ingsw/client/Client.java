@@ -62,6 +62,7 @@ public class Client {
 
     public synchronized void setActive(boolean active){
         this.active = active;
+        if(!active) notifyAll();
     }
 
     public Thread asyncReadFromSocket(final DataInputStream socketIn){
@@ -122,6 +123,7 @@ public class Client {
                 socket.close();
             }
             stdin.close();
+            System.exit(0);
         }
     }
 

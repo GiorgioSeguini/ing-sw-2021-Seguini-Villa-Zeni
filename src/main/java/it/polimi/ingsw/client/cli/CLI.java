@@ -60,7 +60,7 @@ public class CLI implements Runnable, UI {
                 System.out.println("\t1. Partita privata.");
                 System.out.println("\t2. Partita pubblica.");
                 x = ReadFromKeyboard(in);
-                in.nextLine();
+                //in.nextLine();
                 if (x < 1 || x > 2) {
                     System.out.println("Indice non valido!");
                 }
@@ -173,7 +173,7 @@ public class CLI implements Runnable, UI {
                 System.out.println("\t1. Crea nuova stanza. ");
                 System.out.println("\t2. Unisciti ad una stanza.");
                 x = ReadFromKeyboard(in);
-                in.nextLine();
+                //in.nextLine();
                 if(x<1||x>2) System.out.println("Indice non valido");
             }while (x<1||x>2);
             if(x==1){
@@ -190,7 +190,7 @@ public class CLI implements Runnable, UI {
                 do{
                     System.out.print("Quanti giocatori vuoi unire alla stanza? (da 1 a 4 giocatori): ");
                     numOfPlayers=ReadFromKeyboard(in);
-                    in.nextLine();
+                    //in.nextLine();
                     if(numOfPlayers<1||numOfPlayers>4) System.out.println("Indice non valido");
                 }while(numOfPlayers<1 || numOfPlayers>4);
                 setupper= new CreateRoomSetupper(name, room, numOfPlayers);
@@ -244,7 +244,7 @@ public class CLI implements Runnable, UI {
                 System.out.println("Con quanti avversari vuoi giocare?\n 1. Da solo \n 2. Un avversario\n 3. Due avversari\n 4. Tre avversari\n");
                 System.out.println("--> Digita il numero dell'opzione che preferisci e premi INVIO");
                 x = ReadFromKeyboard(in);
-                in.nextLine();
+                //in.nextLine();
                 if (x < 1 || x > 4) {
                     System.out.println("Indice non valido!");
                 }
@@ -319,9 +319,9 @@ public class CLI implements Runnable, UI {
         String input;
         int INTinput=0;
         do{
-            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            //BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
             try{
-                input = br.readLine();
+                input = stdin.nextLine();
                 INTinput = Integer.parseInt(input);
                 check=true;
             }

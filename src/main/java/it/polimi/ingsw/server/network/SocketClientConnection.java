@@ -70,7 +70,7 @@ public class SocketClientConnection implements  Observable<String>, ClientConnec
     @Override
     public synchronized void closeConnection() {
         try {
-            send("Connection closed");
+            //send("Connection closed");
             socket.close();
         } catch (IOException e) {
             System.err.println("Error when closing socket!");

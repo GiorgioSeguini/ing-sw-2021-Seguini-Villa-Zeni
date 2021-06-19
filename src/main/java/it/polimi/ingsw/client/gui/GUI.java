@@ -45,7 +45,7 @@ public class GUI extends Application implements UI {
 
     public static void entry(Client client) {
         GUI.client = client;
-        launch((String) null);
+        launch(new String[]{});
     }
 
     public GUI(){
