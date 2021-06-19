@@ -53,7 +53,7 @@ public class AlertBox {
 
         Label label= new Label();
         label.setText(boxMessage);
-        Button closeButton= new Button("Ok");
+        Button closeButton= new Button("Cancel");
         closeButton.setOnAction(e->window.close());
 
         VBox layout= new VBox(10);
