@@ -23,3 +23,8 @@
 
 #imageView1{
 }
+.root{
+    -fx-background-color:
+            #a69c7e,
+            linear-gradient(#a69c7e, #a47e3c);
+}

@@ -36,6 +36,7 @@ public class AlertBox {
 
     public void display(){
         Scene scene= new Scene(layout);
+        scene.getStylesheets().add(getClass().getResource("Style.css").toString());
         window.setScene(scene);
         window.showAndWait();
     }
@@ -55,6 +56,7 @@ public class AlertBox {
         label.setText(boxMessage);
         Button closeButton= new Button("Cancel");
         closeButton.setOnAction(e->window.close());
+        closeButton.getStyleClass().add("baseButton");
 
         VBox layout= new VBox(10);
         layout.getChildren().addAll(label, closeButton);
