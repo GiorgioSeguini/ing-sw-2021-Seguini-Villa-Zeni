@@ -31,6 +31,7 @@ public class AlertBox {
     }
 
     public void addButton(Button button){
+        button.getStyleClass().add("baseButton");
         layout.getChildren().addAll(button);
     }
 
