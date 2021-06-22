@@ -44,7 +44,7 @@ public class MoveAutoPlay implements Performable{
             return;
         }
         if(game.getStatus()==GameStatus.Running){
-            if(game.getPlayerFromID(myID).getStatus() == PlayerStatus.Active || game.getPlayerFromID(myID).getStatus() == PlayerStatus.Waiting){
+            if(game.getPlayerFromID(myID).getStatus() == PlayerStatus.Active || game.getPlayerFromID(myID).getStatus() == PlayerStatus.MovePerformed){
                 game.nextTurn();
                 return;
             }
