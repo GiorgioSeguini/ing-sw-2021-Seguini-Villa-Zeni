@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -22,6 +23,10 @@ public abstract class IntermediateController extends ControllerGuiInterface {
     private static final Double[] DEPOTS_X = {220.0};
     private static final Double[] DEPOTS_Y = {146.0};
     private static final Double DEPOTS_REAL = 400.0;
+    private static final Double[] STRONGBOX_X = {182.0, 388.0, 182.0, 388.0};
+    private static final Double[] STRONGBOX_X2 = {65.0, 95.0,  271.0, 301.0, 65.0, 95.0,  271.0, 301.0};
+    private static final Double[] STRONGBOX_Y = {769.0, 769.0, 883.0, 883.0};
+    private static final Double[] STRONGBOX_Y2 = {769.0, 769.0, 769.0, 769.0, 883.0, 883.0, 883.0, 883.0};
 
     @FXML
     private ChoiceBox<Integer> coins;
@@ -40,6 +45,9 @@ public abstract class IntermediateController extends ControllerGuiInterface {
     @FXML
     Button confirm;
 
+    //strongbox
+    private final ImageView[] imageStrongbox = new ImageView[ResourceType.values().length];
+    private final ImageView[] numberStrongbox = new ImageView[ResourceType.values().length*2];
     final ChoiceBox<Integer>[] boxes = new ChoiceBox[4];
     private final ImageView[] resources = new ImageView[6];
 
@@ -50,12 +58,18 @@ public abstract class IntermediateController extends ControllerGuiInterface {
         boxes[ResourceType.Shields.ordinal()] = shields;
         boxes[ResourceType.Stones.ordinal()] = stones;
 
+        for(int i=0; i<imageStrongbox.length; i++){
+            imageStrongbox[i]= new ImageView();
+            anchorPane.getChildren().add(imageStrongbox[i]);
+        }
+        for(int i=0; i<numberStrongbox.length; i++){
+            numberStrongbox[i]= new ImageView();
+            anchorPane.getChildren().add(numberStrongbox[i]);
+        }
 
         for (int i = 0; i < resources.length; i++) {
             resources[i] = new ImageView();
             anchorPane.getChildren().add(resources[i]);
-            /*GridPane.setColumnIndex(resources[i], GridPane.getColumnIndex(depots));
-            GridPane.setRowIndex(resources[i], GridPane.getRowIndex(depots));*/
         }
 
         GUI.fixImagesToPane(anchorPane, 692.0, 1280.0, new ImageView[]{depots}, DEPOTS_X, DEPOTS_Y, DEPOTS_REAL);
@@ -66,11 +80,18 @@ public abstract class IntermediateController extends ControllerGuiInterface {
                 });
         gridPane.prefHeightProperty().bind(anchorPane.heightProperty());
         GUI.fixImages(depots, DEPOTS_HEIGHT, resources, RES_X, RES_Y, RES_SIZE);
+
+        GUI.fixImages(depots, DEPOTS_HEIGHT, imageStrongbox, STRONGBOX_X, STRONGBOX_Y, RES_SIZE);
+        for(ResourceType type : ResourceType.values()){
+            imageStrongbox[type.ordinal()].setImage(new Image("/images/punchboard/" + type + ".png"));
+        }
+        GUI.fixImages(depots, DEPOTS_HEIGHT, numberStrongbox, STRONGBOX_X2, STRONGBOX_Y2, RES_SIZE);
     }
 
     @Override
     public void update() {
         gui.printDepots(resources, gui.getModel().getMe().getDepots());
+        gui.printResources(numberStrongbox, gui.getModel().getMe().getDepots().getStrongBox().getResources());
     }
 
     public abstract void onAction(ActionEvent actionEvent);
