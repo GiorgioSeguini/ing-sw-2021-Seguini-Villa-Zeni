@@ -10,6 +10,7 @@ import it.polimi.ingsw.constant.enumeration.PlayerStatus;
 import it.polimi.ingsw.constant.enumeration.ResourceType;
 import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.constant.model.Depots;
+import it.polimi.ingsw.constant.model.NumberOfResources;
 import it.polimi.ingsw.constant.move.MoveType;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -42,6 +43,7 @@ public class GUI extends Application implements UI {
     private boolean myTurn=false;
     private boolean active = false;
     private final Image[] resImage = new Image[ResourceType.values().length];
+    private final Image[] numberImage = new Image[10];
     private final static String errorConnectionMessage="Ops! Qualcosa è andato storto! Verifica i seguenti problemi:\n" +
             "\t1. La stanza nella quale vuoi accedere ha una partita già in corso.\n" +
             "\t2. La stanza che stai cercando è inesistente.\n" +
@@ -57,6 +59,9 @@ public class GUI extends Application implements UI {
         //image caching
         for(ResourceType type : ResourceType.values()){
             resImage[type.ordinal()]= new Image("/images/punchboard/" + type + ".png");
+        }
+        for(int i=0; i<9; i++){
+            numberImage[i] = new Image("/images/number/" + i + ".png");
         }
     }
 
@@ -336,6 +341,15 @@ public class GUI extends Application implements UI {
             resources[5].setVisible(true);
         }else{
             resources[5].setVisible(false);
+        }
+    }
+
+    public void printResources(ImageView[] number, NumberOfResources resources) {
+        if(number.length!= ResourceType.values().length)
+            throw new RuntimeException();
+        for(ResourceType type: ResourceType.values()){
+            int val = resources.getAmountOf(type);
+            number[type.ordinal()].setImage(numberImage[val]);
         }
     }
 }

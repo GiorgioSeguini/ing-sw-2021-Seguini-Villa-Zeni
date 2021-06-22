@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.gui.WaitingController" stylesheets="Style.css" styleClass="basePane">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.gui.WaitingController" stylesheets="@Style.css" styleClass="basePane">
    <children>
       <Label fx:id="label" layoutX="143.0" layoutY="113.0" prefHeight="121.0" prefWidth="284.0" styleClass="baseLabel"/>
    </children>
