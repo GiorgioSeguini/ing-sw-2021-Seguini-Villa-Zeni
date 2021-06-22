@@ -27,8 +27,9 @@ public class BaseController  extends ControllerGuiInterface{
     private static final Double[] RES_X = {289.0, 231.0, 320.0, 187.0, 274.0, 365.0};
     private static final Double[] RES_Y = {763.0, 905.0, 905.0, 1057.0, 1057.0, 1057.0};
     private static final Double[] STRONGBOX_X = {182.0, 388.0, 182.0, 388.0};
-    private static final Double[] STRONGBOX_X2 = {95.0, 301.0, 95.0, 301.0};
+    private static final Double[] STRONGBOX_X2 = {65.0, 95.0,  271.0, 301.0, 65.0, 95.0,  271.0, 301.0};
     private static final Double[] STRONGBOX_Y = {1357.0, 1357.0, 1471.0, 1471.0};
+    private static final Double[] STRONGBOX_Y2 = {1357.0, 1357.0, 1357.0, 1357.0, 1471.0, 1471.0, 1471.0, 1471.0};
     private static final Double[] POPES_X = {607.0, 1186.0, 1884.0};
     private static final Double[] POPES_Y = {250.0, 132.0, 250.0};
     static final Double[] DEV_X = {935.0, 935.0, 935.0, 1398.0, 1398.0, 1398.0, 1861.0, 1861.0, 1861.0};
@@ -67,7 +68,7 @@ public class BaseController  extends ControllerGuiInterface{
     private final ImageView[] resources = new ImageView[6];
     //strongbox
     private final ImageView[] imageStrongbox = new ImageView[ResourceType.values().length];
-    private final ImageView[] numberStrongbox = new ImageView[ResourceType.values().length];
+    private final ImageView[] numberStrongbox = new ImageView[ResourceType.values().length*2];
     //devcard
     final ImageView[] devCards = new ImageView[9];
     //leadercard
@@ -125,7 +126,7 @@ public class BaseController  extends ControllerGuiInterface{
         for(ResourceType type : ResourceType.values()){
             imageStrongbox[type.ordinal()].setImage(resImage[type.ordinal()]);
         }
-        GUI.fixImages(board, BOARD_HEIGHT, numberStrongbox, STRONGBOX_X2, STRONGBOX_Y, RES_SIZE);
+        GUI.fixImages(board, BOARD_HEIGHT, numberStrongbox, STRONGBOX_X2, STRONGBOX_Y2, RES_SIZE);
         GUI.fixImages(board, BOARD_HEIGHT, popes, POPES_X, POPES_Y, POPE_SIZE);
         GUI.fixImages(board, BOARD_HEIGHT, devCards, DEV_X, DEV_Y, CARD_HEIGHT);
         GUI.fixImages(board, BOARD_HEIGHT, faithTrack, FAITH_X, FAITH_Y, FAITH_HEIGHT);

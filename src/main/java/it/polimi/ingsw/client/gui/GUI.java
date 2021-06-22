@@ -345,11 +345,16 @@ public class GUI extends Application implements UI {
     }
 
     public void printResources(ImageView[] number, NumberOfResources resources) {
-        if(number.length!= ResourceType.values().length)
+        if(number.length!= 2*ResourceType.values().length)
             throw new RuntimeException();
         for(ResourceType type: ResourceType.values()){
             int val = resources.getAmountOf(type);
-            number[type.ordinal()].setImage(numberImage[val]);
+            if(val<10){
+                number[type.ordinal()*2].setImage(null);
+            }else{
+                number[type.ordinal()*2].setImage(numberImage[val/10]);
+            }
+            number[type.ordinal()*2 +1].setImage(numberImage[val%10]);
         }
     }
 }
