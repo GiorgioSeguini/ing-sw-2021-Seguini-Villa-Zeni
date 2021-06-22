@@ -2,10 +2,11 @@
     -fx-background-color:
             #f1db75,
     linear-gradient(#b4a552,  #f1db75);
-    -fx-background-insets: 0, 1, 2;
     -fx-background-radius: 3, 2, 1;
     -fx-font-family: "Helvetica";
     -fx-font-size: 12 pt;
+    -fx-padding: 5px;
+    -fx-border-insets: 5px;
 }
 
 .basePane{

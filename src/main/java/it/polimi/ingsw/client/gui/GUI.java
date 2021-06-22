@@ -260,7 +260,7 @@ public class GUI extends Application implements UI {
             back.fitHeightProperty().addListener((observableValue, oldValue, newValue) -> {
                 labels[finalI].setLayoutX(back.getLayoutX() + (Double)newValue * x[finalI]/ backHeight);
                 labels[finalI].setLayoutY(back.getLayoutY() + (Double)newValue * y[finalI]/ backHeight);
-                labels[finalI].setPrefSize((Double) newValue * width / backHeight , (Double) newValue * height / backHeight);
+                //labels[finalI].setPrefSize((Double) newValue * width / backHeight , (Double) newValue * height / backHeight);
             });
 
         }
@@ -282,19 +282,19 @@ public class GUI extends Application implements UI {
         }
     }
 
-    public static void fixButtonToPane(final Pane back, final Double backHeight, final Button button, final Double x, final Double y, final Double height, final Double width) {
+    /*public static void fixButtonToPane(final Pane back, final Double backHeight, final Button button, final Double x, final Double y, final Double height, final Double width) {
         back.heightProperty().addListener((observableValue, oldValue, newValue) -> {
             button.setLayoutX(back.getLayoutX() + (Double)newValue * x/ backHeight);
             button.setLayoutY(back.getLayoutY() + (Double)newValue * y/ backHeight);
             button.setPrefWidth((Double) newValue * width / backHeight);
         });
 
-    }
+    }*/
 
-    public static void fixButtonToPane(final Pane back, final Button button) {
+    /*public static void fixButtonToPane(final Pane back, final Button button) {
         fixButtonToPane(back, back.getPrefHeight(), button, button.getLayoutX(), button.getLayoutY(), button.getPrefHeight(), button.getPrefWidth());
 
-    }
+    }*/
 
     public void printDepots(ImageView[] resources, Depots depots){
         int  n0 = depots.getWareHouseDepots().getShelfs().get(0).getUsed();

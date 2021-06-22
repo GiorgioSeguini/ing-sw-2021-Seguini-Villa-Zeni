@@ -32,7 +32,7 @@ public class BaseMeController extends BaseController{
     private static final Double[] BASE_PROD_Y = {1156.0};
     private static final Double BASE_PROD_HEIGHT = 286.0;
     private static final Double[] LEAD_BUTTON_X = {2550.0, 2700.0, 2550.0, 2700.0};
-    private static final Double[] LEAD_BUTTON_Y = {40.0, 40.0, 900.0, 900.0};
+    private static final Double[] LEAD_BUTTON_Y = {20.0, 20.0, 900.0, 900.0};
     private static final Double LEAD_BUTTON_HEIGHT = 70.0;
     private static final Double LEAD_BUTTON_WIDTH = 120.0;
     private static final Double[] TOKEN_X = {3000.0, 3000.0};

@@ -29,6 +29,6 @@
        <Label fx:id="chose" prefWidth="400.0" styleClass="baseLabel" text="Benvenuto! Seleziona la modalità di gioco che preferisci!" wrapText="false" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
       <Button fx:id="privateGame" mnemonicParsing="false" onAction="#privateGame" prefHeight="90.0" prefWidth="400.0" styleClass="baseButton" text="Partita privata con i propri amici" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
       <Button fx:id="publicGame"  mnemonicParsing="false" onAction="#publicGame" prefHeight="90.0" prefWidth="400.0" styleClass="baseButton" text="Partita Multigiocatore" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
-      <Button fx:id="SinglePlayerOffline" mnemonicParsing="false" onAction="#soloGameOff" prefHeight="90.0" prefWidth="400.0" styleClass="baseButton" text="SIngle Player Offline" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+      <Button fx:id="SinglePlayerOffline" mnemonicParsing="false" onAction="#soloGameOff" prefHeight="90.0" prefWidth="400.0" styleClass="baseButton" text="Single Player Offline" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
    </children>
 </GridPane>
