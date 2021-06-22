@@ -11,44 +11,35 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 
 import java.util.ArrayList;
 
-public class ChoseResController extends ControllerGuiInterface{
+public class ChoseResController extends IntermediateController{
 
     public static final String className = "choseRes";
 
-    @FXML
-    private ChoiceBox<Integer> coins;
-    @FXML
-    private ChoiceBox<Integer> servants;
-    @FXML
-    private ChoiceBox<Integer> shields;
-    @FXML
-    private ChoiceBox<Integer> stones;
+    private static final Double[] LABEL_X = {50.0};
+    private static final Double[] LABEL_Y = {-200.0};
+
     @FXML
     private Label label;
-    @FXML
-    private Button confirm;
 
-    private final ChoiceBox<Integer>[] boxes = new ChoiceBox[4];
-    private boolean status = false;
+    private boolean status;
 
     private NumberOfResources input;
     private NumberOfResources output;
 
-
-    @FXML
+    @Override
     public void initialize(){
-        boxes[ResourceType.Coins.ordinal()] = coins;
-        boxes[ResourceType.Servants.ordinal()] = servants;
-        boxes[ResourceType.Shields.ordinal()] = shields;
-        boxes[ResourceType.Stones.ordinal()] = stones;
+        super.initialize();
+        GUI.fixLabels(depots, DEPOTS_HEIGHT, new Label[]{label}, LABEL_X, LABEL_Y);
     }
-
 
     @Override
     public void update() {
+        super.update();
         NumberOfResources owned = gui.getModel().getMe().getDepots().getResources();
         try {
             owned = owned.sub(gui.getModel().getMe().getToActive().getInputRes());
@@ -63,7 +54,7 @@ public class ChoseResController extends ControllerGuiInterface{
 
         label.setText("Scegli "+ input + " risorse in input");
         status = false;
-
+        checkConfirm();
     }
 
     @Override
@@ -71,6 +62,7 @@ public class ChoseResController extends ControllerGuiInterface{
         return className;
     }
 
+    @Override
     public void onAction(ActionEvent actionEvent) {
         NumberOfResources resources = new NumberOfResources();
         for(ResourceType type : ResourceType.values()){
@@ -96,14 +88,7 @@ public class ChoseResController extends ControllerGuiInterface{
         }
     }
 
-    private void fillBox(ResourceType type, int max) {
-        ObservableList<Integer> array = FXCollections.observableList(new ArrayList<>());
-        for(int i=0; i<=max; i++){
-            array.addAll(i);
-        }
-        boxes[type.ordinal()].setItems(array);
-        boxes[type.ordinal()].setValue(0);
-    }
+
 
     private void checkConfirm(){
         int total =0;

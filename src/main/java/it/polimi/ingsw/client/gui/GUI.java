@@ -89,6 +89,7 @@ public class GUI extends Application implements UI {
         loaders.add(new FXMLLoader((getClass().getResource("start.fxml"))));
         loaders.add(new FXMLLoader((getClass().getResource("privateLogin.fxml"))));
         loaders.add(new FXMLLoader((getClass().getResource("singleLogin.fxml"))));
+        loaders.add(new FXMLLoader((getClass().getResource("white.fxml"))));
 
 
         for (FXMLLoader loader : loaders) {
@@ -159,8 +160,7 @@ public class GUI extends Application implements UI {
                 }else if(this.getModel().getMe().getStatus()== PlayerStatus.NeedToChoseRes){
                     activate(ChoseResController.className);
                 }else if(this.getModel().getMe().getStatus()== PlayerStatus.NeedToConvert) {
-                    //TODO
-                    activate("");
+                    activate(WhiteController.className);
                 }else {
                     activate(BaseMeController.className);
                 }
@@ -250,7 +250,7 @@ public class GUI extends Application implements UI {
     }
 
 
-    public static void fixLabels(final ImageView back, final Double backHeight, final Control[] labels, final Double[] x, final Double[] y, final Double height, final Double width){
+    public static void fixLabels(final ImageView back, final Double backHeight, final Control[] labels, final Double[] x, final Double[] y){
         if(labels.length!=x.length)
             throw new RuntimeException();
         if(labels.length!=y.length)

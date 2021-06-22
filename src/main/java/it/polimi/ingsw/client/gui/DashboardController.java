@@ -4,6 +4,7 @@ import com.sun.jdi.Value;
 import it.polimi.ingsw.constant.enumeration.ColorDevCard;
 import it.polimi.ingsw.constant.enumeration.ErrorMessage;
 import it.polimi.ingsw.constant.enumeration.Level;
+import it.polimi.ingsw.constant.enumeration.ResourceType;
 import it.polimi.ingsw.constant.model.DevelopmentCard;
 import it.polimi.ingsw.constant.move.MoveBuyDevCard;
 import javafx.beans.value.ChangeListener;
@@ -30,7 +31,10 @@ public class DashboardController extends ControllerGuiInterface{
     private boolean[] chosen =new boolean[12];
     private static Double[] IMAGE_X = {38.0, 250.0, 462.0, 674.0, 38.0, 250.0, 462.0, 674.0, 38.0, 250.0, 462.0, 674.0};
     private static Double[] IMAGE_Y = {27.0, 27.0, 27.0, 27.0, 225.0, 225.0, 225.0, 225.0, 414.0, 414.0, 414.0, 414.0};
+    private static Double[] IMAGE_XDepots = {900.0};
+    private static Double[] IMAGE_YDepots = {300.0};
     private static final Double IMAGE_REAL = 150.0;
+    private static final Double IMAGE_REAL_DEPOTS = 400.0;
     private static final ImageView[] IMAGE_VIEWS = new ImageView[12];
     //MoveBuyDevCard move = new MoveBuyDevCard(gui.getModel().getMyID());
 
@@ -92,6 +96,9 @@ public class DashboardController extends ControllerGuiInterface{
     public Label label11;
     @FXML
     public Label label12;
+
+    @FXML
+    public ImageView imageViewDepots;
 
     @FXML
     public ImageView imageViewBoard;
@@ -164,6 +171,7 @@ public class DashboardController extends ControllerGuiInterface{
 
 
         GUI.fixImagesToPane(anchorPane,692.0,1280.0,IMAGE_VIEWS,IMAGE_X,IMAGE_Y,IMAGE_REAL);
+        GUI.fixImagesToPane(anchorPane,692.0,1280.0,new ImageView[]{imageViewDepots},IMAGE_XDepots,IMAGE_YDepots,IMAGE_REAL_DEPOTS);
 
 
         /*for(int i=0;i<imageViews.size(); i++){
@@ -213,14 +221,16 @@ public class DashboardController extends ControllerGuiInterface{
     }
 
     public void onMouseClicked(MouseEvent mouseEvent) {
-
+        ((ImageView) mouseEvent.getSource()).setId("imageViewClicked");
         int index = imageViews.indexOf((ImageView) mouseEvent.getSource());
         if(new MoveBuyDevCard(gui.getModel().getMyID()).canPerform(gui.getModel())&&gui.getModel().getDashboard().isSomethingBuyable(gui.getModel())) {
             if (!chosen[index]) {
                 choice.add(gui.getModel().getDashboard().getTopDevCard(ColorDevCard.values()[index % 4], Level.values()[index / 4]).getId());
+                ((ImageView) mouseEvent.getSource()).setId("imageViewClicked");
                 labels.get(index).setText("selected");
             } else {
                 choice.remove((Integer) gui.getModel().getDashboard().getTopDevCard(ColorDevCard.values()[index % 4], Level.values()[index / 4]).getId());
+                ((ImageView) mouseEvent.getSource()).setId("imageView1");
                 labels.get(index).setText("");
             }
             chosen[index] = !chosen[index];
@@ -266,6 +276,8 @@ public class DashboardController extends ControllerGuiInterface{
             imageView.setVisible(!b);
             imageView.setDisable(b);
         }
+        imageViewDepots.setVisible(!b);
+        imageViewDepots.setDisable(b);
         for (Label label : labels) {
             label.setVisible(!b);
             label.setDisable(b);

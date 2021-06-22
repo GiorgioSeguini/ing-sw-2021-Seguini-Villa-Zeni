@@ -99,7 +99,7 @@ public class BaseMeController extends BaseController{
 
 
         //leadercard button
-        GUI.fixLabels(board, BOARD_HEIGHT, leaderButton, LEAD_BUTTON_X, LEAD_BUTTON_Y, LEAD_BUTTON_HEIGHT, LEAD_BUTTON_WIDTH);
+        GUI.fixLabels(board, BOARD_HEIGHT, leaderButton, LEAD_BUTTON_X, LEAD_BUTTON_Y);
 
         //single player
         anchorPane.getChildren().add(retro);
