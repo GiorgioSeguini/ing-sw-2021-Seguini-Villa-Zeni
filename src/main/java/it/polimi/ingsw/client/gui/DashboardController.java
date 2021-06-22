@@ -213,14 +213,16 @@ public class DashboardController extends ControllerGuiInterface{
     }
 
     public void onMouseClicked(MouseEvent mouseEvent) {
-
+        ((ImageView) mouseEvent.getSource()).setId("imageViewClicked");
         int index = imageViews.indexOf((ImageView) mouseEvent.getSource());
         if(new MoveBuyDevCard(gui.getModel().getMyID()).canPerform(gui.getModel())&&gui.getModel().getDashboard().isSomethingBuyable(gui.getModel())) {
             if (!chosen[index]) {
                 choice.add(gui.getModel().getDashboard().getTopDevCard(ColorDevCard.values()[index % 4], Level.values()[index / 4]).getId());
+                ((ImageView) mouseEvent.getSource()).setId("imageViewClicked");
                 labels.get(index).setText("selected");
             } else {
                 choice.remove((Integer) gui.getModel().getDashboard().getTopDevCard(ColorDevCard.values()[index % 4], Level.values()[index / 4]).getId());
+                ((ImageView) mouseEvent.getSource()).setId("imageView1");
                 labels.get(index).setText("");
             }
             chosen[index] = !chosen[index];
