@@ -1,46 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
+<AnchorPane fx:id="anchorPane" prefHeight="692.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.gui.ChoseResController" stylesheets="@Style.css" styleClass="basePane">
+   <ImageView fx:id="depots" layoutX="220.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true">
+      <Image url="@../../../../../images/board/Depots.png" />
+   </ImageView>
+   <Label fx:id="label" styleClass="baseLabel"/>
+   <GridPane fx:id="gridPane" layoutX="640.0" prefHeight="692.0" prefWidth="640.0">
+      <columnConstraints>
+         <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="5.0" />
+         <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="80.0" />
+         <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="5.0" />
+         <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="80.0" />
+         <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="5.0" />
+         <ColumnConstraints />
+         <ColumnConstraints />
+      </columnConstraints>
+      <rowConstraints>
+         <RowConstraints minHeight="5.0" prefHeight="5.0" vgrow="ALWAYS" />
+         <RowConstraints minHeight="10.0" prefHeight="100.0" vgrow="ALWAYS" />
+         <RowConstraints minHeight="5.0" prefHeight="5.0" vgrow="ALWAYS" />
+         <RowConstraints minHeight="10.0" prefHeight="100.0" vgrow="ALWAYS" />
+         <RowConstraints minHeight="5.0" prefHeight="5.0" vgrow="ALWAYS" />
+         <RowConstraints minHeight="5.0" prefHeight="5.0" vgrow="ALWAYS" />
+      </rowConstraints>
+      <children>
+         <ImageView fitHeight="95.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Image url="@../../../../../images/punchboard/Coins.png" />
+         </ImageView>
+         <ImageView fitHeight="95.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1">
+            <Image url="@../../../../../images/punchboard/Servants.png" />
+         </ImageView>
+         <ImageView fitHeight="95.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <Image url="@../../../../../images/punchboard/Shields.png" />
+         </ImageView>
+         <ImageView fitHeight="95.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="3">
+            <Image url="@../../../../../images/punchboard/Stones.png" />
+         </ImageView>
+         <ChoiceBox fx:id="coins"    prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2"  styleClass="baseButton" onAction="#boxAction"/>
+         <ChoiceBox fx:id="servants" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="2"  styleClass="baseButton" onAction="#boxAction"/>
+         <ChoiceBox fx:id="shields"  prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4"  styleClass="baseButton" onAction="#boxAction"/>
+         <ChoiceBox fx:id="stones"   prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="4"  styleClass="baseButton" onAction="#boxAction"/>
+         <Button fx:id="confirm" onAction="#onAction" text="Conferma" GridPane.columnIndex="6" GridPane.rowIndex="5"  styleClass="baseButton"/>
+      </children>
+   </GridPane>
+</AnchorPane>
 
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
-<GridPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.gui.ChoseResController" stylesheets="@Style.css"  styleClass="basePane">
-   <columnConstraints>
-      <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="30.0" />
-      <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="120.0" />
-      <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="60.0" />
-      <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="120.0" />
-      <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="30.0" />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints minHeight="5.0" prefHeight="5.0" vgrow="ALWAYS" />
-      <RowConstraints minHeight="10.0" prefHeight="120.0" vgrow="ALWAYS" />
-      <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="ALWAYS" />
-      <RowConstraints minHeight="5.0" prefHeight="25.0" vgrow="ALWAYS" />
-      <RowConstraints minHeight="10.0" prefHeight="120.0" vgrow="ALWAYS" />
-      <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="ALWAYS" />
-      <RowConstraints minHeight="5.0" prefHeight="5.0" vgrow="ALWAYS" />
-   </rowConstraints>
-   <children>
-      <ImageView fitHeight="95.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
-         <Image url="@../../../../../images/punchboard/Coins.png" />
-      </ImageView>
-      <ImageView fitHeight="95.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1">
-         <Image url="@../../../../../images/punchboard/Servants.png" />
-      </ImageView>
-      <ImageView fitHeight="95.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
-         <Image url="@../../../../../images/punchboard/Shields.png" />
-      </ImageView>
-      <ImageView fitHeight="95.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="4">
-         <Image url="@../../../../../images/punchboard/Stones.png" />
-      </ImageView>
-      <ChoiceBox fx:id="coins" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2"     onAction="#boxAction" styleClass="baseButton"/>
-      <ChoiceBox fx:id="servants" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="2"  onAction="#boxAction" styleClass="baseButton"/>
-      <ChoiceBox fx:id="shields" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5"   onAction="#boxAction" styleClass="baseButton"/>
-      <ChoiceBox fx:id="stones" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="5"    onAction="#boxAction" styleClass="baseButton"/>
-      <Button fx:id="confirm" mnemonicParsing="false" onAction="#onAction" text="Conferma" GridPane.columnIndex="4" GridPane.rowIndex="5" styleClass="baseButton"/>
-      <Label fx:id="label" text="prova" GridPane.columnIndex="2" GridPane.rowIndex="0" styleClass="baseLabel"/>
-   </children>
-</GridPane>

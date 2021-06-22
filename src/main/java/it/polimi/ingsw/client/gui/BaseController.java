@@ -133,7 +133,7 @@ public class BaseController  extends ControllerGuiInterface{
 
         //leader cards
         GUI.fixImages(board, BOARD_HEIGHT, leaderCards, LEAD_X, LEAD_Y, CARD_HEIGHT);
-        GUI.fixLabels(board, BOARD_HEIGHT, leaderCardsLabels, LEAD_X, LABEL_Y, LABEL_SIZE, LABEL_SIZE*3.0);
+        GUI.fixLabels(board, BOARD_HEIGHT, leaderCardsLabels, LEAD_X, LABEL_Y);
 
         //leadercard depots
         for(int i=0; i<2; i++){
@@ -147,7 +147,7 @@ public class BaseController  extends ControllerGuiInterface{
 
         //gamestatus
         anchorPane.getChildren().add(gameStatusLabel);
-        GUI.fixLabels(board, BOARD_HEIGHT, new Label[]{gameStatusLabel}, GAME_STATUS_X,   GAME_STATUS_Y,  GAME_STATUS_HEIGHT,  GAME_STATUS_WIDTH);
+        GUI.fixLabels(board, BOARD_HEIGHT, new Label[]{gameStatusLabel}, GAME_STATUS_X,   GAME_STATUS_Y);
         gameStatusLabel.getStyleClass().clear();
         gameStatusLabel.getStyleClass().add("baseLabel");
     }
