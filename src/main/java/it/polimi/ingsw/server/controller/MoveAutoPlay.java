@@ -87,4 +87,9 @@ public class MoveAutoPlay implements Performable{
             }
         }
     }
+
+    @Override
+    public int getIdPlayer() {
+        return myID;
+    }
 }

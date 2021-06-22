@@ -223,8 +223,8 @@ public class GameExt extends Game implements Observable<Message> {
         notify(new LastMessage());
     }
 
-    public void errorMessage(){
-        notify(new ErrorMessage());
+    public void errorMessage(int id){
+        notify(new ErrorMessage(id));
     }
     //Observable implementation
     private transient final List<Observer<Message>> observers = new ArrayList<>();

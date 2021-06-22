@@ -6,4 +6,6 @@ public interface Performable {
     void performMove(GameExt game);
 
     boolean canPerformExt(GameExt game);
+
+    int getIdPlayer();
 }

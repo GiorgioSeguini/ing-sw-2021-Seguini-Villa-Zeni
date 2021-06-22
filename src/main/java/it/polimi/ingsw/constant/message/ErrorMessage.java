@@ -6,8 +6,15 @@ public class ErrorMessage implements Message{
 
     public static String className = "ErrorMessage";
 
+    private final int myId;
+
+    public ErrorMessage(int myId) {
+        this.myId = myId;
+    }
+
     @Override
     public void handleMessage(Client client) {
+    if(client.getSimpleGame().getMyID()==myId)
         client.getUI().update();
     }
 
