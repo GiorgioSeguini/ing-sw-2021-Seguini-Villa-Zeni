@@ -69,6 +69,7 @@ public abstract class Game {
 
     /**
      * @return a reference to the winner player
+     * @null if Lorenzo is the Winner in soloplayer
      * @throws IllegalArgumentException if game is not ended
      */
     public Player getWinner() throws IllegalArgumentException{
@@ -78,7 +79,7 @@ public abstract class Game {
         Player winner = null;
         if(players.size()>1) {
             //multiplayer
-            int max = 0;
+            int max = -1;
             for(Player p: players){
                 if(p.getVictoryPoints()>max){
                     max = p.getVictoryPoints();

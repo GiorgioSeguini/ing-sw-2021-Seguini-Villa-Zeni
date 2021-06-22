@@ -24,7 +24,6 @@ public class CliDisconnect implements CliInterface{
             System.out.println("\t 1. SI, voglio uscire dal gioco.");
             System.out.println("\t 2. NO.");
             index=CLI.ReadFromKeyboard(in);
-            in.nextLine();
             if(index<1||index>2) System.out.println("Indice non valido.");
         }while (index<1|| index>2);
 

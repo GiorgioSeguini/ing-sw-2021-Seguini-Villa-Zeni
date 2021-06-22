@@ -5,16 +5,17 @@ import it.polimi.ingsw.client.UI;
 import it.polimi.ingsw.client.modelClient.GameClient;
 import it.polimi.ingsw.client.parser.StarterClient;
 import it.polimi.ingsw.constant.enumeration.ErrorMessage;
+import it.polimi.ingsw.constant.enumeration.GameStatus;
 import it.polimi.ingsw.constant.message.LastMessage;
+import it.polimi.ingsw.constant.model.Player;
 import it.polimi.ingsw.constant.move.MoveEndTurn;
 import it.polimi.ingsw.constant.move.MoveType;
 import it.polimi.ingsw.constant.setupper.*;
 
 import java.io.*;
 
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.security.KeyStore;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 public class CLI implements Runnable, UI {
@@ -38,7 +39,6 @@ public class CLI implements Runnable, UI {
     @Override
     public void run() {
         String name = null;
-        SetUp setupper;
         int x;
 
         this.setMoveHandled(false);
@@ -60,7 +60,6 @@ public class CLI implements Runnable, UI {
                 System.out.println("\t1. Partita privata.");
                 System.out.println("\t2. Partita pubblica.");
                 x = ReadFromKeyboard(in);
-                //in.nextLine();
                 if (x < 1 || x > 2) {
                     System.out.println("Indice non valido!");
                 }
@@ -93,73 +92,127 @@ public class CLI implements Runnable, UI {
         this.game = client.getSimpleGame();
         if(game==null) return;
         int myID = game.getMyID();
-        if(game.isMyTurn()){
-            moves.clear();
-            moves.add(new CliChoseInitialResources(myID));
-            moves.add(new CliChoseLeaderCard(myID));
-            moves.add(new CliMoveActiveProduction(myID));
-            moves.add(new CliMoveBuyDevCard(myID));
-            moves.add(new CliMoveChoseResources(myID));
-            moves.add(new CliMoveDiscardResources(myID));
-            moves.add(new CliMoveEndTurn(myID));
-            moves.add(new CliMoveLeader(myID));
-            moves.add(new CliMoveTypeMarket(myID));
-            moves.add(new CliMoveWhiteConversion(myID));
-            moves.add(new CliPrint());
-            moves.add(new CliDisconnect(client));
+        if(game.getStatus()== GameStatus.Ended){
+            rankShow();
+        }
+        else {
+            if (game.isMyTurn()) {
+                moves.clear();
+                moves.add(new CliChoseInitialResources(myID));
+                moves.add(new CliChoseLeaderCard(myID));
+                moves.add(new CliMoveActiveProduction(myID));
+                moves.add(new CliMoveBuyDevCard(myID));
+                moves.add(new CliMoveChoseResources(myID));
+                moves.add(new CliMoveDiscardResources(myID));
+                moves.add(new CliMoveEndTurn(myID));
+                moves.add(new CliMoveLeader(myID));
+                moves.add(new CliMoveTypeMarket(myID));
+                moves.add(new CliMoveWhiteConversion(myID));
+                moves.add(new CliPrint());
+                moves.add(new CliDisconnect(client));
 
-            if(game.getMe().getErrorMessage()!= ErrorMessage.NoError){
-                System.out.println(game.getMe().getErrorMessage());
-            }
-            if(game!=null && game.isSinglePlayer() && game.getSoloGame().getRevealed()!=null && printLorenzoMove){
-                System.out.println("MOSSA DI LORENZO");
-                System.out.println(game.getSoloGame().getRevealed().getTextToPrint());
-            }
+                if (game.getMe().getErrorMessage() != ErrorMessage.NoError) {
+                    System.out.println(game.getMe().getErrorMessage());
+                }
+                if (game != null && game.isSinglePlayer() && game.getSoloGame().getRevealed() != null && printLorenzoMove) {
+                    System.out.println("MOSSA DI LORENZO");
+                    System.out.println(game.getSoloGame().getRevealed().getTextToPrint());
+                }
 
-            MoveType move;
-            do {
-                int index;
-                int i = 0;
-                ArrayList<CliInterface> ablemoves = new ArrayList<>();
-                System.out.println("----------------------------------------------------------");
-                System.out.println("È il tuo turno "+ game.getMe().getUserName()+"! Sei all'interno della stanza "+client.getRoomName());
-                System.out.println("Cosa desideri fare?");
+                MoveType move;
                 do {
-                    ablemoves.clear();
-                    i = 1;
-                    for (CliInterface clitype : moves) {
-                        if (clitype.canPerform(game)) {
-                            System.out.println(i + ". " + clitype.getName());
-                            i++;
-                            ablemoves.add(clitype);
+                    int index;
+                    int i = 0;
+                    ArrayList<CliInterface> ablemoves = new ArrayList<>();
+                    System.out.println("----------------------------------------------------------");
+                    System.out.println("È il tuo turno " + game.getMe().getUserName() + "! Sei all'interno della stanza " + client.getRoomName());
+                    System.out.println("Cosa desideri fare?");
+                    do {
+                        ablemoves.clear();
+                        i = 1;
+                        for (CliInterface clitype : moves) {
+                            if (clitype.canPerform(game)) {
+                                System.out.println(i + ". " + clitype.getName());
+                                i++;
+                                ablemoves.add(clitype);
+                            }
+
                         }
 
-                    }
+                        index = ReadFromKeyboard(in);
 
-                    index = ReadFromKeyboard(in);
+                        if (index < 1 || index > i - 1) {
+                            System.out.println("Indice non valido!");
+                        }
 
-                    if (index < 1 || index > i - 1) {
-                        System.out.println("Indice non valido!");
-                    }
+                    } while (index < 1 || index > i - 1);
 
-                } while (index < 1 || index > i - 1);
-
-                CliInterface cliInterface = ablemoves.get(index - 1);
-                move = cliInterface.updateCLI(game, in);
-            }while (move==null);
-            send(move);
-            printLorenzoMove=false;
-            if(move instanceof MoveEndTurn){
-                printLorenzoMove=true;
+                    CliInterface cliInterface = ablemoves.get(index - 1);
+                    move = cliInterface.updateCLI(game, in);
+                } while (move == null);
+                send(move);
+                printLorenzoMove = false;
+                if (move instanceof MoveEndTurn) {
+                    printLorenzoMove = true;
+                }
+            } else {
+                clearScreen();
+                System.out.println("E' il turno di :" + game.getCurrPlayer().getUserName());
             }
-        }
-        else{
-            clearScreen();
-            System.out.println("E' il turno di :" + game.getCurrPlayer().getUserName());
         }
     }
 
-    
+    private void rankShow() {
+        System.out.println("IL GIOCO È TERMINATO!");
+        if(game.getPlayers().size()>1) {
+            System.out.println("\n Il vincitore è: " + game.getWinner().getUserName());
+
+            System.out.println("\nClassifica");
+            HashMap<String, Integer> rank = new HashMap<>();
+            for (Player player : game.getPlayers()) {
+                rank.put(player.getUserName(), player.getVictoryPoints());
+            }
+
+            rank = sortByValue(rank);
+            for (int i = 1; i <= rank.size(); i++) {
+                String name = (String) rank.keySet().toArray()[rank.size() - i];
+                System.out.println("\t" + i + ". " + name + "\t punteggio: " + rank.get(name));
+            }
+        }
+        else{
+            try {
+                System.out.println("\n HAI VINTO " + game.getWinner().getUserName()+"!");
+            } catch (NullPointerException e) {
+                System.out.println("HAI PERSO! LORENZO TI HA BATTUTO");
+            }
+        }
+
+    }
+
+    private static HashMap<String, Integer> sortByValue(HashMap<String, Integer> hm)
+    {
+        // Create a list from elements of HashMap
+        List<Map.Entry<String, Integer> > list =
+                new LinkedList<Map.Entry<String, Integer> >(hm.entrySet());
+
+        // Sort the list
+        Collections.sort(list, new Comparator<Map.Entry<String, Integer> >() {
+            public int compare(Map.Entry<String, Integer> o1,
+                               Map.Entry<String, Integer> o2)
+            {
+                return (o1.getValue()).compareTo(o2.getValue());
+            }
+        });
+
+        // put data from sorted list to hashmap
+        HashMap<String, Integer> temp = new LinkedHashMap<String, Integer>();
+        for (Map.Entry<String, Integer> aa : list) {
+            temp.put(aa.getKey(), aa.getValue());
+        }
+        return temp;
+    }
+
+
     private void RoomGame(){
         int x;
         String name;

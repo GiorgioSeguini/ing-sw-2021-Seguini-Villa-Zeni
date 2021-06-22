@@ -18,7 +18,6 @@ public class CliMoveEndTurn implements CliInterface{
     public MoveType updateCLI(GameClient game, Scanner stdin) {
         System.out.println("Hai deciso di terminare il turno. Premi INVIO per far continuare il gioco.");
         stdin.nextLine();
-        String todiscard=stdin.nextLine();
         return  move;
     }
 
