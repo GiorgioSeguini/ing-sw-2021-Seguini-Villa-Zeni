@@ -20,9 +20,16 @@ public class ConverterTest {
     void CheckIntegrityToConvert() {
         PlayerExt player=new PlayerExt("Pippo");
         ConverterExt x=new ConverterExt(player);
+        assertFalse(x.isWhiteAbilityActive());
         x.setWhiteAbility(ResourceType.Stones);
         x.setWhiteAbility(ResourceType.Coins);
+        assertTrue(x.isWhiteAbilityActive());
 
+        try{
+            x.setWhiteAbility(ResourceType.Shields);
+            fail();
+        }catch (IllegalArgumentException ignored){}
+        assertEquals(player.getID(), x.getOwnerId());
         ArrayList<ResourceType> test= new ArrayList<>();
         test.add(ResourceType.Stones);
         test.add(ResourceType.Coins);
