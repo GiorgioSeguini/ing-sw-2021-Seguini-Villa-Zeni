@@ -46,7 +46,7 @@ public class MarketController extends ControllerGuiInterface implements EventHan
     private ImageView[][] marbleImages=new ImageView[nRow][nCol];
     private Image[] marblesColor;
     private int index;
-    private AlertBox box;
+    private boolean checkAlert=true;
     private static final double marketH=2522;
     private static final double marketL=1951;
     private static final double boardH=1000;
@@ -83,7 +83,6 @@ public class MarketController extends ControllerGuiInterface implements EventHan
 
     public MarketController(){
         super();
-
         marblesColor=new Image[MarbleColor.values().length];
         for(MarbleColor color: MarbleColor.values()){
             marblesColor[color.ordinal()]= new Image(getImagePath(color));
@@ -154,23 +153,29 @@ public class MarketController extends ControllerGuiInterface implements EventHan
 
     public void MarketMoveConfirm(ActionEvent actionEvent) {
         if(new MoveTypeMarket(gui.getModel().getMyID()).canPerform(gui.getModel())){
-            box= new AlertBox("Mossa Market", "Stai scegliendo di comprare risorse dal mercato. Se decidi di continuare non potrai tornare indietro");
-            Button button= new Button("Ok");
-            EventHandler<ActionEvent> event = new
-                    EventHandler<ActionEvent>() {
-                        public void handle(ActionEvent e)
-                        {
-                            HideFirstScreen(true);
-                            box.closeBox();
-                        }
-                    };
-            button.setOnAction(event);
-            box.addButton(button);
+            if (checkAlert) {
+                checkAlert=false;
+                AlertBox box = new AlertBox("Mossa Market", "Stai scegliendo di comprare risorse dal mercato. Se decidi di continuare non potrai tornare indietro");
+                Button button = new Button("Ok");
+                EventHandler<ActionEvent> event = new
+                        EventHandler<ActionEvent>() {
+                            public void handle(ActionEvent e) {
+                                HideFirstScreen(true);
+                                box.closeBox();
+                            }
+                        };
+                button.setOnAction(event);
+                box.addButton(button);
+                box.display();
+            }
+            else{
+                HideFirstScreen(true);
+            }
         }
         else{
-            box= new AlertBox("Mossa Market", "Stai scegliendo di comprare risorse dal mercato, ma al momento questa mossa non è disponibile");
+            AlertBox box= new AlertBox("Mossa Market", "Stai scegliendo di comprare risorse dal mercato, ma al momento questa mossa non è disponibile");
+            box.display();
         }
-        box.display();
     }
 
     public void returnBack(ActionEvent actionEvent) {

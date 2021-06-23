@@ -7,7 +7,7 @@ import it.polimi.ingsw.constant.enumeration.PopesFavorStates;
  */
 public class FaithTrack {
     public static final int NUM_OF_POP = 3;
-    public static final int MAX_POINTS = 2; //should be 24
+    public static final int MAX_POINTS = 24; //should be 24
 
     public static final int[] victoryPoints = {0,0,0, 1, 1,1,2,2,2,4,4,4,6,6,6,9,9,9,12,12,12,16,16,16,20};
     public static final int[] popesFavorPoints = {2,3,4};
