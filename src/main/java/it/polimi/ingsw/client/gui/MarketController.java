@@ -98,7 +98,8 @@ public class MarketController extends ControllerGuiInterface implements EventHan
         market.fitHeightProperty().bind(anchorPane.heightProperty().divide(1.6));
         anchorPane.widthProperty().addListener((observableValue, oldValue, newValue) -> market.setLayoutX((Double) newValue/2));
         anchorPane.heightProperty().addListener((observableValue, oldValue, newValue) -> confirm.setLayoutY((Double) newValue/2));
-        //chorPane.heightProperty().addListener((observableValue, oldValue, newValue) -> confirm.setLayoutY((Double) newValue/1.2));
+        anchorPane.heightProperty().addListener((observableValue, oldValue, newValue) -> chose.setLayoutY((Double) newValue/3));
+        anchorPane.heightProperty().addListener((observableValue, oldValue, newValue) -> infos.setLayoutY((Double) newValue/7));
         //confirm.heightProperty().addListener((observableValue, oldValue, newValue) -> chose.setLayoutY((Double) newValue/2));
         //confirm.heightProperty().addListener((observableValue, oldValue, newValue) -> returnback.setLayoutX((Double) newValue/2));
 
