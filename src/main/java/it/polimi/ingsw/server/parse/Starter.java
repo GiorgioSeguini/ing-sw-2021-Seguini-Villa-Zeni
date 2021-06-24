@@ -18,11 +18,10 @@ import it.polimi.ingsw.server.controller.Performable;
 import it.polimi.ingsw.server.model.*;
 import it.polimi.ingsw.server.network.Settable;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Starter {
 
@@ -59,7 +58,7 @@ public class Starter {
     /*Methods to Initialize the Game*/
     public static ArrayList<LeaderCardExt> LeaderCardsParser() throws FileNotFoundException {
         Type LeaderListType = new TypeToken<ArrayList<LeaderCardExt>>(){}.getType();
-        ArrayList<LeaderCardExt> leaderCardExts= gson.fromJson(new FileReader(filePath + "/src/main/resources/LeaderCards.json"), LeaderListType);
+        ArrayList<LeaderCardExt> leaderCardExts= gson.fromJson(new InputStreamReader(Objects.requireNonNull(Starter.class.getResourceAsStream("/LeaderCards.json"))), LeaderListType);
         for(LeaderCardExt card: leaderCardExts){
             card.setStatus(LeaderStatus.onHand);
         }
@@ -70,17 +69,17 @@ public class Starter {
         Type TokensListType = new TypeToken<ArrayList<SoloActionTokens>>(){}.getType();
         GsonBuilder localBuilder = new GsonBuilder();
         localBuilder.registerTypeAdapter(SoloActionTokens.class, new TokensSerializer());
-        return localBuilder.create().fromJson(new FileReader(filePath + "/src/main/resources/SoloActionTokens.json"), TokensListType);
+        return localBuilder.create().fromJson(new InputStreamReader(Objects.requireNonNull(Starter.class.getResourceAsStream("/SoloActionTokens.json"))), TokensListType);
     }
 
     public static ArrayList<MarbleColor> MarblesParser() throws FileNotFoundException {
         Type marblesarray= new TypeToken<ArrayList<MarbleColor>>(){}.getType();
-        return gson.fromJson(new FileReader(filePath+"/src/main/resources/Marbles.json"), marblesarray);
+        return gson.fromJson(new InputStreamReader(Objects.requireNonNull(Starter.class.getResourceAsStream("/Marbles.json"))), marblesarray);
     }
 
     public static ArrayList<DevelopmentCardExt> DevCardParser() throws FileNotFoundException {
         Type devCardListType = new TypeToken<ArrayList<DevelopmentCardExt>>(){}.getType();
-        return gson.fromJson(new FileReader(filePath + "/src/main/resources/DevCard.json"), devCardListType);
+        return gson.fromJson(new InputStreamReader(Objects.requireNonNull(Starter.class.getResourceAsStream("/DevCard.json"))), devCardListType);
     }
 
     /*Methods for CanPerform*/
