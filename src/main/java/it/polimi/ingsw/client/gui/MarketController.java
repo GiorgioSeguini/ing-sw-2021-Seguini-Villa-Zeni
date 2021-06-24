@@ -45,7 +45,7 @@ public class MarketController extends ControllerGuiInterface implements EventHan
     private static int nRow=3;
     private ImageView[][] marbleImages=new ImageView[nRow][nCol];
     private Image[] marblesColor;
-    private static final String white1= "Hai l'abilità biglia bianca attiva. Le biglie bianche avranno il seguente colore.";
+    private static final String white1= "Hai l'abilità biglia bianca attiva. Le biglie bianche saranno convertite automaticamente nel seguente colore.";
     private static final String white2= "Hai l'abilità biglia bianca attiva. Potrai sceglie come convertire le biglie nei seguenti colori.";
     private int index;
     private boolean checkAlert=true;
@@ -70,7 +70,13 @@ public class MarketController extends ControllerGuiInterface implements EventHan
     @FXML
     private AnchorPane anchorPane;
     @FXML
+    private AnchorPane colorPane1;
+    @FXML
+    private AnchorPane colorPane2;
+    @FXML
     private GridPane gridPane;
+    @FXML
+    private GridPane colorGridPane;
     @FXML
     private Button marketMoveConfirm;
     @FXML
@@ -85,6 +91,10 @@ public class MarketController extends ControllerGuiInterface implements EventHan
     private ImageView market;
     @FXML
     private Label whites;
+    @FXML
+    private ImageView color1;
+    @FXML
+    private ImageView color2;
 
 
     public MarketController(){
@@ -101,6 +111,7 @@ public class MarketController extends ControllerGuiInterface implements EventHan
     @FXML
     public void initialize(){
         market.fitHeightProperty().bind(gridPane.heightProperty().divide(1.7));
+
         /*
 
         <AnchorPane fx:id="anchorPane" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
@@ -160,6 +171,17 @@ public class MarketController extends ControllerGuiInterface implements EventHan
                 marbleImages[i][j].setImage(marblesColor[color.ordinal()]);
                 marbleImages[i][j].setVisible(true);
             }
+        }
+
+        if(gui.getModel().getMe().getConverter().isWhiteAbilityActive()){
+            if(gui.getModel().getMe().getConverter().getToconvert().size()==2){
+                MarbleColor color= gui.getModel().getMe().getConverter().getToconvert().get(1).getColor();
+                color2.setImage(marblesColor[color.ordinal()]);
+            }
+            MarbleColor color= gui.getModel().getMe().getConverter().getToconvert().get(0).getColor();
+            color1.setImage(marblesColor[color.ordinal()]);
+            color1.fitHeightProperty().bind(colorPane1.heightProperty().divide(5));
+            color2.fitHeightProperty().bind(colorPane2.heightProperty().divide(5));
         }
 
         market.setVisible(true);
@@ -237,6 +259,8 @@ public class MarketController extends ControllerGuiInterface implements EventHan
             else{
                 whites.setText(white2);
             }
+            color1.setVisible(!b);
+            color2.setVisible(!b);
         }else{
             whites.setText("");
         }

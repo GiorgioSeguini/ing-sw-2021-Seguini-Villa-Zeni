@@ -15,8 +15,6 @@ public class Converter {
     /*Default Constructor*/
     public Converter(int ownerId){
         this.toconvert=new ArrayList<>();
-        toconvert.add(ResourceType.Coins); // TODO: 6/23/21 remove it just for some graphical testing
-        toconvert.add(ResourceType.Servants);
         this.ownerId=ownerId;
         this.inwait=new NumberOfResources();
         this.white=0;

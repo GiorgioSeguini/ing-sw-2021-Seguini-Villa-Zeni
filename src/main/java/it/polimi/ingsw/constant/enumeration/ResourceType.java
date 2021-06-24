@@ -4,8 +4,18 @@ package it.polimi.ingsw.constant.enumeration;
 
 /* Type of Game's Resources */
 public enum ResourceType {
-    Servants,
-    Shields,
-    Coins,
-    Stones;
+    Servants(MarbleColor.PURPLE),
+    Shields(MarbleColor.BLUE),
+    Coins(MarbleColor.YELLOW),
+    Stones(MarbleColor.GREY);
+
+    private MarbleColor color;
+
+    private ResourceType(MarbleColor color){
+        this.color=color;
+    }
+
+    public MarbleColor getColor() {
+        return color;
+    }
 }
