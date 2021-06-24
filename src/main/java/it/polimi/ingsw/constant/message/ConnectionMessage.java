@@ -3,16 +3,16 @@ package it.polimi.ingsw.constant.message;
 import it.polimi.ingsw.client.Client;
 import it.polimi.ingsw.client.cli.CLI;
 
-import java.util.ArrayList;
 import java.util.Set;
 
 public class ConnectionMessage implements Message{
 
     public static final String className= "ConnectionAcceptedMessage";
-    private boolean isDisconnection=false;
-    private final Set<String> playerName;
+    private final Set<String> playersName;
+    private final String playerName;
 
-    public ConnectionMessage(Set<String> playerName) {
+    public ConnectionMessage(Set<String> playersName, String playerName) {
+        this.playersName = playersName;
         this.playerName = playerName;
     }
 
@@ -22,22 +22,18 @@ public class ConnectionMessage implements Message{
             System.out.println("\n\nAGGIORNAMENTO: Qualcuno si è unito alla stanza!");
             System.out.println("Giocatori attualmente collegati");
             int i=1;
-            for (String name: playerName){
+            for (String name: playersName){
                 System.out.println(i+". "+name);
                 i++;
             }
         }else{
-            // TODO: 6/24/21 alertBox
+            // TODO: grafica della "sei nella lobby"
         }
 
     }
 
-    public void setDisconnectionMex(){
-        this.isDisconnection=true;
-    }
-
-    public boolean isDisconnection() {
-        return isDisconnection;
+    public Set<String> getPlayersName() {
+        return playersName;
     }
 
     @Override

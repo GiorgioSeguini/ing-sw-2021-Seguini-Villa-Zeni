@@ -1,7 +1,9 @@
 package it.polimi.ingsw.server.network;
 
 import it.polimi.ingsw.constant.message.ConnectionMessage;
+import it.polimi.ingsw.constant.message.DisconnectMessage;
 import it.polimi.ingsw.constant.message.Message;
+import it.polimi.ingsw.constant.message.ReconnectMessage;
 import it.polimi.ingsw.server.controller.Controller;
 import it.polimi.ingsw.server.model.GameExt;
 import it.polimi.ingsw.server.parse.Starter;
@@ -69,7 +71,7 @@ public class Room {
         ((SocketClientConnection)connection).setNickName(nickname);
         ((SocketClientConnection)connection).setRoom(this);
         for(String name: connections.keySet()){
-            connections.get(name).send(Starter.toJson(new ConnectionMessage(connections.keySet()), Message.class));
+            connections.get(name).send(Starter.toJson(new ConnectionMessage(connections.keySet(), nickname), Message.class));
         }
     }
 
@@ -79,14 +81,17 @@ public class Room {
             if(isActive()){
                 disconnectedPlayers.add(nickname);
             }
-
             if (connections.size()==0){
                 clear();
                 return true;
             }
+            for(String name: connections.keySet()){
+                connections.get(name).send(Starter.toJson(new DisconnectMessage(connections.keySet(), nickname), Message.class));
+            }
             try{
                 playersview.get(nickname).setOffline(true);//if the connections size is 0 here enters an infinite loop because of autoplay
             }catch (NullPointerException ignored){/*when the match isn't started yet I dont have any views*/}
+
         }
         else throw new IllegalArgumentException();
 
@@ -103,6 +108,9 @@ public class Room {
             //Server.instanceSingleView(playersview.get(nickname), game, controller);
             //Server.instanceSingleView(view,game, controller);
             playersview.get(nickname).sendInitialMessage(game, getRoomName());
+            for(String name: connections.keySet()){
+                connections.get(name).send(Starter.toJson(new ReconnectMessage(connections.keySet(), nickname), Message.class));
+            }
             disconnectedPlayers.remove(nickname);
         }
         else throw new IllegalArgumentException();

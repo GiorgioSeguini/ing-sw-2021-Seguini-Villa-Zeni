@@ -27,6 +27,8 @@ public class MessageSerializer implements JsonSerializer<Message>, JsonDeseriali
         mapNameClass.put(AcceptMessage.className, AcceptMessage.class);
         mapNameClass.put(ErrorMessage.className, ErrorMessage.class);
         mapNameClass.put(ConnectionMessage.className, ConnectionMessage.class);
+        mapNameClass.put(ReconnectMessage.className, ReconnectMessage.class);
+        mapNameClass.put(DisconnectMessage.className,DisconnectMessage.class);
     }
 
     @Override
