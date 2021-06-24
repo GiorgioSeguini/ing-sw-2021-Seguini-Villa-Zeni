@@ -69,6 +69,7 @@ public class ConverterExt extends Converter implements Observable<Message> {
         if(howmany!=0){
             if (getToconvert().size()>1){
                 setWhite(howmany);
+                notify(new ConverterMessage(this));
                 throw new HaveToChooseException();
             }
             else{

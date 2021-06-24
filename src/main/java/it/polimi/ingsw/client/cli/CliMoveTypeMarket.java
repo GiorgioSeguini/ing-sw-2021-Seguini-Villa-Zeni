@@ -23,8 +23,9 @@ public class CliMoveTypeMarket implements CliInterface {
             System.out.println("La conversione delle biglie bianche è attiva.");
             System.out.print("Le biglie saranno convertite in: ");
             for(ResourceType x: game.getMe().getConverter().getToconvert()){
-                System.out.println("\t"+x);
+                System.out.print("\t"+x);
             }
+            System.out.println();
         }
 
         do{
