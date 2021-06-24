@@ -9,6 +9,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -18,6 +20,37 @@ import java.util.ArrayList;
 public class StoreResourcesController extends IntermediateController{
     public static final String className = "store";
 
+    private static final Double[] RES_Y = {-200.0, -200.0, -100.0, -100.0};
+    private static final Double[] RES_Y2 = {-200.0, -200.0, -200.0, -200.0, -100.0, -100.0, -100.0, -100.0};
+    private static final Double[] LABEL_X = {-300.0};
+    private static final Double[] LABEL_Y = {-200.0};
+
+    private final ImageView[] imageRes = new ImageView[ResourceType.values().length];
+    private final ImageView[] numberRes = new ImageView[ResourceType.values().length*2];
+    @FXML
+    private Label label;
+
+    @Override
+    @FXML
+    public void initialize(){
+        super.initialize();
+        for(int i=0; i< numberRes.length; i++){
+            numberRes[i]= new ImageView();
+            anchorPane.getChildren().add(numberRes[i]);
+        }
+        for(int i=0; i< imageRes.length; i++){
+            imageRes[i] = new ImageView();
+            anchorPane.getChildren().add(imageRes[i]);
+        }
+        GUI.fixImages(depots, DEPOTS_HEIGHT, imageRes, STRONGBOX_X, RES_Y, RES_SIZE);
+        GUI.fixImages(depots, DEPOTS_HEIGHT, numberRes, STRONGBOX_X2, RES_Y2, RES_SIZE);
+        for(ResourceType type : ResourceType.values()){
+            imageRes[type.ordinal()].setImage(new Image("/images/punchboard/" + type + ".png"));
+        }
+        GUI.fixLabels(depots, DEPOTS_HEIGHT, new Label[]{label}, LABEL_X, LABEL_Y);
+        label.setText("Hai comprato \nle seguenti risorse: ");
+    }
+
     @Override
     public void update() {
         super.update();
@@ -25,6 +58,7 @@ public class StoreResourcesController extends IntermediateController{
         for(ResourceType type : ResourceType.values()){
             fillBox(type, res.getAmountOf(type));
         }
+        gui.printResources(numberRes, res);
     }
 
     @Override
