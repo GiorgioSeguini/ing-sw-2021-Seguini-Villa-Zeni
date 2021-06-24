@@ -249,6 +249,21 @@ public class GUI extends Application implements UI {
         image.setPreserveRatio(true);
     }
 
+    public static void fixImagesToPane(final Pane pane, final ImageView image){
+        double paneHeight = pane.getPrefHeight();
+        double paneWidth = pane.getPrefWidth();
+        double x = image.getLayoutX();
+        double y = image.getLayoutY();
+        double imageHeight = image.getFitHeight();
+        image.fitHeightProperty().bind(pane.heightProperty().divide(paneHeight / imageHeight));
+        pane.widthProperty().addListener((observableValue, oldValue, newValue) -> {
+            image.setLayoutX((Double)newValue * x / paneWidth);
+            image.setLayoutY((Double)newValue * y / paneWidth);
+        });
+
+        //pane.heightProperty().addListener((observableValue, oldValue, newValue) -> images[finalI].setLayoutY((Double)newValue * y[finalI]/ paneHeight));
+        image.setPreserveRatio(true);
+    }
 
     public static void fixLabels(final ImageView back, final Double backHeight, final Control[] labels, final Double[] x, final Double[] y){
         if(labels.length!=x.length)
