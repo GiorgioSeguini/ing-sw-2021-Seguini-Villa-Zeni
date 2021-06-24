@@ -111,26 +111,6 @@ public class MarketController extends ControllerGuiInterface implements EventHan
     @FXML
     public void initialize(){
         market.fitHeightProperty().bind(gridPane.heightProperty().divide(1.7));
-
-        /*
-
-        <AnchorPane fx:id="anchorPane" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
-         <children>
-             <ImageView fx:id="market" fitHeight="200.0" pickOnBounds="true" preserveRatio="true">
-                 <Image url="@../../../../../images/punchboard/plancia_portabiglie.png" />
-             </ImageView>
-         </children>
-      </AnchorPane>
-         */
-        //market.setImage(new Image("/images/punchboard/plancia_portabiglie.png"));
-        //market.fitHeightProperty().bind(anchorPane.heightProperty().divide(1.6));
-        //anchorPane.widthProperty().addListener((observableValue, oldValue, newValue) -> market.setLayoutX((Double) newValue/2));
-        //anchorPane.heightProperty().addListener((observableValue, oldValue, newValue) -> confirm.setLayoutY((Double) newValue/2));
-        //anchorPane.heightProperty().addListener((observableValue, oldValue, newValue) -> chose.setLayoutY((Double) newValue/3));
-        //anchorPane.heightProperty().addListener((observableValue, oldValue, newValue) -> infos.setLayoutY((Double) newValue/7));
-        //confirm.heightProperty().addListener((observableValue, oldValue, newValue) -> chose.setLayoutY((Double) newValue/2));
-        //confirm.heightProperty().addListener((observableValue, oldValue, newValue) -> returnback.setLayoutX((Double) newValue/2));
-
         anchorPane.getChildren().add(imageViewExtMarble);
 
         for (int i=0; i<nRow; i++){
