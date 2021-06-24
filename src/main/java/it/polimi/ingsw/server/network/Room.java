@@ -1,16 +1,15 @@
 package it.polimi.ingsw.server.network;
 
-import it.polimi.ingsw.constant.enumeration.GameStatus;
-import it.polimi.ingsw.constant.model.Player;
+import it.polimi.ingsw.constant.message.ConnectionMessage;
+import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.server.controller.Controller;
 import it.polimi.ingsw.server.model.GameExt;
-import it.polimi.ingsw.server.model.PlayerExt;
+import it.polimi.ingsw.server.parse.Starter;
 import it.polimi.ingsw.server.view.RemoteView;
 import it.polimi.ingsw.server.view.View;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 public class Room {
 
@@ -69,6 +68,9 @@ public class Room {
         connections.put(nickname, connection);
         ((SocketClientConnection)connection).setNickName(nickname);
         ((SocketClientConnection)connection).setRoom(this);
+        for(String name: connections.keySet()){
+            connections.get(name).send(Starter.toJson(new ConnectionMessage(connections.keySet()), Message.class));
+        }
     }
 
 
