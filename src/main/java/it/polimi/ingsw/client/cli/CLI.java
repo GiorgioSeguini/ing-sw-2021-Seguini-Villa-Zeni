@@ -376,6 +376,13 @@ public class CLI implements Runnable, UI {
         connectionAccepted = true;
     }
 
+    @Override
+    public void printConnectionMessage(ConnectionMessage message) {
+        System.out.println("--------------------------------------------");
+        System.out.println(message);
+        System.out.println("--------------------------------------------");
+    }
+
     public synchronized boolean getActive(){
         return connectionAccepted;
     }

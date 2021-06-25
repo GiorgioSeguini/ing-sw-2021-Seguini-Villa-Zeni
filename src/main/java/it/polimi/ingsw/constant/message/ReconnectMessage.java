@@ -15,13 +15,7 @@ public class ReconnectMessage extends ConnectionMessage implements Message{
 
     @Override
     public void handleMessage(Client client) {
-        if(client.getUI()instanceof CLI){
-            //CLI.setConnectionMessage(this);
-            // TODO: 6/25/21 gestire sincronizzazione
-        }
-        else {
-            // TODO: 6/25/21 gestire sincronizzazione
-        }
+        client.getUI().printConnectionMessage(this);
     }
 
     @Override
@@ -32,7 +26,7 @@ public class ReconnectMessage extends ConnectionMessage implements Message{
     @Override
     public String toString() {
         String x="";
-        x+="\\n\\nAGGIORNAMENTO: "+super.getPlayerName()+" si è riconnesso nella stanza!\n";
+        x+="AGGIORNAMENTO: "+super.getPlayerName()+" si è riconnesso nella stanza!\n";
         x+="Giocatori attualmente collegati\n";
         int i=1;
         for (String name: super.getPlayersName()){

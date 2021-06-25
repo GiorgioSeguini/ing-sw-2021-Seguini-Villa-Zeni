@@ -17,21 +17,13 @@ public class DisconnectMessage extends ConnectionMessage implements Message{
 
     @Override
     public void handleMessage(Client client) {
-        if(client.getUI()instanceof CLI){
-            //CLI.setConnectionMessage(this);
-            // TODO: 6/25/21 gestire sincronizzazione
-        }
-        else {
-            AlertBox box= new AlertBox("Messaggio Disconnessione", this.toString());
-            //((GUI)client.getUI()).ConnectionMessagePopUp(box);
-            // TODO: 6/25/21 gestire sincronizzazione 
-        }
+        client.getUI().printConnectionMessage(this);
     }
 
     @Override
     public String toString() {
         String x="";
-        x+="\\n\\nAGGIORNAMENTO: "+super.getPlayerName()+" si è disconnesso dalla stanza!\n";
+        x+="AGGIORNAMENTO: "+super.getPlayerName()+" si è disconnesso dalla stanza!\n";
         x+="Giocatori attualmente collegati\n";
         int i=1;
         for (String name: super.getPlayersName()){

@@ -8,6 +8,7 @@ import it.polimi.ingsw.constant.enumeration.ErrorMessage;
 import it.polimi.ingsw.constant.enumeration.GameStatus;
 import it.polimi.ingsw.constant.enumeration.PlayerStatus;
 import it.polimi.ingsw.constant.enumeration.ResourceType;
+import it.polimi.ingsw.constant.message.ConnectionMessage;
 import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.constant.model.Depots;
 import it.polimi.ingsw.constant.model.NumberOfResources;
@@ -52,6 +53,11 @@ public class GUI extends Application implements UI {
     public static void entry(Client client) {
         GUI.client = client;
         launch(new String[]{});
+    }
+
+    public void printConnectionMessage(ConnectionMessage message) {
+        AlertBox box= new AlertBox("Notifica di Rete", message.toString());
+        box.display();
     }
 
     public GUI(){
@@ -134,6 +140,7 @@ public class GUI extends Application implements UI {
            // box.addButton(button);
             box.display();
         }
+
 
         //show correct scene
         //initial status

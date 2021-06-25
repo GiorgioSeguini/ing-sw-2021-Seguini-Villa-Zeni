@@ -18,12 +18,7 @@ public class ConnectionMessage implements Message{
 
     @Override
     public void handleMessage(Client client) {
-        if(client.getUI() instanceof CLI){
-            System.out.println(this);
-        }else{
-            // TODO: grafica della "sei nella lobby"
-        }
-
+        client.getUI().printConnectionMessage(this);
     }
 
     public Set<String> getPlayersName() {
@@ -42,7 +37,7 @@ public class ConnectionMessage implements Message{
     @Override
     public String toString() {
         String x="";
-        x+="\\n\\nAGGIORNAMENTO: "+playerName+" si è unito alla stanza!\n";
+        x+="AGGIORNAMENTO: "+playerName+" si è unito alla stanza!\n";
         x+="Giocatori attualmente collegati\n";
         int i=1;
         for (String name: playersName){

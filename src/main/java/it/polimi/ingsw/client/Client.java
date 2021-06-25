@@ -114,6 +114,7 @@ public class Client {
                 socketIn.close();
                 socketOut.close();
                 socket.close();
+                System.out.println();
             }
             stdin.close();
             System.exit(0);
