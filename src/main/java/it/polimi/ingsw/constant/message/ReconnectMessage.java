@@ -20,12 +20,25 @@ public class ReconnectMessage extends ConnectionMessage implements Message{
             // TODO: 6/25/21 gestire sincronizzazione
         }
         else {
-            // TODO: 6/25/21
+            // TODO: 6/25/21 gestire sincronizzazione
         }
     }
 
     @Override
     public String getName() {
         return className;
+    }
+
+    @Override
+    public String toString() {
+        String x="";
+        x+="\\n\\nAGGIORNAMENTO: "+super.getPlayerName()+" si è riconnesso nella stanza!\n";
+        x+="Giocatori attualmente collegati\n";
+        int i=1;
+        for (String name: super.getPlayersName()){
+            x+="\t"+i+". "+name+"\n";
+            i++;
+        }
+        return x;
     }
 }
