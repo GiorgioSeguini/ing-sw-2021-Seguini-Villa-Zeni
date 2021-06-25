@@ -19,6 +19,10 @@ public class DisconnectMessage extends ConnectionMessage implements Message{
     public void handleMessage(Client client) {
         client.getUI().printConnectionMessage(this);
     }
+    @Override
+    public String getSimpleMex(){
+        return "AGGIORNAMENTO: "+super.getPlayerName()+ "si è disconnesso dalla stanza!";
+    }
 
     @Override
     public String toString() {

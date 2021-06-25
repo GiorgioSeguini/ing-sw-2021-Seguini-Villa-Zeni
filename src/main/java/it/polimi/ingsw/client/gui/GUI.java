@@ -9,7 +9,9 @@ import it.polimi.ingsw.constant.enumeration.GameStatus;
 import it.polimi.ingsw.constant.enumeration.PlayerStatus;
 import it.polimi.ingsw.constant.enumeration.ResourceType;
 import it.polimi.ingsw.constant.message.ConnectionMessage;
+import it.polimi.ingsw.constant.message.DisconnectMessage;
 import it.polimi.ingsw.constant.message.Message;
+import it.polimi.ingsw.constant.message.ReconnectMessage;
 import it.polimi.ingsw.constant.model.Depots;
 import it.polimi.ingsw.constant.model.NumberOfResources;
 import it.polimi.ingsw.constant.move.MoveType;
@@ -56,9 +58,15 @@ public class GUI extends Application implements UI {
         launch(new String[]{});
     }
 
+    @Override
     public void printConnectionMessage(ConnectionMessage message) {
         connectionMex=message;
-        Platform.runLater(this::showAlertBoxConnection);
+        if((message instanceof DisconnectMessage || message instanceof ReconnectMessage) && getModel()!=null ){
+            Platform.runLater(this::showAlertBoxConnection);
+        }
+        else{
+            update();
+        }
     }
 
     private void showAlertBoxConnection() {
@@ -67,6 +75,9 @@ public class GUI extends Application implements UI {
         connectionMex=null;
     }
 
+    public ConnectionMessage getConnectionMex() {
+        return connectionMex;
+    }
 
     public GUI(){
         super();

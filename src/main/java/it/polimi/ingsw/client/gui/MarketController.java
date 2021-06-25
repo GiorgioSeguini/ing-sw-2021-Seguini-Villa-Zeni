@@ -97,6 +97,7 @@ public class MarketController extends ControllerGuiInterface implements EventHan
     private ImageView color2;
 
 
+
     public MarketController(){
         super();
         marblesColor=new Image[MarbleColor.values().length];

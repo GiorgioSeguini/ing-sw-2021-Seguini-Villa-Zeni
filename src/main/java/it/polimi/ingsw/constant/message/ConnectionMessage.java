@@ -34,6 +34,10 @@ public class ConnectionMessage implements Message{
         return className;
     }
 
+    public String getSimpleMex(){
+        return "AGGIORNAMENTO: "+playerName+ " si è unito alla stanza!";
+    }
+
     @Override
     public String toString() {
         String x="";
