@@ -3,6 +3,7 @@ package it.polimi.ingsw.constant.message;
 import it.polimi.ingsw.client.Client;
 import it.polimi.ingsw.client.cli.CLI;
 import it.polimi.ingsw.client.gui.AlertBox;
+import it.polimi.ingsw.client.gui.GUI;
 
 import java.util.Set;
 
@@ -21,8 +22,8 @@ public class DisconnectMessage extends ConnectionMessage implements Message{
             // TODO: 6/25/21 gestire sincronizzazione
         }
         else {
-            //AlertBox box= new AlertBox("Messaggio Disconnessione", this.toString());
-            //box.display();
+            AlertBox box= new AlertBox("Messaggio Disconnessione", this.toString());
+            //((GUI)client.getUI()).ConnectionMessagePopUp(box);
             // TODO: 6/25/21 gestire sincronizzazione 
         }
     }
