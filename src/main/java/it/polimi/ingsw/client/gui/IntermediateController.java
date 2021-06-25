@@ -18,13 +18,13 @@ import java.util.ArrayList;
 public abstract class IntermediateController extends ControllerGuiInterface {
     private static final Double[] RES_X = {289.0, 231.0, 320.0, 187.0, 274.0, 365.0};
     private static final Double[] RES_Y = {173.0, 315.0, 315.0, 467.0, 467.0, 467.0};
-    private static final Double RES_SIZE = 80.0;
+    static final Double RES_SIZE = 80.0;
     static final Double DEPOTS_HEIGHT = 1017.0;
     private static final Double[] DEPOTS_X = {220.0};
     private static final Double[] DEPOTS_Y = {146.0};
     private static final Double DEPOTS_REAL = 400.0;
-    private static final Double[] STRONGBOX_X = {182.0, 388.0, 182.0, 388.0};
-    private static final Double[] STRONGBOX_X2 = {65.0, 95.0,  271.0, 301.0, 65.0, 95.0,  271.0, 301.0};
+    static final Double[] STRONGBOX_X = {182.0, 388.0, 182.0, 388.0};
+    static final Double[] STRONGBOX_X2 = {65.0, 95.0,  271.0, 301.0, 65.0, 95.0,  271.0, 301.0};
     private static final Double[] STRONGBOX_Y = {769.0, 769.0, 883.0, 883.0};
     private static final Double[] STRONGBOX_Y2 = {769.0, 769.0, 769.0, 769.0, 883.0, 883.0, 883.0, 883.0};
 
@@ -37,7 +37,15 @@ public abstract class IntermediateController extends ControllerGuiInterface {
     @FXML
     private ChoiceBox<Integer> stones;
     @FXML
-    private AnchorPane anchorPane;
+    private ImageView coinsImage;
+    @FXML
+    private ImageView servantsImage;
+    @FXML
+    private ImageView stonesImage;
+    @FXML
+    private ImageView shieldsImage;
+    @FXML
+    AnchorPane anchorPane;
     @FXML
     ImageView depots;
     @FXML
@@ -86,6 +94,10 @@ public abstract class IntermediateController extends ControllerGuiInterface {
             imageStrongbox[type.ordinal()].setImage(new Image("/images/punchboard/" + type + ".png"));
         }
         GUI.fixImages(depots, DEPOTS_HEIGHT, numberStrongbox, STRONGBOX_X2, STRONGBOX_Y2, RES_SIZE);
+        GUI.fixImagesToPane(anchorPane, coinsImage);
+        GUI.fixImagesToPane(anchorPane, stonesImage);
+        GUI.fixImagesToPane(anchorPane, servantsImage);
+        GUI.fixImagesToPane(anchorPane, shieldsImage);
     }
 
     @Override

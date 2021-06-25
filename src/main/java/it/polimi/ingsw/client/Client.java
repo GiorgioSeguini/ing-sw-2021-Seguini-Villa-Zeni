@@ -35,8 +35,6 @@ public class Client {
     private final String ip;
     private final int port;
     private Boolean online = false;
-    private boolean chose = false;      //true when either online or offline game is started
-    private final Object choseLocker = new Object();
     public DataOutputStream socketOut;
     private DataInputStream socketIn;
     private Socket socket;
@@ -102,11 +100,6 @@ public class Client {
             else{
                 GUI.entry(this);
             }
-            synchronized (choseLocker) {
-                while (!chose) {
-                    choseLocker.wait();
-                }
-            }
             //chose has been made
             synchronized (this){
                 while (isActive()){
@@ -121,6 +114,7 @@ public class Client {
                 socketIn.close();
                 socketOut.close();
                 socket.close();
+                System.out.println();
             }
             stdin.close();
             System.exit(0);
@@ -214,12 +208,7 @@ public class Client {
         observer.update(new LastMessage());
 
         online = false;
-        chose = true;
         executor= Executors.newFixedThreadPool(1);
-        synchronized (choseLocker){
-            chose = true;
-            choseLocker.notifyAll();
-        }
     }
 
     public boolean setOnline() {
@@ -233,12 +222,6 @@ public class Client {
         }catch (IOException e){
             setActive(false);
             return false;
-        }
-        finally {
-            synchronized (choseLocker){
-                chose = true;
-                choseLocker.notifyAll();
-            }
         }
         return true;
     }

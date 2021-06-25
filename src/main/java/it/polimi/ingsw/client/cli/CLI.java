@@ -3,26 +3,23 @@ package it.polimi.ingsw.client.cli;
 import it.polimi.ingsw.client.Client;
 import it.polimi.ingsw.client.UI;
 import it.polimi.ingsw.client.modelClient.GameClient;
-import it.polimi.ingsw.client.parser.StarterClient;
 import it.polimi.ingsw.constant.enumeration.ErrorMessage;
 import it.polimi.ingsw.constant.enumeration.GameStatus;
-import it.polimi.ingsw.constant.message.LastMessage;
+import it.polimi.ingsw.constant.message.ConnectionMessage;
+import it.polimi.ingsw.constant.message.ReconnectMessage;
 import it.polimi.ingsw.constant.model.Player;
 import it.polimi.ingsw.constant.move.MoveEndTurn;
 import it.polimi.ingsw.constant.move.MoveType;
 import it.polimi.ingsw.constant.setupper.*;
 
-import java.io.*;
-
-import java.security.KeyStore;
 import java.util.*;
-import java.util.concurrent.TimeUnit;
 
 public class CLI implements Runnable, UI {
     private final Client client;
     private GameClient game;
     Scanner in = new Scanner(System.in);
     ArrayList<CliInterface> moves;
+    //private static ReconnectMessage connectionMessage=null;
 
     private boolean moveHandled;
     private final Object locker = new Object();
@@ -30,11 +27,16 @@ public class CLI implements Runnable, UI {
 
     private boolean printLorenzoMove=false;
 
-
     public CLI(Client client) {
         this.client = client;
         this.moves = new ArrayList<>();
     }
+/*
+    public static void setConnectionMessage(ReconnectMessage connectionMessage) {
+        CLI.connectionMessage = connectionMessage;
+    }
+
+ */
 
     @Override
     public void run() {
@@ -157,6 +159,18 @@ public class CLI implements Runnable, UI {
                 }
             } else {
                 clearScreen();
+               /* if(connectionMessage!=null){
+                    System.out.println("\n\nAGGIORNAMENTO: Qualcuno si è riconnesso!");
+                    System.out.println("Giocatori attualmente collegati");
+                    int i=1;
+                    for (String name: connectionMessage.getPlayersName()){
+                        System.out.println(i+". "+name);
+                        i++;
+                    }
+                    connectionMessage=null;
+                }
+
+                */
                 System.out.println("E' il turno di :" + game.getCurrPlayer().getUserName());
             }
         }
@@ -211,7 +225,6 @@ public class CLI implements Runnable, UI {
         }
         return temp;
     }
-
 
     private void RoomGame(){
         int x;
@@ -361,6 +374,13 @@ public class CLI implements Runnable, UI {
     @Override
     public synchronized void setActive() {
         connectionAccepted = true;
+    }
+
+    @Override
+    public void printConnectionMessage(ConnectionMessage message) {
+        System.out.println("--------------------------------------------");
+        System.out.println(message);
+        System.out.println("--------------------------------------------");
     }
 
     public synchronized boolean getActive(){

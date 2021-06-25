@@ -27,16 +27,16 @@
             <RowConstraints minHeight="5.0" prefHeight="5.0" vgrow="ALWAYS" />
         </rowConstraints>
         <children>
-            <ImageView fitHeight="95.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <ImageView fx:id="coinsImage" fitHeight="95.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
                 <Image url="@../../../../../images/punchboard/Coins.png" />
             </ImageView>
-            <ImageView fitHeight="95.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1">
+            <ImageView fx:id="servantsImage" fitHeight="95.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1">
                 <Image url="@../../../../../images/punchboard/Servants.png" />
             </ImageView>
-            <ImageView fitHeight="95.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <ImageView fx:id="shieldsImage" fitHeight="95.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
                 <Image url="@../../../../../images/punchboard/Shields.png" />
             </ImageView>
-            <ImageView fitHeight="95.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="3">
+            <ImageView fx:id="stonesImage" fitHeight="95.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="3">
                 <Image url="@../../../../../images/punchboard/Stones.png" />
             </ImageView>
             <ChoiceBox fx:id="coins"    prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2"  styleClass="baseButton" onAction="#boxAction"/>

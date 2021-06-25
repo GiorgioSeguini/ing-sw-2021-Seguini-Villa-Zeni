@@ -8,7 +8,10 @@ import it.polimi.ingsw.constant.enumeration.ErrorMessage;
 import it.polimi.ingsw.constant.enumeration.GameStatus;
 import it.polimi.ingsw.constant.enumeration.PlayerStatus;
 import it.polimi.ingsw.constant.enumeration.ResourceType;
+import it.polimi.ingsw.constant.message.ConnectionMessage;
+import it.polimi.ingsw.constant.message.DisconnectMessage;
 import it.polimi.ingsw.constant.message.Message;
+import it.polimi.ingsw.constant.message.ReconnectMessage;
 import it.polimi.ingsw.constant.model.Depots;
 import it.polimi.ingsw.constant.model.NumberOfResources;
 import it.polimi.ingsw.constant.move.MoveType;
@@ -40,6 +43,7 @@ public class GUI extends Application implements UI {
     private final HashMap<String, FXMLLoader> loaderMap = new HashMap<>();
     private Scene main;
     private ControllerGuiInterface current;
+    private ConnectionMessage connectionMex= null;
     private boolean myTurn=false;
     private boolean active = false;
     private final Image[] resImage = new Image[ResourceType.values().length];
@@ -52,6 +56,27 @@ public class GUI extends Application implements UI {
     public static void entry(Client client) {
         GUI.client = client;
         launch(new String[]{});
+    }
+
+    @Override
+    public void printConnectionMessage(ConnectionMessage message) {
+        connectionMex=message;
+        if((message instanceof DisconnectMessage || message instanceof ReconnectMessage) && getModel()!=null ){
+            Platform.runLater(this::showAlertBoxConnection);
+        }
+        else{
+            update();
+        }
+    }
+
+    private void showAlertBoxConnection() {
+        AlertBox box= new AlertBox("Notifica di Rete", connectionMex.toString());
+        box.display();
+        connectionMex=null;
+    }
+
+    public ConnectionMessage getConnectionMex() {
+        return connectionMex;
     }
 
     public GUI(){
@@ -134,6 +159,7 @@ public class GUI extends Application implements UI {
            // box.addButton(button);
             box.display();
         }
+
 
         //show correct scene
         //initial status
@@ -249,6 +275,21 @@ public class GUI extends Application implements UI {
         image.setPreserveRatio(true);
     }
 
+    public static void fixImagesToPane(final Pane pane, final ImageView image){
+        double paneHeight = pane.getPrefHeight();
+        double paneWidth = pane.getPrefWidth();
+        double x = image.getLayoutX();
+        double y = image.getLayoutY();
+        double imageHeight = image.getFitHeight();
+        image.fitHeightProperty().bind(pane.heightProperty().divide(paneHeight / imageHeight));
+        pane.widthProperty().addListener((observableValue, oldValue, newValue) -> {
+            image.setLayoutX((Double)newValue * x / paneWidth);
+            image.setLayoutY((Double)newValue * y / paneWidth);
+        });
+
+        //pane.heightProperty().addListener((observableValue, oldValue, newValue) -> images[finalI].setLayoutY((Double)newValue * y[finalI]/ paneHeight));
+        image.setPreserveRatio(true);
+    }
 
     public static void fixLabels(final ImageView back, final Double backHeight, final Control[] labels, final Double[] x, final Double[] y){
         if(labels.length!=x.length)

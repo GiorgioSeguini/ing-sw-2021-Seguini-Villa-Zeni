@@ -122,7 +122,7 @@ public class SocketClientConnection implements  Observable<String>, ClientConnec
                     send(Starter.toJson(new RejectMessage(), Message.class));
                 }
             }while(!confirm);
-            send(Starter.toJson(new AcceptMessage(), Message.class));
+            send(Starter.toJson(new AcceptMessage(((SetUp) setupper).getRoomName()), Message.class));
             setupper.setAction(server, this, (SetUp) setupper);
             while(isActive()) {
                 read = in.readUTF();
