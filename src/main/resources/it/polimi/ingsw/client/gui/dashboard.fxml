@@ -54,9 +54,9 @@
                </image>
             </ImageView>
             <ImageView fx:id="devcardBuyed" fitHeight="242.0" fitWidth="297.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-            <Button fx:id="button1" mnemonicParsing="false" onAction="#choseNumber" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Button fx:id="button2" mnemonicParsing="false" onAction="#choseNumber" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <Button fx:id="button3" mnemonicParsing="false" onAction="#choseNumber" text="Button" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <Button fx:id="button1" mnemonicParsing="false" onAction="#choseNumber" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="3" styleClass="baseButton"/>
+            <Button fx:id="button2" mnemonicParsing="false" onAction="#choseNumber" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="3" styleClass="baseButton"/>
+            <Button fx:id="button3" mnemonicParsing="false" onAction="#choseNumber" text="Button" GridPane.columnIndex="3" GridPane.rowIndex="3" styleClass="baseButton"/>
             <ImageView fx:id="devcard1" fitHeight="296.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <ImageView fx:id="devcard2" fitHeight="297.0" fitWidth="176.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             <ImageView fx:id="devcard3" fitHeight="292.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1" />

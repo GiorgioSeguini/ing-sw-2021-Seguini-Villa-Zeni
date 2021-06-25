@@ -1,16 +1,11 @@
 package it.polimi.ingsw.client.gui;
 
-import com.sun.jdi.Value;
 import it.polimi.ingsw.constant.enumeration.ColorDevCard;
-import it.polimi.ingsw.constant.enumeration.ErrorMessage;
 import it.polimi.ingsw.constant.enumeration.Level;
 import it.polimi.ingsw.constant.enumeration.ResourceType;
 import it.polimi.ingsw.constant.model.DevelopmentCard;
 import it.polimi.ingsw.constant.move.MoveBuyDevCard;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -18,8 +13,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Border;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 
 import java.util.ArrayList;
@@ -33,9 +26,22 @@ public class DashboardController extends ControllerGuiInterface{
     private static Double[] IMAGE_Y = {27.0, 27.0, 27.0, 27.0, 225.0, 225.0, 225.0, 225.0, 414.0, 414.0, 414.0, 414.0};
     private static Double[] IMAGE_XDepots = {900.0};
     private static Double[] IMAGE_YDepots = {300.0};
+    static final double BOARD_DEPOTS_HEIGHT = 1017;
+    private static final double RES_SIZE = 80;
+    private static final Double[] RES_X = {289.0, 231.0, 320.0, 187.0, 274.0, 365.0};
+    private static final Double[] RES_Y = {173.0, 315.0, 315.0, 467.0, 467.0, 467.0};
+    private static final Double[] STRONGBOX_X = {182.0, 388.0, 182.0, 388.0};
+    private static final Double[] STRONGBOX_X2 = {65.0, 95.0,  271.0, 301.0, 65.0, 95.0,  271.0, 301.0};
+    private static final Double[] STRONGBOX_Y = {769.0, 769.0, 883.0, 883.0};
+    private static final Double[] STRONGBOX_Y2 = {769.0, 769.0, 769.0, 769.0, 883.0, 883.0, 883.0, 883.0};
+
     private static final Double IMAGE_REAL = 150.0;
     private static final Double IMAGE_REAL_DEPOTS = 400.0;
     private static final ImageView[] IMAGE_VIEWS = new ImageView[12];
+    private final ImageView[] resources = new ImageView[6];
+    private final ImageView[] numberStrongbox = new ImageView[ResourceType.values().length*2];
+    private final ImageView[] imageStrongbox = new ImageView[ResourceType.values().length];
+    private final Image[] resImage = new Image[ResourceType.values().length];
     //MoveBuyDevCard move = new MoveBuyDevCard(gui.getModel().getMyID());
 
     @FXML
@@ -130,21 +136,11 @@ public class DashboardController extends ControllerGuiInterface{
     @FXML
     public void initialize(){
 
-        imageViews.add(imageView1);
-        imageViews.add(imageView2);
-        imageViews.add(imageView3);
-        imageViews.add(imageView4);
-        imageViews.add(imageView5);
-        imageViews.add(imageView6);
-        imageViews.add(imageView7);
-        imageViews.add(imageView8);
-        imageViews.add(imageView9);
-        imageViews.add(imageView10);
-        imageViews.add(imageView11);
-        imageViews.add(imageView12);
-        for(int i=0; i<IMAGE_VIEWS.length; i++){
-            IMAGE_VIEWS[i] = imageViews.get(i);
-        }
+        imageArrayInitializer(anchorPane, resources);
+        imageArrayInitializer(anchorPane, imageStrongbox);
+        imageArrayInitializer(anchorPane, numberStrongbox);
+        imageArrayInitializer(anchorPane, IMAGE_VIEWS);
+
 
         devCards.add(imageViewBoard);
         devCards.add(devcard1);
@@ -172,12 +168,18 @@ public class DashboardController extends ControllerGuiInterface{
 
         GUI.fixImagesToPane(anchorPane,692.0,1280.0,IMAGE_VIEWS,IMAGE_X,IMAGE_Y,IMAGE_REAL);
         GUI.fixImagesToPane(anchorPane,692.0,1280.0,new ImageView[]{imageViewDepots},IMAGE_XDepots,IMAGE_YDepots,IMAGE_REAL_DEPOTS);
-
-
-        /*for(int i=0;i<imageViews.size(); i++){
+        /*
+        for(int i=0;i<imageViews.size(); i++){
             imageViews.get(i).fitHeightProperty().bind(labels.get(i).heightProperty().divide(12));
             imageViews.get(i).fitWidthProperty().bind(labels.get(i).widthProperty());
         }*/
+
+        GUI.fixImages(imageViewDepots, BOARD_DEPOTS_HEIGHT, resources, RES_X, RES_Y, RES_SIZE);
+        GUI.fixImages(imageViewDepots, BOARD_DEPOTS_HEIGHT, imageStrongbox, STRONGBOX_X, STRONGBOX_Y, RES_SIZE);
+        for(ResourceType type : ResourceType.values()){
+            imageStrongbox[type.ordinal()].setImage(resImage[type.ordinal()]);
+        }
+        GUI.fixImages(imageViewDepots, BOARD_DEPOTS_HEIGHT, numberStrongbox, STRONGBOX_X2, STRONGBOX_Y2, RES_SIZE);
 
 
         imageViewBoard.fitWidthProperty().bind(gridSecondScreen.widthProperty().divide(2));
@@ -218,6 +220,8 @@ public class DashboardController extends ControllerGuiInterface{
                 devCards.get(i+1).setImage(new Image("images/front/Masters of Renaissance_Cards_FRONT_3mmBleed_1-" + (devCard.getId() + 1) + "-1.png"));
             }
         }
+        gui.printDepots(resources, gui.getModel().getMe().getDepots());
+        gui.printResources(numberStrongbox,gui.getModel().getMe().getDepots().getStrongBox().getResources());
     }
 
     public void onMouseClicked(MouseEvent mouseEvent) {
@@ -314,6 +318,13 @@ public class DashboardController extends ControllerGuiInterface{
             label.setText("");
         }
         chosen=new boolean[12];
+    }
+
+    void imageArrayInitializer(AnchorPane anchorPane, ImageView[] imageViews){
+        for(int i=0; i<imageViews.length; i++){
+            imageViews[i]= new ImageView();
+            anchorPane.getChildren().add(imageViews[i]);
+        }
     }
 
 }
