@@ -21,7 +21,7 @@ public class DisconnectMessage extends ConnectionMessage implements Message{
     }
     @Override
     public String getSimpleMex(){
-        return "AGGIORNAMENTO: "+super.getPlayerName()+ "si è disconnesso dalla stanza!";
+        return "AGGIORNAMENTO: "+super.getPlayerName()+ " si è disconnesso dalla stanza!";
     }
 
     @Override

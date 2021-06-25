@@ -109,6 +109,7 @@ public class LobbyController extends ControllerGuiInterface{
         }
     }
 
+    /*
     private boolean isDefaultRoom(String roomName){
         for(String x: defaultRoomNames){
             if (roomName.equals(x)){
@@ -118,10 +119,12 @@ public class LobbyController extends ControllerGuiInterface{
         return false;
     }
 
+     */
+
     private void setLableNotify() {
         String roomName= GUI.client.getRoomName();
         if(firstIN){
-            if(isDefaultRoom(roomName)){
+            if(roomName==null){
                 labelnotify.setText("Sei connesso nella lobby, attendi giocatori da tutto il mondo!");
                 labelroom.setText("Room: Lobby");
             }

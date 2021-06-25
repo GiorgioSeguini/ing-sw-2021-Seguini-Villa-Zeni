@@ -28,10 +28,10 @@
       <ImageView fx:id="imageView2" fitHeight="250.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="2" />
       <ImageView fx:id="imageView3" fitHeight="250.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="2" />
       <ImageView fx:id="imageView4" fitHeight="250.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="2" />
-      <Label fx:id="label1" prefHeight="40.0" prefWidth="130.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-      <Label fx:id="label2" prefHeight="40.0" prefWidth="130.0" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-      <Label fx:id="label3" prefHeight="40.0" prefWidth="130.0" wrapText="true" GridPane.columnIndex="5" GridPane.rowIndex="3" />
-      <Label fx:id="label4" prefHeight="40.0" prefWidth="130.0" wrapText="true" GridPane.columnIndex="7" GridPane.rowIndex="3" />
+      <Label fx:id="label1" prefHeight="40.0" prefWidth="130.0" wrapText="true" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <Label fx:id="label2" prefHeight="40.0" prefWidth="130.0" wrapText="true" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+      <Label fx:id="label3" prefHeight="40.0" prefWidth="130.0" wrapText="true" textAlignment="CENTER" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+      <Label fx:id="label4" prefHeight="40.0" prefWidth="130.0" wrapText="true" textAlignment="CENTER" GridPane.columnIndex="7" GridPane.rowIndex="3" />
       <Label fx:id="labelnotify" prefHeight="67.0" prefWidth="133.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="0" />
       <Label fx:id="labelroom" prefHeight="17.0" prefWidth="200.0" wrapText="true" GridPane.columnIndex="5" GridPane.rowIndex="0" />
       <Button fx:id="button" layoutX="493.0" layoutY="25.0" mnemonicParsing="false" onAction="#Disconnect" prefHeight="35.0" prefWidth="108.0" styleClass="baseButton" text="Disconnetti" GridPane.columnIndex="7" GridPane.rowIndex="0" />

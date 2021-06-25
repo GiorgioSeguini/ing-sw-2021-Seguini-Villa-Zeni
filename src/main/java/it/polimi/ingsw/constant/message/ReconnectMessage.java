@@ -25,7 +25,7 @@ public class ReconnectMessage extends ConnectionMessage implements Message{
 
     @Override
     public String getSimpleMex(){
-        return "AGGIORNAMENTO: "+super.getPlayerName()+ "si è riconnesso alla stanza!";
+        return "AGGIORNAMENTO: "+super.getPlayerName()+ " si è riconnesso alla stanza!";
     }
 
     @Override
