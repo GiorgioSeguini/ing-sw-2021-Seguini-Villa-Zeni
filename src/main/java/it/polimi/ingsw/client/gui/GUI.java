@@ -41,6 +41,7 @@ public class GUI extends Application implements UI {
     private final HashMap<String, FXMLLoader> loaderMap = new HashMap<>();
     private Scene main;
     private ControllerGuiInterface current;
+    private ConnectionMessage connectionMex= null;
     private boolean myTurn=false;
     private boolean active = false;
     private final Image[] resImage = new Image[ResourceType.values().length];
@@ -56,9 +57,16 @@ public class GUI extends Application implements UI {
     }
 
     public void printConnectionMessage(ConnectionMessage message) {
-        AlertBox box= new AlertBox("Notifica di Rete", message.toString());
-        box.display();
+        connectionMex=message;
+        Platform.runLater(this::showAlertBoxConnection);
     }
+
+    private void showAlertBoxConnection() {
+        AlertBox box= new AlertBox("Notifica di Rete", connectionMex.toString());
+        box.display();
+        connectionMex=null;
+    }
+
 
     public GUI(){
         super();

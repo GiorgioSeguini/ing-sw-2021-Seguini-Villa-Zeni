@@ -34,7 +34,7 @@ public class Room {
         this.roomName= roomName;
         this.numOfPlayers= numOfPlayers;
         for(String playerName: connections.keySet()){
-            addConnection(playerName, connections.get(playerName));
+            addConnectionWithoutMessage(playerName, connections.get(playerName));
         }
     }
 
@@ -73,6 +73,12 @@ public class Room {
         for(String name: connections.keySet()){
             connections.get(name).send(Starter.toJson(new ConnectionMessage(connections.keySet(), nickname), Message.class));
         }
+    }
+
+    public void addConnectionWithoutMessage(String nickname, ClientConnection connection){
+        connections.put(nickname, connection);
+        ((SocketClientConnection)connection).setNickName(nickname);
+        ((SocketClientConnection)connection).setRoom(this);
     }
 
 
