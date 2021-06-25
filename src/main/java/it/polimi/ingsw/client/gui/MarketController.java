@@ -1,6 +1,7 @@
 package it.polimi.ingsw.client.gui;
 
 import it.polimi.ingsw.constant.enumeration.MarbleColor;
+import it.polimi.ingsw.constant.enumeration.ResourceType;
 import it.polimi.ingsw.constant.move.MoveTypeMarket;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -43,10 +44,12 @@ public class MarketController extends ControllerGuiInterface implements EventHan
     public static String className = "market";
     private static int nCol=4;
     private static int nRow=3;
+    private static int nWhites=2;
     private ImageView[][] marbleImages=new ImageView[nRow][nCol];
     private Image[] marblesColor;
-    private static final String white1= "Hai l'abilità biglia bianca attiva. Le biglie bianche saranno convertite automaticamente nel seguente colore.";
-    private static final String white2= "Hai l'abilità biglia bianca attiva. Potrai sceglie come convertire le biglie nei seguenti colori.";
+    private Image[] resourcetype;
+    private static final String white1= "Hai l'abilità biglia bianca attiva. Le biglie bianche saranno convertite automaticamente nella seguente risorsa.";
+    private static final String white2= "Hai l'abilità biglia bianca attiva. Potrai sceglie come convertire le biglie nelle seguenti risorse.";
     private int index;
     private boolean checkAlert=true;
     private static final double marketH=2522;
@@ -62,6 +65,7 @@ public class MarketController extends ControllerGuiInterface implements EventHan
     private ImageView imageViewExtMarble= new ImageView();
     private Image arrowUp;
     private Image arrowLeft;
+    private ImageView[] whitesRes= new ImageView[2];
 
     @Override
     public String getName() {
@@ -70,13 +74,7 @@ public class MarketController extends ControllerGuiInterface implements EventHan
     @FXML
     private AnchorPane anchorPane;
     @FXML
-    private AnchorPane colorPane1;
-    @FXML
-    private AnchorPane colorPane2;
-    @FXML
     private GridPane gridPane;
-    @FXML
-    private GridPane colorGridPane;
     @FXML
     private Button marketMoveConfirm;
     @FXML
@@ -91,18 +89,19 @@ public class MarketController extends ControllerGuiInterface implements EventHan
     private ImageView market;
     @FXML
     private Label whites;
-    @FXML
-    private ImageView color1;
-    @FXML
-    private ImageView color2;
+
 
 
 
     public MarketController(){
         super();
         marblesColor=new Image[MarbleColor.values().length];
+        resourcetype=new Image[ResourceType.values().length];
         for(MarbleColor color: MarbleColor.values()){
-            marblesColor[color.ordinal()]= new Image(getImagePath(color));
+            marblesColor[color.ordinal()]= new Image("/images/marbles/"+color+".png");
+        }
+        for(ResourceType res: ResourceType.values()){
+            resourcetype[res.ordinal()]=new Image("/images/punchboard/"+res+".png");
         }
         arrowUp= new Image("/images/punchboard/arrowUp.png");
         arrowLeft=new Image("/images/punchboard/arrowLeft.png");
@@ -132,6 +131,12 @@ public class MarketController extends ControllerGuiInterface implements EventHan
                 anchorPane.getChildren().add(marbleImages[i][j]);
             }
         }
+
+        for (int i=0;i<nWhites; i++){
+            whitesRes[i]= new ImageView();
+            anchorPane.getChildren().add(whitesRes[i]);
+        }
+
         for (int i=0; i<nRow; i++){
             GUI.fixImages(market, marketH, marbleImages[i],new Double[]{x[0],x[1],x[2],x[3]}, new Double[]{y[i],y[i],y[i],y[i]}, 175.0);
             //GUI.fixImages(market, marketH, marbleImages[i],new Double[4], new Double[4], 175.0);
@@ -140,6 +145,7 @@ public class MarketController extends ControllerGuiInterface implements EventHan
         GUI.fixImages(market, marketH, col, new Double[]{x[0],x[1],x[2],x[3]}, new Double[]{y[3],y[3],y[3],y[3]},380.0);
         GUI.fixImages(market, marketH, row, new Double[]{x[4],x[4],x[4]}, new Double[]{y[0],y[1],y[2]},180.0);
         GUI.fixImages(market,marketH,new ImageView[]{imageViewExtMarble}, new Double[]{1400.0},new Double[]{320.0},150.0);
+        GUI.fixImages(market,marketH, whitesRes, new Double[]{1630.0,1780.0}, new Double[]{2200.0,2200.0},180.0);
 
     }
 
@@ -156,13 +162,11 @@ public class MarketController extends ControllerGuiInterface implements EventHan
 
         if(gui.getModel().getMe().getConverter().isWhiteAbilityActive()){
             if(gui.getModel().getMe().getConverter().getToconvert().size()==2){
-                MarbleColor color= gui.getModel().getMe().getConverter().getToconvert().get(1).getColor();
-                color2.setImage(marblesColor[color.ordinal()]);
+                ResourceType type= gui.getModel().getMe().getConverter().getToconvert().get(1);
+                whitesRes[1].setImage(resourcetype[type.ordinal()]);
             }
-            MarbleColor color= gui.getModel().getMe().getConverter().getToconvert().get(0).getColor();
-            color1.setImage(marblesColor[color.ordinal()]);
-            color1.fitHeightProperty().bind(colorPane1.heightProperty().divide(5));
-            color2.fitHeightProperty().bind(colorPane2.heightProperty().divide(5));
+            ResourceType type= gui.getModel().getMe().getConverter().getToconvert().get(0);
+            whitesRes[0].setImage(resourcetype[type.ordinal()]);
         }
 
         market.setVisible(true);
@@ -210,10 +214,6 @@ public class MarketController extends ControllerGuiInterface implements EventHan
         gui.sendMove(move);
     }
 
-    private String getImagePath(MarbleColor color){
-        String path="/images/marbles/"+color+".png";
-        return path;
-    }
 
     private void HideFirstScreen(boolean b){
         returnback.setDisable(b);
@@ -240,8 +240,8 @@ public class MarketController extends ControllerGuiInterface implements EventHan
             else{
                 whites.setText(white2);
             }
-            color1.setVisible(!b);
-            color2.setVisible(!b);
+            whitesRes[0].setVisible(!b);
+            whitesRes[1].setVisible(!b);
         }else{
             whites.setText("");
         }

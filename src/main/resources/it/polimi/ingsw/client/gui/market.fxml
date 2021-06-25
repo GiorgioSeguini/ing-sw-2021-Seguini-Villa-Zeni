@@ -32,24 +32,6 @@
       <Button fx:id="confirm" mnemonicParsing="false" onAction="#confirm" text="Conferma" GridPane.columnIndex="1" GridPane.rowIndex="4" />
       <Label fx:id="infos" text="Hai scelto di comprare dal mercato! Premi su una freccia per scegliere le risorse." wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
       <Label fx:id="chose" text="" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-       <Label fx:id="whites" text="" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-       <GridPane fx:id="colorGridPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" GridPane.rowIndex="5" GridPane.columnIndex="2">
-           <columnConstraints>
-           <ColumnConstraints hgrow="SOMETIMES" maxWidth="70.0" minWidth="10.0" prefWidth="70.0" />
-           <ColumnConstraints hgrow="SOMETIMES" maxWidth="70.0" minWidth="10.0" prefWidth="70.0" />
-           </columnConstraints>
-            <children>
-                <AnchorPane fx:id="colorPane1" prefHeight="56.0" prefWidth="70.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
-                    <children>
-                        <ImageView fx:id="color1" pickOnBounds="true" preserveRatio="true" />
-                    </children>
-                </AnchorPane>
-                <AnchorPane fx:id="colorPane2" prefHeight="56.0" prefWidth="70.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
-                    <children>
-                        <ImageView fx:id="color2" pickOnBounds="true" preserveRatio="true"/>
-                    </children>
-                </AnchorPane>
-            </children>
-       </GridPane>
+       <Label fx:id="whites" text="" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="4" />
    </children>
 </GridPane>
