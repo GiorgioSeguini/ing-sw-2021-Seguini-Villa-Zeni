@@ -20,12 +20,13 @@ import java.util.ArrayList;
 public class DashboardController extends ControllerGuiInterface{
 
     public static String className = "dashboard";
+
     private final ArrayList<Integer> choice = new ArrayList<>();
     private boolean[] chosen =new boolean[12];
-    private static Double[] IMAGE_X = {38.0, 250.0, 462.0, 674.0, 38.0, 250.0, 462.0, 674.0, 38.0, 250.0, 462.0, 674.0};
-    private static Double[] IMAGE_Y = {27.0, 27.0, 27.0, 27.0, 225.0, 225.0, 225.0, 225.0, 414.0, 414.0, 414.0, 414.0};
-    private static Double[] IMAGE_XDepots = {900.0};
-    private static Double[] IMAGE_YDepots = {300.0};
+    private static final Double[] IMAGE_X = {38.0, 250.0, 462.0, 674.0, 38.0, 250.0, 462.0, 674.0, 38.0, 250.0, 462.0, 674.0};
+    private static final Double[] IMAGE_Y = {27.0, 27.0, 27.0, 27.0, 225.0, 225.0, 225.0, 225.0, 414.0, 414.0, 414.0, 414.0};
+    private static final Double IMAGE_XDepots = 900.0;
+    private static final Double IMAGE_YDepots = 100.0;
     static final double BOARD_DEPOTS_HEIGHT = 1017;
     private static final double RES_SIZE = 80;
     private static final Double[] RES_X = {289.0, 231.0, 320.0, 187.0, 274.0, 365.0};
@@ -35,145 +36,64 @@ public class DashboardController extends ControllerGuiInterface{
     private static final Double[] STRONGBOX_Y = {769.0, 769.0, 883.0, 883.0};
     private static final Double[] STRONGBOX_Y2 = {769.0, 769.0, 769.0, 769.0, 883.0, 883.0, 883.0, 883.0};
 
+    private static final Double[] BUTTON_X = {100.0, 300.0, 500.0};
+    private static final Double[] BUTTON_Y = {600.0, 600.0, 600.0};
+
     private static final Double IMAGE_REAL = 150.0;
     private static final Double IMAGE_REAL_DEPOTS = 400.0;
-    private static final ImageView[] IMAGE_VIEWS = new ImageView[12];
     private final ImageView[] resources = new ImageView[6];
     private final ImageView[] numberStrongbox = new ImageView[ResourceType.values().length*2];
     private final ImageView[] imageStrongbox = new ImageView[ResourceType.values().length];
     private final Image[] resImage = new Image[ResourceType.values().length];
+
+    private final Double BOARD_X = 50.0;
+    private final Double BOARD_Y = 50.0;
+    private final Double BOARD_HEIGHT = 450.0;
     //MoveBuyDevCard move = new MoveBuyDevCard(gui.getModel().getMyID());
 
     @FXML
     public AnchorPane anchorPane;
     @FXML
-    public GridPane gridSecondScreen;
-    @FXML
     public Button confirmButton;
     @FXML
     public Button baseButton;
 
-    @FXML
-    public ImageView imageView1;
-    @FXML
-    public ImageView imageView2;
-    @FXML
-    public ImageView imageView3;
-    @FXML
-    public ImageView imageView4;
-    @FXML
-    public ImageView imageView5;
-    @FXML
-    public ImageView imageView6;
-    @FXML
-    public ImageView imageView7;
-    @FXML
-    public ImageView imageView8;
-    @FXML
-    public ImageView imageView9;
-    @FXML
-    public ImageView imageView10;
-    @FXML
-    public ImageView imageView11;
-    @FXML
-    public ImageView imageView12;
-
-    @FXML
-    public Label label1;
-    @FXML
-    public Label label2;
-    @FXML
-    public Label label3;
-    @FXML
-    public Label label4;
-    @FXML
-    public Label label5;
-    @FXML
-    public Label label6;
-    @FXML
-    public Label label7;
-    @FXML
-    public Label label8;
-    @FXML
-    public Label label9;
-    @FXML
-    public Label label10;
-    @FXML
-    public Label label11;
-    @FXML
-    public Label label12;
 
     @FXML
     public ImageView imageViewDepots;
 
     @FXML
-    public ImageView imageViewBoard;
+    public ImageView imageViewBoard ;
 
-
-    @FXML
-    public ImageView devcard1;
-    @FXML
-    public ImageView devcard2;
-    @FXML
-    public ImageView devcard3;
     @FXML
     public ImageView devcardBuyed;
 
 
+    private final ImageView[] imageViews = new ImageView[12];
+    private final ImageView[] devCards = new ImageView[4];
+    private final Button[] buttons = new Button[3];
 
-    @FXML
-    public Button button1;
-    @FXML
-    public Button button2;
-    @FXML
-    public Button button3;
 
-    private final ArrayList<ImageView> imageViews = new ArrayList<>();
-    private final ArrayList<ImageView> devCards = new ArrayList<>();
-    private final ArrayList<Label> labels = new ArrayList<>();
-    private final ArrayList<Button> buttons = new ArrayList<>();
+    public DashboardController() {
+        for(ResourceType type : ResourceType.values()){
+            resImage[type.ordinal()]= new Image("/images/punchboard/" + type + ".png");
+        }
+    }
 
     @FXML
     public void initialize(){
 
+        //first screen
+        imageArrayInitializer(anchorPane, imageViews);
+        for(ImageView imageView: imageViews){
+            imageView.setOnMouseClicked(this::onMouseClicked);
+        }
+        GUI.fixImagesToPane(anchorPane,692.0,1280.0,imageViews,IMAGE_X,IMAGE_Y,IMAGE_REAL);
+        //depots
         imageArrayInitializer(anchorPane, resources);
         imageArrayInitializer(anchorPane, imageStrongbox);
         imageArrayInitializer(anchorPane, numberStrongbox);
-        imageArrayInitializer(anchorPane, IMAGE_VIEWS);
-
-
-        devCards.add(imageViewBoard);
-        devCards.add(devcard1);
-        devCards.add(devcard2);
-        devCards.add(devcard3);
-        devCards.add(devcardBuyed);
-
-        buttons.add(button1);
-        buttons.add(button2);
-        buttons.add(button3);
-
-        labels.add(label1);
-        labels.add(label2);
-        labels.add(label3);
-        labels.add(label4);
-        labels.add(label5);
-        labels.add(label6);
-        labels.add(label7);
-        labels.add(label8);
-        labels.add(label9);
-        labels.add(label10);
-        labels.add(label11);
-        labels.add(label12);
-
-
-        GUI.fixImagesToPane(anchorPane,692.0,1280.0,IMAGE_VIEWS,IMAGE_X,IMAGE_Y,IMAGE_REAL);
-        GUI.fixImagesToPane(anchorPane,692.0,1280.0,new ImageView[]{imageViewDepots},IMAGE_XDepots,IMAGE_YDepots,IMAGE_REAL_DEPOTS);
-        /*
-        for(int i=0;i<imageViews.size(); i++){
-            imageViews.get(i).fitHeightProperty().bind(labels.get(i).heightProperty().divide(12));
-            imageViews.get(i).fitWidthProperty().bind(labels.get(i).widthProperty());
-        }*/
-
+        GUI.fixImagesToPane(anchorPane, 692.0, 1280.0, imageViewDepots, IMAGE_XDepots, IMAGE_YDepots, IMAGE_REAL_DEPOTS);
         GUI.fixImages(imageViewDepots, BOARD_DEPOTS_HEIGHT, resources, RES_X, RES_Y, RES_SIZE);
         GUI.fixImages(imageViewDepots, BOARD_DEPOTS_HEIGHT, imageStrongbox, STRONGBOX_X, STRONGBOX_Y, RES_SIZE);
         for(ResourceType type : ResourceType.values()){
@@ -181,12 +101,21 @@ public class DashboardController extends ControllerGuiInterface{
         }
         GUI.fixImages(imageViewDepots, BOARD_DEPOTS_HEIGHT, numberStrongbox, STRONGBOX_X2, STRONGBOX_Y2, RES_SIZE);
 
+        //second screen
+        imageArrayInitializer(anchorPane, devCards);
+        GUI.fixImagesToPane(anchorPane, 692.0, 1280.0, imageViewBoard, BOARD_X, BOARD_Y, BOARD_HEIGHT);
+        GUI.fixImagesToPane(anchorPane,devcardBuyed);
+        for(int i=0; i< buttons.length; i++){
+            buttons[i] = new Button();
+            buttons[i].setOnAction(this::choseNumber);
+            buttons[i].setText("QUI");
+            buttons[i].getStyleClass().clear();
+            buttons[i].getStyleClass().add("baseButton");
+            anchorPane.getChildren().add(buttons[i]);
+        }
+        GUI.fixControlToPane(anchorPane, 692.0, 1280.0, buttons, BUTTON_X, BUTTON_Y);
+        //TODO FIx devcards
 
-        imageViewBoard.fitWidthProperty().bind(gridSecondScreen.widthProperty().divide(2));
-        devcardBuyed.fitWidthProperty().bind(gridSecondScreen.widthProperty().divide(3));
-        devcard1.fitWidthProperty().bind(gridSecondScreen.widthProperty().divide(4));
-        devcard2.fitWidthProperty().bind(gridSecondScreen.widthProperty().divide(4));
-        devcard3.fitWidthProperty().bind(gridSecondScreen.widthProperty().divide(4));
     }
     @Override
     public String getName() {
@@ -209,7 +138,7 @@ public class DashboardController extends ControllerGuiInterface{
                     int id = gui.getModel().getDashboard().getTopDevCard(c, l).getId() + 1;
                     image[i] = new Image("/images/front/Masters of Renaissance_Cards_FRONT_3mmBleed_1-" + id + "-1.png");
                 }
-                imageViews.get(i).setImage(image[i]);
+                imageViews[i].setImage(image[i]);
                 i++;
             }
         }
@@ -217,7 +146,7 @@ public class DashboardController extends ControllerGuiInterface{
         for(i=0; i<3; i++){
             if(gui.getModel().getMe().getPersonalBoard().getPos(i).size()>0) {
                 DevelopmentCard devCard= gui.getModel().getMe().getPersonalBoard().getPos(i).get(0);
-                devCards.get(i+1).setImage(new Image("images/front/Masters of Renaissance_Cards_FRONT_3mmBleed_1-" + (devCard.getId() + 1) + "-1.png"));
+                devCards[i+1].setImage(new Image("images/front/Masters of Renaissance_Cards_FRONT_3mmBleed_1-" + (devCard.getId() + 1) + "-1.png"));
             }
         }
         gui.printDepots(resources, gui.getModel().getMe().getDepots());
@@ -226,16 +155,18 @@ public class DashboardController extends ControllerGuiInterface{
 
     public void onMouseClicked(MouseEvent mouseEvent) {
         ((ImageView) mouseEvent.getSource()).setId("imageViewClicked");
-        int index = imageViews.indexOf((ImageView) mouseEvent.getSource());
+        int index = 0;
+        for(int i=0; i<imageViews.length; i++) {
+            if (mouseEvent.getSource().equals(imageViews[i]))
+                index = i;
+        }
         if(new MoveBuyDevCard(gui.getModel().getMyID()).canPerform(gui.getModel())&&gui.getModel().getDashboard().isSomethingBuyable(gui.getModel())) {
             if (!chosen[index]) {
                 choice.add(gui.getModel().getDashboard().getTopDevCard(ColorDevCard.values()[index % 4], Level.values()[index / 4]).getId());
                 ((ImageView) mouseEvent.getSource()).setId("imageViewClicked");
-                labels.get(index).setText("selected");
             } else {
                 choice.remove((Integer) gui.getModel().getDashboard().getTopDevCard(ColorDevCard.values()[index % 4], Level.values()[index / 4]).getId());
                 ((ImageView) mouseEvent.getSource()).setId("imageView1");
-                labels.get(index).setText("");
             }
             chosen[index] = !chosen[index];
             checkButton();
@@ -245,7 +176,7 @@ public class DashboardController extends ControllerGuiInterface{
     public void confirm(ActionEvent actionEvent){
         hideFirstScreen(true);
         hideSecondScreen(false);
-        devCards.get(4).setImage(new Image("images/front/Masters of Renaissance_Cards_FRONT_3mmBleed_1-"+(choice.get(0)+1)+"-1.png"));
+        devcardBuyed.setImage(new Image("images/front/Masters of Renaissance_Cards_FRONT_3mmBleed_1-"+(choice.get(0)+1)+"-1.png"));
     }
 
     public void baseButton(ActionEvent actionEvent){
@@ -258,12 +189,10 @@ public class DashboardController extends ControllerGuiInterface{
     }
 
     private void hideSecondScreen(boolean b){
-        gridSecondScreen.setVisible(!b);
-        gridSecondScreen.setDisable(b);
         imageViewBoard.setVisible(!b);
 
-        for(int i=0; i<devCards.size(); i++){
-            devCards.get(i).setVisible(!b);
+        for (ImageView devCard : devCards) {
+            devCard.setVisible(!b);
 
         }
 
@@ -274,18 +203,20 @@ public class DashboardController extends ControllerGuiInterface{
     }
 
     private void hideFirstScreen(boolean b) {
-        gridSecondScreen.setDisable(!b);
-        gridSecondScreen.setVisible(b);
         for (ImageView imageView : imageViews) {
             imageView.setVisible(!b);
             imageView.setDisable(b);
         }
-        imageViewDepots.setVisible(!b);
-        imageViewDepots.setDisable(b);
-        for (Label label : labels) {
-            label.setVisible(!b);
-            label.setDisable(b);
+        for(ImageView number : numberStrongbox){
+            number.setVisible(!b);
         }
+        for(ImageView res : resources){
+            res.setVisible(!b);
+        }
+        for(ImageView image: imageStrongbox){
+            image.setVisible(!b);
+        }
+        imageViewDepots.setVisible(!b);
         checkButton();
         baseButton.setDisable(b);
         confirmButton.setVisible(!b);
@@ -295,15 +226,10 @@ public class DashboardController extends ControllerGuiInterface{
 
     public void choseNumber(ActionEvent actionEvent) {
         int index=-1;
-        if (button1.equals(actionEvent.getSource())) {
-            index=0;
-            System.out.println(index);
-        }
-        if (button2.equals(actionEvent.getSource())) {
-            index=1;
-        }
-        if (button3.equals(actionEvent.getSource())) {
-            index=2;
+        for(int i=0; i< buttons.length; i++){
+            if(buttons[i].equals(actionEvent.getSource())){
+                index = i;
+            }
         }
         System.out.println(index);
         MoveBuyDevCard move= new MoveBuyDevCard(gui.getModel().getMyID());
@@ -313,9 +239,9 @@ public class DashboardController extends ControllerGuiInterface{
     }
 
     private void resetChoice(){
-        choice.removeAll(choice);
-        for(Label label: labels){
-            label.setText("");
+        choice.clear();
+        for(ImageView imageView: imageViews){
+            imageView.setId("imageView1");
         }
         chosen=new boolean[12];
     }

@@ -8,65 +8,12 @@
    <children>
       <Button fx:id="baseButton" layoutX="14.0" layoutY="1.0" mnemonicParsing="false" onAction="#baseButton" prefHeight="22.0" prefWidth="24.0" styleClass="baseButton" text="X" />
       <Button fx:id="confirmButton" layoutX="48.0" layoutY="1.0" mnemonicParsing="false" onAction="#confirm" styleClass="baseButton" text="Compra" />
-      <ImageView fx:id="imageView1" fitHeight="150.0" fitWidth="200.0" layoutX="38.0" layoutY="27.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="imageView2" fitHeight="150.0" fitWidth="200.0" layoutX="250.0" layoutY="27.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="imageView3" fitHeight="150.0" fitWidth="200.0" layoutX="462.0" layoutY="27.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="imageView4" fitHeight="150.0" fitWidth="200.0" layoutX="674.0" layoutY="27.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="imageView5" fitHeight="150.0" fitWidth="200.0" layoutX="38.0" layoutY="225.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="imageView6" fitHeight="150.0" fitWidth="200.0" layoutX="250.0" layoutY="225.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="imageView7" fitHeight="150.0" fitWidth="200.0" layoutX="462.0" layoutY="225.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="imageView8" fitHeight="150.0" fitWidth="200.0" layoutX="674.0" layoutY="225.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="imageView9" fitHeight="150.0" fitWidth="200.0" layoutX="38.0" layoutY="414.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="imageView10" fitHeight="150.0" fitWidth="200.0" layoutX="250.0" layoutY="414.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="imageView11" fitHeight="150.0" fitWidth="200.0" layoutX="462.0" layoutY="414.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="imageView12" fitHeight="150.0" fitWidth="200.0" layoutX="674.0" layoutY="414.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="label1" layoutX="93.0" layoutY="199.0" />
-      <Label fx:id="label2" layoutX="324.0" layoutY="199.0" />
-      <Label fx:id="label3" layoutX="531.0" layoutY="199.0" />
-      <Label fx:id="label4" layoutX="717.0" layoutY="199.0" />
-      <Label fx:id="label5" layoutX="93.0" layoutY="385.0" />
-      <Label fx:id="label6" layoutX="324.0" layoutY="385.0" />
-      <Label fx:id="label7" layoutX="531.0" layoutY="385.0" />
-      <Label fx:id="label8" layoutX="717.0" layoutY="385.0" />
-      <Label fx:id="label9" layoutX="93.0" layoutY="573.0" />
-       <Label fx:id="label10" layoutX="324.0" layoutY="573.0" />
-       <Label fx:id="label11" layoutX="531.0" layoutY="573.0" />
-       <Label fx:id="label12" layoutX="717.0" layoutY="573.0" />
-      <GridPane fx:id="gridSecondScreen" layoutX="19.0" layoutY="102.0" prefHeight="556.0" prefWidth="880.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="169.0" minWidth="0.0" prefWidth="0.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="350.0" minWidth="10.0" prefWidth="187.4" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="354.99998474121094" minWidth="10.0" prefWidth="184.6" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="323.0" minWidth="10.0" prefWidth="193.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="303.20000000000005" minWidth="10.0" prefWidth="303.20000000000005" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints maxHeight="136.4" minHeight="10.0" prefHeight="136.4" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="190.20000000000002" minHeight="10.0" prefHeight="167.8" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="222.8" minHeight="10.0" prefHeight="130.60000000000002" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="106.39999999999998" minHeight="0.0" prefHeight="64.39999999999998" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="86.39999999999998" minHeight="10.0" prefHeight="49.39999999999998" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <ImageView fx:id="imageViewBoard" fitHeight="470.0" fitWidth="574.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <image>
-                  <Image url="@../../../../../images/board/Masters_of_Renaissance_PlayerBoard_DevCard.jpg" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="devcardBuyed" fitHeight="242.0" fitWidth="297.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-            <Button fx:id="button1" mnemonicParsing="false" onAction="#choseNumber" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="3" styleClass="baseButton"/>
-            <Button fx:id="button2" mnemonicParsing="false" onAction="#choseNumber" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="3" styleClass="baseButton"/>
-            <Button fx:id="button3" mnemonicParsing="false" onAction="#choseNumber" text="Button" GridPane.columnIndex="3" GridPane.rowIndex="3" styleClass="baseButton"/>
-            <ImageView fx:id="devcard1" fitHeight="296.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <ImageView fx:id="devcard2" fitHeight="297.0" fitWidth="176.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <ImageView fx:id="devcard3" fitHeight="292.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-         </children>
-      </GridPane>
-      <ImageView fx:id="imageViewDepots" fitHeight="322.0" fitWidth="230.0" layoutX="811.0" layoutY="139.0" pickOnBounds="true" preserveRatio="true">
-         <image>
+      <ImageView fx:id="imageViewBoard" layoutX="50.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@../../../../../images/board/Masters_of_Renaissance_PlayerBoard_DevCard.jpg" />
+      </ImageView>
+      <ImageView fx:id="devcardBuyed"    fitHeight="242.0" fitWidth="233.0" layoutX="1000.0" layoutY="139.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imageViewDepots"  layoutX="1000.0" layoutY="139.0" pickOnBounds="true" preserveRatio="true">
             <Image url="@../../../../../images/board/Depots.png" />
-         </image></ImageView>
-
-
+      </ImageView>
    </children>
 </AnchorPane>

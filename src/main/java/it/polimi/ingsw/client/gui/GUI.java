@@ -307,6 +307,24 @@ public class GUI extends Application implements UI {
         }
     }
 
+    public static void fixControlToPane(final Pane pane, final Double paneHeight, final Double paneWidth, final Control[] controls, final Double[] x, final Double[] y){
+        if(controls.length!=x.length)
+            throw new ArithmeticException();
+        if(controls.length!=y.length)
+            throw new ArithmeticException();
+        for(int i=0; i<controls.length; i++){
+            fixControlToPane(pane, paneHeight, paneWidth, controls[i], x[i], y[i]);
+        }
+    }
+
+    public static void fixControlToPane(final Pane pane, final Double paneHeight, final Double paneWidth, final Control control, final Double x, final Double y){
+        pane.widthProperty().addListener((observableValue, oldValue, newValue) -> {
+            control.setLayoutX((Double)newValue * x / paneWidth);
+            control.setLayoutY((Double)newValue * y / paneWidth);
+        });
+
+        //pane.heightProperty().addListener((observableValue, oldValue, newValue) -> images[finalI].setLayoutY((Double)newValue * y[finalI]/ paneHeight));
+    }
     public static void fixButton(final ImageView back, final Double backHeight, final Button[] buttons, final Double[] x, final Double[] y, final Double height, final Double width){
         if(buttons.length!=x.length)
             throw new RuntimeException();
