@@ -28,9 +28,9 @@ public class BaseMeController extends BaseController{
 
     public static String className = "base";
 
-    private static final Double[] BASE_PROD_X = {579.0};
-    private static final Double[] BASE_PROD_Y = {1156.0};
-    private static final Double BASE_PROD_HEIGHT = 286.0;
+    private static final Double[] BASE_PROD_X = {576.0};
+    private static final Double[] BASE_PROD_Y = {1153.0};
+    private static final Double BASE_PROD_HEIGHT = 312.0;
     private static final Double[] LEAD_BUTTON_X = {2550.0, 2700.0, 2550.0, 2700.0};
     private static final Double[] LEAD_BUTTON_Y = {20.0, 20.0, 900.0, 900.0};
     private static final Double LEAD_BUTTON_HEIGHT = 70.0;
@@ -195,7 +195,7 @@ public class BaseMeController extends BaseController{
             for(int i=0; i<2; i++){
                 if(actionEvent.getSource().equals(leaderCards[i])){
                     NumberOfResources input = new NumberOfResources().add(((LeaderCardClient)gui.getModel().getMe().getPersonalBoard().getLeaderCards().get(i)).getAbility().getResource(), 1);
-                    p = new ProductionPower(0, input, new NumberOfResources(), 1, 1);
+                    p = new ProductionPower(0, input, new NumberOfResources(), 0, 1);
                 }
             }
         }
@@ -315,6 +315,8 @@ public class BaseMeController extends BaseController{
                     case Dead, Played -> {
                         leaderButton[i * 2].setDisable(true);
                         leaderButton[i * 2 + 1].setDisable(true);
+                        leaderButton[i * 2].setVisible(false);
+                        leaderButton[i * 2 + 1].setVisible(false);
                     }
                     case onHand -> {
                         leaderButton[i * 2].setDisable(false);

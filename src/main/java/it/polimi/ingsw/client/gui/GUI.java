@@ -18,7 +18,9 @@ import it.polimi.ingsw.constant.move.MoveType;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -31,6 +33,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -55,7 +59,7 @@ public class GUI extends Application implements UI {
 
     public static void entry(Client client) {
         GUI.client = client;
-        launch(new String[]{});
+        launch(new String[]{""});
     }
 
     @Override
@@ -128,6 +132,7 @@ public class GUI extends Application implements UI {
         primaryStage.minHeightProperty().bind(primaryStage.widthProperty().multiply(9.0 / 16.0));
         primaryStage.maxHeightProperty().bind(primaryStage.widthProperty().multiply(9.0 / 16.0));
         primaryStage.setMinWidth(600.0);
+        primaryStage.setOnCloseRequest(this::confirmClose);
         primaryStage.show();
     }
 
@@ -227,6 +232,19 @@ public class GUI extends Application implements UI {
             client.notifyAll();
         }
         System.out.println("Stage closed");
+    }
+
+    public void confirmClose(WindowEvent actionEvent){
+        Button b = new Button();
+        b.setText("Annulla");
+        AlertBox box = new AlertBox("Esci", "Sei sicuro di voler uscire dal gioco?");
+        box.getCloseButton().setText("Esci");
+        b.setOnAction(e->{
+            actionEvent.consume();
+            box.closeBox();
+        });
+        box.addButton(b);
+        box.display();
     }
 
     /**

@@ -34,6 +34,7 @@ public class Client {
 
     private final String ip;
     private final int port;
+    private final int ui;       //ui -> 1 for cli, 2 for GUI
     private Boolean online = false;
     public DataOutputStream socketOut;
     private DataInputStream socketIn;
@@ -47,9 +48,10 @@ public class Client {
     private Controller controller;
     private ExecutorService executor;
 
-    public Client(String ip, int port){
+    public Client(String ip, int port, int ui){
         this.ip = ip;
         this.port = port;
+        this.ui = ui;
     }
 
     private boolean active = true;
@@ -87,12 +89,12 @@ public class Client {
 
 
     public void run() throws IOException {
-        Scanner stdin = new Scanner(System.in);
+        /*Scanner stdin = new Scanner(System.in);
         //System.out.println(socketIn.nextLine());
         System.out.println("insert 1 for CLI, 2 for GUI");
-        int i = stdin.nextInt();
+        int i = stdin.nextInt();*/
         try{
-            if(i==1) {
+            if(ui==1) {
                 cli = new CLI(this);
                 Thread t1 = new Thread(cli);
                 t1.start();
@@ -116,7 +118,7 @@ public class Client {
                 socket.close();
                 System.out.println();
             }
-            stdin.close();
+            //stdin.close();
             System.exit(0);
         }
     }

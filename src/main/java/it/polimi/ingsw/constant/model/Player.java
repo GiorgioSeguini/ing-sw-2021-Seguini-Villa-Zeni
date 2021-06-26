@@ -17,7 +17,7 @@ public class Player {
     private ErrorMessage errorMessage;
     private Converter converter;
     private ProductionPower toActive;
-
+    private NumberOfResources discounted;
     //smart getter
     public int getVictoryPoints(){
         return personalBoard.getVictoryPoints() + faithTrack.getVictoryPoints() + depots.getVictoryPoints();
@@ -60,6 +60,9 @@ public class Player {
         return toActive;
     }
 
+    public NumberOfResources getDiscounted() {
+        return discounted;
+    }
     //SETTER
 
     public void setUserName(String userName) {
@@ -96,6 +99,10 @@ public class Player {
 
     public void setToActive(ProductionPower toActive) {
         this.toActive = toActive;
+    }
+
+    public void setDiscounted(NumberOfResources discounted) {
+        this.discounted = discounted;
     }
 
     @Override

@@ -9,7 +9,7 @@ public class StrongBox {
 
     /* Default constructor*/
     public StrongBox() {
-        resources=new NumberOfResources(50,50, 50, 50);
+        resources=new NumberOfResources();
     }
 
     /*Getter*/

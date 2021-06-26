@@ -30,7 +30,7 @@ public class DashboardController extends ControllerGuiInterface{
     private static final Double[] RES_X = {289.0, 231.0, 320.0, 187.0, 274.0, 365.0};
     private static final Double[] RES_Y = {173.0, 315.0, 315.0, 467.0, 467.0, 467.0};
     private static final Double[] STRONGBOX_X = {182.0, 388.0, 182.0, 388.0};
-    private static final Double[] STRONGBOX_X2 = {65.0, 95.0,  271.0, 301.0, 65.0, 95.0,  271.0, 301.0};
+    private static final Double[] STRONGBOX_X2 = {70.0, 110.0,  290.0, 330.0, 70.0, 110.0,  290.0, 330.0};
     private static final Double[] STRONGBOX_Y = {769.0, 769.0, 883.0, 883.0};
     private static final Double[] STRONGBOX_Y2 = {769.0, 769.0, 769.0, 769.0, 883.0, 883.0, 883.0, 883.0};
 
@@ -47,16 +47,24 @@ public class DashboardController extends ControllerGuiInterface{
     private static final Double[] DEV_CARD_Y = {250.0, 250.0, 250.0};
     private static final Double DEV_CARD_HEIGHT = 700.0;
 
+    //discout ability
+    private static final Double[] DISCOUT_Y = {1169.0, 1169.0, 1283.0, 1283.0};
+    private static final Double[] DISCOUT_Y2 = {1169.0, 1169.0, 1169.0, 1169.0, 1283.0, 1283.0, 1283.0, 1283.0};
+    private static final Double[] LABEL_X = {20.0};
+    private static final Double[] LABEL_Y = {1100.0};
 
 
     private final ImageView[] resources = new ImageView[6];
     private final ImageView[] numberStrongbox = new ImageView[ResourceType.values().length*2];
     private final ImageView[] imageStrongbox = new ImageView[ResourceType.values().length];
     private final Image[] resImage = new Image[ResourceType.values().length];
+    //discount
+    private final ImageView[] numberDiscount = new ImageView[ResourceType.values().length*2];
+    private final ImageView[] imageDiscount = new ImageView[ResourceType.values().length];
+    private final Label labelDiscount = new Label();
+
     private boolean[] chosen =new boolean[12];
     private final ArrayList<Integer> choice = new ArrayList<>();
-
-    //MoveBuyDevCard move = new MoveBuyDevCard(gui.getModel().getMyID());
 
     @FXML
     public AnchorPane anchorPane;
@@ -107,6 +115,15 @@ public class DashboardController extends ControllerGuiInterface{
             imageStrongbox[type.ordinal()].setImage(resImage[type.ordinal()]);
         }
         GUI.fixImages(imageViewDepots, BOARD_DEPOTS_HEIGHT, numberStrongbox, STRONGBOX_X2, STRONGBOX_Y2, RES_SIZE);
+        //discount
+        imageArrayInitializer(anchorPane, imageDiscount);
+        imageArrayInitializer(anchorPane, numberDiscount);
+        GUI.fixImages(imageViewDepots, BOARD_DEPOTS_HEIGHT, imageDiscount, STRONGBOX_X, DISCOUT_Y, RES_SIZE);
+        GUI.fixImages(imageViewDepots, BOARD_DEPOTS_HEIGHT, numberDiscount, STRONGBOX_X2, DISCOUT_Y2, RES_SIZE);
+        GUI.fixLabels(imageViewDepots, BOARD_DEPOTS_HEIGHT, new Label[]{labelDiscount}, LABEL_X, LABEL_Y);
+        anchorPane.getChildren().add(labelDiscount);
+        labelDiscount.getStyleClass().clear();
+        labelDiscount.getStyleClass().add("baseLabel");
 
         //second screen
         imageArrayInitializer(anchorPane, devCards);
@@ -158,6 +175,14 @@ public class DashboardController extends ControllerGuiInterface{
         }
         gui.printDepots(resources, gui.getModel().getMe().getDepots());
         gui.printResources(numberStrongbox,gui.getModel().getMe().getDepots().getStrongBox().getResources());
+        //discount
+        if(!gui.getModel().getMe().getDiscounted().isEmpty()){
+            for(ResourceType type: ResourceType.values()){
+                imageDiscount[type.ordinal()].setImage(resImage[type.ordinal()]);
+            }
+            gui.printResources(numberDiscount, gui.getModel().getMe().getDiscounted());
+            labelDiscount.setText("Hai attivi i seguenti sconti");
+        }
     }
 
     public void onMouseClicked(MouseEvent mouseEvent) {
@@ -202,7 +227,7 @@ public class DashboardController extends ControllerGuiInterface{
             devCard.setVisible(!b);
 
         }
-
+        devcardBuyed.setVisible(!b);
         for(Button button: buttons){
             button.setVisible(!b);
             button.setDisable(b);
@@ -229,6 +254,14 @@ public class DashboardController extends ControllerGuiInterface{
         confirmButton.setVisible(!b);
         confirmButton.setDisable(b);
         baseButton.setVisible(!b);
+        //discount
+        for(ImageView view: imageDiscount){
+            view.setVisible(!b);
+        }
+        for(ImageView view: numberDiscount){
+            view.setVisible(!b);
+        }
+        labelDiscount.setVisible(!b);
     }
 
     public void choseNumber(ActionEvent actionEvent) {

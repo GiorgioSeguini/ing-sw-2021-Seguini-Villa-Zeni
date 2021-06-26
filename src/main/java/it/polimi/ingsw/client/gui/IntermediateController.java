@@ -24,7 +24,7 @@ public abstract class IntermediateController extends ControllerGuiInterface {
     private static final Double[] DEPOTS_Y = {146.0};
     private static final Double DEPOTS_REAL = 400.0;
     static final Double[] STRONGBOX_X = {182.0, 388.0, 182.0, 388.0};
-    static final Double[] STRONGBOX_X2 = {65.0, 95.0,  271.0, 301.0, 65.0, 95.0,  271.0, 301.0};
+    static final Double[] STRONGBOX_X2 = {70.0, 110.0,  290.0, 330.0, 70.0, 110.0,  290.0, 330.0};
     private static final Double[] STRONGBOX_Y = {769.0, 769.0, 883.0, 883.0};
     private static final Double[] STRONGBOX_Y2 = {769.0, 769.0, 769.0, 769.0, 883.0, 883.0, 883.0, 883.0};
 
