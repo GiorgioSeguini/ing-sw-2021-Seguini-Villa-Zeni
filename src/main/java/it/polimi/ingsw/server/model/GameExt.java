@@ -16,7 +16,7 @@ import java.util.*;
 /*Last Edit: Gio*/
 
 /**
- * Superclasse che gestisce tutto il gioco
+ * Superclass that manage the all game
  */
 public class GameExt extends Game implements Observable<Message> {
 
@@ -25,11 +25,11 @@ public class GameExt extends Game implements Observable<Message> {
     /**
      * Default constructor
      *
-     * @param players          the players
-     * @param market           the market
-     * @param dashboard        the dashboard
-     * @param soloActionTokens the solo action tokens
-     * @param leaderCards      the leader cards
+     * @param players of type ArrayList<PlayerExt>: the game's players
+     * @param market of type MarketExt: the game's market
+     * @param dashboard of type DashboardExt: the game's dashboard
+     * @param soloActionTokens of type ArrayList<SoloActionTokens>: the solo action tokens (if it is a singleplayer game)
+     * @param leaderCards of type ArrayList<LeaderCardExt>: the game's leader cards
      */
     public GameExt(ArrayList<PlayerExt> players, MarketExt market, DashboardExt dashboard, ArrayList<SoloActionTokens> soloActionTokens, ArrayList<LeaderCardExt> leaderCards){
         if(players.isEmpty())
@@ -81,7 +81,7 @@ public class GameExt extends Game implements Observable<Message> {
     }
 
     /**
-     * Get player player ext.
+     * Get the player ext in the index position.
      *
      * @param index the index
      * @return the player ext
@@ -124,7 +124,7 @@ public class GameExt extends Game implements Observable<Message> {
 
 
     /**
-     * Next turn.
+     * Modify current player's status and game's status and set next turn.
      */
     public void nextTurn(){
         super.getCurrPlayer().setStatus(PlayerStatus.Waiting);
@@ -161,7 +161,7 @@ public class GameExt extends Game implements Observable<Message> {
 
 
     /**
-     * Update status.
+     * Update game's status.
      */
     public void updateStatus(){
         if(super.getStatus()==GameStatus.Initial) {
@@ -185,7 +185,7 @@ public class GameExt extends Game implements Observable<Message> {
     /**
      * Get activable lead card array list.
      *
-     * @param player the player
+     * @param player of type Player: the player who want to know which leader cards can be activated
      * @return the array list
      */
     public ArrayList<LeaderCard> getActivableLeadCard(Player player){
@@ -203,10 +203,10 @@ public class GameExt extends Game implements Observable<Message> {
     }
 
     /**
-     * Get player idfrom nickname int.
+     * Get player id from nickname.
      *
-     * @param nickName the nick name
-     * @return the player Id from his nickname, -1 otherwise
+     * @param nickName of type String: the nick name
+     * @return of type int: the player Id from his nickname, -1 otherwise
      */
     public int getPlayerIdfromNickname(String nickName){
         for (Player player: getPlayers()){
@@ -262,6 +262,10 @@ public class GameExt extends Game implements Observable<Message> {
 
         return leaderCards;
     }
+
+    /**
+     * notify any changes during the turn
+     */
 
     private void change(){
         notify(new GameMessage(getStatus(), getCurrIndex(), this.getSoloGame()));

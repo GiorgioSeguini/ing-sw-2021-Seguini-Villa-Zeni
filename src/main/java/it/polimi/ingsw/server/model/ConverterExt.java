@@ -14,19 +14,37 @@ import it.polimi.ingsw.server.view.View;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class that manage resources and marbles just buyed from the market and that have to be stored or converted in resources.
+ */
 public class ConverterExt extends Converter implements Observable<Message> {
     private transient final PlayerExt owner;
 
+    /**
+     * Instantiates a new Converter ext.
+     *
+     * @param owner of type PlayerExt: the owner
+     */
     /*Default Constructor*/
     public ConverterExt(PlayerExt owner){
         super(owner.getID());
         this.owner=owner;
     }
 
+    /**
+     * Gets owner.
+     *
+     * @return the owner
+     */
     public PlayerExt getOwner() {
         return owner;
     }
 
+    /**
+     * Set white ability.
+     *
+     * @param type the type
+     */
     /*Setter*/
     public void setWhiteAbility(ResourceType type){
         for(ResourceType x: getToconvert()){
@@ -37,6 +55,12 @@ public class ConverterExt extends Converter implements Observable<Message> {
         this.addToconvert(type);
     }
 
+    /**
+     * set the resources and notify the change
+     *
+     * @param resources of type NumberOfResources: the resources to set
+     */
+
     @Override
     public void setResources(NumberOfResources resources) {
         super.setResources(resources);
@@ -44,7 +68,11 @@ public class ConverterExt extends Converter implements Observable<Message> {
     }
 
     /*Additional Methods*/
-    /**Returns TRUE if the WhiteAbility is active*/
+
+    /**
+     * Returns TRUE if the WhiteAbility is active
+     * @return the boolean
+     */
     public boolean IsWhiteAbilityActive(){
         if(getToconvert().size()!=0){
             return true;
@@ -52,7 +80,12 @@ public class ConverterExt extends Converter implements Observable<Message> {
         return false;
     }
 
-    /**It converts bought marbles and it throws an exception if there are white marbles to convert. */
+    /**
+     * It converts bought marbles and it throws an exception if there are white marbles to convert.
+     * @param input of type ArrayList<MarbleColor>: the input
+     *
+     * @throws HaveToChooseException the have to choose exception
+     */
     public void convertAll(ArrayList<MarbleColor> input) throws HaveToChooseException {
         ArrayList<MarbleColor> without_white=new ArrayList<>();
         int howmany=0;
@@ -81,13 +114,22 @@ public class ConverterExt extends Converter implements Observable<Message> {
         notify(new ConverterMessage(this));
     }
 
-    /**It just store the white resources chosen from the player. */
+    /**
+     * It just store the white resources chosen from the player in the converter.
+     * @param whiteres of type ArrayList<ResourcesType>: the resources to set in the converter
+     */
     public void WhiteMarbleConverter(ArrayList<ResourceType> whiteres){
         for(ResourceType x: whiteres){
             setResources(getResources().add(x, 1));
         }
     }
 
+    /**
+     * Check integrity to convert boolean.
+     *
+     * @param toconvert of type ArrayList<ResourceType>: the resources you have to convert
+     * @return the boolean
+     */
     public boolean CheckIntegrityToConvert(ArrayList<ResourceType> toconvert){
         if(toconvert.size()!=getWhite())
             return false;
@@ -98,6 +140,9 @@ public class ConverterExt extends Converter implements Observable<Message> {
         return true;
     }
 
+    /**
+     * Clean converter.
+     */
     public void CleanConverter(){
         setResources(new NumberOfResources());
         notify(new ConverterMessage(this));
@@ -132,6 +177,10 @@ public class ConverterExt extends Converter implements Observable<Message> {
     //Observable implementation
     private transient final List<Observer<Message>> observers = new ArrayList<>();
 
+    /**
+     *
+     * @param observer of type Observer<Message>: the observer to add
+     */
     @Override
     public void addObserver(Observer<Message> observer){
         synchronized (observers) {
@@ -139,6 +188,10 @@ public class ConverterExt extends Converter implements Observable<Message> {
         }
     }
 
+    /**
+     *
+     * @param message of type Message: the notifying message
+     */
     @Override
     public void notify(Message message) {
         synchronized (observers) {
