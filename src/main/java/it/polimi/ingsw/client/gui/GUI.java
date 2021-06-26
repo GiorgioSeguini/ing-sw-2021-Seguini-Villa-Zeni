@@ -85,7 +85,7 @@ public class GUI extends Application implements UI {
         for(ResourceType type : ResourceType.values()){
             resImage[type.ordinal()]= new Image("/images/punchboard/" + type + ".png");
         }
-        for(int i=0; i<9; i++){
+        for(int i=0; i<=9; i++){
             numberImage[i] = new Image("/images/number/" + i + ".png");
         }
     }
