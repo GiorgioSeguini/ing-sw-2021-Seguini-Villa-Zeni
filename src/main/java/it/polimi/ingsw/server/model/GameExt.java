@@ -14,6 +14,7 @@ import it.polimi.ingsw.server.view.View;
 
 import java.util.*;
 /*Last Edit: Gio*/
+
 /**
  * Superclasse che gestisce tutto il gioco
  */
@@ -23,6 +24,12 @@ public class GameExt extends Game implements Observable<Message> {
 
     /**
      * Default constructor
+     *
+     * @param players          the players
+     * @param market           the market
+     * @param dashboard        the dashboard
+     * @param soloActionTokens the solo action tokens
+     * @param leaderCards      the leader cards
      */
     public GameExt(ArrayList<PlayerExt> players, MarketExt market, DashboardExt dashboard, ArrayList<SoloActionTokens> soloActionTokens, ArrayList<LeaderCardExt> leaderCards){
         if(players.isEmpty())
@@ -73,6 +80,12 @@ public class GameExt extends Game implements Observable<Message> {
         return (PlayerExt)super.getPlayerFromID(id);
     }
 
+    /**
+     * Get player player ext.
+     *
+     * @param index the index
+     * @return the player ext
+     */
     public PlayerExt getPlayer(int index){
         return (PlayerExt) super.getPlayers().get(index);
     }
@@ -82,6 +95,9 @@ public class GameExt extends Game implements Observable<Message> {
         return (PlayerExt) super.getCurrPlayer();
     }
 
+    /**
+     * Popes inspection.
+     */
     public void popesInspection(){
         int index = -1;
         if(super.getPlayers().size()==1){
@@ -106,6 +122,10 @@ public class GameExt extends Game implements Observable<Message> {
         }
     }
 
+
+    /**
+     * Next turn.
+     */
     public void nextTurn(){
         super.getCurrPlayer().setStatus(PlayerStatus.Waiting);
         if(super.isSinglePlayer()){
@@ -140,6 +160,9 @@ public class GameExt extends Game implements Observable<Message> {
     }
 
 
+    /**
+     * Update status.
+     */
     public void updateStatus(){
         if(super.getStatus()==GameStatus.Initial) {
             boolean needToUpdate = true;
@@ -159,6 +182,12 @@ public class GameExt extends Game implements Observable<Message> {
         }
     }
 
+    /**
+     * Get activable lead card array list.
+     *
+     * @param player the player
+     * @return the array list
+     */
     public ArrayList<LeaderCard> getActivableLeadCard(Player player){
         int index = super.getPlayerIndex(player)* INITIAL_LEADER_CARD;
         if(index<0)
@@ -173,7 +202,12 @@ public class GameExt extends Game implements Observable<Message> {
         return res;
     }
 
-    /**@return the player Id from his nickname, -1 otherwise*/
+    /**
+     * Get player idfrom nickname int.
+     *
+     * @param nickName the nick name
+     * @return the player Id from his nickname, -1 otherwise
+     */
     public int getPlayerIdfromNickname(String nickName){
         for (Player player: getPlayers()){
             if(player.getUserName().equals(nickName)){
@@ -183,6 +217,12 @@ public class GameExt extends Game implements Observable<Message> {
         return -1;
     }
 
+    /**
+     * Get player from nickname player.
+     *
+     * @param nickName the nick name
+     * @return the player
+     */
     public Player getPlayerFromNickname(String nickName){
         for (Player player: getPlayers()){
             if(player.getUserName().equals(nickName)){
@@ -191,7 +231,9 @@ public class GameExt extends Game implements Observable<Message> {
         }
         return null;
     }
+
     /**
+     * Find leader card leader card ext.
      *
      * @param id to search for
      * @return a reference to the leader card with the wanted Id, null otherwise
@@ -205,6 +247,12 @@ public class GameExt extends Game implements Observable<Message> {
         return null;
     }
 
+    /**
+     * Find more leader card array list.
+     *
+     * @param cardId the card id
+     * @return the array list
+     */
     public ArrayList<LeaderCardExt> findMoreLeaderCard(ArrayList<Integer> cardId){
         ArrayList<LeaderCardExt> leaderCards= new ArrayList<>();
         for (int id: cardId){
@@ -219,16 +267,27 @@ public class GameExt extends Game implements Observable<Message> {
         notify(new GameMessage(getStatus(), getCurrIndex(), this.getSoloGame()));
     }
 
+    /**
+     * Last message.
+     */
     public void lastMessage(){
         notify(new LastMessage());
     }
 
+    /**
+     * Error message.
+     *
+     * @param id the id
+     */
     public void errorMessage(int id){
         notify(new ErrorMessage(id));
     }
     //Observable implementation
     private transient final List<Observer<Message>> observers = new ArrayList<>();
 
+    /**
+     * Close.
+     */
     public void close(){
         observers.clear();
     }
