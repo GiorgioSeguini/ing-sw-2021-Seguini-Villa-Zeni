@@ -9,7 +9,6 @@ import it.polimi.ingsw.constant.model.*;
 import it.polimi.ingsw.server.model.exception.OutOfResourcesException;
 import it.polimi.ingsw.server.observer.Observable;
 import it.polimi.ingsw.server.observer.Observer;
-import it.polimi.ingsw.server.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,8 +18,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class PlayerExt extends Player implements Observable<Message> {
 
     private static final AtomicInteger nextID = new AtomicInteger();
-
-    private transient NumberOfResources discounted;
 
     /*Default constructor*/
     public PlayerExt(String userName){
@@ -32,7 +29,7 @@ public class PlayerExt extends Player implements Observable<Message> {
         super.setErrorMessage(ErrorMessage.NoError);
         super.setStatus(PlayerStatus.Waiting);
         super.setConverter(new ConverterExt(this));
-        this.discounted = new NumberOfResources();
+        super.setDiscounted(new NumberOfResources());
     }
 
 
@@ -54,9 +51,7 @@ public class PlayerExt extends Player implements Observable<Message> {
         return temp.size()>= getToActive().getOfYourChoiceInput();
     }
 
-    public NumberOfResources getDiscounted() {
-        return discounted;
-    }
+
 
     @Override
     public ProductionPowerExt getToActive() {
@@ -78,27 +73,28 @@ public class PlayerExt extends Player implements Observable<Message> {
         return (PersonalBoardExt) super.getPersonalBoard();
     }
 
+    @Override
+    public ConverterExt getConverter() {
+        return (ConverterExt) super.getConverter();
+    }
+
     /*Modifier*/
 
     public void addDiscount(ResourceType type, int discount){
-        discounted = discounted.add(type, discount);
+        super.setDiscounted(super.getDiscounted().add(type, discount));
+        notify(new PlayerMessage(this.getStatus(), this.getID(), this.getErrorMessage(), this.getToActive(), this.getDiscounted()));
     }
 
     @Override
     public void setStatus(PlayerStatus status) {
         super.setStatus(status);
-        notify(new PlayerMessage(this.getStatus(), this.getID(), this.getErrorMessage(), this.getToActive()));
+        notify(new PlayerMessage(this.getStatus(), this.getID(), this.getErrorMessage(), this.getToActive(), this.getDiscounted()));
     }
 
     @Override
     public void setErrorMessage(ErrorMessage errorMessage) {
         super.setErrorMessage(errorMessage);
-        notify(new PlayerMessage(this.getStatus(), this.getID(), this.getErrorMessage(), this.getToActive()));
-    }
-
-    @Override
-    public ConverterExt getConverter() {
-        return (ConverterExt) super.getConverter();
+        notify(new PlayerMessage(this.getStatus(), this.getID(), this.getErrorMessage(), this.getToActive(), this.getDiscounted()));
     }
 
     //Observable implementation

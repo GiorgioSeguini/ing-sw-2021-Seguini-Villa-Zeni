@@ -11,9 +11,10 @@ import javafx.stage.Stage;
 
 public class AlertBox {
     private Stage window;
-    private String boxTitle;
-    private String boxMessage;
-    private VBox layout;
+    private final String boxTitle;
+    private final String boxMessage;
+    private final VBox layout;
+    private Button closeButton;
 
     public AlertBox(String boxTitle, String boxMessage){
         window= new Stage();
@@ -55,7 +56,7 @@ public class AlertBox {
 
         Label label= new Label();
         label.setText(boxMessage);
-        Button closeButton= new Button("Cancel");
+        this.closeButton= new Button("Cancel");
         closeButton.setOnAction(e->window.close());
         closeButton.getStyleClass().add("baseButton");
 
@@ -64,5 +65,9 @@ public class AlertBox {
         layout.setAlignment(Pos.CENTER);
 
         return layout;
+    }
+
+    public Button getCloseButton(){
+        return closeButton;
     }
 }

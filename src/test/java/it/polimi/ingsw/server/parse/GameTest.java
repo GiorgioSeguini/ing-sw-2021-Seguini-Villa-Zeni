@@ -41,7 +41,7 @@ public class GameTest {
 
         System.out.println(Starter.toJson(game, GameExt.class));
 
-        Client client= new Client("127.0.0.1", 12345);
+        Client client= new Client("127.0.0.1", 12345, 1);
 
         String model = Starter.toJson(game, GameExt.class);
         int myID = due.get(0).getID();

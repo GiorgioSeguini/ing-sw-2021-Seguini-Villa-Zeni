@@ -33,11 +33,13 @@ public class PersonalBoardExt extends PersonalBoard implements Observable<Messag
     /**This for add a DevCard in a specific position**/
     public void addDevCard(DevelopmentCard card, int pos) throws NoSpaceException {
         if(goodindex(pos)){
-            if (super.getPos(pos).isEmpty() && card.getLevel() == Level.ONE) {
-                super.getPos(pos).add(card);
-            } else
-            if(super.getPos(pos).get(0).getLevel().ordinal() == card.getLevel().ordinal()-1)
-            {
+            if (super.getPos(pos).isEmpty()){
+                if(card.getLevel() == Level.ONE) {
+                    super.getPos(pos).add(card);
+                }else {
+                    throw new NoSpaceException();
+                }
+            }else if(super.getPos(pos).get(0).getLevel().ordinal() == card.getLevel().ordinal()-1){
                 super.getPos(pos).add(0, card);
             } else throw new NoSpaceException();
         }

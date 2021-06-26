@@ -23,17 +23,17 @@ public class BaseController  extends ControllerGuiInterface{
     static final double BOARD_HEIGHT = 1717;
     private static final double RES_SIZE = 80;
     private static final double POPE_SIZE = 145;
-    private static final double CARD_HEIGHT = 737;
+    private static final double CARD_HEIGHT = 700;
     private static final Double[] RES_X = {289.0, 231.0, 320.0, 187.0, 274.0, 365.0};
     private static final Double[] RES_Y = {763.0, 905.0, 905.0, 1057.0, 1057.0, 1057.0};
     private static final Double[] STRONGBOX_X = {182.0, 388.0, 182.0, 388.0};
-    private static final Double[] STRONGBOX_X2 = {65.0, 95.0,  271.0, 301.0, 65.0, 95.0,  271.0, 301.0};
+    private static final Double[] STRONGBOX_X2 = {70.0, 110.0,  290.0, 330.0, 70.0, 110.0,  290.0, 330.0};
     private static final Double[] STRONGBOX_Y = {1357.0, 1357.0, 1471.0, 1471.0};
     private static final Double[] STRONGBOX_Y2 = {1357.0, 1357.0, 1357.0, 1357.0, 1471.0, 1471.0, 1471.0, 1471.0};
     private static final Double[] POPES_X = {607.0, 1186.0, 1884.0};
     private static final Double[] POPES_Y = {250.0, 132.0, 250.0};
-    static final Double[] DEV_X = {935.0, 935.0, 935.0, 1398.0, 1398.0, 1398.0, 1861.0, 1861.0, 1861.0};
-    private static final Double[] DEV_Y = {873.0, 933.0, 993.0, 873.0, 933.0, 993.0, 873.0, 933.0, 993.0};
+    private static final Double[] DEV_X = {900.0, 900.0, 900.0, 1375.0, 1375.0, 1375.0, 1850.0, 1850.0, 1850.0};
+    private static final Double[] DEV_Y = {950.0, 820.0, 690.0, 950.0, 820.0, 690.0, 950.0, 820.0, 690.0};
     private static final Double[] LEAD_X = {2420.0, 2420.0};
     private static final Double[] LEAD_Y = {100.0, 980.0};
     private static final Double[] LABEL_Y = {45.0, 900.0};
@@ -167,9 +167,11 @@ public class BaseController  extends ControllerGuiInterface{
     }
 
     public void internalUpdate(){
+        //depots
         gui.printDepots(resources, getPlayer().getDepots());
-
         gui.printResources(numberStrongbox, getPlayer().getDepots().getStrongBox().getResources());
+
+        //faithTrack
         for(int i=0; i<3; i++) {
             if (getPlayer().getFaithTrack().getPopesFavor(i) == PopesFavorStates.FaceDown) {
                 popes[i].setImage(popesImage[i][0]);
@@ -180,11 +182,15 @@ public class BaseController  extends ControllerGuiInterface{
             }
         }
 
+        //devCard
         for(int i=0; i<3; i++){
-            int j=0;
-            for(DevelopmentCard devCard : getPlayer().getPersonalBoard().getPos(i)){
-                devCards[i*3 +j].setImage(new Image("images/front/Masters of Renaissance_Cards_FRONT_3mmBleed_1-"+(devCard.getId()+1)+"-1.png"));
-                j++;
+            int j=getPlayer().getPersonalBoard().getPos(i).size() -1;
+            int k = 0;
+            while(j>=0){
+                int id = getPlayer().getPersonalBoard().getPos(i).get(j).getId();
+                devCards[i*3 +k].setImage(new Image("images/front/Masters of Renaissance_Cards_FRONT_3mmBleed_1-"+(id+1)+"-1.png"));
+                j--;
+                k++;
             }
         }
 
