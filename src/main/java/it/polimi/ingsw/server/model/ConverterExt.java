@@ -15,7 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Class that manage resources and marbles just buyed from the market and that have to be stored or converted in resources.
+ * Converter class Ext.
+ * Class that extends Converter and and implements Observable interface.
+ * Manage resources and marbles just buyed from the market and that have to be stored or converted in resources.
  */
 public class ConverterExt extends Converter implements Observable<Message> {
     private transient final PlayerExt owner;
@@ -60,7 +62,6 @@ public class ConverterExt extends Converter implements Observable<Message> {
      *
      * @param resources of type NumberOfResources: the resources to set
      */
-
     @Override
     public void setResources(NumberOfResources resources) {
         super.setResources(resources);

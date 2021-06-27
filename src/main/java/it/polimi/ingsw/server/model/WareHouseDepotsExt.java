@@ -9,11 +9,22 @@ import it.polimi.ingsw.server.model.exception.UnableToFillException;
 
 import java.util.ArrayList;
 
-/*Last Edit: William Zeni*/
+
+/**
+ * WareHouseDepotsExt class.
+ * Extends WareHouseDepots.
+ * Manage the warehouse depots and its resources.
+ */
 public class WareHouseDepotsExt extends WareHouseDepots {
 
     /*Additional Methods*/
-    /** This method add the resources to all the shelf if it found them. */
+
+    /**
+     * This method add the resources to all the shelf if it found them.
+     * @param input of type NumberOfResources: the resources that has to be added.
+     *
+     * @throws UnableToFillException the unable to fill exception
+     */
     public void addResource (NumberOfResources input) throws UnableToFillException {
         NumberOfResources old_resources=this.getResources();
         NumberOfResources new_resources=this.getResources();
@@ -34,7 +45,12 @@ public class WareHouseDepotsExt extends WareHouseDepots {
         }
     }
 
-    /** This method add the resources to all the shelf if it found them. */
+    /**
+     * This method subtracted the resources from all the shelf if it found them.
+     * @param required of type NumberOfResources: the resources that has to be subtracted.
+     *
+     * @throws OutOfResourcesException the out of resources exception
+     */
     public void subResource(NumberOfResources required) throws OutOfResourcesException{
         //NumberOfResources old_resources=this.getResources();
         NumberOfResources new_resources=this.getResources();
@@ -48,14 +64,20 @@ public class WareHouseDepotsExt extends WareHouseDepots {
         }
     }
 
-    /**This method is called by ability Deposit, and can be called 2 times. Add an extra shelf to WareHouseDepots*/
+    /**
+     * This method is called by ability Deposit, and can be called 2 times.
+     * Add an extra shelf to WareHouseDepots.
+     * @param shelf of type Shelf: the shelf to add.
+     */
     public void addExtraShelf(Shelf shelf){
         shelf.setIsExtra();
         shelfs.add(shelf);
     }
 
-    /**This method clean all the shelf from their items (the number is set to zero and the type is cancelled).
-     * For the extra shelf the type is preserved.*/
+    /**
+     * This method clean all the shelf from their items (the number is set to zero and the type is cancelled).
+     * For the extra shelf the type is preserved.
+     */
     public void CleanShelf(){
         for (Shelf x: shelfs){
             x.setUsed(0);
@@ -65,7 +87,11 @@ public class WareHouseDepotsExt extends WareHouseDepots {
         }
     }
 
-    /**This method check that the number of resources is not asking to add 4 different types of resources */
+    /**
+     * This method check that the number of resources is not asking to add 4 different types of resources
+     * @param input of type NumberOfResources: the new resources.
+     * @return True if the number of resource's type to add is minor than 4. Otherwise False.
+     */
     private boolean check_NumberOfResources_Integrity_for_WareHouseDepots(NumberOfResources input){
         int check=0;
         for (ResourceType x: ResourceType.values()){
@@ -76,7 +102,12 @@ public class WareHouseDepotsExt extends WareHouseDepots {
         return check != 4;
     }
 
-    /**This method return true if with the current disposition of the shelf you can fill them with a Number of resources */
+    //TODO rivedere la doc di questo metodo.
+    /**
+     * This method return true if with the current disposition of the shelf you can fill them with a Number of resources
+     * @param my_resources of type NumberOfResources:
+     * @throws UnableToFillException
+     */
     private void fill_correctly(NumberOfResources my_resources)throws UnableToFillException {
 
         /*This for checks just for the extra shelf*/
@@ -121,13 +152,5 @@ public class WareHouseDepotsExt extends WareHouseDepots {
         }
     }
 
-    /*@Override
-    public String toString(){
-        String res = "Warehouse Depots: \n";
-        for(Shelf x: shelfs){
-            res+=x+"\n";
-        }
-        return res;
-    }*/
 
 }

@@ -5,12 +5,18 @@ import it.polimi.ingsw.constant.model.Game;
 import java.util.ArrayList;
 import java.util.Collections;
 
-/*Last Edit: Fabio*/
+/**
+ * Move shuffle class.
+ * Implements SoloActionTokens interface.
+ */
 public class MoveShuffle implements SoloActionTokens {
 
     public static final String name = "MOVE_SHUFFLE";
     private transient ArrayList<SoloActionTokens> shuffledDeck;
 
+    /**
+     * Instantiates a new Move shuffle.
+     */
     /*Default constructor*/
     public MoveShuffle() {
         shuffledDeck = new ArrayList<>(7);
@@ -26,32 +32,32 @@ public class MoveShuffle implements SoloActionTokens {
         shuffledDeck = new ArrayList<>(7);
         shuffledDeck = game.getSoloGame().getCopyOfSoloActionTokensInit();
         Collections.shuffle(shuffledDeck);
-        //shuffledDeck = Shuffle(game.getSoloGame().getCopyOfSoloActionTokensInit());
         game.getSoloGame().setSoloActionTokens(shuffledDeck);
     }
 
+    /**
+     *
+     * @return of type String: the name.
+     */
     @Override
     public String getName(){
         return name;
     }
 
+    /**
+     *
+     * @return of type String: the name.
+     */
     @Override
     public String getEnum() {
         return name;
     }
 
-    /**This shuffle randomly the SoloActionToken's stack**/
-    /*private ArrayList<SoloActionTokens> Shuffle(ArrayList<SoloActionTokens> soloActionTokens){
-        for(int i=0; i<7; i++) {
-            int n = (int) (Math.random() * 6.1);
-            while(shuffledDeck.get(n) != null) {
-                n = (int) (Math.random() * 6.1);
-            }
-            shuffledDeck.add(n, soloActionTokens.get(i));
-        }
-        return shuffledDeck;
-    }*/
-
+    /**
+     *
+     * @param o of type Object.
+     * @return True if param o is equals to this. False if param o isn't an instance of MoveShuffle or o isn't equals to this.
+     */
     @Override
     public boolean equals(Object o){
         if(o==this)

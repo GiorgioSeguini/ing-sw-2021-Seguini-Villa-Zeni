@@ -8,34 +8,56 @@ import it.polimi.ingsw.constant.model.Requirements;
 import it.polimi.ingsw.server.model.exception.OutOfResourcesException;
 
 import java.util.*;
-/*Last Edit: Gio*/
 
 /**
+ * RequirementsExt class.
+ * Extends Requirements.
+ * Manage the card's requirements.
  * We consider a player to match the requirements if it's own a card of the required color with a level equal or HIGHER than the required
  */
 public class RequirementsExt extends Requirements {
 
 
+    /**
+     * Instantiates a new Requirements ext with the number and the type of card and resources required.
+     *
+     * @param resources of type NumberOfResources: the resources
+     * @param requirements of type ArrayList<Map.Entry<ColorDevCard, Level>>: number and type of card required.
+     */
     public RequirementsExt(NumberOfResources resources, ArrayList<Map.Entry<ColorDevCard, Level>> requirements){
         super(resources, requirements);
     }
 
+    /**
+     * Instantiates an empty Requirements ext.
+     */
     public RequirementsExt(){
         super();
     }
 
+    /**
+     * Instantiates a new Requirements ext with only the number and the type of resources required.
+     *
+     * @param resources of type NumberOfResources: the resources.
+     */
     public RequirementsExt(NumberOfResources resources){
         super(resources, new ArrayList<>());
     }
 
+    /**
+     * Instantiates a new Requirements ext with only the number and the type of card required.
+     *
+     * @param requirements of type ArrayList<Map.Entry<ColorDevCard, Level>>:  the requirements.
+     */
     public RequirementsExt(ArrayList<Map.Entry<ColorDevCard, Level>> requirements){
         super(new NumberOfResources(), requirements);
     }
 
     /**
+     * Match the requirements and what the player has.
      *
-     * @param owner Leader Card's owner
-     * @return true iff player can activate the development card
+     * @param owner of type PlayerExt: the player.
+     * @return true if the player owns the requirements. Otherwise False.
      */
     public boolean match(PlayerExt owner) {
         //match for the resources

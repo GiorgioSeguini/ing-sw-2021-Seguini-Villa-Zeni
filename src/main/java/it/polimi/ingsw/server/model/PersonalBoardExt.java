@@ -16,12 +16,21 @@ import it.polimi.ingsw.server.view.View;
 import java.lang.reflect.Type;
 import java.util.*;
 
-/*Last Edit: Fabio*/
+/**
+ * PersonalBoardExt class.
+ * Extends PersonalBoard and implements Observable interface.
+ * Manage the player's personal board.
+ */
 public class PersonalBoardExt extends PersonalBoard implements Observable<Message> {
 
     private final transient int ownerID;
 
 
+    /**
+     * Instantiates a new Personal board ext.
+     *
+     * @param ownerID of type int: the owner id.
+     */
     /*Default Constructor*/
     public PersonalBoardExt(int ownerID){
         super();
@@ -30,7 +39,13 @@ public class PersonalBoardExt extends PersonalBoard implements Observable<Messag
     }
 
 
-    /**This for add a DevCard in a specific position**/
+    /**
+     * Add a DevCard in a specific position.
+     *
+     * @param card of type DevelopmentCard: the card that has to be added.
+     * @param pos of type int: the position in the personal board where the card has to be placed
+     * @throws NoSpaceException the no space exception, thrown when the personal board is full.
+     */
     public void addDevCard(DevelopmentCard card, int pos) throws NoSpaceException {
         if(goodindex(pos)){
             if (super.getPos(pos).isEmpty()){
@@ -47,8 +62,9 @@ public class PersonalBoardExt extends PersonalBoard implements Observable<Messag
     }
 
     /**
+     * Add the two Leader Card chosen in the initial game.
      *
-     * @param leaderCard array containing the choosen leader card
+     * @param leaderCard of type LeaderCardExt[]: array containing the chosen leader card.
      */
     public void addLeaderCard(LeaderCardExt[] leaderCard){
         if(isReady()){
@@ -67,8 +83,13 @@ public class PersonalBoardExt extends PersonalBoard implements Observable<Messag
     }
 
 
-
-    /**This for check the index**/
+    /**
+     * Check the index is an int between 0 and 2.
+     *
+     * @param index of type int: the index that has to be checked.
+     * @return True if the index is minor than 2 and major than 0. Including 0 and 2.
+     * @throws IllegalArgumentException
+     */
     private boolean goodindex(int index) throws IllegalArgumentException{
         if(index>2 || index<0) {
             throw new IllegalArgumentException(); //TODO
@@ -76,6 +97,11 @@ public class PersonalBoardExt extends PersonalBoard implements Observable<Messag
         return true;
     }
 
+    /**
+     * Remove the leader card from OwnedLeaderCard.
+     *
+     * @param card of type LeaderCardExt: the card that has to be removed.
+     */
     protected void setDiscard(LeaderCardExt card){
         OwnedLeaderCard.remove(card);
         change();
@@ -83,7 +109,7 @@ public class PersonalBoardExt extends PersonalBoard implements Observable<Messag
 
     /**
      * This methods create an instance of PersonalBoardMessage and notify observer
-     * @see LeaderCard only class that call this methods
+     *
      */
     protected void change(){
         notify(new PersonalBoardMessage(this, this.ownerID));
@@ -92,6 +118,10 @@ public class PersonalBoardExt extends PersonalBoard implements Observable<Messag
     //Observable implementation
     private transient final List<it.polimi.ingsw.server.observer.Observer<Message>> observers = new ArrayList<>();
 
+    /**
+     *
+     * @param observer of type Observer<Message>: the observer to add
+     */
     @Override
     public void addObserver(it.polimi.ingsw.server.observer.Observer<Message> observer){
         synchronized (observers) {
@@ -99,6 +129,10 @@ public class PersonalBoardExt extends PersonalBoard implements Observable<Messag
         }
     }
 
+    /**
+     *
+     * @param message of type Message: the notifying message
+     */
     @Override
     public void notify(Message message) {
         synchronized (observers) {

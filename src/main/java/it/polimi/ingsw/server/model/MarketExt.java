@@ -13,11 +13,19 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-/*Last Edit: Fabio*/
+/**
+ * MarketExt class.
+ * Extends Market and implements Observable interface.
+ * Manage the market's game.
+ */
 public class MarketExt extends Market implements Observable<Message> {
 
+    /**
+     * Instantiates a new MarketExt.
+     *
+     * @param startMarbles of type ArrayList<MarbleColor>: the initial market's marbles.
+     */
     //default constructor
-
     public MarketExt(ArrayList<MarbleColor> startMarbles) {
         //startMarbles.length is 13
         super(startMarbles);
@@ -27,9 +35,12 @@ public class MarketExt extends Market implements Observable<Message> {
 
 
     /*Additional methods*/
-
     /**
-     * This allow to buy a row from the market's tray
+     * Allow to buy a row from the market's tray.
+     *
+     * @param index of type int: the row's index to buy.
+     *
+     * @return of type ArrayList<MarbleColor>: the buyed row.
      **/
     public ArrayList<MarbleColor> buyRow(int index) {
         ArrayList<MarbleColor> buyedRow = new ArrayList<>(4);
@@ -47,7 +58,11 @@ public class MarketExt extends Market implements Observable<Message> {
     }
 
     /**
-     * This allow to buy a column from the market's tray
+     * Allow to buy a column from the market's tray.
+     *
+     * @param index of type int: the column's index to buy.
+     *
+     * @return of type ArrayList<MarbleColor>: the buyed column.
      **/
     public ArrayList<MarbleColor> buyColumn(int index) {
         ArrayList<MarbleColor> buyedColumn = new ArrayList<>(3);
@@ -79,6 +94,10 @@ public class MarketExt extends Market implements Observable<Message> {
     //Observable implementation
     private transient final List<Observer<Message>> observers = new ArrayList<>();
 
+    /**
+     *
+     * @param observer of type Observer<Message>: the observer to add
+     */
     @Override
     public void addObserver(Observer<Message> observer) {
         synchronized (observers) {
@@ -86,6 +105,10 @@ public class MarketExt extends Market implements Observable<Message> {
         }
     }
 
+    /**
+     *
+     * @param message of type Message: the notifying message
+     */
     @Override
     public void notify(Message message) {
         synchronized (observers) {

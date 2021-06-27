@@ -13,7 +13,10 @@ import it.polimi.ingsw.server.view.View;
 
 import java.util.*;
 
-/*Last Edit: Gio*/
+/**
+ * Dashboard class Ext: extends Dashboard and implements Observable interface.
+ * Manage all the Development card that a player can buy during the game.
+ */
 
 public class DashboardExt extends Dashboard implements Observable<Message> {
 
@@ -45,7 +48,12 @@ public class DashboardExt extends Dashboard implements Observable<Message> {
         }
     }
 
-
+    /**
+     *
+     * @param color of type ColorDevCard: color of the card wanted.
+     * @param level of type Level: level of che card wanted
+     * @return of type DevelopmentCardExt: the card at the top of the stack.
+     */
     @Override
     public DevelopmentCardExt getTopDevCard(ColorDevCard color, Level level) {
         int size = dashBoard[level.ordinal()][color.ordinal()].size();
@@ -53,6 +61,10 @@ public class DashboardExt extends Dashboard implements Observable<Message> {
         return dashBoard[level.ordinal()][color.ordinal()].get(size -1);
     }
 
+    /**
+     *
+     * @return True if at least one dashboard's slot is empty. Otherwise False
+     */
     public boolean isEmpty(){
         for(ColorDevCard color: ColorDevCard.values()){
             boolean empty = true;
@@ -104,6 +116,11 @@ public class DashboardExt extends Dashboard implements Observable<Message> {
         change();
     }
 
+    /**
+     *
+     * @param id of type int: card's id
+     * @return the DevelopmentCardExt corresponding to that id.
+     */
     public DevelopmentCardExt findDevCard(int id){
         for (Level l: Level.values()){
             for( ColorDevCard c: ColorDevCard.values()){
@@ -117,7 +134,9 @@ public class DashboardExt extends Dashboard implements Observable<Message> {
         return null;
     }
 
-
+    /**
+     * Notify any change in dashboard.
+     */
     private void change(){
         notify(new DashBoardMessage(this));
     }
@@ -125,6 +144,10 @@ public class DashboardExt extends Dashboard implements Observable<Message> {
     //Observable implementation
     private transient final List<it.polimi.ingsw.server.observer.Observer<Message>> observers = new ArrayList<>();
 
+    /**
+     *
+     * @param observer of type Observer<Message>: the observer to add
+     */
     @Override
     public void addObserver(it.polimi.ingsw.server.observer.Observer<Message> observer){
         synchronized (observers) {
@@ -132,6 +155,10 @@ public class DashboardExt extends Dashboard implements Observable<Message> {
         }
     }
 
+    /**
+     *
+     * @param message of type Message: the notifying message
+     */
     @Override
     public void notify(Message message) {
         synchronized (observers) {

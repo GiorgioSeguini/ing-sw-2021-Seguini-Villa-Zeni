@@ -60,21 +60,38 @@ public class GameExt extends Game implements Observable<Message> {
         }
     }
 
+    /**
+     *
+     * @return of type MarketExt: the market tray.
+     */
     @Override
     public MarketExt getMarketTray() {
         return (MarketExt) super.getMarketTray();
     }
 
+    /**
+     *
+     * @return of type DashboardExt: the dashboard.
+     */
     @Override
     public DashboardExt getDashboard() {
         return (DashboardExt) super.getDashboard();
     }
 
+    /**
+     *
+     * @return of type LorenzoSoloPlayerExt: the sologame.
+     */
     @Override
     public LorenzoSoloPlayerExt getSoloGame() {
         return (LorenzoSoloPlayerExt) super.getSoloGame();
     }
 
+    /**
+     *
+     * @param id of type int: the player's id to look for.
+     * @return oy type PlayerExt: the player.
+     */
     @Override
     public PlayerExt getPlayerFromID(int id) {
         return (PlayerExt)super.getPlayerFromID(id);
@@ -90,6 +107,10 @@ public class GameExt extends Game implements Observable<Message> {
         return (PlayerExt) super.getPlayers().get(index);
     }
 
+    /**
+     *
+     * @return of type PlayerExt: the current player.
+     */
     @Override
     public PlayerExt getCurrPlayer() {
         return (PlayerExt) super.getCurrPlayer();
@@ -121,7 +142,6 @@ public class GameExt extends Game implements Observable<Message> {
             }
         }
     }
-
 
     /**
      * Modify current player's status and game's status and set next turn.
@@ -158,7 +178,6 @@ public class GameExt extends Game implements Observable<Message> {
         }
         change();
     }
-
 
     /**
      * Update game's status.
@@ -218,7 +237,7 @@ public class GameExt extends Game implements Observable<Message> {
     }
 
     /**
-     * Get player from nickname player.
+     * Get player from player's nickname.
      *
      * @param nickName the nick name
      * @return the player
@@ -266,7 +285,6 @@ public class GameExt extends Game implements Observable<Message> {
     /**
      * notify any changes during the turn
      */
-
     private void change(){
         notify(new GameMessage(getStatus(), getCurrIndex(), this.getSoloGame()));
     }
@@ -296,6 +314,10 @@ public class GameExt extends Game implements Observable<Message> {
         observers.clear();
     }
 
+    /**
+     *
+     * @param observer of type Observer<Message>: the observer to add
+     */
     @Override
     public void addObserver(Observer<Message> observer){
        synchronized (observers) {
@@ -303,6 +325,10 @@ public class GameExt extends Game implements Observable<Message> {
         }
     }
 
+    /**
+     *
+     * @param message of type Message: the notifying message
+     */
     @Override
     public void notify(Message message) {
         synchronized (observers) {

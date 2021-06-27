@@ -1,6 +1,5 @@
 package it.polimi.ingsw.server.model;
 
-/*Last Edit: Gio*/
 
 import it.polimi.ingsw.constant.enumeration.ResourceType;
 import it.polimi.ingsw.constant.message.DepotsMessage;
@@ -20,10 +19,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 
+ * Depots class Ext.
+ * Extends Depots and implements Observable interface.
+ * Manage all the resource that a player store during the game.
  */
 public class DepotsExt extends Depots implements Observable<Message> {
     private transient final int ownerID;
+
     /**
      * Default constructor
      */
@@ -89,18 +91,12 @@ public class DepotsExt extends Depots implements Observable<Message> {
         return true;
     }
 
-    /*
-    public boolean canAddFromMarket(NumberOfResources input) {
-        return wareHouseDepots.canAdd(input);
-    }
-*/
     /**
      * @param s shelf to add
      */
     public void addExtraShelf(Shelf s){
         ((WareHouseDepotsExt) super.getWareHouseDepots()).addExtraShelf(s);
     }
-
 
     /**
      * This methods create an instance of FaithTrackMessage and notify observers
@@ -112,6 +108,10 @@ public class DepotsExt extends Depots implements Observable<Message> {
     //Observable implementation
     private transient final List<Observer<Message>> observers = new ArrayList<>();
 
+    /**
+     *
+     * @param observer of type Observer<Message>: the observer to add
+     */
     @Override
     public void addObserver(Observer<Message> observer){
         synchronized (observers) {
@@ -119,6 +119,10 @@ public class DepotsExt extends Depots implements Observable<Message> {
         }
     }
 
+    /**
+     *
+     * @param message of type Message: the notifying message
+     */
     @Override
     public void notify(Message message) {
         synchronized (observers) {

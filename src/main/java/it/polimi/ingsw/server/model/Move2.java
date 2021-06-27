@@ -1,10 +1,17 @@
 package it.polimi.ingsw.server.model;
 
-/*Last Edit: Fabio*/
+
+/**
+ * Move 2 class.
+ * Implements SoloActionTokens interface.
+ */
 public class Move2 implements SoloActionTokens {
 
     public static final String name = "MOVE2";
 
+    /**
+     * Instantiates a new Move 2.
+     */
     /*Default constructor*/
     public Move2() {
     }
@@ -18,16 +25,29 @@ public class Move2 implements SoloActionTokens {
         game.popesInspection();
     }
 
+    /**
+     *
+     * @return of type String: the name.
+     */
     @Override
     public String getName(){
         return name;
     }
 
+    /**
+     *
+     * @return of type String: the name.
+     */
     @Override
     public String getEnum() {
         return name;
     }
 
+    /**
+     *
+     * @param o of type Object.
+     * @return True if param o is equals to this. False if param o isn't an instance of Move2 or o isn't equals to this.
+     */
     @Override
     public boolean equals(Object o){
         if(o==this)
