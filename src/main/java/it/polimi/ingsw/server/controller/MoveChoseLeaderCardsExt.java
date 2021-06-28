@@ -59,6 +59,10 @@ public class MoveChoseLeaderCardsExt extends MoveChoseLeaderCards implements Per
         game.updateStatus();
     }
 
+    /**
+     *
+     * @return of type String: the class name.
+     */
     @Override
     public String getClassName() {
         return className;

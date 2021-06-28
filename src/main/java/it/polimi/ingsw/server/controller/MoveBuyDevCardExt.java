@@ -11,18 +11,42 @@ import it.polimi.ingsw.server.model.exception.NoSpaceException;
 import it.polimi.ingsw.server.model.exception.OutOfResourcesException;
 
 
+/**
+ * MoveBuyDevCardExt class.
+ * Extends MoveBuyDevCard and implements Performable interface.
+ * Manage the buy development card move.
+ */
 public class MoveBuyDevCardExt extends MoveBuyDevCard implements Performable {
 
+    /**
+     * Instantiates a new Move buy dev card ext.
+     *
+     * @param idPlayer of type int: the player's ID.
+     */
     public MoveBuyDevCardExt(int idPlayer) {
         super(idPlayer);
     }
 
+    /**
+     * Instantiates a new Move buy dev card ext.
+     *
+     * @param idPlayer of type int: the player's ID.
+     * @param indexCardToBuy of type int: the card to buy's index
+     * @param pos of type int: the position where the player want to put the card.
+     */
     public MoveBuyDevCardExt(int idPlayer, int indexCardToBuy, int pos) {
         super(idPlayer);
         setIndexCardToBuy(indexCardToBuy);
         setPos(pos);
     }
 
+    /**
+     * Check if the player has the status to perform this move in this game (if he hasn't set the error message to MoveNotAllowed).
+     * Also check if the card to buy isn't null and if it is the one on top of the dashboard's stack (error message = BadChoice).
+     * Check if the player has enough resources to buy the card (in this case set the error message to OutOfResourcesError).
+     * @param game of type GameExt: the game
+     * @return True if the player can perform the move. Otherwise False.
+     */
     @Override
     public boolean canPerformExt(GameExt game){
         PlayerExt player = game.getPlayerFromID(getIdPlayer());
@@ -55,6 +79,11 @@ public class MoveBuyDevCardExt extends MoveBuyDevCard implements Performable {
         return true;
     }
 
+    /**
+     * Method that perform the move and set the correct game and player's status.
+     * Set the error message too (NoError if it is ok, NoSpaceError if there isn't space on the personal board)
+     * @param game of type GameExt: the game
+     */
     @Override
     public void performMove(GameExt game) {
         PlayerExt player = game.getPlayerFromID(getIdPlayer());

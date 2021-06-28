@@ -37,6 +37,10 @@ public class MoveWhiteConversionExt extends MoveWhiteConversion implements Perfo
         player.setStatus(PlayerStatus.NeedToStore);
     }
 
+    /**
+     *
+     * @return of type String: the class name.
+     */
     @Override
     public String getClassName() {
         return className;

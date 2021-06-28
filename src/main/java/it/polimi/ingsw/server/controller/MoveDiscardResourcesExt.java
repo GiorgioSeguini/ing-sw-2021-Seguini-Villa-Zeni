@@ -56,6 +56,10 @@ public class MoveDiscardResourcesExt extends MoveDiscardResources implements Per
         player.setStatus(PlayerStatus.MovePerformed);
     }
 
+    /**
+     *
+     * @return of type String: the class name.
+     */
     @Override
     public String getClassName() {
         return className;

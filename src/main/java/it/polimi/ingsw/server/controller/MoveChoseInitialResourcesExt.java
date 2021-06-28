@@ -8,13 +8,30 @@ import it.polimi.ingsw.server.model.DepotsExt;
 import it.polimi.ingsw.server.model.GameExt;
 import it.polimi.ingsw.server.model.exception.UnableToFillException;
 
+/**
+ * MoveChoseInitialResourcesExt class.
+ * Extends MoveChoseInitialResources and implements Performable interface.
+ * Manage the chose initial resources move.
+ */
 public class MoveChoseInitialResourcesExt extends MoveChoseInitialResources implements Performable {
 
 
+    /**
+     * Instantiates a new Move chose initial resources ext.
+     *
+     * @param idPlayer of type int: the player's ID.
+     */
     public MoveChoseInitialResourcesExt(int idPlayer) {
         super(idPlayer);
     }
 
+    //TODO controllare doc
+    /**
+     * Check if the player has the status to perform this move in this game (if he hasn't, set the error message to MoveNotAllowed).
+     * @param game of type GameExt: the game
+     * @return True if the player has the status to perform this move in this game and if the player's initial resources are equals to the move's one.
+     *         Otherwise False.
+     */
     @Override
     public boolean canPerformExt(GameExt game) {
         Player player = game.getPlayerFromID(getIdPlayer());
@@ -26,6 +43,11 @@ public class MoveChoseInitialResourcesExt extends MoveChoseInitialResources impl
         return game.getInitialResources(getIdPlayer()) == getResources().size();
     }
 
+    /**
+     * Method that perform the move and update the game status.
+     * Set the error message too (NoError).
+     * @param game of type GameExt: the game
+     */
     @Override
     public void performMove(GameExt game){
         Player player =game.getPlayerFromID(getIdPlayer());
@@ -38,6 +60,10 @@ public class MoveChoseInitialResourcesExt extends MoveChoseInitialResources impl
         game.updateStatus();
     }
 
+    /**
+     *
+     * @return of type String: the class name.
+     */
     @Override
     public String getClassName() {
         return className;

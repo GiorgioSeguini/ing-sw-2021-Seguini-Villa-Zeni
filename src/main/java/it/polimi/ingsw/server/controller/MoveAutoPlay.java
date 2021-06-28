@@ -10,19 +10,39 @@ import it.polimi.ingsw.server.model.GameExt;
 
 import java.util.ArrayList;
 
+/**
+ * MoveAutoPlay class.
+ * Implements Performable interface.
+ * Class used when a player is disconnected and keep the game going.
+ */
 public class MoveAutoPlay implements Performable{
 
     private final int myID;
 
+    /**
+     * Instantiates a new Move auto play.
+     *
+     * @param myID of type int: the disconnected player's id.
+     */
     public MoveAutoPlay(int myID) {
         this.myID = myID;
     }
 
+    /**
+     * Check if the current player is the one who disconnected.
+     * @param game of type GameExt: the game
+     * @return True if the current player is the one who disconnected. Otherwise False.
+     */
     @Override
     public boolean canPerformExt(GameExt game) {
         return game.getCurrPlayer().getID()==myID;
     }
 
+    /**
+     * Method that perform the move.
+     * Check in which status is the game and the current player, then perform a simple move and passes the turn.
+     * @param game of type GameExt: the game
+     */
     @Override
     public void performMove(GameExt game) {
         if(game.getStatus()== GameStatus.Initial){
@@ -88,6 +108,10 @@ public class MoveAutoPlay implements Performable{
         }
     }
 
+    /**
+     *
+     * @return of type int: disconnected player's ID.
+     */
     @Override
     public int getIdPlayer() {
         return myID;

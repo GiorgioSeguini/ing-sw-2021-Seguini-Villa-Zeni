@@ -30,6 +30,10 @@ public class MoveEndTurnExt extends MoveEndTurn implements Performable {
         game.nextTurn();
     }
 
+    /**
+     *
+     * @return of type String: the class name.
+     */
     @Override
     public String getClassName() {
         return className;
