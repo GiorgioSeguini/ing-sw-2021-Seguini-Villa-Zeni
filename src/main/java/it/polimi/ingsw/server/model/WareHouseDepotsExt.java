@@ -7,8 +7,6 @@ import it.polimi.ingsw.constant.model.WareHouseDepots;
 import it.polimi.ingsw.server.model.exception.OutOfResourcesException;
 import it.polimi.ingsw.server.model.exception.UnableToFillException;
 
-import java.util.ArrayList;
-
 
 /**
  * WareHouseDepotsExt class.

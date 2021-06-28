@@ -1,12 +1,14 @@
 package it.polimi.ingsw.client.parser;
 
-import com.google.gson.*;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
 import it.polimi.ingsw.client.modelClient.Ability;
 import it.polimi.ingsw.client.modelClient.AbilityType;
 import it.polimi.ingsw.constant.enumeration.ResourceType;
 
 import java.lang.reflect.Type;
-import java.util.HashMap;
 
 public class AbilitySerializer implements JsonDeserializer<Ability> {
     private static final String CLASSNAME="CLASSNAME";

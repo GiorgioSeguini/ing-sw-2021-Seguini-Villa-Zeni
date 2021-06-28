@@ -3,11 +3,9 @@ package it.polimi.ingsw.client.cli;
 import it.polimi.ingsw.client.modelClient.GameClient;
 import it.polimi.ingsw.constant.enumeration.ResourceType;
 import it.polimi.ingsw.constant.model.NumberOfResources;
-import it.polimi.ingsw.constant.model.PersonalBoard;
 import it.polimi.ingsw.constant.move.MoveChoseResources;
 import it.polimi.ingsw.constant.move.MoveType;
 
-import javax.swing.*;
 import java.util.Scanner;
 
 public class CliMoveChoseResources implements CliInterface{

@@ -3,6 +3,7 @@ package it.polimi.ingsw.constant.model;
 /*Las Edit: William Zeni*/
 
 import it.polimi.ingsw.constant.enumeration.ResourceType;
+
 import java.util.ArrayList;
 
 public class Converter {

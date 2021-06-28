@@ -1,8 +1,8 @@
 package it.polimi.ingsw.constant.move;
 
+import it.polimi.ingsw.constant.enumeration.PlayerStatus;
 import it.polimi.ingsw.constant.model.Game;
 import it.polimi.ingsw.constant.model.NumberOfResources;
-import it.polimi.ingsw.constant.enumeration.PlayerStatus;
 
 public class MoveChoseResources extends MoveType {
     private NumberOfResources ofYourChoiceInput;

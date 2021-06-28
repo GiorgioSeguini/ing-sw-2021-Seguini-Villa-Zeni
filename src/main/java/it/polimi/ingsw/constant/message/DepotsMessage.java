@@ -4,7 +4,6 @@ import it.polimi.ingsw.client.Client;
 import it.polimi.ingsw.constant.model.Depots;
 import it.polimi.ingsw.constant.model.Game;
 import it.polimi.ingsw.constant.model.Player;
-import it.polimi.ingsw.client.parser.StarterClient;
 
 public class DepotsMessage implements Message{
 

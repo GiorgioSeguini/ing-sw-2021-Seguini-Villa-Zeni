@@ -4,7 +4,6 @@ import it.polimi.ingsw.constant.enumeration.ColorDevCard;
 import it.polimi.ingsw.constant.enumeration.Level;
 import it.polimi.ingsw.constant.model.DevelopmentCard;
 import it.polimi.ingsw.constant.model.NumberOfResources;
-import it.polimi.ingsw.constant.model.ProductionPower;
 
 /**
  * Development card Ext class.

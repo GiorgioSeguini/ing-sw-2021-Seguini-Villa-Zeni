@@ -1,11 +1,9 @@
 package it.polimi.ingsw.constant.move;
 
-import it.polimi.ingsw.constant.model.Game;
 import it.polimi.ingsw.constant.enumeration.GameStatus;
 import it.polimi.ingsw.constant.enumeration.PlayerStatus;
+import it.polimi.ingsw.constant.model.Game;
 import it.polimi.ingsw.constant.model.Player;
-
-import java.util.Scanner;
 
 public abstract class MoveType {
 

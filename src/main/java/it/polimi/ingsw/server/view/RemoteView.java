@@ -4,11 +4,12 @@ package it.polimi.ingsw.server.view;
 import it.polimi.ingsw.constant.message.LastMessage;
 import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.constant.model.Player;
-import it.polimi.ingsw.server.controller.*;
+import it.polimi.ingsw.server.controller.MoveAutoPlay;
+import it.polimi.ingsw.server.controller.Performable;
+import it.polimi.ingsw.server.network.ClientConnection;
 import it.polimi.ingsw.server.network.Settable;
 import it.polimi.ingsw.server.network.SocketClientConnection;
 import it.polimi.ingsw.server.observer.Observer;
-import it.polimi.ingsw.server.network.ClientConnection;
 import it.polimi.ingsw.server.parse.Starter;
 
 public class RemoteView extends View {

@@ -1,8 +1,8 @@
 package it.polimi.ingsw.constant.move;
 
+import it.polimi.ingsw.constant.enumeration.PlayerStatus;
 import it.polimi.ingsw.constant.model.Game;
 import it.polimi.ingsw.constant.model.ProductionPower;
-import it.polimi.ingsw.constant.enumeration.PlayerStatus;
 
 import java.util.ArrayList;
 

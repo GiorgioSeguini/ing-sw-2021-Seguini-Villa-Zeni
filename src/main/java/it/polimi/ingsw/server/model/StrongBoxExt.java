@@ -1,7 +1,6 @@
 package it.polimi.ingsw.server.model;
 
 
-import it.polimi.ingsw.constant.enumeration.ResourceType;
 import it.polimi.ingsw.constant.model.NumberOfResources;
 import it.polimi.ingsw.constant.model.StrongBox;
 import it.polimi.ingsw.server.model.exception.OutOfResourcesException;

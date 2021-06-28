@@ -7,7 +7,8 @@ import it.polimi.ingsw.constant.model.NumberOfResources;
 import it.polimi.ingsw.constant.model.Requirements;
 import it.polimi.ingsw.server.model.exception.OutOfResourcesException;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Map;
 
 /**
  * RequirementsExt class.

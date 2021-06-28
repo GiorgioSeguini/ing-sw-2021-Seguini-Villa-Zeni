@@ -1,11 +1,7 @@
 package it.polimi.ingsw.server.parse;
 
 import com.google.gson.*;
-import it.polimi.ingsw.server.model.Ability;
-import it.polimi.ingsw.server.model.DepotsAbility;
-import it.polimi.ingsw.server.model.DiscountAbility;
-import it.polimi.ingsw.server.model.ProductionPowerPlusAbility;
-import it.polimi.ingsw.server.model.WhiteAbility;
+import it.polimi.ingsw.server.model.*;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;

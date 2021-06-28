@@ -6,7 +6,6 @@ import it.polimi.ingsw.constant.model.Dashboard;
 import it.polimi.ingsw.constant.model.DevelopmentCard;
 import it.polimi.ingsw.server.model.exception.OutOfResourcesException;
 
-
 import java.util.ArrayList;
 
 public class DashBoardClient extends Dashboard {

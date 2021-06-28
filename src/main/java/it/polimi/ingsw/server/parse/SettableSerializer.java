@@ -1,8 +1,9 @@
 package it.polimi.ingsw.server.parse;
 
-import com.google.gson.*;
-import it.polimi.ingsw.constant.model.Requirements;
-import it.polimi.ingsw.constant.setupper.LinkToRoomSetupper;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
 import it.polimi.ingsw.server.network.*;
 
 import java.lang.reflect.Type;

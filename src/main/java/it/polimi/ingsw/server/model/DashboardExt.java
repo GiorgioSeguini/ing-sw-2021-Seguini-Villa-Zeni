@@ -5,13 +5,13 @@ import it.polimi.ingsw.constant.enumeration.Level;
 import it.polimi.ingsw.constant.message.DashBoardMessage;
 import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.constant.model.Dashboard;
-import it.polimi.ingsw.constant.model.DevelopmentCard;
 import it.polimi.ingsw.server.observer.Observable;
 import it.polimi.ingsw.server.observer.Observer;
-import it.polimi.ingsw.server.parse.Starter;
-import it.polimi.ingsw.server.view.View;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Stack;
 
 /**
  * Dashboard class Ext: extends Dashboard and implements Observable interface.

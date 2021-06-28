@@ -1,22 +1,16 @@
 package it.polimi.ingsw.server.view;
 
 
-import com.google.gson.reflect.TypeToken;
 import it.polimi.ingsw.constant.message.InitialMessage;
 import it.polimi.ingsw.constant.message.LastMessage;
 import it.polimi.ingsw.constant.message.Message;
-import it.polimi.ingsw.constant.model.Game;
-import it.polimi.ingsw.constant.model.LeaderCard;
 import it.polimi.ingsw.constant.model.Player;
 import it.polimi.ingsw.server.controller.MoveAutoPlay;
 import it.polimi.ingsw.server.controller.Performable;
 import it.polimi.ingsw.server.model.GameExt;
-import it.polimi.ingsw.server.model.LeaderCardExt;
 import it.polimi.ingsw.server.observer.Observable;
 import it.polimi.ingsw.server.observer.Observer;
-import it.polimi.ingsw.server.parse.Starter;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 

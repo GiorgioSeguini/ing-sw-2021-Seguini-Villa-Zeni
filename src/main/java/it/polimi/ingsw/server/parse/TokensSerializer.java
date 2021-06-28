@@ -5,7 +5,6 @@ import it.polimi.ingsw.server.model.Discard2;
 import it.polimi.ingsw.server.model.Move2;
 import it.polimi.ingsw.server.model.MoveShuffle;
 import it.polimi.ingsw.server.model.SoloActionTokens;
-import it.polimi.ingsw.server.network.Settable;
 
 import java.lang.reflect.Type;
 import java.util.Map;

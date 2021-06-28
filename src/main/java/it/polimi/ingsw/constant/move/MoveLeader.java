@@ -1,7 +1,7 @@
 package it.polimi.ingsw.constant.move;
 
-import it.polimi.ingsw.constant.model.Game;
 import it.polimi.ingsw.constant.enumeration.PlayerStatus;
+import it.polimi.ingsw.constant.model.Game;
 
 public class MoveLeader extends MoveType {
 

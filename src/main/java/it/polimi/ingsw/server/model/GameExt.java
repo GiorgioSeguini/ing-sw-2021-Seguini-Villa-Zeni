@@ -6,13 +6,15 @@ import it.polimi.ingsw.constant.message.ErrorMessage;
 import it.polimi.ingsw.constant.message.GameMessage;
 import it.polimi.ingsw.constant.message.LastMessage;
 import it.polimi.ingsw.constant.message.Message;
-import it.polimi.ingsw.constant.model.*;
+import it.polimi.ingsw.constant.model.Game;
+import it.polimi.ingsw.constant.model.LeaderCard;
+import it.polimi.ingsw.constant.model.Player;
 import it.polimi.ingsw.server.observer.Observable;
 import it.polimi.ingsw.server.observer.Observer;
-import it.polimi.ingsw.server.view.View;
 
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 /*Last Edit: Gio*/
 
 /**

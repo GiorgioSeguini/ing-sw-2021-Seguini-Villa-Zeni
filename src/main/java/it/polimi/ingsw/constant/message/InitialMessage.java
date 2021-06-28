@@ -1,14 +1,10 @@
 package it.polimi.ingsw.constant.message;
 
-import com.google.gson.reflect.TypeToken;
 import it.polimi.ingsw.client.Client;
 import it.polimi.ingsw.client.modelClient.GameClient;
-import it.polimi.ingsw.client.modelClient.LeaderCardClient;
 import it.polimi.ingsw.constant.model.Game;
 import it.polimi.ingsw.constant.model.LeaderCard;
-import it.polimi.ingsw.client.parser.StarterClient;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 public class InitialMessage implements Message{

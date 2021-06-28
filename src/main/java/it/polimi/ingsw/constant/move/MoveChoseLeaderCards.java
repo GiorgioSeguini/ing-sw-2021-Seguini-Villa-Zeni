@@ -1,11 +1,8 @@
 package it.polimi.ingsw.constant.move;
 
 import it.polimi.ingsw.constant.model.Game;
-import it.polimi.ingsw.constant.model.LeaderCard;
-import it.polimi.ingsw.constant.model.PersonalBoard;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 
 public class MoveChoseLeaderCards extends MoveType {

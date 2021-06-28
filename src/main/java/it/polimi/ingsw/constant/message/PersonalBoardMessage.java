@@ -1,13 +1,12 @@
 package it.polimi.ingsw.constant.message;
 
-import com.google.gson.reflect.TypeToken;
 import it.polimi.ingsw.client.Client;
-import it.polimi.ingsw.client.modelClient.*;
-import it.polimi.ingsw.client.parser.StarterClient;
 import it.polimi.ingsw.constant.enumeration.LeaderStatus;
-import it.polimi.ingsw.constant.model.*;
+import it.polimi.ingsw.constant.model.Game;
+import it.polimi.ingsw.constant.model.LeaderCard;
+import it.polimi.ingsw.constant.model.PersonalBoard;
+import it.polimi.ingsw.constant.model.Player;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 public class PersonalBoardMessage implements Message{

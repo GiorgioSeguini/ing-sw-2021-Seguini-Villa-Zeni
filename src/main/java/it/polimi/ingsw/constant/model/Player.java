@@ -2,7 +2,6 @@ package it.polimi.ingsw.constant.model;
 
 import it.polimi.ingsw.constant.enumeration.ErrorMessage;
 import it.polimi.ingsw.constant.enumeration.PlayerStatus;
-import it.polimi.ingsw.server.model.ProductionPowerExt;
 
 /*Last Edit: Fabio*/
 public class Player {

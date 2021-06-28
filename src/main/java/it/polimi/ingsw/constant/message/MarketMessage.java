@@ -1,8 +1,8 @@
 package it.polimi.ingsw.constant.message;
 
 import it.polimi.ingsw.client.Client;
-import it.polimi.ingsw.constant.model.Game;
 import it.polimi.ingsw.constant.enumeration.MarbleColor;
+import it.polimi.ingsw.constant.model.Game;
 
 import java.util.ArrayList;
 

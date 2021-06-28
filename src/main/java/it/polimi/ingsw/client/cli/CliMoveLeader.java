@@ -1,7 +1,6 @@
 package it.polimi.ingsw.client.cli;
 
 import it.polimi.ingsw.client.modelClient.GameClient;
-import it.polimi.ingsw.client.modelClient.LeaderCardClient;
 import it.polimi.ingsw.constant.enumeration.LeaderStatus;
 import it.polimi.ingsw.constant.model.LeaderCard;
 import it.polimi.ingsw.constant.move.MoveLeader;

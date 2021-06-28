@@ -4,17 +4,10 @@ import it.polimi.ingsw.constant.enumeration.ResourceType;
 import it.polimi.ingsw.constant.model.NumberOfResources;
 import it.polimi.ingsw.constant.move.MoveChoseResources;
 import it.polimi.ingsw.server.model.exception.OutOfResourcesException;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-
-import java.util.ArrayList;
 
 public class ChoseResController extends IntermediateController{
 

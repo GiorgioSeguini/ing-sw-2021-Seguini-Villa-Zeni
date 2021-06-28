@@ -1,16 +1,17 @@
 package it.polimi.ingsw.client.parser;
 
-import com.google.gson.*;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonDeserializer;
 import it.polimi.ingsw.client.modelClient.*;
+import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.constant.model.*;
 import it.polimi.ingsw.constant.move.MoveType;
-import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.constant.parse.MessageSerializer;
 import it.polimi.ingsw.constant.parse.MoveTypeSerializer;
 import it.polimi.ingsw.constant.parse.NumberOfResSerializer;
 import it.polimi.ingsw.constant.parse.SetupperSerializer;
 import it.polimi.ingsw.constant.setupper.SetUp;
-
 
 import java.lang.reflect.Type;
 

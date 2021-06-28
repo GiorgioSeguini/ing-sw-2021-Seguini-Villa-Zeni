@@ -3,9 +3,6 @@ package it.polimi.ingsw.client.gui;
 import it.polimi.ingsw.client.modelClient.AbilityType;
 import it.polimi.ingsw.client.modelClient.LeaderCardClient;
 import it.polimi.ingsw.constant.enumeration.LeaderStatus;
-import it.polimi.ingsw.constant.enumeration.PopesFavorStates;
-import it.polimi.ingsw.constant.enumeration.ResourceType;
-import it.polimi.ingsw.constant.model.DevelopmentCard;
 import it.polimi.ingsw.constant.model.LeaderCard;
 import it.polimi.ingsw.constant.model.NumberOfResources;
 import it.polimi.ingsw.constant.model.ProductionPower;
@@ -20,7 +17,6 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 
 import java.util.ArrayList;
 

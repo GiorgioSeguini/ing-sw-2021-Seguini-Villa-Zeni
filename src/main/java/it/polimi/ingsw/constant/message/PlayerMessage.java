@@ -2,10 +2,10 @@ package it.polimi.ingsw.constant.message;
 
 import it.polimi.ingsw.client.Client;
 import it.polimi.ingsw.constant.enumeration.ErrorMessage;
+import it.polimi.ingsw.constant.enumeration.PlayerStatus;
 import it.polimi.ingsw.constant.model.Game;
 import it.polimi.ingsw.constant.model.NumberOfResources;
 import it.polimi.ingsw.constant.model.Player;
-import it.polimi.ingsw.constant.enumeration.PlayerStatus;
 import it.polimi.ingsw.constant.model.ProductionPower;
 
 public class PlayerMessage implements Message{

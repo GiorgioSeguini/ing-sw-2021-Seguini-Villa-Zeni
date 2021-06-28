@@ -2,7 +2,6 @@ package it.polimi.ingsw.client.modelClient;
 
 import it.polimi.ingsw.constant.model.Game;
 import it.polimi.ingsw.constant.model.LeaderCard;
-import it.polimi.ingsw.constant.model.LorenzoSoloPlayer;
 import it.polimi.ingsw.constant.model.Player;
 
 import java.util.ArrayList;

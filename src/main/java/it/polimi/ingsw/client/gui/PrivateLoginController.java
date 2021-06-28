@@ -1,13 +1,10 @@
 package it.polimi.ingsw.client.gui;
 
 import it.polimi.ingsw.constant.setupper.CreateRoomSetupper;
-import it.polimi.ingsw.constant.setupper.JoinWaitngListSetupper;
 import it.polimi.ingsw.constant.setupper.LinkToRoomSetupper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-
-import java.io.DataOutputStream;
 
 public class PrivateLoginController extends ControllerGuiInterface{
 

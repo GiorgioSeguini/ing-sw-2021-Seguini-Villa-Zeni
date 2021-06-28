@@ -1,8 +1,8 @@
 package it.polimi.ingsw.constant.message;
 
 import it.polimi.ingsw.client.Client;
-import it.polimi.ingsw.constant.model.Game;
 import it.polimi.ingsw.constant.enumeration.GameStatus;
+import it.polimi.ingsw.constant.model.Game;
 import it.polimi.ingsw.constant.model.LorenzoSoloPlayer;
 
 public class GameMessage implements Message{

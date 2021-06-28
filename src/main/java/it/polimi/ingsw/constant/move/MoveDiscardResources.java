@@ -1,8 +1,8 @@
 package it.polimi.ingsw.constant.move;
 
+import it.polimi.ingsw.constant.enumeration.PlayerStatus;
 import it.polimi.ingsw.constant.model.Game;
 import it.polimi.ingsw.constant.model.NumberOfResources;
-import it.polimi.ingsw.constant.enumeration.PlayerStatus;
 
 public class MoveDiscardResources extends MoveType {
     private NumberOfResources toDiscard;

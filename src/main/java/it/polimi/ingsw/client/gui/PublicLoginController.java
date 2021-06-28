@@ -5,10 +5,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextField;
 
-import java.io.DataOutputStream;
 import java.io.IOException;
 
 public class PublicLoginController extends ControllerGuiInterface{

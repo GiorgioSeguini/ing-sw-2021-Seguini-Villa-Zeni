@@ -3,8 +3,6 @@ package it.polimi.ingsw.constant.model;
 import it.polimi.ingsw.constant.enumeration.ColorDevCard;
 import it.polimi.ingsw.constant.enumeration.Level;
 
-import java.util.ArrayList;
-
 /*Last Edit: Gio*/
 
 public abstract class Dashboard {

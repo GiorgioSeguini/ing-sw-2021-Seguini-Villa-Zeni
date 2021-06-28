@@ -1,7 +1,6 @@
 package it.polimi.ingsw.client.gui;
 
 import it.polimi.ingsw.constant.enumeration.ResourceType;
-import it.polimi.ingsw.constant.model.NumberOfResources;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;

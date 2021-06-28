@@ -2,7 +2,6 @@ package it.polimi.ingsw.server.model;
 
 import it.polimi.ingsw.constant.enumeration.LeaderStatus;
 import it.polimi.ingsw.constant.model.LeaderCard;
-import it.polimi.ingsw.constant.model.Requirements;
 
 /**
  * LeaderCardExt class.

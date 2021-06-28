@@ -1,20 +1,19 @@
 package it.polimi.ingsw.server.model;
 
-import com.google.gson.reflect.TypeToken;
 import it.polimi.ingsw.constant.enumeration.LeaderStatus;
 import it.polimi.ingsw.constant.enumeration.Level;
 import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.constant.message.PersonalBoardMessage;
-import it.polimi.ingsw.constant.model.*;
-import it.polimi.ingsw.server.model.exception.NoMoreLeaderCardAliveException;
+import it.polimi.ingsw.constant.model.DevelopmentCard;
+import it.polimi.ingsw.constant.model.NumberOfResources;
+import it.polimi.ingsw.constant.model.PersonalBoard;
 import it.polimi.ingsw.server.model.exception.NoSpaceException;
 import it.polimi.ingsw.server.observer.Observable;
 import it.polimi.ingsw.server.observer.Observer;
-import it.polimi.ingsw.server.parse.Starter;
-import it.polimi.ingsw.server.view.View;
 
-import java.lang.reflect.Type;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * PersonalBoardExt class.

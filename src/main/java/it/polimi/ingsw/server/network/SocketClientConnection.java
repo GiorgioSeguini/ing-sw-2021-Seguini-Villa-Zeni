@@ -1,6 +1,5 @@
 package it.polimi.ingsw.server.network;
 
-import com.google.gson.JsonElement;
 import it.polimi.ingsw.constant.message.AcceptMessage;
 import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.constant.message.RejectMessage;

@@ -1,12 +1,11 @@
 package it.polimi.ingsw.server.model;
 
+import it.polimi.ingsw.constant.enumeration.MarbleColor;
 import it.polimi.ingsw.constant.message.MarketMessage;
 import it.polimi.ingsw.constant.message.Message;
-import it.polimi.ingsw.constant.enumeration.MarbleColor;
 import it.polimi.ingsw.constant.model.Market;
 import it.polimi.ingsw.server.observer.Observable;
 import it.polimi.ingsw.server.observer.Observer;
-import it.polimi.ingsw.server.view.View;
 
 import java.util.ArrayList;
 import java.util.Arrays;

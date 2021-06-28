@@ -4,9 +4,9 @@ package it.polimi.ingsw.client;
 import it.polimi.ingsw.client.cli.CLI;
 import it.polimi.ingsw.client.gui.GUI;
 import it.polimi.ingsw.client.modelClient.GameClient;
+import it.polimi.ingsw.client.parser.StarterClient;
 import it.polimi.ingsw.constant.message.InitialMessage;
 import it.polimi.ingsw.constant.message.LastMessage;
-import it.polimi.ingsw.client.parser.StarterClient;
 import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.constant.model.Player;
 import it.polimi.ingsw.constant.move.MoveType;
@@ -20,14 +20,15 @@ import it.polimi.ingsw.server.model.PlayerExt;
 import it.polimi.ingsw.server.observer.Observer;
 import it.polimi.ingsw.server.parse.Starter;
 
-import java.io.*;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
-import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadPoolExecutor;
 
 public class Client {
 

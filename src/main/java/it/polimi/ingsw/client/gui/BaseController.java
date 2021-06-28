@@ -5,7 +5,6 @@ import it.polimi.ingsw.client.modelClient.LeaderCardClient;
 import it.polimi.ingsw.constant.enumeration.LeaderStatus;
 import it.polimi.ingsw.constant.enumeration.PopesFavorStates;
 import it.polimi.ingsw.constant.enumeration.ResourceType;
-import it.polimi.ingsw.constant.model.DevelopmentCard;
 import it.polimi.ingsw.constant.model.LeaderCard;
 import it.polimi.ingsw.constant.model.Player;
 import javafx.event.ActionEvent;

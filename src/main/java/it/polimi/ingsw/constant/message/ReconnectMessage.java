@@ -1,7 +1,6 @@
 package it.polimi.ingsw.constant.message;
 
 import it.polimi.ingsw.client.Client;
-import it.polimi.ingsw.client.cli.CLI;
 
 import java.util.Set;
 

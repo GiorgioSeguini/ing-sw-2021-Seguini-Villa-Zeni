@@ -1,24 +1,31 @@
 package it.polimi.ingsw.server.parse;
 
-import com.google.gson.*;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonSerializer;
 import com.google.gson.reflect.TypeToken;
-import it.polimi.ingsw.constant.parse.MessageSerializer;
 import it.polimi.ingsw.client.modelClient.TokenType;
 import it.polimi.ingsw.constant.enumeration.LeaderStatus;
 import it.polimi.ingsw.constant.enumeration.MarbleColor;
-
 import it.polimi.ingsw.constant.message.Message;
 import it.polimi.ingsw.constant.model.*;
 import it.polimi.ingsw.constant.move.MoveType;
+import it.polimi.ingsw.constant.parse.MessageSerializer;
 import it.polimi.ingsw.constant.parse.MoveTypeSerializer;
 import it.polimi.ingsw.constant.parse.NumberOfResSerializer;
 import it.polimi.ingsw.constant.parse.SetupperSerializer;
 import it.polimi.ingsw.constant.setupper.SetUp;
 import it.polimi.ingsw.server.controller.Performable;
-import it.polimi.ingsw.server.model.*;
+import it.polimi.ingsw.server.model.Ability;
+import it.polimi.ingsw.server.model.DevelopmentCardExt;
+import it.polimi.ingsw.server.model.LeaderCardExt;
+import it.polimi.ingsw.server.model.SoloActionTokens;
 import it.polimi.ingsw.server.network.Settable;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Objects;

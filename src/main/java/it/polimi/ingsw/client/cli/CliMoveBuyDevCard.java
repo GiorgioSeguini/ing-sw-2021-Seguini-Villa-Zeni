@@ -3,10 +3,8 @@ package it.polimi.ingsw.client.cli;
 import it.polimi.ingsw.client.modelClient.GameClient;
 import it.polimi.ingsw.constant.enumeration.ColorDevCard;
 import it.polimi.ingsw.constant.enumeration.Level;
-import it.polimi.ingsw.constant.model.DevelopmentCard;
 import it.polimi.ingsw.constant.move.MoveBuyDevCard;
 import it.polimi.ingsw.constant.move.MoveType;
-import it.polimi.ingsw.server.model.exception.OutOfResourcesException;
 
 import java.util.Scanner;
 

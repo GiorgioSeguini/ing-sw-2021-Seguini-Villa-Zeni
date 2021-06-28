@@ -1,9 +1,8 @@
 package it.polimi.ingsw.server.controller;
 
+import it.polimi.ingsw.constant.enumeration.ErrorMessage;
 import it.polimi.ingsw.constant.model.Player;
 import it.polimi.ingsw.constant.move.MoveChoseInitialResources;
-import it.polimi.ingsw.constant.enumeration.ErrorMessage;
-
 import it.polimi.ingsw.server.model.DepotsExt;
 import it.polimi.ingsw.server.model.GameExt;
 import it.polimi.ingsw.server.model.exception.UnableToFillException;
