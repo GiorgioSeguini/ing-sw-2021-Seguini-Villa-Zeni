@@ -11,13 +11,28 @@ import it.polimi.ingsw.server.model.PlayerExt;
 import java.util.ArrayList;
 
 
+/**
+ * MoveChoseLeaderCardsExt class.
+ * Extends MoveChoseLeaderCards and implements Performable interface.
+ * Manage the chose leader card move.
+ */
 public class MoveChoseLeaderCardsExt extends MoveChoseLeaderCards implements Performable {
 
 
+    /**
+     * Instantiates a new Move chose leader cards ext.
+     *
+     * @param idPlayer of type int: the player's ID.
+     */
     public MoveChoseLeaderCardsExt(int idPlayer) {
         super(idPlayer);
     }
 
+    /**
+     * Check if the player has the status to perform this move in this game (if the one hasn't, set the error message to MoveNotAllowed. Can also set the error message to CardNotOwned).
+     * @param game of type GameExt: the game
+     * @return True if the player can perform the move. Otherwise False.
+     */
     @Override
     public boolean canPerformExt(GameExt game){
         Player player = game.getPlayerFromID(getIdPlayer());
@@ -43,6 +58,11 @@ public class MoveChoseLeaderCardsExt extends MoveChoseLeaderCards implements Per
 
     }
 
+    /**
+     * Method that perform the move and update the game status.
+     * Set the error message too (NoError or BadChoice).
+     * @param game of type GameExt: the game
+     */
     @Override
     public void performMove(GameExt game){
         PlayerExt player =game.getPlayerFromID(getIdPlayer());

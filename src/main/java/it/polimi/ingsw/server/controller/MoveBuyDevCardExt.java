@@ -41,7 +41,7 @@ public class MoveBuyDevCardExt extends MoveBuyDevCard implements Performable {
     }
 
     /**
-     * Check if the player has the status to perform this move in this game (if he hasn't set the error message to MoveNotAllowed).
+     * Check if the player has the status to perform this move in this game (if the one hasn't set the error message to MoveNotAllowed).
      * Also check if the card to buy isn't null and if it is the one on top of the dashboard's stack (error message = BadChoice).
      * Check if the player has enough resources to buy the card (in this case set the error message to OutOfResourcesError).
      * @param game of type GameExt: the game

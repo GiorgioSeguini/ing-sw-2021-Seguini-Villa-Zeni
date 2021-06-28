@@ -10,12 +10,28 @@ import it.polimi.ingsw.server.model.PlayerExt;
 import it.polimi.ingsw.server.model.exception.NoMoreLeaderCardAliveException;
 
 
+/**
+ * MoveLeaderExt class.
+ * Extends MoveLeader and implements Performable.
+ * Manage the leader move.
+ */
 public class MoveLeaderExt extends MoveLeader implements Performable {
 
+    /**
+     * Instantiates a new Move leader ext.
+     *
+     * @param idPlayer of type int: the player's ID.
+     */
     public MoveLeaderExt(int idPlayer) {
         super(idPlayer);
     }
 
+    /**
+     * Check if the player has the status to perform this move in this game (if the one hasn't, set the error message to MoveNotAllowed).
+     * Check if the player really own the card that is going to play or discard and if the one doesn't own the card set the error message on CardNotOwned.
+     * @param game of type GameExt: the game
+     * @return True if the player can perform the move. Otherwise False.
+     */
     @Override
     public boolean canPerformExt(GameExt game){
         PlayerExt player = game.getPlayerFromID(getIdPlayer());
@@ -29,17 +45,12 @@ public class MoveLeaderExt extends MoveLeader implements Performable {
         if(leaderCard==null) return false;
 
         boolean isPresent = false;
-        //try {
-            for (LeaderCard c : player.getPersonalBoard().getLeaderCards())
-                if (c.getId()==leaderCard.getId()) {
-                    isPresent = true;
-                }
-        /*} catch (NoMoreLeaderCardAliveException e) {
-            //Il player non ha più carte leader in mano
-            player.setErrorMessage(e.getErrorMessage());
-            return false;
-        }*/
 
+        for (LeaderCard c : player.getPersonalBoard().getLeaderCards()) {
+            if (c.getId() == leaderCard.getId()) {
+                isPresent = true;
+            }
+        }
         if (!isPresent) {
             player.setErrorMessage(ErrorMessage.CardNotOwned);
             return false;
@@ -48,6 +59,11 @@ public class MoveLeaderExt extends MoveLeader implements Performable {
         return true;
     }
 
+    /**
+     * Method that perform the move.
+     * If there isn't any problem set the error message on NoError, else on BadChoice.
+     * @param game of type GameExt: the game
+     */
     @Override
     public void performMove(GameExt game) {
         PlayerExt player =game.getPlayerFromID(getIdPlayer());

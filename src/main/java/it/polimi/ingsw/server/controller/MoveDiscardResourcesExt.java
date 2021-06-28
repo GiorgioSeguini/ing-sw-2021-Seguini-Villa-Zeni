@@ -10,12 +10,27 @@ import it.polimi.ingsw.server.model.exception.OutOfResourcesException;
 import it.polimi.ingsw.server.model.exception.UnableToFillException;
 
 
+/**
+ * MoveDiscardResourcesExt class.
+ * Extends MoveDiscardResources and implements Performable.
+ * Manage the discard resources move.
+ */
 public class MoveDiscardResourcesExt extends MoveDiscardResources implements Performable {
 
+    /**
+     * Instantiates a new Move discard resources ext.
+     *
+     * @param idPlayer the id player
+     */
     public MoveDiscardResourcesExt(int idPlayer) {
         super(idPlayer);
     }
 
+    /**
+     * Check if the player has the status to perform this move in this game (if the one hasn't, set the error message to MoveNotAllowed).
+     * @param game of type GameExt: the game
+     * @return True if the player has the status to perform this move in this game. Otherwise False.
+     */
     @Override
     public boolean canPerformExt(GameExt game){
         Player player = game.getPlayerFromID(getIdPlayer());
@@ -27,6 +42,12 @@ public class MoveDiscardResourcesExt extends MoveDiscardResources implements Per
         return true;
     }
 
+    /**
+     * Method that perform the move and set the player status on MovePerformed if it's all fine.
+     * Discard waiting resources in the converter.
+     * Can set the error message on an error from the OutOfResourcesException or from the UnableToFillException.
+     * @param game of type GameExt: the game
+     */
     @Override
     public void performMove(GameExt game) {
         PlayerExt player =game.getPlayerFromID(getIdPlayer());

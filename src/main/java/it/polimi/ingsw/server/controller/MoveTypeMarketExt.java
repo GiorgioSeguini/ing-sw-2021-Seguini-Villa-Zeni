@@ -12,8 +12,18 @@ import it.polimi.ingsw.server.model.exception.HaveToChooseException;
 
 import java.util.ArrayList;
 
+/**
+ * MoveTypeMarketExt class.
+ * Extends MoveTypeMarket and implements Performable interface.
+ * Manage the market move.
+ */
 public class MoveTypeMarketExt extends MoveTypeMarket implements Performable{
 
+    /**
+     * Instantiates a new Move type market ext.
+     *
+     * @param idPlayer of type int: the player's ID.
+     */
     public MoveTypeMarketExt(int idPlayer) {
         super(idPlayer);
     }
@@ -31,6 +41,11 @@ public class MoveTypeMarketExt extends MoveTypeMarket implements Performable{
         return buyedresources;
     }
 
+    /**
+     * Check if the player has the status to perform this move in this game (if the one hasn't, set the error message to MoveNotAllowed).
+     * @param game of type GameExt: the game
+     * @return True if the player has the status to perform this move in this game. Otherwise False.
+     */
     @Override
     public boolean canPerformExt(GameExt game){
         Player player = game.getPlayerFromID(getIdPlayer());
@@ -42,9 +57,13 @@ public class MoveTypeMarketExt extends MoveTypeMarket implements Performable{
         return true;
     }
 
-    /**This method tries to convert the Marble as the player asked. If it can it makes the conversion
-     * and stores the converted resources in the Converter Class. Returns TRUE if the conversion ends correctly,
-     * returns FALSE if it doesn't.*/
+    /**
+     * Method that perform the move and buy the column or the row selected.
+     * This method tries also to convert the Marble as the player asked.
+     * If it can, it makes the conversion and stores the converted resources in the Converter Class and set the player status on NeedToStore and the game status on NoError.
+     * Otherwise set the player status on NeedToConvert and the game status on BadChoice.
+     * @param game of type GameExt: the game
+     */
     @Override
     public void performMove(GameExt game){
         PlayerExt player =game.getPlayerFromID(getIdPlayer());

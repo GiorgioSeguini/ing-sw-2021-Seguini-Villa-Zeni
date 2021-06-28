@@ -27,7 +27,7 @@ public class MoveChoseInitialResourcesExt extends MoveChoseInitialResources impl
 
     //TODO controllare doc
     /**
-     * Check if the player has the status to perform this move in this game (if he hasn't, set the error message to MoveNotAllowed).
+     * Check if the player has the status to perform this move in this game (if the one hasn't, set the error message to MoveNotAllowed).
      * @param game of type GameExt: the game
      * @return True if the player has the status to perform this move in this game and if the player's initial resources are equals to the move's one.
      *         Otherwise False.
