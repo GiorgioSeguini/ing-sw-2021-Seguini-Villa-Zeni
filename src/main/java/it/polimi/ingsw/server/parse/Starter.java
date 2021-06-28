@@ -23,6 +23,10 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Objects;
 
+/**
+ * Starter class.
+ * Class that Initialize the Game with the corrects files.
+ */
 public class Starter {
 
     private static int NUMOFMARBELS=13;
@@ -55,6 +59,12 @@ public class Starter {
         filePath = new File("").getAbsolutePath();
     }
 
+    /**
+     * Leader cards parser.
+     *
+     * @return of type ArrayList<LeaderCardExt>: the leader card's array list.
+     * @throws FileNotFoundException: file not found exception
+     */
     /*Methods to Initialize the Game*/
     public static ArrayList<LeaderCardExt> LeaderCardsParser() throws FileNotFoundException {
         Type LeaderListType = new TypeToken<ArrayList<LeaderCardExt>>(){}.getType();
@@ -65,6 +75,12 @@ public class Starter {
         return leaderCardExts;
     }
 
+    /**
+     * Tokens parser.
+     *
+     * @return of type ArrayList<SoloActionTokens>: the SoloActionTokens's array list.
+     * @throws FileNotFoundException file not found exception
+     */
     public static ArrayList<SoloActionTokens> TokensParser() throws FileNotFoundException{
         Type TokensListType = new TypeToken<ArrayList<SoloActionTokens>>(){}.getType();
         GsonBuilder localBuilder = new GsonBuilder();
@@ -72,16 +88,33 @@ public class Starter {
         return localBuilder.create().fromJson(new InputStreamReader(Objects.requireNonNull(Starter.class.getResourceAsStream("/SoloActionTokens.json"))), TokensListType);
     }
 
+    /**
+     * Marbles parser.
+     *
+     * @return of type ArrayList<MarbleColor>: the marble's array list.
+     * @throws FileNotFoundException file not found exception
+     */
     public static ArrayList<MarbleColor> MarblesParser() throws FileNotFoundException {
         Type marblesarray= new TypeToken<ArrayList<MarbleColor>>(){}.getType();
         return gson.fromJson(new InputStreamReader(Objects.requireNonNull(Starter.class.getResourceAsStream("/Marbles.json"))), marblesarray);
     }
 
+    /**
+     * Development card parser.
+     *
+     * @return of type ArrayList<DevelopmentCardExt>: the development card's array list.
+     * @throws FileNotFoundException file not found exception
+     */
     public static ArrayList<DevelopmentCardExt> DevCardParser() throws FileNotFoundException {
         Type devCardListType = new TypeToken<ArrayList<DevelopmentCardExt>>(){}.getType();
         return gson.fromJson(new InputStreamReader(Objects.requireNonNull(Starter.class.getResourceAsStream("/DevCard.json"))), devCardListType);
     }
 
+    /**
+     * Check if it can parse marbles.
+     *
+     * @return the boolean
+     */
     /*Methods for CanPerform*/
     public static boolean CanParseMarbles() {
         Type marblesarray= new TypeToken<ArrayList<MarbleColor>>(){}.getType();
@@ -98,6 +131,11 @@ public class Starter {
         return true;
     }
 
+    /**
+     * Check if it can parse development cards.
+     *
+     * @return the boolean
+     */
     public static boolean CanDevCardParser(){
         Type devCardListType = new TypeToken<ArrayList<DevelopmentCardExt>>(){}.getType();
         ArrayList<DevelopmentCardExt> developmentCards=new ArrayList<>();
@@ -115,6 +153,11 @@ public class Starter {
         return true;
     }
 
+    /**
+     * Check if it can parse leader cards.
+     *
+     * @return the boolean
+     */
     public static boolean CanLeaderCardsParser(){
         Type LeaderListType = new TypeToken<ArrayList<LeaderCardExt>>(){}.getType();
         ArrayList<LeaderCardExt> leaderCards=new ArrayList<>();
@@ -131,6 +174,11 @@ public class Starter {
         return true;
     }
 
+    /**
+     *Check if it can parse tokens.
+     *
+     * @return the boolean
+     */
     public static boolean CanTokensParser(){
         Type TokensListType = new TypeToken<ArrayList<SoloActionTokens>>(){}.getType();
         ArrayList<SoloActionTokens> tokens= new ArrayList<>();
@@ -153,14 +201,37 @@ public class Starter {
 
     /*Utilities*/
 
+    /**
+     * To json string.
+     *
+     * @param src       the src
+     * @param typeOfSrc the type of src
+     * @return the string
+     */
     public static String toJson(Object src, Type typeOfSrc){
         return gson.toJson(src, typeOfSrc);
     }
 
+    /**
+     * From json t.
+     *
+     * @param <T>      the type parameter
+     * @param json     the json
+     * @param classOfT the class of t
+     * @return the t
+     */
     public static <T> T fromJson(String json, Class<T> classOfT){
         return gson.fromJson(json, classOfT);
     }
 
+    /**
+     * From json t.
+     *
+     * @param <T>     the type parameter
+     * @param json    the json
+     * @param typeOfT the type of t
+     * @return the t
+     */
     public static  <T> T fromJson(String json, Type typeOfT){
         return gson.fromJson(json, typeOfT);
     }

@@ -6,6 +6,10 @@ import it.polimi.ingsw.server.controller.*;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 
+/**
+ * PerformableSerializer class.
+ * Implements JsonDeserializer<Performable> interface.
+ */
 public class PerformableSerializer implements JsonDeserializer<Performable>{
 
     private static HashMap<String,Class> moveNames= new HashMap<>();
@@ -26,6 +30,14 @@ public class PerformableSerializer implements JsonDeserializer<Performable>{
         moveNames.put(MoveWhiteConversionExt.className, MoveWhiteConversionExt.class);
     }
 
+    /**
+     * Method that deserialize a JsonElement.
+     * @param json of type JsonElement: the JsonElement that has to be deserialized.
+     * @param type of type Type
+     * @param context of type JsonDeserializationContext
+     * @return of type Performable: the performable deserialized.
+     * @throws JsonParseException
+     */
     @Override
     public Performable deserialize(JsonElement json, Type type, JsonDeserializationContext context) throws JsonParseException {
         String className = json.getAsJsonObject().get(CLASSNAME).getAsString();

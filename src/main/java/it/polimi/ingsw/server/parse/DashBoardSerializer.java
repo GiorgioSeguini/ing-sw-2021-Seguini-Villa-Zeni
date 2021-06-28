@@ -11,8 +11,19 @@ import it.polimi.ingsw.server.model.DashboardExt;
 
 import java.lang.reflect.Type;
 
+/**
+ * DashBoardSerializer class.
+ * Implements JsonSerializer<DashboardExt> interface.
+ */
 public class DashBoardSerializer implements JsonSerializer<DashboardExt> {
 
+    /**
+     * Method that serialize a DashboardExt
+     * @param dashboard of type DashboardExt:  the dashboard that has to be serialized.
+     * @param type of type Type
+     * @param context of type JsonSerializationContext
+     * @return of type JsonElement:  the Json serialized.
+     */
     @Override
     public JsonElement serialize(DashboardExt dashboard, Type type, JsonSerializationContext context) {
 

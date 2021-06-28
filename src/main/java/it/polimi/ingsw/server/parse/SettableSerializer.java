@@ -1,12 +1,18 @@
 package it.polimi.ingsw.server.parse;
 
 import com.google.gson.*;
+import it.polimi.ingsw.constant.model.Requirements;
 import it.polimi.ingsw.constant.setupper.LinkToRoomSetupper;
 import it.polimi.ingsw.server.network.*;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
 
+/**
+ * SettableSerializer class.
+ * Implements JsonDeserializer<Settable> interface.
+ * Manage starting messages (public or private game) and disconnecting messages.
+ */
 public class SettableSerializer implements JsonDeserializer<Settable> {
 
     private static HashMap<String, Class> setupperName= new HashMap<>();
@@ -20,6 +26,14 @@ public class SettableSerializer implements JsonDeserializer<Settable> {
         setupperName.put(DisconnectConnectionSetupperExt.className, DisconnectConnectionSetupperExt.class);
     }
 
+    /**
+     * Method that deserialize a JsonElement.
+     * @param json of type JsonElement: the JsonElement that has to be deserialized.
+     * @param type of type Type
+     * @param context of type JsonDeserializationContext
+     * @return of type Settable: the settable deserialized.
+     * @throws JsonParseException
+     */
     @Override
     public Settable deserialize(JsonElement json, Type type, JsonDeserializationContext context) throws JsonParseException {
         String className = json.getAsJsonObject().get(CLASSNAME).getAsString();
