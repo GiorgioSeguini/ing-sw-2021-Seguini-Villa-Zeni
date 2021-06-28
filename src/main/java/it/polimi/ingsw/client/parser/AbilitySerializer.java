@@ -8,8 +8,7 @@ import it.polimi.ingsw.constant.enumeration.ResourceType;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 
-public class AbilitySerializer implements JsonSerializer<Ability>, JsonDeserializer<Ability> {
-    private static HashMap<String, AbilityType> mapNameClass= new HashMap<>();
+public class AbilitySerializer implements JsonDeserializer<Ability> {
     private static final String CLASSNAME="CLASSNAME";
     private static final String INSTANCE="INSTANCE";
 
@@ -21,10 +20,4 @@ public class AbilitySerializer implements JsonSerializer<Ability>, JsonDeseriali
         return new Ability(resourceType, abilityType);
     }
 
-    @Override
-    public JsonElement serialize(Ability ability, Type type, JsonSerializationContext context) {
-        //TODO
-        //should be useless
-        return null;
-    }
 }

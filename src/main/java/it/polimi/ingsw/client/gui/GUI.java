@@ -119,6 +119,7 @@ public class GUI extends Application implements UI {
         loaders.add(new FXMLLoader((getClass().getResource("privateLogin.fxml"))));
         loaders.add(new FXMLLoader((getClass().getResource("singleLogin.fxml"))));
         loaders.add(new FXMLLoader((getClass().getResource("white.fxml"))));
+        loaders.add(new FXMLLoader((getClass().getResource("endGame.fxml"))));
 
 
         for (FXMLLoader loader : loaders) {
@@ -198,8 +199,7 @@ public class GUI extends Application implements UI {
                 myTurn=true;
         }else{
             //GAME ENDED
-            //TODO
-            activate("");
+            activate(EndGameController.className);
         }
 
     }

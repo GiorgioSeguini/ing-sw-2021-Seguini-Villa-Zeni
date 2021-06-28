@@ -22,10 +22,6 @@ public abstract class MoveType {
 
     public abstract boolean canPerform(Game game);
 
-    public void updateCLI(Game game, Scanner stdin){
-        System.out.println("Move not yet implemented");
-        //TODO abstract method
-    }
 
     public abstract String getClassName();
 
@@ -72,7 +68,6 @@ public abstract class MoveType {
             return false;
 
         return this.idPlayer == ((MoveType) other).getIdPlayer();
-        //TODO rivedere
     }
 
 }

@@ -24,8 +24,4 @@ public class MoveEndTurn extends MoveType {
         return simpleCheck(game, allowedStatus);
     }
 
-    @Override
-    public void updateCLI(Game game, Scanner stdin) {
-        System.out.println("Fine turno");
-    }
 }

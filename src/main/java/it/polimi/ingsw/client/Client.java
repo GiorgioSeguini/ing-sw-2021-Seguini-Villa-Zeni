@@ -1,7 +1,6 @@
 package it.polimi.ingsw.client;
 
 
-import com.sun.prism.shader.Texture_Color_AlphaTest_Loader;
 import it.polimi.ingsw.client.cli.CLI;
 import it.polimi.ingsw.client.gui.GUI;
 import it.polimi.ingsw.client.modelClient.GameClient;
@@ -35,16 +34,21 @@ public class Client {
     private final String ip;
     private final int port;
     private final int ui;       //ui -> 1 for cli, 2 for GUI
-    private Boolean online = false;
+    private boolean online = false;
+    private boolean active = true;
+    //game info
+    private GameClient simpleGame;
+    private String roomName;
+    private GUI gui;
+    private CLI cli;
+
+    //for online
     public DataOutputStream socketOut;
     private DataInputStream socketIn;
     private Socket socket;
-    Thread readingThread;
-    public boolean recived;
-    GameClient simpleGame;
-    CLI cli;
-    private String roomName;
-    private GUI gui;
+    private Thread readingThread;
+
+    //for single player offline
     private Controller controller;
     private ExecutorService executor;
 
@@ -53,8 +57,6 @@ public class Client {
         this.port = port;
         this.ui = ui;
     }
-
-    private boolean active = true;
 
     public synchronized boolean isActive(){
         return active;
@@ -76,7 +78,6 @@ public class Client {
                         System.out.println(read);
                         Message received = StarterClient.fromJson(read, Message.class);
                         received.handleMessage(Client.this);
-                        recived=true;
                     }
                 } catch (Exception e){
                     setActive(false);
@@ -116,7 +117,6 @@ public class Client {
                 socketIn.close();
                 socketOut.close();
                 socket.close();
-                System.out.println();
             }
             //stdin.close();
             System.exit(0);

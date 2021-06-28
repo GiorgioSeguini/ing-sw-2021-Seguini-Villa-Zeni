@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane fx:id="grid" alignment="CENTER" prefHeight="400.0" prefWidth="600.0" styleClass="basePane" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.gui.EndGameController">
+    <columnConstraints>
+        <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="15.0" />
+        <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="130.0" />
+        <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="10.0" />
+        <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="130.0" />
+        <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="10.0" />
+        <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="130.0" />
+        <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="10.0" />
+        <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="130.0" />
+        <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="15.0" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints minHeight="10.0" prefHeight="70.0" vgrow="ALWAYS" />
+        <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="ALWAYS" />
+        <RowConstraints minHeight="10.0" prefHeight="250.0" vgrow="ALWAYS" />
+        <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="ALWAYS" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+    </rowConstraints>
+    <children>
+        <ImageView fx:id="imageView1" fitHeight="250.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <ImageView fx:id="imageView2" fitHeight="250.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+        <ImageView fx:id="imageView3" fitHeight="250.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+        <ImageView fx:id="imageView4" fitHeight="250.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="2" />
+        <Label fx:id="label1" prefHeight="40.0" prefWidth="130.0" wrapText="true" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <Label fx:id="label2" prefHeight="40.0" prefWidth="130.0" wrapText="true" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+        <Label fx:id="label3" prefHeight="40.0" prefWidth="130.0" wrapText="true" textAlignment="CENTER" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+        <Label fx:id="label4" prefHeight="40.0" prefWidth="130.0" wrapText="true" textAlignment="CENTER" GridPane.columnIndex="7" GridPane.rowIndex="3" />
+        <Label fx:id="label" prefHeight="150.0" prefWidth="200.0" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+        <Button fx:id="button" layoutX="493.0" layoutY="25.0" mnemonicParsing="false" onAction="#exit" prefHeight="35.0" prefWidth="108.0" styleClass="baseButton" text="Disconnetti" GridPane.columnIndex="7" GridPane.rowIndex="0" />
+    </children>
+</GridPane>
