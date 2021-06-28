@@ -15,13 +15,13 @@ import java.util.HashMap;
 
 public class Room {
 
-    private String roomName;
-    private int numOfPlayers;
+    private final String roomName;
+    private final int numOfPlayers;
     private GameExt game;
     private Controller controller;
-    private HashMap<String,ClientConnection> connections= new HashMap<>();
+    private final HashMap<String,ClientConnection> connections= new HashMap<>();
     private HashMap<String, View> playersview= new HashMap<>();
-    private ArrayList<String> disconnectedPlayers= new ArrayList<>();
+    private final ArrayList<String> disconnectedPlayers= new ArrayList<>();
     private boolean active= false;
 
 
@@ -105,14 +105,12 @@ public class Room {
     }
 
     public void reconnectConnection(String nickname, ClientConnection connection){
-        if(disconnectedPlayers.indexOf(nickname)!=-1){
+        if(disconnectedPlayers.contains(nickname)){
             connections.put(nickname,connection);
             //RemoteView view= new RemoteView(game.getPlayerFromNickname(nickname),connection);
             playersview.get(nickname).setOffline(false);
 
             ((RemoteView)playersview.get(nickname)).setClientConnection(connection);
-            //Server.instanceSingleView(playersview.get(nickname), game, controller);
-            //Server.instanceSingleView(view,game, controller);
             playersview.get(nickname).sendInitialMessage(game, getRoomName());
             for(String name: connections.keySet()){
                 connections.get(name).send(Starter.toJson(new ReconnectMessage(connections.keySet(), nickname), Message.class));
@@ -139,7 +137,7 @@ public class Room {
     }
 
     public boolean findDisconnectedPlayer(String name){
-        return disconnectedPlayers.indexOf(name)!=-1;
+        return disconnectedPlayers.contains(name);
     }
 
     public boolean isFull(){

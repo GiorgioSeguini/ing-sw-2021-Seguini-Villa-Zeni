@@ -2,7 +2,6 @@ package it.polimi.ingsw.server.controller;
 
 import it.polimi.ingsw.constant.enumeration.*;
 import it.polimi.ingsw.constant.model.NumberOfResources;
-import it.polimi.ingsw.constant.model.Player;
 import it.polimi.ingsw.server.model.*;
 import it.polimi.ingsw.server.model.exception.UnableToFillException;
 import it.polimi.ingsw.server.parse.Starter;
@@ -30,7 +29,7 @@ public class MoveBuyDevCardExtTest {
     }*/
 
     @Test
-    public void CanPerform() throws UnableToFillException, FileNotFoundException {
+    public void CanPerform() throws UnableToFillException {
         ArrayList<PlayerExt> players= new ArrayList<>();
         GameExt game;
 
@@ -67,7 +66,7 @@ public class MoveBuyDevCardExtTest {
     }
 
     @Test
-    public void PerformMove() throws UnableToFillException, FileNotFoundException {
+    public void PerformMove() throws UnableToFillException {
         ArrayList<PlayerExt> players= new ArrayList<>();
         GameExt game;
 

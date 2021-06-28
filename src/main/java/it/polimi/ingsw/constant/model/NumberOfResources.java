@@ -6,6 +6,7 @@ import it.polimi.ingsw.constant.enumeration.ResourceType;
 import it.polimi.ingsw.server.model.exception.OutOfResourcesException;
 
 /**This class is unchangeable: it always returns a new address to it */
+@SuppressWarnings("ALL")
 public class NumberOfResources {
     private final int[] resources = new int[4]; //if issue attempt, make it in constructor
 
@@ -39,9 +40,8 @@ public class NumberOfResources {
         for(ResourceType type: ResourceType.values()){
             x[type.ordinal()]=resources[type.ordinal()]+ other.getAmountOf(type);
         }
-        NumberOfResources new_resources= new NumberOfResources(x[0],x[1],x[2],x[3]);
 
-        return new_resources;
+        return new NumberOfResources(x[0],x[1],x[2],x[3]);
     }
 
     /**This method adds just for a single type of resources.*/
@@ -64,9 +64,8 @@ public class NumberOfResources {
                 throw new OutOfResourcesException();
             }
         }
-        NumberOfResources new_resources= new NumberOfResources(x[0],x[1],x[2],x[3]);
 
-        return new_resources;
+        return new NumberOfResources(x[0],x[1],x[2],x[3]);
     }
 
     /**This method subs just for a single type of resources.*/
@@ -82,7 +81,7 @@ public class NumberOfResources {
                 x[t.ordinal()]=this.getAmountOf(t);
             }
             x[type.ordinal()]-=tosub;
-            NumberOfResources new_resources= new NumberOfResources(x[0],x[1],x[2],x[3]);;
+            NumberOfResources new_resources= new NumberOfResources(x[0],x[1],x[2],x[3]);
             return new_resources;
         }
     }
@@ -100,9 +99,8 @@ public class NumberOfResources {
                 x[type.ordinal()]=0;
             }
         }
-        NumberOfResources new_resources= new NumberOfResources(x[0],x[1],x[2],x[3]);
 
-        return new_resources;
+        return new NumberOfResources(x[0],x[1],x[2],x[3]);
     }
 
     /**This method returns the resource type that has the bigger quantity. */

@@ -16,7 +16,7 @@ import java.util.HashMap;
  */
 public class SettableSerializer implements JsonDeserializer<Settable> {
 
-    private static HashMap<String, Class> setupperName= new HashMap<>();
+    private static final HashMap<String, Class> setupperName= new HashMap<>();
     private static final String CLASSNAME= "CLASSNAME";
     private static final String INSTANCE= "INSTANCE";
 

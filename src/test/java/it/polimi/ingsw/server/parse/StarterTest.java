@@ -6,22 +6,17 @@ import it.polimi.ingsw.constant.enumeration.Level;
 import it.polimi.ingsw.constant.enumeration.MarbleColor;
 import org.junit.jupiter.api.Test;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@SuppressWarnings("ALL")
 class StarterTest {
 
     @Test
     public void DevCardParserTest(){
         ArrayList<DevelopmentCardExt> devcards = new ArrayList<>();
-        try {
-            devcards = Starter.DevCardParser();
-        } catch (IOException e) {
-            fail();
-        }
+        devcards = Starter.DevCardParser();
 
         DashboardExt dashboard = new DashboardExt(devcards);
 
@@ -42,36 +37,31 @@ class StarterTest {
     @Test
     public void MarblesParser(){
 
-        try {
-            ArrayList<MarbleColor>marbles= Starter.MarblesParser();
-            assertEquals(13,marbles.size());
-            int whites=0;
-            int blues=0;
-            int yellows=0;
-            int greys=0;
-            int reds=0;
-            int purples=0;
-            for (MarbleColor x: marbles){
-                switch (x){
-                    case RED: reds++; break;
-                    case BLUE:blues++; break;
-                    case WHITE:whites++; break;
-                    case GREY:greys++; break;
-                    case PURPLE:purples++; break;
-                    case YELLOW:yellows++; break;
-                    default: fail();
-                }
+        ArrayList<MarbleColor>marbles= Starter.MarblesParser();
+        assertEquals(13,marbles.size());
+        int whites=0;
+        int blues=0;
+        int yellows=0;
+        int greys=0;
+        int reds=0;
+        int purples=0;
+        for (MarbleColor x: marbles){
+            switch (x){
+                case RED: reds++; break;
+                case BLUE:blues++; break;
+                case WHITE:whites++; break;
+                case GREY:greys++; break;
+                case PURPLE:purples++; break;
+                case YELLOW:yellows++; break;
+                default: fail();
             }
-            assertEquals(1,reds);
-            assertEquals(2,blues);
-            assertEquals(2,greys);
-            assertEquals(2,purples);
-            assertEquals(2,yellows);
-            assertEquals(4,whites);
-
-        } catch (FileNotFoundException e){
-            fail();
         }
+        assertEquals(1,reds);
+        assertEquals(2,blues);
+        assertEquals(2,greys);
+        assertEquals(2,purples);
+        assertEquals(2,yellows);
+        assertEquals(4,whites);
 
 
     }
@@ -79,11 +69,7 @@ class StarterTest {
     @Test
     public void SoloActionTokesnTest(){
         ArrayList<SoloActionTokens> tokens= new ArrayList<>();
-        try {
-           tokens=Starter.TokensParser();
-        } catch (FileNotFoundException e) {
-            fail();
-        }
+        tokens=Starter.TokensParser();
         assertEquals(7,tokens.size());
         int move2=0;
         int moveshuffle=0;
@@ -114,11 +100,7 @@ class StarterTest {
     @Test
     public void LeaderCardsParserTest(){
         ArrayList<LeaderCardExt>leaderCards=new ArrayList<>();
-        try {
-            leaderCards=Starter.LeaderCardsParser();
-        } catch (IOException  e) {
-            fail();
-        }
+        leaderCards=Starter.LeaderCardsParser();
         assertEquals(16,leaderCards.size());
 
         for(LeaderCardExt x: leaderCards){

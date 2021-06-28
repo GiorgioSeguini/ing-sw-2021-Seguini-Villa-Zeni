@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class CliMoveWhiteConversion implements CliInterface{
 
-    private MoveWhiteConversion move;
+    private final MoveWhiteConversion move;
 
     public CliMoveWhiteConversion(int myId){
         this.move = new MoveWhiteConversion(myId);

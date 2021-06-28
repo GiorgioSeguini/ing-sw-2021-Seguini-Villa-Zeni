@@ -95,11 +95,11 @@ public class ProductionPowerExt extends ProductionPower {
             throw new ChoseResourcesException(this.getOfYourChoiceInput(), this.getOfYourChoiceOutput());
         }
 
-        ((DepotsExt)owner.getDepots()).subResource(this.getInputRes().add(choiceInput));
-        ((DepotsExt)owner.getDepots()).addResourceFromProduction(this.getOutputRes().add(choiceOutput));
+        owner.getDepots().subResource(this.getInputRes().add(choiceInput));
+        owner.getDepots().addResourceFromProduction(this.getOutputRes().add(choiceOutput));
 
         for(int i = 0; i< this.getFaithPointsOut(); i++){
-            ((FaithTrackExt)owner.getFaithTrack()).addPoint();
+            owner.getFaithTrack().addPoint();
         }
 
     }

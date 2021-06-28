@@ -9,9 +9,9 @@ public enum ResourceType {
     Coins(MarbleColor.YELLOW),
     Stones(MarbleColor.GREY);
 
-    private MarbleColor color;
+    private final MarbleColor color;
 
-    private ResourceType(MarbleColor color){
+    ResourceType(MarbleColor color){
         this.color=color;
     }
 

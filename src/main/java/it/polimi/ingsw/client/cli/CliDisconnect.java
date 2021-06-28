@@ -8,6 +8,7 @@ import it.polimi.ingsw.constant.setupper.DisconnectConnectionSetupper;
 
 import java.util.Scanner;
 
+@SuppressWarnings("ALL")
 public class CliDisconnect implements CliInterface{
 
     private final Client client;

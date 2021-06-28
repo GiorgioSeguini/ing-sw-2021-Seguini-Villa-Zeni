@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class MoveWhiteConversionExtTest {
 
     @Test
-    public void CanPerformMoveTest() throws FileNotFoundException {
+    public void CanPerformMoveTest() {
         ArrayList<PlayerExt> players= new ArrayList<>();
         GameExt game;
 
@@ -42,7 +42,7 @@ public class MoveWhiteConversionExtTest {
     }
 
     @Test
-    public void GetClassNameTest() throws FileNotFoundException {
+    public void GetClassNameTest() {
         ArrayList<PlayerExt> players= new ArrayList<>();
         GameExt game;
 

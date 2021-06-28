@@ -19,7 +19,7 @@ public class TokensSerializer implements JsonSerializer<SoloActionTokens>, JsonD
     private static final String CLASSNAME = "CLASSNAME";
     private static final String INSTANCE  = "INSTANCE";
 
-    private static Map<String, Class> map = new TreeMap<String, Class>();
+    private static final Map<String, Class> map = new TreeMap<String, Class>();
 
     static {
         map.put(Discard2.name, Discard2.class);

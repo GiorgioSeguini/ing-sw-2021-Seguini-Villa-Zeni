@@ -4,5 +4,5 @@ public enum GameStatus {
     Initial,
     Running,
     LastTurn,
-    Ended;
+    Ended
 }

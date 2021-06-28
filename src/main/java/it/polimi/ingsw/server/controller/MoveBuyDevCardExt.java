@@ -5,9 +5,7 @@ import it.polimi.ingsw.constant.enumeration.PlayerStatus;
 import it.polimi.ingsw.constant.model.DevelopmentCard;
 import it.polimi.ingsw.constant.model.NumberOfResources;
 import it.polimi.ingsw.constant.move.MoveBuyDevCard;
-import it.polimi.ingsw.server.model.DepotsExt;
 import it.polimi.ingsw.server.model.GameExt;
-import it.polimi.ingsw.server.model.PersonalBoardExt;
 import it.polimi.ingsw.server.model.PlayerExt;
 import it.polimi.ingsw.server.model.exception.NoSpaceException;
 import it.polimi.ingsw.server.model.exception.OutOfResourcesException;
@@ -72,7 +70,7 @@ public class MoveBuyDevCardExt extends MoveBuyDevCard implements Performable {
         }
 
         NumberOfResources realCost = cardToBuy.getCost().safe_sub(player.getDiscounted());
-        if (!((DepotsExt)player.getDepots()).match(realCost)){
+        if (!player.getDepots().match(realCost)){
             //qui bisogna dire al player che non può comprare quella carta perchè non ha abbastazna risorse e quindi di sceglierne un'altra
             player.setErrorMessage(ErrorMessage.OutOfResourcesError);
             return false;
@@ -95,14 +93,14 @@ public class MoveBuyDevCardExt extends MoveBuyDevCard implements Performable {
 
         NumberOfResources realCost = cardToBuy.getCost().safe_sub(player.getDiscounted());
         try {
-            ((PersonalBoardExt)player.getPersonalBoard()).addDevCard(cardToBuy,getPos());
+            player.getPersonalBoard().addDevCard(cardToBuy,getPos());
         } catch (NoSpaceException e) {
             player.setErrorMessage(e.getErrorMessage());
             return;
         }
         game.getDashboard().buyDevCard(cardToBuy.getColor(),cardToBuy.getLevel());
         try {
-            ((DepotsExt)player.getDepots()).subResource(realCost);
+            player.getDepots().subResource(realCost);
         } catch (OutOfResourcesException ignored) {}
 
         player.setStatus(PlayerStatus.MovePerformed);

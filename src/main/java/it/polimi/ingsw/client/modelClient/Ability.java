@@ -6,8 +6,8 @@ import it.polimi.ingsw.constant.enumeration.ResourceType;
 
 public class Ability {
 
-    private ResourceType resource;
-    private AbilityType abilityType;
+    private final ResourceType resource;
+    private final AbilityType abilityType;
 
     public Ability(ResourceType resource, AbilityType abilityType) {
         this.resource = resource;

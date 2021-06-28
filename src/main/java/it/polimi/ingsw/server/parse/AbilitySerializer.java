@@ -11,7 +11,7 @@ import java.util.HashMap;
  * Implements JsonSerializer<Ability> and JsonDeserializer<Ability> interfaces.
  */
 public class AbilitySerializer implements JsonSerializer<Ability>, JsonDeserializer<Ability> {
-    private static HashMap<String, Class> mapNameClass= new HashMap<>();
+    private static final HashMap<String, Class> mapNameClass= new HashMap<>();
     private static final String CLASSNAME="CLASSNAME";
     private static final String INSTANCE="INSTANCE";
 

@@ -9,43 +9,50 @@
       <Image url="@../../../../../images/board/Depots.png" />
    </ImageView>
    <Label fx:id="label" styleClass="baseLabel"/>
-   <GridPane fx:id="gridPane" layoutX="640.0" prefHeight="692.0" prefWidth="640.0">
-      <columnConstraints>
-         <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="5.0" />
-         <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="80.0" />
-         <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="5.0" />
-         <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="80.0" />
-         <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="5.0" />
-         <ColumnConstraints />
-         <ColumnConstraints />
-      </columnConstraints>
-      <rowConstraints>
-         <RowConstraints minHeight="5.0" prefHeight="5.0" vgrow="ALWAYS" />
-         <RowConstraints minHeight="10.0" prefHeight="100.0" vgrow="ALWAYS" />
-         <RowConstraints minHeight="5.0" prefHeight="5.0" vgrow="ALWAYS" />
-         <RowConstraints minHeight="10.0" prefHeight="100.0" vgrow="ALWAYS" />
-         <RowConstraints minHeight="5.0" prefHeight="5.0" vgrow="ALWAYS" />
-         <RowConstraints minHeight="5.0" prefHeight="5.0" vgrow="ALWAYS" />
-      </rowConstraints>
-      <children>
-         <ImageView fx:id="coinsImage" fitHeight="95.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
-            <Image url="@../../../../../images/punchboard/Coins.png" />
-         </ImageView>
-         <ImageView fx:id="servantsImage" fitHeight="95.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1">
-            <Image url="@../../../../../images/punchboard/Servants.png" />
-         </ImageView>
-         <ImageView fx:id="shieldsImage" fitHeight="95.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
-            <Image url="@../../../../../images/punchboard/Shields.png" />
-         </ImageView>
-         <ImageView fx:id="stonesImage" fitHeight="95.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="3">
-            <Image url="@../../../../../images/punchboard/Stones.png" />
-         </ImageView>
-         <ChoiceBox fx:id="coins"    prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2"  styleClass="baseButton" onAction="#boxAction"/>
-         <ChoiceBox fx:id="servants" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="2"  styleClass="baseButton" onAction="#boxAction"/>
-         <ChoiceBox fx:id="shields"  prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4"  styleClass="baseButton" onAction="#boxAction"/>
-         <ChoiceBox fx:id="stones"   prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="4"  styleClass="baseButton" onAction="#boxAction"/>
-         <Button fx:id="confirm" onAction="#onAction" text="Conferma" GridPane.columnIndex="6" GridPane.rowIndex="5"  styleClass="baseButton"/>
-      </children>
-   </GridPane>
+    <GridPane fx:id="gridPane" layoutX="640.0" prefHeight="692.0" prefWidth="640.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="5.0"/>
+            <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="80.0"/>
+            <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="5.0"/>
+            <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="80.0"/>
+            <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="5.0"/>
+            <ColumnConstraints/>
+            <ColumnConstraints/>
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="5.0" prefHeight="5.0" vgrow="ALWAYS"/>
+            <RowConstraints minHeight="10.0" prefHeight="100.0" vgrow="ALWAYS"/>
+            <RowConstraints minHeight="5.0" prefHeight="5.0" vgrow="ALWAYS"/>
+            <RowConstraints minHeight="10.0" prefHeight="100.0" vgrow="ALWAYS"/>
+            <RowConstraints minHeight="5.0" prefHeight="5.0" vgrow="ALWAYS"/>
+            <RowConstraints minHeight="5.0" prefHeight="5.0" vgrow="ALWAYS"/>
+        </rowConstraints>
+        <ImageView fx:id="coinsImage" fitHeight="95.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true"
+                   GridPane.columnIndex="1" GridPane.rowIndex="1">
+           <Image url="@../../../../../images/punchboard/Coins.png"/>
+        </ImageView>
+        <ImageView fx:id="servantsImage" fitHeight="95.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true"
+                   GridPane.columnIndex="3" GridPane.rowIndex="1">
+           <Image url="@../../../../../images/punchboard/Servants.png"/>
+        </ImageView>
+        <ImageView fx:id="shieldsImage" fitHeight="95.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true"
+                   GridPane.columnIndex="1" GridPane.rowIndex="3">
+           <Image url="@../../../../../images/punchboard/Shields.png"/>
+        </ImageView>
+        <ImageView fx:id="stonesImage" fitHeight="95.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true"
+                   GridPane.columnIndex="3" GridPane.rowIndex="3">
+           <Image url="@../../../../../images/punchboard/Stones.png"/>
+        </ImageView>
+        <ChoiceBox fx:id="coins" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2"
+                   styleClass="baseButton" onAction="#boxAction"/>
+        <ChoiceBox fx:id="servants" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="2"
+                   styleClass="baseButton" onAction="#boxAction"/>
+        <ChoiceBox fx:id="shields" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4"
+                   styleClass="baseButton" onAction="#boxAction"/>
+        <ChoiceBox fx:id="stones" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="4"
+                   styleClass="baseButton" onAction="#boxAction"/>
+        <Button fx:id="confirm" onAction="#onAction" text="Conferma" GridPane.columnIndex="6" GridPane.rowIndex="5"
+                styleClass="baseButton"/>
+    </GridPane>
 </AnchorPane>
 

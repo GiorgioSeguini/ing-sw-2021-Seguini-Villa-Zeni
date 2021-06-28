@@ -10,7 +10,6 @@ import it.polimi.ingsw.server.parse.Starter;
 import it.polimi.ingsw.server.view.RemoteView;
 import it.polimi.ingsw.server.view.View;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -18,6 +17,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+@SuppressWarnings("ALL")
 public class Server {
 
     private static final int PORT = 12345;
@@ -26,8 +26,8 @@ public class Server {
     //private final ArrayList<HashMap<String, ClientConnection>> waitingConnections = new ArrayList<>();
     private final ArrayList<Room>  defaultRooms= new ArrayList<>();
     //private final Map<ClientConnection, ClientConnection> playingConnection = new HashMap<>();
-    private ArrayList<Room> rooms= new ArrayList<>();
-    private ArrayList<Room> activeRooms= new ArrayList<>();
+    private final ArrayList<Room> rooms= new ArrayList<>();
+    private final ArrayList<Room> activeRooms= new ArrayList<>();
     private int id=1;
 
     public Server() throws IOException {
@@ -96,18 +96,6 @@ public class Server {
             addActiveRoom(room);
             defaultRooms.get(numofplayer-1).clear();
         }
-       /* if (waitingConnections.get(numofplayer-1).size()>=numofplayer) {
-            String roomName;
-            do {
-                roomName="Room"+id;
-                id++;
-            }while (findRoom(roomName));
-            Room room= new Room(roomName,numofplayer,waitingConnections.get(numofplayer-1));
-            startGame(room);
-            room.setActive();
-            addActiveRoom(room);
-            waitingConnections.get(numofplayer-1).clear();
-        }*/
         return true;
     }
 
@@ -115,11 +103,7 @@ public class Server {
         ArrayList<PlayerExt> players=getPlayersforGame(room.getConnections());
         GameExt game = null;
 
-        try {
-            game=new GameExt(players, new MarketExt(Starter.MarblesParser()), new DashboardExt(Starter.DevCardParser()), Starter.TokensParser(), Starter.LeaderCardsParser());
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        game=new GameExt(players, new MarketExt(Starter.MarblesParser()), new DashboardExt(Starter.DevCardParser()), Starter.TokensParser(), Starter.LeaderCardsParser());
         Controller controller = new Controller(game);
         HashMap<String,View> playersView = instanceViews(room.getConnections(),game.getPlayers());
 

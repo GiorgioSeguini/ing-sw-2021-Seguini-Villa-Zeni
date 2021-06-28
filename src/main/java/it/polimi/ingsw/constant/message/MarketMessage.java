@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class MarketMessage implements Message{
 
     public static final String className = "MarketMessage";
-    ArrayList<MarbleColor> marbles;
+    final ArrayList<MarbleColor> marbles;
 
     public MarketMessage(ArrayList<MarbleColor> marbles) {
         this.marbles = new ArrayList<>();

@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 public class DashboardController extends ControllerGuiInterface{
 
-    public static String className = "dashboard";
+    public static final String className = "dashboard";
 
     private static final Double[] IMAGE_X = {38.0, 250.0, 462.0, 674.0, 38.0, 250.0, 462.0, 674.0, 38.0, 250.0, 462.0, 674.0};
     private static final Double[] IMAGE_Y = {40.0, 40.0, 40.0, 40.0, 256.0, 256.0, 256.0, 256.0, 472.0, 472.0, 472.0, 472.0};

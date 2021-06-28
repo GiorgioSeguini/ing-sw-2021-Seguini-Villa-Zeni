@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 
 public class StartController extends ControllerGuiInterface{
 
-    public static String className="start";
+    public static final String className="start";
 
     @FXML
     private Button privateGame;

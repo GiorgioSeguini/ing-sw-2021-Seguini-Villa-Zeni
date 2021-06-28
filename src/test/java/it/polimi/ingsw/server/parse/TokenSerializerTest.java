@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
+@SuppressWarnings("ALL")
 public class TokenSerializerTest {
 
     @Test
@@ -48,11 +49,7 @@ public class TokenSerializerTest {
     @Test
     public void test2(){
         ArrayList<SoloActionTokens> tokens= new ArrayList<>();
-        try {
-            tokens=Starter.TokensParser();
-        } catch (FileNotFoundException e) {
-            fail();
-        }
+        tokens=Starter.TokensParser();
 
         /*String message=Starter.toJson(tokens.get(3), SoloActionTokens.class);
 

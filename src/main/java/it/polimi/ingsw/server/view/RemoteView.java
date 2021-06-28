@@ -20,10 +20,10 @@ public class RemoteView extends View {
         public void update(String info) {
             System.out.println("Received: " + info);
             try{
-                Performable move= (Performable) Starter.fromJson(info, Performable.class);
+                Performable move= Starter.fromJson(info, Performable.class);
                 handleMove(move);
             }catch (NullPointerException e){
-                Settable setupper=(Settable) Starter.fromJson(info,Settable.class);
+                Settable setupper= Starter.fromJson(info,Settable.class);
                 SocketClientConnection connection= (SocketClientConnection)clientConnection;
                 connection.handleSetupper(setupper);
             }
@@ -44,11 +44,6 @@ public class RemoteView extends View {
         this.clientConnection = clientConnection;
         clientConnection.addObserver(new MessageReceiver());
     }
-
-    /*@Override
-    protected void showMessage(Object message) {
-        clientConnection.asyncSend(message);
-    }*/
 
     @Override
     public void update(Message message){

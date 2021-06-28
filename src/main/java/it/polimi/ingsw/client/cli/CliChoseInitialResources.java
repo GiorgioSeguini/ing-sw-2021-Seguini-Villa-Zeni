@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class CliChoseInitialResources implements CliInterface {
 
-    MoveChoseInitialResources move;
+    final MoveChoseInitialResources move;
 
     public CliChoseInitialResources(int myId) {
         this.move = new MoveChoseInitialResources(myId);

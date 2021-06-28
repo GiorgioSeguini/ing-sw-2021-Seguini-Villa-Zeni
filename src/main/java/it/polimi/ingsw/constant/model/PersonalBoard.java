@@ -10,7 +10,7 @@ public class PersonalBoard {
     public static final int MAX_LEAD_CARD = 2;
     public static final int MAX_DEV_CARD = 7;
 
-    protected ArrayList<DevelopmentCard>[] OwnedDevCards;
+    protected final ArrayList<DevelopmentCard>[] OwnedDevCards;
 
     protected final ArrayList<LeaderCard> OwnedLeaderCard;
 
@@ -90,20 +90,13 @@ public class PersonalBoard {
     }
 
 
-    public ArrayList<ProductionPower> getExtraProduction() {
-        return extraProduction;
-    }
-
     /**
      *
      * @return an ArrayList containing all the activable productionPower
      */
     public ArrayList<ProductionPower> getProduction(){
 
-        ArrayList<ProductionPower> res= new ArrayList<>();
-        for (ProductionPower x: this.extraProduction){
-            res.add(x);
-        }
+        ArrayList<ProductionPower> res = new ArrayList<>(this.extraProduction);
 
         for(int i=0; i<3; i++){
             if(!OwnedDevCards[i].isEmpty()){
@@ -122,7 +115,7 @@ public class PersonalBoard {
         return OwnedLeaderCard.size()==MAX_LEAD_CARD;
     }
 
-    public void setDevCards(ArrayList<DevelopmentCard> cards[]){
+    public void setDevCards(ArrayList<DevelopmentCard>[] cards){
         for(int i=0; i<3; i++){
             this.OwnedDevCards[i].clear();
             this.OwnedDevCards[i].addAll(cards[i]);

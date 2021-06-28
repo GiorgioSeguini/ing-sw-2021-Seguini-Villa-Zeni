@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class MoveAutoPlayTest {
 
     @Test
-    public void ConstructorTest() throws FileNotFoundException {
+    public void ConstructorTest() {
         ArrayList<PlayerExt> players= new ArrayList<>();
         GameExt game;
 
@@ -28,7 +28,7 @@ public class MoveAutoPlayTest {
     }
 
     @Test
-    public void CanPerformExtTest() throws FileNotFoundException {
+    public void CanPerformExtTest() {
         ArrayList<PlayerExt> players= new ArrayList<>();
         GameExt game;
 
@@ -42,7 +42,7 @@ public class MoveAutoPlayTest {
     }
 
     @Test
-    public void PerformMoveExtTest() throws FileNotFoundException, UnableToFillException {
+    public void PerformMoveExtTest() throws UnableToFillException {
         ArrayList<PlayerExt> players= new ArrayList<>();
         GameExt game;
 

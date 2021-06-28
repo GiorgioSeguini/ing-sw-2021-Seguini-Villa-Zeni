@@ -19,16 +19,17 @@ import java.util.NoSuchElementException;
 /**
  * Each instance is a connection to a specific client
  */
+@SuppressWarnings("ALL")
 public class SocketClientConnection implements  Observable<String>, ClientConnection, Runnable {
 
-    private Socket socket;
+    private final Socket socket;
     private DataOutputStream out;
-    private Server server;
+    private final Server server;
     private String nickName;
     private Room room;
 
     private boolean active = true;
-    private boolean standby= false;
+    private final boolean standby= false;
 
     public SocketClientConnection(Socket socket, Server server) {
         this.socket = socket;
@@ -47,17 +48,9 @@ public class SocketClientConnection implements  Observable<String>, ClientConnec
         this.room = room;
     }
 
-    /*public synchronized void setActive(boolean status){
-        active=status;
-    }
-     */
-
 
     public void send(String json) {
             try {
-                //out.reset();
-                //socket.getOutputStream().write(json.getBytes(StandardCharsets.UTF_8));
-                //socket.getOutputStream().flush();
                 out.writeUTF(json);
                 out.flush();
             } catch(IOException e){
@@ -91,16 +84,6 @@ public class SocketClientConnection implements  Observable<String>, ClientConnec
         closeConnection();
     }
 
-    /*@Override
-    public void asyncSend(final String json){
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                send(json);
-            }
-        }).start();
-    }*/
-
     @Override
     public void run() {
         DataInputStream in;
@@ -115,7 +98,7 @@ public class SocketClientConnection implements  Observable<String>, ClientConnec
             do {
                 read = in.readUTF();
                 System.out.println("Recived: "+read);
-                setupper= (Settable) Starter.fromJson(read, Settable.class);
+                setupper= Starter.fromJson(read, Settable.class);
                 confirm=setupper.canSetAction(this.server,(SetUp) setupper);
                 if(!confirm){
                     send(Starter.toJson(new RejectMessage(), Message.class));

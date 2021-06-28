@@ -10,19 +10,15 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class MoveLeaderExtTest {
-    private static ArrayList<PlayerExt> players= new ArrayList<>();
-    private static GameExt game;
+    private static final ArrayList<PlayerExt> players= new ArrayList<>();
+    private static final GameExt game;
 
     static {
         PlayerExt player1= new PlayerExt("pippo");
         PlayerExt player2= new PlayerExt("pluto");
         players.add(player1);
         players.add(player2);
-        try {
-            game= new GameExt(players, new MarketExt(Starter.MarblesParser()), new DashboardExt(Starter.DevCardParser()),Starter.TokensParser(),Starter.LeaderCardsParser());
-        } catch (FileNotFoundException e) {
-            fail();
-        }
+        game= new GameExt(players, new MarketExt(Starter.MarblesParser()), new DashboardExt(Starter.DevCardParser()),Starter.TokensParser(),Starter.LeaderCardsParser());
     }
 
     @Test
@@ -33,7 +29,7 @@ public class MoveLeaderExtTest {
     }
 
     @Test
-    public void CanPerformExtTest() throws FileNotFoundException {
+    public void CanPerformExtTest() {
         ArrayList<PlayerExt> players= new ArrayList<>();
         GameExt game;
 
@@ -67,7 +63,7 @@ public class MoveLeaderExtTest {
     }
 
     @Test
-    public void PerformMoveTest() throws FileNotFoundException {
+    public void PerformMoveTest() {
         LeaderCardExt leaderCardExt1 = Starter.LeaderCardsParser().get(4);
         LeaderCardExt leaderCardExt2 = Starter.LeaderCardsParser().get(5);
         game.getCurrPlayer().getPersonalBoard().addLeaderCard(new LeaderCardExt[]{leaderCardExt1,leaderCardExt2});

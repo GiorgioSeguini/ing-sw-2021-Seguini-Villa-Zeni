@@ -8,7 +8,7 @@ public class WaitingController extends ControllerGuiInterface{
     @FXML
     Label label;
 
-    public static String className = "waiting";
+    public static final String className = "waiting";
     @Override
     public String getName() {
         return className;

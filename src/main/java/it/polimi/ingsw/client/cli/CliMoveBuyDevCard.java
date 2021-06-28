@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class CliMoveBuyDevCard implements CliInterface{
 
-    private MoveBuyDevCard move;
+    private final MoveBuyDevCard move;
 
     public CliMoveBuyDevCard(int myId){
         this.move = new MoveBuyDevCard(myId);

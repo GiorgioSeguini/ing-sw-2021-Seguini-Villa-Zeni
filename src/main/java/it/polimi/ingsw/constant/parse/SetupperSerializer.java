@@ -8,7 +8,7 @@ import java.util.HashMap;
 
 public class SetupperSerializer implements JsonSerializer<SetUp> , JsonDeserializer<SetUp> {
 
-    private static HashMap<String, Class> mapNameClass= new HashMap<>();
+    private static final HashMap<String, Class> mapNameClass= new HashMap<>();
     private static final String CLASSNAME= "CLASSNAME";
     private static final String INSTANCE= "INSTANCE";
 

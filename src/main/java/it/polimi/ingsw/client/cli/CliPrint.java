@@ -12,8 +12,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CliPrint implements CliInterface{
-    public static String className="PrintGame";
-    private static ArrayList<String> prints;
+    public static final String className="PrintGame";
+    private static final ArrayList<String> prints;
 
     static{
         prints= new ArrayList<>();

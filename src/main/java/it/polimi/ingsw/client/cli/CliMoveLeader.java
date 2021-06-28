@@ -8,9 +8,10 @@ import it.polimi.ingsw.constant.move.MoveType;
 
 import java.util.Scanner;
 
+@SuppressWarnings("ALL")
 public class CliMoveLeader implements CliInterface{
 
-    private MoveLeader move;
+    private final MoveLeader move;
 
     public CliMoveLeader(int myId){
         this.move = new MoveLeader(myId);

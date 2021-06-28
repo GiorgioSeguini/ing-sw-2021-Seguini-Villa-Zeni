@@ -70,7 +70,7 @@ public class RequirementsExt extends Requirements {
         }
 
         //match for the development card
-        PersonalBoardExt board = (PersonalBoardExt) owner.getPersonalBoard();
+        PersonalBoardExt board = owner.getPersonalBoard();
         ArrayList<DevelopmentCard> ownedDevCard= board.getOwnedDevCards();
         for(ColorDevCard c : ColorDevCard.values()){
             for(Level l: Level.values()){

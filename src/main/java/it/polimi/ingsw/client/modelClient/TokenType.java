@@ -9,7 +9,7 @@ public enum TokenType {
     MOVE_SHUFFLE("Lorenzo è avanzato di una casella sul tracciato fede e ha rimescolato i Segnalini Azione.");
 
 
-    private String textToPrint;
+    private final String textToPrint;
 
     TokenType(String textToPrint){
         this.textToPrint= textToPrint;

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CliMoveActiveProduction implements CliInterface{
-    private MoveActiveProduction move;
+    private final MoveActiveProduction move;
 
     public CliMoveActiveProduction(int myId){
         this.move = new MoveActiveProduction(myId);

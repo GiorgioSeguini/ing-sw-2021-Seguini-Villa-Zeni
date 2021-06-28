@@ -5,7 +5,6 @@ import it.polimi.ingsw.constant.model.NumberOfResources;
 import it.polimi.ingsw.server.parse.Starter;
 import it.polimi.ingsw.constant.enumeration.LeaderStatus;
 import it.polimi.ingsw.constant.enumeration.ResourceType;
-import it.polimi.ingsw.server.model.exception.NoMoreLeaderCardAliveException;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -28,7 +27,7 @@ class LeaderCardTest {
 
     //TODO da rivedere
     @Test
-    void SetPlayedTest() throws IOException{
+    void SetPlayedTest() {
         ArrayList<LeaderCardExt> leaderCards;
         leaderCards = Starter.LeaderCardsParser();
         LeaderCardExt leaderCard1;
@@ -77,7 +76,7 @@ class LeaderCardTest {
 
 
     @Test
-    void SetDiscardTest() throws IOException{
+    void SetDiscardTest() {
         ArrayList<LeaderCardExt> leaderCards;
         leaderCards = Starter.LeaderCardsParser();
         LeaderCardExt leaderCard1;

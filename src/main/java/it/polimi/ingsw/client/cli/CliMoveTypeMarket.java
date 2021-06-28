@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class CliMoveTypeMarket implements CliInterface {
 
-    private MoveTypeMarket move;
+    private final MoveTypeMarket move;
 
     public CliMoveTypeMarket(int myId) {
         this.move = new MoveTypeMarket(myId);

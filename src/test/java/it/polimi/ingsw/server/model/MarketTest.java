@@ -4,12 +4,12 @@ import it.polimi.ingsw.server.parse.Starter;
 import it.polimi.ingsw.constant.enumeration.MarbleColor;
 import org.junit.jupiter.api.Test;
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@SuppressWarnings("ALL")
 class MarketTest {
 
 
@@ -17,11 +17,7 @@ class MarketTest {
     void Constructor() {
         ArrayList<MarbleColor> startMarbles = new ArrayList<>();
 
-        try {
-            startMarbles = Starter.MarblesParser();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        startMarbles = Starter.MarblesParser();
 
         MarketExt marketTray = new MarketExt(startMarbles);
         System.out.println(marketTray);
@@ -39,11 +35,7 @@ class MarketTest {
     void GetterTest() {
         ArrayList<MarbleColor> startMarbles = new ArrayList<>();
 
-        try {
-            startMarbles = Starter.MarblesParser();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        startMarbles = Starter.MarblesParser();
 
 
         MarketExt marketTray = new MarketExt(startMarbles);
@@ -98,11 +90,7 @@ class MarketTest {
     void BuyerTest() {
         ArrayList<MarbleColor> startMarbles = new ArrayList<>();
 
-        try {
-            startMarbles = Starter.MarblesParser();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        startMarbles = Starter.MarblesParser();
 
 
         MarketExt marketTray = new MarketExt(startMarbles);

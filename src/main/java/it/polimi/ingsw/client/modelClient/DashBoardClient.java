@@ -30,7 +30,7 @@ public class DashBoardClient extends Dashboard {
                 try {
                     game.getMe().getDepots().getResources().sub(dashBoard[l.ordinal()][c.ordinal()].getCost());
                     return true;
-                } catch (OutOfResourcesException | NullPointerException e) {}
+                } catch (OutOfResourcesException | NullPointerException ignored) {}
             }
         }
         return false;

@@ -10,7 +10,7 @@ public enum MarbleColor {
     RED('R'),
     WHITE('W'),
     PURPLE('P');
-    private char color;
+    private final char color;
 
     MarbleColor(char color) {
         this.color = color;

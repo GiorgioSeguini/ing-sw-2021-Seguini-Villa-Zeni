@@ -1,5 +1,4 @@
 package it.polimi.ingsw.server.model;
-import it.polimi.ingsw.constant.model.Converter;
 import it.polimi.ingsw.constant.model.NumberOfResources;
 import it.polimi.ingsw.server.parse.Starter;
 import it.polimi.ingsw.constant.enumeration.MarbleColor;
@@ -7,13 +6,13 @@ import it.polimi.ingsw.constant.enumeration.ResourceType;
 import it.polimi.ingsw.server.model.exception.HaveToChooseException;
 import org.junit.jupiter.api.Test;
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 
+@SuppressWarnings("ALL")
 public class ConverterTest {
 
     @Test
@@ -66,11 +65,7 @@ public class ConverterTest {
     public void convertAllTest(){
         ConverterExt converter= new ConverterExt(new PlayerExt("Pippo"));
         ArrayList<MarbleColor> marbles= new ArrayList<>();
-        try {
-            marbles= Starter.MarblesParser();
-        } catch (FileNotFoundException e) {
-            fail();
-        }
+        marbles= Starter.MarblesParser();
 
         try {
             converter.convertAll(marbles);

@@ -34,12 +34,13 @@ import java.util.Objects;
  * Starter class.
  * Class that Initialize the Game with the corrects files.
  */
+@SuppressWarnings("ALL")
 public class Starter {
 
-    private static int NUMOFMARBELS=13;
-    private static int NUMOFDEVCARD=48;
-    private static int NUMOFLEADERCARD=16;
-    private static int NUMOFTOKENS=7;
+    private static final int NUMOFMARBELS=13;
+    private static final int NUMOFDEVCARD=48;
+    private static final int NUMOFLEADERCARD=16;
+    private static final int NUMOFTOKENS=7;
 
     private static final Gson gson;
     private static final String filePath;
@@ -70,10 +71,9 @@ public class Starter {
      * Leader cards parser.
      *
      * @return of type ArrayList<LeaderCardExt>: the leader card's array list.
-     * @throws FileNotFoundException: file not found exception
      */
     /*Methods to Initialize the Game*/
-    public static ArrayList<LeaderCardExt> LeaderCardsParser() throws FileNotFoundException {
+    public static ArrayList<LeaderCardExt> LeaderCardsParser() {
         Type LeaderListType = new TypeToken<ArrayList<LeaderCardExt>>(){}.getType();
         ArrayList<LeaderCardExt> leaderCardExts= gson.fromJson(new InputStreamReader(Objects.requireNonNull(Starter.class.getResourceAsStream("/LeaderCards.json"))), LeaderListType);
         for(LeaderCardExt card: leaderCardExts){
@@ -86,9 +86,8 @@ public class Starter {
      * Tokens parser.
      *
      * @return of type ArrayList<SoloActionTokens>: the SoloActionTokens's array list.
-     * @throws FileNotFoundException file not found exception
      */
-    public static ArrayList<SoloActionTokens> TokensParser() throws FileNotFoundException{
+    public static ArrayList<SoloActionTokens> TokensParser() {
         Type TokensListType = new TypeToken<ArrayList<SoloActionTokens>>(){}.getType();
         GsonBuilder localBuilder = new GsonBuilder();
         localBuilder.registerTypeAdapter(SoloActionTokens.class, new TokensSerializer());
@@ -99,9 +98,8 @@ public class Starter {
      * Marbles parser.
      *
      * @return of type ArrayList<MarbleColor>: the marble's array list.
-     * @throws FileNotFoundException file not found exception
      */
-    public static ArrayList<MarbleColor> MarblesParser() throws FileNotFoundException {
+    public static ArrayList<MarbleColor> MarblesParser() {
         Type marblesarray= new TypeToken<ArrayList<MarbleColor>>(){}.getType();
         return gson.fromJson(new InputStreamReader(Objects.requireNonNull(Starter.class.getResourceAsStream("/Marbles.json"))), marblesarray);
     }
@@ -110,9 +108,8 @@ public class Starter {
      * Development card parser.
      *
      * @return of type ArrayList<DevelopmentCardExt>: the development card's array list.
-     * @throws FileNotFoundException file not found exception
      */
-    public static ArrayList<DevelopmentCardExt> DevCardParser() throws FileNotFoundException {
+    public static ArrayList<DevelopmentCardExt> DevCardParser() {
         Type devCardListType = new TypeToken<ArrayList<DevelopmentCardExt>>(){}.getType();
         return gson.fromJson(new InputStreamReader(Objects.requireNonNull(Starter.class.getResourceAsStream("/DevCard.json"))), devCardListType);
     }

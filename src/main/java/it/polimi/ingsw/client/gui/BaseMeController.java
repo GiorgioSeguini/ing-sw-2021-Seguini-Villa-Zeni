@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 public class BaseMeController extends BaseController{
 
-    public static String className = "base";
+    public static final String className = "base";
 
     private static final Double[] BASE_PROD_X = {576.0};
     private static final Double[] BASE_PROD_Y = {1153.0};

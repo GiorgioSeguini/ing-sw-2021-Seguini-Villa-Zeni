@@ -17,8 +17,6 @@ public class Converter {
     public Converter(int ownerId){
         this.toconvert=new ArrayList<>();
         this.ownerId=ownerId;
-        toconvert.add(ResourceType.Servants);
-        toconvert.add(ResourceType.Coins);
         this.inwait=new NumberOfResources();
         this.white=0;
     }

@@ -104,7 +104,7 @@ class DashboardTest {
     }
 
     @Test
-    void findDevCard() throws IOException{
+    void findDevCard() {
         //int starting_point = DevelopmentCardExt.nextId.get()+1;
         ArrayList<DevelopmentCardExt> developmentCards= Starter.DevCardParser();
         DashboardExt dashboard= new DashboardExt(developmentCards);

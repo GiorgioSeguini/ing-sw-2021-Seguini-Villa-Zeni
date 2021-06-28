@@ -17,11 +17,12 @@ public class WareHouseDepots {
     /*Getter*/
     public NumberOfResources getResources() {
         int[] x =new int[4];
-        for (int i=0; i<shelfs.size();i++){
-            try{
-                if(shelfs.get(i).getResType()!=null)
-                    x[shelfs.get(i).getResType().ordinal()]+= shelfs.get(i).getUsed();
-            }catch (NullPointerException e){}
+        for (Shelf shelf : shelfs) {
+            try {
+                if (shelf.getResType() != null)
+                    x[shelf.getResType().ordinal()] += shelf.getUsed();
+            } catch (NullPointerException ignored) {
+            }
         }
         return new NumberOfResources(x[0],x[1],x[2],x[3]);
     }

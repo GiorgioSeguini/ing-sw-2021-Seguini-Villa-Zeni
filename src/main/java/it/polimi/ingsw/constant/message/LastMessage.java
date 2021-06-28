@@ -4,7 +4,7 @@ import it.polimi.ingsw.client.Client;
 
 public class LastMessage implements Message{
 
-    public static String className = "LastMessage";
+    public static final String className = "LastMessage";
 
     @Override
     public void handleMessage(Client client) {

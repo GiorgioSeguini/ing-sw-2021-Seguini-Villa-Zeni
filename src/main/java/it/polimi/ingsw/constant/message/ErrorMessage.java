@@ -4,7 +4,7 @@ import it.polimi.ingsw.client.Client;
 
 public class ErrorMessage implements Message{
 
-    public static String className = "ErrorMessage";
+    public static final String className = "ErrorMessage";
 
     private final int myId;
 

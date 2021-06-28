@@ -13,10 +13,11 @@ import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@SuppressWarnings("ALL")
 class GameTest {
 
     @Test
-    void multiplayer() throws IOException{
+    void multiplayer() {
         ArrayList<PlayerExt> due = new ArrayList<>();
         due.add(new PlayerExt("Pippo"));
         due.add(new PlayerExt("Piero"));
@@ -126,7 +127,7 @@ class GameTest {
     }
 
     @Test
-    void illegalInitialization() throws IOException{
+    void illegalInitialization() {
         MarketExt market = new MarketExt(Starter.MarblesParser());
         try{
             new GameExt(new ArrayList<>(), market, new DashboardExt(new ArrayList<>()), new ArrayList<>(), new ArrayList<>());
@@ -142,7 +143,7 @@ class GameTest {
     }
 
     @Test
-    void singlePlayerExt() throws IOException{
+    void singlePlayerExt() {
         ArrayList<SoloActionTokens> tokens = new ArrayList<>();
         tokens.add(new Move2());
         tokens.add(new MoveShuffle());
@@ -206,7 +207,7 @@ class GameTest {
     }
 
     @Test
-    void findLeaderCard() throws IOException{
+    void findLeaderCard() {
         ArrayList<LeaderCardExt> leaderCards= Starter.LeaderCardsParser();
         ArrayList<DevelopmentCardExt> developmentCards= Starter.DevCardParser();
         ArrayList<MarbleColor> marbles= Starter.MarblesParser();

@@ -33,12 +33,10 @@ public class GUI extends Application implements UI {
 
     protected static Client client;
 
-    private final HashMap<Pane, String> screenMap = new HashMap<>();
     private final HashMap<String, FXMLLoader> loaderMap = new HashMap<>();
     private Scene main;
     private ControllerGuiInterface current;
     private ConnectionMessage connectionMex= null;
-    private boolean myTurn=false;
     private boolean active = false;
     private final Image[] resImage = new Image[ResourceType.values().length];
     private final Image[] numberImage = new Image[10];
@@ -49,7 +47,7 @@ public class GUI extends Application implements UI {
 
     public static void entry(Client client) {
         GUI.client = client;
-        launch(new String[]{""});
+        launch("");
     }
 
     @Override
@@ -117,7 +115,6 @@ public class GUI extends Application implements UI {
             ControllerGuiInterface controller = loader.getController();
             controller.setGUI(this);
             this.loaderMap.put(controller.getName(), loader);
-            this.screenMap.put(pane, controller.getName());
         }
         this.activate(StartController.className);
         primaryStage.minHeightProperty().bind(primaryStage.widthProperty().multiply(9.0 / 16.0));
@@ -149,10 +146,6 @@ public class GUI extends Application implements UI {
         //check error
         if(getModel().getMe().getErrorMessage()!= ErrorMessage.NoError){
             AlertBox box = new AlertBox("Errore", getModel().getMe().getErrorMessage().toString());
-            //Button button= new Button("Ok");
-            //EventHandler<ActionEvent> event = e -> box.closeBox();
-            //button.setOnAction(event);
-           // box.addButton(button);
             box.display();
         }
 
@@ -186,7 +179,6 @@ public class GUI extends Application implements UI {
                 }else {
                     activate(BaseMeController.className);
                 }
-                myTurn=true;
         }else{
             //GAME ENDED
             activate(EndGameController.className);
@@ -348,20 +340,6 @@ public class GUI extends Application implements UI {
             });
         }
     }
-
-    /*public static void fixButtonToPane(final Pane back, final Double backHeight, final Button button, final Double x, final Double y, final Double height, final Double width) {
-        back.heightProperty().addListener((observableValue, oldValue, newValue) -> {
-            button.setLayoutX(back.getLayoutX() + (Double)newValue * x/ backHeight);
-            button.setLayoutY(back.getLayoutY() + (Double)newValue * y/ backHeight);
-            button.setPrefWidth((Double) newValue * width / backHeight);
-        });
-
-    }*/
-
-    /*public static void fixButtonToPane(final Pane back, final Button button) {
-        fixButtonToPane(back, back.getPrefHeight(), button, button.getLayoutX(), button.getLayoutY(), button.getPrefHeight(), button.getPrefWidth());
-
-    }*/
 
     public void printDepots(ImageView[] resources, Depots depots){
         int  n0 = depots.getWareHouseDepots().getShelfs().get(0).getUsed();

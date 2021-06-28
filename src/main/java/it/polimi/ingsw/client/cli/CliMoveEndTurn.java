@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class CliMoveEndTurn implements CliInterface{
 
-    private MoveEndTurn move;
+    private final MoveEndTurn move;
 
     public CliMoveEndTurn(int myId){
         this.move = new MoveEndTurn(myId);

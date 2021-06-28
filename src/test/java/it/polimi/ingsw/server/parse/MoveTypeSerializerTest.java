@@ -1,8 +1,6 @@
 package it.polimi.ingsw.server.parse;
 
 import it.polimi.ingsw.constant.model.NumberOfResources;
-import it.polimi.ingsw.constant.model.ProductionPower;
-import it.polimi.ingsw.constant.move.MoveActiveProduction;
 import it.polimi.ingsw.constant.move.MoveType;
 import it.polimi.ingsw.server.controller.MoveActiveProductionExt;
 import it.polimi.ingsw.server.controller.MoveBuyDevCardExt;
@@ -10,11 +8,10 @@ import it.polimi.ingsw.server.controller.MoveEndTurnExt;
 import it.polimi.ingsw.server.model.*;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
+@SuppressWarnings("ALL")
 public class MoveTypeSerializerTest {
 
     @Test
@@ -50,11 +47,7 @@ public class MoveTypeSerializerTest {
     public void test4() {
         ArrayList<DevelopmentCardExt> developmentCards= new ArrayList<>();
 
-        try {
-            developmentCards=Starter.DevCardParser();
-        } catch (FileNotFoundException e) {
-            fail();
-        }
+        developmentCards=Starter.DevCardParser();
 
         ArrayList<ProductionPowerExt> productionPowers= new ArrayList<>();
         for (DevelopmentCardExt card: developmentCards){
@@ -75,11 +68,7 @@ public class MoveTypeSerializerTest {
     public void test5(){
         ArrayList<DevelopmentCardExt> developmentCards= new ArrayList<>();
 
-        try {
-            developmentCards=Starter.DevCardParser();
-        } catch (FileNotFoundException e) {
-            fail();
-        }
+        developmentCards=Starter.DevCardParser();
 
         DevelopmentCardExt card= developmentCards.get(8);
         MoveType move= new MoveBuyDevCardExt(new PlayerExt("lol").getID(), 7, card.getId());

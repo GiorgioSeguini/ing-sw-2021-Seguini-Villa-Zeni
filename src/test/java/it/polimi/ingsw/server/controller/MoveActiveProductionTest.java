@@ -9,12 +9,11 @@ import it.polimi.ingsw.server.model.exception.OutOfResourcesException;
 import it.polimi.ingsw.server.parse.Starter;
 import org.junit.jupiter.api.Test;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@SuppressWarnings("ALL")
 public class MoveActiveProductionTest {
 
     @Test
@@ -40,29 +39,17 @@ public class MoveActiveProductionTest {
         players.add(player2);
 
         ArrayList<MarbleColor> startMarbles = new ArrayList<>();
-        try {
-            startMarbles = Starter.MarblesParser();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        startMarbles = Starter.MarblesParser();
         MarketExt marketTray = new MarketExt(startMarbles);
 
         ArrayList<DevelopmentCardExt> devcards = new ArrayList<>();
-        try {
-            devcards = Starter.DevCardParser();
-        } catch (IOException e) {
-            fail();
-        }
+        devcards = Starter.DevCardParser();
         DashboardExt dashboard = new DashboardExt(devcards);
 
         ArrayList<SoloActionTokens> soloActionTokens = new ArrayList<>();
 
         ArrayList<LeaderCardExt>leaderCards=new ArrayList<>();
-        try {
-            leaderCards=Starter.LeaderCardsParser();
-        } catch (IOException e) {
-            fail();
-        }
+        leaderCards=Starter.LeaderCardsParser();
 
         GameExt game = new GameExt(players, marketTray, dashboard, soloActionTokens, leaderCards);
         for(PlayerExt x : players){
@@ -105,7 +92,7 @@ public class MoveActiveProductionTest {
     }
 
     @Test
-    public void PerformMoveTest() throws NoSpaceException, OutOfResourcesException {
+    public void PerformMoveTest() throws NoSpaceException {
         PlayerExt player1 = new PlayerExt("Fabio");
         PlayerExt player2 = new PlayerExt("Pippo");
         ArrayList<PlayerExt> players = new ArrayList<>(3);
@@ -113,29 +100,17 @@ public class MoveActiveProductionTest {
         players.add(player2);
 
         ArrayList<MarbleColor> startMarbles = new ArrayList<>();
-        try {
-            startMarbles = Starter.MarblesParser();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        startMarbles = Starter.MarblesParser();
         MarketExt marketTray = new MarketExt(startMarbles);
 
         ArrayList<DevelopmentCardExt> devcards = new ArrayList<>();
-        try {
-            devcards = Starter.DevCardParser();
-        } catch (IOException e) {
-            fail();
-        }
+        devcards = Starter.DevCardParser();
         DashboardExt dashboard = new DashboardExt(devcards);
 
         ArrayList<SoloActionTokens> soloActionTokens = new ArrayList<>();
 
         ArrayList<LeaderCardExt>leaderCards=new ArrayList<>();
-        try {
-            leaderCards=Starter.LeaderCardsParser();
-        } catch (IOException e) {
-            fail();
-        }
+        leaderCards=Starter.LeaderCardsParser();
 
         GameExt game = new GameExt(players, marketTray, dashboard, soloActionTokens, leaderCards);
         for(PlayerExt x : players){
@@ -181,29 +156,17 @@ public class MoveActiveProductionTest {
         players2.add(player4);
 
         ArrayList<MarbleColor> startMarbles2 = new ArrayList<>();
-        try {
-            startMarbles2 = Starter.MarblesParser();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        startMarbles2 = Starter.MarblesParser();
         MarketExt marketTray2 = new MarketExt(startMarbles2);
 
         ArrayList<DevelopmentCardExt> devcards2 = new ArrayList<>();
-        try {
-            devcards2 = Starter.DevCardParser();
-        } catch (IOException e) {
-            fail();
-        }
+        devcards2 = Starter.DevCardParser();
         DashboardExt dashboard2 = new DashboardExt(devcards2);
 
         ArrayList<SoloActionTokens> soloActionTokens2 = new ArrayList<>();
 
         ArrayList<LeaderCardExt>leaderCards2=new ArrayList<>();
-        try {
-            leaderCards2=Starter.LeaderCardsParser();
-        } catch (IOException e) {
-            fail();
-        }
+        leaderCards2=Starter.LeaderCardsParser();
 
         GameExt game2 = new GameExt(players2, marketTray2, dashboard2, soloActionTokens2, leaderCards2);
         for(PlayerExt x : players2){

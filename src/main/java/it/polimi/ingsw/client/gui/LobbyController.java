@@ -15,9 +15,9 @@ import java.util.HashMap;
 
 public class LobbyController extends ControllerGuiInterface{
 
-    public static String className="lobby";
-    private HashMap<ImageView, Label> users= new HashMap<>();
-    private static ArrayList<String> defaultRoomNames= new ArrayList<>();
+    public static final String className="lobby";
+    private final HashMap<ImageView, Label> users= new HashMap<>();
+    private static final ArrayList<String> defaultRoomNames= new ArrayList<>();
     private static final String disconnectNotify="Stai uscendo dalla stanza. Vuoi procedere?";
     private boolean firstIN=true;
 
@@ -109,18 +109,6 @@ public class LobbyController extends ControllerGuiInterface{
         }
     }
 
-    /*
-    private boolean isDefaultRoom(String roomName){
-        for(String x: defaultRoomNames){
-            if (roomName.equals(x)){
-                return true;
-            }
-        }
-        return false;
-    }
-
-     */
-
     private void setLableNotify() {
         String roomName= GUI.client.getRoomName();
         if(firstIN){
@@ -147,8 +135,6 @@ public class LobbyController extends ControllerGuiInterface{
         EventHandler<ActionEvent> event = new
                 EventHandler<ActionEvent>() {
                     public void handle(ActionEvent e) {
-                        //gui.stop();
-                        //box.closeBox();
                         System.exit(0);
                     }
                 };

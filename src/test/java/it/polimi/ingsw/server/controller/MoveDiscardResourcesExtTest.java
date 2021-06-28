@@ -1,9 +1,7 @@
 package it.polimi.ingsw.server.controller;
 import it.polimi.ingsw.constant.enumeration.*;
 import it.polimi.ingsw.constant.model.NumberOfResources;
-import it.polimi.ingsw.constant.model.ProductionPower;
 import it.polimi.ingsw.server.model.*;
-import it.polimi.ingsw.server.model.exception.NoSpaceException;
 import it.polimi.ingsw.server.model.exception.UnableToFillException;
 import it.polimi.ingsw.server.parse.Starter;
 import org.junit.jupiter.api.Test;
@@ -16,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class MoveDiscardResourcesExtTest {
 
     @Test
-    public void CanPerformExtTest() throws FileNotFoundException {
+    public void CanPerformExtTest() {
         ArrayList<PlayerExt> players= new ArrayList<>();
         GameExt game;
         PlayerExt player1= new PlayerExt("pippo");
@@ -37,7 +35,7 @@ public class MoveDiscardResourcesExtTest {
     }
 
     @Test
-    public void PerformMoveTest() throws UnableToFillException, FileNotFoundException {
+    public void PerformMoveTest() throws UnableToFillException {
         ArrayList<PlayerExt> players= new ArrayList<>();
         GameExt game;
         PlayerExt player1= new PlayerExt("pippo");
@@ -62,7 +60,7 @@ public class MoveDiscardResourcesExtTest {
     }
 
     @Test
-    public void GetClassNameTest() throws FileNotFoundException {
+    public void GetClassNameTest() {
         ArrayList<PlayerExt> players= new ArrayList<>();
         GameExt game;
         PlayerExt player1= new PlayerExt("pippo");

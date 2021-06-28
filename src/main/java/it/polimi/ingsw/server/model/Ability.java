@@ -28,6 +28,6 @@ public interface Ability {
      *
      * @return the name
      */
-    public abstract String getName();
+    String getName();
 
 }

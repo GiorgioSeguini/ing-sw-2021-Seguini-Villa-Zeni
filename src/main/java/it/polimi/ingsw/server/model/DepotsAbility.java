@@ -50,7 +50,7 @@ public class DepotsAbility implements Ability {
     public void RunAbility(PlayerExt owner){
         Shelf shelf =  new Shelf(extraSize);
         shelf.setResType(typeOfRes);
-        ((DepotsExt)owner.getDepots()).addExtraShelf(shelf);
+        owner.getDepots().addExtraShelf(shelf);
     }
 
     /**

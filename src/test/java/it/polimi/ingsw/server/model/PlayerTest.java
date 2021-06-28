@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class PlayerTest {
 
     @Test
-    void Constructor() throws IOException{
+    void Constructor() {
         ArrayList<LeaderCardExt> leaderCards;
         leaderCards = Starter.LeaderCardsParser();
         LeaderCardExt leaderCard1;
@@ -55,7 +55,7 @@ public class PlayerTest {
     }
 
     @Test
-    void GetterVictoryPoints() throws IOException, NoMoreLeaderCardAliveException {
+    void GetterVictoryPoints() {
         PlayerExt player= new PlayerExt("Fabio");
         assertTrue(player.getVictoryPoints()==0);
         player.getDepots().addResourceFromProduction(new NumberOfResources(0,0,5,0));

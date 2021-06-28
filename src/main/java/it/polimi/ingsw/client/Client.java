@@ -22,7 +22,6 @@ import it.polimi.ingsw.server.parse.Starter;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -30,6 +29,7 @@ import java.util.NoSuchElementException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+@SuppressWarnings("ALL")
 public class Client {
 
     private final String ip;
@@ -91,10 +91,6 @@ public class Client {
 
 
     public void run() throws IOException {
-        /*Scanner stdin = new Scanner(System.in);
-        //System.out.println(socketIn.nextLine());
-        System.out.println("insert 1 for CLI, 2 for GUI");
-        int i = stdin.nextInt();*/
         try{
             if(ui==1) {
                 cli = new CLI(this);
@@ -174,12 +170,8 @@ public class Client {
         players.add(new PlayerExt(name));
         GameExt game = null;
 
-        try {
-            game=new GameExt(players, new MarketExt(Starter.MarblesParser()), new DashboardExt(Starter.DevCardParser()), Starter.TokensParser(), Starter.LeaderCardsParser());
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            //TODO
-        }
+        game=new GameExt(players, new MarketExt(Starter.MarblesParser()), new DashboardExt(Starter.DevCardParser()), Starter.TokensParser(), Starter.LeaderCardsParser());
+
         Controller controller = new Controller(game);
 
         Observer<Message> observer = message -> {

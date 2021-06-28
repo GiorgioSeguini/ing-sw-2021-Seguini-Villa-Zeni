@@ -9,24 +9,19 @@ import it.polimi.ingsw.server.model.Ability;
 import it.polimi.ingsw.server.model.LeaderCardExt;
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
 
+@SuppressWarnings("ALL")
 public class AbilitySerializerTest {
 
 
     @Test
     public void testx() {
         ArrayList<LeaderCardExt> leaderCards = new ArrayList<>();
-        try {
-            leaderCards = Starter.LeaderCardsParser();
-        } catch (IOException e) {
-            fail();
-        }
+        leaderCards = Starter.LeaderCardsParser();
 
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.registerTypeAdapter(Ability.class, new AbilitySerializer());
@@ -47,11 +42,7 @@ public class AbilitySerializerTest {
     @Test
     public void test() {
         ArrayList<LeaderCardExt> leaderCards = new ArrayList<>();
-        try {
-            leaderCards = Starter.LeaderCardsParser();
-        } catch (IOException e) {
-            fail();
-        }
+        leaderCards = Starter.LeaderCardsParser();
 
         String message= Starter.toJson(leaderCards.get(1), LeaderCardExt.class);
 

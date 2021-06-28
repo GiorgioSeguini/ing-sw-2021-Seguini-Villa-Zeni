@@ -16,11 +16,12 @@ import it.polimi.ingsw.constant.setupper.SetUp;
 
 import java.util.*;
 
+@SuppressWarnings("ALL")
 public class CLI implements Runnable, UI {
     private final Client client;
     private GameClient game;
-    Scanner in = new Scanner(System.in);
-    ArrayList<CliInterface> moves;
+    final Scanner in = new Scanner(System.in);
+    final ArrayList<CliInterface> moves;
     //private static ReconnectMessage connectionMessage=null;
 
     private boolean moveHandled;
@@ -33,12 +34,6 @@ public class CLI implements Runnable, UI {
         this.client = client;
         this.moves = new ArrayList<>();
     }
-/*
-    public static void setConnectionMessage(ReconnectMessage connectionMessage) {
-        CLI.connectionMessage = connectionMessage;
-    }
-
- */
 
     @Override
     public void run() {
@@ -161,18 +156,6 @@ public class CLI implements Runnable, UI {
                 }
             } else {
                 clearScreen();
-               /* if(connectionMessage!=null){
-                    System.out.println("\n\nAGGIORNAMENTO: Qualcuno si è riconnesso!");
-                    System.out.println("Giocatori attualmente collegati");
-                    int i=1;
-                    for (String name: connectionMessage.getPlayersName()){
-                        System.out.println(i+". "+name);
-                        i++;
-                    }
-                    connectionMessage=null;
-                }
-
-                */
                 System.out.println("E' il turno di :" + game.getCurrPlayer().getUserName());
             }
         }

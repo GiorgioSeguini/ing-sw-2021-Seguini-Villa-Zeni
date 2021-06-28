@@ -8,14 +8,14 @@ import javafx.scene.control.*;
 
 public class PrivateLoginController extends ControllerGuiInterface{
 
-    public static String className = "privateLogin";
+    public static final String className = "privateLogin";
     private String name;
     private Integer number=0;
     private String roomName;
     private boolean addinroom=false;
 
-    private static String addInroom= "Accedi ad una stanza";
-    private static String createroom="Crea una stanza";
+    private static final String addInroom= "Accedi ad una stanza";
+    private static final String createroom="Crea una stanza";
 
     @FXML
     TextField name_lable;

@@ -7,11 +7,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 
-import java.io.IOException;
-
 public class PublicLoginController extends ControllerGuiInterface{
 
-    public static String className = "publicLogin";
+    public static final String className = "publicLogin";
     private String name;
     private Integer number;
 
@@ -24,11 +22,6 @@ public class PublicLoginController extends ControllerGuiInterface{
     @FXML
     Button ComeBack;
 
-    @FXML
-    public void initialize(){
-
-    }
-
     public void setName(){
         this.name=name_lable.getText();
         this.button.setDisable(notCanActive());
@@ -39,7 +32,7 @@ public class PublicLoginController extends ControllerGuiInterface{
         this.button.setDisable(notCanActive());
     }
 
-    public void start() throws IOException {
+    public void start() {
         GUI.client.setOnline();
         //DataOutputStream socket = GUI.client.socketOut;
         GUI.client.sendSetupper(new JoinWaitngListSetupper(name, number));
@@ -49,11 +42,6 @@ public class PublicLoginController extends ControllerGuiInterface{
         return name == null || number == null;
     }
 
-    /*private void checkOffline(){
-        if(number==null) return;
-        offline.setVisible(number==1);
-        offline.setDisable(notCanActive());
-    }*/
     @Override
     public void update() {
         name=null;
@@ -70,8 +58,4 @@ public class PublicLoginController extends ControllerGuiInterface{
         gui.activate(StartController.className);
     }
 
-   /* public void offline(ActionEvent actionEvent) {
-        GUI.client.startOffline(name);
-    }
-    */
 }

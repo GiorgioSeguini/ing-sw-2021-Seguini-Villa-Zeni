@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class InitialController extends ControllerGuiInterface{
 
-    public  static String className = "initial";
+    public  static final String className = "initial";
 
     private final ArrayList<Integer> choice = new ArrayList<>();
     private final boolean[] chosen =new boolean[4];
@@ -42,8 +42,8 @@ public class InitialController extends ControllerGuiInterface{
     @FXML
     public GridPane grid;
 
-    private ArrayList<ImageView> imageViews = new ArrayList<>();
-    private ArrayList<Label> labels = new ArrayList<>();
+    private final ArrayList<ImageView> imageViews = new ArrayList<>();
+    private final ArrayList<Label> labels = new ArrayList<>();
 
     @FXML
     public void initialize(){

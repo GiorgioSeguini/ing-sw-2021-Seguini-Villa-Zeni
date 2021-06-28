@@ -3,7 +3,6 @@ package it.polimi.ingsw.server.controller;
 import it.polimi.ingsw.constant.enumeration.GameStatus;
 import it.polimi.ingsw.constant.enumeration.PlayerStatus;
 import it.polimi.ingsw.constant.model.NumberOfResources;
-import it.polimi.ingsw.constant.model.Player;
 import it.polimi.ingsw.server.model.DashboardExt;
 import it.polimi.ingsw.server.model.GameExt;
 import it.polimi.ingsw.server.model.MarketExt;
@@ -11,16 +10,14 @@ import it.polimi.ingsw.server.model.PlayerExt;
 import it.polimi.ingsw.server.parse.Starter;
 import org.junit.jupiter.api.Test;
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.fail;
 import static org.junit.jupiter.api.Assertions.*;
 
 
 public class MoveChoseInitialResourcesExtTest {
-    private static ArrayList<PlayerExt> players= new ArrayList<>();
-    private static GameExt game;
+    private static final ArrayList<PlayerExt> players= new ArrayList<>();
+    private static final GameExt game;
 
     static {
         PlayerExt player1= new PlayerExt("pippo");
@@ -31,11 +28,7 @@ public class MoveChoseInitialResourcesExtTest {
         players.add(player2);
         players.add(player3);
         players.add(player4);
-        try {
-            game= new GameExt(players, new MarketExt(Starter.MarblesParser()), new DashboardExt(Starter.DevCardParser()),Starter.TokensParser(),Starter.LeaderCardsParser());
-        } catch (FileNotFoundException e) {
-            fail();
-        }
+        game= new GameExt(players, new MarketExt(Starter.MarblesParser()), new DashboardExt(Starter.DevCardParser()),Starter.TokensParser(),Starter.LeaderCardsParser());
     }
 
     @Test

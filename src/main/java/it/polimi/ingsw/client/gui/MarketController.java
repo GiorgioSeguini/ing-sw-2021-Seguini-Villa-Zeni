@@ -35,13 +35,13 @@ spaceL       ---------------------------                        |
 
 public class MarketController extends ControllerGuiInterface implements EventHandler<Event>{
 
-    public static String className = "market";
-    private static int nCol=4;
-    private static int nRow=3;
-    private static int nWhites=2;
-    private ImageView[][] marbleImages=new ImageView[nRow][nCol];
-    private Image[] marblesColor;
-    private Image[] resourcetype;
+    public static final String className = "market";
+    private static final int nCol=4;
+    private static final int nRow=3;
+    private static final int nWhites=2;
+    private final ImageView[][] marbleImages=new ImageView[nRow][nCol];
+    private final Image[] marblesColor;
+    private final Image[] resourcetype;
     private static final String white1= "Hai l'abilità biglia bianca attiva. Le biglie bianche saranno convertite automaticamente nella seguente risorsa.";
     private static final String white2= "Hai l'abilità biglia bianca attiva. Potrai sceglie come convertire le biglie nelle seguenti risorse.";
     private int index;
@@ -54,12 +54,12 @@ public class MarketController extends ControllerGuiInterface implements EventHan
     private static final double spaceL=510;
     private final Double[] x = {580.0, 800.0, 1020.0,1240.0,1600.0};
     private final Double[] y = {570.0,790.0,1010.0,1450.0};
-    private ImageView[] row = new ImageView[3];
-    private ImageView[] col = new ImageView[4];
-    private ImageView imageViewExtMarble= new ImageView();
-    private Image arrowUp;
-    private Image arrowLeft;
-    private ImageView[] whitesRes= new ImageView[2];
+    private final ImageView[] row = new ImageView[3];
+    private final ImageView[] col = new ImageView[4];
+    private final ImageView imageViewExtMarble= new ImageView();
+    private final Image arrowUp;
+    private final Image arrowLeft;
+    private final ImageView[] whitesRes= new ImageView[2];
 
     @Override
     public String getName() {

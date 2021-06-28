@@ -9,7 +9,7 @@ import java.io.IOException;
 public class RemoteViewTest {
 
     @Test
-    public void test() throws IOException {
+    public void test() {
         ClientApp clientApp = new ClientApp();
         ServerApp serverApp= new ServerApp();
 

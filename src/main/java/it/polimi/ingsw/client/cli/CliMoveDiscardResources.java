@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class CliMoveDiscardResources implements CliInterface{
 
-    private MoveDiscardResources move;
+    private final MoveDiscardResources move;
 
     public CliMoveDiscardResources(int myId){
         this.move = new MoveDiscardResources(myId);

@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class GameTest {
 
     @Test
-    public void test() throws FileNotFoundException {
+    public void test() {
         ArrayList<PlayerExt> due = new ArrayList<>();
         due.add(new PlayerExt("Pippo"));
         due.add(new PlayerExt("Piero"));

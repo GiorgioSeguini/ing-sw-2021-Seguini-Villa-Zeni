@@ -15,7 +15,7 @@ import java.util.HashMap;
  */
 public class PerformableSerializer implements JsonDeserializer<Performable>{
 
-    private static HashMap<String,Class> moveNames= new HashMap<>();
+    private static final HashMap<String,Class> moveNames= new HashMap<>();
     private static final String CLASSNAME="CLASSNAME";
     private static final String INSTANCE="INSTANCE";
 

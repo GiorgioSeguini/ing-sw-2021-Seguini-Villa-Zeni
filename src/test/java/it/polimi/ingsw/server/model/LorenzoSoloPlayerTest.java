@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class LorenzoSoloPlayerTest {
 
     @Test
-    void constructor() throws IOException{
+    void constructor() {
         ArrayList<SoloActionTokens> soloActionTokensArrayList;
 
         soloActionTokensArrayList = Starter.TokensParser();
@@ -46,7 +46,7 @@ class LorenzoSoloPlayerTest {
     }
 
     @Test
-    void Setter() throws IOException{
+    void Setter() {
         ArrayList<SoloActionTokens> soloActionTokensArrayList;
 
         soloActionTokensArrayList = Starter.TokensParser();
@@ -71,7 +71,7 @@ class LorenzoSoloPlayerTest {
     }
 
     @Test
-    void RevealTokenTest() throws IOException{
+    void RevealTokenTest() {
         ArrayList<SoloActionTokens> soloActionTokensArrayList;
 
         soloActionTokensArrayList = Starter.TokensParser();
@@ -93,7 +93,7 @@ class LorenzoSoloPlayerTest {
     }
 
     @Test
-    void singlePlayerExtGame() throws IOException{
+    void singlePlayerExtGame() {
         ArrayList<SoloActionTokens> tokens = new ArrayList<>();
         tokens.add(new Move2());
         tokens.add(new MoveShuffle());

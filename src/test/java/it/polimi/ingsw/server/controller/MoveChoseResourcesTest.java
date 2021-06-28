@@ -2,7 +2,6 @@ package it.polimi.ingsw.server.controller;
 
 import it.polimi.ingsw.constant.enumeration.*;
 import it.polimi.ingsw.constant.model.NumberOfResources;
-import it.polimi.ingsw.constant.model.ProductionPower;
 import it.polimi.ingsw.server.model.*;
 import it.polimi.ingsw.server.model.exception.NoSpaceException;
 import it.polimi.ingsw.server.model.exception.UnableToFillException;
@@ -15,23 +14,19 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class MoveChoseResourcesTest {
-    private static ArrayList<PlayerExt> players= new ArrayList<>();
-    private static GameExt game;
+    private static final ArrayList<PlayerExt> players= new ArrayList<>();
+    private static final GameExt game;
 
     static {
         PlayerExt player1= new PlayerExt("pippo");
         PlayerExt player2= new PlayerExt("pluto");
         players.add(player1);
         players.add(player2);
-        try {
-            game= new GameExt(players, new MarketExt(Starter.MarblesParser()), new DashboardExt(Starter.DevCardParser()),Starter.TokensParser(),Starter.LeaderCardsParser());
-        } catch (FileNotFoundException e) {
-            fail();
-        }
+        game= new GameExt(players, new MarketExt(Starter.MarblesParser()), new DashboardExt(Starter.DevCardParser()),Starter.TokensParser(),Starter.LeaderCardsParser());
     }
 
     @Test
-    public void CanPerform() throws UnableToFillException, NoSpaceException {
+    public void CanPerform() {
         game.setStatus(GameStatus.Running);
         game.setIndex(0);
         game.getCurrPlayer().setStatus(PlayerStatus.Active);
@@ -46,7 +41,7 @@ public class MoveChoseResourcesTest {
     }
 
     @Test
-    public void PerformMoveTest() throws FileNotFoundException {
+    public void PerformMoveTest() {
 
         game.setStatus(GameStatus.Running);
         game.getCurrPlayer().setToActive(new ProductionPowerExt());
@@ -68,7 +63,7 @@ public class MoveChoseResourcesTest {
     }
 
     @Test
-    public void GetClassNameTest() throws FileNotFoundException {
+    public void GetClassNameTest() {
 
         NumberOfResources input = new NumberOfResources(1,1,0,0);
         NumberOfResources output = new NumberOfResources(1,0,0,0);

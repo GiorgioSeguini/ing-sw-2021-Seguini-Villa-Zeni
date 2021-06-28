@@ -6,11 +6,11 @@ import it.polimi.ingsw.constant.enumeration.Level;
 import it.polimi.ingsw.server.parse.Starter;
 import org.junit.jupiter.api.Test;
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@SuppressWarnings("ALL")
 class DevelopmentCardTest {
 
     @Test
@@ -29,11 +29,7 @@ class DevelopmentCardTest {
     @Test
     void cliTest(){
         ArrayList<DevelopmentCardExt> developmentCards= new ArrayList<>();
-        try {
-            developmentCards= Starter.DevCardParser();
-        } catch (FileNotFoundException e) {
-            fail();
-        }
+        developmentCards= Starter.DevCardParser();
 
         DashboardExt dashboard= new DashboardExt(developmentCards);
 

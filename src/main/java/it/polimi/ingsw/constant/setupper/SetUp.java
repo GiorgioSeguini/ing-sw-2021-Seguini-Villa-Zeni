@@ -2,7 +2,7 @@ package it.polimi.ingsw.constant.setupper;
 
 public abstract class SetUp {
 
-    public static String className= "SetUp";
+    public static final String className= "SetUp";
     private final String playerName;
     private final String roomName;
     private final int numOfPlayers;

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 /*Last Edit: Fabio*/
 public class Market {
 
-    MarbleColor[][] tray;
+    final MarbleColor[][] tray;
     MarbleColor externalMarble;
 
     public static final int N_COL=4;
@@ -24,9 +24,7 @@ public class Market {
     //getter
     public MarbleColor[] getRow(int index) {
         MarbleColor[] trayRow = new MarbleColor[4];
-        for(int i= 0; i<N_COL; i++ ){
-            trayRow[i] = tray[index][i];
-        }
+        System.arraycopy(tray[index], 0, trayRow, 0, N_COL);
         return trayRow;
     }
 

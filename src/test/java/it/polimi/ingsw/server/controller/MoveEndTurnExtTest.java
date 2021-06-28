@@ -9,25 +9,20 @@ import it.polimi.ingsw.server.model.PlayerExt;
 import it.polimi.ingsw.server.parse.Starter;
 import org.junit.jupiter.api.Test;
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class MoveEndTurnExtTest {
-    private static ArrayList<PlayerExt> players= new ArrayList<>();
-    private static GameExt game;
+    private static final ArrayList<PlayerExt> players= new ArrayList<>();
+    private static final GameExt game;
 
     static {
         PlayerExt player1= new PlayerExt("pippo");
         PlayerExt player2= new PlayerExt("pluto");
         players.add(player1);
         players.add(player2);
-        try {
-            game= new GameExt(players, new MarketExt(Starter.MarblesParser()), new DashboardExt(Starter.DevCardParser()),Starter.TokensParser(),Starter.LeaderCardsParser());
-        } catch (FileNotFoundException e) {
-            fail();
-        }
+        game= new GameExt(players, new MarketExt(Starter.MarblesParser()), new DashboardExt(Starter.DevCardParser()),Starter.TokensParser(),Starter.LeaderCardsParser());
     }
 
     @Test
