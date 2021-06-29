@@ -63,6 +63,9 @@ public class MoveDiscardResourcesExt extends MoveDiscardResources implements Per
                         ((PlayerExt)y).getFaithTrack().addPoint();
                     }
                 }
+                if(game.isSinglePlayer()) {
+                    game.getSoloGame().getFaithTrack().addPoint();
+                }
                 game.popesInspection();
             }
         } catch (OutOfResourcesException e) {
