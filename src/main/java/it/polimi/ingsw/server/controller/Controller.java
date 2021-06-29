@@ -22,7 +22,7 @@ public class Controller implements Observer<Performable> {
     }
 
     /**
-     *
+     * Execute the performable. Otherwise set an error message.
      * @param x of type Performable: the performable.
      */
     @Override
