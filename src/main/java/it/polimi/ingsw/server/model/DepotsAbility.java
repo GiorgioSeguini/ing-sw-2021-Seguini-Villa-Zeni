@@ -7,6 +7,7 @@ import it.polimi.ingsw.constant.model.Shelf;
 /**
  * The type Depots ability.
  * Implements Ability interface.
+ * DepotsAbility: add an extra shelf of size 2 of the specified ResourceType
  */
 public class DepotsAbility implements Ability {
 

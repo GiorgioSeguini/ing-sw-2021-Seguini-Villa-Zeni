@@ -5,6 +5,7 @@ import it.polimi.ingsw.constant.enumeration.ResourceType;
 /**
  * WhiteAbility class.
  * Implements Ability interface.
+ * WhiteAbility: add the conversion of white Marbles in the specified ResourceType
  */
 public class WhiteAbility implements Ability {
 

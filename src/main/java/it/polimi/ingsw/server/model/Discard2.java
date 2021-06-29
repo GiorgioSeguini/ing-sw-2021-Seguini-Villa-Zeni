@@ -5,6 +5,7 @@ import it.polimi.ingsw.constant.enumeration.ColorDevCard;
 /**
  * Discard 2 class.
  * Implements SoloActionTokens interface.
+ * Discard 2 Development card of the specified color from the DashBoard.
  */
 public class Discard2 implements SoloActionTokens {
 

@@ -3,6 +3,7 @@ package it.polimi.ingsw.server.model;
 
 /**
  * Move 2 class.
+ * Lorenzo solo Player gains 2 faithPoints
  * Implements SoloActionTokens interface.
  */
 public class Move2 implements SoloActionTokens {

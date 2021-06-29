@@ -5,6 +5,7 @@ import it.polimi.ingsw.constant.enumeration.ResourceType;
 /**
  * Discount ability class.
  * Implements Ability interface.
+ * DiscountAbility: discount of 1 from the specified ResourceType cost when buying some new development card from the DashBoard
  */
 public class DiscountAbility implements Ability{
 

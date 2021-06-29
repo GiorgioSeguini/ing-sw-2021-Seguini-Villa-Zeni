@@ -8,12 +8,17 @@ import it.polimi.ingsw.server.model.exception.OutOfResourcesException;
 
 import java.util.ArrayList;
 
+/**
+ * The type Dash board client.
+ * Instead of storing all the Development card, store just the top one, the ones you can see in a normal game
+ */
 public class DashBoardClient extends Dashboard {
 
     private final DevelopmentCard[][] dashBoard;
 
     /**
-     * Default constructor, ensure correct classification of cards and randomness
+     * Default constructor
+     *
      * @param developmentCards arraylist containing all the development card for this dashboard
      */
     public DashBoardClient(ArrayList<DevelopmentCard> developmentCards) {
@@ -24,6 +29,12 @@ public class DashBoardClient extends Dashboard {
     }
 
 
+    /**
+     * These methods is used from client side for checking if a player has enough resources to buy any of the available Development Card
+     *
+     * @param game the game of type GameClient
+     * @return true if there is at least one card with a cost lower than player's resources, false otherwise
+     */
     public boolean isSomethingBuyable(GameClient game){
         for(Level l : Level.values()){
             for(ColorDevCard c : ColorDevCard.values()){
@@ -54,7 +65,9 @@ public class DashBoardClient extends Dashboard {
         }
     }
 
-
+    /**
+     * @see Dashboard#getTopDevCard(ColorDevCard, Level)
+     */
     @Override
     public DevelopmentCard getTopDevCard(ColorDevCard color, Level level) {
         return dashBoard[level.ordinal()][color.ordinal()];

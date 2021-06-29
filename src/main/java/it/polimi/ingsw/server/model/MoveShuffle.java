@@ -6,6 +6,7 @@ import java.util.Collections;
 /**
  * Move shuffle class.
  * Implements SoloActionTokens interface.
+ * Lorenzo solo Player gains 1 faithPoints. Tokens' deck is shuffled
  */
 public class MoveShuffle implements SoloActionTokens {
 

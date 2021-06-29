@@ -7,6 +7,7 @@ import it.polimi.ingsw.constant.model.ProductionPower;
 /**
  * ProductionPowerPlusAbility.
  * Implements Ability.
+ * PowerProductionPlusAbility: add an extra production that take 1 Resource of the specified ResourceType and get 1 faith points and 1 of choice resource
  */
 public class ProductionPowerPlusAbility implements Ability {
 
