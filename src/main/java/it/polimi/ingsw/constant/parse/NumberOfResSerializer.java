@@ -6,6 +6,11 @@ import it.polimi.ingsw.constant.model.NumberOfResources;
 
 import java.lang.reflect.Type;
 
+/**
+ * Number of resources Serializer
+ * Implements Gson interface for serialization and deserialization of NumberOfResources class
+ * Serialization and deserialization are used both on client and server side
+ */
 public class NumberOfResSerializer implements JsonSerializer<NumberOfResources>, JsonDeserializer<NumberOfResources> {
 
 

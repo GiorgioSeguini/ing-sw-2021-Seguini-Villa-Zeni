@@ -6,6 +6,11 @@ import it.polimi.ingsw.constant.setupper.*;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 
+/**
+ * SetUpper Serializer
+ * Implements Gson interface for serialization and deserialization of SetUppers classes
+ * Serialization and deserialization are used both on client and server side
+ */
 public class SetupperSerializer implements JsonSerializer<SetUp> , JsonDeserializer<SetUp> {
 
     private static final HashMap<String, Class> mapNameClass= new HashMap<>();

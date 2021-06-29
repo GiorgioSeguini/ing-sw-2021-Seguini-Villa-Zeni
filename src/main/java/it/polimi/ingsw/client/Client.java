@@ -209,11 +209,11 @@ public class Client {
     public boolean setOnline() {
         try{
             this.socket = new Socket(ip, port);
-            System.out.println("Connection established");
             this.socketIn = new DataInputStream(socket.getInputStream());
             this.socketOut = new DataOutputStream(socket.getOutputStream());
             readingThread = asyncReadFromSocket(socketIn);
             online = true;
+            System.out.println("Connection established");
         }catch (IOException e){
             setActive(false);
             return false;
@@ -225,9 +225,9 @@ public class Client {
         if(online) {
             try {
                 String json = StarterClient.toJson(setupper, SetUp.class);
-                System.out.println("Sent :" + json);
                 socketOut.writeUTF(json);
                 socketOut.flush();
+                System.out.println("Sent :" + json);
             } catch (IOException e) {
                 e.printStackTrace();
                 //TODO

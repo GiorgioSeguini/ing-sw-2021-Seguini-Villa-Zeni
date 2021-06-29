@@ -6,6 +6,9 @@ import it.polimi.ingsw.constant.message.*;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 
+/**
+ * The type Message serializer, contains an hashmap of the message that allows to serialize (on server side) and deserialize ( on client side) Message classes correctly
+ */
 public class MessageSerializer implements JsonSerializer<Message>, JsonDeserializer<Message> {
 
     private static final HashMap<String, Class> mapNameClass= new HashMap<>();

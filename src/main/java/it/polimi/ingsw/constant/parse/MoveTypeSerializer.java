@@ -6,6 +6,12 @@ import it.polimi.ingsw.constant.move.*;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 
+/**
+ * Move Type serializer.
+ * Implements Gson interface for serialization and deserialization of MoveType class
+ * Contains an hashmap of MoveType classes
+ * Used to serialize MoveType on client side
+ */
 public class MoveTypeSerializer implements JsonSerializer<MoveType>, JsonDeserializer<MoveType> {
 
     private static final HashMap<String,Class> moveNames= new HashMap<>();
