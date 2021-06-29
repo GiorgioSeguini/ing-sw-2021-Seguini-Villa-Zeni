@@ -31,4 +31,5 @@ public class DevelopmentCardExt extends DevelopmentCard {
     public ProductionPowerExt getProductionPower() {
         return (ProductionPowerExt) super.getProductionPower();
     }
+
 }

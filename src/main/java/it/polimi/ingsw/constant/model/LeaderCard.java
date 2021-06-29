@@ -44,9 +44,7 @@ public abstract class LeaderCard extends Card {
 
         if(!requirements.equals(other.requirements))
             return false;
-        return true;
+        return ((LeaderCard) o).getId()==this.getId();
     }
-
-
 
 }

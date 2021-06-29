@@ -25,7 +25,6 @@ public class PersonalBoard {
 
         OwnedLeaderCard = new ArrayList<>();
         extraProduction = new ArrayList<>();
-        //extraProduction.add(new ProductionPower(0, new NumberOfResources(), new NumberOfResources(), 2, 1));
     }
 
 
@@ -77,14 +76,6 @@ public class PersonalBoard {
         return getOwnedDevCards().size()==MAX_DEV_CARD;
     }
 
-    /**This for check the index**/
-    private boolean goodindex(int index) throws IllegalArgumentException{
-        if(index>2 || index<0) {
-            throw new IllegalArgumentException(); //TODO
-        }
-        return true;
-    }
-
     public void addExtraProduction(ProductionPower productionPower){
         extraProduction.add(productionPower);
     }
@@ -113,13 +104,6 @@ public class PersonalBoard {
      */
     public boolean isReady(){
         return OwnedLeaderCard.size()==MAX_LEAD_CARD;
-    }
-
-    public void setDevCards(ArrayList<DevelopmentCard>[] cards){
-        for(int i=0; i<3; i++){
-            this.OwnedDevCards[i].clear();
-            this.OwnedDevCards[i].addAll(cards[i]);
-        }
     }
 
     public void setLeaderCards(ArrayList<LeaderCard> cards){

@@ -5,6 +5,7 @@ import it.polimi.ingsw.client.Client;
 /**
  * AcceptMessage class.
  * Implements Message interface.
+ * @see it.polimi.ingsw.constant.message.Message
  */
 public class AcceptMessage implements Message{
     /**

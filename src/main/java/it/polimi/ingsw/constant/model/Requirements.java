@@ -29,18 +29,6 @@ public class Requirements {
         this(new NumberOfResources(), new ArrayList<>());
     }
 
-    public Requirements(NumberOfResources resources){
-        this(resources, new ArrayList<>());
-    }
-
-    public Requirements(ArrayList<Map.Entry<ColorDevCard, Level>> requirements){
-        this(new NumberOfResources(), requirements);
-    }
-
-
-
-
-
     /*Getter*/
 
     public int[][] getMinNumber() {

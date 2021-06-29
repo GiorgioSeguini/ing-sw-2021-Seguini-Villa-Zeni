@@ -56,14 +56,22 @@ public class MoveBuyDevCardExtTest {
         game.getDashboard().buyDevCard(ColorDevCard.YELLOW,Level.ONE);
         assertFalse(move.canPerformExt(game));
 
+        MoveBuyDevCardExt moveBuyDevCardExt = new MoveBuyDevCardExt(players.get(0).getID());
         for (DevelopmentCardExt card: Starter.DevCardParser()){
             if(!card.equals(game.getDashboard().getTopDevCard(card.getColor(),card.getLevel()))){
                 cardtobuy=card;
                 break;
             }
         }
-        move.setIndexCardToBuy(cardtobuy.getId());
-        assertFalse(move.canPerformExt(game));
+        moveBuyDevCardExt.setIndexCardToBuy(cardtobuy.getId());
+        moveBuyDevCardExt.setPos(0);
+        if(moveBuyDevCardExt.canPerformExt(game)){
+            System.out.println(game.getDashboard().findDevCard(moveBuyDevCardExt.getIndexCardToBuy()));
+            System.out.println(game.getDashboard().getTopDevCard(cardtobuy.getColor(),cardtobuy.getLevel()));
+            System.out.println(game.getCurrPlayer().getStatus());
+            fail();
+        }
+        //assertFalse(moveBuyDevCardExt.canPerformExt(game));
     }
 
     @Test

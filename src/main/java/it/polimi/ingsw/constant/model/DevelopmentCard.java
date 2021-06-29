@@ -74,4 +74,19 @@ public class DevelopmentCard extends Card {
         return card;
     }
 
+    /**
+     *
+     * @param o of type Object.
+     * @return True if param o.getId is equals to this.getId. False if param o isn't an instance of DevelopmentCard or o isn't equals to this.
+     */
+    @Override
+    public boolean equals(Object o){
+        if(o==this)
+            return true;
+        if(!(o instanceof DevelopmentCard)){
+            return false;
+        }
+        return ((DevelopmentCard) o).getId() == this.getId();
+    }
+
 }

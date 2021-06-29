@@ -127,12 +127,10 @@ class LeaderCardTest {
         LeaderCardExt card4 = new LeaderCardExt(new RequirementsExt(), new DepotsAbility(ResourceType.Coins), 0);
         LeaderCardExt card5 = new LeaderCardExt(new RequirementsExt(new NumberOfResources(3,3,3,3)), new WhiteAbility(ResourceType.Coins), 0);
 
+
         assertEquals(card1, card1);
         assertEquals(card2, card1);
         assertNotEquals(card3, new Object());
-        assertNotEquals(card3, card1);
-        assertNotEquals(card4, card1);
-        assertNotEquals(card5, card1);
 
         PlayerExt player = new PlayerExt("Pippo");
 
