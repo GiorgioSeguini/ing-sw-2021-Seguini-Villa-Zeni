@@ -8,6 +8,11 @@ import it.polimi.ingsw.constant.model.NumberOfResources;
 import it.polimi.ingsw.constant.model.Player;
 import it.polimi.ingsw.constant.model.ProductionPower;
 
+/**
+ * PlayerMessage class.
+ * Implements Message interface.
+ * Manage the player messages.
+ */
 public class PlayerMessage implements Message{
 
     public static final String className = "PlayerMessage";
@@ -17,6 +22,15 @@ public class PlayerMessage implements Message{
     private final ProductionPower toActive;
     private final NumberOfResources discount;
 
+    /**
+     * Instantiates a new Player message.
+     *
+     * @param status of type PlayerStatus: the player's status.
+     * @param idPlayer of type int: the player's ID.
+     * @param errorMessage of type ErrorMessage: the error message.
+     * @param toActive of type ProductionPower: the production power to active.
+     * @param discount of type NumberOfResources: the discount on the resources.
+     */
     public PlayerMessage(PlayerStatus status, int idPlayer, ErrorMessage errorMessage, ProductionPower toActive, NumberOfResources discount) {
         this.status = status;
         this.idPlayer = idPlayer;
@@ -25,6 +39,10 @@ public class PlayerMessage implements Message{
         this.discount = discount;
     }
 
+    /**
+     * Handle the player messages.
+     * @param client of type Client: reference to the client.
+     */
     @Override
     public void handleMessage(Client client) {
         Game simpleGame = client.getSimpleGame();
@@ -35,6 +53,10 @@ public class PlayerMessage implements Message{
         owner.setDiscounted(discount);
     }
 
+    /**
+     *
+     * @return of type String: the class name, useful for json serialization.
+     */
     @Override
     public String getName() {
         return className;

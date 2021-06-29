@@ -7,6 +7,11 @@ import it.polimi.ingsw.constant.model.LeaderCard;
 
 import java.util.ArrayList;
 
+/**
+ * InitialMessage class.
+ * Implements Message interface.
+ * Manage initial game messages.
+ */
 public class InitialMessage implements Message{
 
     public static final String className = "InitialMessage";
@@ -16,6 +21,14 @@ public class InitialMessage implements Message{
     private final ArrayList<LeaderCard> leaderCards;
     private final String roomName;
 
+    /**
+     * Instantiates a new Initial message.
+     *
+     * @param model of type Game: the game's model.
+     * @param yourID of type int: your id.
+     * @param leaderCards of type ArrayList<LeaderCard>: the leader cards.
+     * @param roomName of type String: the room name.
+     */
     public InitialMessage(Game model, int yourID, ArrayList<LeaderCard> leaderCards, String roomName) {
         this.model = model;
         this.yourID = yourID;
@@ -23,6 +36,10 @@ public class InitialMessage implements Message{
         this.roomName= roomName;
     }
 
+    /**
+     * Handle initial messages.
+     * @param client of type Client: reference to the client.
+     */
     @Override
     public void handleMessage(Client client){
         client.setSimpleGame((GameClient) model);
@@ -32,6 +49,10 @@ public class InitialMessage implements Message{
         simpleGame.setLeaderCards(leaderCards);
     }
 
+    /**
+     *
+     * @return of type String: the class name, useful for json serialization.
+     */
     @Override
     public String getName() {
         return className;
