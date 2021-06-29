@@ -1,12 +1,12 @@
 package it.polimi.ingsw.constant.model;
 
-/*Last Edit: Gio*/
-
 import it.polimi.ingsw.constant.enumeration.ColorDevCard;
 import it.polimi.ingsw.constant.enumeration.Level;
 
 /**
- * 
+ * DevelopmentCard class.
+ * Extends Card.
+ * Superclass of DevelopmentCardExt (server).
  */
 public class DevelopmentCard extends Card {
 
@@ -27,28 +27,32 @@ public class DevelopmentCard extends Card {
     }
 
     /**
-     * @return
+     * Gets the card's cost.
+     * @return of type NumberOfResources: the cost.
      */
     public NumberOfResources getCost() {
         return cost;
     }
 
     /**
-     * @return
+     * Gets the card's production power.
+     * @return of type ProductionPower: the production power.
      */
     public ProductionPower getProductionPower() {
         return productionPower;
     }
 
     /**
-     * @return
+     * Gets the card's level.
+     * @return of type Level: the level.
      */
     public Level getLevel() {
         return level;
     }
 
     /**
-     * @return
+     * Get's the card's color.
+     * @return of type ColorDevCard: the color.
      */
     public ColorDevCard getColor() {
         return cardColor;

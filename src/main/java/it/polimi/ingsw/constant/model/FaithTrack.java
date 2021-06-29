@@ -3,7 +3,8 @@ package it.polimi.ingsw.constant.model;
 import it.polimi.ingsw.constant.enumeration.PopesFavorStates;
 
 /**
- * 
+ * FaithTrack class.
+ * Superclass of FaithTrackExt (server).
  */
 public class FaithTrack {
     public static final int NUM_OF_POP = 3;
@@ -36,14 +37,16 @@ public class FaithTrack {
 
 
     /**
-     * @return
+     * Gets the faith points.
+     * @return of type int: the faith points.
      */
     public int getFaithPoints() {
         return faithPoints;
     }
 
     /**
-     * @return
+     * Gets the number of victory points from the faith track.
+     * @return of type int: victory points.
      */
     public int getVictoryPoints() {
         int result = victoryPoints[faithPoints];
@@ -55,14 +58,28 @@ public class FaithTrack {
         return result;
     }
 
+    /**
+     * Gets the popes favor state.
+     * @param index of type int: the index.
+     * @return of type PopesFavorStates: the popes favor state
+     */
     public PopesFavorStates getPopesFavor(int index) {
         return popesFavor[index];
     }
 
+    /**
+     * Set the popes favor.
+     * @param index of type int: the index.
+     * @param state of type PopesFavorStates: the popes favor state to set.
+     */
     public void setPopesFavor(int index, PopesFavorStates state){
         popesFavor[index]=state;
     }
 
+    /**
+     * Set the faith points.
+     * @param faithPoints of type int: the faith points.
+     */
     public void setFaithPoints(int faithPoints) {
         this.faithPoints = faithPoints;
     }

@@ -45,7 +45,7 @@ public class MarketExt extends Market implements Observable<Message> {
         ArrayList<MarbleColor> buyedRow = new ArrayList<>(4);
 
         for (int i = 0; i < N_COL; i++) {
-            buyedRow.add(super.gettMarble(index, i));
+            buyedRow.add(super.getMarble(index, i));
         }
         super.setMarble(index, N_COL - 1, super.getExternalMarble());
         for (int i = N_COL - 2; i >= 0; i--) {
@@ -67,7 +67,7 @@ public class MarketExt extends Market implements Observable<Message> {
         ArrayList<MarbleColor> buyedColumn = new ArrayList<>(3);
 
         for (int i = 0; i < N_ROW; i++) {
-            buyedColumn.add(gettMarble(i, index));
+            buyedColumn.add(getMarble(i, index));
         }
         super.setMarble(N_ROW - 1, index, super.getExternalMarble());
         for (int i = N_ROW - 2; i >= 0; i--) {

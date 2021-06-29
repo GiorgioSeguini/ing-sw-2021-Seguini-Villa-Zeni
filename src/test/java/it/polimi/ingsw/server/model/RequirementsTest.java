@@ -1,7 +1,6 @@
 package it.polimi.ingsw.server.model;
 
 import it.polimi.ingsw.constant.model.NumberOfResources;
-import it.polimi.ingsw.server.model.*;
 import it.polimi.ingsw.constant.enumeration.ColorDevCard;
 import it.polimi.ingsw.constant.enumeration.Level;
 import it.polimi.ingsw.server.model.exception.NoSpaceException;
@@ -51,7 +50,7 @@ class RequirementsTest {
         RequirementsExt test2 = new RequirementsExt(req1);
 
         //getter test
-        assertEquals(res1, test.getNumberOfResourceses());
+        assertEquals(res1, test.getNumberOfResources());
         assertEquals(1, test2.getReq(ColorDevCard.BLUE, Level.ONE));
 
         //equality test
@@ -77,7 +76,7 @@ class RequirementsTest {
 
         //empty constructor test
         RequirementsExt requirements = new RequirementsExt();
-        assertEquals(new NumberOfResources(), requirements.getNumberOfResourceses());
+        assertEquals(new NumberOfResources(), requirements.getNumberOfResources());
 
         for(int[] i: requirements.getMinNumber()){
             for(int j : i){

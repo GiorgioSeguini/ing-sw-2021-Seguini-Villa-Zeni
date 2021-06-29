@@ -342,18 +342,18 @@ public class GUI extends Application implements UI {
     }
 
     public void printDepots(ImageView[] resources, Depots depots){
-        int  n0 = depots.getWareHouseDepots().getShelfs().get(0).getUsed();
+        int  n0 = depots.getWareHouseDepots().getShelves().get(0).getUsed();
         if(n0>0){
-            ResourceType type = depots.getWareHouseDepots().getShelfs().get(0).getResType();
+            ResourceType type = depots.getWareHouseDepots().getShelves().get(0).getResType();
             resources[0].setImage(resImage[type.ordinal()]);
             resources[0].setVisible(true);
         }else{
             resources[0].setVisible(false);
         }
 
-        int n1 = depots.getWareHouseDepots().getShelfs().get(1).getUsed();
+        int n1 = depots.getWareHouseDepots().getShelves().get(1).getUsed();
         if(n1>0){
-            ResourceType type = depots.getWareHouseDepots().getShelfs().get(1).getResType();
+            ResourceType type = depots.getWareHouseDepots().getShelves().get(1).getResType();
             resources[1].setImage(resImage[type.ordinal()]);
             resources[1].setVisible(true);
             if(n1>1){
@@ -367,8 +367,8 @@ public class GUI extends Application implements UI {
             resources[2].setVisible(false);
         }
 
-        int n2 = depots.getWareHouseDepots().getShelfs().get(2).getUsed();
-        ResourceType type2 = depots.getWareHouseDepots().getShelfs().get(2).getResType();
+        int n2 = depots.getWareHouseDepots().getShelves().get(2).getUsed();
+        ResourceType type2 = depots.getWareHouseDepots().getShelves().get(2).getResType();
         if(n2>0) {
             resources[3].setImage(resImage[type2.ordinal()]);
             resources[3].setVisible(true);

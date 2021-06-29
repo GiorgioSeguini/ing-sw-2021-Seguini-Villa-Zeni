@@ -4,18 +4,21 @@ import it.polimi.ingsw.constant.enumeration.LeaderStatus;
 
 import java.util.ArrayList;
 
-/*Last Edit: Fabio*/
+/**
+ * PersonalBoard class.
+ * Superclass of PersonalBoardExt.
+ */
 public class PersonalBoard {
 
     public static final int MAX_LEAD_CARD = 2;
     public static final int MAX_DEV_CARD = 7;
-
     protected final ArrayList<DevelopmentCard>[] OwnedDevCards;
-
     protected final ArrayList<LeaderCard> OwnedLeaderCard;
-
     private final ArrayList<ProductionPower> extraProduction;
 
+    /**
+     * Instantiates a new Personal board.
+     */
     /*Default Constructor*/
     public PersonalBoard(){
         OwnedDevCards = new ArrayList[3]; //array di arraylist
@@ -28,17 +31,34 @@ public class PersonalBoard {
     }
 
 
+    /**
+     * Get leader cards array list.
+     *
+     * @return of type ArrayList<LeaderCard>: the leader cards.
+     */
     /*Getter*/
     public ArrayList<LeaderCard> getLeaderCards(){
         return OwnedLeaderCard;
     }
 
+    /**
+     * Gets owned development cards.
+     *
+     * @return of type ArrayList<DevelopmentCard>: the owned development cards.
+     */
     public ArrayList<DevelopmentCard> getOwnedDevCards() {
         ArrayList<DevelopmentCard> result = new ArrayList<DevelopmentCard>();
         for(int i=0; i< 3; i++)
             result.addAll(OwnedDevCards[i]);
         return result;
     }
+
+    /**
+     * Get top development card.
+     *
+     * @param index of type int: the index.
+     * @return of type DevelopmentCard: the development card.
+     */
     public DevelopmentCard getTopDevCard(int index){
         if(index<0 || index>3){
             return null;
@@ -46,6 +66,11 @@ public class PersonalBoard {
         return OwnedDevCards[index].get(OwnedDevCards[index].size() -1);
     }
 
+    /**
+     * Gets active owned development cards.
+     *
+     * @return of type ArrayList<DevelopmentCard>: the active owned dev cards.
+     */
     public ArrayList<DevelopmentCard> getActiveOwnedDevCards() {
         ArrayList<DevelopmentCard> result = new ArrayList<DevelopmentCard>();
         for(int i=0; i< OwnedDevCards.length; i++)
@@ -56,7 +81,10 @@ public class PersonalBoard {
     }
 
 
-    /**This return the sum of card's victory points**/
+    /**
+     * This return the sum of card's victory points.
+     * @return of type int: the victory points.
+     */
     public int getVictoryPoints() {
         int victorypoints = 0;
         for (DevelopmentCard developmentCard : getOwnedDevCards()) {
@@ -72,18 +100,29 @@ public class PersonalBoard {
     }
 
 
+    /**
+     * Check if personal board is full.
+     *
+     * @return of type boolean: True if is full. Otherwise False.
+     */
     public boolean isFull(){
         return getOwnedDevCards().size()==MAX_DEV_CARD;
     }
 
+    /**
+     * Add extra production.
+     *
+     * @param productionPower of type ProductionPower: the production power to add.
+     */
     public void addExtraProduction(ProductionPower productionPower){
         extraProduction.add(productionPower);
     }
 
 
     /**
+     * Get production array list.
      *
-     * @return an ArrayList containing all the activable productionPower
+     * @return of type ArrayList<ProductionPower>: all the activable productionPower.
      */
     public ArrayList<ProductionPower> getProduction(){
 
@@ -99,19 +138,31 @@ public class PersonalBoard {
     }
 
     /**
+     * Check if the number of leader card at the beginning of the game is two.
      *
-     * @return true if the leader card have already been chosen
+     * @return of type boolean: True if the leader card have already been chosen. Otherwise False.
      */
     public boolean isReady(){
         return OwnedLeaderCard.size()==MAX_LEAD_CARD;
     }
 
+    /**
+     * Set leader cards.
+     *
+     * @param cards of type ArrayList<LeaderCard>: the cards to set.
+     */
     public void setLeaderCards(ArrayList<LeaderCard> cards){
         OwnedLeaderCard.clear();
         OwnedLeaderCard.addAll(cards);
     }
 
 
+    /**
+     * Gets development cards in a specific personal board's slot.
+     *
+     * @param pos of type int: the slot.
+     * @return of type ArrayList<DevelopmentCard>: the developments cards in that slot.
+     */
     public ArrayList<DevelopmentCard> getPos(int pos){
         return OwnedDevCards[pos];
     }

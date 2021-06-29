@@ -58,7 +58,7 @@ public class WareHouseDepotsTest {
 
         assertEquals(new NumberOfResources(1,2,3,0),warehouse.getResources());
         int i=0;
-        for(Shelf x: warehouse.getShelfs()){
+        for(Shelf x: warehouse.getShelves()){
             i++;
             assertFalse(x.getIsExtra());
             assertNotNull(x.getResType());
@@ -74,7 +74,7 @@ public class WareHouseDepotsTest {
         warehouse.CleanShelf();
         assertEquals(new NumberOfResources(),warehouse.getResources());
         i=0;
-        for(Shelf x: warehouse.getShelfs()){
+        for(Shelf x: warehouse.getShelves()){
             i++;
             assertFalse(x.getIsExtra());
             assertNull(x.getResType());
@@ -101,7 +101,7 @@ public class WareHouseDepotsTest {
         assertEquals(new NumberOfResources(), warehouse.getResources());
 
         warehouse.addExtraShelf(new Shelf(ResourceType.Coins,1));
-        assertEquals(4,warehouse.getShelfs().size());
+        assertEquals(4,warehouse.getShelves().size());
         try {
             warehouse.addResource(new NumberOfResources(0,0,4,0));
         } catch (UnableToFillException|IllegalArgumentException e) {
@@ -110,21 +110,21 @@ public class WareHouseDepotsTest {
         assertEquals(new NumberOfResources(0,0,4,0), warehouse.getResources());
 
         try{
-            for (i=0; i<warehouse.getShelfs().size();i++){
+            for (i=0; i<warehouse.getShelves().size(); i++){
                 if(i<2){
-                    assertNull(warehouse.getShelfs().get(i).getResType());
-                    assertEquals(0,warehouse.getShelfs().get(i).getUsed());
-                    assertFalse(warehouse.getShelfs().get(i).getIsExtra());
+                    assertNull(warehouse.getShelves().get(i).getResType());
+                    assertEquals(0,warehouse.getShelves().get(i).getUsed());
+                    assertFalse(warehouse.getShelves().get(i).getIsExtra());
                 }
                 if(i==2){
-                    assertEquals(ResourceType.Coins,warehouse.getShelfs().get(i).getResType());
-                    assertEquals(3,warehouse.getShelfs().get(i).getUsed());
-                    assertFalse(warehouse.getShelfs().get(i).getIsExtra());
+                    assertEquals(ResourceType.Coins,warehouse.getShelves().get(i).getResType());
+                    assertEquals(3,warehouse.getShelves().get(i).getUsed());
+                    assertFalse(warehouse.getShelves().get(i).getIsExtra());
                 }
                 if(i>2){
-                    assertEquals(ResourceType.Coins,warehouse.getShelfs().get(i).getResType());
-                    assertEquals(1,warehouse.getShelfs().get(i).getUsed());
-                    assertTrue(warehouse.getShelfs().get(i).getIsExtra());
+                    assertEquals(ResourceType.Coins,warehouse.getShelves().get(i).getResType());
+                    assertEquals(1,warehouse.getShelves().get(i).getUsed());
+                    assertTrue(warehouse.getShelves().get(i).getIsExtra());
                 }
             }
 
@@ -135,7 +135,7 @@ public class WareHouseDepotsTest {
         warehouse.CleanShelf();
         assertEquals(new NumberOfResources(),warehouse.getResources());
         i=0;
-        for(Shelf x: warehouse.getShelfs()){
+        for(Shelf x: warehouse.getShelves()){
             if(i>2){
                 assertTrue(x.getIsExtra());
                 assertNotNull(x.getResType());
@@ -158,21 +158,21 @@ public class WareHouseDepotsTest {
         assertEquals(new NumberOfResources(0,0,5,0),warehouse.getResources());
 
         try{
-            for (i=0; i<warehouse.getShelfs().size();i++){
+            for (i=0; i<warehouse.getShelves().size(); i++){
                 if(i<2){
-                    assertNull(warehouse.getShelfs().get(i).getResType());
-                    assertEquals(0,warehouse.getShelfs().get(i).getUsed());
-                    assertFalse(warehouse.getShelfs().get(i).getIsExtra());
+                    assertNull(warehouse.getShelves().get(i).getResType());
+                    assertEquals(0,warehouse.getShelves().get(i).getUsed());
+                    assertFalse(warehouse.getShelves().get(i).getIsExtra());
                 }
                 if(i==2){
-                    assertEquals(ResourceType.Coins,warehouse.getShelfs().get(i).getResType());
-                    assertEquals(3,warehouse.getShelfs().get(i).getUsed());
-                    assertFalse(warehouse.getShelfs().get(i).getIsExtra());
+                    assertEquals(ResourceType.Coins,warehouse.getShelves().get(i).getResType());
+                    assertEquals(3,warehouse.getShelves().get(i).getUsed());
+                    assertFalse(warehouse.getShelves().get(i).getIsExtra());
                 }
                 if(i>2){
-                    assertEquals(ResourceType.Coins,warehouse.getShelfs().get(i).getResType());
-                    assertEquals(1,warehouse.getShelfs().get(i).getUsed());
-                    assertTrue(warehouse.getShelfs().get(i).getIsExtra());
+                    assertEquals(ResourceType.Coins,warehouse.getShelves().get(i).getResType());
+                    assertEquals(1,warehouse.getShelves().get(i).getUsed());
+                    assertTrue(warehouse.getShelves().get(i).getIsExtra());
                 }
             }
 
@@ -183,7 +183,7 @@ public class WareHouseDepotsTest {
         warehouse.CleanShelf();
         assertEquals(new NumberOfResources(),warehouse.getResources());
         i=0;
-        for(Shelf x: warehouse.getShelfs()){
+        for(Shelf x: warehouse.getShelves()){
             if(i>2){
                 assertTrue(x.getIsExtra());
                 assertNotNull(x.getResType());
@@ -244,7 +244,7 @@ public class WareHouseDepotsTest {
         assertEquals(new NumberOfResources(0,2,1,0),warehouse.getResources());
 
         int i=0;
-        for (Shelf x: warehouse.getShelfs()){
+        for (Shelf x: warehouse.getShelves()){
             if(i<1){
                 assertNull(x.getResType());
                 assertEquals(0,x.getUsed());
@@ -267,7 +267,7 @@ public class WareHouseDepotsTest {
         }
         assertEquals(new NumberOfResources(0,0,1,0),warehouse.getResources());
         i=0;
-        for (Shelf x: warehouse.getShelfs()){
+        for (Shelf x: warehouse.getShelves()){
             if(i<2){
                 assertNull(x.getResType());
                 assertEquals(0,x.getUsed());
@@ -287,7 +287,7 @@ public class WareHouseDepotsTest {
         assertEquals(new NumberOfResources(),warehouse.getResources());
 
         i=0;
-        for (Shelf x: warehouse.getShelfs()){
+        for (Shelf x: warehouse.getShelves()){
             i++;
             assertEquals(0,x.getUsed());
             assertNull(x.getResType());

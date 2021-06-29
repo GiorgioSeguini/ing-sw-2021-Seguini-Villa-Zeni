@@ -1,15 +1,23 @@
 package it.polimi.ingsw.constant.model;
 
-/*Last Edit: William Zeni*/
-
 import it.polimi.ingsw.constant.enumeration.ResourceType;
 import it.polimi.ingsw.server.model.exception.OutOfResourcesException;
 
-/**This class is unchangeable: it always returns a new address to it */
-@SuppressWarnings("ALL")
+/**
+ * NumberOfResources class.
+ * This class is unchangeable: it always returns a new address to it.
+ */
+
 public class NumberOfResources {
     private final int[] resources = new int[4]; //if issue attempt, make it in constructor
 
+    /**
+     *
+     * @param Servants of type int: number of servants.
+     * @param Shields of type int: number of shilds.
+     * @param Coins of type int: number of coins.
+     * @param Stones of type int: number of stones.
+     */
     /*Default Constructor*/
     public NumberOfResources(int Servants, int Shields, int Coins, int Stones){
         if(Servants< 0 || Shields<0 || Coins<0 || Stones<0)
@@ -28,13 +36,23 @@ public class NumberOfResources {
     }
 
     /*Getter*/
-    /**It returns the type's item amount. */
+
+    /**
+     * It returns the type's item amount.
+     * @param type of type ResourceType: the type.
+     * @return of type int: the item's amount.
+     */
     public int getAmountOf(ResourceType type){
         return resources[type.ordinal()];
     }
 
     /*Additional methods*/
-    /**This method adds a NumberOfResources to the current one.*/
+
+    /**
+     * This method adds a NumberOfResources to the current one.
+     * @param other of type NumberOfResources: the resources to add.
+     * @return of type NumberOfResources: number of resources after the addition.
+     */
     public NumberOfResources add(NumberOfResources other){
         int[] x= new int[4];
         for(ResourceType type: ResourceType.values()){
@@ -44,7 +62,12 @@ public class NumberOfResources {
         return new NumberOfResources(x[0],x[1],x[2],x[3]);
     }
 
-    /**This method adds just for a single type of resources.*/
+    /**
+     * This method adds just for a single type of resources.
+     * @param type of type ResourceType: the type.
+     * @param toadd of type int: amount of item to add.
+     * @return of type NumberOfResources: number of resources after the addition.
+     */
     public NumberOfResources add(ResourceType type, int toadd){
         if(toadd<0){
             throw new IllegalArgumentException();
@@ -54,6 +77,12 @@ public class NumberOfResources {
         return new_resources;
     }
 
+    /**
+     * This method subs a NumberOfResources to the current one.
+     * @param other of type NumberOfResources: the resources to sub.
+     * @return of type NumberOfResources: number of resources after the subtraction.
+     * @throws OutOfResourcesException when the player hasn't enough resources to sub.
+     */
     public NumberOfResources sub(NumberOfResources other) throws OutOfResourcesException {
         int[] x= new int[4];
         for(ResourceType type: ResourceType.values()){
@@ -68,7 +97,12 @@ public class NumberOfResources {
         return new NumberOfResources(x[0],x[1],x[2],x[3]);
     }
 
-    /**This method subs just for a single type of resources.*/
+    /**
+     * This method subs just for a single type of resources.
+     * @param type of type ResourceType: the resources type to sub.
+     * @return of type NumberOfResources: number of resources after the subtraction.
+     * @throws OutOfResourcesException when the player hasn't enough resources to sub.
+     */
     public NumberOfResources sub(ResourceType type, int tosub) throws OutOfResourcesException{
         if(tosub<0)
             throw new IllegalArgumentException();
@@ -81,13 +115,14 @@ public class NumberOfResources {
                 x[t.ordinal()]=this.getAmountOf(t);
             }
             x[type.ordinal()]-=tosub;
-            NumberOfResources new_resources= new NumberOfResources(x[0],x[1],x[2],x[3]);
-            return new_resources;
+            return new NumberOfResources(x[0],x[1],x[2],x[3]);
         }
     }
 
     /**
      * This methods perform a subtraction where the resources are present
+     * @param other of type NumberOfResources: the resources to sub.
+     * @return of type NumberOfResources: number of resources after the subtraction.
      */
     public NumberOfResources safe_sub(NumberOfResources other){
         int[] x= new int[4];
@@ -103,7 +138,10 @@ public class NumberOfResources {
         return new NumberOfResources(x[0],x[1],x[2],x[3]);
     }
 
-    /**This method returns the resource type that has the bigger quantity. */
+    /**
+     * This method returns the resource type that has the bigger quantity.
+     * @return of type ResourceType: the type.
+     */
     public ResourceType Max_Resource_Type(){
         int max=0;
         ResourceType out = ResourceType.values()[0];
@@ -117,15 +155,18 @@ public class NumberOfResources {
         return out;
     }
 
-    /**This simply clones a NumberOfResources*/
+    /**
+     * This simply clones a NumberOfResources
+     * @return of type NumberOfResources: number of resources.
+     */
     @Override
     public NumberOfResources clone(){
         return new NumberOfResources(this.resources[0],this.resources[1],this.resources[2],this.resources[3]);
     }
 
     /**
-     *
-     * @return the total ammount of any type of resources
+     * Gets the total amount of any type of resources.
+     * @return of type int: the total ammount.
      */
     public int size(){
         int res=0;
@@ -135,6 +176,10 @@ public class NumberOfResources {
         return res;
     }
 
+    /**
+     * Check if the number of resources is empty.
+     * @return of type boolean: True if is empty. Otherwise False.
+     */
     public boolean isEmpty(){
         for (int x: resources){
             if (x!=0){
@@ -144,6 +189,12 @@ public class NumberOfResources {
         return true;
     }
 
+    /**
+     *
+     * @param obj of type Object.
+     * @return True if param o is equals to this or in the default case.
+     *         False if param o isn't an instance of NumberOfResources or o.resources[i] isn't equals to this.resources[i].
+     */
     @Override
     public boolean equals(Object obj) {
         if(this==obj)

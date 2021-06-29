@@ -212,9 +212,9 @@ public class BaseController  extends ControllerGuiInterface{
 
         //leader depots
         for(int k=3; k<5; k++) {
-            if (getPlayer().getDepots().getWareHouseDepots().getShelfs().size() > k) {
-                ResourceType type = getPlayer().getDepots().getWareHouseDepots().getShelfs().get(k).getResType();
-                int onShelf = getPlayer().getDepots().getWareHouseDepots().getShelfs().get(k).getUsed();
+            if (getPlayer().getDepots().getWareHouseDepots().getShelves().size() > k) {
+                ResourceType type = getPlayer().getDepots().getWareHouseDepots().getShelves().get(k).getResType();
+                int onShelf = getPlayer().getDepots().getWareHouseDepots().getShelves().get(k).getUsed();
                 int i = 0;
                 for (LeaderCard card : getPlayer().getPersonalBoard().getLeaderCards()) {
                     if (card.getStatus() == LeaderStatus.Played && ((LeaderCardClient) card).getAbility().getAbilityType() == AbilityType.DepotsAbility && ((LeaderCardClient) card).getAbility().getResource() == type) {

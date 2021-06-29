@@ -64,7 +64,7 @@ public class RequirementsExt extends Requirements {
         //match for the resources
         NumberOfResources ownedRes = owner.getDepots().getResources();
         try{
-            ownedRes.sub(getNumberOfResourceses());
+            ownedRes.sub(getNumberOfResources());
         }catch(OutOfResourcesException e){
             return false;
         }

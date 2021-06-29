@@ -2,7 +2,6 @@ package it.polimi.ingsw.server.model;
 
 import it.polimi.ingsw.constant.model.NumberOfResources;
 import it.polimi.ingsw.constant.model.Shelf;
-import it.polimi.ingsw.server.model.*;
 import it.polimi.ingsw.constant.enumeration.ResourceType;
 import it.polimi.ingsw.server.model.exception.UnableToFillException;
 import org.junit.jupiter.api.Test;
@@ -34,8 +33,8 @@ public class AbilityTest{
 
         ability.RunAbility(player);
 
-        assertEquals(4, player.getDepots().getWareHouseDepots().getShelfs().size());
-        for(Shelf x: player.getDepots().getWareHouseDepots().getShelfs()){
+        assertEquals(4, player.getDepots().getWareHouseDepots().getShelves().size());
+        for(Shelf x: player.getDepots().getWareHouseDepots().getShelves()){
             if(x.getIsExtra()){
                 assertEquals(ResourceType.Coins,x.getResType());
             }
@@ -43,8 +42,8 @@ public class AbilityTest{
 
         ability.RunAbility(player);
 
-        assertEquals(5, player.getDepots().getWareHouseDepots().getShelfs().size());
-        for(Shelf x: player.getDepots().getWareHouseDepots().getShelfs()){
+        assertEquals(5, player.getDepots().getWareHouseDepots().getShelves().size());
+        for(Shelf x: player.getDepots().getWareHouseDepots().getShelves()){
             if(x.getIsExtra()){
                 assertEquals(ResourceType.Coins,x.getResType());
             }

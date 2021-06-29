@@ -2,11 +2,17 @@ package it.polimi.ingsw.constant.model;
 
 import java.util.ArrayList;
 
-/*Last Edit: William Zeni*/
+/**
+ * WareHouseDepots class.
+ * Superclass of WareHouseDepotsExt.
+ */
 public class WareHouseDepots {
 
     protected final ArrayList<Shelf> shelfs=new ArrayList<>();
 
+    /**
+     * Instantiates a new Ware house depots.
+     */
     /*Default constructor*/
     public WareHouseDepots(){
         for (int i=0; i<3; i++){
@@ -14,6 +20,11 @@ public class WareHouseDepots {
         }
     }
 
+    /**
+     * Gets resources.
+     *
+     * @return of type NumberOfResources: all the resources in the ware house depots.
+     */
     /*Getter*/
     public NumberOfResources getResources() {
         int[] x =new int[4];
@@ -27,8 +38,12 @@ public class WareHouseDepots {
         return new NumberOfResources(x[0],x[1],x[2],x[3]);
     }
 
-    /*just for testing*/
-    public ArrayList<Shelf> getShelfs() {
+    /**
+     * Gets shelves.
+     *
+     * @return of type ArrayList<Shelf>: the shelves.
+     */
+    public ArrayList<Shelf> getShelves() {
         ArrayList<Shelf> copy= new ArrayList<>();
         for (Shelf x: shelfs){
             Shelf cloned= new Shelf(x.getResType(),x.getMaxSize());

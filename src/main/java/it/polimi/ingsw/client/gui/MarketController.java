@@ -148,7 +148,7 @@ public class MarketController extends ControllerGuiInterface implements EventHan
         HideFirstScreen(false);
         for(int i=0; i<nRow; i++){
             for (int j=0; j<nCol; j++){
-                MarbleColor color= gui.getModel().getMarketTray().gettMarble(i,j);
+                MarbleColor color= gui.getModel().getMarketTray().getMarble(i,j);
                 marbleImages[i][j].setImage(marblesColor[color.ordinal()]);
                 marbleImages[i][j].setVisible(true);
             }
