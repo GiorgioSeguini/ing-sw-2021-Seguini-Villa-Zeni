@@ -23,6 +23,7 @@
 }
 
 #imageView1{
+    -fx-effect: null;
 }
 .root{
     -fx-background-color:

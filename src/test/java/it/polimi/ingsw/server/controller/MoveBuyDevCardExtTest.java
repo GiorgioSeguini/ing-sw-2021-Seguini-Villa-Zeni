@@ -52,7 +52,6 @@ public class MoveBuyDevCardExtTest {
         assertFalse(move.canPerformExt(game));
         game.getPlayerFromID(players.get(0).getID()).getDepots().addResourcesFromMarket(cardtobuy.getCost());
         assertTrue(move.canPerformExt(game));
-        //TODO per me da qua in poi non serve più
         game.getDashboard().buyDevCard(ColorDevCard.YELLOW,Level.ONE);
         assertFalse(move.canPerformExt(game));
 
