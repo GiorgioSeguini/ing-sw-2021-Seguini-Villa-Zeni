@@ -5,7 +5,7 @@ import it.polimi.ingsw.constant.enumeration.Level;
 
 /**
  * Dashboard abstract class.
- * Superclass of DashboardExt (Server).
+ * Superclass of DashboardExt (Server) and DashBoardClient (modelClient).
  */
 public abstract class Dashboard {
 
