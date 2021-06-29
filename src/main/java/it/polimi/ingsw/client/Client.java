@@ -1,6 +1,5 @@
 package it.polimi.ingsw.client;
 
-
 import it.polimi.ingsw.client.cli.CLI;
 import it.polimi.ingsw.client.gui.GUI;
 import it.polimi.ingsw.client.modelClient.GameClient;
@@ -29,7 +28,10 @@ import java.util.NoSuchElementException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@SuppressWarnings("ALL")
+/**
+ * Client class.
+ * Manage the proper operation of the game from client's view.
+ */
 public class Client {
 
     private final String ip;
@@ -53,21 +55,45 @@ public class Client {
     private Controller controller;
     private ExecutorService executor;
 
+    /**
+     * Instantiates a new Client.
+     *
+     * @param ip of type String: the ip address.
+     * @param port of type int: the server port.
+     * @param ui of type int: the ui
+     */
     public Client(String ip, int port, int ui){
         this.ip = ip;
         this.port = port;
         this.ui = ui;
     }
 
+    /**
+     * Synchronized method.
+     * Check if the client is active.
+     *
+     * @return of type boolean: True if the client is active. Otherwise False.
+     */
     public synchronized boolean isActive(){
         return active;
     }
 
+    /**
+     * Set active attribute.
+     *
+     * @param active of type boolean: the active value.
+     */
     public synchronized void setActive(boolean active){
         this.active = active;
         if(!active) notifyAll();
     }
 
+    /**
+     * Async read from socket thread.
+     *
+     * @param socketIn of type DataInputStream: the socket in.
+     * @return of type Thread: the thread.
+     */
     public Thread asyncReadFromSocket(final DataInputStream socketIn){
         Thread t = new Thread(new Runnable() {
             @Override
@@ -90,6 +116,11 @@ public class Client {
     }
 
 
+    /**
+     * Method that run and stop the thread.
+     *
+     * @throws IOException the io exception.
+     */
     public void run() throws IOException {
         try{
             if(ui==1) {
@@ -120,32 +151,67 @@ public class Client {
         }
     }
 
+    /**
+     * Set simple game.
+     *
+     * @param game of type GameClient: the game.
+     */
     public void setSimpleGame(GameClient game){
         this.simpleGame = game;
     }
 
+    /**
+     * Set room name.
+     *
+     * @param roomName of type String: the room name.
+     */
     public void setRoomName(String roomName){
         this.roomName= roomName;
     }
 
+    /**
+     * Gets room name.
+     *
+     * @return of type String: the room name.
+     */
     public String getRoomName() {
         return roomName;
     }
 
+    /**
+     * Get simple game client.
+     *
+     * @return of type GameClient: the game client.
+     */
     public GameClient getSimpleGame(){
         return this.simpleGame;
     }
 
+    /**
+     * Set gui.
+     *
+     * @param gui of type GUI: the gui.
+     */
     public void setGui(GUI gui){
         this.gui=gui;
     }
 
+    /**
+     * Get ui.
+     *
+     * @return of type UI: the ui.
+     */
     public UI getUI(){
         if(gui==null)
             return cli;
         return gui;
     }
 
+    /**
+     * Send move to the server.
+     *
+     * @param move of type MoveType: the move to send.
+     */
     public void sendMove(MoveType move){
         if(online) {
             try {
@@ -165,6 +231,11 @@ public class Client {
 
     }
 
+    /**
+     * Start an offline game.
+     *
+     * @param name of type String: the player's name.
+     */
     public void startOffline(String name){
         ArrayList<PlayerExt> players = new ArrayList<>();
         players.add(new PlayerExt(name));
@@ -206,6 +277,11 @@ public class Client {
         executor= Executors.newFixedThreadPool(1);
     }
 
+    /**
+     * Sets online.
+     *
+     * @return of type boolean: True if the online game starts correctly. Otherwise False.
+     */
     public boolean setOnline() {
         try{
             this.socket = new Socket(ip, port);
@@ -221,6 +297,11 @@ public class Client {
         return true;
     }
 
+    /**
+     * Send setupper.
+     *
+     * @param setupper of type SetUp: the setupper.
+     */
     public void sendSetupper(SetUp setupper) {
         if(online) {
             try {
