@@ -29,8 +29,17 @@ import javafx.stage.WindowEvent;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * The Gui class
+ * Extends Application
+ * Implements UI
+ * There are some static function used in Gui Controllers to avoid code duplicate
+ */
 public class GUI extends Application implements UI {
 
+    /**
+     * The constant client.
+     */
     protected static Client client;
 
     private final HashMap<String, FXMLLoader> loaderMap = new HashMap<>();
@@ -45,11 +54,19 @@ public class GUI extends Application implements UI {
             "\t2. La stanza che stai cercando è inesistente.\n" +
             "\t3. Il nome con la quale stai provando ad accedere è già stato usato da un altro utente in questa stanza";
 
+    /**
+     * Entry point for launch GUI
+     *
+     * @param client the client
+     */
     public static void entry(Client client) {
         GUI.client = client;
         launch("");
     }
 
+    /**
+     * @see UI#printConnectionMessage(ConnectionMessage)
+     */
     @Override
     public void printConnectionMessage(ConnectionMessage message) {
         connectionMex=message;
@@ -61,16 +78,28 @@ public class GUI extends Application implements UI {
         }
     }
 
+    /**
+     * show an allert box containing the network notification
+     */
     private void showAlertBoxConnection() {
         AlertBox box= new AlertBox("Notifica di Rete", connectionMex.toString());
         box.display();
         connectionMex=null;
     }
 
+    /**
+     * Gets connection message. For lobby
+     *
+     * @return the connection message - of type String
+     */
     public ConnectionMessage getConnectionMex() {
         return connectionMex;
     }
 
+    /**
+     * Instantiates a new Gui.
+     * Store some Image in order to avoid reloading every tume
+     */
     public GUI(){
         super();
         //image caching
@@ -124,12 +153,20 @@ public class GUI extends Application implements UI {
         primaryStage.show();
     }
 
+    /**
+     * @see UI#update()
+     * make GUI thread execute internalupdate
+     */
     @Override
     public void update() {
         //called by background thread - the one contained in Client class for reading socket
         Platform.runLater(this::internalUpdate);
     }
 
+    /**
+     * @see UI#update()
+     * executed by GUI thread
+     */
     private void internalUpdate(){
         //always executed by javaFX thread
 
@@ -185,6 +222,12 @@ public class GUI extends Application implements UI {
         }
 
     }
+
+    /**
+     * Active a Controller, make visible a new Parent
+     *
+     * @param name - the className of the Controller you want to active
+     */
     public void activate(String name) {
         FXMLLoader loader = this.loaderMap.get(name);
         this.current = loader.getController();
@@ -192,14 +235,27 @@ public class GUI extends Application implements UI {
         main.setRoot(loader.getRoot());
     }
 
+    /**
+     * Get model game client.
+     *
+     * @return the game client - of type GameClient
+     */
     public GameClient getModel(){
         return client.getSimpleGame();
     }
 
+    /**
+     * Send moveType to server
+     *
+     * @param move the move - of type MoveType
+     */
     public void sendMove(MoveType move){
         client.sendMove(move);
     }
 
+    /**
+     * @see UI#setActive()
+     */
     @Override
     public void setActive() {
         active=true;
@@ -216,6 +272,12 @@ public class GUI extends Application implements UI {
         System.out.println("Stage closed");
     }
 
+    /**
+     * Confirm close.
+     * Show a pop-up before let user close gui Windowds
+     *
+     * @param actionEvent action event
+     */
     public void confirmClose(WindowEvent actionEvent){
         Button b = new Button();
         b.setText("Annulla");
@@ -230,13 +292,14 @@ public class GUI extends Application implements UI {
     }
 
     /**
-     *  For a given image view ad a given set of images fix their relative position in a resizable scene
-     *  On al images will be set preserve ratio
-     * @param back - of type ImageView reference to the background image
-     * @param backHeight - of type Double height of the original image in background
-     * @param images - of type ImageView[] array containing all the image ypu want to fix
-     * @param x - of type Double[] array containing coordinate x of the wanted position
-     * @param y- of type Double[] array containing coordinate y of the wanted position
+     * For a given image view ad a given set of images fix their relative position in a resizable scene
+     * On all images will be set preserve ratio
+     *
+     * @param back        - of type ImageView reference to the background image
+     * @param backHeight  - of type Double height of the original image in background
+     * @param images      - of type ImageView[] array containing all the image you want to fix
+     * @param x           - of type Double[] array containing coordinate x of the wanted position
+     * @param y           - of type Double[] array containing coordinate y of the wanted position
      * @param imageHeight - of type Double[] height of all the image with the respect to the background original image
      */
     public static void fixImages(final ImageView back, final Double backHeight, final ImageView[] images, final Double[] x, final Double[] y, final Double imageHeight){
@@ -254,6 +317,19 @@ public class GUI extends Application implements UI {
     }
 
 
+     /**
+     * For a given pane ad a given set of images fix their relative position in a resizable scene
+     * On all images will be set preserve ratio
+     *
+     * @param pane        - of type Pane reference to the background pane
+     * @param paneHeight  - of type Double height of the pane
+     * @param paneWidth   - of type Double height of the pane
+     * @param images      - of type ImageView[] array containing all the image you want to fix
+     * @param x           - of type Double[] array containing coordinate x of the wanted position
+     * @param y           - of type Double[] array containing coordinate y of the wanted position
+     * @param imageHeight - of type Double[] height of all the image with the respect to the background pane height
+     *
+    */
     public static void fixImagesToPane(final Pane pane, final Double paneHeight, final Double paneWidth, final ImageView[] images, final Double[] x, final Double[] y, final Double imageHeight){
         if(images.length!=x.length)
             throw new ArithmeticException();
@@ -264,6 +340,18 @@ public class GUI extends Application implements UI {
         }
     }
 
+    /**
+     * For a given pane ad a given image fix their relative position in a resizable scene
+     * On all images will be set preserve ratio
+     *
+     * @param pane        - of type Pane reference to the background pane
+     * @param paneHeight  - of type Double height of the pane
+     * @param paneWidth   - of type Double height of the pane
+     * @param image       - of type ImageView image you want to fix
+     * @param x           - of type Double coordinate x of the wanted position
+     * @param y           - of type Double coordinate y of the wanted position
+     * @param imageHeight - of type Double height of the image with the respect to the background pane height
+     */
     public static void fixImagesToPane(final Pane pane, final Double paneHeight, final Double paneWidth, final ImageView image, final Double x, final Double y, final Double imageHeight){
         image.fitHeightProperty().bind(pane.heightProperty().divide(paneHeight / imageHeight));
         pane.widthProperty().addListener((observableValue, oldValue, newValue) -> {
@@ -275,6 +363,12 @@ public class GUI extends Application implements UI {
         image.setPreserveRatio(true);
     }
 
+    /**
+     * For a given pane ad a given image fix their relative position in a resizable scene according to their actual position
+     *
+     * @param pane  the pane
+     * @param image the image
+     */
     public static void fixImagesToPane(final Pane pane, final ImageView image){
         double paneHeight = pane.getPrefHeight();
         double paneWidth = pane.getPrefWidth();
@@ -287,10 +381,19 @@ public class GUI extends Application implements UI {
             image.setLayoutY((Double)newValue * y / paneWidth);
         });
 
-        //pane.heightProperty().addListener((observableValue, oldValue, newValue) -> images[finalI].setLayoutY((Double)newValue * y[finalI]/ paneHeight));
         image.setPreserveRatio(true);
     }
 
+    /**
+     * For a given image view ad a given set of Control fix their relative position in a resizable scene
+     * On all images will be set preserve ratio
+     *
+     * @param back        - of type ImageView reference to the background image
+     * @param backHeight  - of type Double height of the original image in background
+     * @param labels      - of type Control[] array containing all the control you want to fix
+     * @param x           - of type Double[] array containing coordinate x of the wanted position
+     * @param y           - of type Double[] array containing coordinate y of the wanted position
+     */
     public static void fixLabels(final ImageView back, final Double backHeight, final Control[] labels, final Double[] x, final Double[] y){
         if(labels.length!=x.length)
             throw new RuntimeException();
@@ -307,6 +410,17 @@ public class GUI extends Application implements UI {
         }
     }
 
+    /**
+     * For a given pane ad a given set of control fix their relative position in a resizable scene
+     *
+     * @param pane        - of type Pane reference to the background pane
+     * @param paneHeight  - of type Double height of the pane
+     * @param paneWidth   - of type Double height of the pane
+     * @param controls    - of type Control[] array containing all the control you want to fix
+     * @param x           - of type Double[] array containing coordinate x of the wanted position
+     * @param y           - of type Double[] array containing coordinate y of the wanted position
+     *
+     */
     public static void fixControlToPane(final Pane pane, final Double paneHeight, final Double paneWidth, final Control[] controls, final Double[] x, final Double[] y){
         if(controls.length!=x.length)
             throw new ArithmeticException();
@@ -317,6 +431,16 @@ public class GUI extends Application implements UI {
         }
     }
 
+    /**
+     * For a given pane ad a given control fix their relative position in a resizable scene
+     *
+     * @param pane        - of type Pane reference to the background pane
+     * @param paneHeight  - of type Double height of the pane
+     * @param paneWidth   - of type Double height of the pane
+     * @param control     - of type Control control you want to fix
+     * @param x           - of type Double coordinate x of the wanted position
+     * @param y           - of type Double coordinate y of the wanted position
+     */
     public static void fixControlToPane(final Pane pane, final Double paneHeight, final Double paneWidth, final Control control, final Double x, final Double y){
         pane.widthProperty().addListener((observableValue, oldValue, newValue) -> {
             control.setLayoutX((Double)newValue * x / paneWidth);
@@ -325,22 +449,15 @@ public class GUI extends Application implements UI {
 
         //pane.heightProperty().addListener((observableValue, oldValue, newValue) -> images[finalI].setLayoutY((Double)newValue * y[finalI]/ paneHeight));
     }
-    public static void fixButton(final ImageView back, final Double backHeight, final Button[] buttons, final Double[] x, final Double[] y, final Double height, final Double width){
-        if(buttons.length!=x.length)
-            throw new RuntimeException();
-        if(buttons.length!=y.length)
-            throw new RuntimeException();
-        for(int i=0; i<buttons.length; i++){
-            int finalI = i;
-            back.fitHeightProperty().addListener((observableValue, oldValue, newValue) -> {
-                buttons[finalI].setLayoutX(back.getLayoutX() + (Double)newValue * x[finalI]/ backHeight);
-                buttons[finalI].setLayoutY(back.getLayoutY() + (Double)newValue * y[finalI]/ backHeight);
-                buttons[finalI].setPrefWidth((Double) newValue * width / backHeight);
-                buttons[finalI].setFont(new Font(buttons[finalI].getFont().getName(), height / backHeight));
-            });
-        }
-    }
 
+
+    /**
+     * Print depots given a set of ImageView properly positioned.
+     * DO not change the position of the ImageView, just set a new Image,
+     *
+     * @param resources the resources - of type ImageView[] an array containing the imageView where resources will be printed
+     * @param depots    the depots - of type Depots
+     */
     public void printDepots(ImageView[] resources, Depots depots){
         int  n0 = depots.getWareHouseDepots().getShelves().get(0).getUsed();
         if(n0>0){
@@ -389,6 +506,13 @@ public class GUI extends Application implements UI {
         }
     }
 
+    /**
+     * Print a generic Number of resources.
+     * DO not print the resource icons, but just the numbers in the corresponding order
+     *
+     * @param number    the number - of type ImageView[] an array containing the imageView where number will be printed
+     * @param resources the resources - of type NUmberOfResources
+     */
     public void printResources(ImageView[] number, NumberOfResources resources) {
         if(number.length!= 2*ResourceType.values().length)
             throw new RuntimeException();

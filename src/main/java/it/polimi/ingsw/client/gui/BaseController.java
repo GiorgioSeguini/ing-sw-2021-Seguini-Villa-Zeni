@@ -15,6 +15,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
+/**
+ * Controller of the generic base scene, show a the Player Board with all the info updates about the player
+ */
 public class BaseController  extends ControllerGuiInterface{
 
     public static final String className = "other";
@@ -86,6 +89,9 @@ public class BaseController  extends ControllerGuiInterface{
     private final Image faith;
     private final Image[] resImage = new Image[ResourceType.values().length];
 
+    /**
+     * Instantiates a new Base controller.
+     */
     public BaseController(){
         super();
         //preloading images
@@ -103,6 +109,9 @@ public class BaseController  extends ControllerGuiInterface{
         }
     }
 
+    /**
+     * Initialize the pane and its elements, making it resizable
+     */
     @FXML
     public void initialize(){
         //initialize imageViews
@@ -152,6 +161,9 @@ public class BaseController  extends ControllerGuiInterface{
     }
 
 
+    /**
+     * @see ControllerGuiInterface#update()
+     */
     @Override
     public void update() {
         if(getPlayer()==null) {
@@ -165,6 +177,9 @@ public class BaseController  extends ControllerGuiInterface{
         checkButtons();
     }
 
+    /**
+     * Update for al the common elements between BAse and BaseMe controller
+     */
     public void internalUpdate(){
         //depots
         gui.printDepots(resources, getPlayer().getDepots());
@@ -228,6 +243,12 @@ public class BaseController  extends ControllerGuiInterface{
         gameStatusLabel.setText(getPlayer().getUserName());
     }
 
+    /**
+     * Initialize an array of mageView and add them to the pane.
+     *
+     * @param anchorPane the anchor pane
+     * @param imageViews the image views array
+     */
     void imageArrayInitializer(AnchorPane anchorPane, ImageView[] imageViews){
         for(int i=0; i<imageViews.length; i++){
             imageViews[i]= new ImageView();
@@ -237,10 +258,20 @@ public class BaseController  extends ControllerGuiInterface{
     }
 
 
+    /**
+     * Gets player showed
+     *
+     * @return the player showed
+     */
     public Player getPlayer() {
         return player;
     }
 
+    /**
+     * Sets player showed
+     *
+     * @param player the player showed
+     */
     public void setPlayer(Player player) {
         this.player = player;
     }
@@ -250,6 +281,12 @@ public class BaseController  extends ControllerGuiInterface{
         return className;
     }
 
+    /**
+     * Move to previous player according to playing order
+     * change player shown
+     *
+     * @param actionEvent the action event
+     */
     public void previous(ActionEvent actionEvent) {
         int index = gui.getModel().getPlayerIndex(getPlayer()) +1;
         if(gui.getModel().getPlayers().get(index).equals(gui.getModel().getMe())) index++;
@@ -258,6 +295,12 @@ public class BaseController  extends ControllerGuiInterface{
         checkButtons();
     }
 
+    /**
+     * move to next player according to playing order
+     * change player shown
+     *
+     * @param actionEvent the action event
+     */
     public void next(ActionEvent actionEvent) {
         int index = gui.getModel().getPlayerIndex(getPlayer()) -1;
         if(gui.getModel().getPlayers().get(index).equals(gui.getModel().getMe())) index--;
@@ -266,6 +309,12 @@ public class BaseController  extends ControllerGuiInterface{
         checkButtons();
     }
 
+    /**
+     * Exit from the scene
+     * Active BaseMeController
+     *
+     * @param actionEvent the action event
+     */
     public void exitOther(ActionEvent actionEvent) {
         gui.activate(BaseMeController.className);
     }

@@ -20,6 +20,10 @@ import javafx.scene.input.MouseEvent;
 
 import java.util.ArrayList;
 
+/**
+ * Controller of the client player base scene, show a the Player Board, LeaderCards with all the info updates about the player clietn
+ * Entry point for the begin of the turn
+ */
 public class BaseMeController extends BaseController{
 
     public static final String className = "base";
@@ -63,6 +67,9 @@ public class BaseMeController extends BaseController{
     private final ImageView revealed = new ImageView();
 
 
+    /**
+     * Instantiates a new Base me controller.
+     */
     public BaseMeController() {
         super();
         blackCross = new Image("/images/punchboard/croce.png");
@@ -73,6 +80,9 @@ public class BaseMeController extends BaseController{
         retro.setImage(new Image("/images/punchboard/retro_cerchi.png"));
     }
 
+    /**
+     * Initialize the pane and its elements, making it resizable
+     */
     @FXML
     public void initialize(){
         super.initialize();
@@ -104,6 +114,9 @@ public class BaseMeController extends BaseController{
 
     }
 
+    /**
+     * @see ControllerGuiInterface#update()
+     */
     @Override
     public void update() {
         super.setPlayer(gui.getModel().getMe());
@@ -140,19 +153,51 @@ public class BaseMeController extends BaseController{
         checkButtons(true);
     }
 
-    //onAction functions
+    /**
+     * Exit from the scene
+     * Active MarketController
+     *
+     * @param actionEvent the action event
+     */
+//onAction functions
     public void goToMarket(ActionEvent actionEvent) {
         gui.activate(MarketController.className);
     }
+
+    /**
+     * Exit from the scene
+     * Active DashBoardController
+     *
+     * @param actionEvent the action event
+     */
     public void goToDashboard(ActionEvent actionEvent) {
         gui.activate(DashboardController.className);
     }
+
+    /**
+     * Exit from the scene
+     * Active BaseController
+     *
+     * @param actionEvent the action event
+     */
     public void goToOther(ActionEvent actionEvent) {
         gui.activate(BaseController.className);
     }
+
+    /**
+     * Send an EndTurnMove to server
+     *
+     * @param actionEvent the action event
+     */
     public void endTurn(ActionEvent actionEvent) {
         gui.sendMove(new MoveEndTurn(gui.getModel().getMyID()));
     }
+
+    /**
+     * Change Scene, making possible to select available production
+     *
+     * @param actionEvent the action event
+     */
     public void activeProduction(ActionEvent actionEvent){
         checkButtons(false);
 
@@ -175,6 +220,12 @@ public class BaseMeController extends BaseController{
 
     }
 
+    /**
+     * Select a production, either from a Development Card, Leader Card or Base Production
+     * if production not yet selected Highlight the imageview and add to selection buffer the production
+     * if production already selected make imageview standard and remove the production from the selection buffer
+     * @param actionEvent the action event
+     */
     //onActionProductions
     public void selectCard(MouseEvent actionEvent){
         int index =-1;
@@ -205,6 +256,12 @@ public class BaseMeController extends BaseController{
         checkConfirm();
     }
 
+    /**
+     * Exit from the possibility to select production
+     * DO NOT send anything
+     *
+     * @param actionEvent the action event
+     */
     public void exitProduction(ActionEvent actionEvent) {
         checkButtons(true);
 
@@ -220,6 +277,11 @@ public class BaseMeController extends BaseController{
         }
     }
 
+    /**
+     * Send a MoveActive Production with the production in the selection buffer
+     *
+     * @param actionEvent the action event
+     */
     public void confirmProduction(ActionEvent actionEvent) {
         MoveActiveProduction activeProduction = new MoveActiveProduction(gui.getModel().getMyID());
         activeProduction.setToActive(new ArrayList<>(chosen));
@@ -227,6 +289,11 @@ public class BaseMeController extends BaseController{
         chosen.clear();
     }
 
+    /**
+     * Send a LeaderMove, either active or discard depending on the button pressed
+     *
+     * @param mouseEvent the mouse event
+     */
     public void onLeadButton(MouseEvent mouseEvent){
         MoveLeader move = new MoveLeader(gui.getModel().getMyID());
         for(int i=0; i< leaderButton.length; i++){
@@ -337,7 +404,9 @@ public class BaseMeController extends BaseController{
     }
 
 
-
+    /**
+     * @see ControllerGuiInterface#getName()
+     */
     @Override
     public String getName() {
         return className;
