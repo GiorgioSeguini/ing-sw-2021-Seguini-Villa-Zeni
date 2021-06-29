@@ -3,12 +3,32 @@ package it.polimi.ingsw.server.network;
 import it.polimi.ingsw.constant.setupper.LinkToRoomSetupper;
 import it.polimi.ingsw.constant.setupper.SetUp;
 
+/**
+ *LinkToRoomSetupper for the server package.
+ * Menage to perform a LinkToRoomSetupper action.
+ * @see it.polimi.ingsw.server.network.Settable
+ * @see LinkToRoomSetupper
+ */
 public class LinkToRoomSetupperExt extends LinkToRoomSetupper implements Settable {
 
+    /**
+     * Default constructor.
+     * Notice: setting number of playing players is an unnecessary information.
+     *
+     * @param playerName
+     * @param roomName
+     */
     public LinkToRoomSetupperExt(String playerName, String roomName) {
         super(playerName, roomName);
     }
 
+    /**
+     * It menages connection or reconnection to a room. If a room is full move the room from the default
+     * server room list to the server active room list and starts the game.
+     * @param server
+     * @param socket
+     * @param setupper
+     */
     @Override
     public void setAction(Server server, SocketClientConnection socket, SetUp setupper) {
         Room room= server.getRoomFromName(setupper.getRoomName());
@@ -28,6 +48,12 @@ public class LinkToRoomSetupperExt extends LinkToRoomSetupper implements Settabl
 
     }
 
+    /**
+     * Checks if a LinkToRoomSetupper action can be done.
+     * @param server
+     * @param setupper
+     * @return true if finds the disconnected player in an active room or if it doesn't find the player inside the existing room.
+     */
     @Override
     public boolean canSetAction(Server server, SetUp setupper) {
         if(server.findActiveRoom(setupper.getRoomName())){
