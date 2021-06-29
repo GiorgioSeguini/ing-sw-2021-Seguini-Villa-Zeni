@@ -1,9 +1,19 @@
 package it.polimi.ingsw.constant.enumeration;
 
-/*Last Edit: Fabio*/
-/* LeaderCard's status */
+/**
+ * The enum Leader status.
+ */
 public enum LeaderStatus {
+    /**
+     * On hand leader status.
+     */
     onHand,
+    /**
+     * Played leader status.
+     */
     Played,
+    /**
+     * Dead leader status.
+     */
     Dead
 }
