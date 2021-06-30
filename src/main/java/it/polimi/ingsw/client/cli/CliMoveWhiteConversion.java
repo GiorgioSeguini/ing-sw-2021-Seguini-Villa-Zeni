@@ -2,19 +2,37 @@ package it.polimi.ingsw.client.cli;
 
 import it.polimi.ingsw.client.modelClient.GameClient;
 import it.polimi.ingsw.constant.enumeration.ResourceType;
+import it.polimi.ingsw.constant.model.Game;
 import it.polimi.ingsw.constant.move.MoveType;
 import it.polimi.ingsw.constant.move.MoveWhiteConversion;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * CliMoveWhiteConversion class.
+ * Implements CliInterface.
+ * Manage the white conversion move on the cli.
+ */
 public class CliMoveWhiteConversion implements CliInterface{
 
     private final MoveWhiteConversion move;
 
+    /**
+     * Instantiates a new Cli move white conversion.
+     *
+     * @param myId of type int: the player's id.
+     */
     public CliMoveWhiteConversion(int myId){
         this.move = new MoveWhiteConversion(myId);
     }
+
+    /**
+     * Update cli.
+     * @param game of type GameClient: the game.
+     * @param stdin of type Scanner:  the input scanner.
+     * @return of type MoveType: the move.
+     */
     @Override
     public MoveType updateCLI(GameClient game, Scanner stdin) {
         System.out.println("Come vuoi convertire le biglie bianche?");
@@ -90,11 +108,18 @@ public class CliMoveWhiteConversion implements CliInterface{
         return move;
     }
 
+    /**
+     * @see MoveType#canPerform(Game)
+     */
     @Override
     public boolean canPerform(GameClient game) {
         return move.canPerform(game);
     }
 
+    /**
+     *
+     * @see MoveType#getClassName()
+     */
     @Override
     public String getName() {
         return move.getClassName();

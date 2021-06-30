@@ -2,20 +2,38 @@ package it.polimi.ingsw.client.cli;
 
 import it.polimi.ingsw.client.modelClient.GameClient;
 import it.polimi.ingsw.constant.enumeration.LeaderStatus;
+import it.polimi.ingsw.constant.model.Game;
 import it.polimi.ingsw.constant.model.LeaderCard;
 import it.polimi.ingsw.constant.move.MoveLeader;
 import it.polimi.ingsw.constant.move.MoveType;
 
 import java.util.Scanner;
 
-@SuppressWarnings("ALL")
+
+/**
+ * CliMoveLeader class.
+ * Implements CliInterface.
+ * Manage the leader move on the cli.
+ */
 public class CliMoveLeader implements CliInterface{
 
     private final MoveLeader move;
 
+    /**
+     * Instantiates a new Cli move leader.
+     *
+     * @param myId of type int: the player's id.
+     */
     public CliMoveLeader(int myId){
         this.move = new MoveLeader(myId);
     }
+
+    /**
+     * Update cli.
+     * @param game of type GameClient: the game.
+     * @param stdin of type Scanner:  the input scanner.
+     * @return of type MoveType: the move.
+     */
     @Override
     public MoveType updateCLI(GameClient game, Scanner stdin) {
         int m=0;
@@ -52,6 +70,9 @@ public class CliMoveLeader implements CliInterface{
         return move;
     }
 
+    /**
+     * @see MoveType#canPerform(Game)
+     */
     @Override
     public boolean canPerform(GameClient game) {
         for(LeaderCard card: game.getMe().getPersonalBoard().getLeaderCards()){
@@ -62,6 +83,10 @@ public class CliMoveLeader implements CliInterface{
         return false;
     }
 
+    /**
+     *
+     * @see MoveType#getClassName()
+     */
     @Override
     public String getName() {
         return move.getClassName();

@@ -16,13 +16,16 @@ import it.polimi.ingsw.constant.setupper.SetUp;
 
 import java.util.*;
 
+/**
+ * CLI class.
+ * Implements Runnable and UI interfaces.
+ */
 @SuppressWarnings("ALL")
 public class CLI implements Runnable, UI {
     private final Client client;
     private GameClient game;
     final Scanner in = new Scanner(System.in);
     final ArrayList<CliInterface> moves;
-    //private static ReconnectMessage connectionMessage=null;
 
     private boolean moveHandled;
     private final Object locker = new Object();
@@ -30,11 +33,20 @@ public class CLI implements Runnable, UI {
 
     private boolean printLorenzoMove=false;
 
+    /**
+     * Instantiates a new Cli.
+     *
+     * @param client of type Client: the client.
+     */
     public CLI(Client client) {
         this.client = client;
         this.moves = new ArrayList<>();
     }
 
+    /**
+     * Manage the cli's beginning and the setting of a game.
+     * Manage all the cli.
+     */
     @Override
     public void run() {
         String name = null;
@@ -87,6 +99,9 @@ public class CLI implements Runnable, UI {
         }
     }
 
+    /**
+     * Print all the necessary information for a palyer.
+     */
     public void print(){
         this.game = client.getSimpleGame();
         if(game==null) return;
@@ -161,6 +176,9 @@ public class CLI implements Runnable, UI {
         }
     }
 
+    /**
+     * Print the end game. Show the winner and the rank.
+     */
     private void rankShow() {
         System.out.println("IL GIOCO È TERMINATO!");
         if(game.getPlayers().size()>1) {
@@ -188,6 +206,7 @@ public class CLI implements Runnable, UI {
 
     }
 
+    //TODO JDOC
     private static HashMap<String, Integer> sortByValue(HashMap<String, Integer> hm)
     {
         // Create a list from elements of HashMap
@@ -211,6 +230,9 @@ public class CLI implements Runnable, UI {
         return temp;
     }
 
+    /**
+     * Manage the choice of the room and allow to create a new one.
+     */
     private void RoomGame(){
         int x;
         String name;
@@ -284,7 +306,10 @@ public class CLI implements Runnable, UI {
 
 
     }
-    
+
+    /**
+     * Manage the joining player and allow to choose the number of opponents the player want to play with.
+     */
     private void PublicGame(){
         String name= null;
         int x= 0;
@@ -319,20 +344,34 @@ public class CLI implements Runnable, UI {
         System.out.println("Ottimo "+name+"! Ti stiamo inserendo in una partita da "+x+" giocatori.\nRimani in attesa, la partita inizierà tra breve!");
     }
 
+    /**
+     * Send a move to the server.
+     * @param move of type MoveType: the move
+     */
     private void send(MoveType move) {
         client.sendMove(move);
     }
 
+    /**
+     * Send a setupper to the server.
+     * @param setupper of type SetUp: the setupper.
+     */
     private void send(SetUp setupper){
         client.sendSetupper(setupper);
     }
 
+    /**
+     * Cleans the screen.
+     */
     private void clearScreen(){
         for (int i=0; i<100; i++){
             System.out.println();
         }
     }
 
+    /**
+     * Updates the cli.
+     */
     @Override
     public void update() {
         synchronized (locker) {
@@ -348,19 +387,34 @@ public class CLI implements Runnable, UI {
         }
     }
 
+    /**
+     * Check if the move is handle.
+     * @return of type boolean: movehandle.
+     */
     private synchronized boolean isMoveHandled() {
         return moveHandled;
     }
 
+    /**
+     * Set moveHandled.
+     * @param moveHandled of type boolean: the value to set.
+     */
     private synchronized void setMoveHandled(boolean moveHandled) {
         this.moveHandled = moveHandled;
     }
 
+    /**
+     * Set a connection on active.
+     */
     @Override
     public synchronized void setActive() {
         connectionAccepted = true;
     }
 
+    /**
+     * Print the connection message.
+     * @param message of type ConnectionMessage: the message.
+     */
     @Override
     public void printConnectionMessage(ConnectionMessage message) {
         System.out.println("--------------------------------------------");
@@ -368,23 +422,33 @@ public class CLI implements Runnable, UI {
         System.out.println("--------------------------------------------");
     }
 
+    /**
+     * Get connectionAccepted.
+     *
+     * @return of type bollean: True if the connection was accepeted. Otherwise false.
+     */
     public synchronized boolean getActive(){
         return connectionAccepted;
     }
 
+    /**
+     * Reads an int from the keyboard.
+     *
+     * @param stdin of type Scanner: the input scanner.
+     * @return of type int: the input number.
+     */
     public static int ReadFromKeyboard(Scanner stdin){
         boolean check = false;
         String input;
         int INTinput=0;
         do{
-            //BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
             try{
                 input = stdin.nextLine();
                 INTinput = Integer.parseInt(input);
                 check=true;
             }
             catch(Exception e){
-                System.out.println("Write an integer number");
+                System.out.println("Write an integer number!");
             }
 
         }while(!check);

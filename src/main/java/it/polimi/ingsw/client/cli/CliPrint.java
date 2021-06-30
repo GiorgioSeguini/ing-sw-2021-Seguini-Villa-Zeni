@@ -11,7 +11,13 @@ import it.polimi.ingsw.constant.move.MoveType;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * CliPrint class.
+ * Implements CliInterface.
+ * Manage the game's attribute printing on the cli.
+ */
 public class CliPrint implements CliInterface{
+
     public static final String className="PrintGame";
     private static final ArrayList<String> prints;
 
@@ -26,6 +32,12 @@ public class CliPrint implements CliInterface{
         prints.add("Lo stato di un altro giocatore");
     }
 
+    /**
+     * Update cli.
+     * @param game of type GameClient: the game.
+     * @param stdin of type Scanner:  the input scanner.
+     * @return of type MoveType: the move.
+     */
     @Override
     public MoveType updateCLI(GameClient game, Scanner stdin) {
         int index;
@@ -58,11 +70,16 @@ public class CliPrint implements CliInterface{
             if (index==1){
                 end=true;
             }
-        }while (end==false);
+        }while (!end);
         return null;
     }
 
 
+    /**
+     *  Check if the player can print the game's attribute.
+     * @param game of type GameClient: the game.
+     * @return of type boolean: True if he cane print. Otherwise False.
+     */
     @Override
     public boolean canPerform(GameClient game) {
         PlayerStatus status= game.getMe().getStatus();
@@ -72,11 +89,18 @@ public class CliPrint implements CliInterface{
         return true;
     }
 
+    /**
+     * Gets class name.
+     * @return of type String: className.
+     */
     @Override
     public String getName() {
         return className;
     }
 
+    /**
+     * Show what the player can print.
+     */
     private void showPrints(){
         System.out.println("Sei entrato nella sezione di stampa. Cosa vuoi stampare?");
         int i=0;
@@ -86,6 +110,10 @@ public class CliPrint implements CliInterface{
         }
     }
 
+    /**
+     * Print another player.
+     * @param game of type GameClient: the game.
+     */
     private void printPlayer(GameClient game) {
         Scanner scanner= new Scanner(System.in);
         ArrayList<Player> enemies= new ArrayList<>();
@@ -113,16 +141,28 @@ public class CliPrint implements CliInterface{
         }
     }
 
+    /**
+     * Print the market tray.
+     * @param game of type GameClient: the game.
+     */
     private void printMarket(GameClient game) {
         System.out.println("MARKET");
         System.out.println(game.getMarketTray());
     }
 
+    /**
+     * Print the Dashboard.
+     * @param game of type GameClient: the game.
+     */
     private void printDashBoard(GameClient game) {
         System.out.println("DASHBOARD");
         System.out.println(game.getDashboard());
     }
 
+    /**
+     * Print the player's owned development card.
+     * @param game of type GameClient: the game.
+     */
     private void printOwnedDevCard(GameClient game) {
         System.out.println("MIE CARTE SVILUPPO");
         if(game.getMe().getPersonalBoard().getOwnedDevCards().size()!=0) {
@@ -140,6 +180,10 @@ public class CliPrint implements CliInterface{
         }
     }
 
+    /**
+     * Print the player's leader cards.
+     * @param game of type GameClient: the game.
+     */
     private void printLeaderCards(GameClient game) {
         System.out.println("LEADER CARD");
         int i=0;
@@ -151,6 +195,10 @@ public class CliPrint implements CliInterface{
         if(i==0) System.out.println("Non hai Carte Leader al momento");
     }
 
+    /**
+     * Print the player's faith track.
+     * @param game of type GameClient: the game.
+     */
     private void printFaithTrack(GameClient game) {
         System.out.println("TRACCIATO FEDE");
 
@@ -177,6 +225,10 @@ public class CliPrint implements CliInterface{
         }
     }
 
+    /**
+     * Print the player's resources.
+     * @param game of type GameClient: the game.
+     */
     private void printTotalRes(GameClient game) {
         System.out.println("RISORSE TOTALI");
         System.out.println(game.getMe().getDepots().getStrongBox());

@@ -2,19 +2,37 @@ package it.polimi.ingsw.client.cli;
 
 import it.polimi.ingsw.client.modelClient.GameClient;
 import it.polimi.ingsw.constant.enumeration.ResourceType;
+import it.polimi.ingsw.constant.model.Game;
 import it.polimi.ingsw.constant.model.NumberOfResources;
 import it.polimi.ingsw.constant.move.MoveChoseResources;
 import it.polimi.ingsw.constant.move.MoveType;
 
 import java.util.Scanner;
 
+/**
+ * CliMoveChoseResources class.
+ * Implements CliInterface.
+ * Manage the chose resources move on the cli.
+ */
 public class CliMoveChoseResources implements CliInterface{
 
     private final MoveChoseResources move;
 
+    /**
+     * Instantiates a new Cli move chose resources.
+     *
+     * @param myId of type int: the player's id.
+     */
     public CliMoveChoseResources(int myId){
         this.move = new MoveChoseResources(myId);
     }
+
+    /**
+     * Update cli.
+     * @param game of type GameClient: the game.
+     * @param stdin of type Scanner:  the input scanner.
+     * @return of type MoveType: the move.
+     */
     @Override
     public MoveType updateCLI(GameClient game, Scanner stdin) {
         NumberOfResources numberOfResources = new NumberOfResources();
@@ -46,11 +64,18 @@ public class CliMoveChoseResources implements CliInterface{
         // TODO: 5/21/21 cambiare (ricordare che la produzione è comulativa, printare howmany productions)  
     }
 
+    /**
+     * @see MoveType#canPerform(Game)
+     */
     @Override
     public boolean canPerform(GameClient game) {
         return move.canPerform(game);
     }
 
+    /**
+     *
+     * @see MoveType#getClassName()
+     */
     @Override
     public String getName() {
         return move.getClassName();

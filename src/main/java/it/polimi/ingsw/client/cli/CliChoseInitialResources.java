@@ -8,14 +8,30 @@ import it.polimi.ingsw.constant.move.MoveType;
 
 import java.util.Scanner;
 
+/**
+ * CliChoseInitialResources class.
+ * Implements CliInterface.
+ * Manage the chose initial resources move on the cli.
+ */
 public class CliChoseInitialResources implements CliInterface {
 
     final MoveChoseInitialResources move;
 
+    /**
+     * Instantiates a new Cli chose initial resources.
+     *
+     * @param myId of type int: the player's id.
+     */
     public CliChoseInitialResources(int myId) {
         this.move = new MoveChoseInitialResources(myId);
     }
 
+    /**
+     *
+     * @param game of type GameClient: the game.
+     * @param in of type Scanner: the input scanner.
+     * @return of type MoveType: the move set.
+     */
     @Override
     public MoveType updateCLI(GameClient game, Scanner in) {
         System.out.println("Scegli le risorse iniziali:");
@@ -41,11 +57,20 @@ public class CliChoseInitialResources implements CliInterface {
         return move;
     }
 
+    /**
+     * Check if the player can perform the move.
+     * @param game of type GameClient: the game.
+     * @return of type boolean: True if the player can perform the move. Otherwise False.
+     */
     @Override
     public boolean canPerform(GameClient game) {
         return move.canPerform(game);
     }
 
+    /**
+     *
+     * @see MoveType#getClassName()
+     */
     @Override
     public String getName() {
         return move.getClassName();
