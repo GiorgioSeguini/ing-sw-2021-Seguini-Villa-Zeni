@@ -33,6 +33,10 @@ spaceL       ---------------------------                        |
                     marketL
 */
 
+/**
+ * The type Market controller. Show market with marbles and allows player to buy something
+ * Activate even when it's not players turn
+ */
 public class MarketController extends ControllerGuiInterface implements EventHandler<Event>{
 
     public static final String className = "market";
@@ -61,6 +65,9 @@ public class MarketController extends ControllerGuiInterface implements EventHan
     private final Image arrowLeft;
     private final ImageView[] whitesRes= new ImageView[2];
 
+    /**
+     * @see ControllerGuiInterface#update()
+     */
     @Override
     public String getName() {
         return className;
@@ -85,8 +92,9 @@ public class MarketController extends ControllerGuiInterface implements EventHan
     private Label whites;
 
 
-
-
+    /**
+     * Instantiates a new Market controller.
+     */
     public MarketController(){
         super();
         marblesColor=new Image[MarbleColor.values().length];
@@ -102,6 +110,9 @@ public class MarketController extends ControllerGuiInterface implements EventHan
     }
 
 
+    /**
+     * Initialize the pane and its elements, making it resizable
+     */
     @FXML
     public void initialize(){
         market.fitHeightProperty().bind(gridPane.heightProperty().divide(1.7));
@@ -143,6 +154,9 @@ public class MarketController extends ControllerGuiInterface implements EventHan
 
     }
 
+    /**
+     * @see ControllerGuiInterface#update()
+     */
     @Override
     public void update() {
         HideFirstScreen(false);
@@ -171,6 +185,11 @@ public class MarketController extends ControllerGuiInterface implements EventHan
 
     }
 
+    /**
+     * Confirm market Move, after Button is pressed player can effectively buy from the market
+     *
+     * @param actionEvent the action event
+     */
     public void MarketMoveConfirm(ActionEvent actionEvent) {
         if(new MoveTypeMarket(gui.getModel().getMyID()).canPerform(gui.getModel())){
             if (checkAlert) {
@@ -198,17 +217,31 @@ public class MarketController extends ControllerGuiInterface implements EventHan
         }
     }
 
+    /**
+     * Exit from the scene
+     * Active BaseMeController
+     *
+     * @param actionEvent the action event
+     */
     public void returnBack(ActionEvent actionEvent) {
         gui.activate(BaseMeController.className);
     }
 
+    /**
+     * Send a MoveTypeMArket with the line in the selection buffer
+     *
+     * @param actionEvent the action event
+     */
     public void confirm(ActionEvent actionEvent) {
         MoveTypeMarket move = new MoveTypeMarket(gui.getModel().getMyID());
         move.setIndexToBuy(index);
         gui.sendMove(move);
     }
 
-
+    /**
+     * hide some elemnts
+     * @param b true to hide, false to show
+     */
     private void HideFirstScreen(boolean b){
         returnback.setDisable(b);
         returnback.setVisible(!b);
@@ -217,6 +250,10 @@ public class MarketController extends ControllerGuiInterface implements EventHan
         HideSecondScreen(!b);
     }
 
+    /**
+     * Hide/show arrows and others elements
+     * @param b true to hide, false to show
+     */
     private void HideSecondScreen(boolean b){
         infos.setDisable(b);
         infos.setVisible(!b);
@@ -251,7 +288,10 @@ public class MarketController extends ControllerGuiInterface implements EventHan
 
     }
 
-
+    /**
+     * Select either a row or a column to buy. Add it to the selection buffer
+     * @param event the event
+     */
     @Override
     public void handle(Event event) {
         ImageView selected=((ImageView) event.getSource());

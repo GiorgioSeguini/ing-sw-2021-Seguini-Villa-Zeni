@@ -12,6 +12,10 @@ import javafx.scene.layout.GridPane;
 
 import java.util.ArrayList;
 
+/**
+ * Controller of the pane showed at the end of the game
+ * Show players rank and allow just to exit from the game
+ */
 public class EndGameController extends ControllerGuiInterface{
 
     public static final String className="EndGame";
@@ -54,6 +58,9 @@ public class EndGameController extends ControllerGuiInterface{
     private final Label[] labels = new Label[4];
     private final ImageView[] imageViews = new ImageView[4];
 
+    /**
+     * Initialize the pane and its elements, making it resizable
+     */
     @FXML
     public void initialize(){
         button.setDisable(false);
@@ -79,6 +86,9 @@ public class EndGameController extends ControllerGuiInterface{
         labels[3]= label4;
     }
 
+    /**
+     * @see ControllerGuiInterface#update()
+     */
     @Override
     public void update() {
         if(!gui.getModel().isSinglePlayer()) {
@@ -102,12 +112,19 @@ public class EndGameController extends ControllerGuiInterface{
 
     }
 
-
+    /**
+     * @see ControllerGuiInterface#getName()
+     */
     @Override
     public String getName() {
         return className;
     }
 
+    /**
+     * Exit from the program
+     *
+     * @param actionEvent the action event
+     */
     public void exit(ActionEvent actionEvent) {
         Platform.exit();
     }
