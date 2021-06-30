@@ -8,15 +8,30 @@ import it.polimi.ingsw.constant.setupper.DisconnectConnectionSetupper;
 
 import java.util.Scanner;
 
-@SuppressWarnings("ALL")
+/**
+ * CliDisconnect class.
+ * Implements CliInterface.
+ * Manage the disconnection on the cli.
+ */
 public class CliDisconnect implements CliInterface{
 
     private final Client client;
 
+    /**
+     * Instantiates a new Cli disconnect.
+     *
+     * @param client of type Client: the client.
+     */
     public CliDisconnect(Client client){
         this.client= client;
     }
 
+    /**
+     * Update cli.
+     * @param game of type GameClient: the game.
+     * @param in of type Scanner:  the input scanner.
+     * @return of type MoveType: the move.  Can return null.
+     */
     @Override
     public MoveType updateCLI(GameClient game, Scanner in) {
         System.out.println("Vuoi per caso uscire dal gioco? ");
@@ -34,11 +49,20 @@ public class CliDisconnect implements CliInterface{
         }else return null;
     }
 
+    /**
+     *
+     * @param game of type GameClient: the game.
+     * @return of type boolean: always True
+     */
     @Override
     public boolean canPerform(GameClient game) {
         return true;
     }
 
+    /**
+     *
+     * @return of type String: close game
+     */
     @Override
     public String getName() {
         return "Close Game";

@@ -3,18 +3,36 @@ package it.polimi.ingsw.client.cli;
 import it.polimi.ingsw.client.modelClient.GameClient;
 import it.polimi.ingsw.constant.enumeration.ColorDevCard;
 import it.polimi.ingsw.constant.enumeration.Level;
+import it.polimi.ingsw.constant.model.Game;
 import it.polimi.ingsw.constant.move.MoveBuyDevCard;
 import it.polimi.ingsw.constant.move.MoveType;
 
 import java.util.Scanner;
 
+/**
+ * CliMoveBuyDevCard class.
+ * Implements CliInterface.
+ * Manage the buy development card move on the cli.
+ */
 public class CliMoveBuyDevCard implements CliInterface{
 
     private final MoveBuyDevCard move;
 
+    /**
+     * Instantiates a new Cli move buy dev card.
+     *
+     * @param myId of type int: the player's id.
+     */
     public CliMoveBuyDevCard(int myId){
         this.move = new MoveBuyDevCard(myId);
     }
+
+    /**
+     * Update cli.
+     * @param game of type GameClient: the game.
+     * @param stdin of type Scanner:  the input scanner.
+     * @return of type MoveType: the move.
+     */
     @Override
     public MoveType updateCLI(GameClient game, Scanner stdin) {
         int check;
@@ -53,6 +71,9 @@ public class CliMoveBuyDevCard implements CliInterface{
         return move;
     }
 
+    /**
+     * @see MoveType#canPerform(Game)
+     */
     @Override
     public boolean canPerform(GameClient game) {
         if(move.canPerform(game)){
@@ -61,6 +82,10 @@ public class CliMoveBuyDevCard implements CliInterface{
         return false;
     }
 
+    /**
+     *
+     * @see MoveType#getClassName()
+     */
     @Override
     public String getName() {
         return move.getClassName();
