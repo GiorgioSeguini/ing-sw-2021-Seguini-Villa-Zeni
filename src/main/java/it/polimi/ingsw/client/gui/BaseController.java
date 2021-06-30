@@ -288,8 +288,8 @@ public class BaseController  extends ControllerGuiInterface{
      * @param actionEvent the action event
      */
     public void previous(ActionEvent actionEvent) {
-        int index = gui.getModel().getPlayerIndex(getPlayer()) +1;
-        if(gui.getModel().getPlayers().get(index).equals(gui.getModel().getMe())) index++;
+        int index = gui.getModel().getPlayerIndex(getPlayer()) -1;
+        if(gui.getModel().getPlayers().get(index).equals(gui.getModel().getMe())) index--;
         setPlayer(gui.getModel().getPlayers().get(index));
         internalUpdate();
         checkButtons();
@@ -302,8 +302,8 @@ public class BaseController  extends ControllerGuiInterface{
      * @param actionEvent the action event
      */
     public void next(ActionEvent actionEvent) {
-        int index = gui.getModel().getPlayerIndex(getPlayer()) -1;
-        if(gui.getModel().getPlayers().get(index).equals(gui.getModel().getMe())) index--;
+        int index = gui.getModel().getPlayerIndex(getPlayer()) +1;
+        if(gui.getModel().getPlayers().get(index).equals(gui.getModel().getMe())) index++;
         setPlayer(gui.getModel().getPlayers().get(index));
         internalUpdate();
         checkButtons();
