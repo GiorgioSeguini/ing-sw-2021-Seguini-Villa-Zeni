@@ -9,6 +9,11 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 
+/**
+ * The type Alert box. A costume alert Box with a default button that simply close the box
+ * Another button can be added
+ * The default look will be setted according to default StyleSheet
+ */
 public class AlertBox {
     private Stage window;
     private final String boxTitle;
@@ -16,6 +21,12 @@ public class AlertBox {
     private final VBox layout;
     private Button closeButton;
 
+    /**
+     * Instantiates a new Alert box, with just one default exit button
+     *
+     * @param boxTitle   of type String - the box title
+     * @param boxMessage of type String - the box message
+     */
     public AlertBox(String boxTitle, String boxMessage){
         window= new Stage();
         this.boxTitle= boxTitle;
@@ -23,6 +34,14 @@ public class AlertBox {
         layout=createAlertBox();
     }
 
+    /**
+     * Instantiates a new Alert box, with the default exit button and another button passed as parameter
+     *
+     *
+     * @param boxTitle   of type String - the box title
+     * @param boxMessage of type String - the box message
+     * @param button     of type Button - the button
+     */
     public AlertBox(String boxTitle, String boxMessage, Button button){
         window= new Stage();
         this.boxTitle= boxTitle;
@@ -31,11 +50,19 @@ public class AlertBox {
         addButton(button);
     }
 
+    /**
+     * Add button to the alert box and set default stylesheet
+     *
+     * @param button the button
+     */
     public void addButton(Button button){
         button.getStyleClass().add("baseButton");
         layout.getChildren().addAll(button);
     }
 
+    /**
+     * Show the Alert Box and wait until a button is pressed
+     */
     public void display(){
         Scene scene= new Scene(layout);
         scene.getStylesheets().add(getClass().getResource("Style.css").toString());
@@ -43,6 +70,9 @@ public class AlertBox {
         window.showAndWait();
     }
 
+    /**
+     * Forse the alert box to close
+     */
     public void closeBox(){
         window.close();
     }
@@ -67,6 +97,11 @@ public class AlertBox {
         return layout;
     }
 
+    /**
+     * Get close default button.
+     *
+     * @return the button - the default close button
+     */
     public Button getCloseButton(){
         return closeButton;
     }

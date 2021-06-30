@@ -122,7 +122,7 @@ public class ChoseResController extends IntermediateController{
     }
 
     /**
-     * Box action.
+     * Box action. Just check if confirm button can be enable
      *
      * @param actionEvent the action event
      */

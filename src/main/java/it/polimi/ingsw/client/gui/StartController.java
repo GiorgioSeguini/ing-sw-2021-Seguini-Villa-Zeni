@@ -34,7 +34,7 @@ public class StartController extends ControllerGuiInterface{
     }
 
     public void soloGameOff(ActionEvent event) {
-        gui.activate(SingleLoginCotroller.className);
+        gui.activate(SingleLoginController.className);
     }
 
 

@@ -99,6 +99,7 @@ public class MoveBuyDevCardExt extends MoveBuyDevCard implements Performable {
             return;
         } catch (IllegalArgumentException e) {
             player.setErrorMessage(ErrorMessage.BadChoice);
+            return;
         }
         game.getDashboard().buyDevCard(cardToBuy.getColor(),cardToBuy.getLevel());
         try {
