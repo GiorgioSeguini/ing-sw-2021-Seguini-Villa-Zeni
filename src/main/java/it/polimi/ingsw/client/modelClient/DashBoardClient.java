@@ -76,19 +76,16 @@ public class DashBoardClient extends Dashboard {
     @Override
     public String toString(){
         String res="----------------------------------\n";
-        int k=1;
         for(int i=0; i<Level.size(); i++){
             int t=1;
-            res+= "LEVEL "+k+": \n";
-            res+= "\t1)YELLOW, 2)GREEN, 3)BLUE, 4)PURPLE\n";
-            res+= "----------------------------------\n";
             for(int j=0; j<ColorDevCard.size(); j++){
-                res+=""+ t +":\n";
-                res+= dashBoard[i][j]+"\n";
-                res+="**********************\n";
-                t++;
+                if(dashBoard[i][j]!=null) {
+                    res += "" + t + ":\n";
+                    res += dashBoard[i][j] + "\n";
+                    res += "**********************\n";
+                    t++;
+                }
             }
-            k++;
         }
         return res;
     }
