@@ -63,7 +63,7 @@ public class PersonalBoard {
         if(index<0 || index>3){
             return null;
         }
-        return OwnedDevCards[index].get(OwnedDevCards[index].size() -1);
+        return OwnedDevCards[index].get(0);
     }
 
     /**
@@ -75,7 +75,7 @@ public class PersonalBoard {
         ArrayList<DevelopmentCard> result = new ArrayList<DevelopmentCard>();
         for(int i=0; i< OwnedDevCards.length; i++)
             if(OwnedDevCards[i].size()>0){
-                result.add(OwnedDevCards[i].get(OwnedDevCards[i].size()-1));
+                result.add(OwnedDevCards[i].get(0));
             }
         return result;
     }

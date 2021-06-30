@@ -229,6 +229,11 @@ public class BaseController  extends ControllerGuiInterface{
         }
 
         //leader depots
+        for(int i=0; i<2; i++){
+            for(int j=0; j<2; j++){
+                leaderDepots[i][0].setImage(null);
+            }
+        }
         for(int k=3; k<5; k++) {
             if (getPlayer().getDepots().getWareHouseDepots().getShelves().size() > k) {
                 ResourceType type = getPlayer().getDepots().getWareHouseDepots().getShelves().get(k).getResType();
