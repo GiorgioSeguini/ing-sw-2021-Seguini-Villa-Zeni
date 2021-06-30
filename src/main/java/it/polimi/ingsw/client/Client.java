@@ -219,7 +219,7 @@ public class Client {
                 socketOut.flush();
             } catch (IOException e) {
                 e.printStackTrace();
-                //TODO
+                this.setActive(false);
             }
         }else{
             executor.submit(()->{
@@ -311,7 +311,7 @@ public class Client {
                 System.out.println("Sent :" + json);
             } catch (IOException e) {
                 e.printStackTrace();
-                //TODO
+                this.setActive(false);
             }
         }else{
             this.setActive(false);

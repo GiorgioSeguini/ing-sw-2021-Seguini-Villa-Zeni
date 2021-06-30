@@ -50,7 +50,6 @@ public class CliMoveLeader implements CliInterface{
             System.out.println("Che carta leader vuoi attivare?\n");
             move.setMove(0);
         }
-        //TODO da discutere
 
         int i=1;
         for(LeaderCard l:  game.getMe().getPersonalBoard().getLeaderCards()){

@@ -25,7 +25,6 @@ class LeaderCardTest {
         assertTrue(leaderCard.getVictoryPoints()>0);
     }
 
-    //TODO da rivedere
     @Test
     void SetPlayedTest() {
         ArrayList<LeaderCardExt> leaderCards;
@@ -47,13 +46,6 @@ class LeaderCardTest {
         player.getDepots().addResourceFromProduction(new NumberOfResources(100,100,100,100));
 
         ArrayList<LeaderCard> ownedLeaderCard = personalBoard.getLeaderCards();
-
-        //try {
-         /*   ownedLeaderCard = personalBoard.getLeaderCards();
-        /*} catch (NoMoreLeaderCardAliveException e) {
-            e.printStackTrace();
-        }*/
-
 
         for (LeaderCard leaderCard : ownedLeaderCard) {
             LeaderCardExt leaderCardExt = (LeaderCardExt) leaderCard;
@@ -137,11 +129,7 @@ class LeaderCardTest {
         player.getPersonalBoard().addLeaderCard(new LeaderCardExt[]{card1, card3});
         card1.setDiscard(player);
 
-        //try {
-            assertEquals(1, player.getPersonalBoard().getLeaderCards().size());
-       /* } catch (NoMoreLeaderCardAliveException e) {
-            fail();
-        }*/
+        assertEquals(1, player.getPersonalBoard().getLeaderCards().size());
 
         assertFalse(card1.setDiscard(player));
 

@@ -61,7 +61,6 @@ public class CliMoveChoseResources implements CliInterface{
         int res = CLI.ReadFromKeyboard(stdin);
         move.setOfYourChoiceOutput(new NumberOfResources().add(ResourceType.values()[res-1],1));
         return move;
-        // TODO: 5/21/21 cambiare (ricordare che la produzione è comulativa, printare howmany productions)  
     }
 
     /**

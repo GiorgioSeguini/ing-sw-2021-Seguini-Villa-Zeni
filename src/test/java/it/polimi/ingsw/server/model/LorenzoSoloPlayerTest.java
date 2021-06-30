@@ -77,7 +77,6 @@ class LorenzoSoloPlayerTest {
         soloActionTokensArrayList = Starter.TokensParser();
         ArrayList<LeaderCardExt> leaderCards;
 
-        //player.getDepots().addResourceFromProduction(new NumberOfResources(100,100,100,100));
         ArrayList<PlayerExt> playerArrayList = new ArrayList<>();
         playerArrayList.add(new PlayerExt("Fabio"));
 
@@ -87,8 +86,6 @@ class LorenzoSoloPlayerTest {
         SoloActionTokens NextRevealedToken = game.getSoloGame().getSoloActionTokens().get(0);
         game.getSoloGame().revealToken();
         ArrayList <SoloActionTokens> temp = game.getSoloGame().getSoloActionTokens();
-        //assertFalse(temp.contains(NextRevealedToken));                                  //a volte va, a volte no, Boh? TODO
-        //assertEquals(--dim,game.getSoloGame().getSoloActionTokens().size());
 
     }
 

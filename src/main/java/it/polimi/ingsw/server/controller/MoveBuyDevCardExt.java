@@ -97,6 +97,8 @@ public class MoveBuyDevCardExt extends MoveBuyDevCard implements Performable {
         } catch (NoSpaceException e) {
             player.setErrorMessage(e.getErrorMessage());
             return;
+        } catch (IllegalArgumentException e) {
+            player.setErrorMessage(ErrorMessage.BadChoice);
         }
         game.getDashboard().buyDevCard(cardToBuy.getColor(),cardToBuy.getLevel());
         try {

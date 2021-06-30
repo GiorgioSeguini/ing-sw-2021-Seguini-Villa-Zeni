@@ -210,7 +210,6 @@ public class NumberOfResources {
         return true;
     }
 
-    //TODO I NEED SETTER TESTING
     @Override
     public String toString(){
         String resources="";

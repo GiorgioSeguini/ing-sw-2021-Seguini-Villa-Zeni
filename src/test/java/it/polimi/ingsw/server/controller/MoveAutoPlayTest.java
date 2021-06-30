@@ -25,6 +25,8 @@ public class MoveAutoPlayTest {
 
         MoveAutoPlay moveAutoPlay = new MoveAutoPlay(game.getCurrPlayer().getID());
         assertNotNull(moveAutoPlay);
+
+        assertEquals(game.getCurrPlayer().getID(), moveAutoPlay.getIdPlayer());
     }
 
     @Test

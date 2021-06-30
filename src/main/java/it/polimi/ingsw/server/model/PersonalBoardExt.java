@@ -44,8 +44,9 @@ public class PersonalBoardExt extends PersonalBoard implements Observable<Messag
      * @param card of type DevelopmentCard: the card that has to be added.
      * @param pos of type int: the position in the personal board where the card has to be placed
      * @throws NoSpaceException the no space exception, thrown when the personal board is full.
+     * @throws IllegalArgumentException if is not valid.
      */
-    public void addDevCard(DevelopmentCard card, int pos) throws NoSpaceException {
+    public void addDevCard(DevelopmentCard card, int pos) throws NoSpaceException, IllegalArgumentException{
         if(goodindex(pos)){
             if (super.getPos(pos).isEmpty()){
                 if(card.getLevel() == Level.ONE) {
@@ -91,7 +92,7 @@ public class PersonalBoardExt extends PersonalBoard implements Observable<Messag
      */
     private boolean goodindex(int index) throws IllegalArgumentException{
         if(index>2 || index<0) {
-            throw new IllegalArgumentException(); //TODO
+            throw new IllegalArgumentException();
         }
         return true;
     }

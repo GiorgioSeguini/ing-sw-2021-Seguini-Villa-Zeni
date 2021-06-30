@@ -100,9 +100,8 @@ public class WareHouseDepotsExt extends WareHouseDepots {
         return check != 4;
     }
 
-    //TODO rivedere la doc di questo metodo.
     /**
-     * This method return true if with the current disposition of the shelf you can fill them with a Number of resources
+     * This method fills shelves according to the game's rules. If it can't throws an exception and leaves everything as before.
      * @param my_resources of type NumberOfResources:
      * @throws UnableToFillException
      */

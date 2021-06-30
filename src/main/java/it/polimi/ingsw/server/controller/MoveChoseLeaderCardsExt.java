@@ -42,6 +42,11 @@ public class MoveChoseLeaderCardsExt extends MoveChoseLeaderCards implements Per
             return false;
         }
 
+        if(getIndexLeaderCards()==null){
+            player.setErrorMessage(ErrorMessage.BadChoice);
+            return false;
+        }
+
         ArrayList<LeaderCardExt> leaderCards = game.findMoreLeaderCard(getIndexLeaderCards());
         boolean goodChoice = true;
         for(LeaderCard card : leaderCards){

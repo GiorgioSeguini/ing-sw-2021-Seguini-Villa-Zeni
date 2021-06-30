@@ -222,10 +222,6 @@ class GameTest {
         GameExt game= new GameExt(players,market,dashboard,tokens,leaderCards);
         Random rand= new Random();
         int id;
-        for (int i=1; i<17; i++){
-            //id=rand.nextInt(15)+1;
-            //assertNotNull(game.findLeaderCard(i));    TODO
-        }
 
         for (int i=0; i<100; i++){
             id=rand.nextInt(100)+17;
@@ -233,7 +229,6 @@ class GameTest {
         }
 
         id=3;
-        //assertEquals(dashboard.findDevCard(id).getColor(), ColorDevCard.BLUE);        TODO
-        //assertEquals(dashboard.findDevCard(id).getLevel(), Level.ONE);            TODO
+
     }
 }

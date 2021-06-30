@@ -206,7 +206,11 @@ public class CLI implements Runnable, UI {
 
     }
 
-    //TODO JDOC
+    /**
+     * Sorts hashmaps according to their values.
+     * @param hm of type HashMap<String, Integer>: the hashmap.
+     * @return of type HashMap<String, Integer>: the hashmap sorted.
+     */
     private static HashMap<String, Integer> sortByValue(HashMap<String, Integer> hm)
     {
         // Create a list from elements of HashMap
