@@ -13,6 +13,9 @@ import javafx.scene.control.Label;
 
 import java.util.ArrayList;
 
+/**
+ * Controller of the pane to chose initial Resources
+ */
 public class InitialResController extends ControllerGuiInterface{
 
     public static final String className = "initialRes";
@@ -33,6 +36,9 @@ public class InitialResController extends ControllerGuiInterface{
     private final ChoiceBox<Integer>[] boxes = new ChoiceBox[4];
     private int max;
 
+    /**
+     * Initialize the pane and its elements, making it resizable
+     */
     @FXML
     public void initialize(){
         boxes[ResourceType.Coins.ordinal()] = coins;
@@ -41,7 +47,9 @@ public class InitialResController extends ControllerGuiInterface{
         boxes[ResourceType.Stones.ordinal()] = stones;
     }
 
-
+    /**
+     * @see ControllerGuiInterface#update()
+     */
     @Override
     public void update() {
         this.max = gui.getModel().getInitialResources(gui.getModel().getMyID());
@@ -53,11 +61,19 @@ public class InitialResController extends ControllerGuiInterface{
         label.setText("Scegli "+ max + " risorse iniziali");
     }
 
+    /**
+     * @see ControllerGuiInterface#update()
+     */
     @Override
     public String getName() {
         return className;
     }
 
+    /**
+     * Send a MoveChoseInitialRes to server with the resources in the buffer
+     *
+     * @param actionEvent the action event
+     */
     public void onAction(ActionEvent actionEvent) {
         NumberOfResources resources = new NumberOfResources();
         for(ResourceType type : ResourceType.values()){
@@ -71,6 +87,13 @@ public class InitialResController extends ControllerGuiInterface{
         gui.sendMove(move);
     }
 
+    /**
+     * Fill ChoiceBox with number from o to max
+     * Set 0 as default value
+     *
+     * @param type the type of Resources of the corresponding box
+     * @param max  the max possible integer value
+     */
     private void fillBox(ResourceType type, int max) {
         ObservableList<Integer> array = FXCollections.observableList(new ArrayList<>());
         for(int i=0; i<=max; i++){
@@ -80,6 +103,9 @@ public class InitialResController extends ControllerGuiInterface{
         boxes[type.ordinal()].setValue(0);
     }
 
+    /**
+     * Check buttons and set disable and not visible according to other pane parameters
+     */
     private void checkConfirm(){
         int total =0;
         for(ChoiceBox<Integer> box : boxes){
@@ -90,6 +116,11 @@ public class InitialResController extends ControllerGuiInterface{
         confirm.setDisable(total!=max);
     }
 
+    /**
+     * Update buttons on ChoiceBoxEvent
+     *
+     * @param actionEvent the action event
+     */
     public void boxAction(ActionEvent actionEvent) {
         checkConfirm();
     }

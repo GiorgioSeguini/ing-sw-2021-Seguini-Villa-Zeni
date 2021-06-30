@@ -12,6 +12,9 @@ import javafx.scene.layout.GridPane;
 
 import java.util.ArrayList;
 
+/**
+ * Controller of the chose initial leader card pane
+ */
 public class InitialController extends ControllerGuiInterface{
 
     public  static final String className = "initial";
@@ -20,31 +23,34 @@ public class InitialController extends ControllerGuiInterface{
     private final boolean[] chosen =new boolean[4];
 
     @FXML
-    public ImageView imageView1;
+    private ImageView imageView1;
     @FXML
-    public ImageView imageView2;
+    private ImageView imageView2;
     @FXML
-    public ImageView imageView3;
+    private ImageView imageView3;
     @FXML
-    public ImageView imageView4;
+    private ImageView imageView4;
 
     @FXML
-    Button confirmButton;
+    private Button confirmButton;
     @FXML
-    public Label lable1;
+    private Label lable1;
     @FXML
-    public Label lable2;
+    private Label lable2;
     @FXML
-    public Label lable3;
+    private Label lable3;
     @FXML
-    public Label lable4;
+    private Label lable4;
 
     @FXML
-    public GridPane grid;
+    private GridPane grid;
 
     private final ArrayList<ImageView> imageViews = new ArrayList<>();
     private final ArrayList<Label> labels = new ArrayList<>();
 
+    /**
+     * Initialize the pane and its elements, making it resizable
+     */
     @FXML
     public void initialize(){
         confirmButton.setDisable(true);
@@ -65,6 +71,9 @@ public class InitialController extends ControllerGuiInterface{
         }
     }
 
+    /**
+     * @see ControllerGuiInterface#update()
+     */
     @Override
     public void update() {
         for(int i=0; i<imageViews.size(); i++){
@@ -73,11 +82,22 @@ public class InitialController extends ControllerGuiInterface{
         }
     }
 
+    /**
+     * @see ControllerGuiInterface#update()
+     */
     @Override
     public String getName() {
         return className;
     }
 
+    /**
+     * Select a leader card from the available ones
+     * if production not yet selected Highlight the imageview and add to selection buffer the card
+     * if production already selected make imageview standard and remove the production from the selection buffer
+     * Update buttons
+     *
+     * @param mouseEvent the mouse event
+     */
     public void selectCard(MouseEvent mouseEvent){
         ((ImageView) mouseEvent.getSource()).setId("imageViewClicked");
         int index = imageViews.indexOf((ImageView) mouseEvent.getSource());
@@ -95,6 +115,11 @@ public class InitialController extends ControllerGuiInterface{
     }
 
 
+    /**
+     * Send a MoveChoseInitialLeaderCards to server with the ids of the cards in the buffer
+     *
+     * @param actionEvent the action event
+     */
     public void confirm(ActionEvent actionEvent) {
         MoveChoseLeaderCards move = new MoveChoseLeaderCards(gui.getModel().getMyID());
         move.setIndexLeaderCards(choice);

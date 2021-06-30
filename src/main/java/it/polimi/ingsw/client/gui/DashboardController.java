@@ -16,6 +16,10 @@ import javafx.scene.layout.AnchorPane;
 
 import java.util.ArrayList;
 
+/**
+ * Dashboard controller, controller of the Dashboard, show all card on sell and your depots on the right
+ * Accessible even if it's not player's turn
+ */
 public class DashboardController extends ControllerGuiInterface{
 
     public static final String className = "dashboard";
@@ -66,21 +70,19 @@ public class DashboardController extends ControllerGuiInterface{
     private final ArrayList<Integer> choice = new ArrayList<>();
 
     @FXML
-    public AnchorPane anchorPane;
+    private AnchorPane anchorPane;
     @FXML
-    public Button confirmButton;
+    private Button confirmButton;
     @FXML
-    public Button baseButton;
+    private Button baseButton;
 
 
     @FXML
-    public ImageView imageViewDepots;
-
+    private ImageView imageViewDepots;
     @FXML
-    public ImageView imageViewBoard ;
-
+    private ImageView imageViewBoard ;
     @FXML
-    public ImageView devcardBuyed;
+    private ImageView devcardBuyed;
 
 
     private final ImageView[] imageViews = new ImageView[12];
@@ -88,12 +90,19 @@ public class DashboardController extends ControllerGuiInterface{
     private final Button[] buttons = new Button[3];
 
 
+    /**
+     * Instantiates a new Dashboard controller.
+     * Image caching for the resources of the depots
+     */
     public DashboardController() {
         for(ResourceType type : ResourceType.values()){
             resImage[type.ordinal()]= new Image("/images/punchboard/" + type + ".png");
         }
     }
 
+    /**
+     * Initialize the pane and its elements, making it resizable
+     */
     @FXML
     public void initialize(){
 
@@ -140,11 +149,18 @@ public class DashboardController extends ControllerGuiInterface{
         GUI.fixImages(imageViewBoard, BOARD_HEIGHT, devCards, DEV_CARD_X, DEV_CARD_Y, DEV_CARD_HEIGHT);
 
     }
+
+    /**
+     * @see ControllerGuiInterface#update()
+     */
     @Override
     public String getName() {
         return className;
     }
 
+    /**
+     * @see ControllerGuiInterface#update()
+     */
     @Override
     public void update() {
         resetChoice();
@@ -157,6 +173,7 @@ public class DashboardController extends ControllerGuiInterface{
             for (ColorDevCard c : ColorDevCard.values()) {
                 if(gui.getModel().getDashboard().getTopDevCard(c,l) == null){
                     image[i] = new Image("/images/back/RETRO-"+l+"-"+c+".png");
+                    imageViews[i].setOnMouseClicked(null);
                 }else {
                     int id = gui.getModel().getDashboard().getTopDevCard(c, l).getId() + 1;
                     image[i] = new Image("/images/front/Masters of Renaissance_Cards_FRONT_3mmBleed_1-" + id + "-1.png");
@@ -184,6 +201,13 @@ public class DashboardController extends ControllerGuiInterface{
         }
     }
 
+    /**
+     * Select a card on sell
+     * if production not yet selected Highlight the imageview and add to selection buffer the card
+     * if production already selected make imageview standard and remove the production from the selection buffer
+     * Update buttons
+     * @param mouseEvent the mouse event
+     */
     public void  onMouseClicked(MouseEvent mouseEvent) {
         int index = 0;
         for(int i=0; i<imageViews.length; i++) {
@@ -203,21 +227,39 @@ public class DashboardController extends ControllerGuiInterface{
         }
     }
 
+    /**
+     * Send a MoveBuyDevCard to server with the ids of the card in the buffer
+     *
+     * @param actionEvent the action event
+     */
     public void confirm(ActionEvent actionEvent){
         hideFirstScreen(true);
         hideSecondScreen(false);
         devcardBuyed.setImage(new Image("images/front/Masters of Renaissance_Cards_FRONT_3mmBleed_1-"+(choice.get(0)+1)+"-1.png"));
     }
 
+    /**
+     * Exit from the scene
+     * Active BaseMeController
+     *
+     * @param actionEvent the action event
+     */
     public void baseButton(ActionEvent actionEvent){
         resetChoice();
         gui.activate(BaseMeController.className);
     }
 
+    /**
+     * Check buttons and set disable and not visible according to other pane parameters
+     */
     private void checkButton(){
         this.confirmButton.setDisable(choice.size()!=1||!(new MoveBuyDevCard(gui.getModel().getMyID()).canPerform(gui.getModel()))||!(gui.getModel().getDashboard().isSomethingBuyable(gui.getModel())));
     }
 
+    /**
+     * Hide screen to select the position of the buyed card
+     * @param b true to hide, false to show
+     */
     private void hideSecondScreen(boolean b){
         imageViewBoard.setVisible(!b);
 
@@ -232,6 +274,10 @@ public class DashboardController extends ControllerGuiInterface{
         }
     }
 
+    /**
+     * Hide first screen, the one showing the cards on sell and th depots
+     * @param b true to hide, false to show
+     */
     private void hideFirstScreen(boolean b) {
         for (ImageView imageView : imageViews) {
             imageView.setVisible(!b);
@@ -262,6 +308,11 @@ public class DashboardController extends ControllerGuiInterface{
         labelDiscount.setVisible(!b);
     }
 
+    /**
+     * Chose the position to store the buyed card
+     *
+     * @param actionEvent the action event
+     */
     public void choseNumber(ActionEvent actionEvent) {
         int index=-1;
         for(int i=0; i< buttons.length; i++){
@@ -284,7 +335,13 @@ public class DashboardController extends ControllerGuiInterface{
         chosen=new boolean[12];
     }
 
-    void imageArrayInitializer(AnchorPane anchorPane, ImageView[] imageViews){
+    /**
+     * Initialize an array of mageView and add them to the pane.
+     *
+     * @param anchorPane the anchor pane
+     * @param imageViews the image views array
+     */
+    private void imageArrayInitializer(AnchorPane anchorPane, ImageView[] imageViews){
         for(int i=0; i<imageViews.length; i++){
             imageViews[i]= new ImageView();
             anchorPane.getChildren().add(imageViews[i]);

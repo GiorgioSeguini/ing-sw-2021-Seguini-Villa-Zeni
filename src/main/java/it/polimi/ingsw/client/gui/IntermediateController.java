@@ -14,6 +14,10 @@ import javafx.scene.layout.GridPane;
 
 import java.util.ArrayList;
 
+/**
+ * Generic controller for a Pane with the player's depots on the left and a set of choiceBox for the resources on the right
+ * When overiding update methods ensure to call super in order to guarantee Good updating of default elements of the pane
+ */
 public abstract class IntermediateController extends ControllerGuiInterface {
     private static final Double[] RES_X = {289.0, 231.0, 320.0, 187.0, 274.0, 365.0};
     private static final Double[] RES_Y = {173.0, 315.0, 315.0, 467.0, 467.0, 467.0};
@@ -58,6 +62,9 @@ public abstract class IntermediateController extends ControllerGuiInterface {
     final ChoiceBox<Integer>[] boxes = new ChoiceBox[4];
     private final ImageView[] resources = new ImageView[6];
 
+    /**
+     * Initialize the pane and its elements, making it resizable
+     */
     @FXML
     public void initialize() {
         boxes[ResourceType.Coins.ordinal()] = coins;
@@ -99,14 +106,29 @@ public abstract class IntermediateController extends ControllerGuiInterface {
         GUI.fixImagesToPane(anchorPane, shieldsImage);
     }
 
+    /**
+     * @see ControllerGuiInterface#update()
+     */
     @Override
     public void update() {
         gui.printDepots(resources, gui.getModel().getMe().getDepots());
         gui.printResources(numberStrongbox, gui.getModel().getMe().getDepots().getStrongBox().getResources());
     }
 
+    /**
+     * Abstract methods set on the button at bottom right
+     *
+     * @param actionEvent the action event
+     */
     public abstract void onAction(ActionEvent actionEvent);
 
+    /**
+     * Fill ChoiceBox with number from o to max
+     * Set 0 as default value
+     *
+     * @param type the type of Resources of the corresponding box
+     * @param max  the max possible integer value
+     */
     void fillBox(ResourceType type, int max) {
         ObservableList<Integer> array = FXCollections.observableList(new ArrayList<>());
         for(int i=0; i<=max; i++){

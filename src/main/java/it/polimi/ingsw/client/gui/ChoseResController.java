@@ -9,6 +9,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 
+/**
+ * Controller for chose resources pane.
+ * If player wants to active a production with some of choice input or output resources will use this pane
+ * Extends IntermediateController
+ */
 public class ChoseResController extends IntermediateController{
 
     public static final String className = "choseRes";
@@ -30,6 +35,9 @@ public class ChoseResController extends IntermediateController{
         GUI.fixLabels(depots, DEPOTS_HEIGHT, new Label[]{label}, LABEL_X, LABEL_Y);
     }
 
+    /**
+     * @see ControllerGuiInterface#update()
+     */
     @Override
     public void update() {
         super.update();
@@ -50,11 +58,17 @@ public class ChoseResController extends IntermediateController{
         checkConfirm();
     }
 
+    /**
+     * @see ControllerGuiInterface#getName()
+     */
     @Override
     public String getName() {
         return className;
     }
 
+    /**
+     * @see IntermediateController#onAction(ActionEvent)
+     */
     @Override
     public void onAction(ActionEvent actionEvent) {
         NumberOfResources resources = new NumberOfResources();
@@ -82,7 +96,9 @@ public class ChoseResController extends IntermediateController{
     }
 
 
-
+    /**
+     * Check buttons and set disable and not visible according to other pane parameters
+     */
     private void checkConfirm(){
         int total =0;
         for(ChoiceBox<Integer> box : boxes){
@@ -105,6 +121,11 @@ public class ChoseResController extends IntermediateController{
         }
     }
 
+    /**
+     * Box action.
+     *
+     * @param actionEvent the action event
+     */
     public void boxAction(ActionEvent actionEvent) {
         checkConfirm();
     }

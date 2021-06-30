@@ -13,6 +13,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 
+/**
+ * The type Lobby controller. THe pane showed while player is waiting for friends to join the game
+ */
 public class LobbyController extends ControllerGuiInterface{
 
     public static final String className="lobby";
@@ -56,12 +59,18 @@ public class LobbyController extends ControllerGuiInterface{
     @FXML
     private Button button;
 
+    /**
+     * @see ControllerGuiInterface#update()
+     */
     @Override
     public String getName() {
         return className;
     }
 
 
+    /**
+     * Initialize the pane and its elements, making it resizable
+     */
     @FXML
     public void initialize(){
         button.setDisable(false);
@@ -81,6 +90,9 @@ public class LobbyController extends ControllerGuiInterface{
         }
     }
 
+    /**
+     * @see ControllerGuiInterface#update()
+     */
     @Override
     public void update() {
         if(gui.getConnectionMex()!=null){
@@ -90,6 +102,9 @@ public class LobbyController extends ControllerGuiInterface{
         }
     }
 
+    /**
+     * Clear Screen
+     */
     private void clearScreen() {
         for(ImageView imageView: users.keySet()){
             imageView.setVisible(false);
@@ -98,6 +113,9 @@ public class LobbyController extends ControllerGuiInterface{
         labelnotify.setText("");
     }
 
+    /**
+     * Shows players images
+     */
     private void setPlayersImages() {
         int i=0;
         ArrayList<ImageView> imageViews= new ArrayList<>(users.keySet());
@@ -109,6 +127,9 @@ public class LobbyController extends ControllerGuiInterface{
         }
     }
 
+    /**
+     * Set label after each notification
+     */
     private void setLableNotify() {
         String roomName= GUI.client.getRoomName();
         if(firstIN){
@@ -128,6 +149,9 @@ public class LobbyController extends ControllerGuiInterface{
 
     }
 
+    /**
+     * Close the program
+     */
     public void Disconnect() {
         AlertBox box= new AlertBox("Disconnessione", disconnectNotify);
         Button button= new Button("Conferma");

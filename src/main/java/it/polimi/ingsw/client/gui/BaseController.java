@@ -327,6 +327,9 @@ public class BaseController  extends ControllerGuiInterface{
         gui.activate(BaseMeController.className);
     }
 
+    /**
+     * Check buttons and set disable and not visible according to other pane parameters
+     */
     private void checkButtons(){
         int index = gui.getModel().getPlayerIndex(getPlayer());
         if(index==0) {

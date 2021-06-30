@@ -309,6 +309,7 @@ public class BaseMeController extends BaseController{
     //private checkButton
 
     /**
+     * Check buttons and set disable and not visible according to other pane parameters
      *
      * @param base of type boolean, true if in base, false if in active production
      */
