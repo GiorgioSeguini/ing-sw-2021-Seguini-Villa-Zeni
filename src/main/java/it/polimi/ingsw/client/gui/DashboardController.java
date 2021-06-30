@@ -184,14 +184,13 @@ public class DashboardController extends ControllerGuiInterface{
         }
     }
 
-    public void onMouseClicked(MouseEvent mouseEvent) {
-        ((ImageView) mouseEvent.getSource()).setId("imageViewClicked");
+    public void  onMouseClicked(MouseEvent mouseEvent) {
         int index = 0;
         for(int i=0; i<imageViews.length; i++) {
             if (mouseEvent.getSource().equals(imageViews[i]))
                 index = i;
         }
-        if(new MoveBuyDevCard(gui.getModel().getMyID()).canPerform(gui.getModel())&&gui.getModel().getDashboard().isSomethingBuyable(gui.getModel())) {
+        if(new MoveBuyDevCard(gui.getModel().getMyID()).canPerform(gui.getModel()) && gui.getModel().getDashboard().isSomethingBuyable(gui.getModel())) {
             if (!chosen[index]) {
                 choice.add(gui.getModel().getDashboard().getTopDevCard(ColorDevCard.values()[index % 4], Level.values()[index / 4]).getId());
                 ((ImageView) mouseEvent.getSource()).setId("imageViewClicked");

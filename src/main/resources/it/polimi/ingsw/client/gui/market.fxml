@@ -29,13 +29,13 @@
         </ImageView>
     </AnchorPane>
     <Button fx:id="marketMoveConfirm" mnemonicParsing="false" onAction="#MarketMoveConfirm" text="Compra dal mercato"
-            GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+            GridPane.columnIndex="1" GridPane.rowIndex="1" styleClass="baseButton"/>
     <Button fx:id="returnback" mnemonicParsing="false" onAction="#returnBack" text="Torna indietro"
-            GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+            GridPane.columnIndex="2" GridPane.rowIndex="1" styleClass="baseButton"/>
     <Button fx:id="confirm" mnemonicParsing="false" onAction="#confirm" text="Conferma" GridPane.columnIndex="1"
-            GridPane.rowIndex="4"/>
+            GridPane.rowIndex="4" styleClass="baseButton"/>
     <Label fx:id="infos" text="Hai scelto di comprare dal mercato! Premi su una freccia per scegliere le risorse."
-           wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
-    <Label fx:id="chose" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
-    <Label fx:id="whites" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="4"/>
+           wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2" styleClass="baseLabel"/>
+    <Label fx:id="chose" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3" styleClass="baseButton"/>
+    <Label fx:id="whites" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="4" styleClass="baseLabel"/>
 </GridPane>

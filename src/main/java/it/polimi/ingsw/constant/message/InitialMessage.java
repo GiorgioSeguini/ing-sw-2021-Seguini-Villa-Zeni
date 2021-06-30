@@ -2,8 +2,11 @@ package it.polimi.ingsw.constant.message;
 
 import it.polimi.ingsw.client.Client;
 import it.polimi.ingsw.client.modelClient.GameClient;
+import it.polimi.ingsw.client.modelClient.LeaderCardClient;
+import it.polimi.ingsw.constant.enumeration.LeaderStatus;
 import it.polimi.ingsw.constant.model.Game;
 import it.polimi.ingsw.constant.model.LeaderCard;
+import it.polimi.ingsw.constant.model.Player;
 
 import java.util.ArrayList;
 
@@ -47,6 +50,18 @@ public class InitialMessage implements Message{
         simpleGame.setMyID(yourID);
         client.setRoomName(roomName);
         simpleGame.setLeaderCards(leaderCards);
+        for(Player p : simpleGame.getPlayers()){
+            if(p.getID()!=yourID){
+                ArrayList<LeaderCard> cards = new ArrayList<>();
+                if(p.getPersonalBoard().getLeaderCards()  != null) {
+                    for (LeaderCard card : p.getPersonalBoard().getLeaderCards()) {
+                        if (card.getStatus() == LeaderStatus.onHand)
+                            cards.add(card);
+                    }
+                }
+                p.getPersonalBoard().setLeaderCards(cards);
+            }
+        }
     }
 
     /**

@@ -121,7 +121,7 @@ public class BaseMeController extends BaseController{
     public void update() {
         super.setPlayer(gui.getModel().getMe());
         super.internalUpdate();
-        String text = "";
+        String text = "Stanza:" + GUI.client.getRoomName() + "\n";
         if(gui.getModel().isMyTurn()){
             text += "E' il tuo turno\n";
             text += gui.getModel().getMe().getStatus().getTextForMe();
@@ -399,6 +399,7 @@ public class BaseMeController extends BaseController{
         if(!gui.getModel().isMyTurn()){
             for(Button b : leaderButton) {
                 b.setDisable(true);
+                b.setVisible(false);
             }
         }
     }
