@@ -2,6 +2,12 @@
 
 # Versione Italiana
 
+## Il gioco
+Questo repo contiene una versione **Java** del gioco [*Maestri del rinascimento*](http://www.craniocreations.it/prodotto/masters-of-renaissance/). Il progetto è stato sviluppato durante l'anno 2020/21 per il corso di **Ingegneria del Software** al Politecnico di Milano, come parte finale di valutazione per il conseguimento della laurea triennale in Ingegneria Informatica. Gli sviluppatori sono stati:
+  * [William Zeni](https://github.com/williamzeni)
+  * [Giorgio Seguini](https://github.com/GiorgioSeguini)
+  * [Fabio Villa](https://github.com/fabiovillaa)
+  
 ## Installazione
 Per avviare il gioco è necessario scaricare [JavaSE 15](https://www.oracle.com/it/java/technologies/javase-downloads.html) (o versioni superiori).
 Il giocatore che creerà la partita, per poter hostare il server, può decidere di installare [ngrok] (https://ngrok.com/), sebbene siano disponibili altre modalità che la guida non coprirà.
@@ -43,17 +49,26 @@ Region: United States (us)
 Web Interface: http://127.0.0.1:4040
 Forwarding:  tcp://4.tcp.ngrok.io:11387 -> localhost:12345                                              
 ```
-Di conseguenza, **4.tcp.ngrok.io** sarà l'ADDRESS mentre **11387** sarà la porta.
+Di conseguenza, **4.tcp.ngrok.io** sarà l'indirizzo mentre **11387** sarà la porta.
 
 Di default il client aprirà la parte grafica, tuttavia è possibile giocare via linea di comando attraverso l'aggiunta del parametro `cli`
 ```bash
 java -jar CLIENT_C39.jar ADDRESS PORT cli
 ```
 
-##Come giocare
+## Come giocare
 Le modalità di inizio partita possono essere tre: la prima consiste in una partita privata nella quale un utente può creare una stanza e tutti gli altri giocatori possono connettersi; la seconda consiste nel poter giocare online con qualsiasi utente connesso al server (questa modalità avrebbe senso se le coordinate del server fossero pubbliche), basterà difatto solo identificarsi con un nome e inserirsi in una partia da un massimo di 4 giocatori; la terza non necessità di un server, ma si può giocare solo da soli. 
 
-Le regole del gioco 
+Le regole del gioco italiane si trovano all'interno del repository [qui](https://github.com/GiorgioSeguini/ing-sw-2021-Seguini-Villa-Zeni/blob/master/Lorenzo_Cardgame_Rules_ITA_small-3.pdf)
+
+Nota bene: è sempre possibile riconettersi ad una partita in corso se si memorizzano il proprio `nickname` e il nome della `room`.
+
+## Tools
+Per la realizzazione del progetto sono stati utilizzati :
+ * [StarUML](http://staruml.io) - UML Diagram
+ * [Maven](https://maven.apache.org/) - Dependency Management
+ * [IntelliJ](https://www.jetbrains.com/idea/) - IDE
+ * [JavaFX](https://openjfx.io) - Graphical Framework
 
 
 ## Risultati dei test
