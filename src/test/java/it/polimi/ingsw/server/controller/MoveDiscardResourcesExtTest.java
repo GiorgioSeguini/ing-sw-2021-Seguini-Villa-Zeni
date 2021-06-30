@@ -60,6 +60,23 @@ public class MoveDiscardResourcesExtTest {
     }
 
     @Test
+    public void singleGAmeTest(){
+        ArrayList<PlayerExt> players= new ArrayList<>();
+        GameExt game;
+        PlayerExt player1= new PlayerExt("pippo");
+        players.add(player1);
+
+        game= new GameExt(players, new MarketExt(Starter.MarblesParser()), new DashboardExt(Starter.DevCardParser()),Starter.TokensParser(),Starter.LeaderCardsParser());
+
+        game.setStatus(GameStatus.Running);
+        game.getCurrPlayer().getConverter().setResources(new NumberOfResources(0,1,1,1));
+        MoveDiscardResourcesExt moveDiscardResourcesExt = new MoveDiscardResourcesExt(game.getCurrPlayer().getID());
+        moveDiscardResourcesExt.setToDiscard(new NumberOfResources(0,1,1,0));
+        moveDiscardResourcesExt.performMove(game);
+        assertEquals(2, game.getSoloGame().getFaithTrack().getFaithPoints());
+    }
+
+    @Test
     public void GetClassNameTest() {
         ArrayList<PlayerExt> players= new ArrayList<>();
         GameExt game;

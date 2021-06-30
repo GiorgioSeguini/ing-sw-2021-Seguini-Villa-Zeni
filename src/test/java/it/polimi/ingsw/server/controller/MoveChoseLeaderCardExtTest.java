@@ -44,6 +44,7 @@ public class MoveChoseLeaderCardExtTest {
         assertFalse(move.canPerformExt(game));
         game.setStatus(GameStatus.Initial);
         MoveChoseLeaderCardsExt move2= new MoveChoseLeaderCardsExt(players.get(1).getID());
+        game.setIndex(game.getPlayerIndex(players.get(1)));
         ids.clear();
         ids.add(cards.get(0).getId());
         cards.remove(0);

@@ -9,6 +9,12 @@ import javafx.scene.control.Label;
 
 import java.util.ArrayList;
 
+/**
+ * The type White controller. Pane to select how to convert white marbles bought from the market if more than one option is available
+ * If a player has active two leader card, both with the ability to convert a white marble into a resources, each type one is bought she must chose between the two option.
+ * If player has just one leader card active with the ability to convert a white marble into a resources this option is forced, so this pane will not been shown
+ * Extends Intermediate Controller
+ */
 public class WhiteController extends IntermediateController{
 
     public static final String className = "whiteConversion";
@@ -18,12 +24,18 @@ public class WhiteController extends IntermediateController{
     @FXML
     private Label label;
 
+    /**
+     * Initialize the pane and its elements, making it resizable
+     */
     @Override
     public void initialize(){
         super.initialize();
         GUI.fixLabels(depots, DEPOTS_HEIGHT, new Label[]{label}, LABEL_X, LABEL_Y);
     }
 
+    /**
+     * @see ControllerGuiInterface#update()
+     */
     @Override
     public void update() {
         super.update();
@@ -40,6 +52,11 @@ public class WhiteController extends IntermediateController{
         checkConfirm();
     }
 
+    /**
+     * Send a MoveWhite to server with the values taken from the choiceBoxes
+     *
+     * @param actionEvent the action event
+     */
     @Override
     public void onAction(ActionEvent actionEvent) {
         MoveWhiteConversion move = new MoveWhiteConversion(gui.getModel().getMyID());
@@ -56,10 +73,18 @@ public class WhiteController extends IntermediateController{
         gui.sendMove(move);
     }
 
+    /**
+     * Box action. Just check if confirm button can be enable
+     *
+     * @param actionEvent the action event
+     */
     public void boxAction(ActionEvent actionEvent) {
         checkConfirm();
     }
 
+    /**
+     * Check buttons and set disable and not visible according to other pane parameters
+     */
     private void checkConfirm() {
         int total =0;
         for(ChoiceBox<Integer> box : boxes){
@@ -70,7 +95,9 @@ public class WhiteController extends IntermediateController{
         confirm.setDisable(total != gui.getModel().getMe().getConverter().getWhite());
     }
 
-
+    /**
+     * @see ControllerGuiInterface#getName()
+     */
     @Override
     public String getName() {
         return className;

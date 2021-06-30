@@ -9,6 +9,11 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+/**
+ * The type Store resources controller. This pane allows player to discard resources.
+ * After player buy something at the market she must declare if she wants to discard some of the new Resources or she keeps everything(if possible)
+ * This move type is mandatory after player buy something at the market
+ */
 public class StoreResourcesController extends IntermediateController{
     public static final String className = "store";
 
@@ -22,6 +27,9 @@ public class StoreResourcesController extends IntermediateController{
     @FXML
     private Label label;
 
+    /**
+     * Initialize the pane and its elements, making it resizable
+     */
     @Override
     @FXML
     public void initialize(){
@@ -43,6 +51,9 @@ public class StoreResourcesController extends IntermediateController{
         label.setText("Hai comprato \nle seguenti risorse: ");
     }
 
+    /**
+     * @see ControllerGuiInterface#update()
+     */
     @Override
     public void update() {
         super.update();
@@ -53,11 +64,19 @@ public class StoreResourcesController extends IntermediateController{
         gui.printResources(numberRes, res);
     }
 
+    /**
+     * @see ControllerGuiInterface#getName()
+     */
     @Override
     public String getName() {
         return className;
     }
 
+    /**
+     * Send a MoveDiscardResources to server with the values taken from the choiceBoxes
+     *
+     * @param actionEvent the action event
+     */
     public void onAction(ActionEvent actionEvent) {
         NumberOfResources resources = new NumberOfResources();
         for(ResourceType type : ResourceType.values()){

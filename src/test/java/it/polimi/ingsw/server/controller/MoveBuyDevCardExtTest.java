@@ -1,6 +1,7 @@
 package it.polimi.ingsw.server.controller;
 
 import it.polimi.ingsw.constant.enumeration.*;
+import it.polimi.ingsw.constant.message.PlayerMessage;
 import it.polimi.ingsw.constant.model.NumberOfResources;
 import it.polimi.ingsw.server.model.*;
 import it.polimi.ingsw.server.model.exception.UnableToFillException;
@@ -94,6 +95,11 @@ public class MoveBuyDevCardExtTest {
         players.get(1).getDepots().addResourcesFromMarket(card.getCost());
 
         move.setIndexCardToBuy(card.getId());
+        move.setPos(5);
+        move.performMove(game);
+        assertEquals(ErrorMessage.BadChoice, game.getPlayerFromID(players.get(1).getID()).getErrorMessage());
+        assertEquals(card.getCost(),  game.getPlayerFromID(players.get(1).getID()).getDepots().getResources());
+
         move.setPos(0);
 
         move.performMove(game);

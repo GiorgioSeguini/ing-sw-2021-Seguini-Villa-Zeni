@@ -8,6 +8,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 
+/**
+ * The type Public login controller.Show a pane that allows user to join a public room
+ */
 public class PublicLoginController extends ControllerGuiInterface{
 
     public static final String className = "publicLogin";
@@ -15,24 +18,33 @@ public class PublicLoginController extends ControllerGuiInterface{
     private Integer number;
 
     @FXML
-    TextField name_lable;
+    private TextField name_lable;
     @FXML
-    ChoiceBox<Integer> number_lable;
+    private ChoiceBox<Integer> number_lable;
     @FXML
-    Button button;
+    private Button button;
     @FXML
-    Button ComeBack;
+    private Button ComeBack;
 
+    /**
+     * Set Players name
+     */
     public void setName(){
         this.name=name_lable.getText();
         this.button.setDisable(notCanActive());
     }
 
+    /**
+     * Set number of players in the game
+     */
     public void setNumber(){
         this.number=number_lable.getValue();
         this.button.setDisable(notCanActive());
     }
 
+    /**
+     * Send a JoinWaitingListSetupper to the server with the information of others fields in the pane
+     */
     public void start() {
         if(!GUI.client.setOnline()){
             AlertBox box = new AlertBox("Errore di rete", "Oh no! Non siamo riusciti a contattare il server\n Riprova più tardi o controlla la tua connessione internet");
@@ -43,10 +55,17 @@ public class PublicLoginController extends ControllerGuiInterface{
         GUI.client.sendSetupper(new JoinWaitngListSetupper(name, number));
     }
 
+    /**
+     * Check if confirm but must set disable
+     * @return true if confirm button must be disable, false otherwise
+     */
     private boolean notCanActive(){
         return name == null || number == null;
     }
 
+    /**
+     * @see ControllerGuiInterface#update()
+     */
     @Override
     public void update() {
         name=null;
@@ -54,11 +73,20 @@ public class PublicLoginController extends ControllerGuiInterface{
         button.setDisable(notCanActive());
     }
 
+    /**
+     * @see ControllerGuiInterface#getName()
+     */
     @Override
     public String getName() {
         return className;
     }
 
+    /**
+     * Exit from the scene
+     * Active Initial Controller
+     *
+     * @param event the action event
+     */
     public void comeBack(ActionEvent event) {
         gui.activate(StartController.className);
     }
