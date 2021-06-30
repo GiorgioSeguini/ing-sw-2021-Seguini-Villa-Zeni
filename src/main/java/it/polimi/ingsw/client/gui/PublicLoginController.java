@@ -1,6 +1,7 @@
 package it.polimi.ingsw.client.gui;
 
 import it.polimi.ingsw.constant.setupper.JoinWaitngListSetupper;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -33,7 +34,11 @@ public class PublicLoginController extends ControllerGuiInterface{
     }
 
     public void start() {
-        GUI.client.setOnline();
+        if(!GUI.client.setOnline()){
+            AlertBox box = new AlertBox("Errore di rete", "Oh no! Non siamo riusciti a contattare il server\n Riprova più tardi o controlla la tua connessione internet");
+            box.display();
+            Platform.exit();
+        };
         //DataOutputStream socket = GUI.client.socketOut;
         GUI.client.sendSetupper(new JoinWaitngListSetupper(name, number));
     }
