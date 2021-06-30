@@ -31,24 +31,44 @@ public class SocketClientConnection implements  Observable<String>, ClientConnec
     private boolean active = true;
     private final boolean standby= false;
 
+    /**
+     * Default constructor.
+     * @param socket
+     * @param server
+     */
     public SocketClientConnection(Socket socket, Server server) {
         this.socket = socket;
         this.server = server;
     }
 
+    /**
+     * @return true if the connection is active.
+     */
     private synchronized boolean isActive(){
         return active;
     }
 
+    /**
+     * Sets the player nickname
+     * @param nickName
+     */
     public void setNickName(String nickName) {
         this.nickName = nickName;
     }
 
+    /**
+     * Sets the room the connection is inside of.
+     * @param room
+     */
     public void setRoom(Room room) {
         this.room = room;
     }
 
-
+    /**
+     * @see ClientConnection
+     * @param json
+     */
+    @Override
     public void send(String json) {
             try {
                 out.writeUTF(json);
@@ -59,21 +79,34 @@ public class SocketClientConnection implements  Observable<String>, ClientConnec
 
     }
 
+    /**
+     * @see ClientConnection
+     */
     @Override
     public synchronized void closeConnection() {
         try {
-            //send("Connection closed");
             socket.close();
         } catch (IOException e) {
             System.err.println("Error when closing socket!");
         }
     }
 
+    /**
+     * Set if a connection is active.
+     * @param active
+     */
     public void setActive(boolean active) {
         this.active = active;
     }
 
-    public void close(String playerName, Room room) {
+    /**
+     * Close a connection. Finds the room and removes the player from it.
+     * If theres no more player in the room removes the room from the server.
+     * Then, close the socket.
+     * @param playerName
+     * @param room
+     */
+    private void close(String playerName, Room room) {
         System.out.println("Deregistering client...");
         if(room!=null && server.findRoom(room.getRoomName())){
             if(room.disconnectConnection(playerName)){
@@ -84,6 +117,14 @@ public class SocketClientConnection implements  Observable<String>, ClientConnec
         closeConnection();
     }
 
+    /**
+     * When a socket runs, it stays in waiting for a Setupper.
+     * If the Setupper is not accepted send a Reject Message and keeps listening.
+     * If the Setupper is accepted sends an Accept Message and makes the Setupper Action,
+     * then it stays in waiting for the next message (Should be a move type or a disconnection Setupper).
+     * When a connection is set and recives a new Message it calls the notify.
+     * If a connection is not Active for some reason or throws an exception calls the close method.
+     */
     @Override
     public void run() {
         DataInputStream in;
@@ -121,6 +162,10 @@ public class SocketClientConnection implements  Observable<String>, ClientConnec
     //Observable implementation
     private transient final List<Observer<String>> observers = new ArrayList<>();
 
+    /**
+     * @see ClientConnection
+     * @param observer
+     */
     @Override
     public void addObserver(Observer<String> observer){
         synchronized (observers) {
@@ -128,6 +173,10 @@ public class SocketClientConnection implements  Observable<String>, ClientConnec
         }
     }
 
+    /**
+     * For all observers calls the update method.
+     * @param message
+     */
     @Override
     public void notify(String message) {
         synchronized (observers) {
@@ -137,6 +186,12 @@ public class SocketClientConnection implements  Observable<String>, ClientConnec
         }
     }
 
+    /**
+     * If a setupper can set an action, makes the action.
+     * Otherwise sends a RejectMessage.
+     * Should be called just for a Disconnection Setupper.
+     * @param setupper
+     */
     public void handleSetupper(Settable setupper) {
         if(setupper.canSetAction(server,(SetUp) setupper)){
             SetUp set= (SetUp) setupper;

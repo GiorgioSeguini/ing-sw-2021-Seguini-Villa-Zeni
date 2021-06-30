@@ -17,19 +17,24 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Server class. This class menages all the aspectes for connections, disconnections, reconnections, and creating games.
+ */
 @SuppressWarnings("ALL")
-public class Server {
+public class Server implements Runnable{
 
     private static final int PORT = 12345;
     private static final int NUMOFPOSSIBLEGAMES= 4;
     private final ServerSocket serverSocket;
-    //private final ArrayList<HashMap<String, ClientConnection>> waitingConnections = new ArrayList<>();
     private final ArrayList<Room>  defaultRooms= new ArrayList<>();
-    //private final Map<ClientConnection, ClientConnection> playingConnection = new HashMap<>();
     private final ArrayList<Room> rooms= new ArrayList<>();
     private final ArrayList<Room> activeRooms= new ArrayList<>();
     private int id=1;
 
+    /**
+     * Default constructor.
+     * @throws IOException
+     */
     public Server() throws IOException {
         this.serverSocket = new ServerSocket(PORT);
         for(int i=1; i<=NUMOFPOSSIBLEGAMES;i++){
@@ -37,14 +42,25 @@ public class Server {
         }
     }
 
-    /**Returns true if it finds the name in the specified defaultRoom (form 1 to 4)*/
+
+    /**
+     * Method that finds a player in a DefaultRoom for public game
+     * @param playerName
+     * @param listIndex
+     * @return true if it finds the name in the specified defaultRoom (form 1 to 4)
+     */
     public synchronized boolean findName(String playerName, int listIndex){
         if(listIndex<5 && listIndex>0)
             return defaultRooms.get(listIndex-1).findPlayer(playerName);
         throw new IllegalArgumentException();
     }
 
-    /**Return true if it finds the room in the list of rooms or active rooms*/
+
+    /**
+     * Tries to find the room by its name in all room's list.
+     * @param name
+     * @return true if it finds the room in the list of rooms or active rooms
+     */
     public synchronized boolean findRoom(String name){
         for(Room x: rooms ){
             if(x.getRoomName().equals(name)){
@@ -65,6 +81,11 @@ public class Server {
         return false;
     }
 
+    /**
+     *Tries to find the room by its name in the active room list.
+     * @param name
+     * @return true if it finds the room in the active list
+     */
     public synchronized boolean findActiveRoom(String name){
         for(Room x: activeRooms){
             if(x.getRoomName().equals(name)){
@@ -74,15 +95,22 @@ public class Server {
         return false;
     }
 
-    //Wait for another player
-    public synchronized boolean lobby(ClientConnection c, String name, int numofplayer){
+    /**
+     *  Methods that menage the connection of a public game. It puts a player into the specified default room.
+     *  If the room is full creates a new room with a never used name and copys the content in the new Room,
+     *  then starts the game.
+     * @param c
+     * @param name
+     * @param numofplayer
+     * @throws IllegalArgumentException if number of players one wants to play with is not in the range 1-4
+     */
+    public synchronized void lobby(ClientConnection c, String name, int numofplayer){
 
         if(numofplayer<1 || numofplayer>4){
             throw  new IllegalArgumentException();
         }
 
         defaultRooms.get(numofplayer-1).addConnection(name,c);
-        //waitingConnections.get(numofplayer-1).put(name,c);
 
         if(defaultRooms.get(numofplayer-1).isFull()){
             String roomName;
@@ -96,9 +124,14 @@ public class Server {
             addActiveRoom(room);
             defaultRooms.get(numofplayer-1).clear();
         }
-        return true;
     }
 
+    /**
+     * Methods that instances the game with its network structure. Gets the players from the room
+     * and creates their Views. Then populate the game, create a controller, adds the oberservers
+     * and sends the initial message.
+     * @param room
+     */
     public void startGame(Room room){
         ArrayList<PlayerExt> players=getPlayersforGame(room.getConnections());
         GameExt game = null;
@@ -119,6 +152,12 @@ public class Server {
         room.setPlayersview(playersView);
     }
 
+    /**
+     * Makes the game obervable from all the Views.
+     * @param playersView
+     * @param game
+     * @param controller
+     */
     private void addObserverGame(ArrayList<View> playersView, GameExt game, Controller controller) {
         for(View view : playersView){
             //add model - view links
@@ -126,6 +165,12 @@ public class Server {
         }
     }
 
+    /**
+     * Makes Market, Dashboard, Game, observable from the View and makes th View observable from Controller.
+     * @param view
+     * @param game
+     * @param controller
+     */
     public static void instanceSingleView(View view, GameExt game, Controller controller){
         game.getMarketTray().addObserver(view);
         game.getDashboard().addObserver(view);
@@ -143,6 +188,12 @@ public class Server {
         view.addObserver(controller);
     }
 
+    /**
+     * Creates a View for all the players.
+     * @param waitingConnection
+     * @param players
+     * @return an Hashmap<String, View> with keys the players and values their View
+     */
     private HashMap<String,View> instanceViews(Map<String, ClientConnection> waitingConnection, ArrayList<Player> players) {
         HashMap <String, View> playersView =new HashMap<>();
         for(Player player: players){
@@ -151,24 +202,11 @@ public class Server {
         return playersView;
     }
 
-    private ArrayList<ClientConnection> getConnectionforGame(Map<String, ClientConnection> waitingConnection, ArrayList<Player> players) {
-        ArrayList<ClientConnection> connections= new ArrayList<>();
-        for (Player player: players){
-            connections.add(waitingConnection.get(player.getUserName()));
-        }
-        return connections;
-    }
-
-    private void makeConnection(ArrayList<ClientConnection> connections) {
-        for(int j=0;j<connections.size();j++){
-            for (int k=0;k<connections.size();k++){
-                if(j!=k){
-                    //playingConnection.put(connections.get(j),connections.get(k));
-                }
-            }
-        }
-    }
-
+    /**
+     * Takes the nickaname and creates its player for all the players in the game.
+     * @param waitingConnection
+     * @return an ArrayList<PlayerExt>
+     */
     private ArrayList<PlayerExt> getPlayersforGame(Map<String, ClientConnection> waitingConnection) {
         ArrayList<PlayerExt> players= new ArrayList<>();
         ArrayList<String> keys = new ArrayList<>(waitingConnection.keySet());
@@ -178,7 +216,11 @@ public class Server {
         return players;
     }
 
-
+    /**
+     * Methods that keeps listening for a new Connection.
+     * If a connection is taken creates a new Thread for it.
+     */
+    @Override
     public void run(){
         while(true){
             try {
@@ -191,15 +233,26 @@ public class Server {
         }
     }
 
+    /**
+     * Simply adds a Room to the room list.
+     * @param room
+     */
     public void addRoom(Room room) {
         rooms.add(room);
         System.out.println(room);
     }
 
+    /**
+     * Simply adds a Room to the active room list.
+     * @param room
+     */
     public void addActiveRoom(Room room){
         activeRooms.add(room);
     }
-
+    /**
+     * Simply removes a Room from all room list.
+     * @param room
+     */
     public void removeRoom(Room room){
         if(findActiveRoom(room.getRoomName())){
             activeRooms.remove(room);
@@ -209,11 +262,11 @@ public class Server {
         }
     }
 
-    public void removeActiveRooms(Room room){
-        activeRooms.remove(room);
-    }
-
-
+    /**
+     * Find a room in all the room list by its name.
+     * @param roomName
+     * @return a Room if can find it or null if it doesn't.
+     */
     public synchronized Room getRoomFromName(String roomName){
         for(Room room: rooms){
             if(room.getRoomName().equals(roomName)){
