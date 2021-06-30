@@ -2,6 +2,7 @@ package it.polimi.ingsw.client.gui;
 
 import it.polimi.ingsw.constant.setupper.CreateRoomSetupper;
 import it.polimi.ingsw.constant.setupper.LinkToRoomSetupper;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -72,7 +73,11 @@ public class PrivateLoginController extends ControllerGuiInterface{
     }
 
     public void start(ActionEvent event) {
-        GUI.client.setOnline();
+        if(!GUI.client.setOnline()){
+            AlertBox box = new AlertBox("Errore di rete", "Oh no! Non siamo riusciti a contattare il server\n Riprova più tardi o controlla la tua connessione internet");
+            box.display();
+            Platform.exit();
+        }
         if (addinroom){
             GUI.client.sendSetupper(new LinkToRoomSetupper(name, roomName));
         }
