@@ -12,10 +12,20 @@ import it.polimi.ingsw.server.network.SocketClientConnection;
 import it.polimi.ingsw.server.observer.Observer;
 import it.polimi.ingsw.server.parse.Starter;
 
+/**
+ * Remote View class.
+ */
 public class RemoteView extends View {
 
+    /**
+     * Private internal class that menages the new message received from the client.
+     */
     private class MessageReceiver implements Observer<String> {
 
+        /**
+         * Tries to perform a MoveType. If it cannot tryes to handle a Setupper.
+         * @param info
+         */
         @Override
         public void update(String info) {
             System.out.println("Received: " + info);
@@ -33,18 +43,30 @@ public class RemoteView extends View {
 
     private ClientConnection clientConnection;
 
-
+    /**
+     * Default constructor. It makes the ClientConnection observable for the internal private class.
+     * @param player
+     * @param c
+     */
     public RemoteView(Player player, ClientConnection c) {
         super(player);
         this.clientConnection = c;
         c.addObserver(new MessageReceiver());
     }
 
+    /**
+     * Sets a new clientConnection. It makes the ClientConnection observable for the internal private class.
+     * @param clientConnection
+     */
     public void setClientConnection(ClientConnection clientConnection) {
         this.clientConnection = clientConnection;
         clientConnection.addObserver(new MessageReceiver());
     }
 
+    /**
+     * Sends a class Message to the client to updates its model. When the game is offline notifies a MoveAutoPlay
+     * @param message
+     */
     @Override
     public void update(Message message){
         if(!this.isOffline()){

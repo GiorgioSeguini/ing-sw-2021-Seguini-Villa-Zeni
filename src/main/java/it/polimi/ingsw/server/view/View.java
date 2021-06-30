@@ -17,32 +17,52 @@ import java.util.List;
 public abstract class View implements Observable<Performable>, Observer<Message> {
 
     private final Player player;
-
     private boolean offline = false;
 
+    /**
+     * @return true if it's offline
+     */
     public boolean isOffline() {
         return offline;
     }
 
+    /**
+     * It sets the View offline and notify an MoveAutoPlay
+     * @param offline
+     */
     public void setOffline(boolean offline) {
         this.offline = offline;
         notify(new MoveAutoPlay(player.getID()));
     }
 
+    /**
+     * Default constructor.
+     * @param player
+     */
     protected View(Player player){
         this.player = player;
     }
 
+    /**
+     * @return The view's player.
+     */
     protected Player getPlayer(){
         return player;
     }
 
-    /*protected abstract void showMessage(Object message);*/
-
+    /**
+     * Handles a Movetype. It calls the notify
+     * @param x
+     */
     void handleMove(Performable x) {
         notify(x);
     }
 
+    /**
+     * Sends the initial Message.
+     * @param game
+     * @param roomName
+     */
     public void sendInitialMessage(GameExt game, String roomName){
         if(game.getPlayerIndex(this.player)==-1)
             return;
