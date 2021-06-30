@@ -3,14 +3,26 @@ package it.polimi.ingsw.client.gui;
 import it.polimi.ingsw.constant.enumeration.ResourceType;
 import it.polimi.ingsw.constant.move.MoveWhiteConversion;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 
 import java.util.ArrayList;
 
 public class WhiteController extends IntermediateController{
 
     public static final String className = "whiteConversion";
+    private static final Double[] LABEL_X = {-300.0};
+    private static final Double[] LABEL_Y = {-200.0};
 
+    @FXML
+    private Label label;
+
+    @Override
+    public void initialize(){
+        super.initialize();
+        GUI.fixLabels(depots, DEPOTS_HEIGHT, new Label[]{label}, LABEL_X, LABEL_Y);
+    }
 
     @Override
     public void update() {
@@ -24,6 +36,7 @@ public class WhiteController extends IntermediateController{
                 fillBox(type, 0);
             }
         }
+        label.setText("Scegli come convertire " + gui.getModel().getMe().getConverter().getWhite() + " biglie bianche");
         checkConfirm();
     }
 

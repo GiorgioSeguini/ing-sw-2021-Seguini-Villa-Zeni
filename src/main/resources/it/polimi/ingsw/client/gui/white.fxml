@@ -8,6 +8,7 @@
     <ImageView fx:id="depots" layoutX="220.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@../../../../../images/board/Depots.png" />
     </ImageView>
+    <Label fx:id="label" wrapText="true" styleClass="baseLabel"/>
     <GridPane fx:id="gridPane" layoutX="640.0" prefHeight="692.0" prefWidth="640.0">
         <columnConstraints>
             <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="5.0"/>

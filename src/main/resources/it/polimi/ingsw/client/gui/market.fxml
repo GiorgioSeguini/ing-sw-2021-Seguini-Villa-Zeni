@@ -36,6 +36,6 @@
             GridPane.rowIndex="4" styleClass="baseButton"/>
     <Label fx:id="infos" text="Hai scelto di comprare dal mercato! Premi su una freccia per scegliere le risorse."
            wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2" styleClass="baseLabel"/>
-    <Label fx:id="chose" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3" styleClass="baseButton"/>
+    <Label fx:id="chose" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3" styleClass="baseLabel"/>
     <Label fx:id="whites" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="4" styleClass="baseLabel"/>
 </GridPane>

@@ -55,7 +55,7 @@ public class InitialMessage implements Message{
                 ArrayList<LeaderCard> cards = new ArrayList<>();
                 if(p.getPersonalBoard().getLeaderCards()  != null) {
                     for (LeaderCard card : p.getPersonalBoard().getLeaderCards()) {
-                        if (card.getStatus() == LeaderStatus.onHand)
+                        if (card.getStatus() == LeaderStatus.Played)
                             cards.add(card);
                     }
                 }

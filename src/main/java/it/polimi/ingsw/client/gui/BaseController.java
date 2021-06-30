@@ -197,6 +197,9 @@ public class BaseController  extends ControllerGuiInterface{
         }
 
         //devCard
+        for(ImageView devCard : devCards){
+            devCard.setImage(null);
+        }
         for(int i=0; i<3; i++){
             int j=getPlayer().getPersonalBoard().getPos(i).size() -1;
             int k = 0;

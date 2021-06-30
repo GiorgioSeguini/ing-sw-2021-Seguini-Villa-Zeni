@@ -151,6 +151,7 @@ public class BaseMeController extends BaseController{
 
         chosen.clear();
         checkButtons(true);
+        exitProduction(new ActionEvent());
     }
 
     /**
