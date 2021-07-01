@@ -1,4 +1,6 @@
 # ing-sw-2021-Seguini-Villa-Zeni
+![latest commit](https://img.shields.io/github/last-commit/GiorgioSeguini/ing-sw-2021-Seguini-Villa-Zeni?color=red)
+![latest release](https://img.shields.io/github/v/release/GiorgioSeguini/ing-sw-2021-Seguini-Villa-Zeni?color=green)
  * [Italian Version](#ITA)
  * [English Version](#ENG)
  
@@ -23,7 +25,7 @@ Questo repo contiene una versione **Java** del gioco [*Maestri del rinascimento*
 ## Funzionalità Implementate<a name="functionalitiesITA"></a>
 | Funzionalità | Stato |
 |:-----------------------|:------------------------------------:|
-| Regole Semplificate | [![GREEN](http://placehold.it/15/44bb44/44bb44)]() |
+| Regole Semplificate | [GREEN]]() |
 | Regole Complete | [![GREEN](http://placehold.it/15/44bb44/44bb44)]() |
 | Socket |[![GREEN](http://placehold.it/15/44bb44/44bb44)]() |
 | CLI | [![GREEN](http://placehold.it/15/44bb44/44bb44)]() |
