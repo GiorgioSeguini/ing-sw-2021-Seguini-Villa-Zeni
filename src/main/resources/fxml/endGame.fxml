@@ -21,8 +21,8 @@
     <rowConstraints>
         <RowConstraints minHeight="10.0" prefHeight="70.0" vgrow="ALWAYS"/>
         <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="ALWAYS"/>
-        <RowConstraints minHeight="10.0" prefHeight="250.0" vgrow="ALWAYS"/>
-        <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="ALWAYS"/>
+        <RowConstraints minHeight="10.0" prefHeight="200.0" vgrow="ALWAYS"/>
+        <RowConstraints minHeight="10.0" prefHeight="90.0" vgrow="ALWAYS"/>
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS"/>
     </rowConstraints>
     <ImageView fx:id="imageView1" fitHeight="250.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true"
@@ -33,13 +33,13 @@
                GridPane.columnIndex="5" GridPane.rowIndex="2"/>
     <ImageView fx:id="imageView4" fitHeight="250.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true"
                GridPane.columnIndex="7" GridPane.rowIndex="2"/>
-    <Label fx:id="label1" prefHeight="40.0" prefWidth="130.0" wrapText="true" textAlignment="CENTER"
+    <Label fx:id="label1" prefHeight="150.0" prefWidth="130.0" wrapText="true" textAlignment="CENTER"
            GridPane.columnIndex="1" GridPane.rowIndex="3"/>
-    <Label fx:id="label2" prefHeight="40.0" prefWidth="130.0" wrapText="true" textAlignment="CENTER"
+    <Label fx:id="label2" prefHeight="150.0" prefWidth="130.0" wrapText="true" textAlignment="CENTER"
            GridPane.columnIndex="3" GridPane.rowIndex="3"/>
-    <Label fx:id="label3" prefHeight="40.0" prefWidth="130.0" wrapText="true" textAlignment="CENTER"
+    <Label fx:id="label3" prefHeight="150.0" prefWidth="130.0" wrapText="true" textAlignment="CENTER"
            GridPane.columnIndex="5" GridPane.rowIndex="3"/>
-    <Label fx:id="label4" prefHeight="40.0" prefWidth="130.0" wrapText="true" textAlignment="CENTER"
+    <Label fx:id="label4" prefHeight="150.0" prefWidth="130.0" wrapText="true" textAlignment="CENTER"
            GridPane.columnIndex="7" GridPane.rowIndex="3"/>
     <Label fx:id="label" prefHeight="150.0" prefWidth="200.0" wrapText="true" GridPane.columnIndex="3"
            GridPane.rowIndex="0"/>

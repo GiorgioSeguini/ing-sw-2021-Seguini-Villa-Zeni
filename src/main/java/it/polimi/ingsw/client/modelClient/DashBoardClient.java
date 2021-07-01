@@ -4,6 +4,7 @@ import it.polimi.ingsw.constant.enumeration.ColorDevCard;
 import it.polimi.ingsw.constant.enumeration.Level;
 import it.polimi.ingsw.constant.model.Dashboard;
 import it.polimi.ingsw.constant.model.DevelopmentCard;
+import it.polimi.ingsw.constant.model.NumberOfResources;
 import it.polimi.ingsw.server.model.exception.OutOfResourcesException;
 
 import java.util.ArrayList;
@@ -39,7 +40,9 @@ public class DashBoardClient extends Dashboard {
         for(Level l : Level.values()){
             for(ColorDevCard c : ColorDevCard.values()){
                 try {
-                    game.getMe().getDepots().getResources().sub(dashBoard[l.ordinal()][c.ordinal()].getCost());
+                    NumberOfResources cost = dashBoard[l.ordinal()][c.ordinal()].getCost();
+                    cost.safe_sub(game.getMe().getDiscounted());
+                    game.getMe().getDepots().getResources().sub(cost);
                     return true;
                 } catch (OutOfResourcesException | NullPointerException ignored) {}
             }

@@ -243,7 +243,7 @@ public class BaseMeController extends BaseController{
             for(int i=0; i<2; i++){
                 if(actionEvent.getSource().equals(leaderCards[i])){
                     NumberOfResources input = new NumberOfResources().add(((LeaderCardClient)gui.getModel().getMe().getPersonalBoard().getLeaderCards().get(i)).getAbility().getResource(), 1);
-                    p = new ProductionPower(0, input, new NumberOfResources(), 0, 1);
+                    p = new ProductionPower(1, new NumberOfResources(), input, 0, 1);
                 }
             }
         }

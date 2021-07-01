@@ -50,9 +50,9 @@ public class DashboardController extends ControllerGuiInterface{
     private static final Double[] DEV_CARD_Y = {250.0, 250.0, 250.0};
     private static final Double DEV_CARD_HEIGHT = 700.0;
 
-    //discout ability
-    private static final Double[] DISCOUT_Y = {1169.0, 1169.0, 1283.0, 1283.0};
-    private static final Double[] DISCOUT_Y2 = {1169.0, 1169.0, 1169.0, 1169.0, 1283.0, 1283.0, 1283.0, 1283.0};
+    //discount ability
+    private static final Double[] DISCOUNT_Y = {1169.0, 1169.0, 1283.0, 1283.0};
+    private static final Double[] DISCOUNT_Y2 = {1169.0, 1169.0, 1169.0, 1169.0, 1283.0, 1283.0, 1283.0, 1283.0};
     private static final Double[] LABEL_X = {20.0};
     private static final Double[] LABEL_Y = {1100.0};
 
@@ -126,8 +126,8 @@ public class DashboardController extends ControllerGuiInterface{
         //discount
         imageArrayInitializer(anchorPane, imageDiscount);
         imageArrayInitializer(anchorPane, numberDiscount);
-        GUI.fixImages(imageViewDepots, BOARD_DEPOTS_HEIGHT, imageDiscount, STRONGBOX_X, DISCOUT_Y, RES_SIZE);
-        GUI.fixImages(imageViewDepots, BOARD_DEPOTS_HEIGHT, numberDiscount, STRONGBOX_X2, DISCOUT_Y2, RES_SIZE);
+        GUI.fixImages(imageViewDepots, BOARD_DEPOTS_HEIGHT, imageDiscount, STRONGBOX_X, DISCOUNT_Y, RES_SIZE);
+        GUI.fixImages(imageViewDepots, BOARD_DEPOTS_HEIGHT, numberDiscount, STRONGBOX_X2, DISCOUNT_Y2, RES_SIZE);
         GUI.fixLabels(imageViewDepots, BOARD_DEPOTS_HEIGHT, new Label[]{labelDiscount}, LABEL_X, LABEL_Y);
         anchorPane.getChildren().add(labelDiscount);
         labelDiscount.getStyleClass().clear();

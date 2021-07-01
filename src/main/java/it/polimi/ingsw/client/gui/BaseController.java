@@ -189,8 +189,10 @@ public class BaseController  extends ControllerGuiInterface{
         for(int i=0; i<3; i++) {
             if (getPlayer().getFaithTrack().getPopesFavor(i) == PopesFavorStates.FaceDown) {
                 popes[i].setImage(popesImage[i][0]);
+                popes[i].setVisible(true);
             } else if (getPlayer().getFaithTrack().getPopesFavor(i) == PopesFavorStates.FaceUp) {
                 popes[i].setImage(popesImage[i][1]);
+                popes[i].setVisible(true);
             } else {
                 popes[i].setVisible(false);
             }
