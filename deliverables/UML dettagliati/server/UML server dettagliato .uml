@@ -1,0 +1,2270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>C:/Users/fabio/IdeaProjects/GC39/src/main/java/it/polimi/ingsw/server</OriginalElement>
+  <nodes>
+    <node x="10920.70682953964" y="6321.0">it.polimi.ingsw.server.model.LorenzoSoloPlayerExt</node>
+    <node x="5428.1906922895105" y="1964.5">it.polimi.ingsw.server.model.DevelopmentCardExt</node>
+    <node x="11029.630897917217" y="11.5">it.polimi.ingsw.server.observer.Observer</node>
+    <node x="7416.600827107144" y="3978.5">it.polimi.ingsw.server.network.JoinWaitingListSetupperExt</node>
+    <node x="1704.483012719019" y="3956.0">it.polimi.ingsw.server.model.WhiteAbility</node>
+    <node x="1247.733012719019" y="442.5">it.polimi.ingsw.server.model.LeaderCardExt</node>
+    <node x="6042.059160440478" y="1964.5">it.polimi.ingsw.server.controller.Controller</node>
+    <node x="6841.638647721458" y="2178.0">it.polimi.ingsw.server.network.Room</node>
+    <node x="1761.1906922895105" y="173.0">it.polimi.ingsw.server.model.Ability</node>
+    <node x="1477.483012719019" y="3956.0">it.polimi.ingsw.server.model.DepotsAbility</node>
+    <node x="4853.1906922895105" y="1964.5">it.polimi.ingsw.server.parse.ProductionPowerExtSerializer</node>
+    <node x="5032.5" y="4507.0">it.polimi.ingsw.server.parse.Starter</node>
+    <node x="10339.059523809523" y="2288.0">it.polimi.ingsw.server.model.DashboardExt</node>
+    <node x="9232.184160440478" y="162.0">it.polimi.ingsw.server.model.RequirementsExt</node>
+    <node x="3406.940692289511" y="951.0">it.polimi.ingsw.server.controller.MoveAutoPlay</node>
+    <node x="2424.7434681509662" y="6126.0">it.polimi.ingsw.server.model.SoloActionTokens</node>
+    <node x="9150.771703195209" y="3923.0">it.polimi.ingsw.server.model.PersonalBoardExt</node>
+    <node x="7487.600827107144" y="3585.5">it.polimi.ingsw.server.network.Settable</node>
+    <node x="4142.4406922895105" y="3967.5">it.polimi.ingsw.server.controller.MoveBuyDevCardExt</node>
+    <node x="2162.309160440478" y="745.0">it.polimi.ingsw.server.controller.MoveChoseLeaderCardsExt</node>
+    <node x="10032.688369861877" y="1453.5">it.polimi.ingsw.server.network.ClientConnection</node>
+    <node x="10758.559523809523" y="184.5">it.polimi.ingsw.server.observer.Observable</node>
+    <node x="2190.483012719019" y="3967.0">it.polimi.ingsw.server.controller.MoveLeaderExt</node>
+    <node x="6087.833549432368" y="0.0">it.polimi.ingsw.server.model.exception.OutOfResourcesException</node>
+    <node x="6759.475827107144" y="465.0">it.polimi.ingsw.server.model.exception.ChoseResourcesException</node>
+    <node x="11448.021703195209" y="443.0">it.polimi.ingsw.server.model.MarketExt</node>
+    <node x="249.5" y="3956.0">it.polimi.ingsw.server.model.MoveShuffle</node>
+    <node x="5090.1906922895105" y="2365.5">it.polimi.ingsw.server.parse.DevCardExtSerializer</node>
+    <node x="8484.600827107144" y="3978.5">it.polimi.ingsw.server.network.DisconnectConnectionSetupperExt</node>
+    <node x="2439.483012719019" y="3956.0">it.polimi.ingsw.server.model.ProductionPowerPlusAbility</node>
+    <node x="7067.785134817633" y="487.0">it.polimi.ingsw.server.parse.RequirementsExtSerializer</node>
+    <node x="923.75" y="3945.0">it.polimi.ingsw.server.model.Discard2</node>
+    <node x="5474.368468150966" y="129.0">it.polimi.ingsw.server.model.WareHouseDepotsExt</node>
+    <node x="10853.059523809523" y="4888.0">it.polimi.ingsw.server.model.FaithTrackExt</node>
+    <node x="7772.600827107144" y="3978.5">it.polimi.ingsw.server.network.LinkToRoomSetupperExt</node>
+    <node x="1936.483012719019" y="3945.0">it.polimi.ingsw.server.model.DiscountAbility</node>
+    <node x="10742.688369861877" y="5598.0">it.polimi.ingsw.server.model.GameExt</node>
+    <node x="1380.3684681509658" y="4292.0">it.polimi.ingsw.server.parse.AbilitySerializer</node>
+    <node x="7014.888647721458" y="1953.0">it.polimi.ingsw.server.view.RemoteView</node>
+    <node x="8301.760632765701" y="1137.0">it.polimi.ingsw.server.view.View</node>
+    <node x="8507.434160440478" y="3243.0">it.polimi.ingsw.server.network.SocketClientConnection</node>
+    <node x="10942.688369861877" y="5204.0">it.polimi.ingsw.server.model.PlayerExt</node>
+    <node x="7142.350827107144" y="3585.0">it.polimi.ingsw.server.model.exception.HaveToChooseException</node>
+    <node x="9664.688369861877" y="410.0">it.polimi.ingsw.server.model.DepotsExt</node>
+    <node x="937.75" y="756.5">it.polimi.ingsw.server.parse.LeaderCardExtSerializer</node>
+    <node x="5220.218251349568" y="745.0">it.polimi.ingsw.server.controller.MoveWhiteConversionExt</node>
+    <node x="3140.440692289511" y="476.0">it.polimi.ingsw.server.controller.Performable</node>
+    <node x="10963.059523809523" y="3868.0">it.polimi.ingsw.server.model.ConverterExt</node>
+    <node x="0.0" y="6578.0">it.polimi.ingsw.server.model.exception.NoMoreLeaderCardAliveException</node>
+    <node x="8128.600827107144" y="3978.5">it.polimi.ingsw.server.network.CreateRoomSetupperExt</node>
+    <node x="4448.1906922895105" y="1942.0">it.polimi.ingsw.server.controller.MoveActiveProductionExt</node>
+    <node x="7752.475827107144" y="1464.0">it.polimi.ingsw.server.view.RemoteView.MessageReceiver</node>
+    <node x="3574.9999999999995" y="4303.0">it.polimi.ingsw.server.parse.PerformableSerializer</node>
+    <node x="7851.097634817633" y="4303.0">it.polimi.ingsw.server.parse.SettableSerializer</node>
+    <node x="814.0031922895105" y="0.0">it.polimi.ingsw.server.model.exception.UnableToFillException</node>
+    <node x="8316.434160440478" y="2744.0">it.polimi.ingsw.server.network.Server</node>
+    <node x="6168.1906922895105" y="3585.0">it.polimi.ingsw.server.model.exception.NoSpaceException</node>
+    <node x="21.5" y="3956.0">it.polimi.ingsw.server.model.Move2</node>
+    <node x="6046.285134817634" y="745.0">it.polimi.ingsw.server.controller.MoveChoseResourcesExt</node>
+    <node x="4950.309160440478" y="745.0">it.polimi.ingsw.server.controller.MoveEndTurnExt</node>
+    <node x="6650.475827107144" y="1409.0">it.polimi.ingsw.server.model.ProductionPowerExt</node>
+    <node x="328.25" y="4292.0">it.polimi.ingsw.server.parse.TokensSerializer</node>
+    <node x="2999.483012719019" y="745.0">it.polimi.ingsw.server.controller.MoveChoseInitialResourcesExt</node>
+    <node x="10300.688369861877" y="2887.0">it.polimi.ingsw.server.parse.DashBoardSerializer</node>
+    <node x="8454.583549432367" y="173.0">it.polimi.ingsw.server.model.StrongBoxExt</node>
+    <node x="7060.850827107144" y="3956.0">it.polimi.ingsw.server.controller.MoveTypeMarketExt</node>
+    <node x="2751.483012719019" y="745.0">it.polimi.ingsw.server.controller.MoveDiscardResourcesExt</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="it.polimi.ingsw.server.network.Room" target="it.polimi.ingsw.server.view.RemoteView" relationship="DEPENDENCY">
+      <point x="0.0" y="-227.0" />
+      <point x="7032.138647721458" y="2157.0" />
+      <point x="7132.638647721458" y="2157.0" />
+      <point x="7132.638647721458" y="2087.0" />
+      <point x="7078.888647721458" y="2087.0" />
+      <point x="-64.0" y="51.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.parse.AbilitySerializer" target="it.polimi.ingsw.server.model.ProductionPowerPlusAbility" relationship="DEPENDENCY">
+      <point x="158.80000000000018" y="-50.5" />
+      <point x="1737.668468150966" y="4271.0" />
+      <point x="2509.483012719019" y="4271.0" />
+      <point x="-70.0" y="73.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.view.RemoteView" target="it.polimi.ingsw.server.controller.MoveAutoPlay" relationship="CREATE">
+      <point x="-109.71428571428532" y="-51.0" />
+      <point x="7033.174362007173" y="1630.0" />
+      <point x="4872.309160440478" y="1630.0" />
+      <point x="4872.309160440478" y="1106.0" />
+      <point x="3577.940692289511" y="1106.0" />
+      <point x="57.0" y="62.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveChoseLeaderCardsExt" target="it.polimi.ingsw.server.model.LeaderCardExt" relationship="CREATE">
+      <point x="-57.0" y="-62.0" />
+      <point x="2219.309160440478" y="724.0" />
+      <point x="1215.733012719019" y="724.0" />
+      <point x="1215.733012719019" y="664.0" />
+      <point x="1390.233012719019" y="664.0" />
+      <point x="0.0" y="84.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.view.RemoteView.MessageReceiver" target="it.polimi.ingsw.server.controller.Performable" relationship="DEPENDENCY">
+      <point x="-53.33333333333303" y="-39.5" />
+      <point x="7779.142493773811" y="1348.0" />
+      <point x="5548.309160440478" y="1348.0" />
+      <point x="5548.309160440478" y="694.0" />
+      <point x="5428.118468150966" y="694.0" />
+      <point x="5428.118468150966" y="674.0" />
+      <point x="3282.940692289511" y="674.0" />
+      <point x="28.5" y="50.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.parse.DevCardExtSerializer" target="it.polimi.ingsw.server.model.DevelopmentCardExt" relationship="DEPENDENCY">
+      <point x="0.0" y="-39.5" />
+      <point x="5319.6906922895105" y="2147.0" />
+      <point x="5559.6906922895105" y="2147.0" />
+      <point x="-131.5" y="39.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.network.Server" target="it.polimi.ingsw.server.model.DashboardExt" relationship="CREATE">
+      <point x="165.3125" y="-182.5" />
+      <point x="8746.246660440478" y="2723.0" />
+      <point x="10521.559523809523" y="2723.0" />
+      <point x="0.0" y="117.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.parse.Starter" target="it.polimi.ingsw.server.network.Settable" relationship="DEPENDENCY">
+      <point x="104.33333333333303" y="-149.5" />
+      <point x="5293.333333333332" y="4445.0" />
+      <point x="7406.100827107144" y="4445.0" />
+      <point x="7406.100827107144" y="3686.0" />
+      <point x="7571.600827107144" y="3686.0" />
+      <point x="-84.0" y="39.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.MarketExt" target="it.polimi.ingsw.server.observer.Observer" relationship="DEPENDENCY">
+      <point x="0.0" y="-83.5" />
+      <point x="11579.021703195209" y="109.0" />
+      <point x="11097.630897917217" y="109.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.PlayerExt" target="it.polimi.ingsw.server.model.DepotsExt" relationship="CREATE">
+      <point x="-23.818181818181984" y="-150.0" />
+      <point x="11049.870188043693" y="5132.0" />
+      <point x="9838.188369861877" y="5132.0" />
+      <point x="0.0" y="116.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.network.CreateRoomSetupperExt" target="it.polimi.ingsw.server.network.Room" relationship="CREATE">
+      <point x="-126.0" y="-50.5" />
+      <point x="8170.600827107144" y="3736.0" />
+      <point x="6551.9375" y="3736.0" />
+      <point x="6551.9375" y="3563.0" />
+      <point x="6924.097634817633" y="3563.0" />
+      <point x="6924.097634817633" y="2713.0" />
+      <point x="7095.513647721458" y="2713.0" />
+      <point x="7095.513647721458" y="2653.0" />
+      <point x="7127.388647721458" y="2653.0" />
+      <point x="95.25" y="227.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.PersonalBoardExt" target="it.polimi.ingsw.server.model.LeaderCardExt" relationship="DEPENDENCY">
+      <point x="-114.42857142857156" y="-106.0" />
+      <point x="9169.843131766638" y="3706.0" />
+      <point x="1371.25" y="3706.0" />
+      <point x="1371.25" y="724.0" />
+      <point x="1215.733012719019" y="724.0" />
+      <point x="1215.733012719019" y="664.0" />
+      <point x="1390.233012719019" y="664.0" />
+      <point x="0.0" y="84.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.parse.Starter" target="it.polimi.ingsw.server.model.LeaderCardExt" relationship="DEPENDENCY">
+      <point x="-104.33333333333303" y="-149.5" />
+      <point x="5084.666666666666" y="4465.0" />
+      <point x="796.75" y="4465.0" />
+      <point x="796.75" y="3836.0" />
+      <point x="927.25" y="3836.0" />
+      <point x="927.25" y="724.0" />
+      <point x="1215.733012719019" y="724.0" />
+      <point x="1215.733012719019" y="664.0" />
+      <point x="1390.233012719019" y="664.0" />
+      <point x="0.0" y="84.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.MarketExt" target="it.polimi.ingsw.server.observer.Observer" relationship="TO_MANY">
+      <point x="87.33333333333303" y="-83.5" />
+      <point x="11666.355036528541" y="389.0" />
+      <point x="11731.521703195209" y="389.0" />
+      <point x="11731.521703195209" y="99.0" />
+      <point x="11142.96423125055" y="99.0" />
+      <point x="45.33333333333303" y="28.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.parse.Starter" target="it.polimi.ingsw.server.parse.DevCardExtSerializer" relationship="CREATE">
+      <point x="20.866666666666788" y="-149.5" />
+      <point x="5209.866666666667" y="4415.0" />
+      <point x="5319.6906922895105" y="4415.0" />
+      <point x="0.0" y="39.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.view.RemoteView.MessageReceiver" target="it.polimi.ingsw.server.parse.Starter" relationship="DEPENDENCY">
+      <point x="-66.66666666666697" y="39.5" />
+      <point x="7765.809160440477" y="1840.0" />
+      <point x="6446.479166666666" y="1840.0" />
+      <point x="6446.479166666666" y="2137.0" />
+      <point x="6418.0625" y="2137.0" />
+      <point x="6418.0625" y="2673.0" />
+      <point x="6363.8125" y="2673.0" />
+      <point x="6363.8125" y="3543.0" />
+      <point x="6562.9375" y="3543.0" />
+      <point x="6562.9375" y="4435.0" />
+      <point x="7039.350827107144" y="4435.0" />
+      <point x="7039.350827107144" y="4485.0" />
+      <point x="5272.466666666665" y="4485.0" />
+      <point x="83.46666666666624" y="-149.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.parse.Starter" target="it.polimi.ingsw.server.parse.AbilitySerializer" relationship="CREATE">
+      <point x="-62.600000000000364" y="-149.5" />
+      <point x="5126.4" y="4445.0" />
+      <point x="1578.8684681509658" y="4445.0" />
+      <point x="0.0" y="50.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.network.Server" target="it.polimi.ingsw.server.network.ClientConnection" relationship="DEPENDENCY">
+      <point x="99.1875" y="-182.5" />
+      <point x="8680.121660440478" y="2703.0" />
+      <point x="10158.392857142857" y="2703.0" />
+      <point x="10158.392857142857" y="1920.0" />
+      <point x="10069.142857142857" y="1920.0" />
+      <point x="10069.142857142857" y="1900.0" />
+      <point x="10073.855036528541" y="1900.0" />
+      <point x="-82.33333333333394" y="50.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.view.View" target="it.polimi.ingsw.server.observer.Observer" relationship="TO_MANY">
+      <point x="117.08333333333303" y="-95.0" />
+      <point x="8559.343966099033" y="1116.0" />
+      <point x="11731.521703195209" y="1116.0" />
+      <point x="11731.521703195209" y="99.0" />
+      <point x="11142.96423125055" y="99.0" />
+      <point x="45.33333333333303" y="28.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.parse.AbilitySerializer" target="it.polimi.ingsw.server.model.WhiteAbility" relationship="DEPENDENCY">
+      <point x="0.0" y="-50.5" />
+      <point x="1578.8684681509658" y="4251.0" />
+      <point x="1754.483012719019" y="4251.0" />
+      <point x="-50.0" y="73.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveTypeMarketExt" target="it.polimi.ingsw.server.controller.Performable" relationship="REALIZATION">
+      <point x="-108.33333333333303" y="-73.0" />
+      <point x="7115.017493773811" y="3826.0" />
+      <point x="4024.4999999999995" y="3826.0" />
+      <point x="4024.4999999999995" y="1640.0" />
+      <point x="4939.809160440478" y="1640.0" />
+      <point x="4939.809160440478" y="724.0" />
+      <point x="3249.440692289511" y="724.0" />
+      <point x="3249.440692289511" y="694.0" />
+      <point x="3225.940692289511" y="694.0" />
+      <point x="-28.5" y="50.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.network.SocketClientConnection" target="it.polimi.ingsw.server.network.Server" relationship="TO_ONE">
+      <point x="0.0" y="-139.0" />
+      <point x="8637.434160440478" y="3221.0" />
+      <point x="8625.01749377381" y="3221.0" />
+      <point x="44.08333333333303" y="182.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.ConverterExt" target="it.polimi.ingsw.server.observer.Observer" relationship="DEPENDENCY">
+      <point x="48.875" y="-161.0" />
+      <point x="11207.434523809523" y="3806.0" />
+      <point x="11720.521703195209" y="3806.0" />
+      <point x="11720.521703195209" y="109.0" />
+      <point x="11097.630897917217" y="109.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.DashboardExt" target="it.polimi.ingsw.server.observer.Observer" relationship="DEPENDENCY">
+      <point x="0.0" y="-117.0" />
+      <point x="10521.559523809523" y="109.0" />
+      <point x="11097.630897917217" y="109.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveAutoPlay" target="it.polimi.ingsw.server.controller.MoveChoseResourcesExt" relationship="CREATE">
+      <point x="97.71428571428532" y="-62.0" />
+      <point x="3618.6549780037963" y="930.0" />
+      <point x="6262.785134817634" y="930.0" />
+      <point x="0.0" y="62.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.GameExt" target="it.polimi.ingsw.server.model.DashboardExt" relationship="DEPENDENCY">
+      <point x="-60.18181818181802" y="-227.0" />
+      <point x="11013.506551680057" y="5536.0" />
+      <point x="10721.188369861877" y="5536.0" />
+      <point x="10721.188369861877" y="2723.0" />
+      <point x="10521.559523809523" y="2723.0" />
+      <point x="0.0" y="117.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.view.RemoteView" target="it.polimi.ingsw.server.view.View" relationship="GENERALIZATION">
+      <point x="36.57142857142844" y="-51.0" />
+      <point x="7179.460076292887" y="1890.0" />
+      <point x="9132.885632765701" y="1890.0" />
+      <point x="9132.885632765701" y="1368.0" />
+      <point x="8547.635632765701" y="1368.0" />
+      <point x="105.375" y="95.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.Controller" target="it.polimi.ingsw.server.model.GameExt" relationship="TO_ONE">
+      <point x="-23.5" y="39.5" />
+      <point x="6112.559160440478" y="2137.0" />
+      <point x="6095.1906922895105" y="2137.0" />
+      <point x="6095.1906922895105" y="5526.0" />
+      <point x="6146.868468150966" y="5526.0" />
+      <point x="6146.868468150966" y="5566.0" />
+      <point x="10953.324733498239" y="5566.0" />
+      <point x="-120.36363636363603" y="-227.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.parse.ProductionPowerExtSerializer" target="it.polimi.ingsw.server.model.ProductionPowerExt" relationship="DEPENDENCY">
+      <point x="0.0" y="-39.5" />
+      <point x="5079.6906922895105" y="1920.0" />
+      <point x="5563.868468150966" y="1920.0" />
+      <point x="5563.868468150966" y="1620.0" />
+      <point x="6762.475827107144" y="1620.0" />
+      <point x="-112.0" y="94.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.ConverterExt" target="it.polimi.ingsw.server.observer.Observable" relationship="REALIZATION">
+      <point x="-48.875" y="-161.0" />
+      <point x="11109.684523809523" y="389.0" />
+      <point x="10869.559523809523" y="389.0" />
+      <point x="0.0" y="39.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.network.Server" target="it.polimi.ingsw.server.model.MarketExt" relationship="CREATE">
+      <point x="231.4375" y="-182.5" />
+      <point x="8812.371660440478" y="2713.0" />
+      <point x="11513.771703195209" y="2713.0" />
+      <point x="11513.771703195209" y="724.0" />
+      <point x="11579.021703195209" y="724.0" />
+      <point x="0.0" y="83.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveChoseInitialResourcesExt" target="it.polimi.ingsw.server.controller.Performable" relationship="REALIZATION">
+      <point x="0.0" y="-62.0" />
+      <point x="3121.483012719019" y="724.0" />
+      <point x="3249.440692289511" y="724.0" />
+      <point x="3249.440692289511" y="694.0" />
+      <point x="3225.940692289511" y="694.0" />
+      <point x="-28.5" y="50.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.parse.PerformableSerializer" target="it.polimi.ingsw.server.controller.MoveChoseInitialResourcesExt" relationship="DEPENDENCY">
+      <point x="-77.81818181818198" y="-39.5" />
+      <point x="3711.1818181818176" y="4231.0" />
+      <point x="3126.983012719019" y="4231.0" />
+      <point x="3126.983012719019" y="890.0" />
+      <point x="3182.483012719019" y="890.0" />
+      <point x="61.0" y="62.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveTypeMarketExt" target="it.polimi.ingsw.server.model.MarketExt" relationship="DEPENDENCY">
+      <point x="108.33333333333303" y="-73.0" />
+      <point x="7331.684160440477" y="3796.0" />
+      <point x="11579.021703195209" y="3796.0" />
+      <point x="0.0" y="83.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.view.RemoteView" target="it.polimi.ingsw.server.network.ClientConnection" relationship="TO_ONE">
+      <point x="109.71428571428532" y="-51.0" />
+      <point x="7252.602933435744" y="1910.0" />
+      <point x="10147.392857142857" y="1910.0" />
+      <point x="10147.392857142857" y="1900.0" />
+      <point x="10156.188369861877" y="1900.0" />
+      <point x="0.0" y="50.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.network.Server" target="it.polimi.ingsw.server.view.View" relationship="DEPENDENCY">
+      <point x="33.0625" y="-182.5" />
+      <point x="8613.996660440478" y="1388.0" />
+      <point x="8532.760632765701" y="1388.0" />
+      <point x="8532.760632765701" y="1368.0" />
+      <point x="8477.385632765701" y="1368.0" />
+      <point x="35.125" y="95.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.GameExt" target="it.polimi.ingsw.server.model.MarketExt" relationship="DEPENDENCY">
+      <point x="180.54545454545405" y="-227.0" />
+      <point x="11254.233824407329" y="5556.0" />
+      <point x="11579.021703195209" y="5556.0" />
+      <point x="0.0" y="83.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.view.View" target="it.polimi.ingsw.server.controller.MoveAutoPlay" relationship="CREATE">
+      <point x="-117.08333333333303" y="-95.0" />
+      <point x="8325.17729943237" y="1116.0" />
+      <point x="4872.309160440478" y="1116.0" />
+      <point x="4872.309160440478" y="1106.0" />
+      <point x="3577.940692289511" y="1106.0" />
+      <point x="57.0" y="62.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.RequirementsExt" target="it.polimi.ingsw.server.model.PlayerExt" relationship="DEPENDENCY">
+      <point x="0.0" y="61.5" />
+      <point x="9412.184160440478" y="379.0" />
+      <point x="7513.285134817633" y="379.0" />
+      <point x="7513.285134817633" y="1810.0" />
+      <point x="6320.4406922895105" y="1810.0" />
+      <point x="6320.4406922895105" y="2713.0" />
+      <point x="6124.5" y="2713.0" />
+      <point x="6124.5" y="4857.0" />
+      <point x="5524.743468150966" y="4857.0" />
+      <point x="5524.743468150966" y="5152.0" />
+      <point x="3451.4999999999995" y="5152.0" />
+      <point x="3451.4999999999995" y="5182.0" />
+      <point x="10954.597460770967" y="5182.0" />
+      <point x="-119.09090909090901" y="-150.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.MarketExt" target="it.polimi.ingsw.server.observer.Observable" relationship="REALIZATION">
+      <point x="-87.33333333333303" y="-83.5" />
+      <point x="11491.688369861877" y="389.0" />
+      <point x="10869.559523809523" y="389.0" />
+      <point x="0.0" y="39.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.view.RemoteView.MessageReceiver" target="it.polimi.ingsw.server.network.Settable" relationship="DEPENDENCY">
+      <point x="66.66666666666697" y="39.5" />
+      <point x="7899.142493773811" y="1880.0" />
+      <point x="7986.097634817633" y="1880.0" />
+      <point x="7986.097634817633" y="3191.0" />
+      <point x="7039.350827107144" y="3191.0" />
+      <point x="7039.350827107144" y="3553.0" />
+      <point x="7645.100827107144" y="3553.0" />
+      <point x="7645.100827107144" y="3563.0" />
+      <point x="7543.600827107144" y="3563.0" />
+      <point x="-112.0" y="-39.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveChoseInitialResourcesExt" target="it.polimi.ingsw.server.model.exception.UnableToFillException" relationship="DEPENDENCY">
+      <point x="-81.33333333333303" y="-62.0" />
+      <point x="3040.149679385686" y="674.0" />
+      <point x="854.3716604404781" y="674.0" />
+      <point x="854.3716604404781" y="109.0" />
+      <point x="912.0031922895105" y="109.0" />
+      <point x="0.0" y="39.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.ProductionPowerExt" target="it.polimi.ingsw.server.model.exception.ChoseResourcesException" relationship="CREATE">
+      <point x="0.0" y="-94.5" />
+      <point x="0.0" y="61.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveChoseLeaderCardsExt" target="it.polimi.ingsw.server.model.PlayerExt" relationship="DEPENDENCY">
+      <point x="76.0" y="62.0" />
+      <point x="2352.309160440478" y="930.0" />
+      <point x="2364.940692289511" y="930.0" />
+      <point x="2364.940692289511" y="3826.0" />
+      <point x="1925.983012719019" y="3826.0" />
+      <point x="1925.983012719019" y="5152.0" />
+      <point x="3451.4999999999995" y="5152.0" />
+      <point x="3451.4999999999995" y="5182.0" />
+      <point x="10954.597460770967" y="5182.0" />
+      <point x="-119.09090909090901" y="-150.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveBuyDevCardExt" target="it.polimi.ingsw.server.model.exception.NoSpaceException" relationship="DEPENDENCY">
+      <point x="76.0" y="-61.5" />
+      <point x="4332.4406922895105" y="3836.0" />
+      <point x="6266.1906922895105" y="3836.0" />
+      <point x="0.0" y="39.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.DepotsAbility" target="it.polimi.ingsw.server.model.PlayerExt" relationship="DEPENDENCY">
+      <point x="-51.75" y="73.0" />
+      <point x="1529.233012719019" y="4231.0" />
+      <point x="1131.875" y="4231.0" />
+      <point x="1131.875" y="5152.0" />
+      <point x="3451.4999999999995" y="5152.0" />
+      <point x="3451.4999999999995" y="5182.0" />
+      <point x="10954.597460770967" y="5182.0" />
+      <point x="-119.09090909090901" y="-150.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveAutoPlay" target="it.polimi.ingsw.server.controller.MoveDiscardResourcesExt" relationship="CREATE">
+      <point x="-65.14285714285688" y="-62.0" />
+      <point x="3455.797835146654" y="910.0" />
+      <point x="2897.983012719019" y="910.0" />
+      <point x="2897.983012719019" y="900.0" />
+      <point x="2865.483012719019" y="900.0" />
+      <point x="0.0" y="62.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.parse.PerformableSerializer" target="it.polimi.ingsw.server.controller.MoveActiveProductionExt" relationship="DEPENDENCY">
+      <point x="155.63636363636397" y="-39.5" />
+      <point x="3944.6363636363635" y="4261.0" />
+      <point x="4609.559160440478" y="4261.0" />
+      <point x="4609.559160440478" y="2157.0" />
+      <point x="4512.1906922895105" y="2157.0" />
+      <point x="-128.0" y="62.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.network.LinkToRoomSetupperExt" target="it.polimi.ingsw.server.network.Server" relationship="DEPENDENCY">
+      <point x="42.0" y="-50.5" />
+      <point x="7982.600827107144" y="3746.0" />
+      <point x="7961.365692289512" y="3746.0" />
+      <point x="7961.365692289512" y="3131.0" />
+      <point x="8536.850827107144" y="3131.0" />
+      <point x="-44.08333333333303" y="182.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.Ability" target="it.polimi.ingsw.server.model.PlayerExt" relationship="DEPENDENCY">
+      <point x="70.125" y="50.5" />
+      <point x="1924.8156922895105" y="369.0" />
+      <point x="2729.983012719019" y="369.0" />
+      <point x="2729.983012719019" y="5152.0" />
+      <point x="3451.4999999999995" y="5152.0" />
+      <point x="3451.4999999999995" y="5182.0" />
+      <point x="10954.597460770967" y="5182.0" />
+      <point x="-119.09090909090901" y="-150.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.WhiteAbility" target="it.polimi.ingsw.server.model.PlayerExt" relationship="DEPENDENCY">
+      <point x="50.0" y="73.0" />
+      <point x="1854.483012719019" y="4251.0" />
+      <point x="1814.733012719019" y="4251.0" />
+      <point x="1814.733012719019" y="5152.0" />
+      <point x="3451.4999999999995" y="5152.0" />
+      <point x="3451.4999999999995" y="5182.0" />
+      <point x="10954.597460770967" y="5182.0" />
+      <point x="-119.09090909090901" y="-150.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveBuyDevCardExt" target="it.polimi.ingsw.server.model.PlayerExt" relationship="DEPENDENCY">
+      <point x="0.0" y="61.5" />
+      <point x="4256.4406922895105" y="4857.0" />
+      <point x="3715.8684681509662" y="4857.0" />
+      <point x="3715.8684681509662" y="5152.0" />
+      <point x="3451.4999999999995" y="5152.0" />
+      <point x="3451.4999999999995" y="5182.0" />
+      <point x="10954.597460770967" y="5182.0" />
+      <point x="-119.09090909090901" y="-150.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.network.DisconnectConnectionSetupperExt" target="it.polimi.ingsw.server.network.Settable" relationship="REALIZATION">
+      <point x="-112.0" y="-50.5" />
+      <point x="8540.600827107144" y="3846.0" />
+      <point x="7739.600827107144" y="3846.0" />
+      <point x="84.0" y="39.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveBuyDevCardExt" target="it.polimi.ingsw.server.model.exception.OutOfResourcesException" relationship="DEPENDENCY">
+      <point x="0.0" y="-61.5" />
+      <point x="4256.4406922895105" y="1740.0" />
+      <point x="6014.868468150966" y="1740.0" />
+      <point x="6014.868468150966" y="99.0" />
+      <point x="6196.333549432368" y="99.0" />
+      <point x="0.0" y="39.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.parse.Starter" target="it.polimi.ingsw.server.model.SoloActionTokens" relationship="DEPENDENCY">
+      <point x="-78.25" y="149.5" />
+      <point x="5110.75" y="4837.0" />
+      <point x="5116.118468150966" y="4837.0" />
+      <point x="5116.118468150966" y="6104.0" />
+      <point x="2554.1184681509662" y="6104.0" />
+      <point x="25.875" y="-50.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.parse.SettableSerializer" target="it.polimi.ingsw.server.network.Settable" relationship="DEPENDENCY">
+      <point x="-162.39999999999964" y="-39.5" />
+      <point x="7891.697634817633" y="4271.0" />
+      <point x="7406.100827107144" y="4271.0" />
+      <point x="7406.100827107144" y="3686.0" />
+      <point x="7571.600827107144" y="3686.0" />
+      <point x="-84.0" y="39.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.DashboardExt" target="it.polimi.ingsw.server.model.DevelopmentCardExt" relationship="TO_MANY">
+      <point x="-73.0" y="-117.0" />
+      <point x="10448.559523809523" y="2097.0" />
+      <point x="5822.6906922895105" y="2097.0" />
+      <point x="131.5" y="39.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.parse.Starter" target="it.polimi.ingsw.server.model.DevelopmentCardExt" relationship="DEPENDENCY">
+      <point x="41.733333333333576" y="-149.5" />
+      <point x="5230.733333333334" y="4425.0" />
+      <point x="5559.6906922895105" y="4425.0" />
+      <point x="-131.5" y="39.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.DepotsExt" target="it.polimi.ingsw.server.observer.Observer" relationship="TO_MANY">
+      <point x="144.58333333333303" y="-116.5" />
+      <point x="9982.771703195209" y="379.0" />
+      <point x="11731.521703195209" y="379.0" />
+      <point x="11731.521703195209" y="99.0" />
+      <point x="11142.96423125055" y="99.0" />
+      <point x="45.33333333333303" y="28.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.PlayerExt" target="it.polimi.ingsw.server.model.exception.OutOfResourcesException" relationship="DEPENDENCY">
+      <point x="-47.63636363636397" y="-150.0" />
+      <point x="11026.052006225513" y="5142.0" />
+      <point x="9428.271703195209" y="5142.0" />
+      <point x="9428.271703195209" y="369.0" />
+      <point x="9221.684160440478" y="369.0" />
+      <point x="9221.684160440478" y="99.0" />
+      <point x="6196.333549432368" y="99.0" />
+      <point x="0.0" y="39.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveAutoPlay" target="it.polimi.ingsw.server.controller.MoveEndTurnExt" relationship="CREATE">
+      <point x="32.57142857142844" y="-62.0" />
+      <point x="3553.5121208609394" y="910.0" />
+      <point x="5096.809160440478" y="910.0" />
+      <point x="5096.809160440478" y="890.0" />
+      <point x="5064.309160440478" y="890.0" />
+      <point x="0.0" y="62.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.LorenzoSoloPlayerExt" target="it.polimi.ingsw.server.model.GameExt" relationship="TO_ONE">
+      <point x="69.0" y="-106.0" />
+      <point x="11219.70682953964" y="6249.0" />
+      <point x="11101.20682953964" y="6249.0" />
+      <point x="11101.20682953964" y="6104.0" />
+      <point x="11321.938369861877" y="6104.0" />
+      <point x="248.25" y="227.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.ConverterExt" target="it.polimi.ingsw.server.observer.Observer" relationship="TO_MANY">
+      <point x="146.625" y="-161.0" />
+      <point x="11305.184523809523" y="3846.0" />
+      <point x="11731.521703195209" y="3846.0" />
+      <point x="11731.521703195209" y="99.0" />
+      <point x="11142.96423125055" y="99.0" />
+      <point x="45.33333333333303" y="28.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.parse.PerformableSerializer" target="it.polimi.ingsw.server.controller.MoveWhiteConversionExt" relationship="DEPENDENCY">
+      <point x="0.0" y="-39.5" />
+      <point x="3788.9999999999995" y="1690.0" />
+      <point x="5366.718251349568" y="1690.0" />
+      <point x="5366.718251349568" y="910.0" />
+      <point x="5334.218251349568" y="910.0" />
+      <point x="0.0" y="62.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.parse.Starter" target="it.polimi.ingsw.server.parse.SettableSerializer" relationship="CREATE">
+      <point x="125.19999999999982" y="-149.5" />
+      <point x="5314.199999999999" y="4455.0" />
+      <point x="8054.097634817633" y="4455.0" />
+      <point x="0.0" y="39.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.network.ClientConnection" target="it.polimi.ingsw.server.observer.Observer" relationship="DEPENDENCY">
+      <point x="0.0" y="-50.0" />
+      <point x="10156.188369861877" y="109.0" />
+      <point x="11097.630897917217" y="109.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.LeaderCardExt" target="it.polimi.ingsw.server.model.Ability" relationship="DEPENDENCY">
+      <point x="-95.0" y="-84.0" />
+      <point x="1295.233012719019" y="389.0" />
+      <point x="865.3716604404781" y="389.0" />
+      <point x="865.3716604404781" y="359.0" />
+      <point x="1784.5656922895105" y="359.0" />
+      <point x="-70.125" y="50.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.network.CreateRoomSetupperExt" target="it.polimi.ingsw.server.network.SocketClientConnection" relationship="DEPENDENCY">
+      <point x="126.0" y="-50.5" />
+      <point x="8422.600827107144" y="3776.0" />
+      <point x="8853.26749377381" y="3776.0" />
+      <point x="8853.26749377381" y="3563.0" />
+      <point x="8675.26749377381" y="3563.0" />
+      <point x="8675.26749377381" y="3553.0" />
+      <point x="8637.434160440478" y="3553.0" />
+      <point x="0.0" y="139.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.LeaderCardExt" target="it.polimi.ingsw.server.model.RequirementsExt" relationship="DEPENDENCY">
+      <point x="95.0" y="-84.0" />
+      <point x="1485.233012719019" y="379.0" />
+      <point x="7285.285134817633" y="379.0" />
+      <point x="7285.285134817633" y="339.0" />
+      <point x="9292.184160440478" y="339.0" />
+      <point x="-120.0" y="61.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.PlayerExt" target="it.polimi.ingsw.server.model.ConverterExt" relationship="CREATE">
+      <point x="47.63636363636397" y="-150.0" />
+      <point x="11121.32473349824" y="5132.0" />
+      <point x="11302.188369861877" y="5132.0" />
+      <point x="11302.188369861877" y="4261.0" />
+      <point x="11288.892857142855" y="4261.0" />
+      <point x="130.33333333333337" y="161.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.LorenzoSoloPlayerExt" target="it.polimi.ingsw.server.model.SoloActionTokens" relationship="TO_ONE">
+      <point x="-161.0" y="-106.0" />
+      <point x="10989.70682953964" y="6289.0" />
+      <point x="2533.7434681509662" y="6289.0" />
+      <point x="2533.7434681509662" y="6279.0" />
+      <point x="2579.9934681509662" y="6279.0" />
+      <point x="51.75" y="50.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.MoveShuffle" target="it.polimi.ingsw.server.model.SoloActionTokens" relationship="REALIZATION">
+      <point x="-77.625" y="73.0" />
+      <point x="275.375" y="4271.0" />
+      <point x="267.6875" y="4271.0" />
+      <point x="267.6875" y="6084.0" />
+      <point x="148.6875" y="6084.0" />
+      <point x="148.6875" y="6104.0" />
+      <point x="2450.6184681509662" y="6104.0" />
+      <point x="-77.625" y="-50.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.PersonalBoardExt" target="it.polimi.ingsw.server.observer.Observer" relationship="DEPENDENCY">
+      <point x="38.14285714285734" y="-106.0" />
+      <point x="9322.414560338068" y="3776.0" />
+      <point x="10748.059523809523" y="3776.0" />
+      <point x="10748.059523809523" y="109.0" />
+      <point x="11097.630897917217" y="109.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveDiscardResourcesExt" target="it.polimi.ingsw.server.model.PlayerExt" relationship="DEPENDENCY">
+      <point x="76.0" y="62.0" />
+      <point x="2941.483012719019" y="930.0" />
+      <point x="2908.983012719019" y="930.0" />
+      <point x="2908.983012719019" y="5152.0" />
+      <point x="3451.4999999999995" y="5152.0" />
+      <point x="3451.4999999999995" y="5182.0" />
+      <point x="10954.597460770967" y="5182.0" />
+      <point x="-119.09090909090901" y="-150.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.network.LinkToRoomSetupperExt" target="it.polimi.ingsw.server.network.Settable" relationship="REALIZATION">
+      <point x="-42.0" y="-50.5" />
+      <point x="7898.600827107144" y="3846.0" />
+      <point x="7739.600827107144" y="3846.0" />
+      <point x="84.0" y="39.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.network.JoinWaitingListSetupperExt" target="it.polimi.ingsw.server.network.Server" relationship="DEPENDENCY">
+      <point x="-112.0" y="-50.5" />
+      <point x="7472.600827107144" y="3786.0" />
+      <point x="7361.850827107144" y="3786.0" />
+      <point x="7361.850827107144" y="3211.0" />
+      <point x="7961.365692289512" y="3211.0" />
+      <point x="7961.365692289512" y="3131.0" />
+      <point x="8536.850827107144" y="3131.0" />
+      <point x="-44.08333333333303" y="182.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.FaithTrackExt" target="it.polimi.ingsw.server.parse.Starter" relationship="DEPENDENCY">
+      <point x="-98.25" y="-106.0" />
+      <point x="10885.809523809523" y="4837.0" />
+      <point x="5267.25" y="4837.0" />
+      <point x="78.25" y="149.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.view.View" target="it.polimi.ingsw.server.controller.Performable" relationship="DEPENDENCY">
+      <point x="-70.25" y="-95.0" />
+      <point x="8372.010632765701" y="1106.0" />
+      <point x="5548.309160440478" y="1106.0" />
+      <point x="5548.309160440478" y="694.0" />
+      <point x="5428.118468150966" y="694.0" />
+      <point x="5428.118468150966" y="674.0" />
+      <point x="3282.940692289511" y="674.0" />
+      <point x="28.5" y="50.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.DashboardExt" target="it.polimi.ingsw.server.observer.Observable" relationship="REALIZATION">
+      <point x="72.99999999999955" y="-117.0" />
+      <point x="10594.559523809523" y="2147.0" />
+      <point x="10814.309523809523" y="2147.0" />
+      <point x="10814.309523809523" y="389.0" />
+      <point x="10869.559523809523" y="389.0" />
+      <point x="0.0" y="39.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveWhiteConversionExt" target="it.polimi.ingsw.server.model.PlayerExt" relationship="DEPENDENCY">
+      <point x="-76.0" y="62.0" />
+      <point x="5258.218251349568" y="910.0" />
+      <point x="5199.083549432368" y="910.0" />
+      <point x="5199.083549432368" y="1680.0" />
+      <point x="3564.4999999999995" y="1680.0" />
+      <point x="3564.4999999999995" y="5152.0" />
+      <point x="3451.4999999999995" y="5152.0" />
+      <point x="3451.4999999999995" y="5182.0" />
+      <point x="10954.597460770967" y="5182.0" />
+      <point x="-119.09090909090901" y="-150.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.RequirementsExt" target="it.polimi.ingsw.server.model.PersonalBoardExt" relationship="DEPENDENCY">
+      <point x="120.0" y="61.5" />
+      <point x="9532.184160440478" y="389.0" />
+      <point x="9284.271703195209" y="389.0" />
+      <point x="0.0" y="-106.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.PersonalBoardExt" target="it.polimi.ingsw.server.model.exception.NoSpaceException" relationship="CREATE">
+      <point x="-38.14285714285734" y="-106.0" />
+      <point x="9246.128846052352" y="3836.0" />
+      <point x="6266.1906922895105" y="3836.0" />
+      <point x="0.0" y="39.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveAutoPlay" target="it.polimi.ingsw.server.controller.MoveChoseInitialResourcesExt" relationship="CREATE">
+      <point x="-32.57142857142844" y="-62.0" />
+      <point x="3488.3692637180825" y="900.0" />
+      <point x="3126.983012719019" y="900.0" />
+      <point x="3126.983012719019" y="890.0" />
+      <point x="3182.483012719019" y="890.0" />
+      <point x="61.0" y="62.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.view.View" target="it.polimi.ingsw.server.model.GameExt" relationship="DEPENDENCY">
+      <point x="-105.375" y="95.0" />
+      <point x="8336.885632765701" y="1358.0" />
+      <point x="7541.597634817633" y="1358.0" />
+      <point x="7541.597634817633" y="1820.0" />
+      <point x="6331.4406922895105" y="1820.0" />
+      <point x="6331.4406922895105" y="2723.0" />
+      <point x="6157.6906922895105" y="2723.0" />
+      <point x="6157.6906922895105" y="5536.0" />
+      <point x="3246.8684681509662" y="5536.0" />
+      <point x="3246.8684681509662" y="5576.0" />
+      <point x="10893.14291531642" y="5576.0" />
+      <point x="-180.54545454545405" y="-227.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.parse.PerformableSerializer" target="it.polimi.ingsw.server.controller.MoveChoseLeaderCardsExt" relationship="DEPENDENCY">
+      <point x="-155.63636363636397" y="-39.5" />
+      <point x="3633.3636363636356" y="4251.0" />
+      <point x="2428.983012719019" y="4251.0" />
+      <point x="2428.983012719019" y="3816.0" />
+      <point x="2263.309160440478" y="3816.0" />
+      <point x="2263.309160440478" y="910.0" />
+      <point x="2276.309160440478" y="910.0" />
+      <point x="0.0" y="62.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.parse.PerformableSerializer" target="it.polimi.ingsw.server.controller.MoveLeaderExt" relationship="DEPENDENCY">
+      <point x="-194.54545454545405" y="-39.5" />
+      <point x="3594.4545454545455" y="4261.0" />
+      <point x="2380.483012719019" y="4261.0" />
+      <point x="76.0" y="62.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveDiscardResourcesExt" target="it.polimi.ingsw.server.model.GameExt" relationship="DEPENDENCY">
+      <point x="-76.0" y="62.0" />
+      <point x="2789.483012719019" y="930.0" />
+      <point x="2830.233012719019" y="930.0" />
+      <point x="2830.233012719019" y="5536.0" />
+      <point x="3246.8684681509662" y="5536.0" />
+      <point x="3246.8684681509662" y="5576.0" />
+      <point x="10893.14291531642" y="5576.0" />
+      <point x="-180.54545454545405" y="-227.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.GameExt" target="it.polimi.ingsw.server.model.LeaderCardExt" relationship="TO_MANY">
+      <point x="-300.9090909090901" y="-227.0" />
+      <point x="10772.779278952785" y="5556.0" />
+      <point x="11.0" y="5556.0" />
+      <point x="11.0" y="3836.0" />
+      <point x="632.6216604404781" y="3836.0" />
+      <point x="632.6216604404781" y="714.0" />
+      <point x="1295.233012719019" y="714.0" />
+      <point x="-95.0" y="84.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveEndTurnExt" target="it.polimi.ingsw.server.model.PlayerExt" relationship="DEPENDENCY">
+      <point x="76.0" y="62.0" />
+      <point x="5140.309160440478" y="910.0" />
+      <point x="5107.809160440478" y="910.0" />
+      <point x="5107.809160440478" y="1670.0" />
+      <point x="3451.4999999999995" y="1670.0" />
+      <point x="3451.4999999999995" y="5182.0" />
+      <point x="10954.597460770967" y="5182.0" />
+      <point x="-119.09090909090901" y="-150.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveEndTurnExt" target="it.polimi.ingsw.server.controller.Performable" relationship="REALIZATION">
+      <point x="0.0" y="-62.0" />
+      <point x="5064.309160440478" y="724.0" />
+      <point x="3249.440692289511" y="724.0" />
+      <point x="3249.440692289511" y="694.0" />
+      <point x="3225.940692289511" y="694.0" />
+      <point x="-28.5" y="50.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.parse.Starter" target="it.polimi.ingsw.server.parse.RequirementsExtSerializer" relationship="CREATE">
+      <point x="62.600000000000364" y="-149.5" />
+      <point x="5251.6" y="4435.0" />
+      <point x="5986.6906922895105" y="4435.0" />
+      <point x="5986.6906922895105" y="1800.0" />
+      <point x="7285.285134817633" y="1800.0" />
+      <point x="0.0" y="39.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveBuyDevCardExt" target="it.polimi.ingsw.server.model.GameExt" relationship="DEPENDENCY">
+      <point x="76.0" y="61.5" />
+      <point x="4332.4406922895105" y="4241.0" />
+      <point x="4422.5" y="4241.0" />
+      <point x="4422.5" y="5536.0" />
+      <point x="3246.8684681509662" y="5536.0" />
+      <point x="3246.8684681509662" y="5576.0" />
+      <point x="10893.14291531642" y="5576.0" />
+      <point x="-180.54545454545405" y="-227.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveAutoPlay" target="it.polimi.ingsw.server.model.GameExt" relationship="DEPENDENCY">
+      <point x="-57.0" y="62.0" />
+      <point x="3463.940692289511" y="1116.0" />
+      <point x="3314.4999999999995" y="1116.0" />
+      <point x="3314.4999999999995" y="5536.0" />
+      <point x="3246.8684681509662" y="5536.0" />
+      <point x="3246.8684681509662" y="5576.0" />
+      <point x="10893.14291531642" y="5576.0" />
+      <point x="-180.54545454545405" y="-227.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveTypeMarketExt" target="it.polimi.ingsw.server.model.PlayerExt" relationship="DEPENDENCY">
+      <point x="0.0" y="73.0" />
+      <point x="7223.350827107144" y="4271.0" />
+      <point x="7272.01749377381" y="4271.0" />
+      <point x="7272.01749377381" y="4867.0" />
+      <point x="6060.1906922895105" y="4867.0" />
+      <point x="6060.1906922895105" y="5152.0" />
+      <point x="3451.4999999999995" y="5152.0" />
+      <point x="3451.4999999999995" y="5182.0" />
+      <point x="10954.597460770967" y="5182.0" />
+      <point x="-119.09090909090901" y="-150.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.network.SocketClientConnection" target="it.polimi.ingsw.server.network.Settable" relationship="DEPENDENCY">
+      <point x="-86.66666666666606" y="139.0" />
+      <point x="8550.767493773812" y="3553.0" />
+      <point x="7645.100827107144" y="3553.0" />
+      <point x="7645.100827107144" y="3563.0" />
+      <point x="7543.600827107144" y="3563.0" />
+      <point x="-112.0" y="-39.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.network.Settable" target="it.polimi.ingsw.server.network.SocketClientConnection" relationship="DEPENDENCY">
+      <point x="112.0" y="-39.0" />
+      <point x="7767.600827107144" y="3563.0" />
+      <point x="8675.26749377381" y="3563.0" />
+      <point x="8675.26749377381" y="3553.0" />
+      <point x="8637.434160440478" y="3553.0" />
+      <point x="0.0" y="139.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveBuyDevCardExt" target="it.polimi.ingsw.server.controller.Performable" relationship="REALIZATION">
+      <point x="-76.0" y="-61.5" />
+      <point x="4180.4406922895105" y="3836.0" />
+      <point x="3253.983012719019" y="3836.0" />
+      <point x="3253.983012719019" y="724.0" />
+      <point x="3249.440692289511" y="724.0" />
+      <point x="3249.440692289511" y="694.0" />
+      <point x="3225.940692289511" y="694.0" />
+      <point x="-28.5" y="50.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.network.CreateRoomSetupperExt" target="it.polimi.ingsw.server.network.Server" relationship="DEPENDENCY">
+      <point x="42.0" y="-50.5" />
+      <point x="8338.600827107144" y="3726.0" />
+      <point x="8064.949679385685" y="3726.0" />
+      <point x="8064.949679385685" y="3211.0" />
+      <point x="7961.365692289512" y="3211.0" />
+      <point x="7961.365692289512" y="3131.0" />
+      <point x="8536.850827107144" y="3131.0" />
+      <point x="-44.08333333333303" y="182.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.network.Server" target="it.polimi.ingsw.server.network.Room" relationship="CREATE">
+      <point x="-99.1875" y="-182.5" />
+      <point x="8481.746660440478" y="2713.0" />
+      <point x="7095.513647721458" y="2713.0" />
+      <point x="7095.513647721458" y="2653.0" />
+      <point x="7127.388647721458" y="2653.0" />
+      <point x="95.25" y="227.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.DepotsExt" target="it.polimi.ingsw.server.model.exception.OutOfResourcesException" relationship="DEPENDENCY">
+      <point x="-28.916666666666515" y="-116.5" />
+      <point x="9809.271703195209" y="99.0" />
+      <point x="6196.333549432368" y="99.0" />
+      <point x="0.0" y="39.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.GameExt" target="it.polimi.ingsw.server.model.SoloActionTokens" relationship="DEPENDENCY">
+      <point x="-248.25" y="227.0" />
+      <point x="10825.438369861875" y="6074.0" />
+      <point x="5116.118468150966" y="6074.0" />
+      <point x="5116.118468150966" y="6104.0" />
+      <point x="2554.1184681509662" y="6104.0" />
+      <point x="25.875" y="-50.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.SoloActionTokens" target="it.polimi.ingsw.server.model.GameExt" relationship="DEPENDENCY">
+      <point x="77.625" y="-50.5" />
+      <point x="2605.868468150966" y="6094.0" />
+      <point x="10994.559523809523" y="6094.0" />
+      <point x="10994.559523809523" y="6084.0" />
+      <point x="10990.938369861877" y="6084.0" />
+      <point x="-82.75" y="227.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.Discard2" target="it.polimi.ingsw.server.model.SoloActionTokens" relationship="REALIZATION">
+      <point x="0.0" y="84.0" />
+      <point x="1027.25" y="6084.0" />
+      <point x="148.6875" y="6084.0" />
+      <point x="148.6875" y="6104.0" />
+      <point x="2450.6184681509662" y="6104.0" />
+      <point x="-77.625" y="-50.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveAutoPlay" target="it.polimi.ingsw.server.controller.Performable" relationship="REALIZATION">
+      <point x="0.0" y="-62.0" />
+      <point x="3520.940692289511" y="724.0" />
+      <point x="3249.440692289511" y="724.0" />
+      <point x="3249.440692289511" y="694.0" />
+      <point x="3225.940692289511" y="694.0" />
+      <point x="-28.5" y="50.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveChoseResourcesExt" target="it.polimi.ingsw.server.controller.Performable" relationship="REALIZATION">
+      <point x="-144.33333333333348" y="-62.0" />
+      <point x="6118.4518014843" y="724.0" />
+      <point x="3249.440692289511" y="724.0" />
+      <point x="3249.440692289511" y="694.0" />
+      <point x="3225.940692289511" y="694.0" />
+      <point x="-28.5" y="50.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.parse.Starter" target="it.polimi.ingsw.server.parse.ProductionPowerExtSerializer" relationship="CREATE">
+      <point x="0.0" y="-149.5" />
+      <point x="5189.0" y="4415.0" />
+      <point x="5079.6906922895105" y="4415.0" />
+      <point x="0.0" y="39.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.network.Room" target="it.polimi.ingsw.server.view.View" relationship="DEPENDENCY">
+      <point x="54.42857142857065" y="-227.0" />
+      <point x="7086.567219150029" y="2117.0" />
+      <point x="8532.760632765701" y="2117.0" />
+      <point x="8532.760632765701" y="1368.0" />
+      <point x="8477.385632765701" y="1368.0" />
+      <point x="35.125" y="95.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.LorenzoSoloPlayerExt" target="it.polimi.ingsw.server.model.SoloActionTokens" relationship="DEPENDENCY">
+      <point x="-207.0" y="-106.0" />
+      <point x="10943.70682953964" y="6299.0" />
+      <point x="2476.4934681509662" y="6299.0" />
+      <point x="-51.75" y="50.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.view.View" target="it.polimi.ingsw.server.controller.Performable" relationship="TO_MANY">
+      <point x="-23.41666666666697" y="-95.0" />
+      <point x="8418.843966099033" y="1096.0" />
+      <point x="5559.309160440478" y="1096.0" />
+      <point x="5559.309160440478" y="684.0" />
+      <point x="3339.940692289511" y="684.0" />
+      <point x="85.5" y="50.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.network.Room" target="it.polimi.ingsw.server.network.ClientConnection" relationship="TO_MANY">
+      <point x="163.28571428571377" y="-227.0" />
+      <point x="7195.424362007172" y="2137.0" />
+      <point x="10169.392857142857" y="2137.0" />
+      <point x="10169.392857142857" y="1910.0" />
+      <point x="10147.392857142857" y="1910.0" />
+      <point x="10147.392857142857" y="1900.0" />
+      <point x="10156.188369861877" y="1900.0" />
+      <point x="0.0" y="50.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.view.RemoteView.MessageReceiver" target="it.polimi.ingsw.server.view.RemoteView" relationship="INNER_CLASS">
+      <point x="13.33333333333303" y="39.5" />
+      <point x="7845.809160440477" y="1870.0" />
+      <point x="7106.31721915003" y="1870.0" />
+      <point x="-36.57142857142844" y="-51.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.network.Server" target="it.polimi.ingsw.server.model.GameExt" relationship="CREATE">
+      <point x="220.41666666666697" y="182.5" />
+      <point x="8801.350827107144" y="3171.0" />
+      <point x="9107.813369861877" y="3171.0" />
+      <point x="9107.813369861875" y="5536.0" />
+      <point x="3246.8684681509662" y="5536.0" />
+      <point x="3246.8684681509662" y="5576.0" />
+      <point x="10893.14291531642" y="5576.0" />
+      <point x="-180.54545454545405" y="-227.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.WhiteAbility" target="it.polimi.ingsw.server.model.Ability" relationship="REALIZATION">
+      <point x="0.0" y="-73.0" />
+      <point x="1804.483012719019" y="389.0" />
+      <point x="2052.6906922895105" y="389.0" />
+      <point x="2052.6906922895105" y="359.0" />
+      <point x="1878.0656922895105" y="359.0" />
+      <point x="23.375" y="50.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.MoveShuffle" target="it.polimi.ingsw.server.model.SoloActionTokens" relationship="TO_MANY">
+      <point x="-25.875" y="73.0" />
+      <point x="327.125" y="4261.0" />
+      <point x="306.75" y="4261.0" />
+      <point x="306.75" y="6094.0" />
+      <point x="2502.3684681509662" y="6094.0" />
+      <point x="-25.875" y="-50.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveDiscardResourcesExt" target="it.polimi.ingsw.server.controller.Performable" relationship="REALIZATION">
+      <point x="0.0" y="-62.0" />
+      <point x="2865.483012719019" y="724.0" />
+      <point x="3249.440692289511" y="724.0" />
+      <point x="3249.440692289511" y="694.0" />
+      <point x="3225.940692289511" y="694.0" />
+      <point x="-28.5" y="50.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveChoseResourcesExt" target="it.polimi.ingsw.server.model.GameExt" relationship="DEPENDENCY">
+      <point x="144.33333333333303" y="62.0" />
+      <point x="6407.118468150966" y="930.0" />
+      <point x="6470.785134817633" y="930.0" />
+      <point x="6470.785134817633" y="1780.0" />
+      <point x="4842.6906922895105" y="1780.0" />
+      <point x="4842.6906922895105" y="5536.0" />
+      <point x="3246.8684681509662" y="5536.0" />
+      <point x="3246.8684681509662" y="5576.0" />
+      <point x="10893.14291531642" y="5576.0" />
+      <point x="-180.54545454545405" y="-227.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.network.Room" target="it.polimi.ingsw.server.model.GameExt" relationship="DEPENDENCY">
+      <point x="-158.75" y="227.0" />
+      <point x="6873.388647721458" y="2683.0" />
+      <point x="6374.8125" y="2683.0" />
+      <point x="6374.6906922895105" y="5536.0" />
+      <point x="3246.8684681509662" y="5536.0" />
+      <point x="3246.8684681509662" y="5576.0" />
+      <point x="10893.14291531642" y="5576.0" />
+      <point x="-180.54545454545405" y="-227.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.Controller" target="it.polimi.ingsw.server.observer.Observer" relationship="REALIZATION">
+      <point x="47.0" y="-39.5" />
+      <point x="6183.059160440478" y="1900.0" />
+      <point x="10022.188369861877" y="1900.0" />
+      <point x="10022.188369861877" y="99.0" />
+      <point x="11052.297564583885" y="99.0" />
+      <point x="-45.33333333333303" y="28.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.parse.Starter" target="it.polimi.ingsw.server.controller.Performable" relationship="DEPENDENCY">
+      <point x="-20.866666666666788" y="-149.5" />
+      <point x="5168.133333333333" y="4425.0" />
+      <point x="4062.9999999999995" y="4425.0" />
+      <point x="4062.9999999999995" y="1730.0" />
+      <point x="5497.059160440478" y="1730.0" />
+      <point x="5497.059160440478" y="694.0" />
+      <point x="5428.118468150966" y="694.0" />
+      <point x="5428.118468150966" y="674.0" />
+      <point x="3282.940692289511" y="674.0" />
+      <point x="28.5" y="50.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.ProductionPowerPlusAbility" target="it.polimi.ingsw.server.model.Ability" relationship="REALIZATION">
+      <point x="0.0" y="-73.0" />
+      <point x="2579.483012719019" y="389.0" />
+      <point x="2052.6906922895105" y="389.0" />
+      <point x="2052.6906922895105" y="359.0" />
+      <point x="1878.0656922895105" y="359.0" />
+      <point x="23.375" y="50.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.network.LinkToRoomSetupperExt" target="it.polimi.ingsw.server.network.SocketClientConnection" relationship="DEPENDENCY">
+      <point x="126.0" y="-50.5" />
+      <point x="8066.600827107144" y="3766.0" />
+      <point x="8675.26749377381" y="3766.0" />
+      <point x="8675.26749377381" y="3553.0" />
+      <point x="8637.434160440478" y="3553.0" />
+      <point x="0.0" y="139.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.parse.LeaderCardExtSerializer" target="it.polimi.ingsw.server.model.LeaderCardExt" relationship="DEPENDENCY">
+      <point x="0.0" y="-50.5" />
+      <point x="1149.25" y="724.0" />
+      <point x="1215.733012719019" y="724.0" />
+      <point x="1215.733012719019" y="664.0" />
+      <point x="1390.233012719019" y="664.0" />
+      <point x="0.0" y="84.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveTypeMarketExt" target="it.polimi.ingsw.server.model.GameExt" relationship="DEPENDENCY">
+      <point x="108.33333333333303" y="73.0" />
+      <point x="7331.684160440477" y="4271.0" />
+      <point x="7368.26749377381" y="4271.0" />
+      <point x="7368.26749377381" y="5536.0" />
+      <point x="3246.8684681509662" y="5536.0" />
+      <point x="3246.8684681509662" y="5576.0" />
+      <point x="10893.14291531642" y="5576.0" />
+      <point x="-180.54545454545405" y="-227.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveWhiteConversionExt" target="it.polimi.ingsw.server.model.GameExt" relationship="DEPENDENCY">
+      <point x="76.0" y="62.0" />
+      <point x="5410.218251349568" y="920.0" />
+      <point x="5456.309160440478" y="920.0" />
+      <point x="5456.309160440478" y="1700.0" />
+      <point x="4013.4999999999995" y="1700.0" />
+      <point x="4013.4999999999995" y="5536.0" />
+      <point x="3246.8684681509662" y="5536.0" />
+      <point x="3246.8684681509662" y="5576.0" />
+      <point x="10893.14291531642" y="5576.0" />
+      <point x="-180.54545454545405" y="-227.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveLeaderExt" target="it.polimi.ingsw.server.model.LeaderCardExt" relationship="DEPENDENCY">
+      <point x="-57.0" y="-62.0" />
+      <point x="2247.483012719019" y="3816.0" />
+      <point x="1371.25" y="3816.0" />
+      <point x="1371.25" y="724.0" />
+      <point x="1215.733012719019" y="724.0" />
+      <point x="1215.733012719019" y="664.0" />
+      <point x="1390.233012719019" y="664.0" />
+      <point x="0.0" y="84.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveActiveProductionExt" target="it.polimi.ingsw.server.controller.MoveChoseResourcesExt" relationship="CREATE">
+      <point x="0.0" y="-62.0" />
+      <point x="4640.1906922895105" y="1770.0" />
+      <point x="6364.035134817633" y="1770.0" />
+      <point x="6364.035134817633" y="930.0" />
+      <point x="6262.785134817634" y="930.0" />
+      <point x="0.0" y="62.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.DashboardExt" target="it.polimi.ingsw.server.observer.Observer" relationship="TO_MANY">
+      <point x="145.99999999999955" y="-117.0" />
+      <point x="10667.559523809523" y="2157.0" />
+      <point x="11731.521703195209" y="2157.0" />
+      <point x="11731.521703195209" y="99.0" />
+      <point x="11142.96423125055" y="99.0" />
+      <point x="45.33333333333303" y="28.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.network.Room" target="it.polimi.ingsw.server.model.GameExt" relationship="TO_ONE">
+      <point x="-95.25" y="227.0" />
+      <point x="6936.888647721458" y="2693.0" />
+      <point x="6407.6906922895105" y="2693.0" />
+      <point x="6407.6906922895105" y="3553.0" />
+      <point x="6385.6906922895105" y="3553.0" />
+      <point x="6385.6906922895105" y="5526.0" />
+      <point x="6146.868468150966" y="5526.0" />
+      <point x="6146.868468150966" y="5566.0" />
+      <point x="10953.324733498239" y="5566.0" />
+      <point x="-120.36363636363603" y="-227.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.view.RemoteView.MessageReceiver" target="it.polimi.ingsw.server.view.View" relationship="DEPENDENCY">
+      <point x="0.0" y="-39.5" />
+      <point x="7832.475827107144" y="1388.0" />
+      <point x="8532.760632765701" y="1388.0" />
+      <point x="8532.760632765701" y="1368.0" />
+      <point x="8477.385632765701" y="1368.0" />
+      <point x="35.125" y="95.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveActiveProductionExt" target="it.polimi.ingsw.server.model.ProductionPowerExt" relationship="CREATE">
+      <point x="128.0" y="-62.0" />
+      <point x="4768.1906922895105" y="1920.0" />
+      <point x="5563.868468150966" y="1920.0" />
+      <point x="5563.868468150966" y="1620.0" />
+      <point x="6762.475827107144" y="1620.0" />
+      <point x="-112.0" y="94.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveTypeMarketExt" target="it.polimi.ingsw.server.model.exception.HaveToChooseException" relationship="DEPENDENCY">
+      <point x="0.0" y="-73.0" />
+      <point x="7223.350827107144" y="3826.0" />
+      <point x="7246.850827107144" y="3826.0" />
+      <point x="0.0" y="39.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.DevelopmentCardExt" target="it.polimi.ingsw.server.model.ProductionPowerExt" relationship="DEPENDENCY">
+      <point x="0.0" y="-39.5" />
+      <point x="5691.1906922895105" y="1920.0" />
+      <point x="5563.868468150966" y="1920.0" />
+      <point x="5563.868468150966" y="1620.0" />
+      <point x="6762.475827107144" y="1620.0" />
+      <point x="-112.0" y="94.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveEndTurnExt" target="it.polimi.ingsw.server.model.GameExt" relationship="DEPENDENCY">
+      <point x="-76.0" y="62.0" />
+      <point x="4988.309160440478" y="900.0" />
+      <point x="5085.809160440478" y="900.0" />
+      <point x="5085.809160440478" y="1650.0" />
+      <point x="3314.4999999999995" y="1650.0" />
+      <point x="3314.4999999999995" y="5536.0" />
+      <point x="3246.8684681509662" y="5536.0" />
+      <point x="3246.8684681509662" y="5576.0" />
+      <point x="10893.14291531642" y="5576.0" />
+      <point x="-180.54545454545405" y="-227.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.parse.AbilitySerializer" target="it.polimi.ingsw.server.model.DepotsAbility" relationship="DEPENDENCY">
+      <point x="-79.39999999999964" y="-50.5" />
+      <point x="1499.4684681509661" y="4241.0" />
+      <point x="1632.733012719019" y="4241.0" />
+      <point x="51.75" y="73.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.parse.TokensSerializer" target="it.polimi.ingsw.server.model.SoloActionTokens" relationship="DEPENDENCY">
+      <point x="-114.5" y="50.5" />
+      <point x="442.75" y="6074.0" />
+      <point x="5116.118468150966" y="6074.0" />
+      <point x="5116.118468150966" y="6104.0" />
+      <point x="2554.1184681509662" y="6104.0" />
+      <point x="25.875" y="-50.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.parse.AbilitySerializer" target="it.polimi.ingsw.server.model.Ability" relationship="DEPENDENCY">
+      <point x="-158.80000000000018" y="-50.5" />
+      <point x="1420.0684681509656" y="4211.0" />
+      <point x="1141.25" y="4211.0" />
+      <point x="1141.25" y="3826.0" />
+      <point x="621.6216604404781" y="3826.0" />
+      <point x="621.6216604404781" y="704.0" />
+      <point x="865.3716604404781" y="704.0" />
+      <point x="865.3716604404781" y="359.0" />
+      <point x="1784.5656922895105" y="359.0" />
+      <point x="-70.125" y="50.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.DiscountAbility" target="it.polimi.ingsw.server.model.PlayerExt" relationship="DEPENDENCY">
+      <point x="58.5" y="84.0" />
+      <point x="2111.983012719019" y="5152.0" />
+      <point x="3451.4999999999995" y="5152.0" />
+      <point x="3451.4999999999995" y="5182.0" />
+      <point x="10954.597460770967" y="5182.0" />
+      <point x="-119.09090909090901" y="-150.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.parse.Starter" target="it.polimi.ingsw.server.parse.DashBoardSerializer" relationship="CREATE">
+      <point x="146.0666666666666" y="-149.5" />
+      <point x="5335.066666666666" y="4475.0" />
+      <point x="10505.688369861877" y="4475.0" />
+      <point x="0.0" y="39.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.view.RemoteView" target="it.polimi.ingsw.server.network.ClientConnection" relationship="DEPENDENCY">
+      <point x="73.14285714285688" y="-51.0" />
+      <point x="7216.031504864315" y="1920.0" />
+      <point x="10069.142857142857" y="1920.0" />
+      <point x="10069.142857142857" y="1900.0" />
+      <point x="10073.855036528541" y="1900.0" />
+      <point x="-82.33333333333394" y="50.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.GameExt" target="it.polimi.ingsw.server.model.PlayerExt" relationship="DEPENDENCY">
+      <point x="0.0" y="-227.0" />
+      <point x="0.0" y="150.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.network.SocketClientConnection" target="it.polimi.ingsw.server.observer.Observable" relationship="REALIZATION">
+      <point x="86.66666666666606" y="-139.0" />
+      <point x="8724.100827107144" y="3211.0" />
+      <point x="10814.309523809523" y="3211.0" />
+      <point x="10814.309523809523" y="389.0" />
+      <point x="10869.559523809523" y="389.0" />
+      <point x="0.0" y="39.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveWhiteConversionExt" target="it.polimi.ingsw.server.controller.Performable" relationship="REALIZATION">
+      <point x="0.0" y="-62.0" />
+      <point x="5334.218251349568" y="724.0" />
+      <point x="3249.440692289511" y="724.0" />
+      <point x="3249.440692289511" y="694.0" />
+      <point x="3225.940692289511" y="694.0" />
+      <point x="-28.5" y="50.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.WareHouseDepotsExt" target="it.polimi.ingsw.server.model.exception.OutOfResourcesException" relationship="DEPENDENCY">
+      <point x="132.5" y="-94.5" />
+      <point x="5871.868468150966" y="99.0" />
+      <point x="6196.333549432368" y="99.0" />
+      <point x="0.0" y="39.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.network.SocketClientConnection" target="it.polimi.ingsw.server.observer.Observer" relationship="TO_MANY">
+      <point x="115.55555555555475" y="-139.0" />
+      <point x="8752.989715996033" y="3221.0" />
+      <point x="11731.521703195209" y="3221.0" />
+      <point x="11731.521703195209" y="99.0" />
+      <point x="11142.96423125055" y="99.0" />
+      <point x="45.33333333333303" y="28.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.LorenzoSoloPlayerExt" target="it.polimi.ingsw.server.model.FaithTrackExt" relationship="DEPENDENCY">
+      <point x="-69.0" y="-106.0" />
+      <point x="11081.70682953964" y="6279.0" />
+      <point x="10732.188369861877" y="6279.0" />
+      <point x="10732.188369861877" y="5172.0" />
+      <point x="10984.059523809523" y="5172.0" />
+      <point x="0.0" y="106.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.ConverterExt" target="it.polimi.ingsw.server.model.exception.HaveToChooseException" relationship="CREATE">
+      <point x="-146.625" y="-161.0" />
+      <point x="11011.934523809523" y="3826.0" />
+      <point x="7246.850827107144" y="3826.0" />
+      <point x="0.0" y="39.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.WareHouseDepotsExt" target="it.polimi.ingsw.server.model.exception.UnableToFillException" relationship="CREATE">
+      <point x="-132.5" y="-94.5" />
+      <point x="5606.868468150966" y="109.0" />
+      <point x="912.0031922895105" y="109.0" />
+      <point x="0.0" y="39.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.FaithTrackExt" target="it.polimi.ingsw.server.observer.Observer" relationship="TO_MANY">
+      <point x="98.25" y="-106.0" />
+      <point x="11082.309523809523" y="4867.0" />
+      <point x="11731.521703195209" y="4867.0" />
+      <point x="11731.521703195209" y="99.0" />
+      <point x="11142.96423125055" y="99.0" />
+      <point x="45.33333333333303" y="28.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveActiveProductionExt" target="it.polimi.ingsw.server.model.PlayerExt" relationship="DEPENDENCY">
+      <point x="0.0" y="62.0" />
+      <point x="4640.1906922895105" y="5152.0" />
+      <point x="3451.4999999999995" y="5152.0" />
+      <point x="3451.4999999999995" y="5182.0" />
+      <point x="10954.597460770967" y="5182.0" />
+      <point x="-119.09090909090901" y="-150.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.FaithTrackExt" target="it.polimi.ingsw.server.observer.Observer" relationship="DEPENDENCY">
+      <point x="32.75" y="-106.0" />
+      <point x="11016.809523809523" y="4857.0" />
+      <point x="11720.521703195209" y="4857.0" />
+      <point x="11720.521703195209" y="109.0" />
+      <point x="11097.630897917217" y="109.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.network.SocketClientConnection" target="it.polimi.ingsw.server.observer.Observer" relationship="DEPENDENCY">
+      <point x="57.777777777777374" y="-139.0" />
+      <point x="8695.211938218255" y="3201.0" />
+      <point x="10290.188369861877" y="3201.0" />
+      <point x="10290.188369861877" y="109.0" />
+      <point x="11097.630897917217" y="109.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.PlayerExt" target="it.polimi.ingsw.server.observer.Observable" relationship="REALIZATION">
+      <point x="71.45454545454504" y="-150.0" />
+      <point x="11145.14291531642" y="5142.0" />
+      <point x="11420.809523809523" y="5142.0" />
+      <point x="11420.809523809523" y="389.0" />
+      <point x="10869.559523809523" y="389.0" />
+      <point x="0.0" y="39.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.GameExt" target="it.polimi.ingsw.server.observer.Observer" relationship="TO_MANY">
+      <point x="300.9090909090901" y="-227.0" />
+      <point x="11374.597460770965" y="5576.0" />
+      <point x="11731.521703195209" y="5576.0" />
+      <point x="11731.521703195209" y="99.0" />
+      <point x="11142.96423125055" y="99.0" />
+      <point x="45.33333333333303" y="28.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.view.View" target="it.polimi.ingsw.server.observer.Observer" relationship="REALIZATION">
+      <point x="23.41666666666697" y="-95.0" />
+      <point x="8465.67729943237" y="1096.0" />
+      <point x="10022.188369861877" y="1096.0" />
+      <point x="10022.188369861877" y="99.0" />
+      <point x="11052.297564583885" y="99.0" />
+      <point x="-45.33333333333303" y="28.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveChoseInitialResourcesExt" target="it.polimi.ingsw.server.model.GameExt" relationship="DEPENDENCY">
+      <point x="-61.0" y="62.0" />
+      <point x="3060.483012719019" y="930.0" />
+      <point x="3115.983012719019" y="930.0" />
+      <point x="3115.983012719019" y="5536.0" />
+      <point x="3246.8684681509662" y="5536.0" />
+      <point x="3246.8684681509662" y="5576.0" />
+      <point x="10893.14291531642" y="5576.0" />
+      <point x="-180.54545454545405" y="-227.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.RequirementsExt" target="it.polimi.ingsw.server.model.exception.OutOfResourcesException" relationship="DEPENDENCY">
+      <point x="0.0" y="-61.5" />
+      <point x="9412.184160440478" y="99.0" />
+      <point x="6196.333549432368" y="99.0" />
+      <point x="0.0" y="39.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.ProductionPowerExt" target="it.polimi.ingsw.server.model.PlayerExt" relationship="DEPENDENCY">
+      <point x="112.0" y="94.5" />
+      <point x="6986.475827107144" y="1790.0" />
+      <point x="5975.6906922895105" y="1790.0" />
+      <point x="5975.6906922895105" y="4847.0" />
+      <point x="4740.618468150966" y="4847.0" />
+      <point x="4740.618468150966" y="5152.0" />
+      <point x="3451.4999999999995" y="5152.0" />
+      <point x="3451.4999999999995" y="5182.0" />
+      <point x="10954.597460770967" y="5182.0" />
+      <point x="-119.09090909090901" y="-150.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.PlayerExt" target="it.polimi.ingsw.server.model.ProductionPowerExt" relationship="DEPENDENCY">
+      <point x="-95.27272727272702" y="-150.0" />
+      <point x="10978.415642589149" y="5162.0" />
+      <point x="5964.6906922895105" y="5162.0" />
+      <point x="5964.6906922895105" y="1920.0" />
+      <point x="5563.868468150966" y="1920.0" />
+      <point x="5563.868468150966" y="1620.0" />
+      <point x="6762.475827107144" y="1620.0" />
+      <point x="-112.0" y="94.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.network.Server" target="it.polimi.ingsw.server.controller.Controller" relationship="CREATE">
+      <point x="-231.4375" y="-182.5" />
+      <point x="8349.496660440478" y="2663.0" />
+      <point x="6269.6906922895105" y="2663.0" />
+      <point x="6269.6906922895105" y="2087.0" />
+      <point x="6159.559160440478" y="2087.0" />
+      <point x="23.5" y="39.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.LorenzoSoloPlayerExt" target="it.polimi.ingsw.server.model.GameExt" relationship="DEPENDENCY">
+      <point x="-23.0" y="-106.0" />
+      <point x="11127.70682953964" y="6269.0" />
+      <point x="10994.559523809523" y="6269.0" />
+      <point x="10994.559523809523" y="6084.0" />
+      <point x="10990.938369861877" y="6084.0" />
+      <point x="-82.75" y="227.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.parse.SettableSerializer" target="it.polimi.ingsw.server.network.CreateRoomSetupperExt" relationship="DEPENDENCY">
+      <point x="81.20000000000073" y="-39.5" />
+      <point x="8135.2976348176335" y="4261.0" />
+      <point x="8296.600827107144" y="4261.0" />
+      <point x="0.0" y="50.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.PlayerExt" target="it.polimi.ingsw.server.observer.Observer" relationship="TO_MANY">
+      <point x="119.09090909090901" y="-150.0" />
+      <point x="11192.779278952785" y="5162.0" />
+      <point x="11731.521703195209" y="5162.0" />
+      <point x="11731.521703195209" y="99.0" />
+      <point x="11142.96423125055" y="99.0" />
+      <point x="45.33333333333303" y="28.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.parse.SettableSerializer" target="it.polimi.ingsw.server.network.LinkToRoomSetupperExt" relationship="DEPENDENCY">
+      <point x="0.0" y="-39.5" />
+      <point x="8054.097634817633" y="4251.0" />
+      <point x="7940.600827107144" y="4251.0" />
+      <point x="0.0" y="50.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.parse.SettableSerializer" target="it.polimi.ingsw.server.network.JoinWaitingListSetupperExt" relationship="DEPENDENCY">
+      <point x="-81.20000000000073" y="-39.5" />
+      <point x="7972.897634817632" y="4261.0" />
+      <point x="7584.600827107144" y="4261.0" />
+      <point x="0.0" y="50.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.LorenzoSoloPlayerExt" target="it.polimi.ingsw.server.observer.Observer" relationship="DEPENDENCY">
+      <point x="161.0" y="-106.0" />
+      <point x="11311.70682953964" y="6289.0" />
+      <point x="11720.521703195209" y="6289.0" />
+      <point x="11720.521703195209" y="109.0" />
+      <point x="11097.630897917217" y="109.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveAutoPlay" target="it.polimi.ingsw.server.controller.MoveChoseLeaderCardsExt" relationship="CREATE">
+      <point x="-97.71428571428532" y="-62.0" />
+      <point x="3423.2264065752256" y="920.0" />
+      <point x="2263.309160440478" y="920.0" />
+      <point x="2263.309160440478" y="910.0" />
+      <point x="2276.309160440478" y="910.0" />
+      <point x="0.0" y="62.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.network.Server" target="it.polimi.ingsw.server.network.SocketClientConnection" relationship="CREATE">
+      <point x="-220.41666666666697" y="182.5" />
+      <point x="8360.51749377381" y="3141.0" />
+      <point x="6908.347634817633" y="3141.0" />
+      <point x="6908.347634817633" y="3221.0" />
+      <point x="8550.767493773812" y="3221.0" />
+      <point x="-86.66666666666606" y="-139.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.view.RemoteView" target="it.polimi.ingsw.server.view.RemoteView.MessageReceiver" relationship="CREATE">
+      <point x="0.0" y="-51.0" />
+      <point x="7142.888647721458" y="1880.0" />
+      <point x="7872.475827107144" y="1880.0" />
+      <point x="40.0" y="39.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveAutoPlay" target="it.polimi.ingsw.server.controller.MoveWhiteConversionExt" relationship="CREATE">
+      <point x="65.14285714285688" y="-62.0" />
+      <point x="3586.083549432368" y="920.0" />
+      <point x="5366.718251349568" y="920.0" />
+      <point x="5366.718251349568" y="910.0" />
+      <point x="5334.218251349568" y="910.0" />
+      <point x="0.0" y="62.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.GameExt" target="it.polimi.ingsw.server.model.FaithTrackExt" relationship="CREATE">
+      <point x="60.18181818181802" y="-227.0" />
+      <point x="11133.870188043693" y="5536.0" />
+      <point x="11215.188369861877" y="5536.0" />
+      <point x="11215.188369861877" y="5172.0" />
+      <point x="10984.059523809523" y="5172.0" />
+      <point x="0.0" y="106.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.parse.TokensSerializer" target="it.polimi.ingsw.server.model.Move2" relationship="DEPENDENCY">
+      <point x="-152.66666666666606" y="-50.5" />
+      <point x="404.58333333333394" y="4251.0" />
+      <point x="194.0" y="4251.0" />
+      <point x="69.0" y="73.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveChoseResourcesExt" target="it.polimi.ingsw.server.model.PlayerExt" relationship="DEPENDENCY">
+      <point x="-144.33333333333348" y="62.0" />
+      <point x="6118.4518014843" y="920.0" />
+      <point x="6192.142857142857" y="920.0" />
+      <point x="6192.142857142857" y="1750.0" />
+      <point x="4426.6906922895105" y="1750.0" />
+      <point x="4426.6906922895105" y="4231.0" />
+      <point x="4522.9406922895105" y="4231.0" />
+      <point x="4522.9406922895105" y="4867.0" />
+      <point x="4084.6184681509662" y="4867.0" />
+      <point x="4084.6184681509662" y="5152.0" />
+      <point x="3451.4999999999995" y="5152.0" />
+      <point x="3451.4999999999995" y="5182.0" />
+      <point x="10954.597460770967" y="5182.0" />
+      <point x="-119.09090909090901" y="-150.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.parse.AbilitySerializer" target="it.polimi.ingsw.server.model.DiscountAbility" relationship="DEPENDENCY">
+      <point x="79.39999999999964" y="-50.5" />
+      <point x="1658.2684681509654" y="4261.0" />
+      <point x="1994.983012719019" y="4261.0" />
+      <point x="-58.5" y="84.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.PersonalBoardExt" target="it.polimi.ingsw.server.observer.Observable" relationship="REALIZATION">
+      <point x="76.28571428571422" y="-106.0" />
+      <point x="9360.557417480924" y="3786.0" />
+      <point x="10814.309523809523" y="3786.0" />
+      <point x="10814.309523809523" y="389.0" />
+      <point x="10869.559523809523" y="389.0" />
+      <point x="0.0" y="39.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.GameExt" target="it.polimi.ingsw.server.observer.Observer" relationship="DEPENDENCY">
+      <point x="240.72727272727207" y="-227.0" />
+      <point x="11314.415642589149" y="5566.0" />
+      <point x="11720.521703195209" y="5566.0" />
+      <point x="11720.521703195209" y="109.0" />
+      <point x="11097.630897917217" y="109.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.parse.RequirementsExtSerializer" target="it.polimi.ingsw.server.model.RequirementsExt" relationship="DEPENDENCY">
+      <point x="0.0" y="-39.5" />
+      <point x="7285.285134817633" y="339.0" />
+      <point x="9292.184160440478" y="339.0" />
+      <point x="-120.0" y="61.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.network.Server" target="it.polimi.ingsw.server.model.PlayerExt" relationship="CREATE">
+      <point x="132.25" y="182.5" />
+      <point x="8713.184160440478" y="3181.0" />
+      <point x="9096.813369861877" y="3181.0" />
+      <point x="9096.813369861877" y="4465.0" />
+      <point x="7357.26749377381" y="4465.0" />
+      <point x="7357.26749377381" y="5152.0" />
+      <point x="3451.4999999999995" y="5152.0" />
+      <point x="3451.4999999999995" y="5182.0" />
+      <point x="10954.597460770967" y="5182.0" />
+      <point x="-119.09090909090901" y="-150.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.DepotsAbility" target="it.polimi.ingsw.server.model.Ability" relationship="REALIZATION">
+      <point x="0.0" y="-73.0" />
+      <point x="1580.983012719019" y="389.0" />
+      <point x="2052.6906922895105" y="389.0" />
+      <point x="2052.6906922895105" y="359.0" />
+      <point x="1878.0656922895105" y="359.0" />
+      <point x="23.375" y="50.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.LorenzoSoloPlayerExt" target="it.polimi.ingsw.server.observer.Observable" relationship="REALIZATION">
+      <point x="115.0" y="-106.0" />
+      <point x="11265.70682953964" y="6279.0" />
+      <point x="11437.521703195209" y="6279.0" />
+      <point x="11437.521703195209" y="389.0" />
+      <point x="10869.559523809523" y="389.0" />
+      <point x="0.0" y="39.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveDiscardResourcesExt" target="it.polimi.ingsw.server.model.exception.UnableToFillException" relationship="DEPENDENCY">
+      <point x="-76.0" y="-62.0" />
+      <point x="2789.483012719019" y="684.0" />
+      <point x="288.95114772145826" y="684.0" />
+      <point x="288.95114772145826" y="109.0" />
+      <point x="912.0031922895105" y="109.0" />
+      <point x="0.0" y="39.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveDiscardResourcesExt" target="it.polimi.ingsw.server.model.exception.OutOfResourcesException" relationship="DEPENDENCY">
+      <point x="76.0" y="-62.0" />
+      <point x="2941.483012719019" y="704.0" />
+      <point x="5463.868468150966" y="704.0" />
+      <point x="5463.868468150966" y="99.0" />
+      <point x="6196.333549432368" y="99.0" />
+      <point x="0.0" y="39.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.network.SocketClientConnection" target="it.polimi.ingsw.server.network.Server" relationship="DEPENDENCY">
+      <point x="-57.777777777777374" y="-139.0" />
+      <point x="8579.6563826627" y="3211.0" />
+      <point x="7961.365692289512" y="3211.0" />
+      <point x="7961.365692289512" y="3131.0" />
+      <point x="8536.850827107144" y="3131.0" />
+      <point x="-44.08333333333303" y="182.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.network.Room" target="it.polimi.ingsw.server.parse.Starter" relationship="DEPENDENCY">
+      <point x="158.75" y="227.0" />
+      <point x="7190.888647721458" y="2703.0" />
+      <point x="7719.348611111111" y="2703.0" />
+      <point x="7719.348611111111" y="3171.0" />
+      <point x="6935.097634817633" y="3171.0" />
+      <point x="6935.097634817633" y="4435.0" />
+      <point x="7039.350827107144" y="4435.0" />
+      <point x="7039.350827107144" y="4485.0" />
+      <point x="5272.466666666665" y="4485.0" />
+      <point x="83.46666666666624" y="-149.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.Performable" target="it.polimi.ingsw.server.model.GameExt" relationship="DEPENDENCY">
+      <point x="-85.5" y="50.5" />
+      <point x="3168.940692289511" y="694.0" />
+      <point x="2740.983012719019" y="694.0" />
+      <point x="2740.983012719019" y="5536.0" />
+      <point x="3246.8684681509662" y="5536.0" />
+      <point x="3246.8684681509662" y="5576.0" />
+      <point x="10893.14291531642" y="5576.0" />
+      <point x="-180.54545454545405" y="-227.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.view.RemoteView" target="it.polimi.ingsw.server.parse.Starter" relationship="DEPENDENCY">
+      <point x="64.0" y="51.0" />
+      <point x="7206.888647721458" y="2107.0" />
+      <point x="7719.348611111111" y="2107.0" />
+      <point x="7719.348611111111" y="3181.0" />
+      <point x="6996.600827107144" y="3181.0" />
+      <point x="6996.600827107144" y="4435.0" />
+      <point x="7039.350827107144" y="4435.0" />
+      <point x="7039.350827107144" y="4485.0" />
+      <point x="5272.466666666665" y="4485.0" />
+      <point x="83.46666666666624" y="-149.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.PlayerExt" target="it.polimi.ingsw.server.observer.Observer" relationship="DEPENDENCY">
+      <point x="95.27272727272702" y="-150.0" />
+      <point x="11168.961097134603" y="5152.0" />
+      <point x="11720.521703195209" y="5152.0" />
+      <point x="11720.521703195209" y="109.0" />
+      <point x="11097.630897917217" y="109.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.DepotsExt" target="it.polimi.ingsw.server.model.WareHouseDepotsExt" relationship="CREATE">
+      <point x="-144.58333333333348" y="-116.5" />
+      <point x="9693.605036528543" y="359.0" />
+      <point x="5739.368468150966" y="359.0" />
+      <point x="0.0" y="94.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.parse.Starter" target="it.polimi.ingsw.server.parse.TokensSerializer" relationship="CREATE">
+      <point x="-125.19999999999982" y="-149.5" />
+      <point x="5063.799999999999" y="4475.0" />
+      <point x="671.75" y="4475.0" />
+      <point x="114.5" y="50.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.network.DisconnectConnectionSetupperExt" target="it.polimi.ingsw.server.network.Server" relationship="DEPENDENCY">
+      <point x="0.0" y="-50.5" />
+      <point x="8652.600827107144" y="3716.0" />
+      <point x="8221.949679385685" y="3716.0" />
+      <point x="8221.949679385685" y="3211.0" />
+      <point x="7961.365692289512" y="3211.0" />
+      <point x="7961.365692289512" y="3131.0" />
+      <point x="8536.850827107144" y="3131.0" />
+      <point x="-44.08333333333303" y="182.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.network.SocketClientConnection" target="it.polimi.ingsw.server.network.ClientConnection" relationship="REALIZATION">
+      <point x="28.888888888888687" y="-139.0" />
+      <point x="8666.323049329367" y="3191.0" />
+      <point x="10180.392857142857" y="3191.0" />
+      <point x="10180.392857142857" y="1920.0" />
+      <point x="10238.521703195209" y="1920.0" />
+      <point x="82.33333333333394" y="50.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.Controller" target="it.polimi.ingsw.server.controller.Performable" relationship="DEPENDENCY">
+      <point x="-47.0" y="-39.5" />
+      <point x="6089.059160440478" y="1730.0" />
+      <point x="5548.309160440478" y="1730.0" />
+      <point x="5548.309160440478" y="694.0" />
+      <point x="5428.118468150966" y="694.0" />
+      <point x="5428.118468150966" y="674.0" />
+      <point x="3282.940692289511" y="674.0" />
+      <point x="28.5" y="50.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.LorenzoSoloPlayerExt" target="it.polimi.ingsw.server.model.SoloActionTokens" relationship="TO_MANY">
+      <point x="-115.0" y="-106.0" />
+      <point x="11035.70682953964" y="6289.0" />
+      <point x="2533.7434681509662" y="6289.0" />
+      <point x="2533.7434681509662" y="6279.0" />
+      <point x="2579.9934681509662" y="6279.0" />
+      <point x="51.75" y="50.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.network.Server" target="it.polimi.ingsw.server.parse.Starter" relationship="DEPENDENCY">
+      <point x="-132.25" y="182.5" />
+      <point x="8448.684160440478" y="3201.0" />
+      <point x="7050.350827107144" y="3201.0" />
+      <point x="7050.350827107144" y="4435.0" />
+      <point x="7039.350827107144" y="4435.0" />
+      <point x="7039.350827107144" y="4485.0" />
+      <point x="5272.466666666665" y="4485.0" />
+      <point x="83.46666666666624" y="-149.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.network.SocketClientConnection" target="it.polimi.ingsw.server.parse.Starter" relationship="DEPENDENCY">
+      <point x="86.66666666666606" y="139.0" />
+      <point x="8724.100827107144" y="3553.0" />
+      <point x="9063.01749377381" y="3553.0" />
+      <point x="9063.01749377381" y="4435.0" />
+      <point x="7039.350827107144" y="4435.0" />
+      <point x="7039.350827107144" y="4485.0" />
+      <point x="5272.466666666665" y="4485.0" />
+      <point x="83.46666666666624" y="-149.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.network.Room" target="it.polimi.ingsw.server.controller.Controller" relationship="DEPENDENCY">
+      <point x="-163.28571428571377" y="-227.0" />
+      <point x="6868.8529334357445" y="2127.0" />
+      <point x="6269.6906922895105" y="2127.0" />
+      <point x="6269.6906922895105" y="2087.0" />
+      <point x="6159.559160440478" y="2087.0" />
+      <point x="23.5" y="39.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.MoveShuffle" target="it.polimi.ingsw.server.model.GameExt" relationship="DEPENDENCY">
+      <point x="25.875" y="73.0" />
+      <point x="378.875" y="4271.0" />
+      <point x="317.75" y="4271.0" />
+      <point x="317.75" y="5536.0" />
+      <point x="3246.8684681509662" y="5536.0" />
+      <point x="3246.8684681509662" y="5576.0" />
+      <point x="10893.14291531642" y="5576.0" />
+      <point x="-180.54545454545405" y="-227.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.PersonalBoardExt" target="it.polimi.ingsw.server.observer.Observer" relationship="TO_MANY">
+      <point x="114.42857142857156" y="-106.0" />
+      <point x="9398.700274623781" y="3816.0" />
+      <point x="11731.521703195209" y="3816.0" />
+      <point x="11731.521703195209" y="99.0" />
+      <point x="11142.96423125055" y="99.0" />
+      <point x="45.33333333333303" y="28.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.parse.PerformableSerializer" target="it.polimi.ingsw.server.controller.MoveEndTurnExt" relationship="DEPENDENCY">
+      <point x="-38.90909090909099" y="-39.5" />
+      <point x="3750.0909090909086" y="4221.0" />
+      <point x="3325.4999999999995" y="4221.0" />
+      <point x="3325.4999999999995" y="1660.0" />
+      <point x="5096.809160440478" y="1660.0" />
+      <point x="5096.809160440478" y="890.0" />
+      <point x="5064.309160440478" y="890.0" />
+      <point x="0.0" y="62.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveChoseResourcesExt" target="it.polimi.ingsw.server.model.exception.OutOfResourcesException" relationship="DEPENDENCY">
+      <point x="0.0" y="-62.0" />
+      <point x="6262.785134817634" y="99.0" />
+      <point x="6196.333549432368" y="99.0" />
+      <point x="0.0" y="39.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.network.CreateRoomSetupperExt" target="it.polimi.ingsw.server.network.Settable" relationship="REALIZATION">
+      <point x="-42.0" y="-50.5" />
+      <point x="8254.600827107144" y="3846.0" />
+      <point x="7739.600827107144" y="3846.0" />
+      <point x="84.0" y="39.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.Move2" target="it.polimi.ingsw.server.model.GameExt" relationship="DEPENDENCY">
+      <point x="0.0" y="73.0" />
+      <point x="125.0" y="4271.0" />
+      <point x="96.0" y="4271.0" />
+      <point x="96.0" y="5536.0" />
+      <point x="3246.8684681509662" y="5536.0" />
+      <point x="3246.8684681509662" y="5576.0" />
+      <point x="10893.14291531642" y="5576.0" />
+      <point x="-180.54545454545405" y="-227.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.parse.PerformableSerializer" target="it.polimi.ingsw.server.controller.MoveBuyDevCardExt" relationship="DEPENDENCY">
+      <point x="77.81818181818198" y="-39.5" />
+      <point x="3866.8181818181815" y="4241.0" />
+      <point x="4180.4406922895105" y="4241.0" />
+      <point x="-76.0" y="61.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.Discard2" target="it.polimi.ingsw.server.model.GameExt" relationship="DEPENDENCY">
+      <point x="69.0" y="84.0" />
+      <point x="1096.25" y="4211.0" />
+      <point x="1038.25" y="4211.0" />
+      <point x="1038.25" y="5536.0" />
+      <point x="3246.8684681509662" y="5536.0" />
+      <point x="3246.8684681509662" y="5576.0" />
+      <point x="10893.14291531642" y="5576.0" />
+      <point x="-180.54545454545405" y="-227.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveChoseLeaderCardsExt" target="it.polimi.ingsw.server.controller.Performable" relationship="REALIZATION">
+      <point x="57.0" y="-62.0" />
+      <point x="2333.309160440478" y="724.0" />
+      <point x="3249.440692289511" y="724.0" />
+      <point x="3249.440692289511" y="694.0" />
+      <point x="3225.940692289511" y="694.0" />
+      <point x="-28.5" y="50.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.network.Settable" target="it.polimi.ingsw.server.network.Server" relationship="DEPENDENCY">
+      <point x="0.0" y="-39.0" />
+      <point x="7655.600827107144" y="3211.0" />
+      <point x="7961.365692289512" y="3211.0" />
+      <point x="7961.365692289512" y="3131.0" />
+      <point x="8536.850827107144" y="3131.0" />
+      <point x="-44.08333333333303" y="182.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveChoseResourcesExt" target="it.polimi.ingsw.server.model.exception.ChoseResourcesException" relationship="DEPENDENCY">
+      <point x="144.33333333333303" y="-62.0" />
+      <point x="6407.118468150966" y="704.0" />
+      <point x="6874.475827107144" y="704.0" />
+      <point x="0.0" y="61.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.Move2" target="it.polimi.ingsw.server.model.SoloActionTokens" relationship="REALIZATION">
+      <point x="-69.0" y="73.0" />
+      <point x="56.0" y="4271.0" />
+      <point x="39.0" y="4271.0" />
+      <point x="39.0" y="6084.0" />
+      <point x="148.6875" y="6084.0" />
+      <point x="148.6875" y="6104.0" />
+      <point x="2450.6184681509662" y="6104.0" />
+      <point x="-77.625" y="-50.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveLeaderExt" target="it.polimi.ingsw.server.model.PlayerExt" relationship="DEPENDENCY">
+      <point x="0.0" y="62.0" />
+      <point x="2304.483012719019" y="4261.0" />
+      <point x="2337.233012719019" y="4261.0" />
+      <point x="2337.233012719019" y="5152.0" />
+      <point x="3451.4999999999995" y="5152.0" />
+      <point x="3451.4999999999995" y="5182.0" />
+      <point x="10954.597460770967" y="5182.0" />
+      <point x="-119.09090909090901" y="-150.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.network.Server" target="it.polimi.ingsw.server.view.RemoteView" relationship="CREATE">
+      <point x="-33.0625" y="-182.5" />
+      <point x="8547.871660440478" y="2653.0" />
+      <point x="7233.138647721458" y="2653.0" />
+      <point x="7233.138647721458" y="2157.0" />
+      <point x="7132.638647721458" y="2157.0" />
+      <point x="7132.638647721458" y="2087.0" />
+      <point x="7078.888647721458" y="2087.0" />
+      <point x="-64.0" y="51.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.LeaderCardExt" target="it.polimi.ingsw.server.model.Ability" relationship="TO_ONE">
+      <point x="0.0" y="-84.0" />
+      <point x="1390.233012719019" y="369.0" />
+      <point x="1831.3156922895105" y="369.0" />
+      <point x="-23.375" y="50.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.parse.Starter" target="it.polimi.ingsw.server.parse.PerformableSerializer" relationship="CREATE">
+      <point x="-41.733333333333576" y="-149.5" />
+      <point x="5147.266666666666" y="4435.0" />
+      <point x="3788.9999999999995" y="4435.0" />
+      <point x="0.0" y="39.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.DashboardExt" target="it.polimi.ingsw.server.model.DevelopmentCardExt" relationship="DEPENDENCY">
+      <point x="-146.0" y="-117.0" />
+      <point x="10375.559523809523" y="2147.0" />
+      <point x="5559.6906922895105" y="2147.0" />
+      <point x="-131.5" y="39.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.network.DisconnectConnectionSetupperExt" target="it.polimi.ingsw.server.network.SocketClientConnection" relationship="DEPENDENCY">
+      <point x="112.0" y="-50.5" />
+      <point x="8764.600827107144" y="3786.0" />
+      <point x="9024.26749377381" y="3786.0" />
+      <point x="9024.26749377381" y="3563.0" />
+      <point x="8675.26749377381" y="3563.0" />
+      <point x="8675.26749377381" y="3553.0" />
+      <point x="8637.434160440478" y="3553.0" />
+      <point x="0.0" y="139.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.ConverterExt" target="it.polimi.ingsw.server.model.PlayerExt" relationship="DEPENDENCY">
+      <point x="-130.33333333333303" y="161.0" />
+      <point x="11028.22619047619" y="4271.0" />
+      <point x="10912.892857142857" y="4271.0" />
+      <point x="10912.892857142857" y="4867.0" />
+      <point x="8366.763647721458" y="4867.0" />
+      <point x="8366.763647721458" y="5152.0" />
+      <point x="3451.4999999999995" y="5152.0" />
+      <point x="3451.4999999999995" y="5182.0" />
+      <point x="10954.597460770967" y="5182.0" />
+      <point x="-119.09090909090901" y="-150.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.network.Room" target="it.polimi.ingsw.server.network.SocketClientConnection" relationship="DEPENDENCY">
+      <point x="-31.75" y="227.0" />
+      <point x="7000.388647721458" y="2703.0" />
+      <point x="6885.475827107144" y="2703.0" />
+      <point x="6885.475827107144" y="3141.0" />
+      <point x="6908.347634817633" y="3141.0" />
+      <point x="6908.347634817633" y="3221.0" />
+      <point x="8550.767493773812" y="3221.0" />
+      <point x="-86.66666666666606" y="-139.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.network.SocketClientConnection" target="it.polimi.ingsw.server.network.Room" relationship="DEPENDENCY">
+      <point x="-28.888888888888687" y="-139.0" />
+      <point x="8608.54527155159" y="3151.0" />
+      <point x="7627.476803400623" y="3151.0" />
+      <point x="7627.476803400623" y="2713.0" />
+      <point x="7095.513647721458" y="2713.0" />
+      <point x="7095.513647721458" y="2653.0" />
+      <point x="7127.388647721458" y="2653.0" />
+      <point x="95.25" y="227.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveChoseLeaderCardsExt" target="it.polimi.ingsw.server.model.GameExt" relationship="DEPENDENCY">
+      <point x="-76.0" y="62.0" />
+      <point x="2200.309160440478" y="930.0" />
+      <point x="1914.983012719019" y="930.0" />
+      <point x="1914.983012719019" y="5536.0" />
+      <point x="3246.8684681509662" y="5536.0" />
+      <point x="3246.8684681509662" y="5576.0" />
+      <point x="10893.14291531642" y="5576.0" />
+      <point x="-180.54545454545405" y="-227.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.parse.PerformableSerializer" target="it.polimi.ingsw.server.controller.MoveChoseResourcesExt" relationship="DEPENDENCY">
+      <point x="116.72727272727298" y="-39.5" />
+      <point x="3905.7272727272725" y="4251.0" />
+      <point x="4437.6906922895105" y="4251.0" />
+      <point x="4437.6906922895105" y="1760.0" />
+      <point x="6262.785134817633" y="1760.0" />
+      <point x="0.0" y="62.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.DepotsExt" target="it.polimi.ingsw.server.observer.Observer" relationship="DEPENDENCY">
+      <point x="28.916666666666515" y="-116.5" />
+      <point x="9867.105036528543" y="369.0" />
+      <point x="10049.059523809523" y="369.0" />
+      <point x="10049.059523809523" y="109.0" />
+      <point x="11097.630897917217" y="109.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.PlayerExt" target="it.polimi.ingsw.server.model.FaithTrackExt" relationship="CREATE">
+      <point x="0.0" y="-150.0" />
+      <point x="11073.688369861877" y="5172.0" />
+      <point x="10984.059523809523" y="5172.0" />
+      <point x="0.0" y="106.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.DepotsExt" target="it.polimi.ingsw.server.model.StrongBoxExt" relationship="CREATE">
+      <point x="-86.75" y="-116.5" />
+      <point x="9751.438369861877" y="349.0" />
+      <point x="8585.583549432367" y="349.0" />
+      <point x="0.0" y="50.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.network.Server" target="it.polimi.ingsw.server.network.Room" relationship="TO_MANY">
+      <point x="-165.3125" y="-182.5" />
+      <point x="8415.621660440478" y="2723.0" />
+      <point x="7011.138647721458" y="2723.0" />
+      <point x="7011.138647721458" y="2653.0" />
+      <point x="7063.888647721458" y="2653.0" />
+      <point x="31.75" y="227.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.PersonalBoardExt" target="it.polimi.ingsw.server.model.ProductionPowerExt" relationship="CREATE">
+      <point x="-76.28571428571422" y="-106.0" />
+      <point x="9207.985988909495" y="3696.0" />
+      <point x="5964.6906922895105" y="3696.0" />
+      <point x="5964.6906922895105" y="1920.0" />
+      <point x="5563.868468150966" y="1920.0" />
+      <point x="5563.868468150966" y="1620.0" />
+      <point x="6762.475827107144" y="1620.0" />
+      <point x="-112.0" y="94.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.parse.PerformableSerializer" target="it.polimi.ingsw.server.controller.MoveDiscardResourcesExt" relationship="DEPENDENCY">
+      <point x="-116.72727272727298" y="-39.5" />
+      <point x="3672.2727272727266" y="4241.0" />
+      <point x="2897.983012719019" y="4241.0" />
+      <point x="2897.983012719019" y="900.0" />
+      <point x="2865.483012719019" y="900.0" />
+      <point x="0.0" y="62.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.parse.PerformableSerializer" target="it.polimi.ingsw.server.controller.MoveTypeMarketExt" relationship="DEPENDENCY">
+      <point x="194.54545454545496" y="-39.5" />
+      <point x="3983.5454545454545" y="4271.0" />
+      <point x="7115.017493773811" y="4271.0" />
+      <point x="-108.33333333333303" y="73.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.parse.TokensSerializer" target="it.polimi.ingsw.server.model.MoveShuffle" relationship="DEPENDENCY">
+      <point x="0.0" y="-50.5" />
+      <point x="557.25" y="4271.0" />
+      <point x="430.625" y="4271.0" />
+      <point x="77.625" y="73.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.network.LinkToRoomSetupperExt" target="it.polimi.ingsw.server.network.Room" relationship="DEPENDENCY">
+      <point x="-126.0" y="-50.5" />
+      <point x="7814.600827107144" y="3746.0" />
+      <point x="6396.6906922895105" y="3746.0" />
+      <point x="6396.6906922895105" y="3563.0" />
+      <point x="6418.6906922895105" y="3563.0" />
+      <point x="6418.6906922895105" y="2713.0" />
+      <point x="7095.513647721458" y="2713.0" />
+      <point x="7095.513647721458" y="2653.0" />
+      <point x="7127.388647721458" y="2653.0" />
+      <point x="95.25" y="227.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.network.SocketClientConnection" target="it.polimi.ingsw.server.network.Room" relationship="TO_ONE">
+      <point x="-115.55555555555475" y="-139.0" />
+      <point x="8521.878604884923" y="3161.0" />
+      <point x="6429.6906922895105" y="3161.0" />
+      <point x="6429.6906922895105" y="2723.0" />
+      <point x="7011.138647721458" y="2723.0" />
+      <point x="7011.138647721458" y="2653.0" />
+      <point x="7063.888647721458" y="2653.0" />
+      <point x="31.75" y="227.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.network.JoinWaitingListSetupperExt" target="it.polimi.ingsw.server.network.Settable" relationship="REALIZATION">
+      <point x="0.0" y="-50.5" />
+      <point x="7584.600827107144" y="3846.0" />
+      <point x="7739.600827107144" y="3846.0" />
+      <point x="84.0" y="39.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveActiveProductionExt" target="it.polimi.ingsw.server.controller.Performable" relationship="REALIZATION">
+      <point x="-128.0" y="-62.0" />
+      <point x="4512.1906922895105" y="1710.0" />
+      <point x="5486.059160440478" y="1710.0" />
+      <point x="5486.059160440478" y="724.0" />
+      <point x="3249.440692289511" y="724.0" />
+      <point x="3249.440692289511" y="694.0" />
+      <point x="3225.940692289511" y="694.0" />
+      <point x="-28.5" y="50.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.Controller" target="it.polimi.ingsw.server.model.GameExt" relationship="DEPENDENCY">
+      <point x="-70.5" y="39.5" />
+      <point x="6065.559160440478" y="2137.0" />
+      <point x="6049.1906922895105" y="2137.0" />
+      <point x="6049.1906922895105" y="5536.0" />
+      <point x="3246.8684681509662" y="5536.0" />
+      <point x="3246.8684681509662" y="5576.0" />
+      <point x="10893.14291531642" y="5576.0" />
+      <point x="-180.54545454545405" y="-227.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.PlayerExt" target="it.polimi.ingsw.server.model.PersonalBoardExt" relationship="CREATE">
+      <point x="-71.45454545454504" y="-150.0" />
+      <point x="11002.23382440733" y="5152.0" />
+      <point x="9284.271703195209" y="5152.0" />
+      <point x="0.0" y="106.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.parse.SettableSerializer" target="it.polimi.ingsw.server.network.DisconnectConnectionSetupperExt" relationship="DEPENDENCY">
+      <point x="162.39999999999964" y="-39.5" />
+      <point x="8216.497634817631" y="4271.0" />
+      <point x="8652.600827107144" y="4271.0" />
+      <point x="0.0" y="50.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.parse.TokensSerializer" target="it.polimi.ingsw.server.model.Discard2" relationship="DEPENDENCY">
+      <point x="152.66666666666606" y="-50.5" />
+      <point x="709.9166666666661" y="4271.0" />
+      <point x="958.25" y="4271.0" />
+      <point x="-69.0" y="84.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.network.Room" target="it.polimi.ingsw.server.controller.Controller" relationship="TO_ONE">
+      <point x="-108.85714285714312" y="-227.0" />
+      <point x="6923.281504864315" y="2117.0" />
+      <point x="6206.559160440478" y="2117.0" />
+      <point x="70.5" y="39.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.parse.Starter" target="it.polimi.ingsw.server.parse.LeaderCardExtSerializer" relationship="CREATE">
+      <point x="-83.46666666666715" y="-149.5" />
+      <point x="5105.533333333333" y="4455.0" />
+      <point x="913.25" y="4455.0" />
+      <point x="913.25" y="3846.0" />
+      <point x="1149.25" y="3846.0" />
+      <point x="0.0" y="50.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.LeaderCardExt" target="it.polimi.ingsw.server.model.PlayerExt" relationship="DEPENDENCY">
+      <point x="95.0" y="84.0" />
+      <point x="1485.233012719019" y="714.0" />
+      <point x="1466.983012719019" y="714.0" />
+      <point x="1466.983012719019" y="4221.0" />
+      <point x="1049.25" y="4221.0" />
+      <point x="1049.25" y="5152.0" />
+      <point x="3451.4999999999995" y="5152.0" />
+      <point x="3451.4999999999995" y="5182.0" />
+      <point x="10954.597460770967" y="5182.0" />
+      <point x="-119.09090909090901" y="-150.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.parse.Starter" target="it.polimi.ingsw.server.model.Ability" relationship="DEPENDENCY">
+      <point x="-146.0666666666666" y="-149.5" />
+      <point x="5042.9333333333325" y="4485.0" />
+      <point x="0.0" y="4485.0" />
+      <point x="0.0" y="694.0" />
+      <point x="865.3716604404781" y="694.0" />
+      <point x="865.3716604404781" y="359.0" />
+      <point x="1784.5656922895105" y="359.0" />
+      <point x="-70.125" y="50.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.parse.PerformableSerializer" target="it.polimi.ingsw.server.controller.Performable" relationship="DEPENDENCY">
+      <point x="38.90909090909099" y="-39.5" />
+      <point x="3827.9090909090905" y="4231.0" />
+      <point x="4062.9999999999995" y="4231.0" />
+      <point x="4062.9999999999995" y="1720.0" />
+      <point x="5497.059160440478" y="1720.0" />
+      <point x="5497.059160440478" y="694.0" />
+      <point x="5428.118468150966" y="694.0" />
+      <point x="5428.118468150966" y="674.0" />
+      <point x="3282.940692289511" y="674.0" />
+      <point x="28.5" y="50.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveLeaderExt" target="it.polimi.ingsw.server.controller.Performable" relationship="REALIZATION">
+      <point x="57.0" y="-62.0" />
+      <point x="2361.483012719019" y="3846.0" />
+      <point x="3253.983012719019" y="3846.0" />
+      <point x="3253.983012719019" y="724.0" />
+      <point x="3249.440692289511" y="724.0" />
+      <point x="3249.440692289511" y="694.0" />
+      <point x="3225.940692289511" y="694.0" />
+      <point x="-28.5" y="50.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.DepotsExt" target="it.polimi.ingsw.server.observer.Observable" relationship="REALIZATION">
+      <point x="86.75" y="-116.5" />
+      <point x="9924.938369861877" y="389.0" />
+      <point x="10869.559523809523" y="389.0" />
+      <point x="0.0" y="39.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.parse.DashBoardSerializer" target="it.polimi.ingsw.server.model.DashboardExt" relationship="DEPENDENCY">
+      <point x="0.0" y="-39.5" />
+      <point x="10505.688369861877" y="2723.0" />
+      <point x="10521.559523809523" y="2723.0" />
+      <point x="0.0" y="117.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.ConverterExt" target="it.polimi.ingsw.server.model.PlayerExt" relationship="TO_ONE">
+      <point x="0.0" y="161.0" />
+      <point x="11158.559523809523" y="4271.0" />
+      <point x="11291.188369861877" y="4271.0" />
+      <point x="11291.188369861877" y="5122.0" />
+      <point x="11097.506551680057" y="5122.0" />
+      <point x="23.818181818181984" y="-150.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveChoseInitialResourcesExt" target="it.polimi.ingsw.server.model.DepotsExt" relationship="DEPENDENCY">
+      <point x="81.33333333333303" y="-62.0" />
+      <point x="3202.816346052352" y="714.0" />
+      <point x="9838.188369861877" y="714.0" />
+      <point x="0.0" y="116.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.LorenzoSoloPlayerExt" target="it.polimi.ingsw.server.observer.Observer" relationship="TO_MANY">
+      <point x="207.0" y="-106.0" />
+      <point x="11357.70682953964" y="6299.0" />
+      <point x="11731.521703195209" y="6299.0" />
+      <point x="11731.521703195209" y="99.0" />
+      <point x="11142.96423125055" y="99.0" />
+      <point x="45.33333333333303" y="28.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.network.Room" target="it.polimi.ingsw.server.view.View" relationship="TO_MANY">
+      <point x="-54.42857142857065" y="-227.0" />
+      <point x="6977.710076292888" y="2107.0" />
+      <point x="6429.0625" y="2107.0" />
+      <point x="6429.0625" y="1830.0" />
+      <point x="7590.975827107144" y="1830.0" />
+      <point x="7590.975827107144" y="1368.0" />
+      <point x="8407.135632765701" y="1368.0" />
+      <point x="-35.125" y="95.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.view.RemoteView.MessageReceiver" target="it.polimi.ingsw.server.view.RemoteView" relationship="DEPENDENCY">
+      <point x="-13.33333333333303" y="39.5" />
+      <point x="7819.142493773811" y="1860.0" />
+      <point x="7069.745790578601" y="1860.0" />
+      <point x="-73.14285714285688" y="-51.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.network.Room" target="it.polimi.ingsw.server.network.ClientConnection" relationship="DEPENDENCY">
+      <point x="108.85714285714312" y="-227.0" />
+      <point x="7140.995790578601" y="2127.0" />
+      <point x="10080.142857142857" y="2127.0" />
+      <point x="10080.142857142857" y="1920.0" />
+      <point x="10069.142857142857" y="1920.0" />
+      <point x="10069.142857142857" y="1900.0" />
+      <point x="10073.855036528541" y="1900.0" />
+      <point x="-82.33333333333394" y="50.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.DiscountAbility" target="it.polimi.ingsw.server.model.Ability" relationship="REALIZATION">
+      <point x="0.0" y="-84.0" />
+      <point x="2053.483012719019" y="3836.0" />
+      <point x="2400.8091604404776" y="3836.0" />
+      <point x="2400.8091604404776" y="389.0" />
+      <point x="2052.6906922895105" y="389.0" />
+      <point x="2052.6906922895105" y="359.0" />
+      <point x="1878.0656922895105" y="359.0" />
+      <point x="23.375" y="50.5" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.view.View" target="it.polimi.ingsw.server.observer.Observable" relationship="REALIZATION">
+      <point x="70.25" y="-95.0" />
+      <point x="8512.510632765701" y="1106.0" />
+      <point x="10814.309523809523" y="1106.0" />
+      <point x="10814.309523809523" y="389.0" />
+      <point x="10869.559523809523" y="389.0" />
+      <point x="0.0" y="39.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.GameExt" target="it.polimi.ingsw.server.model.LeaderCardExt" relationship="DEPENDENCY">
+      <point x="-240.72727272727207" y="-227.0" />
+      <point x="10832.961097134605" y="5546.0" />
+      <point x="239.0" y="5546.0" />
+      <point x="239.0" y="3846.0" />
+      <point x="643.6216604404781" y="3846.0" />
+      <point x="643.6216604404781" y="724.0" />
+      <point x="1215.733012719019" y="724.0" />
+      <point x="1215.733012719019" y="664.0" />
+      <point x="1390.233012719019" y="664.0" />
+      <point x="0.0" y="84.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveLeaderExt" target="it.polimi.ingsw.server.model.GameExt" relationship="DEPENDENCY">
+      <point x="-76.0" y="62.0" />
+      <point x="2228.483012719019" y="4261.0" />
+      <point x="2240.983012719019" y="4261.0" />
+      <point x="2240.983012719019" y="5536.0" />
+      <point x="3246.8684681509662" y="5536.0" />
+      <point x="3246.8684681509662" y="5576.0" />
+      <point x="10893.14291531642" y="5576.0" />
+      <point x="-180.54545454545405" y="-227.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.controller.MoveActiveProductionExt" target="it.polimi.ingsw.server.model.GameExt" relationship="DEPENDENCY">
+      <point x="128.0" y="62.0" />
+      <point x="4768.1906922895105" y="2157.0" />
+      <point x="4712.5" y="2157.0" />
+      <point x="4712.5" y="5536.0" />
+      <point x="3246.8684681509662" y="5536.0" />
+      <point x="3246.8684681509662" y="5576.0" />
+      <point x="10893.14291531642" y="5576.0" />
+      <point x="-180.54545454545405" y="-227.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.ProductionPowerPlusAbility" target="it.polimi.ingsw.server.model.PlayerExt" relationship="DEPENDENCY">
+      <point x="70.0" y="73.0" />
+      <point x="2649.483012719019" y="4271.0" />
+      <point x="2584.733012719019" y="4271.0" />
+      <point x="2584.733012719019" y="5152.0" />
+      <point x="3451.4999999999995" y="5152.0" />
+      <point x="3451.4999999999995" y="5182.0" />
+      <point x="10954.597460770967" y="5182.0" />
+      <point x="-119.09090909090901" y="-150.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.GameExt" target="it.polimi.ingsw.server.model.LorenzoSoloPlayerExt" relationship="CREATE">
+      <point x="82.75" y="227.0" />
+      <point x="11156.438369861877" y="6094.0" />
+      <point x="11005.559523809523" y="6094.0" />
+      <point x="11005.559523809523" y="6259.0" />
+      <point x="11173.70682953964" y="6259.0" />
+      <point x="23.0" y="-106.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.observer.Observable" target="it.polimi.ingsw.server.observer.Observer" relationship="DEPENDENCY">
+      <point x="0.0" y="-39.0" />
+      <point x="10869.559523809523" y="109.0" />
+      <point x="11097.630897917217" y="109.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.network.JoinWaitingListSetupperExt" target="it.polimi.ingsw.server.network.SocketClientConnection" relationship="DEPENDENCY">
+      <point x="112.0" y="-50.5" />
+      <point x="7696.600827107144" y="3756.0" />
+      <point x="8543.116346052353" y="3756.0" />
+      <point x="8543.116346052353" y="3563.0" />
+      <point x="8675.26749377381" y="3563.0" />
+      <point x="8675.26749377381" y="3553.0" />
+      <point x="8637.434160440478" y="3553.0" />
+      <point x="0.0" y="139.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.GameExt" target="it.polimi.ingsw.server.observer.Observable" relationship="REALIZATION">
+      <point x="120.36363636363603" y="-227.0" />
+      <point x="11194.052006225513" y="5546.0" />
+      <point x="11420.809523809523" y="5546.0" />
+      <point x="11420.809523809523" y="389.0" />
+      <point x="10869.559523809523" y="389.0" />
+      <point x="0.0" y="39.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.view.RemoteView.MessageReceiver" target="it.polimi.ingsw.server.network.SocketClientConnection" relationship="DEPENDENCY">
+      <point x="-40.0" y="39.5" />
+      <point x="7792.475827107144" y="1850.0" />
+      <point x="6483.9406922895105" y="1850.0" />
+      <point x="6483.9406922895105" y="2673.0" />
+      <point x="6440.6906922895105" y="2673.0" />
+      <point x="6440.6906922895105" y="3141.0" />
+      <point x="6908.347634817633" y="3141.0" />
+      <point x="6908.347634817633" y="3221.0" />
+      <point x="8550.767493773812" y="3221.0" />
+      <point x="-86.66666666666606" y="-139.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.model.FaithTrackExt" target="it.polimi.ingsw.server.observer.Observable" relationship="REALIZATION">
+      <point x="-32.75" y="-106.0" />
+      <point x="10951.309523809523" y="4827.0" />
+      <point x="10869.559523809523" y="4827.0" />
+      <point x="0.0" y="39.0" />
+    </edge>
+    <edge source="it.polimi.ingsw.server.view.RemoteView.MessageReceiver" target="it.polimi.ingsw.server.observer.Observer" relationship="REALIZATION">
+      <point x="53.33333333333303" y="-39.5" />
+      <point x="7885.809160440477" y="1378.0" />
+      <point x="10022.188369861877" y="1378.0" />
+      <point x="10022.188369861877" y="99.0" />
+      <point x="11052.297564583885" y="99.0" />
+      <point x="-45.33333333333303" y="28.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.6369022429115531" showDependencies="true" x="1171.5" y="5203.55415282392" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
