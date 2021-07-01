@@ -27,19 +27,19 @@
     </rowConstraints>
     <ImageView fitHeight="95.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1"
                GridPane.rowIndex="1">
-        <Image url="@../../../../../images/punchboard/Coins.png"/>
+        <Image url="@../images/punchboard/Coins.png"/>
     </ImageView>
     <ImageView fitHeight="95.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3"
                GridPane.rowIndex="1">
-        <Image url="@../../../../../images/punchboard/Servants.png"/>
+        <Image url="@../images/punchboard/Servants.png"/>
     </ImageView>
     <ImageView fitHeight="95.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1"
                GridPane.rowIndex="4">
-        <Image url="@../../../../../images/punchboard/Shields.png"/>
+        <Image url="@../images/punchboard/Shields.png"/>
     </ImageView>
     <ImageView fitHeight="95.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3"
                GridPane.rowIndex="4">
-        <Image url="@../../../../../images/punchboard/Stones.png"/>
+        <Image url="@../images/punchboard/Stones.png"/>
     </ImageView>
     <ChoiceBox fx:id="coins" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" onAction="#boxAction"
                styleClass="baseButton"/>

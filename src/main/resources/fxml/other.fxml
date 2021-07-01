@@ -8,7 +8,7 @@
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.gui.BaseController"
             stylesheets="@Style.css" styleClass="basePane">
     <ImageView fx:id="board" layoutX="20.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true" fitHeight="629.0">
-        <Image url="@../../../../../images/board/Masters_of_Renaissance_PlayerBoard.png"/>
+        <Image url="@../images/board/Masters_of_Renaissance_PlayerBoard.png"/>
     </ImageView>
     <Button fx:id="previous" layoutX="24.0" layoutY="10.0" mnemonicParsing="false" onAction="#previous"
             text="Precedente" styleClass="baseButton"/>

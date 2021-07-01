@@ -12,11 +12,11 @@
     <Button fx:id="confirmButton" layoutX="48.0" layoutY="1.0" mnemonicParsing="false" onAction="#confirm"
             styleClass="baseButton" text="Compra"/>
     <ImageView fx:id="imageViewBoard" layoutX="50.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@../../../../../images/board/Masters_of_Renaissance_PlayerBoard_DevCard.jpg"/>
+        <Image url="@../images/board/Masters_of_Renaissance_PlayerBoard_DevCard.jpg"/>
     </ImageView>
     <ImageView fx:id="devcardBuyed" fitHeight="242.0" fitWidth="233.0" layoutX="1000.0" layoutY="139.0"
                pickOnBounds="true" preserveRatio="true"/>
     <ImageView fx:id="imageViewDepots" layoutX="1000.0" layoutY="139.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@../../../../../images/board/Depots.png"/>
+        <Image url="@../images/board/Depots.png"/>
     </ImageView>
 </AnchorPane>

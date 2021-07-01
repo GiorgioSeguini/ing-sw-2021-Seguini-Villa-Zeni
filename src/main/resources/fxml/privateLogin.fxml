@@ -8,7 +8,7 @@
 
 <GridPane prefHeight="692.0" prefWidth="1280.0" styleClass="basePane" stylesheets="@Style.css"
           xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-          fx:controller="it.polimi.ingsw.client.gui.PublicLoginController">
+          fx:controller="it.polimi.ingsw.client.gui.PrivateLoginController">
     <columnConstraints>
         <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="200.0"/>
         <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="400.0"/>
@@ -27,10 +27,12 @@
     </rowConstraints>
     <ImageView fitHeight="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1"
                GridPane.rowIndex="1">
-        <Image url="@../../../../../images/punchboard/calamaio.png"/>
+        <Image url="@../images/punchboard/calamaio.png"/>
     </ImageView>
     <TextField fx:id="name_lable" maxWidth="250.0" onAction="#setName" prefWidth="150.0" promptText="Insert your name"
                GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+    <TextField fx:id="roomName_lable" maxWidth="250.0" onAction="#setRoomName" prefWidth="150.0"
+               promptText="Insert the name of the room" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
     <Button fx:id="button" disable="true" mnemonicParsing="false" onAction="#start" styleClass="baseButton" text="Start"
             GridPane.columnIndex="2" GridPane.rowIndex="7"/>
     <Button fx:id="ComeBack" mnemonicParsing="false" onAction="#comeBack" styleClass="baseButton" text="Torna Indietro"
@@ -39,11 +41,16 @@
                styleClass="baseButton" GridPane.columnIndex="1" GridPane.rowIndex="5">
         <items>
             <FXCollections fx:factory="observableArrayList">
-                <Integer fx:value="1"/>
                 <Integer fx:value="2"/>
                 <Integer fx:value="3"/>
                 <Integer fx:value="4"/>
             </FXCollections>
         </items>
     </ChoiceBox>
+    <MenuButton fx:id="menuChoice" mnemonicParsing="false" GridPane.rowIndex="3" GridPane.columnIndex="0">
+      <items>
+          <MenuItem fx:id="addInRoom" mnemonicParsing="false" onAction="#needNumber"/>
+          <MenuItem fx:id="createRoom" mnemonicParsing="false" onAction="#needNumber"/>
+      </items>
+    </MenuButton>
 </GridPane>

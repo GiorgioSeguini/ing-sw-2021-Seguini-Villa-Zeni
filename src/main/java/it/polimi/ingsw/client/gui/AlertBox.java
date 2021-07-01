@@ -65,7 +65,7 @@ public class AlertBox {
      */
     public void display(){
         Scene scene= new Scene(layout);
-        scene.getStylesheets().add(getClass().getResource("Style.css").toString());
+        scene.getStylesheets().add(getClass().getResource("/fxml/Style.css").toString());
         window.setScene(scene);
         window.showAndWait();
     }
