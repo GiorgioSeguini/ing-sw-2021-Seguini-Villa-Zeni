@@ -41,7 +41,7 @@ public class DashBoardClient extends Dashboard {
             for(ColorDevCard c : ColorDevCard.values()){
                 try {
                     NumberOfResources cost = dashBoard[l.ordinal()][c.ordinal()].getCost();
-                    cost.safe_sub(game.getMe().getDiscounted());
+                    cost = cost.safe_sub(game.getMe().getDiscounted());
                     game.getMe().getDepots().getResources().sub(cost);
                     return true;
                 } catch (OutOfResourcesException | NullPointerException ignored) {}

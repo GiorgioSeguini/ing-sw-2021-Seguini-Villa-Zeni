@@ -102,7 +102,7 @@ public class Client {
                     String read;
                     while (isActive()) {
                         read=socketIn.readUTF();
-                        System.out.println(read);
+                        //System.out.println(read);
                         Message received = StarterClient.fromJson(read, Message.class);
                         received.handleMessage(Client.this);
                     }
@@ -248,7 +248,7 @@ public class Client {
         Observer<Message> observer = message -> {
             String json = Starter.toJson(message, Message.class);
             Message clientMessage = StarterClient.fromJson(json, Message.class);
-            System.out.println(json);
+            //System.out.println(json);
             clientMessage.handleMessage(Client.this);
         };
         //add model - view links
@@ -308,7 +308,7 @@ public class Client {
                 String json = StarterClient.toJson(setupper, SetUp.class);
                 socketOut.writeUTF(json);
                 socketOut.flush();
-                System.out.println("Sent :" + json);
+                //System.out.println("Sent :" + json);
             } catch (IOException e) {
                 e.printStackTrace();
                 this.setActive(false);

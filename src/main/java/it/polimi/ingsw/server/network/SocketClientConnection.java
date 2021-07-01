@@ -73,7 +73,7 @@ public class SocketClientConnection implements  Observable<String>, ClientConnec
             try {
                 out.writeUTF(json);
                 out.flush();
-                System.out.println("Send" + json);
+                //System.out.println("Send" + json);
             } catch(IOException e){
                 System.err.println(e.getMessage());
             }
