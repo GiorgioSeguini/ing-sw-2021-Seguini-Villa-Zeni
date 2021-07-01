@@ -13,7 +13,7 @@ public abstract class Game {
 
     public static final int MAX_PLAYER = 4;
     public static final int INITIAL_LEADER_CARD = 4;
-    public static final int[] INITIAL_FAITH_POINT = {0,1,2,3};
+    public static final int[] INITIAL_FAITH_POINT = {0,0,1,1};
     public static final int[] INITIAL_RESOURCES = {0,1,1,2};
 
     //compositions

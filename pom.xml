@@ -87,6 +87,24 @@
       <version>15</version>
       <classifier>mac</classifier>
     </dependency>
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-media</artifactId>
+      <version>15</version>
+      <classifier>win</classifier>
+    </dependency>
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-media</artifactId>
+      <version>15</version>
+      <classifier>linux</classifier>
+    </dependency>
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-media</artifactId>
+      <version>15</version>
+      <classifier>mac</classifier>
+    </dependency>
   </dependencies>
 
   <build>

@@ -80,6 +80,8 @@ public class MoveTypeMarketExt extends MoveTypeMarket implements Performable{
         }
         catch (HaveToChooseException error) {
             player.setStatus(PlayerStatus.NeedToConvert);
+        }finally {
+            game.popesInspection();
         }
     }
 
