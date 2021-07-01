@@ -205,19 +205,6 @@ public class Room {
         return connections.size()==numOfPlayers;
     }
 
-    @Override
-    public String toString() {
-        String x="";
-        x+="Room "+ roomName +"  ("+numOfPlayers+" giocatori)\n";
-        x+="Giocatori :";
-        for (String name: connections.keySet()){
-            x+="\t"+name;
-        }
-
-        return x;
-    }
-
-
     /**
      * Methods that takes advantage on default java garbage collector. It sets the game and controller to null, clears the connection player list
      * and set the room to not active.
@@ -233,4 +220,17 @@ public class Room {
         disconnectedPlayers.clear();
         active=false;
     }
+
+    @Override
+    public String toString() {
+        String x="";
+        x+="Room "+ roomName +"  ("+numOfPlayers+" giocatori)\n";
+        x+="Giocatori :";
+        for (String name: connections.keySet()){
+            x+="\t"+name;
+        }
+
+        return x;
+    }
+
 }
