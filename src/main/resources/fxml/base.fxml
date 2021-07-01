@@ -8,7 +8,7 @@
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.gui.BaseMeController"
             stylesheets="@Style.css" styleClass="basePane">
     <ImageView fx:id="board" fitHeight="629.0" layoutX="20.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@../../../../../images/board/Masters_of_Renaissance_PlayerBoard.png"/>
+        <Image url="@../images/board/Masters_of_Renaissance_PlayerBoard.png"/>
     </ImageView>
     <Button fx:id="market" layoutX="24.0" layoutY="10.0" mnemonicParsing="false" onAction="#goToMarket" text="Mercato"
             styleClass="baseButton"/>

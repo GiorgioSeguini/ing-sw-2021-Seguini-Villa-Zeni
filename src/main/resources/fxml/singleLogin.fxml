@@ -28,7 +28,7 @@
     </rowConstraints>
     <ImageView fitHeight="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1"
                GridPane.rowIndex="1">
-        <Image url="@../../../../../images/punchboard/calamaio.png"/>
+        <Image url="@../images/punchboard/calamaio.png"/>
     </ImageView>
     <TextField fx:id="name_lable" maxWidth="250.0" onAction="#setName" prefWidth="150.0" promptText="Insert your name"
                GridPane.columnIndex="1" GridPane.rowIndex="3"/>

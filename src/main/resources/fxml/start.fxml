@@ -25,7 +25,7 @@
     </rowConstraints>
 
     <ImageView fitWidth="400.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
-        <Image url="@../../../../../images/logo.png"/>
+        <Image url="@../images/logo.png"/>
     </ImageView>
     <Label fx:id="chose" prefWidth="400.0" styleClass="baseLabel"
            text="Benvenuto! Seleziona la modalità di gioco che preferisci!" wrapText="false" GridPane.columnIndex="1"

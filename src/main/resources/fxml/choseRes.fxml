@@ -6,7 +6,7 @@
 
 <AnchorPane fx:id="anchorPane" prefHeight="692.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.gui.ChoseResController" stylesheets="@Style.css" styleClass="basePane">
    <ImageView fx:id="depots" layoutX="220.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true">
-      <Image url="@../../../../../images/board/Depots.png" />
+      <Image url="@../images/board/Depots.png" />
    </ImageView>
    <Label fx:id="label" styleClass="baseLabel"/>
     <GridPane fx:id="gridPane" layoutX="640.0" prefHeight="692.0" prefWidth="640.0">
@@ -29,19 +29,19 @@
         </rowConstraints>
         <ImageView fx:id="coinsImage" fitHeight="95.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true"
                    GridPane.columnIndex="1" GridPane.rowIndex="1">
-           <Image url="@../../../../../images/punchboard/Coins.png"/>
+           <Image url="@../images/punchboard/Coins.png"/>
         </ImageView>
         <ImageView fx:id="servantsImage" fitHeight="95.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true"
                    GridPane.columnIndex="3" GridPane.rowIndex="1">
-           <Image url="@../../../../../images/punchboard/Servants.png"/>
+           <Image url="@../images/punchboard/Servants.png"/>
         </ImageView>
         <ImageView fx:id="shieldsImage" fitHeight="95.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true"
                    GridPane.columnIndex="1" GridPane.rowIndex="3">
-           <Image url="@../../../../../images/punchboard/Shields.png"/>
+           <Image url="@../images/punchboard/Shields.png"/>
         </ImageView>
         <ImageView fx:id="stonesImage" fitHeight="95.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true"
                    GridPane.columnIndex="3" GridPane.rowIndex="3">
-           <Image url="@../../../../../images/punchboard/Stones.png"/>
+           <Image url="@../images/punchboard/Stones.png"/>
         </ImageView>
         <ChoiceBox fx:id="coins" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2"
                    styleClass="baseButton" onAction="#boxAction"/>

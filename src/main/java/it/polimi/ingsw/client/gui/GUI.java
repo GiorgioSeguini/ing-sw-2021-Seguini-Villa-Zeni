@@ -121,22 +121,22 @@ public class GUI extends Application implements UI {
         primaryStage.setScene(this.main);
 
         ArrayList<FXMLLoader> loaders = new ArrayList<>();
-        loaders.add(new FXMLLoader(getClass().getResource("publicLogin.fxml")));
-        loaders.add(new FXMLLoader(getClass().getResource("initial.fxml")));
-        loaders.add(new FXMLLoader(getClass().getResource("waiting.fxml")));
-        loaders.add(new FXMLLoader(getClass().getResource("initialRes.fxml")));
-        loaders.add(new FXMLLoader(getClass().getResource("base.fxml")));
-        loaders.add(new FXMLLoader(getClass().getResource("market.fxml")));
-        loaders.add(new FXMLLoader((getClass().getResource("lobby.fxml"))));
-        loaders.add(new FXMLLoader((getClass().getResource("dashboard.fxml"))));
-        loaders.add(new FXMLLoader((getClass().getResource("store.fxml"))));
-        loaders.add(new FXMLLoader((getClass().getResource("choseRes.fxml"))));
-        loaders.add(new FXMLLoader((getClass().getResource("other.fxml"))));
-        loaders.add(new FXMLLoader((getClass().getResource("start.fxml"))));
-        loaders.add(new FXMLLoader((getClass().getResource("privateLogin.fxml"))));
-        loaders.add(new FXMLLoader((getClass().getResource("singleLogin.fxml"))));
-        loaders.add(new FXMLLoader((getClass().getResource("white.fxml"))));
-        loaders.add(new FXMLLoader((getClass().getResource("endGame.fxml"))));
+        loaders.add(new FXMLLoader(getClass().getResource("/fxml/publicLogin.fxml")));
+        loaders.add(new FXMLLoader(getClass().getResource("/fxml/initial.fxml")));
+        loaders.add(new FXMLLoader(getClass().getResource("/fxml/waiting.fxml")));
+        loaders.add(new FXMLLoader(getClass().getResource("/fxml/initialRes.fxml")));
+        loaders.add(new FXMLLoader(getClass().getResource("/fxml/base.fxml")));
+        loaders.add(new FXMLLoader(getClass().getResource("/fxml/market.fxml")));
+        loaders.add(new FXMLLoader(getClass().getResource("/fxml/lobby.fxml")));
+        loaders.add(new FXMLLoader(getClass().getResource("/fxml/dashboard.fxml")));
+        loaders.add(new FXMLLoader(getClass().getResource("/fxml/store.fxml")));
+        loaders.add(new FXMLLoader(getClass().getResource("/fxml/choseRes.fxml")));
+        loaders.add(new FXMLLoader(getClass().getResource("/fxml/other.fxml")));
+        loaders.add(new FXMLLoader(getClass().getResource("/fxml/start.fxml")));
+        loaders.add(new FXMLLoader(getClass().getResource("/fxml/privateLogin.fxml")));
+        loaders.add(new FXMLLoader(getClass().getResource("/fxml/singleLogin.fxml")));
+        loaders.add(new FXMLLoader(getClass().getResource("/fxml/white.fxml")));
+        loaders.add(new FXMLLoader(getClass().getResource("/fxml/endGame.fxml")));
 
 
         for (FXMLLoader loader : loaders) {
@@ -173,7 +173,7 @@ public class GUI extends Application implements UI {
         //check initialization
         if(getModel()==null) {
             if(active)
-                this.activate("lobby");
+                this.activate(LobbyController.className);
             else{
                 AlertBox box= new AlertBox("Errore",errorConnectionMessage);
                 box.display();
@@ -191,22 +191,22 @@ public class GUI extends Application implements UI {
         //initial status
         if(this.getModel().getStatus()== GameStatus.Initial) {
             if (!this.getModel().isMyTurn()) {
-                this.activate("waiting");
+                this.activate(WaitingController.className);
             } else {
                 if (!this.getModel().getMe().getPersonalBoard().isReady()) {
-                    activate("initial");
+                    activate(InitialController.className);
                 } else {
-                    activate("initialRes");
+                    activate(InitialResController.className);
                 }
             }
             return;
         }
         if(this.getModel().getStatus() != GameStatus.Ended){
                 if(!this.getModel().isMyTurn()) {
-                    if(current instanceof BaseController) {
+                    if(current.getName().equals(BaseController.className) || current.getName().equals(MarketController.className) || current.getName().equals(DashboardController.className)) {
                         current.update();
                     }
-                    else if(current instanceof InitialResController || current instanceof LobbyController) {
+                    else{
                         activate(BaseMeController.className);
                     }
                 }else if(this.getModel().getMe().getStatus()== PlayerStatus.NeedToStore) {

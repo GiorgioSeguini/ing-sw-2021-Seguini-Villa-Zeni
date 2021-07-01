@@ -25,7 +25,7 @@ Questo repo contiene una versione **Java** del gioco [*Maestri del rinascimento*
 ## Funzionalità Implementate<a name="functionalitiesITA"></a>
 | Funzionalità | Stato |
 |:-----------------------|:------------------------------------:|
-| Regole Semplificate | [GREEN]]() |
+| Regole Semplificate | [![GREEN](http://placehold.it/15/44bb44/44bb44)]() |
 | Regole Complete | [![GREEN](http://placehold.it/15/44bb44/44bb44)]() |
 | Socket |[![GREEN](http://placehold.it/15/44bb44/44bb44)]() |
 | CLI | [![GREEN](http://placehold.it/15/44bb44/44bb44)]() |
@@ -121,7 +121,7 @@ I test hanno raggiunta la seguente copertura.
  * [Client](#clientENG)
  * [How to play](#howtoplayENG)
  * [Tools](#toolsENG)
- * [Test e Documentazione](#testENG)
+ * [Test and Docs](#testENG)
  
  <img src="https://github.com/GiorgioSeguini/ing-sw-2021-Seguini-Villa-Zeni/blob/master/Masters-of-Renaissance_box3D_front_ombra.png" width=300px height=300px align="right" />
 
@@ -209,7 +209,7 @@ In this project were used the following tools:
  * [JavaFX](https://openjfx.io) - Graphical Framework
 
 
-## Test e Documentazione <a name="testENG"></a>
+## Test and Documentation <a name="testENG"></a>
 You can find the documentation [here](https://github.com/GiorgioSeguini/ing-sw-2021-Seguini-Villa-Zeni/tree/master/Documentation).
 
 The tests have reached the following coverage.
