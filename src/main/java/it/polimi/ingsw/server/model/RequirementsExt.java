@@ -18,17 +18,6 @@ import java.util.Map;
  */
 public class RequirementsExt extends Requirements {
 
-
-    /**
-     * Instantiates a new Requirements ext with the number and the type of card and resources required.
-     *
-     * @param resources of type NumberOfResources: the resources
-     * @param requirements of type ArrayList<Map.Entry<ColorDevCard, Level>>: number and type of card required.
-     */
-    public RequirementsExt(NumberOfResources resources, ArrayList<Map.Entry<ColorDevCard, Level>> requirements){
-        super(resources, requirements);
-    }
-
     /**
      * Instantiates an empty Requirements ext.
      */

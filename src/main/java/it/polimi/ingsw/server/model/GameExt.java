@@ -223,35 +223,6 @@ public class GameExt extends Game implements Observable<Message> {
         return res;
     }
 
-    /**
-     * Get player id from nickname.
-     *
-     * @param nickName of type String: the nick name
-     * @return of type int: the player Id from his nickname, -1 otherwise
-     */
-    public int getPlayerIdfromNickname(String nickName){
-        for (Player player: getPlayers()){
-            if(player.getUserName().equals(nickName)){
-                return player.getID();
-            }
-        }
-        return -1;
-    }
-
-    /**
-     * Get player from player's nickname.
-     *
-     * @param nickName the nick name
-     * @return the player
-     */
-    public Player getPlayerFromNickname(String nickName){
-        for (Player player: getPlayers()){
-            if(player.getUserName().equals(nickName)){
-                return player;
-            }
-        }
-        return null;
-    }
 
     /**
      * Find leader card from the id.
