@@ -25,7 +25,7 @@ Questo repo contiene una versione **Java** del gioco [*Maestri del rinascimento*
 ## Funzionalità Implementate<a name="functionalitiesITA"></a>
 | Funzionalità | Stato |
 |:-----------------------|:------------------------------------:|
-| Regole Semplificate | [GREEN]]() |
+| Regole Semplificate | [![GREEN](http://placehold.it/15/44bb44/44bb44)]() |
 | Regole Complete | [![GREEN](http://placehold.it/15/44bb44/44bb44)]() |
 | Socket |[![GREEN](http://placehold.it/15/44bb44/44bb44)]() |
 | CLI | [![GREEN](http://placehold.it/15/44bb44/44bb44)]() |
