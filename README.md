@@ -1,9 +1,12 @@
 # ing-sw-2021-Seguini-Villa-Zeni
+![latest commit](https://img.shields.io/github/last-commit/GiorgioSeguini/ing-sw-2021-Seguini-Villa-Zeni?color=red)
+![latest release](https://img.shields.io/github/v/release/GiorgioSeguini/ing-sw-2021-Seguini-Villa-Zeni?color=green)
  * [Italian Version](#ITA)
  * [English Version](#ENG)
  
 # Versione Italiana <a name="ITA"></a>
  * [Il gioco](#gameITA)
+ * [Funzionalità implementate](#functionalitiesITA)
  * [Installazione](#installationITA)
  * [Server](#serverITA)
  * [Client](#clientITA)
@@ -18,6 +21,23 @@ Questo repo contiene una versione **Java** del gioco [*Maestri del rinascimento*
   * [William Zeni](https://github.com/williamzeni)
   * [Giorgio Seguini](https://github.com/GiorgioSeguini)
   * [Fabio Villa](https://github.com/fabiovillaa)
+ 
+## Funzionalità Implementate<a name="functionalitiesITA"></a>
+| Funzionalità | Stato |
+|:-----------------------|:------------------------------------:|
+| Regole Semplificate | [GREEN]]() |
+| Regole Complete | [![GREEN](http://placehold.it/15/44bb44/44bb44)]() |
+| Socket |[![GREEN](http://placehold.it/15/44bb44/44bb44)]() |
+| CLI | [![GREEN](http://placehold.it/15/44bb44/44bb44)]() |
+| GUI |[![GREEN](http://placehold.it/15/44bb44/44bb44)]() |
+| Partite Multiple | [![GREEN](http://placehold.it/15/44bb44/44bb44)]() |
+| Resilienza | [![GREEN](http://placehold.it/15/44bb44/44bb44)]() |
+| Partita Locale | [![GREEN](http://placehold.it/15/44bb44/44bb44)]() |
+| Persistenza | [![RED](http://placehold.it/15/f03c15/f03c15)]() |
+| Editor dei parametri | [![RED](http://placehold.it/15/f03c15/f03c15)]() |
+
+#### Legenda
+[![RED](http://placehold.it/15/f03c15/f03c15)]() Non Implementato &nbsp;&nbsp;&nbsp;&nbsp;[![YELLOW](http://placehold.it/15/ffdd00/ffdd00)]() Implementazione in corso&nbsp;&nbsp;&nbsp;&nbsp;[![GREEN](http://placehold.it/15/44bb44/44bb44)]() Implementato
   
 ## Installazione <a name="installationITA"></a>
 Per avviare il gioco è necessario scaricare [JavaSE 15](https://www.oracle.com/it/java/technologies/javase-downloads.html) (o versioni superiori).
@@ -86,6 +106,8 @@ Per la realizzazione del progetto sono stati utilizzati :
 La documentazione è disponibile [qui](https://github.com/GiorgioSeguini/ing-sw-2021-Seguini-Villa-Zeni/tree/master/Documentation).
 
 I test hanno raggiunta la seguente copertura.
+
+
 ![Test result](https://github.com/GiorgioSeguini/ing-sw-2021-Seguini-Villa-Zeni/blob/master/Documentation/total.png)
 ![Test result](https://github.com/GiorgioSeguini/ing-sw-2021-Seguini-Villa-Zeni/blob/master/Documentation/server.png)
 ![Test result](https://github.com/GiorgioSeguini/ing-sw-2021-Seguini-Villa-Zeni/blob/master/Documentation/costant.png)
@@ -93,6 +115,7 @@ I test hanno raggiunta la seguente copertura.
 
 # English Version<a name="ENG"></a>
  * [The Game](#gameENG)
+ * [Implemented Functionalities](#functionalitiesENG)
  * [Installation](#installationENG)
  * [Server](#serverENG)
  * [Client](#clientENG)
@@ -108,6 +131,23 @@ This repo contains a **Java** version of the game [*Masters of renaissance*](htt
   * [William Zeni](https://github.com/williamzeni)
   * [Giorgio Seguini](https://github.com/GiorgioSeguini)
   * [Fabio Villa](https://github.com/fabiovillaa)
+
+## Implemented Funcionalities <a name="functionalitiesENG"></a>
+| Functionalities | Status |
+|:-----------------------|:------------------------------------:|
+| Basic Rules | [![GREEN](http://placehold.it/15/44bb44/44bb44)]() |
+| Complete Rules | [![GREEN](http://placehold.it/15/44bb44/44bb44)]() |
+| Socket |[![GREEN](http://placehold.it/15/44bb44/44bb44)]() |
+| CLI | [![GREEN](http://placehold.it/15/44bb44/44bb44)]() |
+| GUI |[![GREEN](http://placehold.it/15/44bb44/44bb44)]() |
+| Multiple Games | [![GREEN](http://placehold.it/15/44bb44/44bb44)]() |
+| Resilience | [![GREEN](http://placehold.it/15/44bb44/44bb44)]() |
+| Local Game | [![GREEN](http://placehold.it/15/44bb44/44bb44)]() |
+| Persistence | [![RED](http://placehold.it/15/f03c15/f03c15)]() |
+| Parameter Editor | [![RED](http://placehold.it/15/f03c15/f03c15)]() |
+
+#### Legend
+[![RED](http://placehold.it/15/f03c15/f03c15)]() Not Implemented &nbsp;&nbsp;&nbsp;&nbsp;[![YELLOW](http://placehold.it/15/ffdd00/ffdd00)]() Implementing&nbsp;&nbsp;&nbsp;&nbsp;[![GREEN](http://placehold.it/15/44bb44/44bb44)]() Implemented
   
 ## Installation <a name="installationENG"></a>
 To start the game you need to download [JavaSE 15](https://www.oracle.com/it/java/technologies/javase-downloads.html) (or updated versions).
@@ -172,7 +212,9 @@ In this project were used the following tools:
 ## Test e Documentazione <a name="testENG"></a>
 You can find the documentation [here](https://github.com/GiorgioSeguini/ing-sw-2021-Seguini-Villa-Zeni/tree/master/Documentation).
 
-The tests have reached the following coverage. 
+The tests have reached the following coverage.
+
+
 ![Test result](https://github.com/GiorgioSeguini/ing-sw-2021-Seguini-Villa-Zeni/blob/master/Documentation/total.png)
 ![Test result](https://github.com/GiorgioSeguini/ing-sw-2021-Seguini-Villa-Zeni/blob/master/Documentation/server.png)
 ![Test result](https://github.com/GiorgioSeguini/ing-sw-2021-Seguini-Villa-Zeni/blob/master/Documentation/costant.png)
