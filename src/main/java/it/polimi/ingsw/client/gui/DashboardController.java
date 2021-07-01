@@ -257,7 +257,7 @@ public class DashboardController extends ControllerGuiInterface{
     }
 
     /**
-     * Hide screen to select the position of the buyed card
+     * Hide screen to select the position of the bought card
      * @param b true to hide, false to show
      */
     private void hideSecondScreen(boolean b){
@@ -309,7 +309,7 @@ public class DashboardController extends ControllerGuiInterface{
     }
 
     /**
-     * Chose the position to store the buyed card
+     * Chose the position to store the bought card
      *
      * @param actionEvent the action event
      */
@@ -320,7 +320,7 @@ public class DashboardController extends ControllerGuiInterface{
                 index = i;
             }
         }
-        System.out.println(index);
+        //System.out.println(index);
         MoveBuyDevCard move= new MoveBuyDevCard(gui.getModel().getMyID());
         move.setIndexCardToBuy(choice.get(0));
         move.setPos(index);
