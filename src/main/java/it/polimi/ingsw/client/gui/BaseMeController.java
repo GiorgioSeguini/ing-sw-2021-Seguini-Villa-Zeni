@@ -205,7 +205,7 @@ public class BaseMeController extends BaseController{
         for(int i=0; i<3; i++){
             if(devCards[i*3].getImage()!=null){
                 int j=0;
-                while(devCards[i*3 + j].getImage()!=null) j++;
+                while(devCards[i*3 + j].getImage()!=null && j<3) j++;
                 j--;
                 devCards[i*3 + j].setOnMouseClicked(this::selectCard);
             }

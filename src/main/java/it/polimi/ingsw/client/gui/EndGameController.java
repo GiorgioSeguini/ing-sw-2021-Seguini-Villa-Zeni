@@ -92,12 +92,12 @@ public class EndGameController extends ControllerGuiInterface{
     @Override
     public void update() {
         if(!gui.getModel().isSinglePlayer()) {
-            label.setText("Il gioco è terminato. Ecco la classifica finale");
+            label.setText("Il gioco è terminato.\nEcco la classifica finale:");
             ArrayList<Player> players = gui.getModel().getPlayers();
             players.sort((o1, o2) -> o2.getVictoryPoints() - o1.getVictoryPoints());
             int i = 0;
             for (Player p : players) {
-                labels[i].setText(messagges[i] + p.getUserName());
+                labels[i].setText(messagges[i] + p.getUserName() + "\nPunti: " + p.getVictoryPoints());
                 imageViews[i].setVisible(true);
                 i++;
             }

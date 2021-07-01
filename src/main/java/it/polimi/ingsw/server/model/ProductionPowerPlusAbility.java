@@ -52,7 +52,7 @@ public class ProductionPowerPlusAbility implements Ability {
     public void RunAbility(PlayerExt owner) {
         NumberOfResources input = new NumberOfResources();
         input=input.add(typeOfRes, 1);
-        owner.getPersonalBoard().addExtraProduction(new ProductionPower(0, input, new NumberOfResources(), 0, 1));
+        owner.getPersonalBoard().addExtraProduction(new ProductionPower(1, new NumberOfResources(), input, 0, 1));
     }
 
     /**
