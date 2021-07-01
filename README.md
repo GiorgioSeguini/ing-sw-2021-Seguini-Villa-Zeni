@@ -41,7 +41,7 @@ Questo repo contiene una versione **Java** del gioco [*Maestri del rinascimento*
   
 ## Installazione <a name="installationITA"></a>
 Per avviare il gioco è necessario scaricare [JavaSE 15](https://www.oracle.com/it/java/technologies/javase-downloads.html) (o versioni superiori).
-Il giocatore che creerà la partita, per poter hostare il server, può decidere di installare [ngrok] (https://ngrok.com/), sebbene siano disponibili altre modalità che la guida non coprirà.
+Il giocatore che creerà la partita, per poter hostare il server, può decidere di installare [ngrok](https://ngrok.com/), sebbene siano disponibili altre modalità che la guida non coprirà.
 
 Scaricare in locale il repository come segue
 ```bash
