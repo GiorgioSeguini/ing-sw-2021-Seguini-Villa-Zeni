@@ -22,16 +22,11 @@ import javafx.scene.control.Control;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Objects;
 
 /**
  * The Gui class
@@ -46,7 +41,6 @@ public class GUI extends Application implements UI {
      */
     protected static Client client;
 
-    private MediaPlayer player;
     private final HashMap<String, FXMLLoader> loaderMap = new HashMap<>();
     private Scene main;
     private ControllerGuiInterface current;
@@ -151,16 +145,6 @@ public class GUI extends Application implements UI {
             this.loaderMap.put(controller.getName(), loader);
         }
         this.activate(StartController.className);
-        Media pick = new Media(Objects.requireNonNull(getClass().getClassLoader()
-                .getResource("media/Epic_Battle_Speech.mp3")).toExternalForm());
-        player = new MediaPlayer(pick);
-        player.setAutoPlay(true);
-        player.setCycleCount(MediaPlayer.INDEFINITE);
-        player.setVolume(25);
-        player.setOnEndOfMedia(() -> {
-            player.seek(Duration.ZERO);
-            player.play();
-        });
         primaryStage.minHeightProperty().bind(primaryStage.widthProperty().multiply(9.0 / 16.0));
         primaryStage.maxHeightProperty().bind(primaryStage.widthProperty().multiply(9.0 / 16.0));
         primaryStage.setMinWidth(600.0);
