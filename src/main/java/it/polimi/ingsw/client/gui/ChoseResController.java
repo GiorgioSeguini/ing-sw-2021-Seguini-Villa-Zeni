@@ -55,6 +55,8 @@ public class ChoseResController extends IntermediateController{
 
         label.setText("Scegli "+ input + " risorse in input");
         status = false;
+        if(input==0)
+            onAction(new ActionEvent());
         checkConfirm();
     }
 
