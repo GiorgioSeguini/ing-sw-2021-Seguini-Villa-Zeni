@@ -55,8 +55,6 @@ public class MoveDiscardResourcesExt extends MoveDiscardResources implements Per
 
         try {
             player.getConverter().setResources(player.getConverter().getResources().sub(getToDiscard()));
-            player.getDepots().addResourcesFromMarket(player.getConverter().getResources());
-            player.getConverter().CleanConverter();
             for (int i = 0; i < getToDiscard().size(); i++) {
                 for (Player y : game.getPlayers()) {
                     if (!y.equals(player)) {
@@ -68,6 +66,8 @@ public class MoveDiscardResourcesExt extends MoveDiscardResources implements Per
                 }
                 game.popesInspection();
             }
+            player.getDepots().addResourcesFromMarket(player.getConverter().getResources());
+            player.getConverter().CleanConverter();
         } catch (OutOfResourcesException e) {
             player.setErrorMessage(e.getErrorMessage());
             return;
