@@ -203,7 +203,12 @@ public class GUI extends Application implements UI {
         }
         if(this.getModel().getStatus() != GameStatus.Ended){
                 if(!this.getModel().isMyTurn()) {
+                    if(current instanceof BaseController) {
                         current.update();
+                    }
+                    else if(current instanceof InitialResController || current instanceof LobbyController) {
+                        activate(BaseMeController.className);
+                    }
                 }else if(this.getModel().getMe().getStatus()== PlayerStatus.NeedToStore) {
                     activate(StoreResourcesController.className);
                 }else if(this.getModel().getMe().getStatus()== PlayerStatus.NeedToChoseRes){
