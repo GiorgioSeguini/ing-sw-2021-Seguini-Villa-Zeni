@@ -222,6 +222,7 @@ public class Server implements Runnable{
      */
     @Override
     public void run(){
+        System.out.println("Server is running... \nPORT: "+this.PORT);
         while(true){
             try {
                 Socket newSocket = serverSocket.accept();
