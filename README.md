@@ -55,7 +55,7 @@ I file eseguibili per il gioco sono contenuti nella cartella `/shade`.
 Entrare nella cartella con l'eseguibile di **ngrok** e aprire una connessione TCP alla porta `12345`. Sia dalla bash Linux, sia dalla PowerShell di Windows, è possibile farlo attraverso il comando (la bash deve essere aperta nella stessa dir di **ngrok**)
 
 ```bash
-ngrok tcp 12345
+./ngrok tcp 12345
 ```
 Il numero della porta deve essere necessariamente quella indicata. Se si volesse modificare la porta, sarà necessario modificare l'attributo nella classe `Server` e ricompilare i file *.jar* .
 
@@ -163,7 +163,7 @@ The executable files are stored in the `/shade` directory.
 ## How to start the server <a name="serverENG"></a>
 Open the **ngrok** directory with the terminal (linux or windows) and open a TCP connection at port `12345`, as it follow 
 ```bash
-ngrok tcp 12345
+./ngrok tcp 12345
 ```
 The port number has to be `12345`. If it should be necessary to modify the port, open the project class `Server` and edit the attribute, then rebuild the *.jar* file. 
 
