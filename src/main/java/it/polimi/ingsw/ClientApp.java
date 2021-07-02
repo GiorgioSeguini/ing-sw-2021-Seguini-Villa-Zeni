@@ -12,9 +12,11 @@ public class ClientApp
         String ip;
         if(args.length>3 || args.length <2){
             System.out.println("Invalid argument , please specify ip address and port number");
+            return;
         }
         if(args.length==3 && !args[2].equals("gui") && !args[2].equals("cli")){
             System.out.println("Invalid argument , please \"cli\" or \"gui\" for user interface. Default is gui");
+            return;
         }
         ip = args[0];
         port = Integer.parseInt(args[1]);
